@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BStatable &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BSymLink" href="sym-link.html" />
+    <link rel="prev" title="BResources" href="resources.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BStatable</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="resources.html">BResources</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="sym-link.html">BSymLink</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BStatable</a><ul>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4NK9BStatable15GetCreationTimeEP6time_t">GetCreationTime</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BStatable15SetCreationTimeE6time_t">SetCreationTime</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BStatable19GetModificationTimeEP6time_t">GetModificationTime</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BStatable19SetModificationTimeE6time_t">SetModificationTime</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BStatable13GetAccessTimeEP6time_t">GetAccessTime</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BStatable13SetAccessTimeE6time_t">SetAccessTime</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BStatable10GetNodeRefEP8node_ref">GetNodeRef</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BStatable8GetOwnerEP5uid_t">GetOwner</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BStatable8SetOwnerE5uid_t">SetOwner</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BStatable8GetGroupEP5gid_t">GetGroup</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BStatable8SetGroupE5gid_t">SetGroup</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BStatable14GetPermissionsEP6mode_t">GetPermissions</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BStatable14SetPermissionsE6mode_t">SetPermissions</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BStatable7GetSizeEP5off_t">GetSize</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BStatable7GetStatEP4stat">GetStat</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BStatable6IsFileEv">IsFile</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BStatable11IsDirectoryEv">IsDirectory</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BStatable9IsSymLinkEv">IsSymLink</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bstatable">
+<h1>BStatable<a class="headerlink" href="#bstatable" title="Permalink to this heading">¶</a></h1>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4NK9BStatable15GetCreationTimeEP6time_t">
+</section>
+<section id="_CPPv4N9BStatable15SetCreationTimeE6time_t">
+</section>
+<section id="_CPPv4NK9BStatable19GetModificationTimeEP6time_t">
+</section>
+<section id="_CPPv4N9BStatable19SetModificationTimeE6time_t">
+</section>
+<section id="_CPPv4NK9BStatable13GetAccessTimeEP6time_t">
+</section>
+<section id="_CPPv4N9BStatable13SetAccessTimeE6time_t">
+</section>
+<h3>
+GetCreationTime(), SetCreationTime(), GetModificationTime(), SetModificationTime(), GetAccessTime(), SetAccessTime()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">GetCreationTime</span><span class="sig-paren">(</span><span class="n">time_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ctime</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">SetCreationTime</span><span class="sig-paren">(</span><span class="n">time_t</span><span class="w"> </span><span class="n sig-param">ctime</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">GetModificationTime</span><span class="sig-paren">(</span><span class="n">time_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mtime</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">SetModificationTime</span><span class="sig-paren">(</span><span class="n">time_t</span><span class="w"> </span><span class="n sig-param">mtime</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">GetAccessTime</span><span class="sig-paren">(</span><span class="n">time_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">atime</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">SetAccessTime</span><span class="sig-paren">(</span><span class="n">time_t</span><span class="w"> </span><span class="n sig-param">atime</span><span class="sig-paren">)</span></pre><div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>Access time is currently unused.</p>
+</div>
+<p>These function let you get and set the time at which the item was
+created, last modified, and last accessed (opened). The measure of time
+is given as seconds since (the beginning of ) January 1, 1970.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The time quanta that stat uses is seconds; the rest of the BeOS
+measures time in microseconds (bigtime_t).</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>Success.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
+<td><p>You tried to set a time field for a file on a read-only volume.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<td><p>Couldn’t get the necessary resources to complete the transaction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>The node doesn’t exist (abstract entry).</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4NK9BStatable10GetNodeRefEP8node_ref">
+</section>
+<h3>
+GetNodeRef()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">GetNodeRef</span><span class="sig-paren">(</span><span class="n">node_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">nref</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Copies the item’s node_ref structure into the <span class="hparameter">nref</span> argument, which must
+be allocated.</p>
+<p>Typically, you use an node’s node_ref as a key to the Node Monitor by
+passing the node_ref structure to the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">node()</span></code> function. The Node
+Monitor watches the node for specific changes; see
+“<span class="xref std std-ref">The Node Monitor</span>”
+section of this chapter for details.</p>
+<p>As a convenience, you can use a node_ref structure to initialize a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code> object (through the
+constructor or <a class="reference internal" href="directory.html#_CPPv4N10BDirectory5SetToEPK9entry_ref" title="BDirectory::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BDirectory::SetTo()</span></code></a>
+function).</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>Success.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<td><p>Couldn’t get the necessary resources to complete the transaction.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>The node doesn’t exist (abstract entry).</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4NK9BStatable8GetOwnerEP5uid_t">
+</section>
+<section id="_CPPv4N9BStatable8SetOwnerE5uid_t">
+</section>
+<section id="_CPPv4NK9BStatable8GetGroupEP5gid_t">
+</section>
+<section id="_CPPv4N9BStatable8SetGroupE5gid_t">
+</section>
+<section id="_CPPv4NK9BStatable14GetPermissionsEP6mode_t">
+</section>
+<section id="_CPPv4N9BStatable14SetPermissionsE6mode_t">
+</section>
+<h3>
+GetOwner(), SetOwner(), GetGroup(), SetGroup(), GetPermissions(), SetPermissions()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">GetOwner</span><span class="sig-paren">(</span><span class="n">uid_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">owner</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">SetOwner</span><span class="sig-paren">(</span><span class="n">uid_t</span><span class="w"> </span><span class="n sig-param">owner</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">GetGroup</span><span class="sig-paren">(</span><span class="n">gid_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">group</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">SetGroup</span><span class="sig-paren">(</span><span class="n">gid_t</span><span class="w"> </span><span class="n sig-param">group</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">GetPermissions</span><span class="sig-paren">(</span><span class="n">mode_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">perms</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">SetPermissions</span><span class="sig-paren">(</span><span class="n">mode_t</span><span class="w"> </span><span class="n sig-param">perms</span><span class="sig-paren">)</span></pre><p>These functions set and get the owner, group, and read/write/execute
+permissions for the node:</p>
+<ul class="simple">
+<li><p>The <span class="hparameter">owner</span> identifier encodes the identity of the user that “owns” the file.</p></li>
+<li><p>The <span class="hparameter">group</span> identifier encodes the “group” that is permitted group access to the file (as declared by the permissions).</p></li>
+<li><p>The <span class="hparameter">permissions</span> value records nine “permission facts”: Whether the file can be read, written, and executed by the node’s owner, by users in the node’s group, and by everybody else (read/write/execute * owner/group/others = 9 items).</p></li>
+</ul>
+<p>The uid_t, gid_t, and mode_t types used here are standard POSIX types.
+All three are 32-bit unsigned integers and are defined in
+posix/sys/types.h.</p>
+<p>The owner and group encodings must match values found in the system’s
+user and group files (which are as currently unimplemented).</p>
+<p>The permissions value is a combination of the following bitfield
+constants (defined in posix/sys/stat.h):</p>
+<ul class="simple">
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">S_IRUSR</span></code> owner’s read bit.</p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">S_IWUSR</span></code> owner’s write bit.</p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">S_IXUSR</span></code> owner’s execute bit.</p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">S_IRGRP</span></code> group’s read bit.</p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">S_IWGRP</span></code> group’s write bit.</p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">S_IXGRP</span></code> group’s execute bit.</p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">S_IROTH</span></code> others’ read bit.</p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">S_IWOTH</span></code> others’ write bit.</p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">S_IXOTH</span></code> others’ execute bit.</p></li>
+</ul>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/* Is a file readable by everybody? */
+mode_t perms;
+if (node.GetPermissions(&amp;perms) &lt; B_OK)
+   /* handle the error... */
+if (perms &amp; S_ISROTH)
+   // Yes it is
+else
+   // No it isn&#39;t
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>Success.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
+<td><p>You tried to set permissions on a read-only volume.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>The node doesn’t exist (abstract entry).</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4NK9BStatable7GetSizeEP5off_t">
+</section>
+<h3>
+GetSize()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">GetSize</span><span class="sig-paren">(</span><span class="n">off_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">size</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Gets the size of the node’s data portion (in bytes). Only the “used”
+portions of the node’s file blocks are counted; the amount of storage the
+node actually requires (i.e. the number of blocks the node consumes) may
+be larger than the size given here.</p>
+<p>The size measurement doesn’t include the node’s attributes.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>Success.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<td><p>Couldn’t get the necessary resources to complete the transaction.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>The node doesn’t exist (abstract entry).</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4NK9BStatable7GetStatEP4stat">
+</section>
+<h3>
+GetStat()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">GetStat</span><span class="sig-paren">(</span><span class="k">struct</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">st</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">GetStat()</span> returns the
+<span class="xref std std-ref">stat</span> structure for the node. The structure is
+copied into the <span class="hparameter">st</span> argument, which must be allocated. The <span class="hclass">BStatable</span> object does
+not cache the stat structure; every time you call <span class="hmethod">GetStat()</span>, fresh stat
+information is retrieved.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>Success.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<td><p>Couldn’t get the necessary resources to complete the transaction.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>The node doesn’t exist (abstract entry).</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4NK9BStatable6IsFileEv">
+</section>
+<section id="_CPPv4NK9BStatable11IsDirectoryEv">
+</section>
+<section id="_CPPv4NK9BStatable9IsSymLinkEv">
+</section>
+<h3>
+IsFile(), IsDirectory(), IsSymLink()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">IsFile</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">IsDirectory</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatable</span><span class="p">::</span></span><span class="n">IsSymLink</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions return true if the node is a plain file, a directory, or
+a symbolic link, respectively.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="resources.html">BResources</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="sym-link.html">BSymLink</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

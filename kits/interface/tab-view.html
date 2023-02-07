@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BTabView &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BTextView" href="text-view.html" />
+    <link rel="prev" title="BTab" href="tab.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BTabView</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="tab.html">BTab</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="text-view.html">BTextView</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BTabView</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N8BTabView8BTabViewE5BRectPKc12button_width6uint326uint32">BTabView</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BTabViewD0Ev">~BTabView</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hook-functions">Hook Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N8BTabView16AttachedToWindowEv">AttachedToWindow</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BTabView4DrawE5BRect">Draw</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BTabView7DrawBoxE5BRect">DrawBox</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BTabView8DrawTabsEv">DrawTabs</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BTabView7KeyDownEPKc5int32">KeyDown</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BTabView9MouseDownE6BPoint">MouseDown</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BTabView15WindowActivatedEb">WindowActivated</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N8BTabView6AddTabEP5BViewP4BTab">AddTab</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BTabView9RemoveTabE5int32">RemoveTab</a></li>
+<li><a class="reference internal" href="#_CPPv4NK8BTabView7ArchiveEP8BMessageb">Archive</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BTabView9MakeFocusEb">MakeFocus</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BTabView6SelectE5int32">Select</a></li>
+<li><a class="reference internal" href="#_CPPv4NK8BTabView9SelectionEv">Selection</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BTabView11SetFocusTabE5int32b">SetFocusTab</a></li>
+<li><a class="reference internal" href="#_CPPv4NK8BTabView8FocusTabEv">FocusTab</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BTabView12SetTabHeightEf">SetTabHeight</a></li>
+<li><a class="reference internal" href="#_CPPv4NK8BTabView9TabHeightEv">TabHeight</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BTabView11SetTabWidthE12button_width">SetTabWidth</a></li>
+<li><a class="reference internal" href="#_CPPv4NK8BTabView8TabWidthEv">TabWidth</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BTabView5TabAtE5int32">TabAt</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BTabView8TabFrameE5int32">TabFrame</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#static-functions">Static Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N8BTabView11InstantiateEP8BMessage">Instantiate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#archived-fields">Archived Fields</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="btabview">
+<h1>BTabView<a class="headerlink" href="#btabview" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N8BTabView8BTabViewE5BRectPKc12button_width6uint326uint32">
+</section>
+<h3>
+BTabView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BTabView8BTabViewE5BRectPKc12button_width6uint326uint32" title="BTabView::BTabView"><span class="n">BTabView</span></a><span class="p">::</span></span><span class="n">BTabView</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="n">button_width</span><span class="w"> </span><span class="n sig-param">width</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_WIDTH_AS_USUAL</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_ALL</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FULL_UPDATE_ON_RESIZE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_NAVIGABLE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_NAVIGABLE_JUMP</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FRAME_EVENTS</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BTabView8BTabViewERK8BTabView" title="BTabView::BTabView"><span class="n">BTabView</span></a><span class="p">::</span></span><span class="n">BTabView</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8BTabView8BTabViewERK8BTabView" title="BTabView::BTabView"><span class="n">BTabView</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">tabView</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BTabView8BTabViewEP8BMessage" title="BTabView::BTabView"><span class="n">BTabView</span></a><span class="p">::</span></span><span class="n">BTabView</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BTabView</span> to the <span class="hparameter">frame</span> rectangle, stated in its eventual
+parent’s coordinate system, and assigns it the specified <span class="hparameter">name</span>,
+<span class="hparameter">resizingMode</span>, and <span class="hparameter">flags</span>.
+These are described in detail in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> section.</p>
+<p>The <span class="hparameter">width</span> parameter, which can be one of the following values, specifies
+the widths of the tabs in the <span class="hclass">BTabView</span>. All tabs in a
+<span class="hclass">BTabView</span> are the same width.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WIDTH_FROM_WIDEST</span></code></p></td>
+<td><p>Each tab’s width is determined based upon the width of the widest tab name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WIDTH_AS_USUAL</span></code></p></td>
+<td><p>The default tab width is used for all tabs.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WIDTH_FROM_LABEL</span></code></p></td>
+<td><p>The tab width for each tab is based on the width of the tab’s label.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The container view for the <span class="hclass">BTabView</span>’s subviews is created and added to
+the <span class="hclass">BTabView</span> as well.</p>
+<section id="_CPPv4N8BTabViewD0Ev">
+</section>
+<h3>
+~BTabView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">~BTabView</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees all memory the <span class="hclass">BTabView</span> allocated, and deletes every
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code> attached
+to it.</p>
+</section>
+<section id="hook-functions">
+<h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N8BTabView16AttachedToWindowEv">
+</section>
+<h3>
+AttachedToWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Calls <a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::AttachedToWindow()</span></code></a>,
+then selects the first tab in the tab view.</p>
+<section id="_CPPv4N8BTabView4DrawE5BRect">
+</section>
+<h3>
+Draw()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">updateRect</span><span class="sig-paren">)</span></pre><p>Draws the tabs and the box that encloses the container view that displays
+the selected tab’s target view.</p>
+<section id="_CPPv4N8BTabView7DrawBoxE5BRect">
+</section>
+<h3>
+DrawBox()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">DrawBox</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">selTabRect</span><span class="sig-paren">)</span></pre><p>Draws the box that encloses the container view. <span class="hparameter">selTabRect</span> is the frame
+rectangle of the currently-selected tab; this information is used to
+allow the box to attach properly to the current tab. This is the same
+rectangle that the
+<a class="reference internal" href="#_CPPv4N8BTabView8DrawTabsEv" title="BTabView::DrawTabs"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawTabs()</span></code></a> function returns.</p>
+<p>This is called for you by the
+<a class="reference internal" href="#_CPPv4N8BTabView4DrawE5BRect" title="BTabView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a> function and is provided primarily
+as a hook for customizing the appearance of your <span class="hclass">BTabView</span>.</p>
+<section id="_CPPv4N8BTabView8DrawTabsEv">
+</section>
+<h3>
+DrawTabs()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">DrawTabs</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Draws all the tabs in the <span class="hclass">BTabView</span> and returns the frame rectangle of the
+currently-selected tab. This rectangle should then be passed to
+<a class="reference internal" href="#_CPPv4N8BTabView7DrawBoxE5BRect" title="BTabView::DrawBox"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawBox()</span></code></a>
+to draw the container view’s enclosing box.</p>
+<p>This is called for you by the
+<a class="reference internal" href="#_CPPv4N8BTabView4DrawE5BRect" title="BTabView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a>
+function and is provided primarily as a hook for customizing the
+appearance of your <span class="hclass">BTabView</span>.</p>
+<section id="_CPPv4N8BTabView7KeyDownEPKc5int32">
+</section>
+<h3>
+KeyDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">KeyDown</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bytes</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numBytes</span><span class="sig-paren">)</span></pre><p>The <span class="hmethod">KeyDown()</span> function handles keyboard navigation
+of the <span class="hclass">BTabView</span>; the
+down and left arrow keys move the focus to the left, and the up and right
+arrow keys move the focus to the right. The space bar and enter keys
+select the focused tab.</p>
+<p>All other keys are passed through to the
+<a class="reference internal" href="view.html#_CPPv4N5BView7KeyDownEPKc5int32" title="BView::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::KeyDown()</span></code></a> function for
+further processing.</p>
+<p>See also:
+the Keyboard Information appendix,
+“B_KEY_DOWN” in the
+Message Protocols appendix,
+<a class="reference internal" href="view.html#_CPPv4N5BView7KeyDownEPKc5int32" title="BView::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::KeyDown()</span></code></a>,
+<span class="xref std std-ref">modifiers()</span></p>
+<section id="_CPPv4N8BTabView9MouseDownE6BPoint">
+</section>
+<h3>
+MouseDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">MouseDown</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><p>Identifies which tab (if any) the user clicked and selects that tab. If
+the mouse was not inside a tab when clicked, the
+<a class="reference internal" href="view.html#_CPPv4N5BView9MouseDownE6BPoint" title="BView::MouseDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::MouseDown()</span></code></a>
+function is called.</p>
+<p>See also: “B_MOUSE_DOWN” in the
+Message Protocols appendix,
+<a class="reference internal" href="view.html#_CPPv4N5BView8GetMouseEP6BPointP6uint32b" title="BView::GetMouse"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::GetMouse()</span></code></a></p>
+<section id="_CPPv4N8BTabView15WindowActivatedEb">
+</section>
+<h3>
+WindowActivated()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">WindowActivated</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">active</span><span class="sig-paren">)</span></pre><p>Calls the inherited version of
+<a class="reference internal" href="view.html#_CPPv4N5BView15WindowActivatedEb" title="BView::WindowActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">WindowActivated()</span></code></a>,
+then calls <a class="reference internal" href="#_CPPv4N8BTabView8DrawTabsEv" title="BTabView::DrawTabs"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawTabs()</span></code></a>
+to redraw the tabs.</p>
+<p>See also: <a class="reference internal" href="window.html#_CPPv4N7BWindow15WindowActivatedEb" title="BWindow::WindowActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::WindowActivated()</span></code></a></p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N8BTabView6AddTabEP5BViewP4BTab">
+</section>
+<section id="_CPPv4N8BTabView9RemoveTabE5int32">
+</section>
+<h3>
+AddTab(), RemoveTab()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">AddTab</span><span class="sig-paren">(</span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">target</span>, <span class="n">BTab</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">tab</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">BTab</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">RemoveTab</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">tab_index</span><span class="sig-paren">)</span></pre><p><span class="hmethod">AddTab()</span> adds the specified <span class="hparameter">tab</span>
+as the rightmost tab in the <span class="hclass">BTabView</span>. The
+new tab’s target view is set to <span class="hparameter">target</span>.</p>
+<p>If <span class="hparameter">tab</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, a new
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code> object is constructed and added to the
+<span class="hclass">BTabView</span>. You can get a pointer to the new tab using the
+<a class="reference internal" href="#_CPPv4N8BTabView5TabAtE5int32" title="BTabView::TabAt"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">TabAt()</span></code></a> function</p>
+<p>if you choose to reimplement <span class="hmethod">AddTab()</span>,
+you should call the inherited form
+of this function once the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code>
+has been customized.</p>
+<p><span class="hmethod">RemoveTab()</span> removes the tab with the
+specified <span class="hparameter">index</span> number from the
+<span class="hclass">BTabView</span> and returns a pointer to the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code> object. The
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code> is not
+deleted—if you don’t need it anymore, you can do that yourself.</p>
+<section id="_CPPv4NK8BTabView7ArchiveEP8BMessageb">
+</section>
+<h3>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of
+<a class="reference internal" href="view.html#_CPPv4NK5BView7ArchiveEP8BMessageb" title="BView::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a>
+and stores the <span class="hclass">BTabView</span> in the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive.</p>
+<p>See also:
+<a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N8BTabView11InstantiateEP8BMessage" title="BTabView::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a>
+static function</p>
+<section id="_CPPv4N8BTabView9MakeFocusEb">
+</section>
+<h3>
+MakeFocus()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">MakeFocus</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">focused</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span></pre><p>Makes the <span class="hclass">BTabView</span> the current focus by first calling
+<a class="reference internal" href="view.html#_CPPv4N5BView9MakeFocusEb" title="BView::MakeFocus"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::MakeFocus()</span></code></a>,
+then making the currently-selected tab the focus of the <span class="hclass">BTabView</span>.</p>
+<section id="_CPPv4N8BTabView6SelectE5int32">
+</section>
+<section id="_CPPv4NK8BTabView9SelectionEv">
+</section>
+<h3>
+Select(), Selection()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">Select</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">tab</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">Selection</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Select()</span> selects the tab specified by its
+index number, first deselecting the previously-selected tab.</p>
+<p><span class="hmethod">Selection()</span> returns the index number of the currently-selected tab.</p>
+<section id="_CPPv4N8BTabView11SetFocusTabE5int32b">
+</section>
+<section id="_CPPv4NK8BTabView8FocusTabEv">
+</section>
+<h3>
+SetFocusTab(), FocusTab()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">SetFocusTab</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">tab</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">focused</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">FocusTab</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetFocusTab()</span> sets the focus state of the specified tab. If
+<span class="hparameter">focused</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the specified tab
+becomes the new focus; if <span class="hparameter">focused</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, the
+focus is removed from the currently-focused tab but no new focus is set
+(the <span class="hclass">BTabView</span> becomes focusless).</p>
+<p><span class="hmethod">FocusTab()</span> returns the index number of the tab that is currently the
+focus.</p>
+<section id="_CPPv4N8BTabView12SetTabHeightEf">
+</section>
+<section id="_CPPv4NK8BTabView9TabHeightEv">
+</section>
+<h3>
+SetTabHeight(), TabHeight()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">SetTabHeight</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">TabHeight</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetTabHeight()</span> sets the height of the tabs in the
+<span class="hclass">BTabView</span>. <span class="hmethod">TabHeight()</span>
+returns the current tab height.</p>
+<p>When you change the tab height, the container view for the target views
+is resized so that the <span class="hclass">BTabView</span> doesn’t change size. Making the tabs
+taller by n pixels causes the container
+view’s top edge to move down by n
+pixels, and decreasing the heights of the tabs increases the height of
+the container view.</p>
+<section id="_CPPv4N8BTabView11SetTabWidthE12button_width">
+</section>
+<section id="_CPPv4NK8BTabView8TabWidthEv">
+</section>
+<h3>
+SetTabWidth(), TabWidth()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">SetTabWidth</span><span class="sig-paren">(</span><span class="n">button_width</span><span class="w"> </span><span class="n sig-param">width</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">button_width</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">TabWidth</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetTabWidth()</span> sets the width of the tabs in the
+<span class="hclass">BTabView</span>, and <span class="hmethod">TabWidth()</span>
+returns the current width setting. <span class="hparameter">width</span> must be one of the following
+values:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WIDTH_FROM_WIDEST</span></code></p></td>
+<td><p>Each tab’s width is determined based upon the width of the widest tab name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WIDTH_AS_USUAL</span></code></p></td>
+<td><p>The default tab width is used for all tabs.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N8BTabView5TabAtE5int32">
+</section>
+<h3>
+TabAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">BTab</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">TabAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">tab_index</span><span class="sig-paren">)</span></pre><p>Returns a pointer to the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code> object at the
+specified index. The leftmost tab is index number 0.</p>
+<section id="_CPPv4N8BTabView8TabFrameE5int32">
+</section>
+<h3>
+TabFrame()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">TabFrame</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">tab_index</span><span class="sig-paren">)</span></pre><p>Returns the frame rectangle of the tab whose index number is specified.
+The leftmost tab is index number 0.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N8BTabView8DrawTabsEv" title="BTabView::DrawTabs"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawTabs()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N8BTabView7DrawBoxE5BRect" title="BTabView::DrawBox"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawBox()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N8BTabView4DrawE5BRect" title="BTabView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a></p>
+</section>
+<section id="static-functions">
+<h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N8BTabView11InstantiateEP8BMessage">
+</section>
+<h3>
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BTabView</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BTabView</span> object, allocated by new and created with the version
+of the constructor that takes a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
+archive. However, if the <span class="hparameter">archive</span>
+message doesn’t contain data for a <span class="hclass">BTabView</span> object,
+<span class="hmethod">Instantiate()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p>See also:
+<a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">object()</span></code>,
+<a class="reference internal" href="#_CPPv4NK8BTabView7ArchiveEP8BMessageb" title="BTabView::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
+</section>
+<section id="archived-fields">
+<h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="tab.html">BTab</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="text-view.html">BTextView</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

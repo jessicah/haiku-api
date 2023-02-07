@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BPolygon &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BPopUpMenu" href="pop-up-menu.html" />
+    <link rel="prev" title="BPoint" href="point.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BPolygon</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="point.html">BPoint</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pop-up-menu.html">BPopUpMenu</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BPolygon</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N8BPolygon8BPolygonEPK6BPoint5int32">BPolygon</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BPolygonD0Ev">~BPolygon</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N8BPolygon9AddPointsEPK6BPoint5int32">AddPoints</a></li>
+<li><a class="reference internal" href="#_CPPv4NK8BPolygon11CountPointsEv">CountPoints</a></li>
+<li><a class="reference internal" href="#_CPPv4NK8BPolygon5FrameEv">Frame</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BPolygon5MapToE5BRect5BRect">MapTo</a></li>
+<li><a class="reference internal" href="#_CPPv4NK8BPolygon13PrintToStreamEv">PrintToStream</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bpolygon">
+<h1>BPolygon<a class="headerlink" href="#bpolygon" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N8BPolygon8BPolygonEPK6BPoint5int32">
+</section>
+<h3>
+BPolygon()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BPolygon8BPolygonEPK6BPoint5int32" title="BPolygon::BPolygon"><span class="n">BPolygon</span></a><span class="p">::</span></span><span class="n">BPolygon</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPoint</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">pointList</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numPoints</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BPolygon8BPolygonEPK8BPolygon" title="BPolygon::BPolygon"><span class="n">BPolygon</span></a><span class="p">::</span></span><span class="n">BPolygon</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8BPolygon8BPolygonEPK8BPolygon" title="BPolygon::BPolygon"><span class="n">BPolygon</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">polygon</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BPolygon8BPolygonEv" title="BPolygon::BPolygon"><span class="n">BPolygon</span></a><span class="p">::</span></span><span class="n">BPolygon</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BPolygon</span> by copying
+<span class="hparameter">numPoints</span> from <span class="hparameter">pointList</span>, or by
+copying the list of points from another polygon. If one polygon is
+constructed from another, the original and the copy won’t share any data;
+independent memory is allocated for the copy to hold a duplicate list of
+points.</p>
+<p>If a <span class="hclass">BPolygon</span> is constructed without a point list, points must be set
+with the <a class="reference internal" href="#_CPPv4N8BPolygon9AddPointsEPK6BPoint5int32" title="BPolygon::AddPoints"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddPoints()</span></code></a> function.</p>
+<section id="_CPPv4N8BPolygonD0Ev">
+</section>
+<h3>
+~BPolygon()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPolygon</span><span class="p">::</span></span><span class="n">~BPolygon</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees all the memory allocated to hold the list of points.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N8BPolygon9AddPointsEPK6BPoint5int32">
+</section>
+<h3>
+AddPoints()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPolygon</span><span class="p">::</span></span><span class="n">AddPoints</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPoint</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">pointList</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numPoints</span><span class="sig-paren">)</span></pre><p>Appends <span class="hparameter">numPoints</span> from <span class="hparameter">pointList</span>
+to the list of points that already define the polygon.</p>
+<section id="_CPPv4NK8BPolygon11CountPointsEv">
+</section>
+<h3>
+CountPoints()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPolygon</span><span class="p">::</span></span><span class="n">CountPoints</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the number of points that define the polygon.</p>
+<section id="_CPPv4NK8BPolygon5FrameEv">
+</section>
+<h3>
+Frame()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPolygon</span><span class="p">::</span></span><span class="n">Frame</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the polygon’s frame rectangle—the smallest rectangle that
+encloses the entire polygon.</p>
+<section id="_CPPv4N8BPolygon5MapToE5BRect5BRect">
+</section>
+<h3>
+MapTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPolygon</span><span class="p">::</span></span><span class="n">MapTo</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">source</span>, <span class="n">BRect</span><span class="w"> </span><span class="n sig-param">destination</span><span class="sig-paren">)</span></pre><p>Modifies the polygon so that it fits the <span class="hparameter">destination</span> rectangle exactly as
+it originally fit the <span class="hparameter">source</span> rectangle. Each vertex of the polygon is
+modified so that it has the same proportional position relative to the
+sides of the destination rectangle as it originally had to the sides of
+the source rectangle.</p>
+<p>The polygon doesn’t have to be contained in either rectangle. However, to
+modify a polygon so that it’s exactly inscribed in the destination
+rectangle, you should pass its frame rectangle as the source:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BRect</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">myPolygon</span><span class="o">-&gt;</span><span class="n">Frame</span><span class="p">();</span>
+<span class="n">myPolygon</span><span class="o">-&gt;</span><span class="n">MapTo</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">anotherRect</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="_CPPv4NK8BPolygon13PrintToStreamEv">
+</section>
+<h3>
+PrintToStream()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPolygon</span><span class="p">::</span></span><span class="n">PrintToStream</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Prints the <span class="hclass">BPolygon</span>’s point list to the standard output stream (stdout).
+The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPoint</span></code> version of this function is called to report each point as a
+string in the form</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;BPoint(x, y)&quot;</span>
+</pre></div>
+</div>
+<p>where x and y stand for the coordinate values of the point in question.</p>
+<p>See also:
+<a class="reference internal" href="point.html#_CPPv4NK6BPoint13PrintToStreamEv" title="BPoint::PrintToStream"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BPoint::PrintToStream()</span></code></a></p>
+</section>
+<section id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BPolygon</span><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPolygon</span><span class="p">&amp;</span><span class="sig-paren">)</span></pre><p>Copies the point list of one <span class="hclass">BPolygon</span> object and assigns it to another
+<span class="hclass">BPolygon</span>. After the assignment, the two objects describe the same
+polygon, but are independent of each other. Destroying one of the objects
+won’t affect the other.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="point.html">BPoint</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pop-up-menu.html">BPopUpMenu</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

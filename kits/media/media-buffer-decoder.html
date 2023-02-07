@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMediaBufferDecoder &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMediaBufferEncoder" href="media-buffer-encoder.html" />
+    <link rel="prev" title="BMediaAddOn" href="media-add-on.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMediaBufferDecoder</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-add-on.html">BMediaAddOn</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-buffer-encoder.html">BMediaBufferEncoder</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BMediaBufferDecoder</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N19BMediaBufferDecoder19BMediaBufferDecoderEv">BMediaBufferDecoder</a></li>
+<li><a class="reference internal" href="#_CPPv4N19BMediaBufferDecoderD0Ev">~BMediaBufferDecoder</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N19BMediaBufferDecoder12DecodeBufferEPKv6size_tPvP5int64P12media_headerP17media_decode_info">DecodeBuffer</a></li>
+<li><a class="reference internal" href="#_CPPv4N19BMediaBufferDecoder12GetNextChunkEPPKvP6size_tP12media_header">GetNextChunk</a></li>
+<li><a class="reference internal" href="#_CPPv4NK19BMediaBufferDecoder9InitCheckEv">InitCheck</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmediabufferdecoder">
+<h1>BMediaBufferDecoder<a class="headerlink" href="#bmediabufferdecoder" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N19BMediaBufferDecoder19BMediaBufferDecoderEv">
+</section>
+<h3>
+BMediaBufferDecoder()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N19BMediaBufferDecoder19BMediaBufferDecoderEv" title="BMediaBufferDecoder::BMediaBufferDecoder"><span class="n">BMediaBufferDecoder</span></a><span class="p">::</span></span><span class="n">BMediaBufferDecoder</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N19BMediaBufferDecoder19BMediaBufferDecoderEPK12media_formatPKv6size_t" title="BMediaBufferDecoder::BMediaBufferDecoder"><span class="n">BMediaBufferDecoder</span></a><span class="p">::</span></span><span class="n">BMediaBufferDecoder</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inFormat</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">infoSize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N19BMediaBufferDecoder19BMediaBufferDecoderEPK16media_codec_info" title="BMediaBufferDecoder::BMediaBufferDecoder"><span class="n">BMediaBufferDecoder</span></a><span class="p">::</span></span><span class="n">BMediaBufferDecoder</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_codec_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mci</span><span class="sig-paren">)</span></pre><p>The constructor sets up the <span class="hclass">BMediaBufferDecoder</span>. If you use the empty
+form of the constructor, you’ll have to call
+<a class="reference internal" href="media-decoder.html#_CPPv4N13BMediaDecoder5SetToEPK12media_formatPKv6size_t" title="BMediaDecoder::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>
+to establish the format to be decoded before calling
+<a class="reference internal" href="media-decoder.html#_CPPv4N13BMediaDecoder6DecodeEPvP5int64P12media_headerP17media_decode_info" title="BMediaDecoder::Decode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Decode()</span></code></a>.
+The second form accepts a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+structure, <span class="hparameter">inFormat</span>, that
+indicates the type of media data that will be input into the decoder.
+<span class="hparameter">info</span>, if specified, will be filled out with text information about the
+node; you must specify a buffer <span class="hparameter">infoSize</span> bytes long.
+The third form of the constructor accepts a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">codec()</span></code>
+structure, <span class="hparameter">mci</span>, that determines which codec should be used.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>If you use either the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+or <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">codec()</span></code>
+form of the constructor, you must call
+<a class="reference internal" href="#_CPPv4NK19BMediaBufferDecoder9InitCheckEv" title="BMediaBufferDecoder::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>
+to ensure that construction was
+successful before using any other functions in this class.</p>
+</div>
+<section id="_CPPv4N19BMediaBufferDecoderD0Ev">
+</section>
+<h3>
+~BMediaBufferDecoder()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaBufferDecoder</span><span class="p">::</span></span><span class="n">~BMediaBufferDecoder</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Releases the decoder add-on being used by the
+<span class="hclass">BMediaBufferDecoder</span>.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N19BMediaBufferDecoder12DecodeBufferEPKv6size_tPvP5int64P12media_headerP17media_decode_info">
+</section>
+<h3>
+DecodeBuffer()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaBufferDecoder</span><span class="p">::</span></span><span class="n">DecodeBuffer</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inputBuffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">inputSize</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outBuffer</span>, <span class="n">int64</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFrameCount</span>, <span class="n">media_header</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outMH</span>, <span class="n">media_decode_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><p>Decodes a chunk of media data from the input buffer
+<span class="hparameter">inputBuffer</span> into the output buffer specified by
+<span class="hparameter">outBuffer</span>. The input buffer contains
+<span class="hparameter">inputSize</span> bytes of media data. On return,
+<span class="hparameter">outFrameCount</span> is set to indicate how many frames
+of data were decoded, and outMH is the header for the decoded
+buffer.
+The
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">decode()</span></code>
+structure info is used on input to specify decoding parameters.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>The decoder’s <a class="reference internal" href="media-decoder.html#_CPPv4N13BMediaDecoder6DecodeEPvP5int64P12media_headerP17media_decode_info" title="BMediaDecoder::Decode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Decode()</span></code></a> function can return errors.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N19BMediaBufferDecoder12GetNextChunkEPPKvP6size_tP12media_header">
+</section>
+<h3>
+GetNextChunk()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaBufferDecoder</span><span class="p">::</span></span><span class="n">GetNextChunk</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">chunkData</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">chunkLen</span>, <span class="n">media_header</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mh</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Implementation detail. This function is implemented to fetch memory from
+the input buffer specified by the call to
+<a class="reference internal" href="#_CPPv4N19BMediaBufferDecoder12DecodeBufferEPKv6size_tPvP5int64P12media_headerP17media_decode_info" title="BMediaBufferDecoder::DecodeBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DecodeBuffer()</span></code></a>.</p>
+<section id="_CPPv4NK19BMediaBufferDecoder9InitCheckEv">
+</section>
+<h3>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaBufferDecoder</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a status_t value indicating whether or not construction was
+successful. You must call this function after construction before calling
+any other <span class="hclass">BMediaBufferDecoder</span> functions.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>The constructor was successful.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>See <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaDecoder</span></code>’s <a class="reference internal" href="media-decoder.html#_CPPv4N13BMediaDecoder5SetToEPK12media_formatPKv6size_t" title="BMediaDecoder::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> function.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-add-on.html">BMediaAddOn</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-buffer-encoder.html">BMediaBufferEncoder</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

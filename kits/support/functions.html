@@ -1,0 +1,482 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Functions and Macros &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BList" href="list.html" />
+    <link rel="prev" title="BFlattenable" href="flattenable.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Functions and Macros</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="flattenable.html">BFlattenable</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="list.html">BList</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Functions and Macros</a><ul>
+<li><a class="reference internal" href="#_CPPv410atomic_addP6vint325int32">atomic_add</a></li>
+<li><a class="reference internal" href="#_CPPv410atomic_andP6vint325int32">atomic_and</a></li>
+<li><a class="reference internal" href="#_CPPv49atomic_orP6vint325int32">atomic_or</a></li>
+<li><a class="reference internal" href="#_CPPv44beepv">beep</a></li>
+<li><a class="reference internal" href="#_CPPv411system_beepPc6uint32">system_beep</a></li>
+<li><a class="reference internal" href="#c.class_name">class_name</a></li>
+<li><a class="reference internal" href="#c.is_instance_of">is_instance_of</a></li>
+<li><a class="reference internal" href="#c.is_kind_of">is_kind_of</a></li>
+<li><a class="reference internal" href="#c.cast_as">cast_as</a></li>
+<li><a class="reference internal" href="#_CPPv415convert_to_utf86uint32PKcP5int32PcP5int32P5int32c">convert_to_utf8</a></li>
+<li><a class="reference internal" href="#_CPPv417convert_from_utf86uint32PKcP5int32PcP5int32P5int32c">convert_from_utf8</a></li>
+<li><a class="reference internal" href="#_CPPv423find_instantiation_funcPKc">find_instantiation_func</a></li>
+<li><a class="reference internal" href="#_CPPv418instantiate_objectP8BMessage">instantiate_object</a></li>
+<li><a class="reference internal" href="#_CPPv49swap_data9type_codePv6size_t11swap_action">swap_data</a></li>
+<li><a class="reference internal" href="#_CPPv415is_type_swapped9type_code">is_type_swapped</a></li>
+<li><a class="reference internal" href="#c.min_c">min_c</a></li>
+<li><a class="reference internal" href="#c.max">max</a></li>
+<li><a class="reference internal" href="#c.max_c">max_c</a></li>
+<li><a class="reference internal" href="#_CPPv422validate_instantiationP8BMessagePKc">validate_instantiation</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="functions-and-macros">
+<h1>Functions and Macros<a class="headerlink" href="#functions-and-macros" title="Permalink to this heading">¶</a></h1>
+<p>This section lists the Support Kit’s general-purpose functions and macros.</p>
+<section id="_CPPv410atomic_addP6vint325int32">
+</section>
+<section id="_CPPv410atomic_andP6vint325int32">
+</section>
+<section id="_CPPv49atomic_orP6vint325int32">
+</section>
+<h2>
+atomic_add(), atomic_and(), atomic_or()</h2><p>Declared in: <code class="docutils literal notranslate"><span class="pre">support/SupportDefs.h</span></code></p>
+<pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="n">atomic_add</span><span class="sig-paren">(</span><span class="n">vint32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">atomicVariable</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">addValue</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="n">atomic_and</span><span class="sig-paren">(</span><span class="n">vint32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">atomicVariable</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">andValue</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="n">atomic_or</span><span class="sig-paren">(</span><span class="n">vint32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">atomicVariable</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">orValue</span><span class="sig-paren">)</span></pre><p>These functions perform the named operations (addition, bitwise AND, or bitwise OR) on the 32-bit
+value found in <span class="hparameter">atomicVariable</span>, thus:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">atomicVariable</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">addValue</span><span class="p">;</span><span class="w"></span>
+<span class="o">*</span><span class="n">atomicVariable</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="n">andValue</span><span class="p">;</span><span class="w"></span>
+<span class="o">*</span><span class="n">atomicVariable</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">orValue</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Each function returns the previous value of the <span class="cpp-expr sig sig-inline cpp"><span class="n">vint32</span></span> variable that <span class="hparameter">atomicVariable</span>
+points to (in other words, they each return the value that was in <span class="hparameter">*atomicVariable</span> before
+the operation was performed).</p>
+<p>These functions are guaranteed to be atomic: if two threads attempt to access the same atomic
+variable at the same time (through these functions), one of the threads will be made to wait until
+the other thread has completed the operation and updated the <span class="hparameter">atomicVariable</span> value.</p>
+<section id="_CPPv44beepv">
+</section>
+<section id="_CPPv411system_beepPc6uint32">
+</section>
+<h2>
+beep(), system_beep()</h2><p>Declared in: <code class="docutils literal notranslate"><span class="pre">support/Beep.h</span></code></p>
+<pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="n">beep</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="n">system_beep</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">eventName</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p><span class="hmethod">beep()</span> produces the basic system beep. This function engages the Media Server, but
+doesn’t wait for the sound to play. If it can’t contact the server to play the beep, it returns
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>. If it can make contact but can’t get a satisfactory reply back from the server,
+it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_REPLY</span></code>. Otherwise, it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+<p><span class="hmethod">system_beep()</span> plays the system beep configured for the event specified by the given
+<span class="hparameter">eventName</span>.</p>
+<p>Applications can add new system beep events by calling <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">add_system_beep_event()</span></code>, passing
+the name to assign to the event; the <span class="hparameter">flags</span> argument is currently unused and should be
+zero. Once this has been done, the user can use the Sounds preference application to configure a
+sound for the event.</p>
+<p>See also: <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">play_sound()</span></code> in the Media Kit.</p>
+<section id="c.class_name">
+</section>
+<section id="c.is_instance_of">
+</section>
+<section id="c.is_kind_of">
+</section>
+<section id="c.cast_as">
+</section>
+<h2>
+class_name(), is_instance_of(), is_kind_of(), cast_as()</h2><p>Declared in: <code class="docutils literal notranslate"><span class="pre">support/ClassInfo.h</span></code></p>
+<pre style="background: #f3f3f3; line-height: 2em"><span class="n">class_name</span><span class="sig-paren">(</span><span class="n">object</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">is_instance_of</span><span class="sig-paren">(</span><span class="n">object</span>, <span class="n">class</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">is_kind_of</span><span class="sig-paren">(</span><span class="n">object</span>, <span class="n">class</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">cast_as</span><span class="sig-paren">(</span><span class="n">object</span>, <span class="n">class</span><span class="sig-paren">)</span></pre><p>These macros deliver information about an object’s type, including the name of its class and its
+standing in the class hierarchy. In each case, the object argument is a pointer to an object; it can
+be an object of any type (it doesn’t have to descend from any particular class). The class argument
+is a class name—not a string such as “<span class="hclass">BApplication</span>”, but the type name itself (literally
+<span class="hclass">BApplication</span>).</p>
+<p><span class="hmethod">class_name()</span> returns a <span class="cpp-expr sig sig-inline cpp"><span class="kt">char</span><span class="p">*</span></span> to the name of the <span class="hparameter">object</span>’s class.</p>
+<p><span class="hmethod">is_instance_of()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if <span class="hparameter">object</span> is an instance of
+<span class="hparameter">class</span>, and <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> otherwise.</p>
+<p><span class="hmethod">is_kind_of()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if <span class="hparameter">object</span> is an instance of
+<span class="hparameter">class or an instance of any class that inherits from {hparam}</span>class<code class="docutils literal notranslate"><span class="pre">,</span> <span class="pre">and</span> <span class="pre">{cpp:expr}</span></code>false`
+if not.</p>
+<p><span class="hmethod">cast_as()</span> returns a pointer to <span class="hparameter">object</span> cast as a pointer to an object of
+<span class="hparameter">class</span>, but only if <span class="hparameter">object</span> is a kind of <span class="hparameter">class</span>. If not, <span class="hparameter">object</span>
+cannot be safely cast as a pointer to <span class="hparameter">class</span>, so <span class="hmethod">cast_as()</span> returns
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<p>For example, given this slice of the inheritance hierarchy from the Interface Kit, and code like
+this that creates an instance of the <span class="hclass">BPictureButton</span> class,</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BButton</span><span class="o">*</span><span class="w"> </span><span class="n">button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BPictureButton</span><span class="p">(</span><span class="cm">/* ... */</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>the first three macros would work as follows:</p>
+<ul>
+<li><p>The <span class="hmethod">class_name()</span> macro would return a pointer to the string “BPictureButton”:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">class_name</span><span class="p">(</span><span class="n">button</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>The <span class="hmethod">is_instance_of()</span> macro would return <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> only if the <span class="hparameter">class</span>
+passed to it is <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code>. In the following example, it would return
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>, and the message would not be printed. Even though <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code>
+inherits from <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>, the object is an instance of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code>
+class, not <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_instance_of</span><span class="p">(</span><span class="n">button</span><span class="p">,</span><span class="w"> </span><span class="n">BView</span><span class="p">))</span><span class="w"></span>
+<span class="w">	</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The button is an instance of BView.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>The <span class="hmethod">is_kind_of()</span> macro would return <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if <span class="hparameter">class</span> is
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code> or any class that <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code> inherits from. In the
+following example, it would return <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> and the message would be printed. A
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code> is a kind of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_kind_of</span><span class="p">(</span><span class="n">button</span><span class="p">,</span><span class="w"> </span><span class="n">BView</span><span class="p">))</span><span class="w"></span>
+<span class="w">	</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The button is a kind of BView.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Note that class names are not passed as strings, but <span class="hmethod">class_name()</span> returns the name as a
+string.</p>
+<p>The <span class="hmethod">cast_as()</span> macro is most useful when you want to treat a generic object as an instance
+of a more specific class. Support, for example, that the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code> mentioned above
+becomes the focus view for a window and you retrieve it by calling the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>s
+<a class="reference internal" href="../interface/window.html#_CPPv4NK7BWindow12CurrentFocusEv" title="BWindow::CurrentFocus"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CurrentFocus()</span></code></a> function:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BView</span><span class="o">*</span><span class="w"> </span><span class="n">focus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">window</span><span class="o">-&gt;</span><span class="n">CurrentFocus</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Since the focus view might be any type of view, <a class="reference internal" href="../interface/window.html#_CPPv4NK7BWindow12CurrentFocusEv" title="BWindow::CurrentFocus"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CurrentFocus()</span></code></a> returns a
+pointer to an object of the base <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> class. Unless you know otherwise, you cannot
+treat the object as anything more specific than a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> instance. However, you can ask
+the object if it’s a kind of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code> and, if it is, cast it to the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code> type:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_kind_of</span><span class="p">(</span><span class="n">focus</span><span class="p">,</span><span class="w"> </span><span class="n">BPictureButton</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">BPictureButton</span><span class="o">*</span><span class="w"> </span><span class="n">pictureButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BPictureButton</span><span class="o">*</span><span class="p">)</span><span class="n">focus</span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pictureButton</span><span class="o">-&gt;</span><span class="n">Behavior</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_TWO_STATE_BUTTON</span><span class="p">)</span><span class="w"></span>
+<span class="w">		</span><span class="c1">// . . .</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The <span class="hmethod">cast_as()</span> macro does the same thing, but more efficiently. It casts the object to the
+target class if it is safe to do so—if the object is an instance of a class that inherits from the
+target class or an instance of the target class itself—and returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if not.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BPictureButton</span><span class="o">*</span><span class="w"> </span><span class="n">pictureButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast_as</span><span class="p">(</span><span class="n">focus</span><span class="p">,</span><span class="w"> </span><span class="n">BPictureButton</span><span class="p">);</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pictureButton</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pictureButton</span><span class="o">-&gt;</span><span class="n">Behavior</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_TWO_STATE_BUTTON</span><span class="p">)</span><span class="w"></span>
+<span class="w">		</span><span class="c1">// . . .</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><span class="hmethod">cast_as()</span> is often used in place of the cast operator to assure code safety even where an
+expected result is anticipated and there’s no need for an intermediate variable (like <code class="docutils literal notranslate"><span class="pre">focus</span></code>):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BPictureButton</span><span class="o">*</span><span class="w"> </span><span class="n">pictureButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast_as</span><span class="p">(</span><span class="n">window</span><span class="o">-&gt;</span><span class="n">CurrentFocus</span><span class="p">(),</span><span class="w"> </span><span class="n">BPictureButton</span><span class="p">);</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pictureButton</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="c1">// . . .</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The <span class="hmethod">cast_as()</span> and <span class="hmethod">is_kind_of()</span> macros work alike; they’re both based on the
+C++ <span class="cpp-expr sig sig-inline cpp">dynamic_cast</span> operator and they reflect its behavior. To describe that behavior more
+precisely, let’s adopt the following shorthand terms for an object’s type:</p>
+<ul class="simple">
+<li><p>The real type of an object is its type on construction. For example, if you construct an instance
+of the <span class="hclass">BButton</span> class, as shown above, <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BButton</span></code> is its real type.</p></li>
+<li><p>The declared type of an object is the class label it currently bears. For example,
+<span class="hmethod">CurrentFocus()</span> returns an object whose declared class is <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>.</p></li>
+</ul>
+<p>Either of these types can be compared to a target type, the type you want to cast the object to or
+test it against. The target type is the class argument passed to the macros.</p>
+<p>In the best of all possible worlds, you’d want to ignore the declared type of an object and compare
+only the real type to the target type. However, the <span class="cpp-expr sig sig-inline cpp">dynamic_cast</span> operator—and by
+extensions <span class="hmethod">cast_as()</span> and <span class="hmethod">is_kind_of()</span>—considers the real type only if it has
+to. It first compares the object’s declared type to the target type. It assumes that the declared
+type is accurate (that the object is truly the kind of object it’s represented to be) and it
+summarily handles the obvious cases: If the target type is the same as the declared type or if it’s
+a class that the declared type inherits from, the operation will succeed. Consequently,
+<span class="hmethod">cast_as()</span> will cast the object to the target type and <span class="hmethod">is_kind_of()</span> will return
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, regardless of the object’s real type. In other words, if the target class is above
+or at the same level as the declared class in the inheritance hierarchy, the real class is ignored.</p>
+<p>However, if the declared type doesn’t match or derive from the target type, <span class="cpp-expr sig sig-inline cpp">dynamic_cast</span>
+and the macros look at the real type: If the target class is identical to the real type, or if it’s
+a class that the real type derives from, the operation succeeds. If not, it fails.</p>
+<p>Therefore, the <span class="hmethod">is_kind_of()</span> and <span class="hmethod">cast_as()</span> macros will produce reliable results
+as long as objects are not arbitrarily cast to types that may not be accurate. For example, you
+should not cast an object to a target type and then attempt to use the <span class="hmethod">is_kind_of()</span> to
+determine if the cast was correct. This code is unreliable:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BPictureButton</span><span class="o">*</span><span class="w"> </span><span class="n">pictureButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BPictureButton</span><span class="p">)</span><span class="n">window</span><span class="o">-&gt;</span><span class="n">CurrentFocus</span><span class="p">();</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_kind_of</span><span class="p">(</span><span class="n">pictureButton</span><span class="p">,</span><span class="w"> </span><span class="n">BPictureButton</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="c1">// . . .</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In this example, <span class="hmethod">is_kind_of()</span> will always return <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, no matter what the
+class of the current focus view. The general rule is that the declared type of an object must always
+be accurate; an object should be typed only to its own class or to a class that it inherits from.
+The amcros cannot rescue you from an inaccurate cast.</p>
+<section id="_CPPv415convert_to_utf86uint32PKcP5int32PcP5int32P5int32c">
+</section>
+<section id="_CPPv417convert_from_utf86uint32PKcP5int32PcP5int32P5int32c">
+</section>
+<h2>
+convert_to_utf8(), convert_from_utf8()</h2><p>Declared in: <code class="docutils literal notranslate"><span class="pre">support/UTF8.h</span></code></p>
+<pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="n">convert_to_utf8</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">sourceEncoding</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">source</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">sourceLength</span>, <span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">destination</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">destinationLength</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">state</span>, <span class="kt">char</span><span class="w"> </span><span class="n sig-param">substitute</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_SUBSTITUTE</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="n">convert_from_utf8</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">destinationEncoding</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">source</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">sourceLength</span>, <span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">destination</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">destinationLength</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">state</span>, <span class="kt">char</span><span class="w"> </span><span class="n sig-param">substitute</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_SUBSTITUTE</span><span class="sig-paren">)</span></pre><p>These functions convert text to and from the Unicode(TM) UTF-8 encoding that’s standard for Haiku
+and is assumed in most contexts. UTF-8 is described under “Character Encoding” section of The
+Interface Kit chapter.</p>
+<p><span class="hmethod">convert_to_utf8()</span> permits you to take text that’s encoded according to another standard
+and convert it to UTF-8 for Haiku. <span class="hmethod">convert_from_utf8()</span> lets you convert text from UTF-8
+to other encodings for other venues (for example, to the encodings commonly used fro displaying text
+on the World Wide Web — this needs changing!).</p>
+<p>The first argument passed to these functions names the other encoding: the source encoding for
+<span class="hmethod">convert_to_utf8()</span> and the destination encoding for <span class="hmethod">convert_from_utf8()</span>. it can
+be any of the following constants:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO1_CONVERSION</span></code></p></td>
+<td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MAC_ROMAN_CONVERSION</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO2_CONVERSION</span></code></p></td>
+<td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SJIS_CONVERSION</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO3_CONVERSION</span></code></p></td>
+<td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_EUC_CONVERSION</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO4_CONVERSION</span></code></p></td>
+<td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_JIS_CONVERSION</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO5_CONVERSION</span></code></p></td>
+<td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MS_WINDOWS_CONVERSION</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO6_CONVERSION</span></code></p></td>
+<td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_UNICODE_CONVERSION</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO7_CONVERSION</span></code></p></td>
+<td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_KOI8R_CONVERSION</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO8_CONVERSION</span></code></p></td>
+<td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MS_WINDOWS_1251_CONVERSION</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO9_CONVERSION</span></code></p></td>
+<td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MS_DOS_866_CONVERSION</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO10_CONVERSION</span></code></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Most of these constants designate encoding schemes that are supported by the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFont</span></code>
+class in the Interface Kit and its <a class="reference internal" href="../interface/font.html#_CPPv4N5BFont11SetEncodingE5uint8" title="BFont::SetEncoding"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetEncoding()</span></code></a> function. They parallel the
+constants that are passed to that function. For example, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_IOS1_CONVERSION</span></code> (for these
+functions) and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO_8859_1</span></code> (for <a class="reference internal" href="../interface/font.html#_CPPv4N5BFont11SetEncodingE5uint8" title="BFont::SetEncoding"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetEncoding()</span></code></a>) both designate the
+extended ASCII encoding defined in part one of ISO 8859 (Latin 1). Similarly,
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO2_CONVERSION</span></code> matches <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO_8859_2</span></code>, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO3_CONVERSION</span></code>
+matches <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO_8859_3</span></code>, and so on. <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MAC_ROMAN_CONVERSION</span></code> matches
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MACINTOSH_ROMAN</span></code>. (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO10_CONVERSION</span></code> is not implemented in this release.)</p>
+<p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SJIS_CONVERSION</span></code> stands for the Shift-JIS (Japanese Industrial Standard) encoding of
+Japanese and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_EUC_CONVERSION</span></code> stands for the EUC (Extended UNIX Code) encoding of
+Japanese in packed format.</p>
+<p>Both functions convert up to <span class="hparameter">sourceLength</span> bytes of text from the source buffer. They write
+up to <span class="hparameter">destinationLength</span> bytes of converted text into the destination buffer. The amount of
+text that they actually convert is therefore constrained both by the amount of source text
+(<span class="hparameter">sourceLength</span>) and the capacity of the output buffer (<span class="hparameter">destinationLength</span>).
+Neither function stops at a null terminator (‘0’) when reading the input buffer nor adds one to the
+text in the output buffer; they depend only on <span class="hparameter">sourceLength</span> and
+<span class="hparameter">destinationLength</span> for guidance.</p>
+<p>When finished, these functions modify the variable that <span class="hparameter">sourceLength</span> refers to so that it
+reports the number of bytes of source text actually converted. They also modify the variable that
+<span class="hparameter">destinationLength</span> refers to so that it reports the number of bytes actually written to the
+destination buffer. Neither function will stop in the middle of a multibyte source character;
+they’re guaranteed to convert only full characters.</p>
+<p>The <span class="hparameter">state</span> argument serves as a cookie that lets you use multiple calls to these functions
+to convert a batch of text (if, for example, the text is stored in multiple buffers). Pass 0 for the
+first buffer, and pass the value returned in state to the next call to continue processing the same
+text; this will cause the conversion to continue where it left off. For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* buffer is a pointer to a small source buffer */</span><span class="w"></span>
+<span class="cm">/* destBuffer is a pointer to a small destination buffer */</span><span class="w"></span>
+<span class="cm">/* destBufferLen is the size of the destination buffer in bytes */</span><span class="w"></span>
+<span class="n">int32</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">int32</span><span class="w"> </span><span class="n">bufferLen</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">bufferLen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetNextBuffer</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">convert_to_utf8</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bufferLen</span><span class="p">,</span><span class="w"> </span><span class="n">destBuffer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">destBufferLen</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">state</span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="cm">/* do stuff with the buffer in destBuffer, which has the converted text */</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In this example, text is fetched using a call to a function called <span class="hmethod">GetNextBuffer()</span>, whose
+implementation depends on the application’s needs. Each buffer is converted, and the converted text
+is stored in destBuffer, which can then be used by the application.</p>
+<p>If either function encounters a character in the source that the destination format doesn’t allow,
+it puts the character specified by the substitute argument (or a question mark (‘?’) if substitute
+isn’t specified) in its place in the output text. This is much more likely to occur when converting
+from UTF-8 than when converting to it, since Unicode represents a very large number of characters.</p>
+<p>If successful in converting at least one source character, both functions return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.
+If unsuccessful, for example, if they don’t recognize the source or destination encoding, they
+return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>. If there’s an error, you should not trust any of the output arguments.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>These functions are found in the <code class="docutils literal notranslate"><span class="pre">libtextencoding.so</span></code> library. If you use them, be sure to include
+this library file.</p>
+</div>
+<p>See also: <a class="reference internal" href="../interface/font.html#_CPPv4N5BFont11SetEncodingE5uint8" title="BFont::SetEncoding"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFont::SetEncoding()</span></code></a>, “Character Encoding” section of The Interface Kit
+chapter.</p>
+<section id="_CPPv423find_instantiation_funcPKc">
+</section>
+<h2>
+find_instantiation_func()</h2><p>Declared in: <code class="docutils literal notranslate"><span class="pre">support/Archivable.h</span></code></p>
+<pre style="background: #f3f3f3; line-height: 2em"><span class="n">instantiation_func</span><span class="w"> </span><span class="n">find_instantiation_func</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">className</span><span class="sig-paren">)</span><br /><span class="n">instantiation_func</span><span class="w"> </span><span class="n">find_instantiation_func</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a pointer to the <a class="reference internal" href="archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> function that can create instances
+of the <span class="hparameter">className</span> class, or <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the function can’t be found. If passed a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive, <span class="hmethod">find_instantiation_func()</span> gets the name of the class from
+a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code> field called “class” in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>.</p>
+<p>The instantiation_func type is defined as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BArchivable</span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">instantiation_func</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">BMessage</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In other words, the function has the same syntax as the <a class="reference internal" href="archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a>
+function declared in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BArchivable</span></code> class and replicated in derived classes (with
+class-specific return values).</p>
+<p>The function that’s returned can be called like any C function; you don’t need the class name or
+another object of the class. For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">instantiation_func</span><span class="w"> </span><span class="n">func</span><span class="p">;</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">find_instantiation_func</span><span class="p">(</span><span class="n">archiveMessage</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">BArchivable</span><span class="o">*</span><span class="w"> </span><span class="n">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">func</span><span class="p">(</span><span class="n">archiveMessage</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><span class="hmethod">instantiate_object()</span> will do this work for you.</p>
+<p>See also: <a class="reference internal" href="archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>, <a class="reference internal" href="#_CPPv418instantiate_objectP8BMessage" title="instantiate_object"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">instantiate_object()</span></code></a></p>
+<section id="_CPPv418instantiate_objectP8BMessage">
+</section>
+<h2>
+instantiate_object()</h2><p>Declared in: <code class="docutils literal notranslate"><span class="pre">support/Archivable.h</span></code></p>
+<pre style="background: #f3f3f3; line-height: 2em"><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="n">instantiate_object</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Creates and returns a new instance of an archived object, or returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the object
+can’t be constructed. The object is created by calling the <a class="reference internal" href="archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>
+function of…</p>
+<ol class="arabic simple">
+<li><p>…the class that was last added to the “class” field (an array of class names) of the archive
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>. This will be the “most derived” class in the array.</p></li>
+<li><p>If the named class isn’t recognized by the app (or doesn’t define
+<a class="reference internal" href="archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>), the function tries to load the add-on that’s identified
+(by signature) in archive’s <span class="hparameter">add_on</span> field. This add-on should contain the code for the
+class.</p></li>
+<li><p>If the add-on method doesn’t work, <span class="hmethod">instantiate_object()</span> tries the next class in the
+“class” array, and so works its way up the class hierarchy.</p></li>
+<li><p>If the appropriate class is never found, the function returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p></li>
+</ol>
+<p>When successful, <span class="hmethod">instantiate_object()</span> returns the object that {hmethod}Instantiate()<code class="docutils literal notranslate"> <span class="pre">created,</span> <span class="pre">but</span> <span class="pre">typed</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">base</span> <span class="pre">{cpp:class}</span></code>BArchivable<code class="docutils literal notranslate"> <span class="pre">class.</span> <span class="pre">The</span> <span class="pre">{hmethod}</span></code>cast_as()` macro can
+type it to the proper class:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BArchivable</span><span class="o">*</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">instantiate_object</span><span class="p">(</span><span class="n">archive</span><span class="p">);</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">base</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="n">TheClass</span><span class="o">*</span><span class="w"> </span><span class="n">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast_as</span><span class="p">(</span><span class="n">base</span><span class="p">,</span><span class="w"> </span><span class="n">TheClass</span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">object</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">		</span><span class="c1">// . . .</span>
+<span class="w">	</span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="_CPPv49swap_data9type_codePv6size_t11swap_action">
+</section>
+<section id="_CPPv415is_type_swapped9type_code">
+</section>
+<h2>
+swap_data(), is_type_swapped()</h2><p>Declared in: <code class="docutils literal notranslate"><span class="pre">support/ByteSwap.h</span></code></p>
+<pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="n">swap_data</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">length</span>, <span class="n">swap_action</span><span class="w"> </span><span class="n sig-param">action</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="n">is_type_swapped</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">type</span><span class="sig-paren">)</span></pre><p><span class="hmethod">swap_data</span> is a general byte swapping function, converting data of type <span class="hparameter">type</span> and
+converting its endianness according to action (defined in “Byte Swapping Constants”). The
+<span class="hparameter">length</span> field can be used to specify an array of items to be converted. For example, you
+can convert an array of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code>s from little endian to the host endianness:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BMessenger</span><span class="w"> </span><span class="n">messengers</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"></span>
+<span class="c1">// . . .</span>
+<span class="n">swap_data</span><span class="p">(</span><span class="n">B_MESSENGER_TYPE</span><span class="p">,</span><span class="w"> </span><span class="n">messengers</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">BMessenger</span><span class="p">),</span><span class="w"> </span><span class="n">B_SWAP_LENDIAN_TO_HOST</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The function can swap most data types with type constants defined in <code class="docutils literal notranslate"><span class="pre">support/TypeConstants.h</span></code>. It
+returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> on success and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code> on failure.</p>
+<p><span class="hmethod">is_type_swapped()</span> takes a type code and determines whether or not it has been swapped.
+This only works for types defined in <code class="docutils literal notranslate"><span class="pre">support/TypeConstants.h</span></code>. It returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the
+type code is in the host’s native endainness and <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> otherwise.</p>
+<p>See also: “Byte Swapping Constants”.</p>
+<section id="c.min_c">
+</section>
+<section id="c.max">
+</section>
+<section id="c.max_c">
+</section>
+<h2>
+min_c(), max(), max_c()</h2><p>Declared in: <code class="docutils literal notranslate"><span class="pre">support/SupportDefs.h</span></code></p>
+<div class="highlight-{c:macro) notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<pre style="background: #f3f3f3; line-height: 2em"><span class="n">min_c</span><span class="sig-paren">(</span><span class="n">a</span>, <span class="n">b</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">max</span><span class="sig-paren">(</span><span class="n">a</span>, <span class="n">b</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">max_c</span><span class="sig-paren">(</span><span class="n">a</span>, <span class="n">b</span><span class="sig-paren">)</span></pre><p>These macros compare two integers or floating-point numbers. <span class="c-expr sig sig-inline c"><span class="n">min</span><span class="p">(</span><span class="p">)</span></span> and <span class="c-expr sig sig-inline c"><a class="reference internal" href="#c.min_c" title="min_c"><span class="n">min_c</span></a><span class="p">(</span><span class="p">)</span></span>
+return the lesser of the two (or b if they’re equal); <span class="c-expr sig sig-inline c"><a class="reference internal" href="#c.max" title="max"><span class="n">max</span></a><span class="p">(</span><span class="p">)</span></span> and <span class="c-expr sig sig-inline c"><a class="reference internal" href="#c.max_c" title="max_c"><span class="n">max_c</span></a><span class="p">(</span><span class="p">)</span></span> return
+the greater of the two (or a if they’re equal). <span class="c-expr sig sig-inline c"><span class="n">min</span><span class="p">(</span><span class="p">)</span></span> and <span class="c-expr sig sig-inline c"><a class="reference internal" href="#c.max" title="max"><span class="n">max</span></a><span class="p">(</span><span class="p">)</span></span> can only be used
+in straight C programs. <span class="c-expr sig sig-inline c"><a class="reference internal" href="#c.min_c" title="min_c"><span class="n">min_c</span></a><span class="p">(</span><span class="p">)</span></span> and <span class="c-expr sig sig-inline c"><a class="reference internal" href="#c.max_c" title="max_c"><span class="n">max_c</span></a><span class="p">(</span><span class="p">)</span></span> are defined for C and C++.</p>
+<section id="_CPPv422validate_instantiationP8BMessagePKc">
+</section>
+<h2>
+validate_instantiation()</h2><p>Declared in: <code class="docutils literal notranslate"><span class="pre">support/Archivable.h</span></code></p>
+<pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="n">validate_instantiation</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">className</span><span class="sig-paren">)</span></pre><p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the <span class="hparameter">archive</span> <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> contains data for an object
+belonging to the <span class="hparameter">className</span> class, and <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not. The determination is made
+by looking for the class name in a “class” array in the archive. If the class name appears anywhere
+in the array, this function returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>. If not, it returns <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>.</p>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="flattenable.html">BFlattenable</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="list.html">BList</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

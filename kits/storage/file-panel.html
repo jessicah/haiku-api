@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BFilePanel &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMimeType" href="mime-type.html" />
+    <link rel="prev" title="BFile" href="file.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BFilePanel</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="file.html">BFile</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="mime-type.html">BMimeType</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BFilePanel</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanel10BFilePanelE15file_panel_modeP10BMessengerP9entry_ref6uint32bP8BMessageP10BRefFilterbb">BFilePanel</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanelD0Ev">~BFilePanel</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hook-functions">Hook Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanel16SelectionChangedEv">SelectionChanged</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanel9WasHiddenEv">WasHidden</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanel18GetNextSelectedRefEP9entry_ref">GetNextSelectedRef</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanel6RewindEv">Rewind</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BFilePanel9PanelModeEv">PanelMode</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanel7RefreshEv">Refresh</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanel11SendMessageEP10BMessengerP8BMessage">SendMessage</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanel14SetButtonLabelE17file_panel_buttonPKc">SetButtonLabel</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanel11SetSaveTextEPKc">SetSaveText</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanel15SetHideWhenDoneEb">SetHideWhenDone</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BFilePanel13HidesWhenDoneEv">HidesWhenDone</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanel10SetMessageEP8BMessage">SetMessage</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanel17SetPanelDirectoryEP6BEntry">SetPanelDirectory</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BFilePanel17GetPanelDirectoryEP9entry_ref">GetPanelDirectory</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanel12SetRefFilterEP10BRefFilter">SetRefFilter</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BFilePanel9RefFilterEv">RefFilter</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanel9SetTargetE10BMessenger">SetTarget</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BFilePanel9MessengerEv">Messenger</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanel4ShowEv">Show</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BFilePanel4HideEv">Hide</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BFilePanel9IsShowingEv">IsShowing</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BFilePanel6WindowEv">Window</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bfilepanel">
+<h1>BFilePanel<a class="headerlink" href="#bfilepanel" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N10BFilePanel10BFilePanelE15file_panel_modeP10BMessengerP9entry_ref6uint32bP8BMessageP10BRefFilterbb">
+</section>
+<h3>
+BFilePanel()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BFilePanel10BFilePanelE15file_panel_modeP10BMessengerP9entry_ref6uint32bP8BMessageP10BRefFilterbb" title="BFilePanel::BFilePanel"><span class="n">BFilePanel</span></a><span class="p">::</span></span><span class="n">BFilePanel</span><span class="sig-paren">(</span><span class="n">file_panel_mode</span><span class="w"> </span><span class="n sig-param">mode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_OPEN_PANEL</span>, <span class="n">BMessenger</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">target</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">panel_directory</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">node_flavors</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">allow_multiple_selection</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">BRefFilter</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">filter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">modal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">hide_when_done</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span></pre><p>The constructor creates a new <span class="hclass">BFilePanel</span> object and initializes it
+according to the arguments. The panel isn’t displayed until you invoke
+<a class="reference internal" href="#_CPPv4N10BFilePanel4ShowEv" title="BFilePanel::Show"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Show()</span></code></a>.
+The arguments are thoroughly described in
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructing()</span></code>.”</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>You may notice that some of the default arguments shown here don’t jibe
+with the defaults listed in the section “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructing()</span></code>”.
+In particular, the <span class="hparameter">node_flavors</span> argument was described as
+defaulting to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FILE_NODE</span></code>, but is shown here as 0. The “Constructing…”
+descriptions are correct: The default values shown here are caught and
+converted by the <span class="hclass">BFilePanel</span> constructor.</p>
+</div>
+<section id="_CPPv4N10BFilePanelD0Ev">
+</section>
+<h3>
+~BFilePanel()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">~BFilePanel</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Destroys the <span class="hclass">BFilePanel</span>. The object’s target and
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRefFilter</span></code> are not
+touched by this destruction. If the object is currently displaying a file
+panel, the panel is closed.</p>
+</section>
+<section id="hook-functions">
+<h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N10BFilePanel16SelectionChangedEv">
+</section>
+<h3>
+SelectionChanged()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">SelectionChanged</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>This hook function is invoked whenever the user changes the set of
+selected files. Within your implementation of this function, you iterate
+over
+<a class="reference internal" href="#_CPPv4N10BFilePanel18GetNextSelectedRefEP9entry_ref" title="BFilePanel::GetNextSelectedRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextSelectedRef()</span></code></a>
+to retrieve refs to the currently selected files.</p>
+<section id="_CPPv4N10BFilePanel9WasHiddenEv">
+</section>
+<h3>
+WasHidden()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">WasHidden</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">WasHidden()</span> is a hook function that’s invoked whenever the user’s actions
+causes the file panel to be hidden. If you call
+<a class="reference internal" href="#_CPPv4N10BFilePanel4HideEv" title="BFilePanel::Hide"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Hide()</span></code></a> yourself,
+<span class="hmethod">WasHidden()</span> is not invoked.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N10BFilePanel18GetNextSelectedRefEP9entry_ref">
+</section>
+<section id="_CPPv4N10BFilePanel6RewindEv">
+</section>
+<h3>
+GetNextSelectedRef(), Rewind()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">GetNextSelectedRef</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">Rewind</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetNextSelectedRef()</span> initializes its arguments to point to the “next” ref
+in the file panel’s set of currently selected items. The function returns
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code> when it reaches the end of the list.
+<span class="hmethod">Rewind()</span> gets you back to the top of the list.</p>
+<p>Although you can call these functions anytime you want, they’re intended
+to be used in implementations of the
+<a class="reference internal" href="#_CPPv4N10BFilePanel16SelectionChangedEv" title="BFilePanel::SelectionChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SelectionChanged()</span></code></a>
+hook function.</p>
+<section id="_CPPv4NK10BFilePanel9PanelModeEv">
+</section>
+<h3>
+PanelMode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">file_panel_mode</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">PanelMode</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the object’s mode, either <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OPEN_PANEL</span></code> or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SAVE_PANEL</span></code>. The mode
+is set in the constructor and can’t be changed thereafter.</p>
+<section id="_CPPv4N10BFilePanel7RefreshEv">
+</section>
+<h3>
+Refresh()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">Refresh</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Refresh()</span> tells the file panel to re-read the contents of the panel
+directory, which causes the directory’s entries to be re-run through the
+ref filter.</p>
+<p>You don’t have to call <span class="hmethod">Refresh()</span> in order to keep the panel in sync with
+the directory’s contents—the directory and file panel are kept in
+sync automatically.</p>
+<section id="_CPPv4N10BFilePanel11SendMessageEP10BMessengerP8BMessage">
+</section>
+<h3>
+SendMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">SendMessage</span><span class="sig-paren">(</span><span class="n">BMessenger</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">messenger</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Sends <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
+<span class="hparameter">message</span> to the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code> targeted by <span class="hparameter">messenger</span>.</p>
+<p>See Also:
+<a class="reference internal" href="../application/messenger.html#_CPPv4NK10BMessenger11SendMessageEP8BMessageP8BMessage9bigtime_t9bigtime_t" title="BMessenger::SendMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessenger::SendMessage()</span></code></a></p>
+<section id="_CPPv4N10BFilePanel14SetButtonLabelE17file_panel_buttonPKc">
+</section>
+<section id="_CPPv4N10BFilePanel11SetSaveTextEPKc">
+</section>
+<h3>
+SetButtonLabel(), SetSaveText()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">SetButtonLabel</span><span class="sig-paren">(</span><span class="n">file_panel_button</span><span class="w"> </span><span class="n sig-param">which_button</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">SetSaveText</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetButtonLabel()</span> lets you set the label that’s displayed in the panel’s
+buttons. The button that a specific invocation affects depends on the
+value of <span class="hparameter">which_button</span>:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DEFAULT_BUTTON</span></code></p></td>
+<td><p>Is the Open button for an Open Panel and the Save button for a Save Panel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CANCEL_BUTTON</span></code></p></td>
+<td><p>Is the “Cancel” button.</p></td>
+</tr>
+</tbody>
+</table>
+<p><span class="hmethod">SetSaveText()</span> sets the text that’s displayed in the Save Panel’s text
+view (the area in which the user types and confirms a file name).</p>
+<section id="_CPPv4N10BFilePanel15SetHideWhenDoneEb">
+</section>
+<section id="_CPPv4NK10BFilePanel13HidesWhenDoneEv">
+</section>
+<h3>
+SetHideWhenDone(), HidesWhenDone()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">SetHideWhenDone</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">hide_when_done</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">HidesWhenDone</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>By default, a file panel is hidden when the user confirms or Cancels. You
+can control this behavior using the <span class="hmethod">SetHideWhenDone()</span> function. If you
+set <span class="hparameter">hide_when_done</span> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, the panel remains on the screen; if you
+specify <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the panel hides when the user confirms or Cancels. Clicking
+the panel’s close box always hides the panel.</p>
+<p><span class="hmethod">HidesWhenDone()</span> returns the current setting of this
+option: <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the
+panel hides when the user is done with it or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if it remains on the
+screen.</p>
+<section id="_CPPv4N10BFilePanel10SetMessageEP8BMessage">
+</section>
+<h3>
+SetMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">SetMessage</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetMessage()</span> allows you to set the format of the file panel’s
+notification messages. The message can also be set through the
+constructor. See “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">The()</span></code>” for more
+information.</p>
+<p>A copy is made of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>,
+so it is your responsibility to delete <span class="hparameter">msg</span> when you no longer need it.</p>
+<section id="_CPPv4N10BFilePanel17SetPanelDirectoryEP6BEntry">
+</section>
+<section id="_CPPv4NK10BFilePanel17GetPanelDirectoryEP9entry_ref">
+</section>
+<h3>
+SetPanelDirectory(), GetPanelDirectory()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">SetPanelDirectory</span><span class="sig-paren">(</span><span class="n">BEntry</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">dirEntry</span><span class="sig-paren">)</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">SetPanelDirectory</span><span class="sig-paren">(</span><span class="n">BDirectory</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">dirObj</span><span class="sig-paren">)</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">SetPanelDirectory</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">dirRef</span><span class="sig-paren">)</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">SetPanelDirectory</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">dirStr</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">GetPanelDirectory</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>The <span class="hmethod">SetPanelDirectory()</span> function sets the panel’s “panel directory.” This
+is the directory whose contents are displayed in the panel’s file list.
+You can also set the panel directory through the constructor. If you
+don’t supply a directory, the current working directory is used.</p>
+<p><span class="hmethod">GetPanelDirectory()</span> initializes <span class="hparameter">ref</span> to point to the current panel
+directory. The argument must be allocated.</p>
+<section id="_CPPv4N10BFilePanel12SetRefFilterEP10BRefFilter">
+</section>
+<section id="_CPPv4NK10BFilePanel9RefFilterEv">
+</section>
+<h3>
+SetRefFilter(), RefFilter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">SetRefFilter</span><span class="sig-paren">(</span><span class="n">BRefFilter</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">filter</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRefFilter</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">RefFilter</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Whenever the file panel’s panel directory is changed or refreshed
+(<a class="reference internal" href="#_CPPv4N10BFilePanel7RefreshEv" title="BFilePanel::Refresh"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Refresh()</span></code></a>),
+or when a new entry is added to the current panel directory,
+the “new” entries are run through the panel’s “ref filter.” The
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRefFilter</span></code> class
+defines a single boolean hook function called
+<a class="reference internal" href="ref-filter.html#_CPPv4N10BRefFilter6FilterEPK9entry_refP5BNodeP4statPKc" title="BRefFilter::Filter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Filter()</span></code></a>.
+The function receives the entries, one-by-one, and can reject specific
+entries (because they’re the wrong file type, for example). Rejected
+entries are not shown in the panel’s file list.</p>
+<p>The <span class="hmethod">SetRefFilter()</span> function sets the panel’s ref filter. You can also set
+it through the constructor. Ownership of the filter is not handed to the
+panel. You mustn’t delete the ref filter while the panel is still extant.</p>
+<p><span class="hmethod">RefFilter()</span> returns a pointer to the panel’s ref filter.</p>
+<section id="_CPPv4N10BFilePanel9SetTargetE10BMessenger">
+</section>
+<section id="_CPPv4NK10BFilePanel9MessengerEv">
+</section>
+<h3>
+SetTarget(), Messenger()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">SetTarget</span><span class="sig-paren">(</span><span class="n">BMessenger</span><span class="w"> </span><span class="n sig-param">bellhop</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMessenger</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">Messenger</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetTarget()</span> sets the target of the file panel’s notification messages.
+The target can also be set through the constructor. If you don’t set a
+target, be_app_messenger is used. See the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInvoker</span></code> class (in the
+Application Kit) for an explanation of how a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> can be used as a
+target.</p>
+<p>A copy is made of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code>,
+so it is your responsibility to delete
+<span class="hparameter">bellhop</span> when you no longer need it.</p>
+<p><span class="hmethod">Messenger()</span> returns (a copy of) the messenger that’s used as the file
+panel’s target.</p>
+<section id="_CPPv4N10BFilePanel4ShowEv">
+</section>
+<section id="_CPPv4N10BFilePanel4HideEv">
+</section>
+<section id="_CPPv4NK10BFilePanel9IsShowingEv">
+</section>
+<h3>
+Show(), Hide(), IsShowing()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">Show</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">Hide</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">IsShowing</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions show and hide the file panel, and tell if you the panel
+is currently showing.</p>
+<section id="_CPPv4NK10BFilePanel6WindowEv">
+</section>
+<h3>
+Window()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BWindow</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BFilePanel</span><span class="p">::</span></span><span class="n">Window</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a pointer to the file panel’s window. If you want to mess around
+with the window’s views, see
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Modifying()</span></code>.”</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="file.html">BFile</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="mime-type.html">BMimeType</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

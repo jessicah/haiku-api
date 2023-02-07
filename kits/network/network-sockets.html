@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Network Sockets &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="The Application Kit" href="overview.html" />
+    <link rel="prev" title="BNetEndpoint" href="net-endpoint.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Network Sockets</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="net-endpoint.html">BNetEndpoint</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="overview.html">The Application Kit</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Network Sockets</a><ul>
+<li><a class="reference internal" href="#socket-closesocket">socket(), closesocket()</a></li>
+<li><a class="reference internal" href="#bind">bind()</a></li>
+<li><a class="reference internal" href="#connect">connect()</a></li>
+<li><a class="reference internal" href="#getpeername-getsockname">getpeername(), getsockname()</a></li>
+<li><a class="reference internal" href="#listen-accept">listen(), accept()</a></li>
+<li><a class="reference internal" href="#select">select()</a></li>
+<li><a class="reference internal" href="#send-recv">send(), recv()</a></li>
+<li><a class="reference internal" href="#sendto-recvfrom">sendto(), recvfrom()</a></li>
+<li><a class="reference internal" href="#setsockopt">setsockopt()</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="network-sockets">
+<h1>Network Sockets<a class="headerlink" href="#network-sockets" title="Permalink to this heading">¶</a></h1>
+<section id="socket-closesocket">
+<h2>socket(), closesocket()<a class="headerlink" href="#socket-closesocket" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>socket()’s three parameters, all of which take predefined constants as
+values, describe the type of communication the socket can handle:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>family</p></td>
+<td><p>Describes the network address format that the socket understands. Currently, it must be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">AF_INET</span></code> (the Internet address format).</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p>Describes the persistence of the connection that can be formed through this socket. It must be either <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">SOCK_STREAM</span></code> or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">SOCK_DGRAM</span></code>. <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">SOCK_STREAM</span></code> means the connection (which is formed through a <span class="xref std std-ref">connect()</span> or <span class="xref std std-ref">bind()</span> call) remains open until told to close. <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">SOCK_DGRAM</span></code> describes a datagram socket that’s only open while data is being sent or received (typically through <span class="xref std std-ref">sendto()</span> and <span class="xref std std-ref">recvfrom()</span>). It’s closed at all other times. Keep in mind that you still have to call closesocket() on a datagram socket when you’re done with it.</p></td>
+</tr>
+<tr class="row-even"><td><p>protocol</p></td>
+<td><p>Describes the messaging protocol, which is closely related to the socket type. Although there are four acceptable values (0, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">IPPROTO_TCP</span></code>, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">IPPROTO_UDP</span></code>, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">IPPROTO_ICMP</span></code>), the only values that you should actually use are 0 or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">IPPROTO_ICMP</span></code>. 0 tells the socket to choose the correct protocol based on the socket type: If you set the type to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">SOCK_STREAM</span></code>, then a protocol of 0 automatically sets the messaging protocol to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">IPPROTO_TCP</span></code>. Similarly, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">IPPROTO_UDP</span></code> is the correct protocol for <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">SOCK_DGRAM</span></code>. It’s an error to ask for a “udp stream” or a “tcp datagram.”</p></td>
+</tr>
+</tbody>
+</table>
+<h3>
+</h3><p>There are only two socket type constants:
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">SOCK_STREAM</span></code> and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">SOCK_DGRAM</span></code>.
+However, if we look at the way sockets are used, we see that there are
+really five different categories of sockets, as illustrated below.
+The labelled ovals represent individual computers that are attached to
+the network. The solid circles represent individual sockets. The numbers
+near the sockets are keys to the socket categories, which are:
+The stream listener socket. A stream listener socket provides access to a service that’s running on the “listener” machine (you might want to think of the machine as a “server.”) The listener socket waits for client machines to “call in” and ask to be served. In order to listen for clients, the listener must call bind(), which “binds” the socket to an IP address and machine-specific port, and then listen(). Thus primed, the socket waits for a client message to show up by sitting in an accept() call.The stream client socket. A stream client socket asks for service from a server machine by attempting to connect to the server’s listener socket. It does this through the connect() function. A stream client can be bound (you can call bind() on it), but it’s not mandatory.The “accept” socket. When a stream listener hears a client in an accept() call, the function call creates yet another socket called the “accept” socket. Accept sockets are valid sockets, just like those you create through socket(). In particular, you have to remember to close accept sockets (through closesocket()) just as you would the sockets you explicitly create. Note that you can’t bind an accept socket—the socket is bound automatically by the system.The datagram receiver socket. A datagram receiver socket is sort of like a stream listener: It calls bind() and waits for “senders” to send messages to it. Unlike the stream listener, the datagram receiver doesn’t call listen() or accept(). Furthermore, when a datagram sender sends a message to the receiver, there’s no ancillary socket created to handle the message (there’s no UDP analog to the TCP accept socket).The datagram sender socket. A datagram sender is the simplest type of socket—all it has to do is identify a datagram receiver and send messages to it, through the sendto() function. Binding a datagram sender socket is optional.
+TCP communication is two-way. Once the link between a client and the
+listener has been established (through
+<span class="xref std std-ref">bind()</span>/<span class="xref std std-ref">listen()</span>/<span class="xref std std-ref">accept()</span>
+on the listener side, and
+<span class="xref std std-ref">connect()</span>
+on the client side), the two machines can
+talk to each other through respective and complementary
+<span class="xref std std-ref">send()</span> and
+<span class="xref std std-ref">recv()</span>
+calls.
+Communication along a UDP path, on the other
+hand, is one-way. The datagram sender can send messages (through
+<span class="xref std std-ref">sendto()</span>),
+and the datagram receiver can receive them (through
+<span class="xref std std-ref">recvfrom()</span>),
+but the receiver can’t
+send message back to the sender. However, you can simulate a two-way UDP
+conversation by binding both sockets. This doesn’t change the definition
+of the UDP path, or the capabilities of the two types of datagram
+sockets, it simply means that a bound datagram socket can act as a
+receiver (it can call
+<span class="xref std std-ref">recvfrom()</span>)
+or as a sender (it can call
+<span class="xref std std-ref">sendto()</span>).</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>To be complete, it should be mentioned that datagram sockets can also
+invoke
+<span class="xref std std-ref">connect()</span>
+and then pass messages through
+<span class="xref std std-ref">send()</span> and
+<span class="xref std std-ref">recv()</span>.
+The datagram use of these functions is a convenience; its advantages are
+explained in the description of the
+<span class="xref std std-ref">sendto()</span>
+function.</p>
+</div>
+</section>
+<section id="bind">
+<h2>bind()<a class="headerlink" href="#bind" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>bind()’s first parameter is the socket that you’re attempting to bind.
+This is, typically, a socket of type <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">SOCK_STREAM</span></code>. The interface parameter
+is the address/port combination (or “interface”) to which you’re binding
+the socket. The parameter is typed as a sockaddr structure, but, in
+reality, you have to create and pass a sockaddr_in structure cast as a
+sockaddr. The sockaddr_in structure is defined as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">sockaddr_in</span> <span class="p">{</span>
+   <span class="n">unsigned</span> <span class="n">short</span> <span class="n">sin_family</span><span class="p">;</span>
+   <span class="n">unsigned</span> <span class="n">short</span> <span class="n">sin_port</span><span class="p">;</span>
+   <span class="n">struct</span> <span class="n">in_addr</span> <span class="n">sin_addr</span><span class="p">;</span>
+   <span class="n">char</span> <span class="n">sin_zero</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>sin_family</p></td>
+<td><p>Is the same as the address format constant that used to create the socket (the first parameter to <span class="xref std std-ref">connect()</span>). Currently, it’s always <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">AF_INET</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>sin_port</p></td>
+<td><p>Is the port number that the socket will bind to, given in network byte order. Valid port numbers are between 1 and 65535; numbers up to 1024 are reserved for services such as ftp and telnet. If you’re not implementing a standard service, you should choose a port number greater than 1024. The actual value of the port number is meaningless, but keep in mind that the port number must be unique for a particular address; only one socket can be bound to a particular address/port combination.NoteCurrently, there’s no system-defined mechanism for allowing a client/sender machine to ask a listener/receiver machine for its port numbers. Therefore, when you create a networked application, you either have to hard-code the port numbers or, better yet, provide default port numbers that the user (or a system administrator) can easily change.</p></td>
+</tr>
+<tr class="row-even"><td><p>sin_addr</p></td>
+<td><p>Is an in_addr structure that stores, in its s_addr field, the IP address of the socket’s machine. As always, the address is in network byte order. You can use an address of 0 to tell the binding mechanism to find an address for you. By convention, binding to address 0 (which is conveniently symbolized by the <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">INADDR_ANY</span></code> address) means that you want to bind to every address by which your computer is known, including the “loopback” (address 127.0.0.1, or the constant <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">INADDR_LOOPBACK</span></code>).WarningThe BeOS does not currently implement global binding. When you bind to INADDR_ANY, the bind() function binds to the first available interface (where “availability” means the address/port combination is currently unbound). Internet interfaces are considered before the loopback interface. If you want to bind to all interfaces, you have to create a separate socket for each. An example of this is given later.</p></td>
+</tr>
+<tr class="row-odd"><td><p>sin_zero</p></td>
+<td><p>Is padding. To be safe, you should fill it with zeros.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <span class="hparameter">size</span> parameter is the size, in
+bytes, of the second parameter.
+If the bind() call is successful, the
+<span class="hparameter">interface</span> parameter is set to contain the actual
+address that was used. If the socket can’t be bound, the function returns a
+negative value, and sets the global
+errno to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">EABDF</span></code>
+if the <span class="hparameter">socket</span> parameter is invalid; for all other
+errors, errno is set to
+-1.
+The following example shows a typical use of the bind() function. The
+example uses the fictitious gethostaddr() function that’s defined in the
+description of the gethostname() function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">sockaddr_in</span> <span class="n">sa</span><span class="p">;</span>
+<span class="nb">int</span> <span class="n">sock</span><span class="p">;</span>
+<span class="n">long</span> <span class="n">host_addr</span><span class="p">;</span>
+<span class="o">/*</span> <span class="n">Create</span> <span class="n">the</span> <span class="n">socket</span><span class="o">.</span> <span class="o">*/</span>
+<span class="k">if</span> <span class="p">((</span><span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+   <span class="o">/*</span> <span class="n">error</span> <span class="o">*/</span>
+<span class="p">}</span>
+<span class="o">/*</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">address</span> <span class="nb">format</span> <span class="k">for</span> <span class="n">the</span> <span class="n">imminent</span> <span class="n">bind</span><span class="o">.</span> <span class="o">*/</span>
+<span class="n">sa</span><span class="o">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">;</span>
+<span class="o">/*</span> <span class="n">We</span><span class="s1">&#39;ll choose an arbitrary port number translated to network byte</span>
+<span class="n">order</span><span class="o">.</span> <span class="o">*/</span>
+<span class="n">sa</span><span class="o">.</span><span class="n">sin_port</span> <span class="o">=</span> <span class="n">htonl</span><span class="p">(</span><span class="mi">2125</span><span class="p">);</span>
+<span class="o">/*</span> <span class="n">Get</span> <span class="n">the</span> <span class="n">address</span> <span class="n">of</span> <span class="n">the</span> <span class="n">local</span> <span class="n">machine</span><span class="o">.</span> <span class="n">If</span> <span class="n">the</span> <span class="n">address</span> <span class="n">can</span><span class="s1">&#39;t</span>
+<span class="o">*</span> <span class="n">be</span> <span class="n">found</span> <span class="p">(</span><span class="n">the</span> <span class="n">function</span> <span class="n">looks</span> <span class="n">it</span> <span class="n">up</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span> <span class="n">host</span> <span class="n">name</span><span class="p">),</span>
+<span class="o">*</span> <span class="n">then</span> <span class="n">we</span> <span class="n">use</span> <span class="n">address</span> <span class="n">INADDR_ANY</span><span class="o">.</span>
+<span class="o">*/</span>
+<span class="k">if</span> <span class="p">((</span><span class="n">host_addr</span> <span class="o">=</span> <span class="p">(</span><span class="n">ulong</span><span class="p">)</span> <span class="n">gethostaddr</span><span class="p">())</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+   <span class="n">host_addr</span> <span class="o">=</span> <span class="n">INADDR_ANY</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">sa</span><span class="o">.</span><span class="n">sin_addr</span><span class="o">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">host_addr</span><span class="p">;</span>
+<span class="o">/*</span> <span class="n">Clear</span> <span class="n">sin_zero</span><span class="o">.</span> <span class="o">*/</span>
+<span class="n">memset</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">sin_zero</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">sin_zero</span><span class="p">));</span>
+<span class="o">/*</span> <span class="n">Bind</span> <span class="n">the</span> <span class="n">socket</span><span class="o">.</span> <span class="o">*/</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">bind</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="p">(</span><span class="n">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">sa</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">sa</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+   <span class="o">/*</span> <span class="n">error</span> <span class="o">*/</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As mentioned earlier, the bind-to-all-interfaces convention (by asking to
+bind to address 0) isn’t currently implemented. Thus, if the
+gethostaddr()
+call fails in the example, the socket will be bound to the
+first address by which the local computer is known.
+But let’s say that you really do want to bind to all interfaces. To do
+this, you have to create separate sockets for each interface, then call
+bind() on each one. In the example below we create a series of sockets
+and then bind each one to an interface that specifies address 0. In doing
+this, we depend on the “first available interface” rule to find the next
+interface for us. Keep in mind that a successful bind() rewrites the
+contents of the sockaddr parameter (most importantly, it resets the 0
+address component). Thus, we have to reinitialize the structure each time
+through the loop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Declare</span> <span class="n">an</span> <span class="n">array</span> <span class="n">of</span> <span class="n">sockets</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#define MAXSOCKETS 4</span>
+<span class="nb">int</span> <span class="n">socks</span><span class="p">[</span><span class="n">MAXSOCKETS</span><span class="p">];</span>
+<span class="nb">int</span> <span class="n">sockN</span><span class="p">;</span>
+<span class="nb">int</span> <span class="n">bind_res</span><span class="p">;</span>
+<span class="n">struct</span> <span class="n">sockaddr_in</span> <span class="n">sock_addr</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">sockN</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">sockN</span> <span class="o">&lt;</span> <span class="n">MAXSOCKETS</span><span class="p">;</span> <span class="n">sockN</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="p">(</span><span class="n">socks</span><span class="p">[</span><span class="n">sockN</span><span class="p">]</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">socks</span><span class="p">[</span><span class="n">sktr</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">perror</span><span class="p">(</span><span class="s2">&quot;socket&quot;</span><span class="p">);</span>
+      <span class="n">goto</span> <span class="n">sock_error</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="o">/*</span> <span class="n">Initialize</span> <span class="n">the</span> <span class="n">structure</span><span class="o">.</span> <span class="o">*/</span>
+   <span class="n">sa</span><span class="o">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">;</span>
+   <span class="n">sa</span><span class="o">.</span><span class="n">sin_port</span> <span class="o">=</span> <span class="n">htonl</span><span class="p">(</span><span class="mi">2125</span><span class="p">);</span>
+   <span class="n">sa</span><span class="o">.</span><span class="n">sin_addr</span><span class="o">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="n">memset</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">sin_zero</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">sin_zero</span><span class="p">));</span>
+   <span class="n">bind_res</span> <span class="o">=</span> <span class="n">bind</span><span class="p">(</span><span class="n">socks</span><span class="p">[</span><span class="n">sockN</span><span class="p">],</span>
+               <span class="p">(</span><span class="n">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">sa</span><span class="p">,</span>
+               <span class="n">sizeof</span><span class="p">(</span><span class="n">sa</span><span class="p">));</span>
+   <span class="o">/*</span> <span class="n">A</span> <span class="n">bind</span> <span class="n">error</span> <span class="n">means</span> <span class="n">we</span><span class="s1">&#39;ve run out of addresses. */</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">bind_res</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">closesocket</span><span class="p">(</span><span class="n">socks</span><span class="p">[</span><span class="n">sockN</span><span class="o">--</span><span class="p">]);</span>
+      <span class="k">break</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">/*</span> <span class="n">Use</span> <span class="n">the</span> <span class="n">bound</span> <span class="n">socket</span> <span class="p">(</span><span class="n">listen</span><span class="p">,</span> <span class="n">accept</span><span class="p">,</span> <span class="n">recv</span><span class="o">/</span><span class="n">send</span><span class="p">)</span><span class="o">.</span> <span class="o">*/</span>
+<span class="o">...</span>
+<span class="n">sock_error</span><span class="p">:</span>
+   <span class="k">for</span> <span class="p">(;</span><span class="n">sockN</span> <span class="o">&gt;=</span><span class="mi">0</span> <span class="n">sockN</span><span class="o">--</span><span class="p">)</span>
+      <span class="n">closesocket</span><span class="p">(</span><span class="n">socks</span><span class="p">[</span><span class="n">sockN</span><span class="p">]);</span>
+</pre></div>
+</div>
+</section>
+<section id="connect">
+<h2>connect()<a class="headerlink" href="#connect" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="getpeername-getsockname">
+<h2>getpeername(), getsockname()<a class="headerlink" href="#getpeername-getsockname" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="listen-accept">
+<h2>listen(), accept()<a class="headerlink" href="#listen-accept" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="select">
+<h2>select()<a class="headerlink" href="#select" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="send-recv">
+<h2>send(), recv()<a class="headerlink" href="#send-recv" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>The parameters to send() and recv() are:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>socket</p></td>
+<td><p>Is, for datagrams and stream client sockets, the local socket token. In other words, when a datagram or stream client wants to send or receive data, it passes its own socket token as the first parameter. The recipient of a send(), or the sender of a recv() is, for these sockets, already known: It’s the socket that’s identified by the previous <span class="xref std std-ref">connect()</span> call.For a stream listener, <span class="hparameter">socket</span> is the “accept socket” that was previously returned by an <span class="xref std std-ref">accept()</span> call. A stream listener can send and receive data from more than one client at the same time (or, at least, in rapid succession).</p></td>
+</tr>
+<tr class="row-odd"><td><p>buf</p></td>
+<td><p>Is a pointer to the data that’s being sent, or is used to hold a copy of the data that was received.</p></td>
+</tr>
+<tr class="row-even"><td><p>size</p></td>
+<td><p>Is the allocated size of <span class="hparameter">buf</span>, in bytes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>flags</p></td>
+<td><p>Is currently unused. For now, set it to 0.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sendto-recvfrom">
+<h2>sendto(), recvfrom()<a class="headerlink" href="#sendto-recvfrom" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="setsockopt">
+<h2>setsockopt()<a class="headerlink" href="#setsockopt" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="net-endpoint.html">BNetEndpoint</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="overview.html">The Application Kit</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

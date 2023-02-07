@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Time Information &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="The Application Kit" href="../locale/overview.html" />
+    <link rel="prev" title="Threads And Teams" href="threads-and-teams.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Time Information</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="threads-and-teams.html">Threads And Teams</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../locale/overview.html">The Application Kit</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Time Information</a><ul>
+<li><a class="reference internal" href="#time-functions">Time Functions</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="time-information">
+<h1>Time Information<a class="headerlink" href="#time-information" title="Permalink to this heading">¶</a></h1>
+<section id="time-functions">
+<h2>Time Functions<a class="headerlink" href="#time-functions" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><pre style="background: #f3f3f3; line-height: 2em">uint32 Time Information::real_time_clock()</pre><pre style="background: #f3f3f3; line-height: 2em">bigtime_t Time Information::real_time_clock_usecs()</pre><pre style="background: #f3f3f3; line-height: 2em">void Time Information::set_real_time_clock(int32 secs_since_jan1_1970)</pre><p>real_time_clock() returns the number of seconds that have elapsed since
+January 1, 1970.
+real_time_clock_usecs() measures the same time span in microseconds.
+set_real_time_clock() sets the value that the other two functions refer
+to.</p>
+<h3>
+</h3><pre style="background: #f3f3f3; line-height: 2em">bigtime_t Time Information::system_time()</pre><p>Returns the number of microseconds that have elapsed since the computer
+was booted.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="threads-and-teams.html">Threads And Teams</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../locale/overview.html">The Application Kit</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BStatusBar &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BStringItem" href="string-item.html" />
+    <link rel="prev" title="BSlider" href="slider.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BStatusBar</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="slider.html">BSlider</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="string-item.html">BStringItem</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BStatusBar</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N10BStatusBar10BStatusBarE5BRectPKcPKcPKc">BStatusBar</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BStatusBarD0Ev">~BStatusBar</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hook-functions">Hook Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N10BStatusBar16AttachedToWindowEv">AttachedToWindow</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BStatusBar4DrawE5BRect">Draw</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BStatusBar15MessageReceivedEP8BMessage">MessageReceived</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4NK10BStatusBar7ArchiveEP8BMessageb">Archive</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BStatusBar5LabelEv">Label</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BStatusBar13TrailingLabelEv">TrailingLabel</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BStatusBar5ResetEPKcPKc">Reset</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BStatusBar11SetBarColorE9rgb_color">SetBarColor</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BStatusBar8BarColorEv">BarColor</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BStatusBar12SetBarHeightEf">SetBarHeight</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BStatusBar9BarHeightEv">BarHeight</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BStatusBar11SetMaxValueEf">SetMaxValue</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BStatusBar8MaxValueEv">MaxValue</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BStatusBar12CurrentValueEv">CurrentValue</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BStatusBar7SetTextEPKc">SetText</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BStatusBar15SetTrailingTextEPKc">SetTrailingText</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BStatusBar4TextEv">Text</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BStatusBar12TrailingTextEv">TrailingText</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BStatusBar6UpdateEfPKcPKc">Update</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#static-functions">Static Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N10BStatusBar11InstantiateEP8BMessage">Instantiate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#archived-fields">Archived Fields</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bstatusbar">
+<h1>BStatusBar<a class="headerlink" href="#bstatusbar" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N10BStatusBar10BStatusBarE5BRectPKcPKcPKc">
+</section>
+<h3>
+BStatusBar()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BStatusBar10BStatusBarE5BRectPKcPKcPKc" title="BStatusBar::BStatusBar"><span class="n">BStatusBar</span></a><span class="p">::</span></span><span class="n">BStatusBar</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">trailingLabel</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BStatusBar10BStatusBarEP8BMessage" title="BStatusBar::BStatusBar"><span class="n">BStatusBar</span></a><span class="p">::</span></span><span class="n">BStatusBar</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BStatusBar</span> with a
+<span class="hparameter">label</span> and a <span class="hparameter">trailingLabel</span>,
+which can both be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. The
+<span class="hparameter">frame</span> rectangle is used for its origin and width
+only; when the <span class="hclass">BStatusBar</span> is attached to a window,
+it will be resized to a height that precisely accommodates its parts. The
+<span class="hparameter">name</span> argument is passed on to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> constructor.</p>
+<p>The object is given a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WILL_DRAW</span></code> flag
+and a resizing mode that keeps it glued to the left and top sides of its parent.</p>
+<p>The default font of the <span class="hclass">BStatusBar</span> is the system plain font, and the
+default color of the bar is blue (50, 150, 255). It’s initial value is
+0.0, the minimum, and its default maximum value is 100.0.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N10BStatusBar11SetMaxValueEf" title="BStatusBar::SetMaxValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetMaxValue()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N10BStatusBar11SetBarColorE9rgb_color" title="BStatusBar::SetBarColor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetBarColor()</span></code></a></p>
+<section id="_CPPv4N10BStatusBarD0Ev">
+</section>
+<h3>
+~BStatusBar()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">~BStatusBar</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the labels and the text.</p>
+</section>
+<section id="hook-functions">
+<h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N10BStatusBar16AttachedToWindowEv">
+</section>
+<h3>
+AttachedToWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Resizes the frame rectangle to accommodate the object’s graphical parts.
+The width isn’t altered.</p>
+<p>This function also sets the view and low colors of the <span class="hclass">BStatusBar</span> to
+match the background view color of its new parent.</p>
+<section id="_CPPv4N10BStatusBar4DrawE5BRect">
+</section>
+<h3>
+Draw()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">updateRect</span><span class="sig-paren">)</span></pre><p>Draws the bar, labels, and text.</p>
+<section id="_CPPv4N10BStatusBar15MessageReceivedEP8BMessage">
+</section>
+<h3>
+MessageReceived()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">MessageReceived</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Responds to
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">UPDATE()</span></code> and
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RESET()</span></code>
+messages by calling the
+<a class="reference internal" href="#_CPPv4N10BStatusBar6UpdateEfPKcPKc" title="BStatusBar::Update"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Update()</span></code></a> and
+<a class="reference internal" href="#_CPPv4N10BStatusBar5ResetEPKcPKc" title="BStatusBar::Reset"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Reset()</span></code></a> functions. Each message contains data
+that can be passed as arguments to the functions.</p>
+<p>See also:
+<a class="reference internal" href="view.html#_CPPv4N5BView15MessageReceivedEP8BMessage" title="BView::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::MessageReceived()</span></code></a>,
+“BStatusBar Messages” in the Message Protocols appendix</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4NK10BStatusBar7ArchiveEP8BMessageb">
+</section>
+<h3>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of <span class="hmethod">Archive()</span>, then
+adds the bar color, bar height, current value, and maximum value to the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive,
+along with the current text, trailing text, label, and trailing label.</p>
+<section id="_CPPv4NK10BStatusBar5LabelEv">
+</section>
+<section id="_CPPv4NK10BStatusBar13TrailingLabelEv">
+</section>
+<h3>
+Label(), TrailingLabel()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">Label</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">TrailingLabel</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions return pointers to the object’s label and trailing label.
+The returned strings belong to the <span class="hclass">BStatusBar</span> object and should not be
+altered. They can be set only on construction or when all values are
+reset.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N10BStatusBar5ResetEPKcPKc" title="BStatusBar::Reset"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Reset()</span></code></a></p>
+<section id="_CPPv4N10BStatusBar5ResetEPKcPKc">
+</section>
+<h3>
+Reset()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">Reset</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">trailingLabel</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Empties the status bar, sets its current value to 0.0 and its maximum
+value to 100.0, deletes and erases the text and trailing text, and
+replaces the label and trailing label with copies of the strings passed
+as arguments. If either argument is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, the label or trailing label
+will also be deleted and erased.</p>
+<p>This gets the <span class="hclass">BStatusBar</span> ready to be reused for another operation. For
+example, if several large files are being downloaded, the <span class="hclass">BStatusBar</span>
+could be reset for each one.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N10BStatusBar7SetTextEPKc" title="BStatusBar::SetText"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetText()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N10BStatusBar6UpdateEfPKcPKc" title="BStatusBar::Update"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Update()</span></code></a>,
+the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RESET()</span></code>
+message constant.</p>
+<section id="_CPPv4N10BStatusBar11SetBarColorE9rgb_color">
+</section>
+<section id="_CPPv4NK10BStatusBar8BarColorEv">
+</section>
+<h3>
+SetBarColor(), BarColor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">SetBarColor</span><span class="sig-paren">(</span><span class="n">rgb_color</span><span class="w"> </span><span class="n sig-param">color</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">rgb_color</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">BarColor</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the color that fills the bar to show how
+much of an operation has been completed. The default bar color is blue
+(50, 150, 255).</p>
+<section id="_CPPv4N10BStatusBar12SetBarHeightEf">
+</section>
+<section id="_CPPv4NK10BStatusBar9BarHeightEv">
+</section>
+<h3>
+SetBarHeight(), BarHeight()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">SetBarHeight</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">BarHeight</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the height of the bar itself, minus the
+text and labels. The default height is 16.0 coordinate units. The frame
+rectangle is adjusted to accommodate the new height, and the object is
+redrawn.</p>
+<section id="_CPPv4N10BStatusBar11SetMaxValueEf">
+</section>
+<section id="_CPPv4NK10BStatusBar8MaxValueEv">
+</section>
+<section id="_CPPv4NK10BStatusBar12CurrentValueEv">
+</section>
+<h3>
+SetMaxValue(), MaxValue(), CurrentValue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">SetMaxValue</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">max</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">MaxValue</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">CurrentValue</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetMaxValue()</span> sets the maximum value of the <span class="hclass">BStatusBar</span>, which by default
+is 100.0. <span class="hmethod">MaxValue()</span> returns the current maximum. The minimum value is
+0.0 and cannot be changed.</p>
+<p><span class="hmethod">CurrentValue()</span> returns the current value of the <span class="hclass">BStatusBar</span>. The current
+value is set by
+<a class="reference internal" href="#_CPPv4N10BStatusBar6UpdateEfPKcPKc" title="BStatusBar::Update"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Update()</span></code></a> and reset to 0.0 by
+<a class="reference internal" href="#_CPPv4N10BStatusBar5ResetEPKcPKc" title="BStatusBar::Reset"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Reset()</span></code></a>.</p>
+<p>The amount of “filling” in the status bar reflects the ratio
+<span class="hmethod">CurrentValue()</span>/<span class="hmethod">MaxValue()</span>.</p>
+<section id="_CPPv4N10BStatusBar7SetTextEPKc">
+</section>
+<section id="_CPPv4N10BStatusBar15SetTrailingTextEPKc">
+</section>
+<section id="_CPPv4NK10BStatusBar4TextEv">
+</section>
+<section id="_CPPv4NK10BStatusBar12TrailingTextEv">
+</section>
+<h3>
+SetText(), SetTrailingText(), Text(), TrailingText()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">SetText</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">SetTrailingText</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">Text</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">TrailingText</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These <span class="hmethod">SetText()</span> and <span class="hmethod">SetTrailingText()</span> functions erase the previous text
+or trailing text and replace them with copies of the string argument.
+string can be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. The view is automatically redrawn.</p>
+<p><span class="hmethod">Text()</span> and <span class="hmethod">TrailingText()</span> return pointers to the current text strings.</p>
+<section id="_CPPv4N10BStatusBar6UpdateEfPKcPKc">
+</section>
+<h3>
+Update()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">Update</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">delta</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">text</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">trailingText</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Update()</span> updates the <span class="hclass">BStatusBar</span> by adding delta to its current value and
+resetting its text and trailing text. Passing <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> for the <span class="hparameter">text</span> or
+<span class="hparameter">trailingText</span> argument retains the existing string(s). The status bar is
+automatically redrawn.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N10BStatusBar5ResetEPKcPKc" title="BStatusBar::Reset"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Reset()</span></code></a>,
+the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">UPDATE()</span></code>
+message constant.</p>
+</section>
+<section id="static-functions">
+<h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N10BStatusBar11InstantiateEP8BMessage">
+</section>
+<h3>
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BStatusBar</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BStatusBar</span> object, allocated by new and created with the
+version of the constructor that takes a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive. However, if the
+archive doesn’t contain data for an <span class="hclass">BStatusBar</span> object, this function
+returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p>See also
+<a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">object()</span></code>,
+<a class="reference internal" href="#_CPPv4NK10BStatusBar7ArchiveEP8BMessageb" title="BStatusBar::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
+</section>
+<section id="archived-fields">
+<h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="slider.html">BSlider</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="string-item.html">BStringItem</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

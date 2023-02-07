@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BRect &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BRegion" href="region.html" />
+    <link rel="prev" title="BRadioButton" href="radio-button.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BRect</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="radio-button.html">BRadioButton</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="region.html">BRegion</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BRect</a><ul>
+<li><a class="reference internal" href="#data-members">Data Members</a></li>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N5BRect5BRectEffff">BRect</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4NK5BRect8ContainsE6BPoint">Contains</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BRect10IntersectsE5BRect">Intersects</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BRect7InsetByEff">InsetBy</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BRect11InsetBySelfEff">InsetBySelf</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BRect11InsetByCopyEff">InsetByCopy</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BRect8OffsetByEff">OffsetBy</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BRect12OffsetBySelfEff">OffsetBySelf</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BRect12OffsetByCopyEff">OffsetByCopy</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BRect8OffsetToEff">OffsetTo</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BRect12OffsetToSelfEff">OffsetToSelf</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BRect12OffsetToCopyEff">OffsetToCopy</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BRect7IsValidEv">IsValid</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BRect13PrintToStreamEv">PrintToStream</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BRect3SetEffff">Set</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BRect10SetLeftTopEK6BPoint">SetLeftTop</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BRect13SetLeftBottomEK6BPoint">SetLeftBottom</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BRect11SetRightTopEK6BPoint">SetRightTop</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BRect14SetRightBottomEK6BPoint">SetRightBottom</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BRect7LeftTopEv">LeftTop</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BRect10LeftBottomEv">LeftBottom</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BRect8RightTopEv">RightTop</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BRect11RightBottomEv">RightBottom</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BRect5WidthEv">Width</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BRect12IntegerWidthEv">IntegerWidth</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BRect6HeightEv">Height</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BRect13IntegerHeightEv">IntegerHeight</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="brect">
+<h1>BRect<a class="headerlink" href="#brect" title="Permalink to this heading">¶</a></h1>
+<section id="data-members">
+<h2>Data Members<a class="headerlink" href="#data-members" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N5BRect5BRectEffff">
+</section>
+<h3>
+BRect()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">inline</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BRect5BRectEffff" title="BRect::BRect"><span class="n">BRect</span></a><span class="p">::</span></span><span class="n">BRect</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">left</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">top</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">right</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">bottom</span><span class="sig-paren">)</span><br /><span class="k">inline</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BRect5BRectE6BPoint6BPoint" title="BRect::BRect"><span class="n">BRect</span></a><span class="p">::</span></span><span class="n">BRect</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">leftTop</span>, <span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">rightBottom</span><span class="sig-paren">)</span><br /><span class="k">inline</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BRect5BRectER5BRect" title="BRect::BRect"><span class="n">BRect</span></a><span class="p">::</span></span><span class="n">BRect</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5BRect5BRectER5BRect" title="BRect::BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">rect</span><span class="sig-paren">)</span><br /><span class="k">inline</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BRect5BRectEv" title="BRect::BRect"><span class="n">BRect</span></a><span class="p">::</span></span><span class="n">BRect</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Initializes a <span class="hclass">BRect</span> as four sides, as two diametrically opposed corners,
+or as a copy of some other <span class="hclass">BRect</span> object. A rectangle that’s not assigned
+any initial values is invalid, until a specific assignment is made,
+either through a <a class="reference internal" href="#_CPPv4N5BRect3SetEffff" title="BRect::Set"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Set()</span></code></a>
+function or by setting the object’s data members directly.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4NK5BRect8ContainsE6BPoint">
+</section>
+<section id="_CPPv4NK5BRect10IntersectsE5BRect">
+</section>
+<h3>
+Contains(), Intersects()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">Contains</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">Contains</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">rect</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">Intersects</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">rect</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Contains()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if
+<span class="hparameter">point</span> or <span class="hparameter">rect</span> lies entirely within
+the <span class="hclass">BRect</span>’s
+rectangle (and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if not). A rectangle contains the points that lie
+along its edges; for example, two identical rectangles contain each other.</p>
+<p><span class="hmethod">Intersect()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the
+<span class="hclass">BRect</span> has any area—even a corner or
+part of a side—in common with <span class="hparameter">rect</span>, and
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if it doesn’t.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>This function’s results are unpredictable if either rectangle is
+invalid.</p>
+</div>
+<p>See also:
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">operator()</span></code>,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">operator()</span></code>,
+<a class="reference internal" href="point.html#_CPPv4N6BPoint11ConstrainToE5BRect" title="BPoint::ConstrainTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BPoint::ConstrainTo()</span></code></a></p>
+<section id="_CPPv4N5BRect7InsetByEff">
+</section>
+<section id="_CPPv4N5BRect11InsetBySelfEff">
+</section>
+<section id="_CPPv4N5BRect11InsetByCopyEff">
+</section>
+<section id="_CPPv4N5BRect8OffsetByEff">
+</section>
+<section id="_CPPv4N5BRect12OffsetBySelfEff">
+</section>
+<section id="_CPPv4N5BRect12OffsetByCopyEff">
+</section>
+<section id="_CPPv4N5BRect8OffsetToEff">
+</section>
+<section id="_CPPv4N5BRect12OffsetToSelfEff">
+</section>
+<section id="_CPPv4N5BRect12OffsetToCopyEff">
+</section>
+<h3>
+InsetBy(), InsetBySelf(), InsetByCopy(), OffsetBy(), OffsetBySelf(), OffsetByCopy(), OffsetTo(), OffsetToSelf(), OffsetToCopy()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">InsetBy</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">x</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">y</span><span class="sig-paren">)</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">InsetBy</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRect</span><span class="w"> </span><span class="p">&amp;</span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">InsetBySelf</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">x</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">y</span><span class="sig-paren">)</span><br /><span class="n">BRect</span><span class="w"> </span><span class="p">&amp;</span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">InsetBySelf</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">InsetByCopy</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">x</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">y</span><span class="sig-paren">)</span><br /><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">InsetByCopy</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">OffsetBy</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">x</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">y</span><span class="sig-paren">)</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">OffsetBy</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRect</span><span class="w"> </span><span class="p">&amp;</span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">OffsetBySelf</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">x</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">y</span><span class="sig-paren">)</span><br /><span class="n">BRect</span><span class="w"> </span><span class="p">&amp;</span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">OffsetBySelf</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">OffsetByCopy</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">x</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">y</span><span class="sig-paren">)</span><br /><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">OffsetByCopy</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">OffsetTo</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">x</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">y</span><span class="sig-paren">)</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">OffsetTo</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRect</span><span class="w"> </span><span class="p">&amp;</span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">OffsetToSelf</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">x</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">y</span><span class="sig-paren">)</span><br /><span class="n">BRect</span><span class="w"> </span><span class="p">&amp;</span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">OffsetToSelf</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">OffsetToCopy</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">x</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">y</span><span class="sig-paren">)</span><br /><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">OffsetToCopy</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><p>Sorting out the different versions, there are three basic
+rectangle-manipulation functions here:</p>
+<ul class="simple">
+<li><p><span class="hmethod">InsetBy()</span> insets the sides of the <span class="hclass">BRect</span>’s rectangle by <span class="hparameter">x</span> units (left and right sides) and <span class="hparameter">y</span> units (top and bottom). Positive inset values shrink the rectangle; negative values expand it. Note that both sides of each pair moves the full amount. For example, if you inset a <span class="hclass">BRect</span> by (4,4), the left side moves (to the right) four units and the right side moves (to the left) four units (and similarly with the top and bottom).</p></li>
+<li><p><span class="hmethod">OffsetBy()</span> moves the <span class="hclass">BRect</span> horizontally by <span class="hparameter">x</span> units and vertically by <span class="hparameter">y</span> units. The rectangle’s size doesn’t change.</p></li>
+<li><p><span class="hmethod">OffsetTo()</span> moves the <span class="hclass">BRect</span> to the location (<span class="hparameter">x</span>,<span class="hparameter">y</span>).</p></li>
+</ul>
+<p>If a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPoint</span></code> argument
+is used, the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPoint</span></code>’s
+x and y values are used as the
+<span class="hparameter">x</span> and <span class="hparameter">y</span> arguments.</p>
+<p>The <span class="hmethod">…Self()</span> versions of the functions are the same as the simpler
+versions, but they conveniently return the modified <span class="hclass">BRect</span>.</p>
+<p>The <span class="hmethod">…Copy()</span> versions copy the
+<span class="hclass">BRect</span>, and then modify and return the copy (without
+changing the original).</p>
+<section id="_CPPv4NK5BRect7IsValidEv">
+</section>
+<h3>
+IsValid()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">IsValid</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the <span class="hclass">BRect</span>’s
+right side is greater than or equal to its
+left and its bottom is greater than or equal to its top, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>
+otherwise. An invalid rectangle can’t be used to define an interface area
+(such as the frame of a view or window).</p>
+<section id="_CPPv4NK5BRect13PrintToStreamEv">
+</section>
+<h3>
+PrintToStream()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">PrintToStream</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Prints the contents of the <span class="hclass">BRect</span> object to standard out in the form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;BRect(left, top, right, bottom)&quot;</span>
+</pre></div>
+</div>
+<section id="_CPPv4N5BRect3SetEffff">
+</section>
+<section id="_CPPv4N5BRect10SetLeftTopEK6BPoint">
+</section>
+<section id="_CPPv4N5BRect13SetLeftBottomEK6BPoint">
+</section>
+<section id="_CPPv4N5BRect11SetRightTopEK6BPoint">
+</section>
+<section id="_CPPv4N5BRect14SetRightBottomEK6BPoint">
+</section>
+<section id="_CPPv4NK5BRect7LeftTopEv">
+</section>
+<section id="_CPPv4NK5BRect10LeftBottomEv">
+</section>
+<section id="_CPPv4NK5BRect8RightTopEv">
+</section>
+<section id="_CPPv4NK5BRect11RightBottomEv">
+</section>
+<h3>
+Set(), SetLeftTop(), SetLeftBottom(), SetRightTop(), SetRightBottom(), LeftTop(), LeftBottom(), RightTop(), RightBottom()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">Set</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">left</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">top</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">right</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">bottom</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">SetLeftTop</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">SetLeftBottom</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">SetRightTop</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">SetRightBottom</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BPoint</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">LeftTop</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BPoint</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">LeftBottom</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BPoint</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">RightTop</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BPoint</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">RightBottom</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Set()</span> sets the object’s rectangle by defining
+the coordinates of all four sides. The other <span class="hmethod">Set…()</span>
+functions move one of the rectangle’s corners
+to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPoint</span></code> argument;
+the other corners and sides are modified
+concomittantly. None of these functions prevents you from creating an
+invalid rectangle.</p>
+<p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPoint</span></code>-returning
+functions return the coordinates of one of the
+rectangle’s four corners.</p>
+<section id="_CPPv4NK5BRect5WidthEv">
+</section>
+<section id="_CPPv4NK5BRect12IntegerWidthEv">
+</section>
+<section id="_CPPv4NK5BRect6HeightEv">
+</section>
+<section id="_CPPv4NK5BRect13IntegerHeightEv">
+</section>
+<h3>
+Width(), IntegerWidth(), Height(), IntegerHeight()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">Width</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">inline</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">IntegerWidth</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">Height</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">inline</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRect</span><span class="p">::</span></span><span class="n">IntegerHeight</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Width()</span> returns the numerical difference between the rectangle’s right
+and left sides (i.e. right - left). <span class="hmethod">IntegerWidth()</span> does the same,
+but rounds up in the case of a fractional difference.</p>
+<p><span class="hmethod">Height()</span> and <span class="hmethod">IntegerHeight()</span>
+perform similar calculations for the height
+of the rectangle (i.e. bottom - top
+and ceil(bottom - top)).</p>
+<p>The width and height of a <span class="hclass">BRect</span>’s rectangle, as returned through these
+functions</p>
+</section>
+<section id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">inline</span><span class="w"> </span><span class="n">BRect</span><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">from</span><span class="sig-paren">)</span></pre><p>Copies <span class="hparameter">from</span>’s rectangle data into the left-side object.</p>
+<h3>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">!=</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">==</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the two
+objects’ rectangles exactly coincide.</p>
+<p><span class="hmethod">!=</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the two
+objects’ rectangles don’t coincide.</p>
+<h3>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRect</span><span class="w"> </span><span class="k">operator</span><span class="o">&amp;</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Creates and returns a new <span class="hclass">BRect</span> that’s the intersection of the two
+operands. The new <span class="hclass">BRect</span> encloses the area that the two operands have in
+common. If the two operands don’t intersect, the new <span class="hclass">BRect</span> will be
+invalid.</p>
+<h3>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRect</span><span class="w"> </span><span class="k">operator</span><span class="o">|</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Creates and returns a new <span class="hclass">BRect</span> that minimally but completely encloses
+the area defined by both of the operands. The shaded area illustrates the
+union of the two outlined rectangles:</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="radio-button.html">BRadioButton</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="region.html">BRegion</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

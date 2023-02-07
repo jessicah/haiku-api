@@ -1,0 +1,1029 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BWindow &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Areas" href="../kernel/areas.html" />
+    <link rel="prev" title="BView" href="view.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BWindow</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="view.html">BView</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../kernel/areas.html">Areas</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BWindow</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N7BWindow7BWindowE5BRectPKc11window_type6uint326uint32">BWindow</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hook-functions">Hook Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N7BWindow10FrameMovedEP6BPoint">FrameMoved</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow12FrameResizedEff">FrameResized</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow14MenusBeginningEv">MenusBeginning</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow10MenusEndedEv">MenusEnded</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow15MessageReceivedEP8BMessage">MessageReceived</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow13ScreenChangedE5BRect11color_space">ScreenChanged</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow15WindowActivatedEb">WindowActivated</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow18WorkspaceActivatedE5int32b">WorkspaceActivated</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow17WorkspacesChangedE6uint326uint32">WorkspacesChanged</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow4ZoomEv">Zoom</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N7BWindow8ActivateEb">Activate</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow8IsActiveEv">IsActive</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow8AddChildEP5BViewP5BView">AddChild</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow11RemoveChildEP5BView">RemoveChild</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow7ChildAtE5int32">ChildAt</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow13CountChildrenEv">CountChildren</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow11AddShortcutE6uint326uint32P8BMessage">AddShortcut</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow14RemoveShortcutE6uint326uint32">RemoveShortcut</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow11AddToSubsetEP7BWindow">AddToSubset</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow16RemoveFromSubsetEP7BWindow">RemoveFromSubset</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow7ArchiveEP8BMessageb">Archive</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow6BoundsEv">Bounds</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow5FrameEv">Frame</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow15ConvertToScreenE6BPoint">ConvertToScreen</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow17ConvertFromScreenE6BPoint">ConvertFromScreen</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow12CurrentFocusEv">CurrentFocus</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow14DisableUpdatesEv">DisableUpdates</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow13EnableUpdatesEv">EnableUpdates</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow8FindViewEP6BPoint">FindView</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow5FlushEv">Flush</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow4SyncEv">Sync</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow18GetSupportedSuitesEP8BMessage">GetSupportedSuites</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow7IsFrontEv">IsFront</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow10IsFloatingEv">IsFloating</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow7IsModalEv">IsModal</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow18LastMouseMovedViewEv">LastMouseMovedView</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow6MoveByEff">MoveBy</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow6MoveToE6BPoint">MoveTo</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow11NeedsUpdateEv">NeedsUpdate</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow19OpenViewTransactionEv">OpenViewTransaction</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow21CommitViewTransactionEv">CommitViewTransaction</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow4QuitEv">Quit</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow8ResizeByEff">ResizeBy</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow8ResizeToEff">ResizeTo</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow16ResolveSpecifierEP8BMessage5int32P8BMessage5int32PKc">ResolveSpecifier</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow10SendBehindEPK7BWindow">SendBehind</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow16SetDefaultButtonEP7BButton">SetDefaultButton</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow13DefaultButtonEv">DefaultButton</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow7SetFeelE11window_feel">SetFeel</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow4FeelEv">Feel</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow8SetFlagsE6uint32">SetFlags</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow5FlagsEv">Flags</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow13SetKeyMenuBarEP8BMenuBar">SetKeyMenuBar</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow10KeyMenuBarEv">KeyMenuBar</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow7SetLookE11window_look">SetLook</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow4LookEv">Look</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow12SetPulseRateE9bigtime_t">SetPulseRate</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow9PulseRateEv">PulseRate</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow13SetSizeLimitsEffff">SetSizeLimits</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow13GetSizeLimitsEPfPfPfPf">GetSizeLimits</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow13SetZoomLimitsEff">SetZoomLimits</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow8SetTitleEPKc">SetTitle</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow5TitleEv">Title</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow7SetTypeE11window_type">SetType</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow4TypeEv">Type</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow18SetWindowAlignmentE16window_alignment5int325int325int325int325int325int325int325int32">SetWindowAlignment</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow18GetWindowAlignmentEP16window_alignmentP5int32P5int32P5int32P5int32P5int32P5int32P5int32P5int32">GetWindowAlignment</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow13SetWorkspacesE6uint32">SetWorkspaces</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow10WorkspacesEv">Workspaces</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow4ShowEv">Show</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow4HideEv">Hide</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow8IsHiddenEv">IsHidden</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow8MinimizeEb">Minimize</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BWindow11IsMinimizedEv">IsMinimized</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BWindow14UpdateIfNeededEv">UpdateIfNeeded</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#static-functions">Static Functions</a></li>
+<li><a class="reference internal" href="#constants-and-defined-types">Constants and Defined Types</a></li>
+<li><a class="reference internal" href="#scripting-support">Scripting Support</a></li>
+<li><a class="reference internal" href="#archived-fields">Archived Fields</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bwindow">
+<h1>BWindow<a class="headerlink" href="#bwindow" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N7BWindow7BWindowE5BRectPKc11window_type6uint326uint32">
+</section>
+<h3>
+BWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BWindow7BWindowE5BRectPKc11window_type6uint326uint32" title="BWindow::BWindow"><span class="n">BWindow</span></a><span class="p">::</span></span><span class="n">BWindow</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">title</span>, <span class="n">window_type</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">workspaces</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_CURRENT_WORKSPACE</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BWindow7BWindowE5BRectPKc11window_look11window_feel6uint326uint32" title="BWindow::BWindow"><span class="n">BWindow</span></a><span class="p">::</span></span><span class="n">BWindow</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">title</span>, <span class="n">window_look</span><span class="w"> </span><span class="n sig-param">look</span>, <span class="n">window_feel</span><span class="w"> </span><span class="n sig-param">feel</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">workspaces</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_CURRENT_WORKSPACE</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BWindow7BWindowEP8BMessage" title="BWindow::BWindow"><span class="n">BWindow</span></a><span class="p">::</span></span><span class="n">BWindow</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Creates a new window:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>frame</p></td>
+<td><p>Is the window’s content area rectangle given in screen coordinates. The window’s border and title tab (if any) are wrapped around the content area. The frame’s coordinates are rounded to the nearest whole number. You can further restrict the window’s frame through <a class="reference internal" href="#_CPPv4N7BWindow18SetWindowAlignmentE16window_alignment5int325int325int325int325int325int325int325int32" title="BWindow::SetWindowAlignment"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetWindowAlignment()</span></code></a> and <a class="reference internal" href="#_CPPv4N7BWindow13SetSizeLimitsEffff" title="BWindow::SetSizeLimits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetSizeLimits()</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>title</p></td>
+<td><p>Is the string that’s displayed in the window’s title tab (if it has one). The string is also used, with the prefix “w&gt;”, as the name of the window’s looper thread: “w&gt;<span class="hparameter">title</span>”. You can reset the title through <a class="reference internal" href="#_CPPv4N7BWindow8SetTitleEPKc" title="BWindow::SetTitle"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTitle()</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>look/feelortype.</p></td>
+<td><p>The appearance and behavior of the window is defined by a combination of the <span class="hparameter">look</span> and <span class="hparameter">feel</span> arguments, or by a single <span class="hparameter">type</span>. See the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">window()</span></code>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">window()</span></code>, and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">window()</span></code> descriptions for a list of values. The look and feel can be reset through <a class="reference internal" href="#_CPPv4N7BWindow7SetLookE11window_look" title="BWindow::SetLook"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetLook()</span></code></a>, <a class="reference internal" href="#_CPPv4N7BWindow7SetFeelE11window_feel" title="BWindow::SetFeel"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFeel()</span></code></a>, and <a class="reference internal" href="#_CPPv4N7BWindow7SetTypeE11window_type" title="BWindow::SetType"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetType()</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>flags</p></td>
+<td><p>The <span class="hparameter">flags</span> argument is a mask that defines the window’s “user attributes”—whether the user can resize or close the window, whether the window avoids front when the user closes other windows, and so on. See “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Window()</span></code>” for a list of values. The flags can be reset through <a class="reference internal" href="#_CPPv4N7BWindow8SetFlagsE6uint32" title="BWindow::SetFlags"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFlags()</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>workspaces</p></td>
+<td><p>Is a mask that tells the window which of the 32 potential workspace(s) it should be displayed in (it can be displayed in more than one workspace at the same time). For example, a workspaces of (1&lt;&lt;2)+(1&lt;&lt;7) tells the window to display itself in workspaces 2 and 7. Instead of passing a bitmask, you can also use the <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CURRENT_WORKSPACE</span></code> or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ALL_WORKSPACES</span></code> constant. By default, the window appears in the current (active) workspace. You can reset the workspaces through <a class="reference internal" href="#_CPPv4N7BWindow13SetWorkspacesE6uint32" title="BWindow::SetWorkspaces"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetWorkspaces()</span></code></a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>A freshly-created window is hidden and locked. After construction, you add
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s to the
+<span class="hclass">BWindow</span> through
+<a class="reference internal" href="#_CPPv4N7BWindow8AddChildEP5BViewP5BView" title="BWindow::AddChild"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddChild()</span></code></a>, and then show the window
+(and start its message loop) by calling
+<a class="reference internal" href="#_CPPv4N7BWindow4ShowEv" title="BWindow::Show"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Show()</span></code></a>.</p>
+<h3>
+</h3><p>You never delete your <span class="hclass">BWindow</span>s; call
+<a class="reference internal" href="#_CPPv4N7BWindow4QuitEv" title="BWindow::Quit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Quit()</span></code></a> instead.</p>
+</section>
+<section id="hook-functions">
+<h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N7BWindow10FrameMovedEP6BPoint">
+</section>
+<section id="_CPPv4N7BWindow12FrameResizedEff">
+</section>
+<h3>
+FrameMoved(), FrameResized()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">FrameMoved</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">origin</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">FrameResized</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">width</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><p>These hook functions are invoked just after the window’s frame is moved
+or resized, whether by the user or programatically. The arguments give
+the window’s new origin (in screen coordinates) or dimensions. The
+default implementations do nothing.</p>
+<p>See also: <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WINDOW_MOVED</span></code>, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WINDOW_RESIZED</span></code>.</p>
+<section id="_CPPv4N7BWindow14MenusBeginningEv">
+</section>
+<section id="_CPPv4N7BWindow10MenusEndedEv">
+</section>
+<h3>
+MenusBeginning(), MenusEnded()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">MenusBeginning</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">MenusEnded</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The <span class="hmethod">MenusBeginning()</span> hook function is called just before menus belonging
+to the window are about to be shown to the user. <span class="hmethod">MenusEnded()</span> is called
+when the menus have been removed from the screen. The default
+implementations do nothing. You can implement these functions to make
+sure the menus’ states accurately reflect the state of the window.</p>
+<div class="important admonition">
+<p class="admonition-title">Important</p>
+<p>These hook functions are not invoked because of messages—don’t go
+looking for a “menus beginning” or “menus ended” message.</p>
+</div>
+<section id="_CPPv4N7BWindow15MessageReceivedEP8BMessage">
+</section>
+<h3>
+MessageReceived()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">MessageReceived</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Implementation detail. See
+<a class="reference internal" href="../application/handler.html#_CPPv4N8BHandler15MessageReceivedEP8BMessage" title="BHandler::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::MessageReceived()</span></code></a>.</p>
+<section id="_CPPv4N7BWindow13ScreenChangedE5BRect11color_space">
+</section>
+<h3>
+ScreenChanged()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">ScreenChanged</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="n">color_space</span><span class="w"> </span><span class="n sig-param">mode</span><span class="sig-paren">)</span></pre><p>Hook function that’s called when the screen (on which this window is
+located) changes size or location in the screen coordinate system, or
+changes color space (depth). <span class="hparameter">frame</span> is the screen’s new frame rectangle,
+and <span class="hparameter">mode</span> is its new color space.</p>
+<p>See also:
+<a class="reference internal" href="screen.html#_CPPv4N7BScreen5FrameEv" title="BScreen::Frame"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BScreen::Frame()</span></code></a></p>
+<section id="_CPPv4N7BWindow15WindowActivatedEb">
+</section>
+<h3>
+WindowActivated()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">WindowActivated</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">active</span><span class="sig-paren">)</span></pre><p><span class="hmethod">WindowActivated()</span> is a hook function
+that’s automatically invoked on the <span class="hclass">BWindow</span> (and
+each of its
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> children) when
+the window is activated or deactivated. If
+<span class="hparameter">active</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the
+window has just become the active window; if it’s
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, it’s about to give up that status. You can
+implement <span class="hmethod">WindowActivated()</span> to do whatever you
+want; the default implementation does nothing.</p>
+<section id="_CPPv4N7BWindow18WorkspaceActivatedE5int32b">
+</section>
+<h3>
+WorkspaceActivated()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">WorkspaceActivated</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">workspace</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">active</span><span class="sig-paren">)</span></pre><p>Implemented by derived classes to respond to a notification that the
+workspace displayed on the screen has changed. All windows in the newly
+activated workspace as well as those in the one that was just deactivated
+get this notification.</p>
+<p>The <span class="hparameter">workspace</span> argument is an index to the workspace in question and the
+<span class="hparameter">active</span> flag conveys its current status. If <span class="hparameter">active</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the workspace
+has just become the active workspace. If <span class="hparameter">active</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, it has just
+stopped being the active workspace.</p>
+<p>The default (<span class="hclass">BWindow</span>) version of this function is empty.</p>
+<p>See also: “<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WORKSPACE_ACTIVATED</span></code>” in the Message Protocols appendix,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">workspace()</span></code></p>
+<section id="_CPPv4N7BWindow17WorkspacesChangedE6uint326uint32">
+</section>
+<h3>
+WorkspacesChanged()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">WorkspacesChanged</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">oldWorkspaces</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">newWorkspaces</span><span class="sig-paren">)</span></pre><p>Implemented by derived classes to respond to a notification the the
+window has just changed the set of workspaces in which it can be
+displayed from <span class="hparameter">oldWorkspaces</span> to <span class="hparameter">newWorkspaces</span>. This typically happens
+when the user moves a window from one workspace to another, but it may
+also happen when a programmatic change is made to the set of permitted
+workspaces. Each workspace is represented by a corresponding bit in the
+<span class="hparameter">oldWorkspaces</span> and <span class="hparameter">newWorkspaces</span> masks.</p>
+<p>The default (<span class="hclass">BWindow</span>) version of this function is empty.</p>
+<p>See also: <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WORKSPACES_CHANGED</span></code> in the Message Protocols appendix,
+<a class="reference internal" href="#_CPPv4N7BWindow13SetWorkspacesE6uint32" title="BWindow::SetWorkspaces"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetWorkspaces()</span></code></a></p>
+<section id="_CPPv4N7BWindow4ZoomEv">
+</section>
+<h3>
+Zoom()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Zoom</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Zoom</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">origin</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">width</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><p>The non-virtual <span class="hmethod">Zoom()</span> (which is called when the user clicks the zoom
+button, but can also be called programatically) figures out a new size
+and location for the window (as described below), and then passes these
+dimensions to the virtual <span class="hmethod">Zoom()</span> hook function. It’s hook <span class="hmethod">Zoom()</span>’s
+responsibility to actually resize and move the window; the default
+version applies the arguments explicitly by calling
+<a class="reference internal" href="#_CPPv4N7BWindow6MoveToE6BPoint" title="BWindow::MoveTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MoveTo()</span></code></a> and
+<a class="reference internal" href="#_CPPv4N7BWindow8ResizeToEff" title="BWindow::ResizeTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ResizeTo()</span></code></a>.
+You can re-implement hook <span class="hmethod">Zoom()</span> to create a new zooming
+algorithm that incorporates or ignores the arguments as you see fit.</p>
+<p>The dimensions that non-virtual <span class="hmethod">Zoom()</span> passes to hook <span class="hmethod">Zoom()</span> are deduced
+from the smallest of three rectangles: 1) the screen rectangle, 2) the
+rectangle defined by
+<a class="reference internal" href="#_CPPv4N7BWindow13SetZoomLimitsEff" title="BWindow::SetZoomLimits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetZoomLimits()</span></code></a>, 3) the rectangle defined by
+<a class="reference internal" href="#_CPPv4N7BWindow13SetSizeLimitsEffff" title="BWindow::SetSizeLimits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetSizeLimits()</span></code></a>. However, if the window’s rectangle already matches these
+“zoom” dimensions (give or take a few pixels), <span class="hmethod">Zoom()</span> passes the window’s
+previous (“non-zoomed”) size and location.</p>
+<p>You can effectively call <span class="hmethod">Zoom()</span> even if the window is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NOT_ZOOMABLE</span></code>.</p>
+<p><span class="hmethod">Zoom()</span> may both move and resize the window, resulting in
+<a class="reference internal" href="#_CPPv4N7BWindow10FrameMovedEP6BPoint" title="BWindow::FrameMoved"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FrameMoved()</span></code></a> and
+<a class="reference internal" href="#_CPPv4N7BWindow12FrameResizedEff" title="BWindow::FrameResized"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FrameResized()</span></code></a> notifications.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N7BWindow8ActivateEb">
+</section>
+<section id="_CPPv4NK7BWindow8IsActiveEv">
+</section>
+<h3>
+Activate(), IsActive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Activate</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">flag</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">IsActive</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Activate()</span> makes the <span class="hclass">BWindow</span>
+the active window (if <span class="hparameter">flag</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>), or
+causes it to relinquish that status (if <span class="hparameter">flag</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>). The active window
+is made frontmost, its title tab is highlighted, and it becomes the
+target of keyboard events. The
+<a class="reference internal" href="#_CPPv4N7BWindow4ShowEv" title="BWindow::Show"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Show()</span></code></a> function automatically activates
+the window.</p>
+<div class="important admonition">
+<p class="admonition-title">Important</p>
+<p>You can’t activate a hidden window.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>You rarely call <span class="hmethod">Activate()</span> yourself. Deciding which window to make
+active is the user’s choice.</p>
+</div>
+<p><span class="hmethod">IsActive()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the
+window is currently the active window, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if
+it’s not.</p>
+<p>See also:
+<a class="reference internal" href="view.html#_CPPv4N5BView15WindowActivatedEb" title="BView::WindowActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::WindowActivated()</span></code></a></p>
+<section id="_CPPv4N7BWindow8AddChildEP5BViewP5BView">
+</section>
+<section id="_CPPv4N7BWindow11RemoveChildEP5BView">
+</section>
+<section id="_CPPv4NK7BWindow7ChildAtE5int32">
+</section>
+<section id="_CPPv4NK7BWindow13CountChildrenEv">
+</section>
+<h3>
+AddChild(), RemoveChild(), ChildAt(), CountChildren()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">AddChild</span><span class="sig-paren">(</span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">aView</span>, <span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">sibling</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">RemoveChild</span><span class="sig-paren">(</span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">aView</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">ChildAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">CountChildren</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">AddChild()</span> places <span class="hparameter">aView</span>
+(and its child views) in the window, adds it to
+the window’s view list, and adds it to the window’s list of handlers:</p>
+<ul class="simple">
+<li><p>Graphically, the view is placed in the window’s coordinate system at the location defined by the view’s frame rectangle.</p></li>
+<li><p>In the window’s view list, <span class="hparameter">aView</span> is inserted before <span class="hparameter">sibling</span>. if <span class="hparameter">sibling</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, <span class="hparameter">aView</span> is added at the end of the list. Note, however, that window list order is of little significance; for example, it doesn’t affect the order in which sibling views are drawn.</p></li>
+<li><p><span class="hparameter">aView</span> and its children are added to the window’s handler list; <span class="hparameter">aView</span>’s next handler is set to this <span class="hclass">BWindow</span>.</p></li>
+</ul>
+<p>Each <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> in aView’s
+hierarchy is sent an
+<a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AttachedToWindow()</span></code></a>
+call. When they’ve all had a chance to respond, they’re each sent an
+<a class="reference internal" href="view.html#_CPPv4N5BView11AllAttachedEv" title="BView::AllAttached"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AllAttached()</span></code></a>
+call.</p>
+<p>If <span class="hparameter">aView</span> has already been added to a view hierarchy,
+or if <span class="hparameter">sibling</span> isn’t
+in the window’s view list, <span class="hmethod">AddChild()</span> fails.</p>
+<p><span class="hmethod">RemoveChild()</span> removes <span class="hparameter">aView</span> (and its children) from the window’s display,
+view list, and handler list, and sets <span class="hparameter">aView</span>’s next handler to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p><a class="reference internal" href="view.html#_CPPv4N5BView18DetachedFromWindowEv" title="BView::DetachedFromWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DetachedFromWindow()</span></code></a> and
+<a class="reference internal" href="view.html#_CPPv4N5BView11AllDetachedEv" title="BView::AllDetached"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AllDetached()</span></code></a>
+are invoked on <span class="hparameter">aView</span> and each of
+its children. If <span class="hparameter">aView</span> isn’t in the window’s view list, the function
+fails and returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>; it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> upon success.</p>
+<p><span class="hmethod">ChildAt()</span> returns the <span class="hparameter">index</span>’th
+view in the window’s view list, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if
+<span class="hparameter">index</span> is out of bounds (you’ve reached the end of the list). The view
+list doesn’t recurse; to build a full map of a window’s view hierarchy,
+you call <a class="reference internal" href="view.html#_CPPv4NK5BView7ChildAtE5int32" title="BView::ChildAt"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::ChildAt()</span></code></a>
+iteratively on each of the window’s views (and
+each of their children, etc.).</p>
+<p>See also:
+<a class="reference internal" href="view.html#_CPPv4NK5BView6ParentEv" title="BView::Parent"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Parent()</span></code></a></p>
+<section id="_CPPv4N7BWindow11AddShortcutE6uint326uint32P8BMessage">
+</section>
+<section id="_CPPv4N7BWindow14RemoveShortcutE6uint326uint32">
+</section>
+<h3>
+AddShortcut(), RemoveShortcut()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">AddShortcut</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">key</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">modifiers</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">AddShortcut</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">key</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">modifiers</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">RemoveShortcut</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">key</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">modifiers</span><span class="sig-paren">)</span></pre><p><span class="hmethod">AddShortcut()</span> creates a keyboard shortcut: When the
+user types
+Command+<span class="hparameter">modifiers</span>+<span class="hparameter">key</span>,
+<span class="hparameter">message</span> is sent to <span class="hparameter">handler</span>. If
+a shortcut already exists for
+<span class="hparameter">modifiers</span>+<span class="hparameter">key</span>, it’s removed
+before the new shortcut is added.</p>
+<p><span class="hmethod">RemoveShortcut()</span> removes the shortcut for
+<span class="hparameter">modifiers</span>+<span class="hparameter">key</span>.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>Don’t use these functions to create and remove menu shortcuts; use
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code> objects instead.</p>
+</div>
+<p>Notes on the arguments:</p>
+<ul class="simple">
+<li><p><span class="hparameter">key</span> is a case-insensitive character value. If you want to map to an uppercase character, you have to include <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SHIFT_KEY</span></code> in the <span class="hparameter">modifiers</span> mask.</p></li>
+<li><p><span class="hparameter">modifiers</span> is an OR’d list of modifier key numbers. <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_COMMAND_KEY</span></code>, which is always assumed, needn’t be added to the mask. See <span class="xref std std-ref">modifiers()</span> for a list of modifier keys.</p></li>
+<li><p><span class="hparameter">message</span> is a model of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> you want sent when the user types the shortcut. The <span class="hclass">BWindow</span> takes ownership of the <span class="hparameter">message</span> object and adds a when field to it:Field nameType codeDescriptionwhenB_INT64_TYPEThe time of the key-down, in microseconds since 01/01/70.</p></li>
+<li><p><span class="hparameter">handler</span> must be in the window’s handler list (or the message won’t be sent). If you exclude the argument, this <span class="hclass">BWindow</span> handles the message. If handler is (literally) <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, the message is sent to the <span class="hclass">BWindow</span>’s focus view (or to the <span class="hclass">BWindow</span> if no view is in focus).</p></li>
+</ul>
+<p>As with all Command events, a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_KEY_DOWN</span></code> message isn’t sent when the user
+invokes a keyboard shortcut, but the subsequent <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_KEY_UP</span></code> is.</p>
+<p>Every <span class="hclass">BWindow</span> has five built-in shortcuts:</p>
+<p>ShortcutMessageHandlerCommand+xB_CUTthe focus viewCommand+cB_COPYthe focus viewCommand+vB_PASTEthe focus viewCommand+aB_SELECT_ALLthe focus viewCommand+w (closable windows only)B_QUIT_REQUESTEDthe BWindow</p>
+<p>In addition, <span class="hclass">BWindow</span>s respond to
+Command+q
+by posting <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">QUIT()</span></code> to
+be_app.</p>
+<section id="_CPPv4N7BWindow11AddToSubsetEP7BWindow">
+</section>
+<section id="_CPPv4N7BWindow16RemoveFromSubsetEP7BWindow">
+</section>
+<h3>
+AddToSubset(), RemoveFromSubset()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">AddToSubset</span><span class="sig-paren">(</span><span class="n">BWindow</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">window</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">RemoveFromSubset</span><span class="sig-paren">(</span><span class="n">BWindow</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">window</span><span class="sig-paren">)</span></pre><p>Adds windows to and removes them from this window’s subset. This affects
+modal and floating windows with a subset feel only (i.e.
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MODAL_SUBSET_WINDOW_FEEL</span></code> or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FLOATING_SUBSET_WINDOW_FEEL</span></code>). A subset
+feel window blocks or floats above only those windows in its subset. To
+set the window’s feel, use
+<a class="reference internal" href="#_CPPv4N7BWindow7SetFeelE11window_feel" title="BWindow::SetFeel"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFeel()</span></code></a>.</p>
+<section id="_CPPv4NK7BWindow7ArchiveEP8BMessageb">
+</section>
+<h3>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Archives the <span class="hclass">BWindow</span> by recording its frame rectangle, title, type, and
+flags in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> <span class="hparameter">archive</span>.
+If the <span class="hparameter">deep</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, this function
+also archives all the views in the window’s view hierarchy. If the flag
+is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, only the <span class="hclass">BWindow</span> is archived.</p>
+<p>See also:
+<a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code> static function</p>
+<section id="_CPPv4NK7BWindow6BoundsEv">
+</section>
+<section id="_CPPv4NK7BWindow5FrameEv">
+</section>
+<h3>
+Bounds(), Frame()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Bounds</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Frame</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions return the rectangle that encloses the window’s content
+area. The bounds rectangle (<span class="hmethod">Bounds()</span>) is expressed in the window’s
+coordinate system; the frame rectangle (<span class="hmethod">Frame()</span>) is expressed in the
+screen’s coordinate system.</p>
+<p>The rectangles are cached by the <span class="hclass">BWindow</span> itself—calling these
+functions doesn’t incur a trip to the App Server.</p>
+<section id="_CPPv4NK7BWindow15ConvertToScreenE6BPoint">
+</section>
+<section id="_CPPv4NK7BWindow17ConvertFromScreenE6BPoint">
+</section>
+<h3>
+ConvertToScreen(), ConvertFromScreen()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BPoint</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">ConvertToScreen</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">windowPoint</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">ConvertToScreen</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">windowPoint</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">ConvertToScreen</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">windowRect</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">ConvertToScreen</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">windowRect</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BPoint</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">ConvertFromScreen</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">windowPoint</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">ConvertFromScreen</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">windowPoint</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">ConvertFromScreen</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">windowRect</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">ConvertFromScreen</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">windowRect</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Converts the argument from window coordinates to screen coordinates or
+vice versa. The point or rect needn’t fall within this <span class="hclass">BWindow</span>’s bounds.</p>
+<p>If the argument is passed by value, the function returns the converted
+value; if it’s by pointer, the conversion is done in-place.</p>
+<p>The <span class="hclass">BWindow</span> must be locked.</p>
+<section id="_CPPv4NK7BWindow12CurrentFocusEv">
+</section>
+<h3>
+CurrentFocus()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">CurrentFocus</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>returns the current focus view for the <span class="hclass">BWindow</span>, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if no view is
+currently in focus. The focus view is the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> that’s responsible for
+showing the current selection and is the target for keyboard messages
+directed at this <span class="hclass">BWindow</span>. The focus view is set through
+<a class="reference internal" href="view.html#_CPPv4N5BView9MakeFocusEb" title="BView::MakeFocus"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::MakeFocus()</span></code></a>.</p>
+<p>The <span class="hclass">BWindow</span> sets its preferred handler to be the focus view, so the
+inherited <a class="reference internal" href="../application/looper.html#_CPPv4N7BLooper16PreferredHandlerEv" title="BLooper::PreferredHandler"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PreferredHandler()</span></code></a>
+function will return this same object (but
+as a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code>).</p>
+<section id="_CPPv4N7BWindow14DisableUpdatesEv">
+</section>
+<section id="_CPPv4N7BWindow13EnableUpdatesEv">
+</section>
+<h3>
+DisableUpdates(), EnableUpdates()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">DisableUpdates</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">EnableUpdates</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions disable automatic updating within the window, and
+re-enable it again. Any drawing that’s done while updates are disabled is
+suppressed until updates are re-enabled. If you’re doing a lot of drawing
+within the window, and you want the results of the drawing to appear all
+at once, you should disable updates, draw, and then re-enable updates.</p>
+<p>See also:
+<a class="reference internal" href="view.html#_CPPv4N5BView10InvalidateE5BRect" title="BView::Invalidate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Invalidate()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N7BWindow14UpdateIfNeededEv" title="BWindow::UpdateIfNeeded"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">UpdateIfNeeded()</span></code></a></p>
+<h3>
+</h3><p>Implementation detail; see
+<a class="reference internal" href="../application/looper.html#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::DispatchMessage()</span></code></a>.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>You shouldn’t override this function in a <span class="hclass">BWindow</span> subclass; if you want
+to augment the window’s message-dispatching mechanism, override
+<a class="reference internal" href="#_CPPv4N7BWindow15MessageReceivedEP8BMessage" title="BWindow::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MessageReceived()</span></code></a>.</p>
+</div>
+<section id="_CPPv4NK7BWindow8FindViewEP6BPoint">
+</section>
+<h3>
+FindView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">FindView</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">point</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">FindView</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the view located at <span class="hparameter">point</span> within the window, or the view tagged
+with <span class="hparameter">name</span>. The functions returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if no view is found.</p>
+<section id="_CPPv4NK7BWindow5FlushEv">
+</section>
+<section id="_CPPv4NK7BWindow4SyncEv">
+</section>
+<h3>
+Flush(), Sync()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Flush</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Sync</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Both of these functions cause this window’s App Server-bound messages to
+be sent immediately. <span class="hmethod">Flush()</span> sends the messages and returns immediately;
+<span class="hmethod">Sync()</span> send the messages and waits for the App Server to respond. In
+other words, when <span class="hmethod">Sync()</span> returns you’re guaranteed that all of the
+flushed messages have been processed.</p>
+<p>See also:
+<a class="reference internal" href="view.html#_CPPv4NK5BView5FlushEv" title="BView::Flush"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Flush()</span></code></a></p>
+<section id="_CPPv4N7BWindow18GetSupportedSuitesEP8BMessage">
+</section>
+<h3>
+GetSupportedSuites()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">GetSupportedSuites</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Adds the name “suite/vnd.Be-window” to the message.</p>
+<p>See also:
+<a class="reference internal" href="../application/handler.html#_CPPv4N8BHandler18GetSupportedSuitesEP8BMessage" title="BHandler::GetSupportedSuites"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::GetSupportedSuites()</span></code></a></p>
+<section id="_CPPv4NK7BWindow7IsFrontEv">
+</section>
+<section id="_CPPv4NK7BWindow10IsFloatingEv">
+</section>
+<section id="_CPPv4NK7BWindow7IsModalEv">
+</section>
+<h3>
+IsFront(), IsFloating(), IsModal()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">IsFront</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">IsFloating</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">IsModal</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the window is frontmost on screen, if it
+has a floating window feel, and if it has a modal window feel,
+respectively.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>A floating window can never be the frontmost window.</p>
+</div>
+<section id="_CPPv4N7BWindow18LastMouseMovedViewEv">
+</section>
+<h3>
+LastMouseMovedView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">LastMouseMovedView</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns a pointer to the view in this window that most recently received
+a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MOUSE_MOVED</span></code> message.</p>
+<section id="_CPPv4N7BWindow6MoveByEff">
+</section>
+<section id="_CPPv4N7BWindow6MoveToE6BPoint">
+</section>
+<h3>
+MoveBy(), MoveTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">MoveBy</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">horizontal</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">vertical</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">MoveTo</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">MoveTo</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">x</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">y</span><span class="sig-paren">)</span></pre><p>These functions move the window without resizing it. <span class="hmethod">MoveBy()</span> adds
+<span class="hparameter">horizontal</span> coordinate units to the left and right components of the
+window’s frame rectangle and <span class="hparameter">vertical</span> units to the frame’s top and
+bottom. if <span class="hparameter">horizontal</span> and <span class="hparameter">vertical</span> are negative, the window moves upward
+and to the left. if they’re positive, it moves downward and to the right.
+<span class="hmethod">MoveTo()</span> moves the left top corner of the window’s content area to
+<span class="hparameter">point</span>—or (<span class="hparameter">x</span>, <span class="hparameter">y</span>)
+– in the screen coordinate system; it adjusts
+all coordinates in the frame rectangle accordingly.</p>
+<p>None of the values passed to these functions should specify fractional
+coordinates; a window must be aligned on screen pixels. Fractional values
+will be rounded to the closest whole number.</p>
+<p>Neither function alters the <span class="hclass">BWindow</span>’s coordinate system or bounds
+rectangle.</p>
+<p>When these functions move a window, a window-moved event is reported to
+the window. This results in the <span class="hclass">BWindow</span>’s
+<a class="reference internal" href="#_CPPv4N7BWindow10FrameMovedEP6BPoint" title="BWindow::FrameMoved"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FrameMoved()</span></code></a> function being
+called.</p>
+<section id="_CPPv4NK7BWindow11NeedsUpdateEv">
+</section>
+<h3>
+NeedsUpdate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">NeedsUpdate</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if any of the views within the window need to be updated,
+and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if they’re all up-to-date.</p>
+<section id="_CPPv4N7BWindow19OpenViewTransactionEv">
+</section>
+<section id="_CPPv4N7BWindow21CommitViewTransactionEv">
+</section>
+<h3>
+OpenViewTransaction(), CommitViewTransaction()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">OpenViewTransaction</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">CommitViewTransaction</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These two functions bracket a series of “batched” drawing instructions.
+After you call <span class="hmethod">OpenViewTransaction()</span>, everything you draw in the window
+is bundled up and then sent to the app server (and rendered) when you
+call <span class="hmethod">CommitViewTransaction()</span>. You can only perform one transaction (per
+window) at a time. The <span class="hclass">BWindow</span> must be locked when you call
+<span class="hmethod">OpenViewTransaction()</span>, and must remain locked until after you call
+<span class="hmethod">CommitViewTransaction()</span>. Invocations of
+<a class="reference internal" href="#_CPPv4NK7BWindow5FlushEv" title="BWindow::Flush"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Flush()</span></code></a> are ignored while a
+transaction is open (and locked).</p>
+<section id="_CPPv4N7BWindow4QuitEv">
+</section>
+<h3>
+Quit()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Quit</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Quit()</span> removes the window from the screen, deletes all the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s in its
+view hierarchy, destroys the window thread, removes the window’s
+connection to the Application Server, and deletes the <span class="hclass">BWindow</span> object.</p>
+<p>Use this function, rather than the delete operator, to destroy a window.</p>
+<p><span class="hclass">BWindow</span>’s <span class="hmethod">Quit()</span> works much like the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code> function it overrides. When
+called from the <span class="hclass">BWindow</span>’s thread, it doesn’t return. When called from
+another thread, it returns after all previously posted messages have been
+processed and the <span class="hclass">BWindow</span> and its thread have been destroyed.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The window must be locked when you call <span class="hmethod">Quit()</span>.</p>
+</div>
+<p>See also:
+<a class="reference internal" href="../application/looper.html#_CPPv4N7BLooper13QuitRequestedEv" title="BLooper::QuitRequested"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::QuitRequested()</span></code></a>,
+<a class="reference internal" href="../application/looper.html#_CPPv4N7BLooper4QuitEv" title="BLooper::Quit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::Quit()</span></code></a>,
+<a class="reference internal" href="../application/application.html#_CPPv4N12BApplication13QuitRequestedEv" title="BApplication::QuitRequested"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BApplication::QuitRequested()</span></code></a></p>
+<section id="_CPPv4N7BWindow8ResizeByEff">
+</section>
+<section id="_CPPv4N7BWindow8ResizeToEff">
+</section>
+<h3>
+ResizeBy(), ResizeTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">ResizeBy</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">horizontal</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">vertical</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">ResizeTo</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">width</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><p>These functions resize the window, while keeping its left top corner
+constant. <span class="hmethod">ResizeBy()</span> adds <span class="hparameter">horizontal</span> pixels to the width of the window’s
+frame and <span class="hparameter">vertical</span> pixels to its height. <span class="hmethod">ResizeTo()</span> sets the frame
+absolutely to [<span class="hparameter">width</span>, <span class="hparameter">height</span>] pixels. Fractional components are rounded
+to the nearest whole number.</p>
+<p>The <a class="reference internal" href="#_CPPv4N7BWindow12FrameResizedEff" title="BWindow::FrameResized"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FrameResized()</span></code></a>
+hook function is called after the frame has been resized.</p>
+<section id="_CPPv4N7BWindow16ResolveSpecifierEP8BMessage5int32P8BMessage5int32PKc">
+</section>
+<h3>
+ResolveSpecifier()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">ResolveSpecifier</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">specifier</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">command</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">property</span><span class="sig-paren">)</span></pre><p>Resolves specifiers for the “Frame”, “Title”, and “View” properties. See
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Scripting()</span></code>”
+in the class overview for more information.</p>
+<p>See also:
+<a class="reference internal" href="../application/handler.html#_CPPv4N8BHandler16ResolveSpecifierEP8BMessage5int32P8BMessage5int32PKc" title="BHandler::ResolveSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::ResolveSpecifier()</span></code></a></p>
+<section id="_CPPv4N7BWindow10SendBehindEPK7BWindow">
+</section>
+<h3>
+SendBehind()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">SendBehind</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BWindow</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">window</span><span class="sig-paren">)</span></pre><p>Relayers the windows on the screen so this window is behind <span class="hparameter">window</span>.</p>
+<section id="_CPPv4N7BWindow16SetDefaultButtonEP7BButton">
+</section>
+<section id="_CPPv4NK7BWindow13DefaultButtonEv">
+</section>
+<h3>
+SetDefaultButton(), DefaultButton()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">SetDefaultButton</span><span class="sig-paren">(</span><span class="n">BButton</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">button</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BButton</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">DefaultButton</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Set and return the window’s default button. This is the button that’s
+mapped to the Enter key. The user can activate the default button at any
+time—even if another
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> is the focus view (the focus view will
+not receive a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_KEY_DOWN</span></code> message). To remove the current default (without
+promoting another button) call <code class="docutils literal notranslate"><span class="pre">SetDefaultButton(NULL)</span></code>. There can only be
+one default button at a time; <span class="hmethod">SetDefaultButton()</span> demotes the previous
+default.</p>
+<p>When you promote or demote a default button, it’s automatically
+redisplayed and receives a
+<a class="reference internal" href="button.html#_CPPv4N7BButton11MakeDefaultEb" title="BButton::MakeDefault"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BButton::MakeDefault()</span></code></a>
+call.</p>
+<section id="_CPPv4N7BWindow7SetFeelE11window_feel">
+</section>
+<section id="_CPPv4NK7BWindow4FeelEv">
+</section>
+<h3>
+SetFeel(), Feel()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">SetFeel</span><span class="sig-paren">(</span><span class="n">window_feel</span><span class="w"> </span><span class="n sig-param">feel</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">window_feel</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Feel</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetFeel()</span> changes the window’s feel to the specified value.</p>
+<p><span class="hmethod">Feel()</span> returns the current feel of the window.</p>
+<p>See the <span class="hclass">BWindow</span>
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code> for a list of
+window_feel constants.</p>
+<section id="_CPPv4N7BWindow8SetFlagsE6uint32">
+</section>
+<section id="_CPPv4NK7BWindow5FlagsEv">
+</section>
+<h3>
+SetFlags(), Flags()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">SetFlags</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">uint32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Flags</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetFlags()</span> set the window’s flags (or
+“user attributes”) to the specified
+combination. <span class="hmethod">Flags()</span> returns the current flags.</p>
+<p>See
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Window()</span></code>”. for a list of the flag values.</p>
+<section id="_CPPv4N7BWindow13SetKeyMenuBarEP8BMenuBar">
+</section>
+<section id="_CPPv4NK7BWindow10KeyMenuBarEv">
+</section>
+<h3>
+SetKeyMenuBar(), KeyMenuBar()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">SetKeyMenuBar</span><span class="sig-paren">(</span><span class="n">BMenuBar</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">menuBar</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMenuBar</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">KeyMenuBar</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetKeyMenuBar()</span> makes the specified
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code> object the “key” menu bar
+for the window—the object that’s at the root of the menu hierarchy
+that users can navigate using the keyboard. <span class="hmethod">KeyMenuBar()</span> returns the
+object with key status, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the window doesn’t have a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code>
+object in its view hierarchy.</p>
+<p>If a window contains only one
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code>
+view, it’s automatically
+designated the key menu bar. If there’s more than one
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code> in the
+window, the last one added to the window’s view hierarchy is considered
+to be the key one.</p>
+<p>If there’s a “true” menu bar displayed along the top of the window, its
+menu hierarchy is the one that users should be able to navigate with the
+keyboard. <span class="hmethod">SetKeyMenuBar()</span> can be called to make sure that the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code>
+object at the root of that hierarchy is the “key” menu bar.</p>
+<section id="_CPPv4N7BWindow7SetLookE11window_look">
+</section>
+<section id="_CPPv4NK7BWindow4LookEv">
+</section>
+<h3>
+SetLook(), Look()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">SetLook</span><span class="sig-paren">(</span><span class="n">window_look</span><span class="w"> </span><span class="n sig-param">look</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">window_look</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Look</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetLook()</span> changes the window’s look to the specified value.</p>
+<p><span class="hmethod">Look()</span> returns the current look of the window.</p>
+<p>See the <span class="hclass">BWindow</span>
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code> for a list of
+window_look constants.</p>
+<section id="_CPPv4N7BWindow12SetPulseRateE9bigtime_t">
+</section>
+<section id="_CPPv4N7BWindow9PulseRateEv">
+</section>
+<h3>
+SetPulseRate(), PulseRate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">SetPulseRate</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">microseconds</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">PulseRate</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions set and return how often
+<a class="reference internal" href="view.html#_CPPv4N5BView5PulseEv" title="BView::Pulse"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Pulse()</span></code></a> is called for the
+<span class="hclass">BWindow</span>’s views (how often <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PULSE</span></code> messages are posted to the window).
+All <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s attached to the same window share the same pulse rate.</p>
+<p>By turning on the <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PULSE_NEEDED</span></code> flag, a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> can request periodic
+<a class="reference internal" href="view.html#_CPPv4N5BView5PulseEv" title="BView::Pulse"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Pulse()</span></code></a>
+notifications. By default, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PULSE</span></code> messages are posted
+every 500,000 microseconds, as long as no other messages are pending. Each
+message causes <a class="reference internal" href="view.html#_CPPv4N5BView5PulseEv" title="BView::Pulse"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Pulse()</span></code></a> to be called
+once for every <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
+that requested the notification. There are no pulses if no <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s request them.</p>
+<p><span class="hmethod">SetPulseRate()</span> permits you to set a different interval. The interval set
+should not be less than 100,000 microseconds; differences less than
+50,000 microseconds may not be noticeable. A finer granularity can’t be
+guaranteed.</p>
+<p>Setting the pulse rate to 0 disables pulsing for all views in the window.</p>
+<p>See also:
+The <span class="hclass">BView</span> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code></p>
+<section id="_CPPv4N7BWindow13SetSizeLimitsEffff">
+</section>
+<section id="_CPPv4N7BWindow13GetSizeLimitsEPfPfPfPf">
+</section>
+<section id="_CPPv4N7BWindow13SetZoomLimitsEff">
+</section>
+<h3>
+SetSizeLimits(), GetSizeLimits(), SetZoomLimits()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">SetSizeLimits</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">minWidth</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">maxWidth</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">minHeight</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">maxHeight</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">GetSizeLimits</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">minWidth</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">maxWidth</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">minHeight</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">maxHeight</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">SetZoomLimits</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">maxWidth</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">maxHeight</span><span class="sig-paren">)</span></pre><p>These functions set and report limits on the size of the window. The user
+won’t be able to resize the window beyond the limits set by
+<span class="hmethod">SetSizeLimits()</span>–to make it have a width less than
+<span class="hparameter">minWidth</span> or
+greater than <span class="hparameter">maxWidth</span>, nor a height less than <span class="hparameter">minHeight</span> or greater than
+<span class="hparameter">maxHeight</span>. By default, the minimums are sufficiently small and the
+maximums sufficiently large to accommodate any window within reason.</p>
+<p><span class="hmethod">SetSizeLimits()</span> constrains the user, not the programmer. It’s legal for
+an application to set a window size that falls outside the permitted
+range. The limits are imposed only when the user attempts to resize the
+window; at that time, the window will jump to a size that’s within range.</p>
+<p><span class="hmethod">GetSizeLimits()</span> writes the current limits to the variables provided.</p>
+<p><span class="hmethod">SetZoomLimits()</span> sets the maximum size that the window will zoom to (when
+the <a class="reference internal" href="#_CPPv4N7BWindow4ZoomEv" title="BWindow::Zoom"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Zoom()</span></code></a> function is called).
+The maximums set by <span class="hmethod">SetSizeLimits()</span> also
+apply to zooming; the window will zoom to the screen size or to the
+smaller of the maximums set by these two functions.</p>
+<p>Since the sides of a window must line up on screen pixels, the values
+passed to both <span class="hmethod">SetSizeLimits()</span> and <span class="hmethod">SetZoomLimits()</span> should be whole
+numbers.</p>
+<section id="_CPPv4N7BWindow8SetTitleEPKc">
+</section>
+<section id="_CPPv4NK7BWindow5TitleEv">
+</section>
+<h3>
+SetTitle(), Title()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">SetTitle</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">newTitle</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Title</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the window’s title. <span class="hmethod">SetTitle()</span> replaces
+the current title with <span class="hparameter">newTitle</span>. It also renames the window thread in the
+following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;w&gt;newTitle&quot;</span>
+</pre></div>
+</div>
+<p>where as many characters of the <span class="hparameter">newTitle</span> are included in the thread name
+as will fit.</p>
+<p><span class="hmethod">Title()</span> returns a pointer to the current title. The returned string is
+null-terminated. It belongs to the <span class="hclass">BWindow</span> object, which may alter the
+string or free the memory where it resides without notice. Applications
+should ask for the title each time it’s needed and make a copy for their
+own purposes.</p>
+<p>A window’s title and thread name are originally set by an argument passed
+to the <span class="hclass">BWindow</span> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>.</p>
+<section id="_CPPv4N7BWindow7SetTypeE11window_type">
+</section>
+<section id="_CPPv4NK7BWindow4TypeEv">
+</section>
+<h3>
+SetType(), Type()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">SetType</span><span class="sig-paren">(</span><span class="n">window_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">window_type</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Type</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetType()</span> changes the type of the window to the specified value.
+<span class="hmethod">Type()</span> returns the type. You normally set the window’s type when it’s
+constructed.</p>
+<p>The type is set at construction (or by <span class="hmethod">SetType()</span>) as one of the following
+constants (full descriptions can be found in the discussion of the
+<span class="hclass">BWindow</span> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>):</p>
+<ul class="simple">
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_UNTYPED_WINDOW</span></code></p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MODAL_WINDOW</span></code></p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BORDERED_WINDOW</span></code></p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TITLED_WINDOW</span></code></p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DOCUMENT_WINDOW</span></code></p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FLOATING_WINDOW</span></code></p></li>
+</ul>
+<section id="_CPPv4N7BWindow18SetWindowAlignmentE16window_alignment5int325int325int325int325int325int325int325int32">
+</section>
+<section id="_CPPv4NK7BWindow18GetWindowAlignmentEP16window_alignmentP5int32P5int32P5int32P5int32P5int32P5int32P5int32P5int32">
+</section>
+<h3>
+SetWindowAlignment(), GetWindowAlignment()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">SetWindowAlignment</span><span class="sig-paren">(</span><span class="n">window_alignment</span><span class="w"> </span><span class="n sig-param">mode</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">h</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">hOffset</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">width</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">widthOffset</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">vOffset</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">height</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">heightOffset</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">GetWindowAlignment</span><span class="sig-paren">(</span><span class="n">window_alignment</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">hOffset</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">width</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">widthOffset</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">v</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">vOffset</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">height</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">heightOffset</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetWindowAlignment()</span> sets the current alignment of
+the window content on the screen. <span class="hparameter">mode</span> is either
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PIXEL_ALIGNMENT</span></code> or
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BYTE_ALIGNMENT</span></code>.</p>
+<p>If <span class="hparameter">mode</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PIXEL_ALIGNMENT</span></code>,
+<span class="hmethod">SetWindowAlignment()</span> aligns the window in pixel
+coordinates. <span class="hparameter">h</span> and <span class="hparameter">hOffset</span>
+together determine the horizontal alignment: <span class="hparameter">h</span> gives
+the horizontal origin step while <span class="hparameter">hOffset</span> is the
+horizontal offset. <span class="hparameter">hOffset</span> must be between 1 and
+<span class="hparameter">h</span> (as a convenience, 0 is taken to mean 1). For
+example, if <span class="hparameter">h</span> is 4 and <span class="hparameter">hOffset</span>
+is 1, valid horizontal origins would be …, -7, -3, 1, 5, 9, … Similarly,
+<span class="hparameter">width</span>/<span class="hparameter">widthOffset</span>,
+<span class="hparameter">v</span>/<span class="hparameter">vOffset</span>,
+<span class="hparameter">height</span>/<span class="hparameter">heightOffset</span> give you
+control over the other window parameters.</p>
+<p>If <span class="hparameter">mode</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BYTE_ALIGNMENT</span></code>, then the alignment is given in terms of
+frame buffer offsets. However, the setting only affects the horizontal
+origin and width. You can’t align the right and bottom edges in
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BYTE_ALIGNMENT</span></code> mode.</p>
+<p><span class="hmethod">GetWindowAlignment()</span> returns the current window alignment.</p>
+<p>Both methods return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_ERROR</span></code> on success and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code> otherwise.</p>
+<section id="_CPPv4N7BWindow13SetWorkspacesE6uint32">
+</section>
+<section id="_CPPv4NK7BWindow10WorkspacesEv">
+</section>
+<h3>
+SetWorkspaces(), Workspaces()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">SetWorkspaces</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">workspaces</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">uint32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Workspaces</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the set of workspaces where the window can
+be displayed. The workspaces argument passed to <span class="hmethod">SetWorkspaces()</span> and the
+value returned by <span class="hmethod">Workspaces()</span> is a bitfield with one bit set for each
+workspace in which the window can appear. Usually a window appears in
+just one workspace.</p>
+<p><span class="hmethod">SetWorkspaces()</span> can associate a window with workspaces that don’t exist
+yet. The window will appear in those workspaces if and when the user
+creates them.</p>
+<p>You can pass <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CURRENT_WORKSPACE</span></code> as the <span class="hparameter">workspaces</span> argument to place the
+window in the workspace that’s currently displayed (the active workspace)
+and remove it from all others, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ALL_WORKSPACES</span></code> to make sure the
+window shows up in all workspaces, including any new ones that the user
+might create. <span class="hmethod">Workspaces()</span> may return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ALL_WORKSPACES</span></code>, but will identify
+the current workspace rather than return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CURRENT_WORKSPACE</span></code>.</p>
+<p>Changing a <span class="hclass">BWindow</span>’s set of workspaces causes it to be notified with a
+<a class="reference internal" href="#_CPPv4N7BWindow17WorkspacesChangedE6uint326uint32" title="BWindow::WorkspacesChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">WorkspacesChanged()</span></code></a> function call.</p>
+<p>See also:
+the <span class="hclass">BWindow</span> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code></p>
+<section id="_CPPv4N7BWindow4ShowEv">
+</section>
+<section id="_CPPv4N7BWindow4HideEv">
+</section>
+<section id="_CPPv4NK7BWindow8IsHiddenEv">
+</section>
+<section id="_CPPv4N7BWindow8MinimizeEb">
+</section>
+<section id="_CPPv4NK7BWindow11IsMinimizedEv">
+</section>
+<h3>
+Show(), Hide(), IsHidden(), Minimize(), IsMinimized()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Show</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Hide</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">IsHidden</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">Minimize</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">minimize</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">IsMinimized</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions hide and show the window.</p>
+<p><span class="hmethod">Show()</span> places the window frontmost on the screen
+(but behind any applicable floating or modal windows), places it on
+Deskbar’s window list, and makes it the active window. If this is the
+<span class="hclass">BWindow</span>’s first <span class="hmethod">Show()</span>, the
+object’s message loop is started, and the object is unlocked.</p>
+<p><span class="hmethod">Hide()</span> removes the window from the screen, removes
+it from Deskbar’s window list, and passes active status to some other window
+(if this is the active window). If <span class="hmethod">Hide()</span> is called
+more than once, you’ll need to call <span class="hmethod">Show()</span> an equal
+number of times for the window to become visible again.</p>
+<p><span class="hmethod">Minimize()</span> hides and shows the window (and passes
+active status), as <span class="hparameter">minimize</span> is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>. The difference
+between this function and
+<span class="hmethod">Hide()</span>/<span class="hmethod">Show()</span> is that
+<span class="hmethod">Minimize()</span> dims (and undims) the window’s entry in
+Deskbar’s window list, but doesn’t remove the entry altogether. Also, a
+single <code class="docutils literal notranslate"><span class="pre">Minimize(false)</span></code> “undoes” any number of
+<code class="docutils literal notranslate"><span class="pre">Minimize(true)</span></code> calls.</p>
+<p><span class="hmethod">Minimize()</span> also acts as a hook that’s invoked when
+the user double-clicks the window’s title tab or selects the window from
+DeskBar’s window list. If <span class="hparameter">minimize</span> is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the window is about to be hidden; if
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, it’s about to be shown. The
+<span class="hmethod">Minimize()</span> function itself does the hiding and
+showing–if you override <span class="hmethod">Minimize()</span> and you
+want to inherit the <span class="hclass">BWindow</span> behaviour, you must call
+<span class="hmethod">BWindow::Minimize()</span> in your implementation.</p>
+<p><span class="hmethod">IsHidden()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the
+window is currently hidden (i.e. through <span class="hmethod">Hide()</span>).
+<span class="hmethod">IsMinimized()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if
+the window is minimized. Hiding takes precendence over minimization. For
+example, in both of these sequences…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">window</span><span class="o">-&gt;</span><span class="n">Hide</span><span class="p">();</span>
+<span class="n">window</span><span class="o">-&gt;</span><span class="n">Minimize</span><span class="p">(</span><span class="n">true</span><span class="p">);</span>
+<span class="o">/*</span> <span class="ow">or</span> <span class="o">*/</span>
+<span class="n">window</span><span class="o">-&gt;</span><span class="n">Minimize</span><span class="p">(</span><span class="n">true</span><span class="p">);</span>
+<span class="n">window</span><span class="o">-&gt;</span><span class="n">Hide</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>…the window is hidden but not minimized.</p>
+<p>See also: <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MINIMIZE</span></code></p>
+<section id="_CPPv4N7BWindow14UpdateIfNeededEv">
+</section>
+<h3>
+UpdateIfNeeded()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindow</span><span class="p">::</span></span><span class="n">UpdateIfNeeded</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Immediately and synchronously invokes
+<a class="reference internal" href="view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a> on each child view that
+needs updating. This function is ignored if its called from any thread
+other than the <span class="hclass">BWindow</span>’s message loop. You call it as part of the
+implementation of a user interface hook function (
+<a class="reference internal" href="view.html#_CPPv4N5BView10MouseMovedE6BPoint6uint32PK8BMessage" title="BView::MouseMoved"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MouseMoved()</span></code></a>,
+<a class="reference internal" href="view.html#_CPPv4N5BView7KeyDownEPKc5int32" title="BView::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">KeyDown()</span></code></a>(),
+et. al.) to force invalid views to be immediately redrawn
+without having to wait for the hook function to finish. See
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Drawing()</span></code> for details and an example.</p>
+</section>
+<section id="static-functions">
+<h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>See <a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a></p>
+</section>
+<section id="constants-and-defined-types">
+<h2>Constants and Defined Types<a class="headerlink" href="#constants-and-defined-types" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>The window_look constants define the appearance of the window–the
+look of its title tab, border, and the type of “resize control” (in the
+bottom right corner of the window). The look is set in the constructor or
+in the <a class="reference internal" href="#_CPPv4N7BWindow7SetLookE11window_look" title="BWindow::SetLook"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetLook()</span></code></a>
+function. The table below lists and briefly describes
+the window_look values.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DOCUMENT_WINDOW_LOOK</span></code></p></td>
+<td><p>Large title bar, thick border, draggable “resizebox”.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TITLED_WINDOW_LOOK</span></code></p></td>
+<td><p>Same as the document window, but with a less substantial “resize corner”.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FLOATING_WINDOW_LOOK</span></code></p></td>
+<td><p>Small title bar, thin border, resize corner.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MODAL_WINDOW_LOOK</span></code></p></td>
+<td><p>No title bar, thick border, no resize control (by convention; see the <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NOT_RESIZABLE</span></code> window flag).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BORDERED_WINDOW_LOOK</span></code></p></td>
+<td><p>No title bar, line border, no resize control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_BORDER_WINDOW_LOOK</span></code></p></td>
+<td><p>A borderless white rectangle. The user can’t move or close this window.</p></td>
+</tr>
+</tbody>
+</table>
+<h3>
+</h3><p>The window_feel constants govern a window’s behavior in relation to other
+windows. The feel is set in the <span class="hclass">BWindow</span> constructor or in
+<a class="reference internal" href="#_CPPv4N7BWindow7SetFeelE11window_feel" title="BWindow::SetFeel"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFeel()</span></code></a>. The
+table below briefly describes the window feels.</p>
+<ul class="simple">
+<li><p>To set a window’s subset, use <a class="reference internal" href="#_CPPv4N7BWindow11AddToSubsetEP7BWindow" title="BWindow::AddToSubset"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddToSubset()</span></code></a>.</p></li>
+<li><p>Modal windows are drawn in front of floating windows.</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NORMAL_WINDOW_FEEL</span></code></p></td>
+<td><p>Behaves like a normal window (non-modal, non-floating).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MODAL_SUBSET_WINDOW_FEEL</span></code>,<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MODAL_APP_WINDOW_FEEL</span></code>,<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MODAL_ALL_WINDOW_FEEL</span></code></p></td>
+<td><p>When displayed, blocks all windows in its subset1, app, or across the entire system. A modal subset/app window is visible only if a window in its subset/app is visible. Modal all windows are always visible in all workspaces</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FLOATING_SUBSET_WINDOW_FEEL</span></code>,<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FLOATING_APP_WINDOW_FEEL</span></code>,<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FLOATING_ALL_WINDOW_FEEL</span></code></p></td>
+<td><p>Floats above all windows in its subset1, app, or across the entire system. A floating subset/app window is visible only if a window in its subset/app is frontmost. Floating all windows are always visible in all workspaces.</p></td>
+</tr>
+</tbody>
+</table>
+<h3>
+</h3><p>The window_type constants are pre-defined combinations of looks and
+feels. You set the type through the <span class="hclass">BWindow</span>
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code> or
+<a class="reference internal" href="#_CPPv4N7BWindow7SetTypeE11window_type" title="BWindow::SetType"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetType()</span></code></a>.</p>
+<p>Window TypeLook and FeelB_TITLED_WINDOWB_TITLED_WINDOW_LOOK and B_NORMAL_WINDOW_FEEL.B_DOCUMENT_WINDOWB_DOCUMENT_WINDOW_LOOK and B_NORMAL_WINDOW_FEEL.B_MODAL_WINDOWB_MODAL_WINDOW_LOOK and B_MODAL_APP_WINDOW_FEEL.B_FLOATING_WINDOWB_FLOATING_WINDOW_LOOK and B_FLOATING_APP_WINDOW_FEEL.B_BORDERED_WINDOWB_BORDERED_WINDOW_LOOK and B_NORMAL_WINDOW_FEEL.B_UNTYPED_WINDOWA window of unknown or undefined type.</p>
+<h3>
+</h3><p>The window flags (or “user attributes”) define miscellaneous aspects of
+the window’s interface, such as whether it can be moved or closed by the
+user. You combine the flags that you want and pass them to the <span class="hclass">BWindow</span>
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code> or
+<a class="reference internal" href="#_CPPv4N7BWindow8SetFlagsE6uint32" title="BWindow::SetFlags"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFlags()</span></code></a>.</p>
+<p>The default behavior is the inverse of all these flags–i.e. a
+window is normally movable, closable, resizable, and so on. However, some
+window looks and feels cause imply some of these flags. For example, a
+modal feel window can’t be minimized (hidden)</p>
+<p>Window FlagDescriptionB_NOT_MOVABLEPrevents the user from being able to move the window.B_NOT_CLOSABLEPrevents the user from closing the window.B_NOT_ZOOMABLEPrevents the user from zooming the window.B_NOT_MINIMIZABLEPrevents the user from hiding the window by double-clicking the title tab.B_NOT_H_RESIZABLE B_NOT_V_RESIZABLE B_NOT_RESIZABLEPrevents the user from resizing the window horizontally and/or vertically (B_NOT_RESIZABLE is the same as the sum of the other two constants).B_OUTLINE_RESIZEThe window draws only the outline of its new dimensions as it’s being resized, and doesn’t refresh its contents.B_WILL_ACCEPT_FIRST_CLICKTells a non-active window to process an activating mouse click (the “first” mouse click) as if it were already active. The BView that responds to the mouse-down message must activate the window. By default, the first mouse click in a non-active window activates the window, and then the mouse click event is thrown away. B_AVOID_FRONTPrevents the window from becoming the frontmost window.B_AVOID_FOCUSPrevents the window from being the target of keyboard events.B_NO_WORKSPACE_ACTIVATIONWhen a window is first shown, the workspace normally switches to the one in which the window is displayed. Setting this flag keeps this from happening.B_NOT_ANCHORED_ON_ACTIVATETells the system to bring the window to the current workspace when the window is selected from Deskbar’s window list. Normally, selecting a window from the list activates the workspace that the window is currently in.B_ASYNCHRONOUS_CONTROLSTells the window to allow controls to run asynchronously. All windows that contain controls should include this flag (it’s off by default because of backwards compatibility).B_QUIT_ON_WINDOW_CLOSECurrently has no effect.</p>
+<h3>
+</h3><p>You tell a window which workspaces to appear through the constructor, or
+through the
+<a class="reference internal" href="#_CPPv4N7BWindow13SetWorkspacesE6uint32" title="BWindow::SetWorkspaces"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetWorkspaces()</span></code></a>
+function. In practice, the only two realistic
+settings are represented by these constants.</p>
+<p>Workspace ConstantDescriptionB_CURRENT_WORKSPACEAppear in the current workspace.B_ALL_WORKSPACESAppear in all workspaces.</p>
+</section>
+<section id="scripting-support">
+<h2>Scripting Support<a class="headerlink" href="#scripting-support" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>B_WINDOW_MOVE_BY, B_WINDOW_MOVE_TOMessageDescriptionB_WINDOW_MOVE_BYMoves the window by the distance specified by the B_POINT_TYPE field data.B_WINDOW_MOVE_TOMoves the window to the position specified by the B_POINT_TYPE field data.
+FeelThe Feel property represents the workspaces in which the window resides. The messages are equivalent to manipulating the window with the <a class="reference internal" href="#_CPPv4NK7BWindow4FeelEv" title="BWindow::Feel"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Feel()</span></code></a> and <a class="reference internal" href="#_CPPv4N7BWindow7SetFeelE11window_feel" title="BWindow::SetFeel"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFeel()</span></code></a> methods.MessageSpecifiersDescriptionB_GET_PROPERTYB_DIRECT_SPECIFIERReturns the current feel of the window.B_SET_PROPERTYB_DIRECT_SPECIFIERSets the feel of the window.
+FlagsThe Flags property represents the window flags. The messages are equivalent to manipulating the window with the <a class="reference internal" href="#_CPPv4NK7BWindow5FlagsEv" title="BWindow::Flags"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Flags()</span></code></a> and <a class="reference internal" href="#_CPPv4N7BWindow8SetFlagsE6uint32" title="BWindow::SetFlags"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFlags()</span></code></a> methods.MessageSpecifiersDescriptionB_GET_PROPERTYB_DIRECT_SPECIFIERReturns the current flags of the window.B_SET_PROPERTYB_DIRECT_SPECIFIERSets the window flags.
+FrameThe Frame property represents the frame rectangle of the window. The frame is passed as a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code> (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_RECT_TYPE</span></code>).MessageSpecifiersDescriptionB_GET_PROPERTYB_DIRECT_SPECIFIERReturns the window’s frame rectangle.B_SET_PROPERTYB_DIRECT_SPECIFIERSets the window’s frame rectangle.
+HiddenThe “Hidden” property determines the visibility of the window. The messages are equivalent to manipulating the window with the <a class="reference internal" href="#_CPPv4NK7BWindow8IsHiddenEv" title="BWindow::IsHidden"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">IsHidden()</span></code></a>, <a class="reference internal" href="#_CPPv4N7BWindow4HideEv" title="BWindow::Hide"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Hide()</span></code></a> and <a class="reference internal" href="#_CPPv4N7BWindow4ShowEv" title="BWindow::Show"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Show()</span></code></a> methods with one caveat: nested <a class="reference internal" href="#_CPPv4N7BWindow4HideEv" title="BWindow::Hide"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Hide()</span></code></a> and <a class="reference internal" href="#_CPPv4N7BWindow4ShowEv" title="BWindow::Show"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Show()</span></code></a> calls are disabled so that multiple scripted “hides” are undone with a single scripted “show”.MessageSpecifiersDescriptionB_GET_PROPERTYB_DIRECT_SPECIFIERReturns true if the window is hidden; false otherwise.B_SET_PROPERTYB_DIRECT_SPECIFIERHides or shows the window.
+LookThe “Look” property represents the constant that indicates how the window appears. The messages are equivalent to manipulating the window with the <a class="reference internal" href="#_CPPv4NK7BWindow4LookEv" title="BWindow::Look"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Look()</span></code></a> and <a class="reference internal" href="#_CPPv4N7BWindow7SetLookE11window_look" title="BWindow::SetLook"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetLook()</span></code></a> methods.MessageSpecifiersDescriptionB_GET_PROPERTYB_DIRECT_SPECIFIERReturns the current look of the window.B_SET_PROPERTYB_DIRECT_SPECIFIERSets the look of the window.
+MenuBarThe “MenuBar” property pops the current specifier off the specifier stack and then passes the scripting message to the key menu bar. If no such menu b/r is present, then an error is returned.MessageSpecifiersDescriptionanyB_DIRECT_SPECIFIERDirects the scripting message to the key menu bar.
+MinimizeThe “Minimize” property controls the whether the window is minimized or not. The message is equivalent to manipulating the window with the <a class="reference internal" href="#_CPPv4N7BWindow8MinimizeEb" title="BWindow::Minimize"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Minimize()</span></code></a> method.MessageSpecifiersDescriptionB_SET_PROPERTYB_DIRECT_SPECIFIERMinimizes the window if “data” is true; restores otherwise.
+TitleThe “Title” property represents the title of the window. The messages are equivalent to manipulating the window with the <a class="reference internal" href="#_CPPv4NK7BWindow5TitleEv" title="BWindow::Title"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Title()</span></code></a> and <a class="reference internal" href="#_CPPv4N7BWindow8SetTitleEPKc" title="BWindow::SetTitle"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTitle()</span></code></a> methods.MessageSpecifiersDescriptionB_DIRECT_SPECIFIERReturns a string containing the window title. B_SET_PROPERTYB_DIRECT_SPECIFIERSets the window title.
+ViewThe “View” property redirects all requests to the window’s top view without popping the specifier from the stack.MessageSpecifiersDescriptionanyanyDirects the scripting message to the top view without popping the current specifier.
+WorkspacesThe “Workspaces” property represents the workspaces in which the window resides. The messages are equivalent to manipulating the window with the <a class="reference internal" href="#_CPPv4NK7BWindow10WorkspacesEv" title="BWindow::Workspaces"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Workspaces()</span></code></a> and <a class="reference internal" href="#_CPPv4N7BWindow13SetWorkspacesE6uint32" title="BWindow::SetWorkspaces"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetWorkspaces()</span></code></a> methods.MessageSpecifiersDescriptionB_GET_PROPERTYB_DIRECT_SPECIFIERReturns int32 bitfield of the workspaces in which the window appears.B_SET_PROPERTYB_DIRECT_SPECIFIERSets the workspaces in which the window appears.</p>
+</section>
+<section id="archived-fields">
+<h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="view.html">BView</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../kernel/areas.html">Areas</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

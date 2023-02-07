@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMessageQueue &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMessenger" href="messenger.html" />
+    <link rel="prev" title="BMessage" href="message-new.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMessageQueue</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="message-new.html">BMessage</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="messenger.html">BMessenger</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BMessageQueue</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N13BMessageQueue13BMessageQueueEv">BMessageQueue</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BMessageQueueD0Ev">~BMessageQueue</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N13BMessageQueue10AddMessageEP8BMessage">AddMessage</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BMessageQueue13RemoveMessageEP8BMessage">RemoveMessage</a></li>
+<li><a class="reference internal" href="#_CPPv4NK13BMessageQueue13CountMessagesEv">CountMessages</a></li>
+<li><a class="reference internal" href="#_CPPv4NK13BMessageQueue7IsEmptyEv">IsEmpty</a></li>
+<li><a class="reference internal" href="#_CPPv4NK13BMessageQueue11FindMessageE5int32">FindMessage</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BMessageQueue4LockEv">Lock</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BMessageQueue6UnlockEv">Unlock</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BMessageQueue11NextMessageEv">NextMessage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmessagequeue">
+<h1>BMessageQueue<a class="headerlink" href="#bmessagequeue" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N13BMessageQueue13BMessageQueueEv">
+</section>
+<h3>
+BMessageQueue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BMessageQueue13BMessageQueueEv" title="BMessageQueue::BMessageQueue"><span class="n">BMessageQueue</span></a><span class="p">::</span></span><span class="n">BMessageQueue</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Creates an empty <span class="hclass">BMessageQueue</span> object.</p>
+<section id="_CPPv4N13BMessageQueueD0Ev">
+</section>
+<h3>
+~BMessageQueue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMessageQueue</span><span class="p">::</span></span><span class="n">~BMessageQueue</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Deletes all the objects in the queue and all the data structures used
+to manage the queue.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N13BMessageQueue10AddMessageEP8BMessage">
+</section>
+<section id="_CPPv4N13BMessageQueue13RemoveMessageEP8BMessage">
+</section>
+<h3>
+AddMessage(), RemoveMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMessageQueue</span><span class="p">::</span></span><span class="n">AddMessage</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMessageQueue</span><span class="p">::</span></span><span class="n">RemoveMessage</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p><span class="hmethod">AddMessage()</span> adds message to the far end of the
+queue. <span class="hmethod">RemoveMessage()</span> removes a particular
+message from the queue and deletes it.</p>
+<section id="_CPPv4NK13BMessageQueue13CountMessagesEv">
+</section>
+<section id="_CPPv4NK13BMessageQueue7IsEmptyEv">
+</section>
+<h3>
+CountMessages(), IsEmpty()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMessageQueue</span><span class="p">::</span></span><span class="n">CountMessages</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMessageQueue</span><span class="p">::</span></span><span class="n">IsEmpty</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">CountMessages()</span> returns the number of
+messages currently in the queue.
+<span class="hmethod">IsEmpty()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the
+object doesn’t contain any messages, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>
+otherwise.</p>
+<section id="_CPPv4NK13BMessageQueue11FindMessageE5int32">
+</section>
+<h3>
+FindMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMessageQueue</span><span class="p">::</span></span><span class="n">FindMessage</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMessageQueue</span><span class="p">::</span></span><span class="n">FindMessage</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">what</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">FindMessage()</span> returns a pointer to the
+<span class="hparameter">index</span>’th
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> in the
+queue, where index 0 signifies the message that’s been in the queue the
+longest. The second version lets you specify a <span class="hparameter">what</span>
+field value; in this case, only messages that match the <span class="hparameter">what</span> argument are
+counted. If no message matches the criteria, the functions return
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p>The message is not removed from the message queue.</p>
+<section id="_CPPv4N13BMessageQueue4LockEv">
+</section>
+<section id="_CPPv4N13BMessageQueue6UnlockEv">
+</section>
+<h3>
+Lock(), Unlock()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMessageQueue</span><span class="p">::</span></span><span class="n">Lock</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMessageQueue</span><span class="p">::</span></span><span class="n">Unlock</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions lock and unlock the <span class="hclass">BMessageQueue</span>,
+so that another thread won’t alter the contents of the queue while it’s
+being read. <span class="hmethod">Lock()</span> doesn’t return until it has
+the queue locked; it always returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>.
+<span class="hmethod">Unlock()</span> releases the lock so that someone else
+can lock it. Calls to these functions can be nested.
+See also:
+<a class="reference internal" href="looper.html#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::Lock()</span></code></a></p>
+<section id="_CPPv4N13BMessageQueue11NextMessageEv">
+</section>
+<h3>
+NextMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMessageQueue</span><span class="p">::</span></span><span class="n">NextMessage</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Removes and returns the oldest message from the queue. If the queue is
+empty, the function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.
+See also:
+<a class="reference internal" href="#_CPPv4NK13BMessageQueue11FindMessageE5int32" title="BMessageQueue::FindMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindMessage()</span></code></a></p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="message-new.html">BMessage</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="messenger.html">BMessenger</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

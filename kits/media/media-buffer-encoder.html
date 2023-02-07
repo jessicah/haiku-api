@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMediaBufferEncoder &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMediaDecoder" href="media-decoder.html" />
+    <link rel="prev" title="BMediaBufferDecoder" href="media-buffer-decoder.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMediaBufferEncoder</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-buffer-decoder.html">BMediaBufferDecoder</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-decoder.html">BMediaDecoder</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BMediaBufferEncoder</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N19BMediaBufferEncoder19BMediaBufferEncoderEv">BMediaBufferEncoder</a></li>
+<li><a class="reference internal" href="#_CPPv4N19BMediaBufferEncoderD0Ev">~BMediaBufferEncoder</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N19BMediaBufferEncoder14EncodeToBufferEPvP6size_tPKv5int64P17media_encode_info">EncodeToBuffer</a></li>
+<li><a class="reference internal" href="#_CPPv4NK19BMediaBufferEncoder9InitCheckEv">InitCheck</a></li>
+<li><a class="reference internal" href="#_CPPv4N19BMediaBufferEncoder10WriteChunkEPKv6size_tP17media_encode_info">WriteChunk</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmediabufferencoder">
+<h1>BMediaBufferEncoder<a class="headerlink" href="#bmediabufferencoder" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N19BMediaBufferEncoder19BMediaBufferEncoderEv">
+</section>
+<h3>
+BMediaBufferEncoder()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N19BMediaBufferEncoder19BMediaBufferEncoderEv" title="BMediaBufferEncoder::BMediaBufferEncoder"><span class="n">BMediaBufferEncoder</span></a><span class="p">::</span></span><span class="n">BMediaBufferEncoder</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N19BMediaBufferEncoder19BMediaBufferEncoderEPK12media_format" title="BMediaBufferEncoder::BMediaBufferEncoder"><span class="n">BMediaBufferEncoder</span></a><span class="p">::</span></span><span class="n">BMediaBufferEncoder</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outputFormat</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N19BMediaBufferEncoder19BMediaBufferEncoderEPK16media_codec_info" title="BMediaBufferEncoder::BMediaBufferEncoder"><span class="n">BMediaBufferEncoder</span></a><span class="p">::</span></span><span class="n">BMediaBufferEncoder</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_codec_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mci</span><span class="sig-paren">)</span></pre><p>The constructor sets up the <span class="hclass">BMediaBufferEncoder</span>.
+If you use the empty form of the constructor, you’ll have to call
+<a class="reference internal" href="media-encoder.html#_CPPv4N13BMediaEncoder5SetToEPK12media_format" title="BMediaEncoder::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>
+to establish the format to be encoded before calling
+<a class="reference internal" href="media-encoder.html#_CPPv4N13BMediaEncoder6EncodeEPv5int64P17media_encode_info" title="BMediaEncoder::Encode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Encode()</span></code></a>.
+The second form accepts a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+structure, <span class="hparameter">inFormat</span>, that
+indicates the type of media data that will be input into the encoder.
+The third form of the constructor accepts a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">codec()</span></code> structure,
+<span class="hparameter">mci</span>, that determines which codec should be used.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>If you use either the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+or <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">codec()</span></code>
+form of the constructor, you must call
+<a class="reference internal" href="#_CPPv4NK19BMediaBufferEncoder9InitCheckEv" title="BMediaBufferEncoder::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>
+to ensure that construction was
+successful before using any other functions in this class.</p>
+</div>
+<section id="_CPPv4N19BMediaBufferEncoderD0Ev">
+</section>
+<h3>
+~BMediaBufferEncoder()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaBufferEncoder</span><span class="p">::</span></span><span class="n">~BMediaBufferEncoder</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Releases the encoder add-on being used by the
+<span class="hclass">BMediaBufferEncoder</span>.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N19BMediaBufferEncoder14EncodeToBufferEPvP6size_tPKv5int64P17media_encode_info">
+</section>
+<h3>
+EncodeToBuffer()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaBufferEncoder</span><span class="p">::</span></span><span class="n">EncodeToBuffer</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outputBuffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outputSize</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inputBuffer</span>, <span class="n">int64</span><span class="w"> </span><span class="n sig-param">frameCount</span>, <span class="n">media_encode_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><p>Encodes a chunk of media data from the input buffer by
+<span class="hparameter">inputBuffer</span>, which contains
+<span class="hparameter">frameCount</span> frames of data. The encoded data is
+written into the buffer indicated by
+<span class="hparameter">outputBuffer</span>. On return,
+<span class="hparameter">outputSize</span> indicates how many bytes of data were
+written into the buffer.
+The
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">encode()</span></code>
+structure info is used on input to specify encoding
+parameters.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>The encoder’s <a class="reference internal" href="media-encoder.html#_CPPv4N13BMediaEncoder6EncodeEPv5int64P17media_encode_info" title="BMediaEncoder::Encode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Encode()</span></code></a> function can return errors.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4NK19BMediaBufferEncoder9InitCheckEv">
+</section>
+<h3>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaBufferEncoder</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a status_t value indicating whether or not construction was
+successful. You must call this function after construction before calling
+any other <span class="hclass">BMediaBufferEncoder</span> functions.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>The constructor was successful.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>See <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaEncoder</span></code>’s <a class="reference internal" href="media-encoder.html#_CPPv4N13BMediaEncoder5SetToEPK12media_format" title="BMediaEncoder::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> function.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N19BMediaBufferEncoder10WriteChunkEPKv6size_tP17media_encode_info">
+</section>
+<h3>
+WriteChunk()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaBufferEncoder</span><span class="p">::</span></span><span class="n">WriteChunk</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">chunkData</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">chunkLength</span>, <span class="n">media_encode_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Implemented to write the encoded media data into the buffer specified
+when
+<a class="reference internal" href="#_CPPv4N19BMediaBufferEncoder14EncodeToBufferEPvP6size_tPKv5int64P17media_encode_info" title="BMediaBufferEncoder::EncodeToBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">EncodeToBuffer()</span></code></a>
+was called.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-buffer-decoder.html">BMediaBufferDecoder</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-decoder.html">BMediaDecoder</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

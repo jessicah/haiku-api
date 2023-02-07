@@ -1,0 +1,530 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BWindowScreen &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="../input/example-table.html" />
+    <link rel="prev" title="BStreamingGameSound" href="streaming-game-sound.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BWindowScreen</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="streaming-game-sound.html">BStreamingGameSound</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../input/example-table.html">&lt;no title&gt;</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BWindowScreen</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen13BWindowScreenEPKc6uint32P8status_tb">BWindowScreen</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreenD0Ev">~BWindowScreen</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hook-functions">Hook Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen15ScreenConnectedEb">ScreenConnected</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen21CanControlFrameBufferEv">CanControlFrameBuffer</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen10CardHookAtE5int32">CardHookAt</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen8CardInfoEv">CardInfo</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen10DisconnectEv">Disconnect</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen15FrameBufferInfoEv">FrameBufferInfo</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen4HideEv">Hide</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen4ShowEv">Show</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen6IOBaseEv">IOBase</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen15MoveDisplayAreaE5int325int32">MoveDisplayArea</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen4QuitEv">Quit</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen14RegisterThreadE9thread_id">RegisterThread</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen7SuspendEPc">Suspend</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen14SuspensionHookEb">SuspensionHook</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen13ScreenChangedE5BRect11color_space">ScreenChanged</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen12SetColorListEP9rgb_color5int325int32">SetColorList</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen9ColorListEv">ColorList</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen14SetFrameBufferE5int325int32">SetFrameBuffer</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen8SetSpaceE6uint32">SetSpace</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen15WindowActivatedEb">WindowActivated</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BWindowScreen18WorkspaceActivatedE5int32b">WorkspaceActivated</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bwindowscreen">
+<h1>BWindowScreen<a class="headerlink" href="#bwindowscreen" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N13BWindowScreen13BWindowScreenEPKc6uint32P8status_tb">
+</section>
+<h3>
+BWindowScreen()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BWindowScreen13BWindowScreenEPKc6uint32P8status_tb" title="BWindowScreen::BWindowScreen"><span class="n">BWindowScreen</span></a><span class="p">::</span></span><span class="n">BWindowScreen</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">title</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">space</span>, <span class="n">status_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">error</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">debugging</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BWindowScreen</span> object by
+assigning the window a <span class="hparameter">title</span> and specifying a
+<span class="hparameter">space</span> configuration for the screen. The window won’t
+have a visible border or a tab in which to display the title to the user.
+However, others—such as the Workspaces
+application—can use the title to identify the window.
+The window is constructed to fill the screen; its frame rectangle
+contains every screen pixel when the screen is configured according to the
+<span class="hparameter">space</span> argument. That argument describes the pixel dimensions and
+bits-per-pixel depth of the screen that the
+<span class="hclass">BWindowScreen</span> object should establish when it
+obtains direct access to the frame buffer. It should be one of the
+following constants:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">B_8_BIT_640x480</span>    <span class="n">B_16_BIT_640x480</span>    <span class="n">B_32_BIT_640x480</span>
+<span class="n">B_8_BIT_800x600</span>    <span class="n">B_16_BIT_800x600</span>    <span class="n">B_32_BIT_800x600</span>
+<span class="n">B_8_BIT_1024x768</span>   <span class="n">B_16_BIT_1024x768</span>   <span class="n">B_32_BIT_1024x768</span>
+<span class="n">B_8_BIT_1152x900</span>   <span class="n">B_16_BIT_1152x900</span>   <span class="n">B_32_BIT_1152x900</span>
+<span class="n">B_8_BIT_1280x1024</span>  <span class="n">B_16_BIT_1280x1024</span>  <span class="n">B_32_BIT_1280x1024</span>
+<span class="n">B_8_BIT_1600x1200</span>  <span class="n">B_16_BIT_1600x1200</span>  <span class="n">B_32_BIT_1600x1200</span>
+</pre></div>
+</div>
+<p>These are the same constants that can be passed to
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">screen()</span></code>,
+the <span class="xref std std-ref">Interface Kit</span>
+function that preference applications call to configure
+the screen.
+The <span class="hparameter">space</span> configuration applies only
+while the <span class="hclass">BWindowScreen</span> object is in
+control of the screen. When it gives up control, the previous
+configuration is restored.
+The constructor assigns the window to the active workspace
+(<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CURRENT_WORKSPACE</span></code>). It fails if another
+<span class="hclass">BWindowScreen</span> object in any
+application is already assigned to the same workspace.
+To be sure there wasn’t an error in constructing the object, check
+the <span class="hparameter">error</span> argument. If all goes well, the
+constructor sets the <span class="hparameter">error</span> variable to
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>. If not, it sets it to
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>. If there’s an error, it’s likely to occur in
+this constructor, not the inherited
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> constructor.
+Since the underlying window will probably exist, you’ll need to instruct
+it to quit. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span> <span class="n">error</span><span class="p">;</span>
+<span class="n">MyWindowScreen</span><span class="o">*</span> <span class="n">screen</span> <span class="o">=</span>
+            <span class="n">new</span> <span class="n">MyWindowScreen</span><span class="p">(</span><span class="s2">&quot;Glacier&quot;</span><span class="p">,</span> <span class="n">B_8_BIT_1024x768</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">error</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span> <span class="n">error</span> <span class="o">!=</span> <span class="n">B_OK</span> <span class="p">)</span>
+   <span class="n">screen</span><span class="o">-&gt;</span><span class="n">PostMessage</span><span class="p">(</span><span class="n">B_QUIT_REQUESTED</span><span class="p">,</span> <span class="n">screen</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If the <span class="hparameter">debugging</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the
+<span class="hclass">BWindowScreen</span> is constructed in
+debugging mode. This modifies its behavior and enables three functions,
+<a class="reference internal" href="#_CPPv4N13BWindowScreen14RegisterThreadE9thread_id" title="BWindowScreen::RegisterThread"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RegisterThread()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N13BWindowScreen7SuspendEPc" title="BWindowScreen::Suspend"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Suspend()</span></code></a>, and
+<a class="reference internal" href="#_CPPv4N13BWindowScreen14SuspensionHookEb" title="BWindowScreen::SuspensionHook"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SuspensionHook()</span></code></a>.
+The debugging regime is described under those functions.
+See also: the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BScreen</span></code> class in the
+<span class="xref std std-ref">Interface Kit</span></p>
+<section id="_CPPv4N13BWindowScreenD0Ev">
+</section>
+<h3>
+~BWindowScreen()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">~BWindowScreen</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Closes the clone of the graphics card driver (through which the
+<span class="hclass">BWindowScreen</span> object established its connection to the screen), unloads
+it from the application, and cleans up after it.</p>
+</section>
+<section id="hook-functions">
+<h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N13BWindowScreen15ScreenConnectedEb">
+</section>
+<h3>
+ScreenConnected()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">ScreenConnected</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">connected</span><span class="sig-paren">)</span></pre><p>Implemented by derived classes to take action when the application gains
+direct access to the screen and when it’s about to lose that access.</p>
+<p>This function is called with the <span class="hparameter">connected</span> flag set to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> immediately
+after the <span class="hclass">BWindowScreen</span> object becomes the active window and establishes
+a direct connection to the graphics card driver for the screen. At that
+time, the Application Server’s connection to the screen is suspended;
+drawing can only be accomplished through the screen access that the
+<span class="hclass">BWindowScreen</span> object provides.</p>
+<p><span class="hmethod">ScreenConnected()</span> is called with a flag of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> just before the
+<span class="hclass">BWindowScreen</span> object is scheduled to lose its control over the screen and
+the Application Server’s control is reasserted. The <span class="hclass">BWindowScreen</span>’s
+connection to the screen will not be broken until this function returns.
+It should delay returning until the application has finished all current
+drawing and no longer needs direct screen access.</p>
+<p>Note that whenever <span class="hmethod">ScreenConnected()</span> is called, the <span class="hclass">BWindowScreen</span> object
+is guaranteed to be connected to the screen; if <span class="hparameter">connected</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, it
+just became connected, if <span class="hparameter">connected</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, it’s still connected but
+will be disconnected when the function returns.</p>
+<p>Derived classes typically use this function to regulate access to the
+screen. For example, they may acquire a semaphore when the <span class="hparameter">connected</span> flag
+is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, so that application threads won’t attempt direct drawing when
+the connection isn’t in place, and release the semaphore for drawing
+threads to acquire when the flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">MyWindowScreen</span><span class="p">::</span><span class="n">ScreenConnected</span><span class="p">(</span><span class="nb">bool</span> <span class="n">connected</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span> <span class="n">connected</span> <span class="o">==</span> <span class="n">false</span> <span class="p">)</span>
+      <span class="n">acquire_sem</span><span class="p">(</span><span class="n">directDrawingSemaphore</span><span class="p">);</span>
+   <span class="k">else</span>
+      <span class="n">release_sem</span><span class="p">(</span><span class="n">directDrawingSemaphore</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>See also: <a class="reference internal" href="#_CPPv4N13BWindowScreen10DisconnectEv" title="BWindowScreen::Disconnect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Disconnect()</span></code></a></p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N13BWindowScreen21CanControlFrameBufferEv">
+</section>
+<h3>
+CanControlFrameBuffer()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">CanControlFrameBuffer</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the graphics card driver permits applications to control
+the configuration of the frame buffer, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if not. Control is
+exercised through these two functions:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#_CPPv4N13BWindowScreen14SetFrameBufferE5int325int32" title="BWindowScreen::SetFrameBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFrameBuffer()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#_CPPv4N13BWindowScreen15MoveDisplayAreaE5int325int32" title="BWindowScreen::MoveDisplayArea"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MoveDisplayArea()</span></code></a></p></li>
+</ul>
+<p>A return of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> means that these functions can communicate with the
+graphics card driver and at least the first will do something useful. A
+return of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> means that neither of them will work.</p>
+<section id="_CPPv4N13BWindowScreen10CardHookAtE5int32">
+</section>
+<h3>
+CardHookAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">graphics_card_hook</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">CardHookAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Returns a pointer to the graphics card “hook” function
+that’s located at <span class="hparameter">index</span> in its list of hook
+functions. The function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the graphics
+card driver doesn’t implement a function at that index or the index is out
+of range.
+The hook functions provide accelerated drawing capabilities. They’re
+documented under
+“<span class="xref std std-ref">Graphics Card Hook Functions</span>”.
+The first three hook functions (indices 0, 1, and 2) are not available
+through the Game Kit; if you pass an index of 0, 1, or 2 to
+<span class="hmethod">CardHookAt()</span>, it will return
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> even if the function is implemented.
+An application can cache the pointers that <span class="hmethod">CardHookAt()</span> returns, but it
+should ask for a new set each time the depth or dimensions of the screen
+changes and each time the <span class="hclass">BWindowScreen</span> object releases or regains
+control of the screen. You’d typically call <span class="hmethod">CardHookAt()</span> in your
+implementation of
+<a class="reference internal" href="#_CPPv4N13BWindowScreen15ScreenConnectedEb" title="BWindowScreen::ScreenConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScreenConnected()</span></code></a>.</p>
+<section id="_CPPv4N13BWindowScreen8CardInfoEv">
+</section>
+<h3>
+CardInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">graphics_card_info</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">CardInfo</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns a description of the current configuration of the graphics card,
+as kept by the driver for the card. The returned
+graphics_card_info
+structure is defined in addons/graphics/GraphicsCard.h</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The information returned by this function is only valid when the
+<span class="hclass">BWindowScreen</span> is connected to the display.</p>
+</div>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N13BWindowScreen15FrameBufferInfoEv" title="BWindowScreen::FrameBufferInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FrameBufferInfo()</span></code></a></p>
+<section id="_CPPv4N13BWindowScreen10DisconnectEv">
+</section>
+<h3>
+Disconnect()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">Disconnect</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Forces the <span class="hclass">BWindowScreen</span> object to disconnect
+itself from the screen—to give up its authority over the graphics
+card driver, allowing the Application Server to
+reassert control. Normally, you’d disconnect the
+<span class="hclass">BWindowScreen</span> only when hiding the game, reducing it
+to an ordinary window in the background, or quitting. The
+<a class="reference internal" href="#_CPPv4N13BWindowScreen4HideEv" title="BWindowScreen::Hide"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Hide()</span></code></a> and
+<a class="reference internal" href="#_CPPv4N13BWindowScreen4QuitEv" title="BWindowScreen::Quit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Quit()</span></code></a>
+functions automatically disconnect the <span class="hclass">BWindowScreen</span>
+as part of the process of hiding and quitting.
+<a class="reference internal" href="#_CPPv4N13BWindowScreen10DisconnectEv" title="BWindowScreen::Disconnect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Disconnect()</span></code></a>
+allows you to sever the connection before calling those functions.
+Before breaking the screen connection,
+<a class="reference internal" href="#_CPPv4N13BWindowScreen10DisconnectEv" title="BWindowScreen::Disconnect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Disconnect()</span></code></a>
+causes the <span class="hclass">BWindowScreen</span> object to receive a
+<a class="reference internal" href="#_CPPv4N13BWindowScreen15ScreenConnectedEb" title="BWindowScreen::ScreenConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScreenConnected()</span></code></a>
+notification with a flag of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>. It doesn’t return until
+<a class="reference internal" href="#_CPPv4N13BWindowScreen15ScreenConnectedEb" title="BWindowScreen::ScreenConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScreenConnected()</span></code></a>
+returns and the connection is broken.
+<a class="reference internal" href="#_CPPv4N13BWindowScreen4HideEv" title="BWindowScreen::Hide"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Hide()</span></code></a> and
+<a class="reference internal" href="#_CPPv4N13BWindowScreen4QuitEv" title="BWindowScreen::Quit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Quit()</span></code></a>
+share this behavior.</p>
+<section id="_CPPv4N13BWindowScreen15FrameBufferInfoEv">
+</section>
+<h3>
+FrameBufferInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">frame_buffer_info</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">FrameBufferInfo</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns a pointer to the
+frame_buffer_info
+structure that holds the
+driver’s current conception of the frame buffer. The structure is defined
+in addons/graphics/GraphicsCard.h</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The information returned by this function is only valid if
+<a class="reference internal" href="#_CPPv4N13BWindowScreen14SetFrameBufferE5int325int32" title="BWindowScreen::SetFrameBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFrameBuffer()</span></code></a>
+has been called.</p>
+</div>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N13BWindowScreen8SetSpaceE6uint32" title="BWindowScreen::SetSpace"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetSpace()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N13BWindowScreen14SetFrameBufferE5int325int32" title="BWindowScreen::SetFrameBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFrameBuffer()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N13BWindowScreen15MoveDisplayAreaE5int325int32" title="BWindowScreen::MoveDisplayArea"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MoveDisplayArea()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N13BWindowScreen8CardInfoEv" title="BWindowScreen::CardInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CardInfo()</span></code></a></p>
+<section id="_CPPv4N13BWindowScreen4HideEv">
+</section>
+<section id="_CPPv4N13BWindowScreen4ShowEv">
+</section>
+<h3>
+Hide(), Show()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">Hide</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">Show</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions augment their
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> counterparts to make sure that the
+<span class="hclass">BWindowScreen</span> is disconnected from the screen before it’s hidden and that
+it’s ready to establish a connection when it becomes the active window.</p>
+<p><span class="hmethod">Hide()</span> calls
+<a class="reference internal" href="#_CPPv4N13BWindowScreen15ScreenConnectedEb" title="BWindowScreen::ScreenConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScreenConnected()</span></code></a> (with an argument of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>) and breaks the
+connection to the screen when <a class="reference internal" href="#_CPPv4N13BWindowScreen15ScreenConnectedEb" title="BWindowScreen::ScreenConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScreenConnected()</span></code></a> returns. It then hides
+the window.</p>
+<p><span class="hmethod">Show()</span> shows the window on-screen and makes it the active window, which
+will cause it to establish a direct connection to the graphics card
+driver for the screen. Unlike <span class="hmethod">Hide()</span>, it may return before
+<a class="reference internal" href="#_CPPv4N13BWindowScreen15ScreenConnectedEb" title="BWindowScreen::ScreenConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScreenConnected()</span></code></a>
+is called (with an argument of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>).</p>
+<p>See also:
+<a class="reference internal" href="../interface/window.html#_CPPv4N7BWindow4HideEv" title="BWindow::Hide"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::Hide()</span></code></a></p>
+<section id="_CPPv4N13BWindowScreen6IOBaseEv">
+</section>
+<h3>
+IOBase()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">IOBase</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns a pointer to the base address for the input/output registers on
+the graphics card. Registers are addressed by 16-bit offsets from this
+base address. (This function may not be supported in future releases.)</p>
+<section id="_CPPv4N13BWindowScreen15MoveDisplayAreaE5int325int32">
+</section>
+<h3>
+MoveDisplayArea()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">MoveDisplayArea</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">x</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">y</span><span class="sig-paren">)</span></pre><p>Relocates the display area, the portion of the frame buffer that’s mapped
+to the screen. This function moves the area’s left-top corner to (<span class="hparameter">x</span>, <span class="hparameter">y</span>);
+by default, the corner lies at (0, 0). The display area must lie entirely
+within the frame buffer.</p>
+<p><span class="hmethod">MoveDisplayArea()</span> only works if the graphics card driver permits
+application control over the frame buffer. It must also permit a frame
+buffer with a total area larger than the display area. If successful in
+relocating the display area, this function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>; if not, it
+returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N13BWindowScreen21CanControlFrameBufferEv" title="BWindowScreen::CanControlFrameBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CanControlFrameBuffer()</span></code></a></p>
+<section id="_CPPv4N13BWindowScreen4QuitEv">
+</section>
+<h3>
+Quit()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">Quit</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Augments the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>
+version of <span class="hmethod">Quit()</span> to force the <span class="hclass">BWindowScreen</span> object
+to disconnect itself from the screen, so that it doesn’t quit while in
+control of the frame buffer.</p>
+<p>Although <span class="hmethod">Quit()</span> disconnects the object before quitting, this may not be
+soon enough for your application. For example, if you need to destroy
+some drawing threads before the <span class="hclass">BWindowScreen</span> object is itself destroyed,
+you should get rid of them after the screen connection is severed. You
+can force the object to disconnect itself by calling
+<a class="reference internal" href="#_CPPv4N13BWindowScreen10DisconnectEv" title="BWindowScreen::Disconnect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Disconnect()</span></code></a>. For
+example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">MyWindowScreen</span><span class="p">::</span><span class="n">Quit</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="n">Disconnect</span><span class="p">();</span>
+   <span class="n">kill_thread</span><span class="p">(</span><span class="n">drawing_thread_a</span><span class="p">);</span>
+   <span class="n">kill_thread</span><span class="p">(</span><span class="n">drawing_thread_b</span><span class="p">);</span>
+   <span class="n">BWindowScreen</span><span class="p">::</span><span class="n">Quit</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If the screen connection is still in place when <span class="hmethod">Quit()</span> is called, it
+calls <a class="reference internal" href="#_CPPv4N13BWindowScreen15ScreenConnectedEb" title="BWindowScreen::ScreenConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScreenConnected()</span></code></a> with a flag of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>. It doesn’t return until
+<a class="reference internal" href="#_CPPv4N13BWindowScreen15ScreenConnectedEb" title="BWindowScreen::ScreenConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScreenConnected()</span></code></a> returns and the connection is broken.</p>
+<section id="_CPPv4N13BWindowScreen14RegisterThreadE9thread_id">
+</section>
+<section id="_CPPv4N13BWindowScreen7SuspendEPc">
+</section>
+<section id="_CPPv4N13BWindowScreen14SuspensionHookEb">
+</section>
+<h3>
+RegisterThread(), Suspend(), SuspensionHook()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">RegisterThread</span><span class="sig-paren">(</span><span class="n">thread_id</span><span class="w"> </span><span class="n sig-param">thread</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">Suspend</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">SuspensionHook</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">suspended</span><span class="sig-paren">)</span></pre><p>These three functions aid in debugging a game application. They have
+relevance only if the <span class="hclass">BWindowScreen</span> is running in debugging mode. To set
+up the mode, you must:</p>
+<p>Construct the BWindowScreen with the debugging flag set to true. The flag is false by default. Register all drawing threads (all threads that can touch the frame buffer in any way) by passing the thread_id to RegisterThread() immediately after the thread is spawned—before resume_thread() is called to start the thread’s execution. The window thread for the BWindowScreen object should not draw and should not be registered. Launch the application from the command line in a Terminal window. The window will collect debugging output from the application while the BWindowScreen runs in a different workspace, generally the one at the immediately preceding index. For example, if the Terminal window is in the fifth workspace (Command+F5), the game will run in the fourth (Command+F4); if the Terminal is in the fourth (Command+F4), the game runs in the third (Command+F3); and so on. However, if the Terminal window is in the first workspace (Command+F1), the game runs in the second (Command+F2).</p>
+<p>The Terminal window is the destination for all messages the game writes
+to the standard error stream or to the standard output—from
+printf(), for example. You can switch back and forth between the game and
+Terminal workspaces to check the messages and run your application. When
+you switch from the game workspace to the Terminal workspace, all
+registered threads are suspended and the graphics context is saved. When
+you switch back to the game, the graphics context is restored and the
+threads are resumed.</p>
+<p>Calling <span class="hmethod">Suspend()</span> switches to the Terminal workspace programmatically,
+just as pressing the correct Command—function key combination
+would. Registered threads are suspended, the Terminal workspace is
+activated, and the <span class="hparameter">label</span> passed as an argument is displayed in a message
+in the Terminal window. You can resume the game by manually switching
+back to its workspace.</p>
+<p><span class="hmethod">SuspensionHook()</span> is called whenever the game is suspended or
+resumed—whether by the user switching workspaces or by <span class="hmethod">Suspend()</span>.
+It gives you an opportunity to save and restore any state that would
+otherwise be lost. <span class="hmethod">SuspensionHook()</span> is called with a <span class="hparameter">suspended</span> flag of
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> just after the application is suspended and with a flag of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>
+just before it’s about to be resumed.</p>
+<p><span class="hmethod">ScreenConnected()</span> is not called when you switch between the Terminal and
+game workspaces while in debugging mode. However, it is called for all
+normal game activities—when the <span class="hclass">BWindowScreen</span> is first activated
+and when it hides or quits, for example.</p>
+<p>Debugging mode can also preserve some information in case of a crash.
+Hold down all the left modifier keys (Shift, Control, Option, Command,
+Alt, or whatever the keys may happen to be on your keyboard), and press
+the F12 key. This restarts the screen with a 640 * 480 resolution and
+displays a debugger window. You should then be able to switch to the
+Terminal workspace to check the last set of messages before the crash,
+modify your code, and start again.</p>
+<section id="_CPPv4N13BWindowScreen13ScreenChangedE5BRect11color_space">
+</section>
+<h3>
+ScreenChanged()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">ScreenChanged</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="n">color_space</span><span class="w"> </span><span class="n sig-param">mode</span><span class="sig-paren">)</span></pre><p>Overrides the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> version of <a class="reference internal" href="../interface/window.html#_CPPv4N7BWindow13ScreenChangedE5BRect11color_space" title="BWindow::ScreenChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScreenChanged()</span></code></a> so that it does nothing.
+This function is called automatically when the screen configuration
+changes. It’s not one that you should call in application code or
+reimplement for the game.</p>
+<p>See also: <a class="reference internal" href="../interface/window.html#_CPPv4N7BWindow13ScreenChangedE5BRect11color_space" title="BWindow::ScreenChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::ScreenChanged()</span></code></a></p>
+<section id="_CPPv4N13BWindowScreen12SetColorListEP9rgb_color5int325int32">
+</section>
+<section id="_CPPv4N13BWindowScreen9ColorListEv">
+</section>
+<h3>
+SetColorList(), ColorList()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">SetColorList</span><span class="sig-paren">(</span><span class="n">rgb_color</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">colors</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">first</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">last</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">255</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">rgb_color</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">ColorList</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions set and return the list of 256 colors that can be
+displayed when the frame buffer has a depth of 8 bits per pixel (the
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CMAP8</span></code> color space). <span class="hmethod">SetColorList()</span>
+is passed an array of one or more
+colors to replace the colors currently in the list. The first color in
+the array replaces the color in the list at the specified <span class="hparameter">first</span> index;
+all colors up through the <span class="hparameter">last</span> specified index are modified. It fails if
+either index is out of range.</p>
+<p><span class="hmethod">SetColorList()</span> alters the list of colors kept on the graphics card. If
+the <span class="hclass">BWindowScreen</span> isn’t connected to the screen, the new list takes
+effect when it becomes connected.</p>
+<p><span class="hmethod">ColorList()</span> returns a pointer to the entire list of 256 colors. This is
+not the list kept by the graphics card driver, but a local copy. It
+belongs to the <span class="hclass">BWindowScreen</span> object and should be altered only by calling
+<span class="hmethod">SetColorList()</span>.</p>
+<p>See also:
+<a class="reference internal" href="../interface/screen.html#_CPPv4N7BScreen8ColorMapEv" title="BScreen::ColorMap"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BScreen::ColorMap()</span></code></a> in the <span class="xref std std-ref">Interface Kit</span></p>
+<section id="_CPPv4N13BWindowScreen14SetFrameBufferE5int325int32">
+</section>
+<h3>
+SetFrameBuffer()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">SetFrameBuffer</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">width</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><p>Configures the frame buffer on the graphics card so that it’s <span class="hparameter">width</span> pixel
+columns wide and <span class="hparameter">height</span> pixel rows high. This function works only if the
+driver for the graphics card allows custom configurations (as reported by
+<a class="reference internal" href="#_CPPv4N13BWindowScreen21CanControlFrameBufferEv" title="BWindowScreen::CanControlFrameBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CanControlFrameBuffer()</span></code></a>) and the <span class="hclass">BWindowScreen</span> object is currently
+connected to the screen.</p>
+<p>The new dimensions of the frame buffer must be large enough to hold all
+the pixels displayed on-screen—that is, they must be at least as
+large as the dimensions of the display area. If the driver can’t
+accommodate the proposed width and height,
+<a class="reference internal" href="#_CPPv4N13BWindowScreen14SetFrameBufferE5int325int32" title="BWindowScreen::SetFrameBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFrameBuffer()</span></code></a> returns
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>. If the change is made, it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+<p>This function doesn’t alter the depth of the frame buffer or the size or
+location of the display area.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N13BWindowScreen15MoveDisplayAreaE5int325int32" title="BWindowScreen::MoveDisplayArea"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MoveDisplayArea()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N13BWindowScreen15MoveDisplayAreaE5int325int32" title="BWindowScreen::MoveDisplayArea"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MoveDisplayArea()</span></code></a></p>
+<section id="_CPPv4N13BWindowScreen8SetSpaceE6uint32">
+</section>
+<h3>
+SetSpace()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">SetSpace</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">space</span><span class="sig-paren">)</span></pre><p>Configures the screen space to one of the standard combinations of width,
+height, and depth. The configuration is first set by the class
+constructor—permitted <span class="hparameter">space</span> constants are documented
+there—and it may be altered after construction only by this
+function.</p>
+<p>Setting the screen space sets the dimensions of the frame buffer and
+display area. For example, if <span class="hparameter">space</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_32_BIT_800x600</span></code>, the frame buffer
+will be 32 bits deep and at least 800 pixel columns wide and 600 pixel
+rows high. The display area (the area of the frame buffer mapped to the
+screen) will also be 800 pixels * 600 pixels. After setting the screen
+space, you can enlarge the frame buffer by calling
+<a class="reference internal" href="#_CPPv4N13BWindowScreen14SetFrameBufferE5int325int32" title="BWindowScreen::SetFrameBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFrameBuffer()</span></code></a> and
+relocate the display area in the larger buffer by calling
+<a class="reference internal" href="#_CPPv4N13BWindowScreen15MoveDisplayAreaE5int325int32" title="BWindowScreen::MoveDisplayArea"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MoveDisplayArea()</span></code></a>.</p>
+<p>If the requested configuration is refused by the graphics card driver,
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">SetSpace()</span></code> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>. If all goes well, it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+<p>See also: the <span class="hclass">BWindowScreen</span>
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>,
+<a class="reference internal" href="#_CPPv4N13BWindowScreen14SetFrameBufferE5int325int32" title="BWindowScreen::SetFrameBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFrameBuffer()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N13BWindowScreen15MoveDisplayAreaE5int325int32" title="BWindowScreen::MoveDisplayArea"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MoveDisplayArea()</span></code></a></p>
+<section id="_CPPv4N13BWindowScreen15WindowActivatedEb">
+</section>
+<h3>
+WindowActivated()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">WindowActivated</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">active</span><span class="sig-paren">)</span></pre><p>Overrides the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> version of <a class="reference internal" href="../interface/window.html#_CPPv4N7BWindow15WindowActivatedEb" title="BWindow::WindowActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">WindowActivated()</span></code></a> to connect the
+<span class="hclass">BWindowScreen</span> object to the screen (give it control over the graphics
+card driver) when the <span class="hparameter">active</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>This function doesn’t disconnect the <span class="hclass">BWindowScreen</span> when the flag is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, because there’s no way for the window to cease being the active
+window without the connection already having been lost.</p>
+<p>Don’t reimplement this function in your application, even if you call the
+inherited version; rely instead on
+<a class="reference internal" href="#_CPPv4N13BWindowScreen15ScreenConnectedEb" title="BWindowScreen::ScreenConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScreenConnected()</span></code></a> for accurate
+notifications of when the <span class="hclass">BWindowScreen</span> gains and loses control of the
+screen.</p>
+<p>See also:
+<a class="reference internal" href="../interface/window.html#_CPPv4N7BWindow15WindowActivatedEb" title="BWindow::WindowActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::WindowActivated()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N13BWindowScreen15ScreenConnectedEb" title="BWindowScreen::ScreenConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScreenConnected()</span></code></a></p>
+<section id="_CPPv4N13BWindowScreen18WorkspaceActivatedE5int32b">
+</section>
+<h3>
+WorkspaceActivated()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BWindowScreen</span><span class="p">::</span></span><span class="n">WorkspaceActivated</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">workspace</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">active</span><span class="sig-paren">)</span></pre><p>Overrides the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> version of <a class="reference internal" href="../interface/window.html#_CPPv4N7BWindow18WorkspaceActivatedE5int32b" title="BWindow::WorkspaceActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">WorkspaceActivated()</span></code></a> to connect the
+<span class="hclass">BWindowScreen</span> object to the screen when the <span class="hparameter">active</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> and to
+disconnect it when the flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>. User’s typically activate the game
+by activating the workspace in which it’s running, and deactivate it by
+moving to another workspace.</p>
+<p>Don’t override this function in your application; implement
+<a class="reference internal" href="#_CPPv4N13BWindowScreen15ScreenConnectedEb" title="BWindowScreen::ScreenConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScreenConnected()</span></code></a> instead.</p>
+<p>See also:
+<a class="reference internal" href="../interface/window.html#_CPPv4N7BWindow18WorkspaceActivatedE5int32b" title="BWindow::WorkspaceActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::WorkspaceActivated()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N13BWindowScreen15ScreenConnectedEb" title="BWindowScreen::ScreenConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScreenConnected()</span></code></a></p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="streaming-game-sound.html">BStreamingGameSound</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../input/example-table.html">&lt;no title&gt;</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

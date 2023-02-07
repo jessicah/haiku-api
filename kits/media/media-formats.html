@@ -1,0 +1,677 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMediaFormats &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMediaNode" href="media-node.html" />
+    <link rel="prev" title="BMediaFiles" href="media-files.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMediaFormats</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-files.html">BMediaFiles</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-node.html">BMediaNode</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BMediaFormats</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N13BMediaFormats13BMediaFormatsEv">BMediaFormats</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BMediaFormatsD0Ev">~BMediaFormats</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N13BMediaFormats16GetBeOSFormatForE6uint32P12media_format10media_type">GetBeOSFormatFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BMediaFormats15GetAVIFormatForE6uint32P12media_format10media_type">GetAVIFormatFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BMediaFormats21GetQuicktimeFormatForE6uint326uint32P12media_format10media_type">GetQuicktimeFormatFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BMediaFormats10GetCodeForERK12media_format19media_format_familyP24media_format_description">GetCodeFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BMediaFormats12GetFormatForERK24media_format_descriptionP12media_format">GetFormatFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BMediaFormats12GetFormatForEP12media_formatP24media_format_description">GetFormatFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BMediaFormats9InitCheckEv">InitCheck</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BMediaFormats4LockEv">Lock</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BMediaFormats13MakeFormatForEPK24media_format_description5int32P12media_format6uint32Pv">MakeFormatFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BMediaFormats13RewindFormatsEv">RewindFormats</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#defined-types">Defined Types</a></li>
+<li><a class="reference internal" href="#global-c-functions">Global C Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N13BMediaFormats23does_file_accept_formatEPK17media_file_formatPK12media_format">does_file_accept_format</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BMediaFormats16get_next_encoderEP5int32P17media_file_formatP12media_formatP16media_codec_info">get_next_encoder</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmediaformats">
+<h1>BMediaFormats<a class="headerlink" href="#bmediaformats" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N13BMediaFormats13BMediaFormatsEv">
+</section>
+<h3>
+BMediaFormats()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BMediaFormats13BMediaFormatsEv" title="BMediaFormats::BMediaFormats"><span class="n">BMediaFormats</span></a><span class="p">::</span></span><span class="n">BMediaFormats</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Constructor. Call
+<a class="reference internal" href="#_CPPv4N13BMediaFormats9InitCheckEv" title="BMediaFormats::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>
+to ensure that the object was initialized properly after you instantiate it.</p>
+<section id="_CPPv4N13BMediaFormatsD0Ev">
+</section>
+<h3>
+~BMediaFormats()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFormats</span><span class="p">::</span></span><span class="n">~BMediaFormats</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Destructor.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N13BMediaFormats16GetBeOSFormatForE6uint32P12media_format10media_type">
+</section>
+<section id="_CPPv4N13BMediaFormats15GetAVIFormatForE6uint32P12media_format10media_type">
+</section>
+<section id="_CPPv4N13BMediaFormats21GetQuicktimeFormatForE6uint326uint32P12media_format10media_type">
+</section>
+<h3>
+GetBeOSFormatFor(), GetAVIFormatFor(), GetQuicktimeFormatFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFormats</span><span class="p">::</span></span><span class="n">GetBeOSFormatFor</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">format</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFormat</span>, <span class="n">media_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_MEDIA_UNKNOWN_TYPE</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFormats</span><span class="p">::</span></span><span class="n">GetAVIFormatFor</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">format</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFormat</span>, <span class="n">media_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_MEDIA_UNKNOWN_TYPE</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFormats</span><span class="p">::</span></span><span class="n">GetQuicktimeFormatFor</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">vendor</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">codec</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFormat</span>, <span class="n">media_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_MEDIA_UNKNOWN_TYPE</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetBeOSFormatFor()</span> returns in
+<span class="hparameter">outFormat</span> a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+structure that describes the media format corresponding to the given BeOS
+<span class="hparameter">format</span> ID and
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media()</span></code>.
+<span class="hmethod">GetAVIFormatFor()</span> returns in
+<span class="hparameter">outFormat</span> a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+structure that describes the media format corresponding to the given AVI
+<span class="hparameter">format</span> ID and
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media()</span></code>.
+<span class="hmethod">GetQuicktimeormatFor()</span> returns in
+<span class="hparameter">outFormat</span> a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+structure that describes the media format corresponding to the given QuickTime
+<span class="hparameter">vendor</span> ID, <span class="hparameter">codec</span> ID, and
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media()</span></code>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_TYPE</span></code></p></td>
+<td><p>The specified <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media()</span></code>. isn’t supported.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_FORMAT</span></code></p></td>
+<td><p>The specified combination of parameters isn’t  supported.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors</p></td>
+<td><p>The format couldn’t be determined.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N13BMediaFormats10GetCodeForERK12media_format19media_format_familyP24media_format_description">
+</section>
+<h3>
+GetCodeFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFormats</span><span class="p">::</span></span><span class="n">GetCodeFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">format</span>, <span class="n">media_format_family</span><span class="w"> </span><span class="n sig-param">family</span>, <span class="n">media_format_description</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outDescription</span><span class="sig-paren">)</span></pre><p>Given the specified media format, returns
+in <span class="hparameter">outDescription</span> the media
+format description for the specified <span class="hparameter">format</span> family.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_FORMAT</span></code></p></td>
+<td><p>The specified format isn’t recognized.</p></td>
+</tr>
+<tr class="row-even"><td><p>Other errors</p></td>
+<td><p>The code couldn’t be determined.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N13BMediaFormats12GetFormatForERK24media_format_descriptionP12media_format">
+</section>
+<h3>
+GetFormatFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFormats</span><span class="p">::</span></span><span class="n">GetFormatFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_format_description</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">description</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFormat</span><span class="sig-paren">)</span></pre><p>Returns in <span class="hparameter">outFormat</span> a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+structure that describes the media format specified by
+<span class="hparameter">description</span>. This lets you easily obtain a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+structure from file-native description information.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_FORMAT</span></code></p></td>
+<td><p>The specified description isn’t recognized.</p></td>
+</tr>
+<tr class="row-even"><td><p>Other errors</p></td>
+<td><p>The format couldn’t be determined.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N13BMediaFormats12GetFormatForEP12media_formatP24media_format_description">
+</section>
+<h3>
+GetFormatFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFormats</span><span class="p">::</span></span><span class="n">GetFormatFor</span><span class="sig-paren">(</span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFormat</span>, <span class="n">media_format_description</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outDescription</span><span class="sig-paren">)</span></pre><p>Fills <span class="hparameter">outFormat</span> and
+<span class="hparameter">outDescription</span> with the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+and
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+of the next supported media format.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_INDEX</span></code></p></td>
+<td><p>No more formats to return.</p></td>
+</tr>
+<tr class="row-even"><td><p>Other errors</p></td>
+<td><p>The format couldn’t be determined.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N13BMediaFormats9InitCheckEv">
+</section>
+<h3>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFormats</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the status code from the constructor; you should call this to be
+sure the object was properly initialized before issuing any other calls.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>The object is ready to use.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_HANDLER</span></code></p></td>
+<td><p>The object isn’t ready.</p></td>
+</tr>
+<tr class="row-even"><td><p>Other errors</p></td>
+<td><p>The Media Server couldn’t be contacted.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N13BMediaFormats4LockEv">
+</section>
+<h3>
+Lock()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFormats</span><span class="p">::</span></span><span class="n">Lock</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFormats</span><span class="p">::</span></span><span class="n">Lock</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Lock()</span> locks the
+<span class="hclass">BMediaFormats</span> object so you can use it with the
+assurance that it won’t change while you’re working. You should call this
+before using any of the other <span class="hclass">BMediaFormats</span> functions.
+Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if it’s safe to use the
+<span class="hclass">BMediaFormats</span> object; otherwise returns
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.
+<span class="hmethod">Unlock()</span> releases the
+<span class="hclass">BMediaFormats</span> object when you’re done with it; be
+sure to call it when you’ve finished your work.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>You only need to <span class="hmethod">Lock()</span> and
+<span class="hmethod">Unlock()</span> the <span class="hclass">BMediaFormats</span> object when
+you’re using
+<a class="reference internal" href="#_CPPv4N13BMediaFormats13RewindFormatsEv" title="BMediaFormats::RewindFormats"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RewindFormats()</span></code></a> and
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextFormat()</span></code>.</p>
+</div>
+<section id="_CPPv4N13BMediaFormats13MakeFormatForEPK24media_format_description5int32P12media_format6uint32Pv">
+</section>
+<h3>
+MakeFormatFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFormats</span><span class="p">::</span></span><span class="n">MakeFormatFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_format_description</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">descriptions</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">descCount</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioFormat</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">_reserved</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>Given the media format descriptions in the <span class="hparameter">descriptions</span> array, the number
+of descriptions in the list, <span class="hparameter">descCount</span>, and the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+<span class="hparameter">ioFormat</span>,
+registers your format description and supported
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+with the Media Kit, and returns a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+you can use from then on.
+This function is called to let the Media Server assign you an encoding
+value for your
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>.
+If you’re implementing a codec
+add-on or a file parser, you should call this function to let the Media
+Kit know what you handle.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
+<td><p>The <span class="hparameter">descriptions</span> pointer is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, the <span class="hparameter">descCount</span> is less than 1, or <span class="hparameter">ioFormat</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
+<td><p>Some other unfortunate incident occurred.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N13BMediaFormats13RewindFormatsEv">
+</section>
+<h3>
+RewindFormats()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFormats</span><span class="p">::</span></span><span class="n">RewindFormats</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Resets format scanning to the first supported format; this causes
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextFormat()</span></code>
+to start at the beginning of the list.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>The object is ready to use.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>Unable to communicate with the Media Server.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>Declared in: media/MediaFormats.h</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_EXCLUSIVE</span></code></p></td>
+<td><p>Fail if this format has already been registered.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MERGE</span></code></p></td>
+<td><p>Don’t renumber any formats if there are multiple clashing previous registrations, but fail instead.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SET_DEFAULT</span></code></p></td>
+<td><p>Set the first format to be the default for the format family when registering more than one in the same family. Use only in encoder add-ons.</p></td>
+</tr>
+</tbody>
+</table>
+<p>These constants provide options for how to go about adding new formats.</p>
+</section>
+<section id="defined-types">
+<h2>Defined Types<a class="headerlink" href="#defined-types" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>Declared in: media/MediaFormats.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
+   <span class="n">uint32</span> <span class="n">codec</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">media_aiff_description</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Describes the format of media data as an AIFF codec ID.</p>
+<h3>
+</h3><p>Declared in: media/MediaFormats.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
+   <span class="n">GUID</span> <span class="n">guid</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">media_asf_description</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Describes the format of media data as a 128-bit ASF GUID.</p>
+<h3>
+</h3><p>Declared in: media/MediaFormats.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
+   <span class="n">uint32</span> <span class="n">codec</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">media_avi_description</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Describes the format of media data as an AVI codec ID.</p>
+<h3>
+</h3><p>Declared in: media/MediaFormats.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
+   <span class="n">uint32</span> <span class="nb">id</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">media_avr_description</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Describes the format of media data as an AVR codec ID.</p>
+<h3>
+</h3><p>Declared in: media/MediaFormats.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
+   <span class="n">int32</span> <span class="nb">format</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">media_beos_description</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Describes the format of media data in a way the BeOS Media Kit
+understands and appreciates. The format field has no predetermined
+meaning; it’s a magic number that only the Media Kit understands.</p>
+<h3>
+</h3><p>Declared in: media/MediaFormats.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">encoder_info</span> <span class="p">{</span>
+   <span class="n">char</span> <span class="n">pretty_name</span><span class="p">[</span><span class="mi">96</span><span class="p">];</span>
+   <span class="n">char</span> <span class="n">short_name</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+   <span class="n">int32</span> <span class="nb">id</span><span class="p">;</span>
+   <span class="n">int32</span> <span class="n">sub_id</span><span class="p">;</span>
+   <span class="n">int32</span> <span class="n">pad</span><span class="p">[</span><span class="mi">63</span><span class="p">];</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Provides information about an encoder. The pretty_name is a complete
+human-readable name (such as “SuperSqueeze by Applied Interdynamic
+Systems, Inc.”), and the short_name is a short-form version of the
+encoder’s name (such as “SuperSqueeze”).
+The id is an opaque ID number that gets passed to
+<a class="reference internal" href="media-file.html#_CPPv4N10BMediaFile11CreateTrackEP12media_formatPK16media_codec_info" title="BMediaFile::CreateTrack"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaFile::CreateTrack()</span></code></a>
+so the track can identify the encoder.
+The padding is reserved space for future expansion of the structure.</p>
+<h3>
+</h3><p>Declared in: media/MediaFormats.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">media_file_format_info</span> <span class="p">{</span>
+   <span class="n">char</span> <span class="n">mimetype</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+   <span class="n">char</span> <span class="n">pretty_name</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+   <span class="n">char</span> <span class="n">short_name</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+   <span class="n">char</span> <span class="n">file_extension</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+   <span class="n">media_format_family</span> <span class="n">family</span><span class="p">;</span>
+   <span class="n">int64</span> <span class="n">capabilities</span><span class="p">;</span>
+   <span class="n">int32</span> <span class="nb">id</span><span class="p">;</span>
+   <span class="n">int32</span> <span class="n">pad</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Describes a media file format. This is used when using
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaFile</span></code>
+objects to determine the type of media file being used.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>mimetype</p></td>
+<td><p>Is the file format’s MIME type string.</p></td>
+</tr>
+<tr class="row-odd"><td><p>pretty_name</p></td>
+<td><p>Is a human-readable file format name, such as “QuickTime file”.</p></td>
+</tr>
+<tr class="row-even"><td><p>short_name</p></td>
+<td><p>Is a human-readable short name, such as “QuickTime”.</p></td>
+</tr>
+<tr class="row-odd"><td><p>file_extension</p></td>
+<td><p>Indicates the dot-extension that untyped files of this format might have, such as “.mov”.</p></td>
+</tr>
+<tr class="row-even"><td><p>family</p></td>
+<td><p>Indicates the BeOS file format family of the format, such as <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_QUICKTIME_FAMILY</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>capabilities</p></td>
+<td><p>Contains flags indicating what features the format supports.</p></td>
+</tr>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>Is a unique ID number for the format.</p></td>
+</tr>
+<tr class="row-odd"><td><p>pad</p></td>
+<td><p>Pads out the structure, and is reserved.</p></td>
+</tr>
+</tbody>
+</table>
+<h3>
+</h3><p>Declared in: media/MediaFormats.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="n">_media_format_description</span> <span class="p">{</span>
+<span class="c1">#if defined(__cplusplus)</span>
+   <span class="n">_media_format_description</span><span class="p">();</span>
+   <span class="o">~</span><span class="n">_media_format_description</span><span class="p">();</span>
+   <span class="n">_media_format_description</span><span class="p">(</span><span class="n">const</span> <span class="n">_media_format_description</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">);</span>
+   <span class="n">_media_format_description</span><span class="o">&amp;</span> <span class="n">operator</span><span class="o">=</span><span class="p">(</span><span class="n">const</span> <span class="n">_media_format_description</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">);</span>
+<span class="c1">#endif</span>
+   <span class="n">media_format_family</span> <span class="n">family</span><span class="p">;</span>
+   <span class="n">uint32</span> <span class="n">_reserved_</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+   <span class="n">union</span> <span class="p">{</span>
+      <span class="n">media_beos_description</span> <span class="n">beos</span><span class="p">;</span>
+      <span class="n">media_quicktime_description</span> <span class="n">quicktime</span><span class="p">;</span>
+      <span class="n">media_avi_description</span> <span class="n">avi</span><span class="p">;</span>
+      <span class="n">media_asf_description</span> <span class="n">asf</span><span class="p">;</span>
+      <span class="n">media_mpeg_description</span> <span class="n">mpeg</span><span class="p">;</span>
+      <span class="n">media_wav_description</span> <span class="n">wav</span><span class="p">;</span>
+      <span class="n">media_aiff_description</span> <span class="n">aiff</span><span class="p">;</span>
+      <span class="n">media_misc_description</span> <span class="n">misc</span><span class="p">;</span>
+      <span class="n">media_avr_description</span> <span class="n">avr</span><span class="p">;</span>
+      <span class="n">uint32</span> <span class="n">_reserved_</span><span class="p">[</span><span class="mi">12</span><span class="p">];</span>
+   <span class="p">}</span> <span class="n">u</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">media_format_description</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Describes a media format. The family indicates which media family in the
+union the description uses to identify the format.</p>
+<h3>
+</h3><p>Declared in: media/MediaFormats.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
+   <span class="n">uint32</span> <span class="n">file_format</span><span class="p">;</span>
+   <span class="n">uint32</span> <span class="n">codec</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">media_misc_description</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Describes the format of a miscellaneous media file.</p>
+<h3>
+</h3><p>Declared in: media/MediaFormats.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
+   <span class="n">uint32</span> <span class="nb">id</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">media_mpeg_description</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Describes the format of media data as an MPEG format ID; this can be any
+of the following values:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MPEG_ANY</span></code></p></td>
+<td><p>An MPEG format not listed among these choices.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MPEG_1_AUDIO_LAYER_1</span></code></p></td>
+<td><p>MPEG 1 Layer 1 audio format.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MPEG_1_AUDIO_LAYER_2</span></code></p></td>
+<td><p>MPEG 1 Layer 2 audio format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MPEG_1_AUDIO_LAYER_3</span></code></p></td>
+<td><p>MPEG 1 Layer 3 audio format (commonly known as “MP3”).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MPEG_1_VIDEO</span></code></p></td>
+<td><p>An MPEG 1 viedo stream.</p></td>
+</tr>
+</tbody>
+</table>
+<h3>
+</h3><p>Declared in: media/MediaFormats.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
+   <span class="n">uint32</span> <span class="n">file_format</span><span class="p">;</span>
+   <span class="n">uint32</span> <span class="n">codec</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">media_misc_description</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Describes the format of media data as a file format/codec pair.</p>
+<h3>
+</h3><p>Declared in: media/MediaFormats.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
+   <span class="n">uint32</span> <span class="n">codec</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">media_wav_description</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Describes the format of media data as a WAV codec ID.</p>
+</section>
+<section id="global-c-functions">
+<h2>Global C Functions<a class="headerlink" href="#global-c-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N13BMediaFormats23does_file_accept_formatEPK17media_file_formatPK12media_format">
+</section>
+<h3>
+does_file_accept_format()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFormats</span><span class="p">::</span></span><span class="n">does_file_accept_format</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_file_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mfi</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">format</span><span class="sig-paren">)</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the given
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">file()</span></code>
+can contain data in the specified
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>.
+Otherwise, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> is returned.</p>
+<section id="_CPPv4N13BMediaFormats16get_next_encoderEP5int32P17media_file_formatP12media_formatP16media_codec_info">
+</section>
+<h3>
+get_next_encoder()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFormats</span><span class="p">::</span></span><span class="n">get_next_encoder</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span>, <span class="n">media_file_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mfi</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outputFormat</span>, <span class="n">media_codec_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">codecInfo</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFormats</span><span class="p">::</span></span><span class="n">get_next_encoder</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span>, <span class="n">media_file_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mfi</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inputFormat</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outputFormat</span>, <span class="n">media_codec_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">codecInfo</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">acceptedInputFormat</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">acceptedOutputFormat</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFormats</span><span class="p">::</span></span><span class="n">get_next_encoder</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span>, <span class="n">media_codec_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">codecInfo</span><span class="sig-paren">)</span></pre><p>Given a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">file()</span></code>,
+<span class="hparameter">mfi</span>, describing the format of a media file, a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>,
+<span class="hparameter">outputFormat</span>, describing the desired output format, and
+optionally a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>,
+<span class="hparameter">inputFormat</span> describing the desired input
+format, returns in <span class="hparameter">codecInfo</span> information about the next encoder capable
+of handling the format.
+You should set the int32 pointed to by
+<span class="hparameter">cookie</span> to 0 initially, and pass
+the same pointer each time you call
+get_next_encoder(),
+to scan through
+all possible encoders. When there are no more encoders left to check,
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_INDEX</span></code> is returned.
+If you use the second form of this function, on return the
+<span class="hparameter">acceptedInputFormat</span> and
+<span class="hparameter">acceptedOutputFormat</span>
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>,
+structures will
+be filled out to indicate the formats that the codec will accept. This
+form of the function supports wildcards, while the first does not.
+The third form of the function is less specific, and can be used to get a
+complete list of codecs. This can be handy if you’re constructing a user
+interface to allow the user to select the codec they’d like to use, to
+get a full list of all the possible formats they can create.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>An encoder was found and returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_INDEX</span></code></p></td>
+<td><p>The cookie was invalid, or no more encoders found.</p></td>
+</tr>
+</tbody>
+</table>
+<p>See also:
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">next()</span></code>
+in the global C functions section.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-files.html">BMediaFiles</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-node.html">BMediaNode</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

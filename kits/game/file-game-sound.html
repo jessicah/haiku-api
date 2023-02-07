@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BFileGameSound &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Introduction" href="introduction.html" />
+    <link rel="prev" title="BDirectWindow" href="direct-window.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BFileGameSound</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="direct-window.html">BDirectWindow</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="introduction.html">Introduction</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BFileGameSound</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N14BFileGameSound14BFileGameSoundEPK9entry_refbP16BGameSoundDevice">BFileGameSound</a></li>
+<li><a class="reference internal" href="#_CPPv4N14BFileGameSoundD0Ev">~BFileGameSound</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4NK14BFileGameSound9InitCheckEv">InitCheck</a></li>
+<li><a class="reference internal" href="#_CPPv4N14BFileGameSound7PreloadEv">Preload</a></li>
+<li><a class="reference internal" href="#_CPPv4N14BFileGameSound9SetPausedEb9bigtime_t">SetPaused</a></li>
+<li><a class="reference internal" href="#_CPPv4N14BFileGameSound8IsPausedEv">IsPaused</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bfilegamesound">
+<h1>BFileGameSound<a class="headerlink" href="#bfilegamesound" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N14BFileGameSound14BFileGameSoundEPK9entry_refbP16BGameSoundDevice">
+</section>
+<h3>
+BFileGameSound()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N14BFileGameSound14BFileGameSoundEPK9entry_refbP16BGameSoundDevice" title="BFileGameSound::BFileGameSound"><span class="n">BFileGameSound</span></a><span class="p">::</span></span><span class="n">BFileGameSound</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inFile</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">looping</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span>, <span class="n">BGameSoundDevice</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">device</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N14BFileGameSound14BFileGameSoundEPKcbP16BGameSoundDevice" title="BFileGameSound::BFileGameSound"><span class="n">BFileGameSound</span></a><span class="p">::</span></span><span class="n">BFileGameSound</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inFile</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">looping</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span>, <span class="n">BGameSoundDevice</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">device</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Prepares the object to play the specified sound file, which can be
+specified either by entry_ref or pathname in the
+<span class="hparameter">inFile</span> argument.
+If the <span class="hparameter">looping</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> (which it is by default), the sound
+automatically loops back to the beginning and replays when the end of the
+sound is reached. This is useful for easily playing background music (for
+example).
+In both cases, <span class="hparameter">device</span> specifies the sound device that should be used for
+playing the sound; <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> uses the default sound player.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>Currently, <span class="hparameter">device</span> must always be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</div>
+<p>After instantiating the <span class="hclass">BFileGameSound</span> object, you should call
+<a class="reference internal" href="#_CPPv4NK14BFileGameSound9InitCheckEv" title="BFileGameSound::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> to determine whether or not the sound was successfully
+created.</p>
+<section id="_CPPv4N14BFileGameSoundD0Ev">
+</section>
+<h3>
+~BFileGameSound()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFileGameSound</span><span class="p">::</span></span><span class="n">~BFileGameSound</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>A typical destructor.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4NK14BFileGameSound9InitCheckEv">
+</section>
+<h3>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFileGameSound</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a status_t indicating whether or not the object was successfully
+instantiated.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The sound was successfully initialized.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<td><p>Unable to create a sound player.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<td><p>Can’t get enough memory to preload the sound.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>The sound player may return errors.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N14BFileGameSound7PreloadEv">
+</section>
+<h3>
+Preload()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFileGameSound</span><span class="p">::</span></span><span class="n">Preload</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Preload()</span> preloads enough of the sound file into memory that starting
+playback of the sound won’t cuase a delay while the first chunk of data
+is fetched from disk.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>Preloading was successful.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Port errors.</p></td>
+<td><p>Unable to communicate with the streaming sound port.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N14BFileGameSound9SetPausedEb9bigtime_t">
+</section>
+<section id="_CPPv4N14BFileGameSound8IsPausedEv">
+</section>
+<h3>
+SetPaused(), IsPaused()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFileGameSound</span><span class="p">::</span></span><span class="n">SetPaused</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">isPaused</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">rampTime</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFileGameSound</span><span class="p">::</span></span><span class="n">IsPaused</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetPaused()</span> pauses if <span class="hparameter">isPaused</span>
+is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, and unpauses if <span class="hparameter">isPaused</span> is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>. If <span class="hparameter">rampTime</span> is nonzero, the sound ramps up to speed (or down to
+stopped) instead of instantly changing state. The number of microseconds
+specified by <span class="hparameter">rampTime</span> indicates how long the change should take to
+complete.
+<span class="hmethod">IsPaused()</span> returns value indicating whether or not the sound is paused,
+or if a pause is in process of being initiated (if ramping is underway).
+The result is one of these values:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NOT_PAUSED</span></code></p></td>
+<td><p>The sound is playing normally.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PAUSE_IN_PROGRESS</span></code></p></td>
+<td><p>The sound is ramping toward or away from a paused state.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PAUSED</span></code></p></td>
+<td><p>The sound is paused.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Because these constants are members of the <span class="hclass">BFileGameSound</span> class, be sure
+to refer to them as
+<code class="docutils literal notranslate"><span class="pre">BFileGameSound::B_NOT_PAUSED</span></code>
+and so forth.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The pause occurred without error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">EALREADY</span></code>.</p></td>
+<td><p>The sound is already in the requested state.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="direct-window.html">BDirectWindow</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="introduction.html">Introduction</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

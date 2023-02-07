@@ -22,7 +22,7 @@
     <link rel="prev" title="BBlockCache" href="block-cache.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
-          <span>The Haiku Book  documentation</span></a></h1>
+          <span>API Documentation</span></a></h1>
         <h2 class="heading"><span>BDataIO</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -36,45 +36,64 @@
         </p>
 
       </div>
-      <div class="content" role="main">
         
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BDataIO</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N7BDataIO7BDataIOEv">BDataIO</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BDataIOD0Ev">~BDataIO</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N7BDataIO4ReadEPv6size_t">Read</a></li>
+<li><a class="reference internal" href="#_CPPv45WritePKv6size_t">Write</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
         
   <section id="bdataio">
 <h1>BDataIO<a class="headerlink" href="#bdataio" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
-<h3 id="_CPPv4N7BDataIO7BDataIOEv">
-<span id="_CPPv3N7BDataIO7BDataIOEv"></span><span id="_CPPv2N7BDataIO7BDataIOEv"></span><span id="BDataIO::BDataIO"></span>BDataIO()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BDataIO7BDataIOEv" title="BDataIO::BDataIO"><span class="n">BDataIO</span></a><span class="p">::</span></span><span class="n">BDataIO</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Does nothing.</p>
-</div>
-
-<h3 id="_CPPv4N7BDataIOD0Ev">
-<span id="_CPPv3N7BDataIOD0Ev"></span><span id="_CPPv2N7BDataIOD0Ev"></span><span id="BDataIO::~BDataIO"></span>~BDataIO()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDataIO</span><span class="p">::</span></span><span class="n">~BDataIO</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Does nothing.</p>
-</div>
-
+<section id="_CPPv4N7BDataIO7BDataIOEv">
+</section>
+<h3>
+BDataIO()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BDataIO7BDataIOEv" title="BDataIO::BDataIO"><span class="n">BDataIO</span></a><span class="p">::</span></span><span class="n">BDataIO</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Does nothing.</p>
+<section id="_CPPv4N7BDataIOD0Ev">
+</section>
+<h3>
+~BDataIO()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDataIO</span><span class="p">::</span></span><span class="n">~BDataIO</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Does nothing.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
-<h3 id="_CPPv4N7BDataIO4ReadEPv6size_t">
-<span id="_CPPv3N7BDataIO4ReadEPv6size_t"></span><span id="_CPPv2N7BDataIO4ReadEPv6size_t"></span><span id="BDataIO::Read__voidP.s"></span>Read()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="k">virtual</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDataIO</span><span class="p">::</span></span><span class="n">Read</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">numBytes</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p><span class="hmethod">Read()</span> is implemented by derived classes to copy <span class="hparameter">numBytes</span> bytes of data from the object to the <span class="hparameter">buffer</span>. It should return the number of bytes actually read, which may be 0, or an error code if something goes wrong.</p>
-</div>
-
-<h3 id="_CPPv45WritePKv6size_t">
-<span id="_CPPv35WritePKv6size_t"></span><span id="_CPPv25WritePKv6size_t"></span><span id="Write__voidCP.s"></span>Write()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="k">virtual</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="n">Write</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">numBytes</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p><span class="hmethod">Write()</span> is implemented by derived classes to copy <span class="hparameter">numBytes</span> bytes of data from the <span class="hparameter">buffer</span> to the object. It should return the number of bytes actually written, which may be 0, or an error code if the operation fails.</p>
-</div>
-
+<section id="_CPPv4N7BDataIO4ReadEPv6size_t">
+</section>
+<h3>
+Read()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDataIO</span><span class="p">::</span></span><span class="n">Read</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">numBytes</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p><span class="hmethod">Read()</span> is implemented by derived classes to copy <span class="hparameter">numBytes</span> bytes of data from the object to the <span class="hparameter">buffer</span>. It should return the number of bytes actually read, which may be 0, or an error code if something goes wrong.</p>
+<section id="_CPPv45WritePKv6size_t">
+</section>
+<h3>
+Write()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="n">Write</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">numBytes</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p><span class="hmethod">Write()</span> is implemented by derived classes to copy <span class="hparameter">numBytes</span> bytes of data from the <span class="hparameter">buffer</span> to the object. It should return the number of bytes actually written, which may be 0, or an error code if the operation fails.</p>
 </section>
 </section>
 
 
+        <div class="clearer"></div>
       </div>
+          </div>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
@@ -88,7 +107,7 @@
       </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Haiku.
+        &#169; Copyright 2023, Haiku, Inc..
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>

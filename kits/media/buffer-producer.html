@@ -1,0 +1,846 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BBufferProducer &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BContinuousParameter" href="continuous-parameter.html" />
+    <link rel="prev" title="BBufferGroup" href="buffer-group.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BBufferProducer</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="buffer-group.html">BBufferGroup</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="continuous-parameter.html">BContinuousParameter</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BBufferProducer</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer15BBufferProducerE10media_type">BBufferProducer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer25AdditionalBufferRequestedERK12media_source15media_buffer_id9bigtime_tPK14media_seek_tag">AdditionalBufferRequested</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer12ChangeFormatERK12media_sourceRK17media_destinationP12media_format">ChangeFormat</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer16ClipDataToRegionE5int325int32PKvP7BRegion">ClipDataToRegion</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer7ConnectE8status_tRK12media_sourceRK17media_destinationRK12media_formatPc">Connect</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer10DisconnectERK12media_sourceRK17media_destination">Disconnect</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer19DisposeOutputCookieE5int32">DisposeOutputCookie</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer12EnableOutputERK12media_sourcebP5int32">EnableOutput</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer14FindLatencyForERK17media_destinationP9bigtime_tP13media_node_id">FindLatencyFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer11FindSeekTagERK17media_destination9bigtime_tP14media_seek_tagP9bigtime_tP6uint32P6uint32">FindSeekTag</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer21FormatChangeRequestedERK12media_sourceRK17media_destinationP12media_formatP5int32">FormatChangeRequested</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer14FormatProposalERK12media_sourceP12media_format">FormatProposal</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer25FormatSuggestionRequestedE10media_type5int32P12media_format">FormatSuggestionRequested</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer10GetLatencyEP9bigtime_t">GetLatency</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer13GetNextOutputEP5int32P12media_output">GetNextOutput</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer13HandleMessageE5int32PKv6size_t">HandleMessage</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer14LatencyChangedERK12media_sourceRK17media_destination9bigtime_t6uint32">LatencyChanged</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer18LateNoticeReceivedERK12media_source9bigtime_t9bigtime_t">LateNoticeReceived</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer16PrepareToConnectERK12media_sourceRK17media_destinationP12media_formatP12media_sourcePc">PrepareToConnect</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer12ProducerTypeEv">ProducerType</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer19ProposeFormatChangeEP12media_formatRK17media_destination">ProposeFormatChange</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer10SendBufferEP7BBufferR17media_destination">SendBuffer</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer14SendDataStatusE5int32R17media_destination9bigtime_t">SendDataStatus</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer14SetBufferGroupERK12media_sourceP12BBufferGroup">SetBufferGroup</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer17SetInitialLatencyE9bigtime_t6uint32">SetInitialLatency</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer11SetPlayRateE5int325int32">SetPlayRate</a></li>
+<li><a class="reference internal" href="#_CPPv4N15BBufferProducer20VideoClippingChangedERK12media_source5int16P5int16RK24media_video_display_infoP5int32">VideoClippingChanged</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bbufferproducer">
+<h1>BBufferProducer<a class="headerlink" href="#bbufferproducer" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N15BBufferProducer15BBufferProducerE10media_type">
+</section>
+<h3>
+BBufferProducer()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">explicit</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N15BBufferProducer15BBufferProducerE10media_type" title="BBufferProducer::BBufferProducer"><span class="n">BBufferProducer</span></a><span class="p">::</span></span><span class="n">BBufferProducer</span><span class="sig-paren">(</span><span class="n">media_type</span><span class="w"> </span><span class="n sig-param">producerType</span><span class="sig-paren">)</span></pre><p>Constructs the <span class="hclass">BBufferProducer</span> object.
+The <span class="hparameter">producerType</span> specifies the
+type of media data that will be output by the node.
+If the node will produce more than one type of data, your
+<span class="hclass">BBufferProducer</span>
+subclass should set the kind to the default (which is a wildcard value).
+If your node has additional latency on startup, you should call
+<a class="reference internal" href="#_CPPv4N15BBufferProducer17SetInitialLatencyE9bigtime_t6uint32" title="BBufferProducer::SetInitialLatency"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetInitialLatency()</span></code></a>
+to record this information. This might be the case if
+the buffers your node produces are created from an input signal which
+refreshes infrequently, such as a television signal.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>In BeOS Release 4.5.2 and earlier, the <span class="hparameter">producerType</span> has a default
+value; it no longer does, and you’ll have to specify the media type
+yourself.</p>
+</div>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N15BBufferProducer25AdditionalBufferRequestedERK12media_source15media_buffer_id9bigtime_tPK14media_seek_tag">
+</section>
+<h3>
+AdditionalBufferRequested()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">AdditionalBufferRequested</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_source</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">source</span>, <span class="n">media_buffer_id</span><span class="w"> </span><span class="n sig-param">previousBufferID</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">previousTime</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_seek_tag</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">previousTag</span><span class="sig-paren">)</span></pre><p>When a consumer calls
+<a class="reference internal" href="buffer-consumer.html#_CPPv4N15BBufferConsumer23RequestAdditionalBufferERK12media_sourceP7BBufferPv" title="BBufferConsumer::RequestAdditionalBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBufferConsumer::RequestAdditionalBuffer()</span></code></a>,
+this
+function is called as a result. Its job is to call
+<a class="reference internal" href="#_CPPv4N15BBufferProducer10SendBufferEP7BBufferR17media_destination" title="BBufferProducer::SendBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SendBuffer()</span></code></a>
+to immediately send the next buffer to the consumer.
+The <span class="hparameter">previousBufferID</span>, <span class="hparameter">previousTime</span>,
+and <span class="hparameter">previousTag</span> arguments identify
+the last buffer the consumer received. Your node should respond by
+sending the next buffer after the one described.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The <span class="hparameter">previousTag</span> may be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</div>
+<p>Return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if all is well; otherwise
+return an appropriate error code.</p>
+<section id="_CPPv4N15BBufferProducer12ChangeFormatERK12media_sourceRK17media_destinationP12media_format">
+</section>
+<h3>
+ChangeFormat()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">ChangeFormat</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_source</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">source</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_destination</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">destination</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">newFormat</span><span class="sig-paren">)</span></pre><p>Informs the destination that the data flowing between source and
+destination is immediately changing to the format specified by
+<span class="hparameter">newFormat.</span></p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>You must never call
+<a class="reference internal" href="#_CPPv4N15BBufferProducer10SendBufferEP7BBufferR17media_destination" title="BBufferProducer::SendBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SendBuffer()</span></code></a>
+while this call is pending.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The format change request has been sent without error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_CHANGE_IN_PROGRESS</span></code>.</p></td>
+<td><p>A mutual exclusion error has occurred with <a class="reference internal" href="#_CPPv4N15BBufferProducer10SendBufferEP7BBufferR17media_destination" title="BBufferProducer::SendBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SendBuffer()</span></code></a>; <span class="hmethod">ChangeFormat()</span> and <a class="reference internal" href="#_CPPv4N15BBufferProducer10SendBufferEP7BBufferR17media_destination" title="BBufferProducer::SendBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SendBuffer()</span></code></a> can’t both be running at the same time.</p></td>
+</tr>
+<tr class="row-even"><td><p>Other errors.</p></td>
+<td><p>You may receive other errors if the consumer doesn’t agree with the new format you’re requesting.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N15BBufferProducer16ClipDataToRegionE5int325int32PKvP7BRegion">
+</section>
+<h3>
+ClipDataToRegion()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">ClipDataToRegion</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">format</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">byteCount</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">clipData</span>, <a class="reference internal" href="../interface/region.html#_CPPv47BRegionRK7BRegion" title="BRegion"><span class="n">BRegion</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">region</span><span class="sig-paren">)</span></pre><p>Given <span class="hparameter">byteCount</span> bytes of clipping
+data <span class="hparameter">clipDatain</span> the specified <span class="hparameter">format</span>,
+makes the specified <span class="hparameter">region</span> match the clipping region.
+The <span class="hparameter">region</span> you specify must already exist.
+The only format currently supported is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CLIP_SHORT_RUNS</span></code>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The clip data was converted without error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_CLIP_FORMAT</span></code>.</p></td>
+<td><p>The specified clip format is invalid.</p></td>
+</tr>
+</tbody>
+</table>
+<p>See also:
+<a class="reference internal" href="buffer-consumer.html#_CPPv4N15BBufferConsumer16RegionToClipDataEPK7BRegionP5int32P5int32Pv" title="BBufferConsumer::RegionToClipData"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBufferConsumer::RegionToClipData()</span></code></a></p>
+<section id="_CPPv4N15BBufferProducer7ConnectE8status_tRK12media_sourceRK17media_destinationRK12media_formatPc">
+</section>
+<h3>
+Connect()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">Connect</span><span class="sig-paren">(</span><span class="n">status_t</span><span class="w"> </span><span class="n sig-param">status</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_source</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">source</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_destination</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">destination</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">format</span>, <span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioName</span><span class="sig-paren">)</span></pre><p>Implement this hook function to establish a connection between the source
+and the destination. The format negotiation is already complete by the
+time <span class="hmethod">Connect()</span> is called, so you have to
+accept the specified <span class="hparameter">format</span>.
+The <span class="hparameter">status</span> argument indicates
+whether or not the connection actually took
+place; this is the result code returned by the
+<a class="reference internal" href="buffer-consumer.html#_CPPv4N15BBufferConsumer9ConnectedERK12media_sourcePK12media_formatP11media_input" title="BBufferConsumer::Connected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBufferConsumer::Connected()</span></code></a>
+function or an error code indicating an
+error that has occurred during other preparation for the connection.
+If <span class="hparameter">status</span> isn’t <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>,
+you should release the media_source that was
+reserved for this connection by
+<a class="reference internal" href="#_CPPv4N15BBufferProducer16PrepareToConnectERK12media_sourceRK17media_destinationP12media_formatP12media_sourcePc" title="BBufferProducer::PrepareToConnect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PrepareToConnect()</span></code></a>;
+this lets it be used by other connection attempts.
+On entry, <span class="hparameter">ioName</span> contains the connection name specified by the consumer
+(this may be different from the name specified by the
+<a class="reference internal" href="#_CPPv4N15BBufferProducer16PrepareToConnectERK12media_sourceRK17media_destinationP12media_formatP12media_sourcePc" title="BBufferProducer::PrepareToConnect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PrepareToConnect()</span></code></a>
+function). On return, <span class="hparameter">ioName</span> should
+point to a name for the connection; if the name really matters to you,
+copy the name you want the connection to have back into <span class="hparameter">ioName</span>;
+otherwise, you can leave it alone.</p>
+<section id="_CPPv4N15BBufferProducer10DisconnectERK12media_sourceRK17media_destination">
+</section>
+<h3>
+Disconnect()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">Disconnect</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_source</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">source</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_destination</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">destination</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Your implementation of <span class="hmethod">Disconnect()</span>
+should terminate the connection between the specified
+<span class="hparameter">source</span> and
+<span class="hparameter">destination</span>. Once you return from this function,
+you shouldn’t send any further buffers on the connection.
+If a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferGroup</span></code>
+has been specified for your producer (via the
+<a class="reference internal" href="#_CPPv4N15BBufferProducer14SetBufferGroupERK12media_sourceP12BBufferGroup" title="BBufferProducer::SetBufferGroup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetBufferGroup()</span></code></a>
+function), you should delete it here.</p>
+<section id="_CPPv4N15BBufferProducer19DisposeOutputCookieE5int32">
+</section>
+<h3>
+DisposeOutputCookie()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">DisposeOutputCookie</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">cookie</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Once a client has finished iterating through your outputs via
+<a class="reference internal" href="#_CPPv4N15BBufferProducer13GetNextOutputEP5int32P12media_output" title="BBufferProducer::GetNextOutput"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextOutput()</span></code></a>
+calls, it will call this function with the last value you
+returned as a <span class="hparameter">cookie</span>. This gives you the opportunity to dispose of any
+memory you may have allocated for the iteration process.
+Return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if the cookie is successfully disposed of (or if nothing
+needs to be done); otherwise, return an appropriate error code.</p>
+<section id="_CPPv4N15BBufferProducer12EnableOutputERK12media_sourcebP5int32">
+</section>
+<h3>
+EnableOutput()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">EnableOutput</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_source</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">whichOutput</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">enabled</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">_deprecated_</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>This hook function is called when a consumer’s
+<a class="reference internal" href="buffer-consumer.html#_CPPv4N15BBufferConsumer16SetOutputEnabledERK12media_sourceRK17media_destinationbPvP5int32Pv" title="BBufferConsumer::SetOutputEnabled"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetOutputEnabled()</span></code></a>
+function is called. This indicates whether or not the output specified by
+<span class="hparameter">whichOutput</span> needs to be sent buffers. You must implement this function so
+that you don’t send buffers to outputs that don’t need them. The
+<span class="hparameter">_deprecated_</span> argument is no longer used.
+By default, output is enabled.</p>
+<section id="_CPPv4N15BBufferProducer14FindLatencyForERK17media_destinationP9bigtime_tP13media_node_id">
+</section>
+<h3>
+FindLatencyFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">FindLatencyFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_destination</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">forDestination</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outLatency</span>, <span class="n">media_node_id</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outTimeSource</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p><span class="hmethod">FindLatencyFor()</span> returns the latency
+introduced by sending data to the destination
+<span class="hparameter">forDestination</span>. On return, the latency will be
+stored in <span class="hparameter">outLatency</span>, and the time source used
+by <span class="hparameter">forDestination</span> will be available in
+<span class="hparameter">outTimeSource</span> (unless an error is returned, in
+which case these values are undetermined).
+The latency of sending a buffer from one time source to another should
+always be assumed to be zero, since there may be no relationship between
+the progress of time of two different time sources.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The latency was returned without error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_DESTINATION</span></code>.</p></td>
+<td><p>The destination is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>Port errors.</p></td>
+<td><p>The request couldn’t be sent to the destination.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N15BBufferProducer11FindSeekTagERK17media_destination9bigtime_tP14media_seek_tagP9bigtime_tP6uint32P6uint32">
+</section>
+<h3>
+FindSeekTag()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">FindSeekTag</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_destination</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">forDestination</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">inTargetTime</span>, <span class="n">media_seek_tag</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outTag</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outTaggedTime</span>, <span class="n">uint32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFlags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="n">uint32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inFlags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>In order to improve seek performance, the Media Kit provides the
+concept of seek tags. These are special tags that identify easily-located
+points in media data (such as key frames in Cinepak video). The
+<span class="hmethod">FindSeekTag()</span> function asks the consumer
+specified by <span class="hparameter">forDestination</span> for the nearest seek
+tag to the time specified by <span class="hparameter">inTargetTime</span>, and
+returns the tag in <span class="hparameter">outTag</span> and the time
+corresponding to that tag in <span class="hparameter">outTaggedTime</span>. On
+return, <span class="hparameter">outFlags</span> (if the pointer isn’t
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>) contains flags giving further details about
+the tag.
+There are currently no defined values for
+<span class="hparameter">inFlags</span> or <span class="hparameter">outFlags</span>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Port errors.</p></td>
+<td><p>An error occurred communicating with the Media Server.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N15BBufferProducer21FormatChangeRequestedERK12media_sourceRK17media_destinationP12media_formatP5int32">
+</section>
+<h3>
+FormatChangeRequested()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">FormatChangeRequested</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_source</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">source</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_destination</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">destination</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioFormat</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">_deprecated_</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Implement <span class="hmethod">FormatChangeRequested()</span> to
+change the format of the media data flowing from the given
+<span class="hparameter">source</span> to the specified
+<span class="hparameter">destination</span> to the format specified by
+<span class="hparameter">ioFormat</span>. If there are wildcards specified in
+<span class="hparameter">ioFormat</span>, fill them in to match the format you
+prefer before returning from this call. You should ignore the
+<span class="hparameter">_deprecated_</span> argument; it’s no longer
+used.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>This call is issued synchronously by the destination, so you can’t ask
+it if the format is acceptable. Fortunately, since the destination issued
+the request, you can safely assume that it’s fine.</p>
+</div>
+<p>Return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if the change request is processed successfully; otherwise,
+return an appropriate error code.
+See also:
+<a class="reference internal" href="#_CPPv4N15BBufferProducer25FormatSuggestionRequestedE10media_type5int32P12media_format" title="BBufferProducer::FormatSuggestionRequested"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FormatSuggestionRequested()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N15BBufferProducer14FormatProposalERK12media_sourceP12media_format" title="BBufferProducer::FormatProposal"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FormatProposal()</span></code></a></p>
+<section id="_CPPv4N15BBufferProducer14FormatProposalERK12media_sourceP12media_format">
+</section>
+<h3>
+FormatProposal()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">FormatProposal</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_source</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">output</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">format</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Your <span class="hclass">BBufferProducer</span> should implement this function to verify that the
+proposed media_format is suitable for the specified <span class="hparameter">output</span>. If any fields
+in the <span class="hparameter">format</span> are wildcards, and you have a specific requirement, adjust
+those fields to match your requirements before returning.
+Return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if the proposed format is acceptable; once you’ve done so,
+the Media Kit will assume that any connection request made on output with
+the specified format (after any changes you may have made) will succeed.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_SOURCE</span></code></p></td>
+<td><p><span class="hparameter">output</span> isn’t available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_MEDIA_FORMAT</span></code></p></td>
+<td><p><span class="hparameter">format</span> isn’t reasonable.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N15BBufferProducer25FormatSuggestionRequestedE10media_type5int32P12media_format">
+</section>
+<h3>
+FormatSuggestionRequested()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">FormatSuggestionRequested</span><span class="sig-paren">(</span><span class="n">media_type</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">quality</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">format</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>You must implement <span class="hmethod">FormatSuggestionRequested()</span> to return fill the buffer
+pointed to by format that your producer is capable of emitting that meets
+the desired type and quality requirements.
+If your producer can work with a range of possible formats, let the
+quality argument guide your selection. For example, you might choose to
+use 10 fps for previews, and 60 fps interlaced 640x480 for full-quality
+video.
+If <span class="hparameter">type</span> is a media class that your producer doesn’t want to work with,
+return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_MEDIA_FORMAT</span></code>. If you’re preapared to accept a wide range of
+values for some specific field, set that field to the wildcard value (see
+media_audio_format::wildcard()
+and media_video_format::wildcard()
+for more information.
+Return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if the
+<span class="hparameter">format</span> is successfully returned.</p>
+<section id="_CPPv4N15BBufferProducer10GetLatencyEP9bigtime_t">
+</section>
+<h3>
+GetLatency()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">GetLatency</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outLatency</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Implement this hook function to store, in <span class="hparameter">outLatency</span>, the total amount of
+latency your <span class="hclass">BBufferProducer</span> incurs from receiving a buffer of data until
+it reaches its ultimate destination.
+Call <a class="reference internal" href="#_CPPv4N15BBufferProducer14FindLatencyForERK17media_destinationP9bigtime_tP13media_node_id" title="BBufferProducer::FindLatencyFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindLatencyFor()</span></code></a>
+on whatever outputs the data is being forwarded to,
+add your own latency to the largest of those values, and return that
+value.
+The default implementation of <span class="hmethod">GetLatency()</span> finds the maximum latency of
+your currently-available outputs by iterating over them, and returns that
+value in <span class="hparameter">outLatency</span>; therefore, your implementation of this function may
+simply need to call the inherited version of this function, then add your
+own processing latency to the returned value.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The latency has been returned successfully.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>Unable to calculate the latency.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N15BBufferProducer13GetNextOutputEP5int32P12media_output">
+</section>
+<h3>
+GetNextOutput()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">GetNextOutput</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span>, <span class="n">media_output</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outOutput</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Implement this function to return information about your available
+outputs. The first time it’s called for a new iteration loop, the value
+pointed to by <span class="hparameter">cookie</span> will be 0. Each
+time <span class="hmethod">GetNextOutput()</span> is called, you
+should set it to some value that makes sense to you so you can keep track
+of where in the iteration process the client is, but never set it to 0.
+For each call to <span class="hmethod">GetNextOutput()</span>,
+including the first, you should return
+one of your outputs that the client hasn’t seen during the iteration loop
+in <span class="hparameter">outOutput</span>.
+Once all outputs have been reported, you should return
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p>
+<section id="_CPPv4N15BBufferProducer13HandleMessageE5int32PKv6size_t">
+</section>
+<h3>
+HandleMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">HandleMessage</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">message</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p>When your node derived from <span class="hclass">BBufferProducer</span> receives a message on its
+control port, you should handle it yourself if you know how, or dispatch
+to each ancestor class in turn (starting with
+<span class="hclass">BBufferProducer</span>’s <span class="hmethod">HandleMessage()</span>)
+until one of the <span class="hmethod">HandleMessage()</span>
+implementations returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>. If none of the inherited implementations of
+this function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>, you should pass the message to
+<a class="reference internal" href="media-node.html#_CPPv4N10BMediaNode16HandleBadMessageE5int32PKv6size_t" title="BMediaNode::HandleBadMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaNode::HandleBadMessage()</span></code></a>
+to be dealt with.
+Your port-listening thread should call <span class="hmethod">HandleMessage()</span> to dispatch the
+received data.
+See also:
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AboutMultipleVirtualInheritance()</span></code>”</p>
+<section id="_CPPv4N15BBufferProducer14LatencyChangedERK12media_sourceRK17media_destination9bigtime_t6uint32">
+</section>
+<h3>
+LatencyChanged()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">LatencyChanged</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_source</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">source</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_destination</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">destination</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">newLatency</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="sig-paren">)</span></pre><p>This hook function is called when a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferConsumer</span></code>
+that’s receiving data
+from you determines that its latency has changed. It will call its
+<a class="reference internal" href="buffer-consumer.html#_CPPv4N15BBufferConsumer17SendLatencyChangeERK12media_sourceRK17media_destination9bigtime_t6uint32" title="BBufferConsumer::SendLatencyChange"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBufferConsumer::SendLatencyChange()</span></code></a>
+function, and in response, the Media
+Server will call your <span class="hmethod">LatencyChanged()</span> function.
+The <span class="hparameter">source</span> argument indicates your output that’s involved in the
+connection, and <span class="hparameter">destination</span> specifies the input on the consumer to which
+the connection is linked. <span class="hparameter">newLatency</span> is the consumer’s new latency. The
+<span class="hparameter">flags</span> are currently unused.
+Override this function to implement whatever functionality you need to
+adjust your own latency calculations to keep the data flowing smoothly.</p>
+<section id="_CPPv4N15BBufferProducer18LateNoticeReceivedERK12media_source9bigtime_t9bigtime_t">
+</section>
+<h3>
+LateNoticeReceived()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">LateNoticeReceived</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_source</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">whichSource</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">howLate</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">performanceTime</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>This hook function is called when a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferConsumer</span></code>
+that’s receiving data
+from you determines that data is arriving late (when the
+<a class="reference internal" href="buffer-consumer.html#_CPPv4N15BBufferConsumer18NotifyLateProducerERK12media_source9bigtime_t9bigtime_t" title="BBufferConsumer::NotifyLateProducer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBufferConsumer::NotifyLateProducer()</span></code></a>
+function is called); the exact
+degree to which your buffers are late is specified by the <span class="hparameter">howLate</span>
+argument. Your implementation of this function should take whatever steps
+are necessary to correct the problem, either by asking nodes upstream
+from you to deliver buffers earlier, dropping buffers, or other
+appropriate actions, depending on the current run mode.
+The <span class="hparameter">performanceTime</span> argument
+specifies the performance time at which the
+notification was sent.
+See also:
+<a class="reference internal" href="media-node.html#_CPPv4NK10BMediaNode7RunModeEv" title="BMediaNode::RunMode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaNode::RunMode()</span></code></a></p>
+<section id="_CPPv4N15BBufferProducer16PrepareToConnectERK12media_sourceRK17media_destinationP12media_formatP12media_sourcePc">
+</section>
+<h3>
+PrepareToConnect()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">PrepareToConnect</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_source</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">whichSource</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_destination</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">whichDestination</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">format</span>, <span class="n">media_source</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outSource</span>, <span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outName</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>The <span class="hmethod">PrepareToConnect()</span> hook is called before a new connection between the
+source <span class="hparameter">whichSource</span> and the destination <span class="hparameter">whichDestination</span> is established,
+in order to give your producer one last chance to specialize any
+wildcards that remain in the format (although by this point there
+shouldn’t be any, you should check anyway).
+Your implementation should, additionally, return in <span class="hparameter">outSource</span> the source
+to be used for the connection, and should fill the <span class="hparameter">outName</span> buffer with
+the name the connection will be given; the consumer will see this in the
+<code class="docutils literal notranslate"><span class="pre">outInput-&gt;name</span></code>
+argument specified to
+<a class="reference internal" href="buffer-consumer.html#_CPPv4N15BBufferConsumer9ConnectedERK12media_sourcePK12media_formatP11media_input" title="BBufferConsumer::Connected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBufferConsumer::Connected()</span></code></a>.
+If your node doesn’t care what the name is, you can leave the <span class="hparameter">outName</span>
+untouched.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>Your <a class="reference internal" href="#_CPPv4N15BBufferProducer7ConnectE8status_tRK12media_sourceRK17media_destinationRK12media_formatPc" title="BBufferProducer::Connect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Connect()</span></code></a>
+function may return a different media_source value in
+<span class="hparameter">outOutput</span>’s source field than the one
+specified as the <span class="hparameter">source</span> argument to
+this function. One reason you might do this is if you implement one
+media_source to accept connection requests, then create a new
+media_source to actually handle each connection.</p>
+</div>
+<p>Return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if the connection process should proceed, or an appropriate
+error code if something’s wrong.
+If you return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>, the consumer’s
+<a class="reference internal" href="buffer-consumer.html#_CPPv4N15BBufferConsumer9ConnectedERK12media_sourcePK12media_formatP11media_input" title="BBufferConsumer::Connected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Connected()</span></code></a>
+function will be called,
+to let it know that a new connection is being established. Finally, the
+producer’s <span class="hmethod">Connect()</span> function is called to complete the exchange.</p>
+<section id="_CPPv4N15BBufferProducer12ProducerTypeEv">
+</section>
+<h3>
+ProducerType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">media_type</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">ProducerType</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the media_type of the media data produced by the node.</p>
+<section id="_CPPv4N15BBufferProducer19ProposeFormatChangeEP12media_formatRK17media_destination">
+</section>
+<h3>
+ProposeFormatChange()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">ProposeFormatChange</span><span class="sig-paren">(</span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">format</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_destination</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">forDestination</span><span class="sig-paren">)</span></pre><p>Call this function to determine whether or not the destination
+<span class="hparameter">forDestination</span> is prepared to accept
+buffers in the specified <span class="hparameter">format</span>.
+This function can be especially useful if you want to test various
+formats to select the best compatible format during a hookup request in
+which the requested format contains wildcards.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The proposed format is acceptable to the destination.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>The proposed format is unacceptable, or an error occurred in querying the destination node.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N15BBufferProducer10SendBufferEP7BBufferR17media_destination">
+</section>
+<h3>
+SendBuffer()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">SendBuffer</span><span class="sig-paren">(</span><span class="n">BBuffer</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">media_destination</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">destination</span><span class="sig-paren">)</span></pre><p>Call this function to send a buffer of media data to the specified
+<span class="hparameter">destination</span>, which must already be connected to one of your outputs. This
+is how your <span class="hclass">BBufferProducer</span> object will send data downstream to
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferConsumer</span></code>s
+to which it’s connected.
+It’s your responsibility to ensure that the buffer’s header and the data
+contained in the buffer itself are valid, although
+<span class="hmethod">SendBuffer()</span> will
+automatically fill out the following header fields for you:</p>
+<ul class="simple">
+<li><p>buffer</p></li>
+<li><p>for_id</p></li>
+<li><p>change_tag</p></li>
+</ul>
+<p>In particular, be sure that if you’re outputting video buffers you set
+the media_video_buffer to describe the video properly. If you don’t,
+things will go badly for you.
+You can obtain a buffer to fill and send by calling
+<a class="reference internal" href="buffer-consumer.html#_CPPv4N15BBufferConsumer23RequestAdditionalBufferERK12media_sourceP7BBufferPv" title="BBufferConsumer::RequestAdditionalBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBufferConsumer::RequestAdditionalBuffer()</span></code></a>
+on a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferConsumer</span></code> that you own (and
+that’s okay to use for buffers going to the specified destination).</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The buffer was sent without error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Port errors.</p></td>
+<td><p>An error occurred sending the buffer.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N15BBufferProducer14SendDataStatusE5int32R17media_destination9bigtime_t">
+</section>
+<h3>
+SendDataStatus()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">SendDataStatus</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">status</span>, <span class="n">media_destination</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">destination</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">atTime</span><span class="sig-paren">)</span></pre><p>Call this function to inform the specified <span class="hparameter">destination</span> whether or not
+there’s data available from your producer node. Specify the appropriate
+status flag as the <span class="hparameter">status</span> argument, and the time at which the status
+takes effect as the atTime argument.
+Possible values for the status argument are:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DATA_NOT_AVAILABLE</span></code></p></td>
+<td><p>There aren’t any buffers ready for the destination.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DATA_AVAILABLE</span></code></p></td>
+<td><p>There are buffers ready for the destination.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PRODUCER_STOPPED</span></code></p></td>
+<td><p>The producer has stopped.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The status update was sent without error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Port errors.</p></td>
+<td><p>The status update couldn’t be delivered.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N15BBufferProducer14SetBufferGroupERK12media_sourceP12BBufferGroup">
+</section>
+<h3>
+SetBufferGroup()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">SetBufferGroup</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_source</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">forSource</span>, <span class="n">BBufferGroup</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">group</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>When a client wants a specific
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferGroup</span></code>
+to be used for a given output
+<span class="hparameter">forSource</span>, it will call this function. You
+should remember the <span class="hparameter">group</span> and
+use it for all requests for buffers to send on the output forSource (and
+for no other outputs, unless the client explicitly requests you do so by
+calling <span class="hmethod">SetBufferGroup()</span> for another output source).
+If your <span class="hclass">BBufferProducer</span> goes away, or the connection is broken, delete
+the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferGroup</span></code>
+object.
+If <span class="hparameter">group</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>,
+you should use whatever
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferGroup</span></code>
+you wish after disposing of the previous group.
+It’s okay to pass <span class="hparameter">group</span> on to another node upstream from your
+<span class="hclass">BBufferProducer</span> if your <span class="hclass">BBufferProducer</span> only passes along buffers it
+receives in its processing loop; in that case, you’re not really the
+owner of the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferGroup</span></code>,
+unless you pass <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> for <span class="hparameter">willReclaim</span> in the
+call to
+<a class="reference internal" href="buffer-consumer.html#_CPPv4N15BBufferConsumer19SetOutputBuffersForERK12media_sourceRK17media_destinationP12BBufferGroupPvP5int32bPv" title="BBufferConsumer::SetOutputBuffersFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBufferConsumer::SetOutputBuffersFor()</span></code></a>.
+Return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if the buffer group is set without incident; otherwise,
+return an appropriate error code.</p>
+<section id="_CPPv4N15BBufferProducer17SetInitialLatencyE9bigtime_t6uint32">
+</section>
+<h3>
+SetInitialLatency()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">SetInitialLatency</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">initialLatency</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>If your node has additional startup latency imposed by the signal from
+which its buffers are constructed, you should call <span class="hmethod">SetInitialLatency()</span> to
+specify the maximum possible latency that can be added by this delay.
+<span class="hparameter">initialLatency</span> should be the maximum latency, in microseconds, that might
+occur.
+One situation in which this occurs is for TV capture card nodes. An
+NTSC
+television signal broadcasts a new field about every sixtieth of a
+second, which means that if your node is started partway through one
+field being received, you might have to wait as long as a sixtieth of a
+second for the first complete frame to arrive. So the maximum latency in
+this situation is a sixtieth of a second.
+Setting the initial latency correctly can prevent consumers from having
+problems synchronizing with your node, and can improve performance.
+<span class="hparameter">flags</span> should be 0 for now; there are
+no values defined yet.</p>
+<section id="_CPPv4N15BBufferProducer11SetPlayRateE5int325int32">
+</section>
+<h3>
+SetPlayRate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">SetPlayRate</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">numerator</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">denominator</span><span class="sig-paren">)</span></pre><p>This function is called to tell the producer to resample the data rate by
+the specified factor. Specifying a value of 1 (ie, <span class="hparameter">numerator</span>/<span class="hparameter">denominator</span>
+= 1) indicates that the data should be output at the same playback rate
+that it comes into the node at. The format of the data should be
+unchanged.
+For example, if you’re playing a sound at 48 kHz, and you receive a call
+to <span class="hmethod">SetPlayRate()</span> with a
+<span class="hparameter">numerator</span> of 2 and a <span class="hparameter">demoninator</span> of 1 (double
+speed), you should resample so that you move twice as fast through the
+source data while keeping the output rate constant. You might do this by
+doing a brute-force resample to 24 kHz (which would result in twice the
+data rate) or do time-compression (which would retain the pitch).
+As another example, if you’re playing video at 30 frames per second, and
+your <span class="hmethod">SetPlayRate()</span> function is called with a ratio of 1:2 specified (half
+speed), you should continue sending 30 frames per second, but you need to
+arrange for the playback to look like half-speed. A reasonable way to do
+this would be to send each frame twice (re-time-stamped and buffered
+internally, if necessary), which would result in the desired half-speed
+appearance.
+Return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if the sampling rate is changed; otherwise, return an error.
+It’s okay to return an error if you don’t support varying sampling
+rates—the Media Kit won’t hold that against you.</p>
+<section id="_CPPv4N15BBufferProducer20VideoClippingChangedERK12media_source5int16P5int16RK24media_video_display_infoP5int32">
+</section>
+<h3>
+VideoClippingChanged()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferProducer</span><span class="p">::</span></span><span class="n">VideoClippingChanged</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_source</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">forSource</span>, <span class="n">int16</span><span class="w"> </span><span class="n sig-param">numShorts</span>, <span class="n">int16</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">clipData</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_video_display_info</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">display</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFromChangeTag</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>This hook function is called when a client wants your <span class="hclass">BBufferProducer</span> to
+output video data clipped to a particular region. Your producer must
+remember this clipping region and apply it to all video data you produce,
+without altering any bytes outside the region in any buffers sent through
+the source <span class="hparameter">forSource</span>.
+Before your implementation of <span class="hmethod">VideoClippingChanged()</span> returns, you should
+set the value pointed to by <span class="hparameter">outFromChangeTag</span> to the change tag value at
+which the clipping will take effect, so the client will know what buffers
+it can expect to have the requested clipping. This can be done easily by
+adding the following line to your implementation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">outFromChangeTag</span> <span class="o">=</span> <span class="n">UpdateChangeTag</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>You can use the
+<a class="reference internal" href="#_CPPv4N15BBufferProducer16ClipDataToRegionE5int325int32PKvP7BRegion" title="BBufferProducer::ClipDataToRegion"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ClipDataToRegion()</span></code></a>
+function to convert the data in
+<span class="hparameter">clipData</span> into an actual
+<a class="reference internal" href="../interface/region.html#_CPPv47BRegionRK7BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a>
+if that’s a better format for you to work
+with. If you do, keep in mind that <span class="hparameter">numShorts</span> is the actual number of
+int16 values in the array specified by
+<span class="hparameter">clipData</span>, while
+<a class="reference internal" href="#_CPPv4N15BBufferProducer16ClipDataToRegionE5int325int32PKvP7BRegion" title="BBufferProducer::ClipDataToRegion"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ClipDataToRegion()</span></code></a>
+requires the number of bytes of data in the array; be sure to multiply
+<span class="hparameter">numShorts</span> by
+<code class="docutils literal notranslate"><span class="pre">sizeof(int16)</span></code>.
+The media_video_display_info structure referred to by display indicates
+the format of the video display onto which the video is being displayed;
+this lets you know what color space, screen size, and so forth is in use
+on the video display, so your producer can render properly.
+<span class="hmethod">VideoClippingChanged()</span> is called not only when clipping changes, but when
+the configuration of the display changes as well. Your producer must
+abide by this starting at the specified change count.
+See  “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>”
+for information on the format of the clip data.</p>
+</section>
+<section id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>Declared in: media/BufferProducer.h</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CLIP_SHORT_RUNS</span></code>.</p></td>
+<td><p>Clipping is encoded using runs of shorts.</p></td>
+</tr>
+</tbody>
+</table>
+<p>This value defines the only clipping format currently supported by
+<span class="hclass">BBufferProducer</span>. Note that because this constant is a member of the
+<span class="hclass">BBufferProducer</span> class, if you need to access it from other classes, you
+must code it as
+<code class="docutils literal notranslate"><span class="pre">BBufferProducer::B_CLIP_SHORT_RUNS</span></code>.
+See “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>”
+for a description of this format.</p>
+<h3>
+</h3><p>Declared in: media/BufferProducer.h</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ANY_QUALITY</span></code></p></td>
+<td><p>Any quality.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_LOW_QUALITY</span></code></p></td>
+<td><p>A low quality level (10).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIUM_QUALITY</span></code></p></td>
+<td><p>Medium quality level (50).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HIGH_QUALITY</span></code></p></td>
+<td><p>High quality level (100).</p></td>
+</tr>
+</tbody>
+</table>
+<p>Quality values you can use when you don’t want to have to come up with
+one on your own.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="buffer-group.html">BBufferGroup</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="continuous-parameter.html">BContinuousParameter</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

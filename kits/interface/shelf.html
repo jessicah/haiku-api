@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BShelf &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BSlider" href="slider.html" />
+    <link rel="prev" title="BShapeIterator" href="shape-iterator.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BShelf</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="shape-iterator.html">BShapeIterator</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="slider.html">BSlider</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BShelf</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N6BShelf6BShelfEP5BViewbPKc">BShelf</a></li>
+<li><a class="reference internal" href="#_CPPv4N6BShelfD0Ev">~BShelf</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hook-functions">Hook Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4NK6BShelf17AdjustReplicantByE5BRectP8BMessage">AdjustReplicantBy</a></li>
+<li><a class="reference internal" href="#_CPPv4NK6BShelf25CanAcceptReplicantMessageEP8BMessage">CanAcceptReplicantMessage</a></li>
+<li><a class="reference internal" href="#_CPPv4NK6BShelf22CanAcceptReplicantViewE5BRectP5BViewP8BMessage">CanAcceptReplicantView</a></li>
+<li><a class="reference internal" href="#_CPPv4N6BShelf16ReplicantDeletedE5int32PK8BMessagePK5BView">ReplicantDeleted</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N6BShelf12AddReplicantEP8BMessage6BPoint">AddReplicant</a></li>
+<li><a class="reference internal" href="#_CPPv4NK6BShelf15CountReplicantsEv">CountReplicants</a></li>
+<li><a class="reference internal" href="#_CPPv4N6BShelf15DeleteReplicantEP5BView">DeleteReplicant</a></li>
+<li><a class="reference internal" href="#_CPPv4NK6BShelf7IndexOfEPK5BView">IndexOf</a></li>
+<li><a class="reference internal" href="#_CPPv4NK6BShelf11ReplicantAtE5int32PP5BViewP6uint328status_t">ReplicantAt</a></li>
+<li><a class="reference internal" href="#_CPPv4N6BShelf4SaveEv">Save</a></li>
+<li><a class="reference internal" href="#_CPPv4NK6BShelf12SaveLocationEP9entry_ref">SaveLocation</a></li>
+<li><a class="reference internal" href="#_CPPv4N6BShelf15SetSaveLocationEP7BDataIO">SetSaveLocation</a></li>
+<li><a class="reference internal" href="#_CPPv4N6BShelf8SetDirtyEb">SetDirty</a></li>
+<li><a class="reference internal" href="#_CPPv4N6BShelf7IsDirtyEv">IsDirty</a></li>
+<li><a class="reference internal" href="#_CPPv4N6BShelf17SetAllowsDraggingEb">SetAllowsDragging</a></li>
+<li><a class="reference internal" href="#_CPPv4NK6BShelf14AllowsDraggingEv">AllowsDragging</a></li>
+<li><a class="reference internal" href="#_CPPv4N6BShelf16SetAllowsZombiesEb">SetAllowsZombies</a></li>
+<li><a class="reference internal" href="#_CPPv4NK6BShelf13AllowsZombiesEv">AllowsZombies</a></li>
+<li><a class="reference internal" href="#_CPPv4N6BShelf18SetDisplaysZombiesEb">SetDisplaysZombies</a></li>
+<li><a class="reference internal" href="#_CPPv4NK6BShelf15DisplaysZombiesEv">DisplaysZombies</a></li>
+<li><a class="reference internal" href="#_CPPv4N6BShelf15SetTypeEnforcedEb">SetTypeEnforced</a></li>
+<li><a class="reference internal" href="#_CPPv4NK6BShelf14IsTypeEnforcedEv">IsTypeEnforced</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#static-functions">Static Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N6BShelf11InstantiateEP8BMessage">Instantiate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scripting-support">Scripting Support</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bshelf">
+<h1>BShelf<a class="headerlink" href="#bshelf" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N6BShelf6BShelfEP5BViewbPKc">
+</section>
+<h3>
+BShelf()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BShelf6BShelfEP5BViewbPKc" title="BShelf::BShelf"><span class="n">BShelf</span></a><span class="p">::</span></span><span class="n">BShelf</span><span class="sig-paren">(</span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">view</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">allowsDragging</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BShelf6BShelfEPK9entry_refP5BViewbPKc" title="BShelf::BShelf"><span class="n">BShelf</span></a><span class="p">::</span></span><span class="n">BShelf</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span>, <span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">view</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">allowsDragging</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BShelf6BShelfEP7BDataIOP5BViewbPKc" title="BShelf::BShelf"><span class="n">BShelf</span></a><span class="p">::</span></span><span class="n">BShelf</span><span class="sig-paren">(</span><span class="n">BDataIO</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">stream</span>, <span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">view</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">allowsDragging</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BShelf</span> object so that it serves a
+container view. The versions that accept an entry_ref or <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDataIO</span></code> argument prime the
+shelf so that it (initially) contains the replicants that are archived in
+the referred to file or stream using
+<a class="reference internal" href="#_CPPv4N6BShelf4SaveEv" title="BShelf::Save"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Save()</span></code></a>. The
+<span class="hparameter">ref</span>/<span class="hparameter">stream</span> argument is also
+used as the archival repository when you tell your
+<span class="hclass">BShelf</span> to
+<a class="reference internal" href="#_CPPv4N6BShelf4SaveEv" title="BShelf::Save"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Save()</span></code></a> itself.</p>
+<p>If the <span class="hparameter">allowsDragging</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the user will be able to drag
+replicant view within the container’s bounds. If the flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>,
+dropped views stay where they’re first put.</p>
+<p><span class="hparameter">name</span> is the <span class="hclass">BShelf</span>’s handler name. The name can be important: It’s
+compared to the replicant’s shelf_type field, as explained in
+<a class="reference internal" href="#_CPPv4N6BShelf12AddReplicantEP8BMessage6BPoint" title="BShelf::AddReplicant"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddReplicant()</span></code></a>.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>There’s an archive-accepting version of the <span class="hclass">BShelf</span> constructor declared
+in Shelf.h. Don’t use it.</p>
+</div>
+<section id="_CPPv4N6BShelfD0Ev">
+</section>
+<h3>
+~BShelf()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">~BShelf</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The destructor calls <a class="reference internal" href="#_CPPv4N6BShelf4SaveEv" title="BShelf::Save"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Save()</span></code></a>,
+and then frees the object.</p>
+</section>
+<section id="hook-functions">
+<h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4NK6BShelf17AdjustReplicantByE5BRectP8BMessage">
+</section>
+<h3>
+AdjustReplicantBy()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">BPoint</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">AdjustReplicantBy</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">destRect</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>This hook function is invoked automatically when a replicant is dropped
+on the <span class="hclass">BShelf</span>. It gives the shelf a chance to fine-tune the placement of
+the <span class="hclass">BDragger</span> and its target view.</p>
+<p><span class="hparameter">destRect</span> is the rectangle (in the container view’s coordinates) in which
+the dropped replicant is about to be drawn. Exactly what the rectangle
+means depends on the relationship between the dragger and its target:</p>
+<ul class="simple">
+<li><p>If the dragger is the target’s parent, then <span class="hparameter">destRect</span> encloses the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDragger</span></code>’s frame.</p></li>
+<li><p>Otherwise (if the target is the parent, or if the two views are siblings), <span class="hparameter">destRect</span> encloses the target’s frame. Note that in the case of siblings, the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDragger</span></code>’s frame isn’t included in the rectangle.</p></li>
+</ul>
+<p><span class="hparameter">archive</span> is the archive message that was dropped on the shelf.</p>
+<p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPoint</span></code> that this
+function returns offsets (is added into) the
+location of the replicant. If you don’t want to move the replicant,
+return <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPoint</span></code>(0, 0).
+Note that the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDragger</span></code>
+and the view are both moved by this offset, even in the case where
+<span class="hparameter">destRect</span> doesn’t include the
+dragger’s frame.</p>
+<p>This function ignores the “allows dragging” flag given in the <span class="hclass">BShelf</span>
+constructor. In other words, you can adjust a replicant’s placement
+through this function even if the <span class="hclass">BShelf</span> doesn’t otherwise allow dragging.</p>
+<section id="_CPPv4NK6BShelf25CanAcceptReplicantMessageEP8BMessage">
+</section>
+<section id="_CPPv4NK6BShelf22CanAcceptReplicantViewE5BRectP5BViewP8BMessage">
+</section>
+<h3>
+CanAcceptReplicantMessage(), CanAcceptReplicantView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">CanAcceptReplicantMessage</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">CanAcceptReplicantView</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">destRect</span>, <span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">view</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These hook functions are invoked from within
+<a class="reference internal" href="#_CPPv4N6BShelf12AddReplicantEP8BMessage6BPoint" title="BShelf::AddReplicant"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddReplicant()</span></code></a> whenever a
+replicant is dropped on the <span class="hclass">BShelf</span>. You can implement these functions to
+reject unwanted replicants.</p>
+<p><span class="hmethod">CanAcceptReplicantMessage()</span> is called first; the argument is the archive
+that (should) contain the replicated view. If you don’t like the look of
+the archive, return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> and the message will be thrown away. Note that
+you shouldn’t return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if the archive doesn’t seem to be in the
+correct form (specifically, if it doesn’t contain any views). Rejection
+of such messages is handled more elegantly (and after this function is
+invoked) by the <a class="reference internal" href="#_CPPv4N6BShelf12AddReplicantEP8BMessage6BPoint" title="BShelf::AddReplicant"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddReplicant()</span></code></a> function.</p>
+<p><span class="hmethod">CanAcceptReplicantView()</span> is invoked after the message has been
+unarchived. <span class="hparameter">destRect</span> is the rectangle that the replicant will occupy in
+the <span class="hclass">BShelf</span>’s container view’s coordinates. <span class="hparameter">view</span> is the replicated view
+itself. <span class="hparameter">archive</span> is the original message.</p>
+<p>If either function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, the replicant is rejected and the
+message is thrown away (it isn’t passed on to another handler). A return
+of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> does the obvious thing.</p>
+<section id="_CPPv4N6BShelf16ReplicantDeletedE5int32PK8BMessagePK5BView">
+</section>
+<h3>
+ReplicantDeleted()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">ReplicantDeleted</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span>, <span class="k">const</span><span class="w"> </span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="k">const</span><span class="w"> </span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">view</span><span class="sig-paren">)</span></pre><p>This hook function is invoked from within
+<a class="reference internal" href="#_CPPv4N6BShelf15DeleteReplicantEP5BView" title="BShelf::DeleteReplicant"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DeleteReplicant()</span></code></a> to indicate a
+replicant has been deleted from the <span class="hclass">BShelf</span>. It is called after the view
+has been removed from the shelf with the <span class="hparameter">index</span> of the replicant in the
+shelf, its <span class="hparameter">archive</span> message, and the detached <span class="hparameter">view</span>.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N6BShelf12AddReplicantEP8BMessage6BPoint">
+</section>
+<h3>
+AddReplicant()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">AddReplicant</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><p>This function is invoked automatically when a replicant is dropped on the
+<span class="hclass">BShelf</span>. The <span class="hparameter">archive</span> message contains the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDragger</span></code> archive that’s being
+dropped; <span class="hparameter">point</span> is where, within the container view’s bounds, the message
+was dropped. The function goes through these steps to reject and adjust
+the replicant:</p>
+<ul class="simple">
+<li><p>First, it invokes the <a class="reference internal" href="#_CPPv4NK6BShelf25CanAcceptReplicantMessageEP8BMessage" title="BShelf::CanAcceptReplicantMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CanAcceptReplicantMessage()</span></code></a> hook function. If the hook returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, then <span class="hmethod">AddReplicant()</span> doesn’t add the replicant.</p></li>
+<li><p>Next, it looks for a shelf_type string field in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>. If it finds one and the value of the field doesn’t match the <span class="hclass">BShelf</span>’s name, the replicant is rejected.</p></li>
+<li><p>If type enforcement is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> (see <a class="reference internal" href="#_CPPv4N6BShelf15SetTypeEnforcedEb" title="BShelf::SetTypeEnforced"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTypeEnforced()</span></code></a>) and the shelf has a name, then the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> must have a shelf_type string and this string must match the shelf name. Otherwise, the replicant is rejected.There’s no specific API for adding the shelf_type field to a view. If you want to configure your views to accept only certain <span class="hclass">BShelf</span> objects, you have to add the field directly as part of the view’s <a class="reference internal" href="view.html#_CPPv4NK5BView7ArchiveEP8BMessageb" title="BView::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a> implementation.</p></li>
+<li><p>The archive message is then unarchived (the replicant is instantiated). If the archive doesn’t contain a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>, the message is passed on to another handler (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DISPATCH_MESSAGE</span></code> is returned).</p></li>
+<li><p><a class="reference internal" href="#_CPPv4NK6BShelf22CanAcceptReplicantViewE5BRectP5BViewP8BMessage" title="BShelf::CanAcceptReplicantView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CanAcceptReplicantView()</span></code></a> hook function is called next (with a return of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> meaning rejection).</p></li>
+<li><p>Finally, <a class="reference internal" href="#_CPPv4NK6BShelf17AdjustReplicantByE5BRectP8BMessage" title="BShelf::AdjustReplicantBy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AdjustReplicantBy()</span></code></a> is called, and the replicant is drawn in the container view.</p></li>
+</ul>
+<p>Except in the case of a no-view archive, <span class="hmethod">AddReplicant()</span> returns
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SKIP_MESSAGE</span></code>.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>If you want the ensure that the replicant is unique within the
+container view, add a “be:unique_replicant” entry of type <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BOOL_TYPE</span></code> to
+the archive with the value <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</div>
+<p>It’s possible to archive a <span class="hclass">BDragger</span> and call this function yourself,
+although that’s not its expected use.</p>
+<h3>
+</h3><div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p><span class="hmethod">Archive()</span> is currently a no-op that
+returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>. You can’t archive
+a <span class="hclass">BShelf</span>. If you want to archive something, archive the shelf’s contents
+by calling <a class="reference internal" href="#_CPPv4N6BShelf4SaveEv" title="BShelf::Save"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Save()</span></code></a>.</p>
+</div>
+<section id="_CPPv4NK6BShelf15CountReplicantsEv">
+</section>
+<h3>
+CountReplicants()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">CountReplicants</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the number of replicants attached to the shelf.</p>
+<section id="_CPPv4N6BShelf15DeleteReplicantEP5BView">
+</section>
+<h3>
+DeleteReplicant()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">DeleteReplicant</span><span class="sig-paren">(</span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">replicant_view</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">DeleteReplicant</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">DeleteReplicant</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">uid</span><span class="sig-paren">)</span></pre><p>Removes the specified replicant from the shelf. It identifies replicants
+by either a view, a replicant message, or a unique id.</p>
+<section id="_CPPv4NK6BShelf7IndexOfEPK5BView">
+</section>
+<section id="_CPPv4NK6BShelf11ReplicantAtE5int32PP5BViewP6uint328status_t">
+</section>
+<h3>
+IndexOf(), ReplicantAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">IndexOf</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">replicant_view</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">IndexOf</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">IndexOf</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">uid</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">ReplicantAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span>, <span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">view</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">uint32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">view</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">status_t</span><span class="w"> </span><span class="n sig-param">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">IndexOf()</span> returns the index of a specified replicant in the shelf, or -1
+if no such replicant exists. It accepts either a view, a replicant
+message, or a unique id as identifiers.</p>
+<p><span class="hmethod">ReplicantAt()</span> returns information about a replicant in a shelf given its
+<span class="hparameter">index</span> (as returned by <span class="hmethod">IndexOf()</span>). It returns the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive of the
+replicant or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the index is invalid. It returns the <span class="hparameter">view</span> of the
+replicant as well as its <span class="hparameter">uid</span>, if these parameters are non-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. It
+returns an error message in <span class="hparameter">err</span> if there was an error in initializing the
+given replicant.</p>
+<section id="_CPPv4N6BShelf4SaveEv">
+</section>
+<section id="_CPPv4NK6BShelf12SaveLocationEP9entry_ref">
+</section>
+<section id="_CPPv4N6BShelf15SetSaveLocationEP7BDataIO">
+</section>
+<section id="_CPPv4N6BShelf8SetDirtyEb">
+</section>
+<section id="_CPPv4N6BShelf7IsDirtyEv">
+</section>
+<h3>
+Save(), SaveLocation(), SetSaveLocation(), SetDirty(), IsDirty()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">Save</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BDataIO</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">SaveLocation</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">SetSaveLocation</span><span class="sig-paren">(</span><span class="n">BDataIO</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data_io</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">SetSaveLocation</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">SetDirty</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">flag</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">IsDirty</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Writes the shelf’s contents (the replicants that it contains) as an archive
+to the entry_ref or <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDataIO</span></code> object that was
+specified in the constructor. You can also set the location where the shelf
+is saved with <span class="hmethod">SetSaveLocation()</span> and fetch it with
+<span class="hmethod">SaveLocation()</span>. The entry_ref is
+stored in <span class="hparameter">ref</span> (if ref is
+non-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>) and the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDataIO</span></code> the shelf will be
+written to is returned. If the shelf will be written to an
+entry_ref that is not a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDataIO</span></code>,
+<span class="hmethod">SaveLocation()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p>By default, the save is only performed if the object’s “dirty” flag is
+set—in other words, if it has changed since it was last written.
+You can force set the dirty flag by calling <span class="hmethod">SetDirty()</span>.</p>
+<p><span class="hmethod">IsDirty()</span> returns the current state of the “dirty” flag.</p>
+<section id="_CPPv4N6BShelf17SetAllowsDraggingEb">
+</section>
+<section id="_CPPv4NK6BShelf14AllowsDraggingEv">
+</section>
+<h3>
+SetAllowsDragging(), AllowsDragging()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">SetAllowsDragging</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">state</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">AllowsDragging</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetAllowsDragging()</span> determines whether the <span class="hclass">BShelf</span> accepts replicants
+dragged into the view by the user. <span class="hmethod">AllowsDragging()</span> returns whether the
+<span class="hclass">BShelf</span> accepts replicants dragged by the user into the container view’s
+frame</p>
+<section id="_CPPv4N6BShelf16SetAllowsZombiesEb">
+</section>
+<section id="_CPPv4NK6BShelf13AllowsZombiesEv">
+</section>
+<section id="_CPPv4N6BShelf18SetDisplaysZombiesEb">
+</section>
+<section id="_CPPv4NK6BShelf15DisplaysZombiesEv">
+</section>
+<h3>
+SetAllowsZombies(), AllowsZombies(), SetDisplaysZombies(), DisplaysZombies()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">SetAllowsZombies</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">state</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">AllowsZombies</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">SetDisplaysZombies</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">state</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">DisplaysZombies</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetAllowsZombies()</span> determines whether the
+<span class="hclass">BShelf</span> accepts zombie views.
+<span class="hmethod">AllowsZombies()</span> returns whether the
+<span class="hclass">BShelf</span> accepts zombie views. A zombie view is one
+whose associated executable cannot be located.</p>
+<p>Similarly, <span class="hmethod">SetDisplaysZombies()</span> determines whether
+the <span class="hclass">BShelf</span> displays zombie views and
+<span class="hmethod">DisplaysZombies()</span> returns whether the
+<span class="hclass">BShelf</span> displays zombie views.</p>
+<section id="_CPPv4N6BShelf15SetTypeEnforcedEb">
+</section>
+<section id="_CPPv4NK6BShelf14IsTypeEnforcedEv">
+</section>
+<h3>
+SetTypeEnforced(), IsTypeEnforced()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">SetTypeEnforced</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">state</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">IsTypeEnforced</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These two methods set and return the type enforcement flag. When it is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the shelf compares its name to the shelf_type field of any
+dropped messages. The replicant is accepted only if the two match. If the
+dropped message does not have a shelf_type field, then it is rejected.
+Type enforcement is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> by default.</p>
+</section>
+<section id="static-functions">
+<h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N6BShelf11InstantiateEP8BMessage">
+</section>
+<h3>
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BShelf</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p><span class="hmethod">Instantiate()</span> is currently a no-op that
+returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. You can’t archive a
+<span class="hclass">BShelf</span>. If you want to archive something, archive
+the shelf’s contents by calling
+<a class="reference internal" href="#_CPPv4N6BShelf4SaveEv" title="BShelf::Save"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Save()</span></code></a>.</p>
+</div>
+</section>
+<section id="scripting-support">
+<h2>Scripting Support<a class="headerlink" href="#scripting-support" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>The “Replicant” property provides access to the replicants contained in a
+<span class="hclass">BShelf</span>. It also allows you to manipulate the replicants themselves by
+forwarding certain messages to a “suite/vnd.Be-replicant” interface. This
+interface consists of the following messages:</p>
+<p>MessageSpecifierDescriptionB_COUNT_PROPERTIESB_DIRECT_SPECIFIERReturns number of replicants in the shelf.B_CREATE_PROPERTIESB_DIRECT_SPECIFIERAdds the archived replicant in the BMessage “data” to the view at the BPoint in “location.”B_DELETE_PROPERTYB_INDEX_SPECIFIER, B_REVERSE_INDEX_SPECIFIER, B_NAME_SPECIFIER, B_ID_SPECIFIERRemoves the specified replicant from the shelf.B_GET_PROPERTYB_INDEX_SPECIFIER, B_REVERSE_INDEX_SPECIFIER, B_NAME_SPECIFIER, B_ID_SPECIFIERArchives the specified replicant into a BMessage in “result.”anything elseB_INDEX_SPECIFIER, B_REVERSE_INDEX_SPECIFIER, B_NAME_SPECIFIER, B_ID_SPECIFIERDirects the scripting message to the replicant interface “suite/vnd.Be-replicant” (described below), first popping the current specifier off the stack.</p>
+<h3>
+</h3><p>The replicant ID</p>
+<p>MessageSpecifierDescriptionB_GET_PROPERTYB_DIRECT_SPECIFIERReturns the replicant ID.</p>
+<h3>
+</h3><p>The name of the replicant view</p>
+<p>MessageSpecifierDescriptionB_GET_PROPERTYB_DIRECT_SPECIFIERReturns the name of the replicant view.</p>
+<h3>
+</h3><p>The replicant add-on MIME signature</p>
+<p>MessageSpecifierDescriptionB_GET_PROPERTYB_DIRECT_SPECIFIERReturns the signature of the add-on containing the code for the replicant.</p>
+<h3>
+</h3><p>The supported scripting suites</p>
+<p>MessageSpecifierDescriptionB_GET_PROPERTYB_DIRECT_SPECIFIERReturns “suite/vnd.Be-replicant” in “suites” and a flattened BPropertyInfo describing the scripting suite in “messages.”</p>
+<h3>
+</h3><p>Redirects messages to the replicant view</p>
+<p>MessageSpecifierDescriptionanyB_DIRECT_SPECIFIERDirects the scripting message to the replicant view, first popping the current specifier off the specifier stack.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="shape-iterator.html">BShapeIterator</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="slider.html">BSlider</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

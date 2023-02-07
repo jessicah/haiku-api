@@ -18,35 +18,74 @@
     <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="The Application Kit" href="overview.html" />
-    <link rel="prev" title="BFlattenable" href="flattenable.html" /> 
+    <link rel="next" title="BLocker" href="locker.html" />
+    <link rel="prev" title="Functions and Macros" href="functions.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
-          <span>The Haiku Book  documentation</span></a></h1>
+          <span>API Documentation</span></a></h1>
         <h2 class="heading"><span>BList</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="flattenable.html">BFlattenable</a>
+        «&#160;&#160;<a href="functions.html">Functions and Macros</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="overview.html">The Application Kit</a>&#160;&#160;»
+        <a href="locker.html">BLocker</a>&#160;&#160;»
         </p>
 
       </div>
-      <div class="content" role="main">
         
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BList</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N5BList5BListE5int32">BList</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BListD0Ev">~BList</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N5BList7AddItemEPv">AddItem</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BList7AddListEP5BList">AddList</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BList10CountItemsEv">CountItems</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BList9DoForEachEPFbPvE">DoForEach</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BList9FirstItemEv">FirstItem</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BList7HasItemEv">HasItem</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BList7IndexOfEPv">IndexOf</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BList7IsEmptyEv">IsEmpty</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BList6ItemAtE4in32">ItemAt</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BList5ItemsEv">Items</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BList8LastItemEv">LastItem</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BList9MakeEmptyEv">MakeEmpty</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BList10RemoveItemEPv">RemoveItem</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BList11RemoveItemsE5int325int32">RemoveItems</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BList9SortItemsEPFiPKvPKvE">SortItems</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
         
   <section id="blist">
 <h1>BList<a class="headerlink" href="#blist" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
-<h3 id="_CPPv4N5BList5BListE5int32">
-<span id="_CPPv3N5BList5BListE5int32"></span><span id="_CPPv2N5BList5BListE5int32"></span><span id="BList::BList__int32"></span><span id="_CPPv4N5BList5BListERK5BList"></span><span id="_CPPv3N5BList5BListERK5BList"></span><span id="_CPPv2N5BList5BListERK5BList"></span><span id="BList::BList__BListCR"></span>BList()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BList5BListE5int32" title="BList::BList"><span class="n">BList</span></a><span class="p">::</span></span><span class="n">BList</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">count</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">20</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BList5BListERK5BList" title="BList::BList"><span class="n">BList</span></a><span class="p">::</span></span><span class="n">BList</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5BList5BListERK5BList" title="BList::BList"><span class="n">BList</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">anotherList</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BList</span> by allocating enough memory to hold <span class="hparameter">count</span> items. As the
+<section id="_CPPv4N5BList5BListE5int32">
+</section>
+<h3>
+BList()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BList5BListE5int32" title="BList::BList"><span class="n">BList</span></a><span class="p">::</span></span><span class="n">BList</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">count</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">20</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BList5BListERK5BList" title="BList::BList"><span class="n">BList</span></a><span class="p">::</span></span><span class="n">BList</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5BList5BListERK5BList" title="BList::BList"><span class="n">BList</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">anotherList</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BList</span> by allocating enough memory to hold <span class="hparameter">count</span> items. As the
 list grows and shrinks, additional memory is allocated and freed in blocks of the same size.</p>
 <p>The copy constructor creates an independent list of data pointers, but it doesn’t copy the
 pointed-to data. For example:</p>
@@ -59,12 +98,10 @@ items in <code class="docutils literal notranslate"><span class="pre">newList</s
 will be seen through the analogous item in <code class="docutils literal notranslate"><span class="pre">newList</span></code>.</p>
 <p>The block size of a <span class="hclass">BList</span> that’s created through the copy constructor is the same as that
 of the original <span class="hclass">BList</span>.</p>
-</div>
-
-<h3 id="_CPPv4N5BListD0Ev">
-<span id="_CPPv3N5BListD0Ev"></span><span id="_CPPv2N5BListD0Ev"></span><span id="BList::~BList"></span>~BList()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">~BList</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the list of data pointers, but doesn’t free the data that they point to. To destroy the data,
+<section id="_CPPv4N5BListD0Ev">
+</section>
+<h3>
+~BList()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">~BList</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the list of data pointers, but doesn’t free the data that they point to. To destroy the data,
 you need to free each item individually:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">item</span><span class="p">;</span><span class="w"></span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">int32</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="o">-&gt;</span><span class="n">ItemAt</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
@@ -74,118 +111,94 @@ you need to free each item individually:</p>
 </pre></div>
 </div>
 <p>See also: <a class="reference internal" href="#_CPPv4N5BList9MakeEmptyEv" title="BList::MakeEmpty"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeEmpty()</span></code></a></p>
-</div>
-
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
-<h3 id="_CPPv4N5BList7AddItemEPv">
-<span id="_CPPv3N5BList7AddItemEPv"></span><span id="_CPPv2N5BList7AddItemEPv"></span><span id="BList::AddItem__voidP"></span><span id="_CPPv4N5BList7AddItemEPv5int32"></span><span id="_CPPv3N5BList7AddItemEPv5int32"></span><span id="_CPPv2N5BList7AddItemEPv5int32"></span><span id="BList::AddItem__voidP.int32"></span>AddItem()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">AddItem</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">AddItem</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Adds an <span class="hparameter">item</span> to the <span class="hclass">BList</span> at <span class="hparameter">index</span>—or, if no index is supplied, at the end of
+<section id="_CPPv4N5BList7AddItemEPv">
+</section>
+<h3>
+AddItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">AddItem</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span><span class="sig-paren">)</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">AddItem</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Adds an <span class="hparameter">item</span> to the <span class="hclass">BList</span> at <span class="hparameter">index</span>—or, if no index is supplied, at the end of
 the list. If necessary, additional memory is allocated to accommodate the new item.</p>
 <p>Adding an item never removes an item already in the list. If the item is added at an index that’s
 already occupied, items currently in the list are bumped down one slot to make room.</p>
 <p>If <span class="hparameter">index</span> is out of range (greater than the current item count, or less than zero), the
 function fails and returns <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>. Otherwise it returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>.</p>
-</div>
-
-<h3 id="_CPPv4N5BList7AddListEP5BList">
-<span id="_CPPv3N5BList7AddListEP5BList"></span><span id="_CPPv2N5BList7AddListEP5BList"></span><span id="BList::AddList__BListP"></span><span id="_CPPv4N5BList7AddListEP5BList5int32"></span><span id="_CPPv3N5BList7AddListEP5BList5int32"></span><span id="_CPPv2N5BList7AddListEP5BList5int32"></span><span id="BList::AddList__BListP.int32"></span>AddList()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">AddList</span><span class="sig-paren">(</span><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">items</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">AddList</span><span class="sig-paren">(</span><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">items</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Adds the contents of another <span class="hclass">BList</span> to this <span class="hclass">BList</span>. The items from the other
+<section id="_CPPv4N5BList7AddListEP5BList">
+</section>
+<h3>
+AddList()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">AddList</span><span class="sig-paren">(</span><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">items</span><span class="sig-paren">)</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">AddList</span><span class="sig-paren">(</span><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">items</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Adds the contents of another <span class="hclass">BList</span> to this <span class="hclass">BList</span>. The items from the other
 <span class="hclass">BList</span> are inserted at <span class="hparameter">index</span>—or, if no index is given, they’re appended to the
 end of the list. if the index is out of range, the function fails and returns <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>. if
 successful, it returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>.</p>
 <p>See also: <a class="reference internal" href="#_CPPv4N5BList7AddItemEPv" title="BList::AddItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddItem()</span></code></a></p>
-</div>
-
-<h3 id="_CPPv4N5BList10CountItemsEv">
-<span id="_CPPv3N5BList10CountItemsEv"></span><span id="_CPPv2N5BList10CountItemsEv"></span><span id="BList::CountItems"></span>CountItems()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">CountItems</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the number of items currently in the list.</p>
-</div>
-
-<h3 id="_CPPv4N5BList9DoForEachEPFbPvE">
-<span id="_CPPv3N5BList9DoForEachEPFbPvE"></span><span id="_CPPv2N5BList9DoForEachEPFbPvE"></span><span id="_CPPv4N5BList9DoForEachEPFbPvEPv"></span><span id="_CPPv3N5BList9DoForEachEPFbPvEPv"></span><span id="_CPPv2N5BList9DoForEachEPFbPvEPv"></span>DoForEach()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">DoForEach</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">func</span><span class="p">)</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="p">)</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">DoForEach</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">func</span><span class="p">)</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="p">)</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">arg2</span><span class="sig-paren">)</span></pre><p>Calls the <span class="hparameter">func</span> function once for each item in the <span class="hclass">BList</span>. Items are visited in
+<section id="_CPPv4N5BList10CountItemsEv">
+</section>
+<h3>
+CountItems()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">CountItems</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the number of items currently in the list.</p>
+<section id="_CPPv4N5BList9DoForEachEPFbPvE">
+</section>
+<h3>
+DoForEach()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">DoForEach</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">func</span><span class="p">)</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="p">)</span><span class="sig-paren">)</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">DoForEach</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">func</span><span class="p">)</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="p">)</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">arg2</span><span class="sig-paren">)</span></pre><p>Calls the <span class="hparameter">func</span> function once for each item in the <span class="hclass">BList</span>. Items are visited in
 order, beginning with the first one in the list (index 0) and ending with the last. If a call to
 <span class="hparameter">func</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, the iteration is stopped, even if some items have not yet
 been visited.</p>
 <p><span class="hparameter">func</span> must be a function that takes one or two arguments. THe first argument is the
 currently-considered item from the list; the second argument, if <span class="hparameter">func</span> requires one, is
 passed to <span class="hmethod">DoForEach()</span> as <span class="hparameter">arg2</span>.</p>
-</div>
-
-<h3 id="_CPPv4NK5BList9FirstItemEv">
-<span id="_CPPv3NK5BList9FirstItemEv"></span><span id="_CPPv2NK5BList9FirstItemEv"></span><span id="BList::FirstItemC"></span>FirstItem()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">FirstItem</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the first item in the list, or <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the list is empty. This function doesn’t
+<section id="_CPPv4NK5BList9FirstItemEv">
+</section>
+<h3>
+FirstItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">FirstItem</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the first item in the list, or <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the list is empty. This function doesn’t
 remove the item from the list.</p>
 <p>See also: <a class="reference internal" href="#_CPPv4NK5BList8LastItemEv" title="BList::LastItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LastItem()</span></code></a>, <a class="reference internal" href="#_CPPv4NK5BList6ItemAtE4in32" title="BList::ItemAt"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ItemAt()</span></code></a></p>
-</div>
-
+<section id="_CPPv4NK5BList7HasItemEv">
+</section>
 <h3>
-</h3>
-
-<div class="wrapper"><p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if item is in the list, and <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not.</p>
-</div>
-
-<h3 id="_CPPv4NK5BList7IndexOfEPv">
-<span id="_CPPv3NK5BList7IndexOfEPv"></span><span id="_CPPv2NK5BList7IndexOfEPv"></span><span id="BList::IndexOf__voidPC"></span>IndexOf()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">IndexOf</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the index where a particular item is located in the list, or a negative number if the item
+HasItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">HasItem</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if item is in the list, and <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not.</p>
+<section id="_CPPv4NK5BList7IndexOfEPv">
+</section>
+<h3>
+IndexOf()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">IndexOf</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the index where a particular item is located in the list, or a negative number if the item
 isn’t in the list. If the item is in the list more than once, the index returned will be the
 position of its first occurrence.</p>
-</div>
-
-<h3 id="_CPPv4NK5BList7IsEmptyEv">
-<span id="_CPPv3NK5BList7IsEmptyEv"></span><span id="_CPPv2NK5BList7IsEmptyEv"></span><span id="BList::IsEmptyC"></span>IsEmpty()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">IsEmpty</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the list is empty (if it contains no items), and <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>
+<section id="_CPPv4NK5BList7IsEmptyEv">
+</section>
+<h3>
+IsEmpty()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">IsEmpty</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the list is empty (if it contains no items), and <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>
 otherwise.</p>
 <p>See also: <a class="reference internal" href="#_CPPv4N5BList9MakeEmptyEv" title="BList::MakeEmpty"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeEmpty()</span></code></a></p>
-</div>
-
-<h3 id="_CPPv4NK5BList6ItemAtE4in32">
-<span id="_CPPv3NK5BList6ItemAtE4in32"></span><span id="_CPPv2NK5BList6ItemAtE4in32"></span><span id="BList::ItemAt__in32C"></span>ItemAt()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">ItemAt</span><span class="sig-paren">(</span><span class="n">in32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the item at <span class="hparameter">index</span>, or <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the index is out of range. This function
+<section id="_CPPv4NK5BList6ItemAtE4in32">
+</section>
+<h3>
+ItemAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">ItemAt</span><span class="sig-paren">(</span><span class="n">in32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the item at <span class="hparameter">index</span>, or <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the index is out of range. This function
 doesn’t remove the item from the list.</p>
 <p>See also: <a class="reference internal" href="#_CPPv4NK5BList5ItemsEv" title="BList::Items"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Items()</span></code></a>, <a class="reference internal" href="#_CPPv4NK5BList9FirstItemEv" title="BList::FirstItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FirstItem()</span></code></a>,
 <a class="reference internal" href="#_CPPv4NK5BList8LastItemEv" title="BList::LastItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LastItem()</span></code></a></p>
-</div>
-
-<h3 id="_CPPv4NK5BList5ItemsEv">
-<span id="_CPPv3NK5BList5ItemsEv"></span><span id="_CPPv2NK5BList5ItemsEv"></span><span id="BList::ItemsC"></span>Items()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">Items</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a pointer to the <span class="hclass">BList</span>’s list. You can index directly into the list if you’re
+<section id="_CPPv4NK5BList5ItemsEv">
+</section>
+<h3>
+Items()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">Items</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a pointer to the <span class="hclass">BList</span>’s list. You can index directly into the list if you’re
 certain that the index is in range:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">myType</span><span class="o">*</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">myType</span><span class="o">*</span><span class="p">)</span><span class="n">Items</span><span class="p">()[</span><span class="n">index</span><span class="p">];</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-
-<h3 id="_CPPv4NK5BList8LastItemEv">
-<span id="_CPPv3NK5BList8LastItemEv"></span><span id="_CPPv2NK5BList8LastItemEv"></span><span id="BList::LastItemC"></span>LastItem()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">LastItem</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the last item in the list without removing it. If the list is empty, this function returns
+<section id="_CPPv4NK5BList8LastItemEv">
+</section>
+<h3>
+LastItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">LastItem</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the last item in the list without removing it. If the list is empty, this function returns
 <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
 <p>See also: <a class="reference internal" href="#_CPPv4N5BList10RemoveItemEPv" title="BList::RemoveItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RemoveItem()</span></code></a>, <a class="reference internal" href="#_CPPv4NK5BList9FirstItemEv" title="BList::FirstItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FirstItem()</span></code></a></p>
-</div>
-
-<h3 id="_CPPv4N5BList9MakeEmptyEv">
-<span id="_CPPv3N5BList9MakeEmptyEv"></span><span id="_CPPv2N5BList9MakeEmptyEv"></span><span id="BList::MakeEmpty"></span>MakeEmpty()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">MakeEmpty</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Empties the <span class="hclass">BList</span> of all its items, without freeing the data that they point to.</p>
+<section id="_CPPv4N5BList9MakeEmptyEv">
+</section>
+<h3>
+MakeEmpty()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">MakeEmpty</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Empties the <span class="hclass">BList</span> of all its items, without freeing the data that they point to.</p>
 <p>See also: <a class="reference internal" href="#_CPPv4NK5BList7IsEmptyEv" title="BList::IsEmpty"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">IsEmpty()</span></code></a>, <a class="reference internal" href="#_CPPv4N5BList10RemoveItemEPv" title="BList::RemoveItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RemoveItem()</span></code></a></p>
-</div>
-
-<h3 id="_CPPv4N5BList10RemoveItemEPv">
-<span id="_CPPv3N5BList10RemoveItemEPv"></span><span id="_CPPv2N5BList10RemoveItemEPv"></span><span id="BList::RemoveItem__voidP"></span><span id="_CPPv4N5BList10RemoveItemE5int32"></span><span id="_CPPv3N5BList10RemoveItemE5int32"></span><span id="_CPPv2N5BList10RemoveItemE5int32"></span><span id="BList::RemoveItem__int32"></span><span id="_CPPv4N5BList11RemoveItemsE5int325int32"></span><span id="_CPPv3N5BList11RemoveItemsE5int325int32"></span><span id="_CPPv2N5BList11RemoveItemsE5int325int32"></span><span id="BList::RemoveItems__int32.int32"></span>RemoveItems(), RemoveItem()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">RemoveItem</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">RemoveItem</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">RemoveItems</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">count</span><span class="sig-paren">)</span></pre><p><span class="hmethod">RemoveItem()</span> removes an item from the list. If passed an <span class="hparameter">item</span>, the function
+<section id="_CPPv4N5BList10RemoveItemEPv">
+</section>
+<section id="_CPPv4N5BList11RemoveItemsE5int325int32">
+</section>
+<h3>
+RemoveItem(), RemoveItems()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">RemoveItem</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span><span class="sig-paren">)</span><br /><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">RemoveItem</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">RemoveItems</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">count</span><span class="sig-paren">)</span></pre><p><span class="hmethod">RemoveItem()</span> removes an item from the list. If passed an <span class="hparameter">item</span>, the function
 looks for the item in the list, removes it, and returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>. If it can’t find the item,
 it returns <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>. If the item is in the list more than once, this function removes only
 its first occurrence.</p>
@@ -205,53 +218,47 @@ the first five items in the list:</p>
 </pre></div>
 </div>
 <p>See also: <a class="reference internal" href="#_CPPv4N5BList9MakeEmptyEv" title="BList::MakeEmpty"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeEmpty()</span></code></a></p>
-</div>
-
-<h3 id="_CPPv4N5BList9SortItemsEPFiPKvPKvE">
-<span id="_CPPv3N5BList9SortItemsEPFiPKvPKvE"></span><span id="_CPPv2N5BList9SortItemsEPFiPKvPKvE"></span>SortItems()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">SortItems</span><span class="sig-paren">(</span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">compareFunc</span><span class="p">)</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n">second</span><span class="p">)</span><span class="sig-paren">)</span></pre><p>Rearranges the items in the list. The items are sorted using the <span class="hparameter">compareFunc</span> comparison
+<section id="_CPPv4N5BList9SortItemsEPFiPKvPKvE">
+</section>
+<h3>
+SortItems()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BList</span><span class="p">::</span></span><span class="n">SortItems</span><span class="sig-paren">(</span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">compareFunc</span><span class="p">)</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n">second</span><span class="p">)</span><span class="sig-paren">)</span></pre><p>Rearranges the items in the list. The items are sorted using the <span class="hparameter">compareFunc</span> comparison
 function passed as an argument. This function should return a negative number if the first item is
 ordered before the second, a positive number if the second is ordered before the first, and 0 if the
 two items are ordered equivalently.</p>
 <p>The arguments passed to the comparison function are declared to be <code class="docutils literal notranslate"><span class="pre">void*</span></code>; however they should be
 regarded as pointers to the items in the list—in other words, as pointers to pointers.</p>
-</div>
-
 </section>
 <section id="operators">
 <h2>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">¶</a></h2>
-<h3 id="_CPPv4aSRK5BList">
-<span id="_CPPv3aSRK5BList"></span><span id="_CPPv2aSRK5BList"></span><span id="assign-operator__BListCR"></span>operator()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="n">BList</span><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BList</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">from</span><span class="sig-paren">)</span></pre><p>Copies the contents of one <span class="hclass">BList</span> object into another:</p>
+<h3>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BList</span><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BList</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">from</span><span class="sig-paren">)</span></pre><p>Copies the contents of one <span class="hclass">BList</span> object into another:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BList</span><span class="w"> </span><span class="n">newList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oldList</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>After the assignment, each object has its own independent copy of list data; destroying one of the
 objects won’t affect the other.</p>
 <p>Only the items in the list are copied, not the data they point to.</p>
-</div>
-
 </section>
 </section>
 
 
+        <div class="clearer"></div>
       </div>
+          </div>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="flattenable.html">BFlattenable</a>
+        «&#160;&#160;<a href="functions.html">Functions and Macros</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="overview.html">The Application Kit</a>&#160;&#160;»
+        <a href="locker.html">BLocker</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Haiku.
+        &#169; Copyright 2023, Haiku, Inc..
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>

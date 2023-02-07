@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BResources &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BStatable" href="statable.html" />
+    <link rel="prev" title="BRefFilter" href="ref-filter.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BResources</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="ref-filter.html">BRefFilter</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="statable.html">BStatable</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BResources</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N10BResources10BResourcesEv">BResources</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BResourcesD0Ev">~BResources</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N10BResources11AddResourceE9type_code5int32PKv6size_tPKc">AddResource</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BResources4FileEv">File</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BResources15GetResourceInfoE5int32P9type_codeP5int32PPKcP6size_t">GetResourceInfo</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BResources11HasResourceE9type_code5int32">HasResource</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BResources12LoadResourceE9type_code5int32P6size_t">LoadResource</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BResources9MergeFromEP5BFile">MergeFrom</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BResources19PreloadResourceTypeE9type_code">PreloadResourceType</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BResources14RemoveResourceE9type_code5int32">RemoveResource</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BResources5SetToEP5BFileb">SetTo</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BResources4SyncEv">Sync</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BResources7WriteToEP5BFile">WriteTo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bresources">
+<h1>BResources<a class="headerlink" href="#bresources" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N10BResources10BResourcesEv">
+</section>
+<h3>
+BResources()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BResources10BResourcesEv" title="BResources::BResources"><span class="n">BResources</span></a><span class="p">::</span></span><span class="n">BResources</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BResources10BResourcesEP5BFileb" title="BResources::BResources"><span class="n">BResources</span></a><span class="p">::</span></span><span class="n">BResources</span><span class="sig-paren">(</span><span class="n">BFile</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">clobber</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BResources</span> object. You can initialize the object by passing
+a pointer to a valid
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code>; without the argument, the object won’t refer
+to a file until
+<a class="reference internal" href="#_CPPv4N10BResources5SetToEP5BFileb" title="BResources::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> is called.</p>
+<p>If <span class="hparameter">clobber</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the file
+that’s referred to by <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code> is truncated
+(it’s data is erased), and a new resource file header is written to the
+file. If <span class="hparameter">clobber</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> and the file doesn’t otherwise doesn’t have a
+resource header, the initialization fails.</p>
+<p><span class="hclass">BResources</span> copies the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code>
+argument; after the constructor returns, you
+can, for example, delete the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code>
+that you passed in.</p>
+<section id="_CPPv4N10BResourcesD0Ev">
+</section>
+<h3>
+~BResources()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">~BResources</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Destroys the BResources object.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N10BResources11AddResourceE9type_code5int32PKv6size_tPKc">
+</section>
+<h3>
+AddResource()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">AddResource</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">length</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Adds a new resource to the file. For this function to have an effect, the
+file must be open for writing. The arguments are:</p>
+<ul class="simple">
+<li><p><span class="hparameter">type</span> is one of the type_code constants defined in support/TypeConstants.h.</p></li>
+<li><p><span class="hparameter">id</span> is the ID number that you want to assign to the resource. The value of the ID has no meaning other than that which your application gives it; the only restriction on the ID is that the combination of it and the data type constant must be unique across all resources in this resource file.</p></li>
+<li><p><span class="hparameter">data</span> is a pointer to the data that you want the resource to hold.</p></li>
+<li><p><span class="hparameter">length</span> is the length of the data buffer, in bytes.</p></li>
+<li><p><span class="hparameter">name</span> is optional, and needn’t be unique. Or even interesting.</p></li>
+</ul>
+<p>Ownership of the data pointer isn’t assigned to the <span class="hclass">BResources</span> object by
+this function; after <span class="hmethod">AddResource()</span> returns, your application can free or
+otherwise manipulate the buffer that data points to without affecting the
+data that was written to the file.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The resource was successfully added.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
+<td><p>The is open read-only.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FILE_ERROR</span></code>.</p></td>
+<td><p>The file’s resource map doesn’t exist or is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>The <span class="hparameter">data</span> pointer is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<td><p>Not enough memory to add the resource to the file.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4NK10BResources4FileEv">
+</section>
+<h3>
+File()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="n">BFile</span><span class="w"> </span><span class="p">&amp;</span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">File</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code>
+the <span class="hclass">BResource</span> object references.</p>
+<section id="_CPPv4N10BResources15GetResourceInfoE5int32P9type_codeP5int32PPKcP6size_t">
+</section>
+<h3>
+GetResourceInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">GetResourceInfo</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">byIndex</span>, <span class="n">type_code</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">typeFound</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">idFound</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">nameFound</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">lengthFound</span><span class="sig-paren">)</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">GetResourceInfo</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">byType</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">andIndex</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">idFound</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">nameFound</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">lengthFound</span><span class="sig-paren">)</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">GetResourceInfo</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">byType</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">andId</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">nameFound</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">lengthFound</span><span class="sig-paren">)</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">GetResourceInfo</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">byType</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">andName</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">idFound</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">lengthFound</span><span class="sig-paren">)</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">GetResourceInfo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">byPointer</span>, <span class="n">type_code</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">typeFound</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">idFound</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">lengthFound</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">nameFound</span><span class="sig-paren">)</span></pre><p>These functions return information about a specific resource, as
+identified by the first one or two arguments:</p>
+<ul class="simple">
+<li><p>The first version (<span class="hparameter">byIndex</span>) searches for the <span class="hparameter">byIndex</span>’th resource in the file.</p></li>
+<li><p>The second (<span class="hparameter">byType</span>/<span class="hparameter">andIndex</span>) searches for the <span class="hparameter">byIndex</span>’th resource that has the given type.</p></li>
+<li><p>The third (<span class="hparameter">byType</span>/<span class="hparameter">andId</span>) looks for the resource with the unique combination of type and ID.</p></li>
+<li><p>The fourth (<span class="hparameter">byType</span>/<span class="hparameter">andName</span>) looks for the first resource that has the given type and name.</p></li>
+<li><p>The last (<span class="hparameter">byPointer</span>) returns information about the resource whose data is pointed to by <span class="hparameter">byPointer</span>. This can be used to trace a resource that’s already been loaded with <a class="reference internal" href="#_CPPv4N10BResources12LoadResourceE9type_code5int32P6size_t" title="BResources::LoadResource"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LoadResource()</span></code></a> back to its information.</p></li>
+</ul>
+<p>The other arguments return the other statistics about the resource (if
+found).</p>
+<p>The pointer that’s returned in <span class="hparameter">*foundName</span> belongs to the <span class="hclass">BResources</span>.
+Don’t free it.</p>
+<p>The functions return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if a resource was found
+and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
+<section id="_CPPv4N10BResources11HasResourceE9type_code5int32">
+</section>
+<h3>
+HasResource()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">HasResource</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span><span class="sig-paren">)</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">HasResource</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the resource file contains a resource as identified by
+the arguments, otherwise it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p>Keep in mind that there may be more than one resource in the file with
+the same name and type combination. The type and id combo, on the other
+hand, is unique. See
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Identifying()</span></code>.”</p>
+<section id="_CPPv4N10BResources12LoadResourceE9type_code5int32P6size_t">
+</section>
+<h3>
+LoadResource()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">LoadResource</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outSize</span><span class="sig-paren">)</span><br /><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">LoadResource</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outSize</span><span class="sig-paren">)</span></pre><p>Loads the specified resource into memory. The resource can be identified
+by either type code and ID or by type code and name. See
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Identifying()</span></code>.”</p>
+<p>The returned pointer belongs to the resource file; it’s valid until the
+resource gets changed. If an error occurs while trying to load the
+resource, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> is returned.</p>
+<section id="_CPPv4N10BResources9MergeFromEP5BFile">
+</section>
+<h3>
+MergeFrom()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">MergeFrom</span><span class="sig-paren">(</span><span class="n">BFile</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">fromFile</span><span class="sig-paren">)</span></pre><p>Copies all the resource from the file specified by <span class="hparameter">fromFile</span> into the file
+targeted by the <span class="hclass">BResources</span> object. The original file isn’t changed. You
+can do this to a file that’s opened read-only, but the changes won’t have
+any effect.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The resources were copied without error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_FILE</span></code>.</p></td>
+<td><p>The resource map is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FILE_ERROR</span></code>.</p></td>
+<td><p>A file error occurred, or the resource map is nonexistent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_IO_ERROR</span></code>.</p></td>
+<td><p>An error occurred while writing the data.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<td><p>Something else went wrong.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N10BResources19PreloadResourceTypeE9type_code">
+</section>
+<h3>
+PreloadResourceType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">PreloadResourceType</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>If you know you’re going to need to access all resources of a particular
+type, you can preload them all into memory in one shot using this
+function. If you specify a type of 0, all resources of all types are
+preloaded.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The resources were preloaded without error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_FILE</span></code>.</p></td>
+<td><p>The resource map is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p>Other values.</p></td>
+<td><p>The returned value is the negative of the number of errors that occurred while preloading resources; for example, if five errors occurred, the result is -5.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N10BResources14RemoveResourceE9type_code5int32">
+</section>
+<h3>
+RemoveResource()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">RemoveResource</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">RemoveResource</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">resource</span><span class="sig-paren">)</span></pre><p>Removes the resource identified by the arguments. See
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Identifying()</span></code>.”</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The resource was removed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FILE_ERROR</span></code>.</p></td>
+<td><p>The file’s resource map doesn’t exist.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
+<td><p>The file is opened read-only.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
+<td><p>Couldn’t find the specified resource, or an error occurred trying to remove it (first form of <a class="reference internal" href="#_CPPv4N10BResources14RemoveResourceE9type_code5int32" title="BResources::RemoveResource"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RemoveResource()</span></code></a>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<td><p>Couldn’t find the specified resource, the pointer doesn’t indicate a valid resource, or an error occurred while removing the resource (second form).</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N10BResources5SetToEP5BFileb">
+</section>
+<h3>
+SetTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="n">BFile</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">clobber</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>Unlocks and closes the object’s previous
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code>, and re-initializes it to
+refer to a copy of the argument. If the new BFile is open for writing,
+the <span class="hclass">BResources</span>’ copy of the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code> is locked.</p>
+<p>If <span class="hparameter">clobber</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the file that’s
+referred to by <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code> is truncated
+(it’s data is erased), and a new resource file header is written to the
+file. If <span class="hparameter">clobber</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> and the file doesn’t otherwise doesn’t have a
+resource header, the initialization fails.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The resource was removed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>The argument <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code> is invalid (uninitialized).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<td><p>The <span class="hclass">BResources</span> couldn’t be initialized (for whatever reason).</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N10BResources4SyncEv">
+</section>
+<h3>
+Sync()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">Sync</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Updates all changed resources on disk. This actually rewrites the entire
+resource file, so be aware of this when designing your code. This is a
+very good reason not to use <span class="hclass">BResources</span> for anything other than permanent,
+nonchanging application data, and only developer tools should write to
+resource files.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The resources were updated without error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_FILE</span></code>.</p></td>
+<td><p>The resource map is empty.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
+<td><p>The file is opened read-only.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FILE_ERROR</span></code>.</p></td>
+<td><p>A file error occurred.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_IO_ERROR</span></code>.</p></td>
+<td><p>An error occurred while writing the data.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N10BResources7WriteToEP5BFile">
+</section>
+<h3>
+WriteTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BResources</span><span class="p">::</span></span><span class="n">WriteTo</span><span class="sig-paren">(</span><span class="n">BFile</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">newFile</span><span class="sig-paren">)</span></pre><p>Writes all the file’s resources into a new file. After this function
+returns, the <span class="hclass">BResources</span> object is targeted on the new
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code>; all future
+operations will be done in the new file.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The resources were written without error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>File errors indicating problems copying the data.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="ref-filter.html">BRefFilter</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="statable.html">BStatable</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

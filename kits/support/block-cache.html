@@ -22,7 +22,7 @@
     <link rel="prev" title="BAutolock" href="autolock.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
-          <span>The Haiku Book  documentation</span></a></h1>
+          <span>API Documentation</span></a></h1>
         <h2 class="heading"><span>BBlockCache</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -36,17 +36,42 @@
         </p>
 
       </div>
-      <div class="content" role="main">
         
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BBlockCache</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N11BBlockCache11BBlockCacheE6size_t6size_t6uint32">BBlockCache</a></li>
+<li><a class="reference internal" href="#_CPPv4N11BBlockCacheD0Ev">~BBlockCache</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N11BBlockCache3GetE6size_t">Get</a></li>
+<li><a class="reference internal" href="#_CPPv4N11BBlockCache4SaveEPv6size_t">Save</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
         
   <section id="bblockcache">
 <h1>BBlockCache<a class="headerlink" href="#bblockcache" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
-<h3 id="_CPPv4N11BBlockCache11BBlockCacheE6size_t6size_t6uint32">
-<span id="_CPPv3N11BBlockCache11BBlockCacheE6size_t6size_t6uint32"></span><span id="_CPPv2N11BBlockCache11BBlockCacheE6size_t6size_t6uint32"></span><span id="BBlockCache::BBlockCache__s.s.uint32"></span>BBlockCache()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BBlockCache11BBlockCacheE6size_t6size_t6uint32" title="BBlockCache::BBlockCache"><span class="n">BBlockCache</span></a><span class="p">::</span></span><span class="n">BBlockCache</span><span class="sig-paren">(</span><span class="n">size_t</span><span class="w"> </span><span class="n sig-param">count</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">type</span><span class="sig-paren">)</span></pre><p>Creates a new memory block pool, allocating memory for <span class="hparameter">count</span> blocks, each controlling <span class="hparameter">size</span> bytes of memory. <span class="hparameter">type</span> is either:</p>
+<section id="_CPPv4N11BBlockCache11BBlockCacheE6size_t6size_t6uint32">
+</section>
+<h3>
+BBlockCache()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BBlockCache11BBlockCacheE6size_t6size_t6uint32" title="BBlockCache::BBlockCache"><span class="n">BBlockCache</span></a><span class="p">::</span></span><span class="n">BBlockCache</span><span class="sig-paren">(</span><span class="n">size_t</span><span class="w"> </span><span class="n sig-param">count</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">type</span><span class="sig-paren">)</span></pre><p>Creates a new memory block pool, allocating memory for <span class="hparameter">count</span> blocks, each controlling <span class="hparameter">size</span> bytes of memory. <span class="hparameter">type</span> is either:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
@@ -64,34 +89,28 @@
 </tr>
 </tbody>
 </table>
-</div>
-
-<h3 id="_CPPv4N11BBlockCacheD0Ev">
-<span id="_CPPv3N11BBlockCacheD0Ev"></span><span id="_CPPv2N11BBlockCacheD0Ev"></span><span id="BBlockCache::~BBlockCache"></span>~BBlockCache()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="sig-prename descclassname"><span class="n">BBlockCache</span><span class="p">::</span></span><span class="n">~BBlockCache</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees any unused memory in the object’s block pool. Memory that was retrieved through <span class="hmethod">Get()</span> (and that hasn’t been returned through <span class="hmethod">Save()</span>) is not deallocated.</p>
-</div>
-
+<section id="_CPPv4N11BBlockCacheD0Ev">
+</section>
+<h3>
+~BBlockCache()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BBlockCache</span><span class="p">::</span></span><span class="n">~BBlockCache</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees any unused memory in the object’s block pool. Memory that was retrieved through <span class="hmethod">Get()</span> (and that hasn’t been returned through <span class="hmethod">Save()</span>) is not deallocated.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
-<h3 id="_CPPv4N11BBlockCache3GetE6size_t">
-<span id="_CPPv3N11BBlockCache3GetE6size_t"></span><span id="_CPPv2N11BBlockCache3GetE6size_t"></span><span id="BBlockCache::Get__s"></span>Get()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BBlockCache</span><span class="p">::</span></span><span class="n">Get</span><span class="sig-paren">(</span><span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p>Retrieves a block of memory of the given <span class="hparameter">size</span> and returns it directly. If <span class="hparameter">size</span> is the same as the <span class="hparameter">size</span> argument you passed to the constructor, the memory returned will be taken from the object’s cache. Otherwise, it’s allocated using either <span class="cpp-expr sig sig-inline cpp">new</span> or <span class="cpp-expr sig sig-inline cpp"><span class="n">malloc</span><span class="p">(</span><span class="p">)</span></span> as requested in the constructor. When you’re don{e with the memory, you can either deallocate it yourself, or return it to the <span class="hclass">BBlockCache</span> object by calling <span class="hmethod">Save()</span>.</p>
-</div>
-
-<h3 id="_CPPv4N11BBlockCache4SaveEPv6size_t">
-<span id="_CPPv3N11BBlockCache4SaveEPv6size_t"></span><span id="_CPPv2N11BBlockCache4SaveEPv6size_t"></span><span id="BBlockCache::Save__voidP.s"></span>Save()</h3>
-
-<div class="wrapper"><pre style="background: #f3f3f3"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBlockCache</span><span class="p">::</span></span><span class="n">Save</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">pointer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span><span class="p">;</span></pre><p>Returns, to the <span class="hclass">BBlockCache</span> object, <span class="hparameter">size</span> bytes of memory pointed to by <span class="hparameter">pointer</span>. If the memory was taken from the object’s pool, the memory is returned to the pool. Otherwise, it’s deallocated. In either case, the caller is freed of responsibility for deallocating the memory.</p>
-</div>
-
+<section id="_CPPv4N11BBlockCache3GetE6size_t">
+</section>
+<h3>
+Get()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BBlockCache</span><span class="p">::</span></span><span class="n">Get</span><span class="sig-paren">(</span><span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p>Retrieves a block of memory of the given <span class="hparameter">size</span> and returns it directly. If <span class="hparameter">size</span> is the same as the <span class="hparameter">size</span> argument you passed to the constructor, the memory returned will be taken from the object’s cache. Otherwise, it’s allocated using either <span class="cpp-expr sig sig-inline cpp">new</span> or <span class="cpp-expr sig sig-inline cpp"><span class="n">malloc</span><span class="p">(</span><span class="p">)</span></span> as requested in the constructor. When you’re don{e with the memory, you can either deallocate it yourself, or return it to the <span class="hclass">BBlockCache</span> object by calling <span class="hmethod">Save()</span>.</p>
+<section id="_CPPv4N11BBlockCache4SaveEPv6size_t">
+</section>
+<h3>
+Save()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBlockCache</span><span class="p">::</span></span><span class="n">Save</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">pointer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span><span class="p">;</span></pre><p>Returns, to the <span class="hclass">BBlockCache</span> object, <span class="hparameter">size</span> bytes of memory pointed to by <span class="hparameter">pointer</span>. If the memory was taken from the object’s pool, the memory is returned to the pool. Otherwise, it’s deallocated. In either case, the caller is freed of responsibility for deallocating the memory.</p>
 </section>
 </section>
 
 
+        <div class="clearer"></div>
       </div>
+          </div>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
@@ -105,7 +124,7 @@
       </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Haiku.
+        &#169; Copyright 2023, Haiku, Inc..
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>

@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BNetAddress &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BNetBuffer" href="net-buffer.html" />
+    <link rel="prev" title="The Application Kit" href="../netapi/overview.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BNetAddress</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../netapi/overview.html">The Application Kit</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="net-buffer.html">BNetBuffer</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BNetAddress</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N11BNetAddress11BNetAddressEPKct">BNetAddress</a></li>
+<li><a class="reference internal" href="#_CPPv4N11BNetAddressD0Ev">~BNetAddress</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4NK11BNetAddress9InitCheckEv">InitCheck</a></li>
+<li><a class="reference internal" href="#_CPPv4NK11BNetAddress7GetAddrEPKcPt">GetAddr</a></li>
+<li><a class="reference internal" href="#_CPPv4N11BNetAddress5SetToEPKcPKcPKc">SetTo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bnetaddress">
+<h1>BNetAddress<a class="headerlink" href="#bnetaddress" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N11BNetAddress11BNetAddressEPKct">
+</section>
+<h3>
+BNetAddress()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BNetAddress11BNetAddressEPKct" title="BNetAddress::BNetAddress"><span class="n">BNetAddress</span></a><span class="p">::</span></span><span class="n">BNetAddress</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">hostname</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">unsigned</span><span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="n sig-param">port</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BNetAddress11BNetAddressERK11sockaddr_in" title="BNetAddress::BNetAddress"><span class="n">BNetAddress</span></a><span class="p">::</span></span><span class="n">BNetAddress</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="n">sockaddr_in</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">sa</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BNetAddress11BNetAddressE7in_addri" title="BNetAddress::BNetAddress"><span class="n">BNetAddress</span></a><span class="p">::</span></span><span class="n">BNetAddress</span><span class="sig-paren">(</span><span class="n">in_addr</span><span class="w"> </span><span class="n sig-param">addr</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">port</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BNetAddress11BNetAddressE6uint32i" title="BNetAddress::BNetAddress"><span class="n">BNetAddress</span></a><span class="p">::</span></span><span class="n">BNetAddress</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">addr</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">port</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BNetAddress11BNetAddressEPKcPKcPKc" title="BNetAddress::BNetAddress"><span class="n">BNetAddress</span></a><span class="p">::</span></span><span class="n">BNetAddress</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">hostname</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">protocol</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">service</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BNetAddress11BNetAddressER11BNetAddress" title="BNetAddress::BNetAddress"><span class="n">BNetAddress</span></a><span class="p">::</span></span><span class="n">BNetAddress</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N11BNetAddress11BNetAddressER11BNetAddress" title="BNetAddress::BNetAddress"><span class="n">BNetAddress</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">from</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BNetAddress11BNetAddressEP8BMessage" title="BNetAddress::BNetAddress"><span class="n">BNetAddress</span></a><span class="p">::</span></span><span class="n">BNetAddress</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Sets up the <span class="hclass">BNetAddress</span> object to refer to the specified address. The
+address can be specified in a number of ways:</p>
+<ul class="simple">
+<li><p>By <span class="hparameter">hostname</span> and <span class="hparameter">port</span> number. For example, to connect to the HTTP port at www.be.com, you would specify “www.be.com” as the <span class="hparameter">hostname</span>, and 80 for the <span class="hparameter">port</span> number.</p></li>
+<li><p>By sockaddr_in structure. This structure contains the network family, port number, and IP address that make up the address.</p></li>
+<li><p>By IP address and port number. The IP address can be specified either using an in_addr, or by using a uint32. The IP address must be specified in network byte order. See the htonl() function.</p></li>
+<li><p>By <span class="hparameter">hostname</span>, <span class="hparameter">protocol</span>, and <span class="hparameter">service</span> name. This causes the port to be looked up in the /etc/services file by matching the protocol (typically “tcp” or “udp”) and service name (such as “http” or “ftp”) against the entries in the file. See getservbyname() for details on the format of this file.</p></li>
+<li><p>By copying an existing <span class="hclass">BNetAddress</span>.</p></li>
+<li><p>By unflattening an archived <span class="hclass">BNetAddress</span> from a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>.</p></li>
+</ul>
+<p>After creating your <span class="hclass">BNetAddress</span>, you must call
+<a class="reference internal" href="#_CPPv4NK11BNetAddress9InitCheckEv" title="BNetAddress::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>
+to ensure that no errors occurred during setup. You can change the address later by
+calling
+<a class="reference internal" href="#_CPPv4N11BNetAddress5SetToEPKcPKcPKc" title="BNetAddress::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>.</p>
+<section id="_CPPv4N11BNetAddressD0Ev">
+</section>
+<h3>
+~BNetAddress()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BNetAddress</span><span class="p">::</span></span><span class="n">~BNetAddress</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>A typical destructor.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4NK11BNetAddress9InitCheckEv">
+</section>
+<h3>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BNetAddress</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a status_t indicating whether or not the object was successfully
+instantiated.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>The <span class="hclass">BNetAddress</span> was constructed without error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
+<td><p>An error occurred during construction.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4NK11BNetAddress7GetAddrEPKcPt">
+</section>
+<h3>
+GetAddr()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BNetAddress</span><span class="p">::</span></span><span class="n">GetAddr</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">hostname</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">unsigned</span><span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">port</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BNetAddress</span><span class="p">::</span></span><span class="n">GetAddr</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="n">sockaddr_in</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">sa</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BNetAddress</span><span class="p">::</span></span><span class="n">GetAddr</span><span class="sig-paren">(</span><span class="n">in_addr</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">addr</span>, <span class="kt">unsigned</span><span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">port</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the address represented by the <span class="hclass">BNetAddress</span>
+object in the format indicated by the form of the function used.
+If you don’t care about the hostname (in the first form), you can specify
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> for the <span class="hparameter">hostname</span> argument;
+if you don’t care about the port number, you can specify
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> for the <span class="hparameter">port</span> argument.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>The address was returned successfully.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
+<td><p>An error occurred fetching the address information.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N11BNetAddress5SetToEPKcPKcPKc">
+</section>
+<h3>
+SetTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BNetAddress</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">hostname</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">protocol</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">service</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BNetAddress</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">hostname</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">unsigned</span><span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="n sig-param">port</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BNetAddress</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="n">sockaddr_in</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">sa</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BNetAddress</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="n">in_addr</span><span class="w"> </span><span class="n sig-param">addr</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">port</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BNetAddress</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">addr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">INADDR_ANY</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">port</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>Sets the address represented by the <span class="hclass">BNetAddress</span> object in the format
+indicated by the form of the function used. These formats are described
+in the discussion of the constructor.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>The address was set successfully.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
+<td><p>An error occurred setting the address information.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../netapi/overview.html">The Application Kit</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="net-buffer.html">BNetBuffer</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

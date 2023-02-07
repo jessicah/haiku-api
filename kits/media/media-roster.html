@@ -1,0 +1,1977 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMediaRoster &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMediaTheme" href="media-theme.html" />
+    <link rel="prev" title="BMediaNode" href="media-node.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMediaRoster</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-node.html">BMediaNode</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-theme.html">BMediaTheme</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BMediaRoster</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster12BMediaRosterEv">BMediaRoster</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRosterD0Ev">~BMediaRoster</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster18AudioBufferSizeForE5int326uint32f8bus_type">AudioBufferSizeFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster7ConnectERK12media_sourceRK17media_destinationP12media_formatP12media_outputP11media_input">Connect</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster10DisconnectE13media_node_idRK12media_source13media_node_idRK17media_destination">Disconnect</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster15GetAllInputsForERK10media_nodeP11media_input5int32P5int32">GetAllInputsFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster16GetAllOutputsForERK10media_nodeP12media_output5int32P5int32">GetAllOutputsFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster13GetAudioInputEP10media_node">GetAudioInput</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster13GetVideoInputEP10media_node">GetVideoInput</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster14GetAudioOutputEP10media_node">GetAudioOutput</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster14GetVideoOutputEP10media_node">GetVideoOutput</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster13GetAudioMixerEP10media_node">GetAudioMixer</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster21GetConnectedInputsForERK10media_nodeP11media_input5int32P5int32">GetConnectedInputsFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster16GetFreeInputsForERK10media_nodeP11media_input5int32P5int3210media_type">GetFreeInputsFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster22GetConnectedOutputsForERK10media_nodeP12media_output5int32P5int32">GetConnectedOutputsFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster17GetFreeOutputsForERK10media_nodeP12media_output5int32P5int3210media_type">GetFreeOutputsFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster23GetDormantFlavorInfoForERK17dormant_node_infoP19dormant_flavor_info">GetDormantFlavorInfoFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster15GetDormantNodesEP17dormant_node_infoP5int32PK12media_formatPK12media_formatPc6uint646uint64">GetDormantNodes</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster17GetFileFormatsForERK10media_nodeP17media_file_formatP5int32">GetFileFormatsFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster12GetFormatForERK12media_outputP12media_format6uint32">GetFormatFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster20GetInitialLatencyForER10media_nodeP9bigtime_tP6uint32">GetInitialLatencyFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster15GetInstancesForE14media_addon_id5int32P13media_node_idP5int32">GetInstancesFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster13GetLatencyForERK10media_nodeP9bigtime_t">GetLatencyFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster12GetLiveNodesEP14live_node_infoP5int32PK12media_formatPK12media_formatPKc6uint64">GetLiveNodes</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster20GetNodeAttributesForERK10media_nodeP21media_node_attributes6size_t">GetNodeAttributesFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster10GetNodeForE13media_node_idP10media_node">GetNodeFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster18GetParameterWebForERK10media_nodePP13BParameterWeb">GetParameterWebFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster21GetReadFileFormatListERK17dormant_node_infoP17media_file_format5int32P5int32">GetReadFileFormatList</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster22GetWriteFileFormatListERK17dormant_node_infoP17media_file_format5int32P5int32">GetWriteFileFormatList</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster16GetRealtimeFlagsEP6uint32">GetRealtimeFlags</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster16SetRealtimeFlagsE6uint32">SetRealtimeFlags</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster18GetStartLatencyForERK10media_nodeP9bigtime_t">GetStartLatencyFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster19GetSystemTimeSourceEP10media_node">GetSystemTimeSource</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster13GetTimeSourceEP10media_node">GetTimeSource</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster17MakeTimeSourceForER10media_node">MakeTimeSourceFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster22InstantiateDormantNodeERK17dormant_node_infoP10media_node">InstantiateDormantNode</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster10MediaFlagsE11media_flagsPv6size_t">MediaFlags</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster9NodeIDForE7port_id">NodeIDFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster11PrerollNodeERK10media_node">PrerollNode</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster12RegisterNodeEP10BMediaNode">RegisterNode</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster14UnregisterNodeEP10BMediaNode">UnregisterNode</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster11ReleaseNodeERK10media_node">ReleaseNode</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster8RollNodeERK10media_node9bigtime_t9bigtime_t9bigtime_t">RollNode</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster6RosterEP8status_t">Roster</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster13CurrentRosterEv">CurrentRoster</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster8SeekNodeERK10media_node9bigtime_t9bigtime_t">SeekNode</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster14SeekTimeSourceERK10media_node9bigtime_t9bigtime_t">SeekTimeSource</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster13SetAudioInputERK10media_node">SetAudioInput</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster13SetVideoInputERK10media_node">SetVideoInput</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster14SetAudioOutputERK10media_node">SetAudioOutput</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster14SetVideoOutputERK10media_node">SetVideoOutput</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster15SetProducerRateERK10media_node5int325int32">SetProducerRate</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster23SetProducerRunModeDelayERK10media_node9bigtime_tN10BMediaNode8run_modeE">SetProducerRunModeDelay</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster9SetRefForERK10media_nodeR9entry_refbP9bigtime_t">SetRefFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster9GetRefForERK10media_nodeP9entry_refP9BMimeType">GetRefFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster14SetRunModeNodeERK10media_node9bigtime_tN10BMediaNode8run_modeE">SetRunModeNode</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster16SetTimeSourceForE13media_node_id13media_node_id">SetTimeSourceFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster8SniffRefERK9entry_ref6uint64P17dormant_node_infoP9BMimeType">SniffRef</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster11SniffRefForERK10media_nodeRK9entry_ref6uint64P17dormant_node_infoP9BMimeType">SniffRefFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster17StartControlPanelEK10media_nodeP9Messenger">StartControlPanel</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster9StartNodeEK10media_node9bigtime_t">StartNode</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster15StartTimeSourceEK10media_node9bigtime_t">StartTimeSource</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster14StopTimeSourceEK10media_node9bigtime_tb">StopTimeSource</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster13StartWatchingERK10BMessenger">StartWatching</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster12StopWatchingERK10BMessenger">StopWatching</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BMediaRoster10SyncToNodeEK10media_node9bigtime_t9bigtime_t">SyncToNode</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmediaroster">
+<h1>BMediaRoster<a class="headerlink" href="#bmediaroster" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N12BMediaRoster12BMediaRosterEv">
+</section>
+<h3>
+BMediaRoster()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BMediaRoster12BMediaRosterEv" title="BMediaRoster::BMediaRoster"><span class="n">BMediaRoster</span></a><span class="p">::</span></span><span class="n">BMediaRoster</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>You never construct a <span class="hclass">BMediaRoster</span> yourself. Instead, use the static
+<a class="reference internal" href="#_CPPv4N12BMediaRoster6RosterEP8status_t" title="BMediaRoster::Roster"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Roster()</span></code></a>
+function to obtain an instance of the <span class="hclass">BMediaRoster</span> class that
+you can use.</p>
+<section id="_CPPv4N12BMediaRosterD0Ev">
+</section>
+<h3>
+~BMediaRoster()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">~BMediaRoster</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>You never delete a <span class="hclass">BMediaRoster</span> yourself.
+Just let it go away automatically when your application shuts down.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N12BMediaRoster18AudioBufferSizeForE5int326uint32f8bus_type">
+</section>
+<h3>
+AudioBufferSizeFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">AudioBufferSizeFor</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">channelCount</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">sampleFormat</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">frameRate</span>, <span class="n">bus_type</span><span class="w"> </span><span class="n sig-param">busKind</span><span class="sig-paren">)</span></pre><p><span class="hmethod">AudioBufferSizeFor()</span> returns the size,
+in bytes, that the Media Kit recommends for audio data with
+<span class="hparameter">channelCount</span> channels, with the specified
+<span class="hparameter">sampleFormat</span> and <span class="hparameter">frameRate</span>.
+The <span class="hparameter">busKind</span> argument is a
+bus_type value (see
+drivers/config_manager.h)
+indicating the type of bus the data is moving across. Specify
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_UNKNOWN_BUS</span></code> if you don’t know.</p>
+<section id="_CPPv4N12BMediaRoster7ConnectERK12media_sourceRK17media_destinationP12media_formatP12media_outputP11media_input">
+</section>
+<section id="_CPPv4N12BMediaRoster10DisconnectE13media_node_idRK12media_source13media_node_idRK17media_destination">
+</section>
+<h3>
+Connect(), Disconnect()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">Connect</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_source</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">source</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_destination</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">destination</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioFormat</span>, <span class="n">media_output</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outOutput</span>, <span class="n">media_input</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outInput</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">Connect</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_source</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">source</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_destination</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">destination</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioFormat</span>, <span class="n">media_output</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outOutput</span>, <span class="n">media_input</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outInput</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">inFlags</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">_reserved</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">Disconnect</span><span class="sig-paren">(</span><span class="n">media_node_id</span><span class="w"> </span><span class="n sig-param">sourceNode</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_source</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">source</span>, <span class="n">media_node_id</span><span class="w"> </span><span class="n sig-param">destinationNode</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_destination</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">destination</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Connect()</span> negotiates a connection
+from the <span class="hparameter">source</span> to the <span class="hparameter">destination</span>,
+using the media format specified in <span class="hparameter">ioFormat</span> as a basis for the
+negotiation; <span class="hparameter">ioFormat</span> is changed to the negotiated format before this
+call returns. This describes the format of media data that will flow
+across the connection.
+The actual connection is returned as an output and an input in <span class="hparameter">outOutput</span>
+and <span class="hparameter">outInput</span>. These two structures contain the data format as interpreted
+by the source and destination. There may be differences among these
+formats if wildcard fields were used in the original format.
+The second form of <span class="hmethod">Connect()</span> lets you specify connect flags. Currently
+the only possible flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CONNECT_MUTED</span></code>, which indicates that the
+connection should be muted on creation.
+The actual
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">source()</span></code> and
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">destination()</span></code>
+used for the connection may vary from those passed into
+<span class="hmethod">Connect()</span> if the source or the destination
+creates new sources or destinations for each connection request; the
+<span class="hparameter">outOutput</span> and <span class="hparameter">outInput</span>
+structures contain the actual
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">source()</span></code> and
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">destination()</span></code>
+values resulting from the call.
+For more detailed information on the use of wildcards in format
+negotiation, see
+media_audio_format::wildcard and
+media_video_format::wildcard.
+A <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+with a type of
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_UNKNOWN_TYPE</span></code> matches any media class and format, although without
+specific knowledge of the source and destination, this will rarely result
+in a useful connection.
+<span class="hmethod">Disconnect()</span> breaks the
+connection established between <span class="hparameter">source</span> and
+<span class="hparameter">destination</span>, which must belong to the
+nodes <span class="hparameter">sourceNode</span> and
+<span class="hparameter">destinationNode</span>, repectively.
+The result of breaking a connection that’s currently running is
+undefined, but is not permitted to crash. Your application should stop
+both nodes involved in a connection prior to disconnecting them.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>These functions will deadlock if called from a node’s control thread or
+while the control thread is blocked.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error terminating the connection.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_NOT_FOUND</span></code></p></td>
+<td><p>The connection couldn’t be made.</p></td>
+</tr>
+<tr class="row-even"><td><p>Other errors.</p></td>
+<td><p>The nodes that are being connected may return other error codes as they see fit.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster15GetAllInputsForERK10media_nodeP11media_input5int32P5int32">
+</section>
+<section id="_CPPv4N12BMediaRoster16GetAllOutputsForERK10media_nodeP12media_output5int32P5int32">
+</section>
+<h3>
+GetAllInputsFor(), GetAllOutputsFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetAllInputsFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">media_input</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outInputs</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">bufNumInputs</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outTotalCount</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetAllOutputsFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">media_output</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outOutputs</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">bufNumOutputs</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outTotalCount</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetAllInputsFor()</span> fills the array of
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">input()</span></code>
+structures specified by <span class="hparameter">outInputs</span> with information
+about all inputs belonging to node; the number
+of elements that <span class="hparameter">outInputs</span> can hold is passed
+in <span class="hparameter">bufNumInputs</span>.
+Similarly, <span class="hmethod">GetAllOutputsFor()</span> fills the
+array <span class="hparameter">outOutputs</span> with information
+about all outputs from the specified node.
+Both functions return the number of elements actually returned in the
+buffer in <span class="hparameter">outTotalCount</span>. If this number is less than the number you
+requested, your buffer was too small to receive all the results of the
+query. In this case, you might want to resize your array and try again.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>These functions will deadlock if called from a node’s control thread or
+while the control thread is blocked.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_NODE</span></code></p></td>
+<td><p>The node isn’t of the correct type for the call you issued.</p></td>
+</tr>
+<tr class="row-even"><td><p>Other errors.</p></td>
+<td><p>An error occurred communicating with the producer or with the Media Server.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster13GetAudioInputEP10media_node">
+</section>
+<section id="_CPPv4N12BMediaRoster13GetVideoInputEP10media_node">
+</section>
+<h3>
+GetAudioInput(), GetVideoInput()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetAudioInput</span><span class="sig-paren">(</span><span class="n">media_node</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outNode</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetVideoInput</span><span class="sig-paren">(</span><span class="n">media_node</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outNode</span><span class="sig-paren">)</span></pre><p>These functions return the nodes designated by the user as the preferred
+nodes for audio and video input. You can then query the returned node,
+hook into it, and manipulate it, using the reference returned in
+<span class="hparameter">outNode</span>.
+Once your application has finished using these nodes (and they’ve been
+stopped and disconnected), you should release them by calling
+<span class="hmethod">ReleaseNode()</span>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error locating the default input node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_NOT_FOUND</span></code></p></td>
+<td><p>The default node couldn’t be identified.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster14GetAudioOutputEP10media_node">
+</section>
+<section id="_CPPv4N12BMediaRoster14GetVideoOutputEP10media_node">
+</section>
+<section id="_CPPv4N12BMediaRoster13GetAudioMixerEP10media_node">
+</section>
+<h3>
+GetAudioOutput(), GetVideoOutput(), GetAudioMixer()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetAudioOutput</span><span class="sig-paren">(</span><span class="n">media_node</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outNode</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetAudioOutput</span><span class="sig-paren">(</span><span class="n">media_node</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outNode</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outInputID</span>, <span class="n">BString</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outInputName</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetVideoOutput</span><span class="sig-paren">(</span><span class="n">media_node</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outNode</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetAudioMixer</span><span class="sig-paren">(</span><span class="n">media_node</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outNode</span><span class="sig-paren">)</span></pre><p>These functions return the nodes designated by the user as the preferred
+nodes for audio and video output. You can then query the returned node,
+hook into it, and manipulate it, using the reference returned in
+<span class="hparameter">outNode</span>.
+The second form of <span class="hmethod">GetAudioOutput()</span> returns additional information,
+including the input ID of the input used for audio output, and the
+input’s name.
+You should usually use <span class="hmethod">GetAudioMixer()</span> when getting a node for playing
+audio instead of using the <span class="hmethod">GetAudioOutput()</span> function. <span class="hmethod">GetAudioOutput()</span>
+returns the lower-level node for audio output, which you would typically
+only need access to if you wanted to do some form of processing on all
+audio data being played in the system (such as a level meter).
+The <span class="hmethod">GetAudioMixer()</span> function returns a reference to the audio mixer,
+which will perform audio mixing, format conversion, and sample rate
+conversion for you, then pass along the audio to the output node.
+Once your application has finished using these nodes (and they’ve been
+stopped and disconnected), you should release them by calling
+<a class="reference internal" href="#_CPPv4N12BMediaRoster11ReleaseNodeERK10media_node" title="BMediaRoster::ReleaseNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReleaseNode()</span></code></a>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error locating the default input node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_NOT_FOUND</span></code></p></td>
+<td><p>The default node couldn’t be identified.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster21GetConnectedInputsForERK10media_nodeP11media_input5int32P5int32">
+</section>
+<section id="_CPPv4N12BMediaRoster16GetFreeInputsForERK10media_nodeP11media_input5int32P5int3210media_type">
+</section>
+<h3>
+GetConnectedInputsFor(), GetFreeInputsFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetConnectedInputsFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">media_input</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outActiveInputsList</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numListInputs</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outNumInputs</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetFreeInputsFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">media_input</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFreeInputsList</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numListInputs</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outNumInputs</span>, <span class="n">media_type</span><span class="w"> </span><span class="n sig-param">filterType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_MEDIA_UNKNOWN_TYPE</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetConnectedInputsFor()</span> fills the array of
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">input()</span></code>
+structures specified by <span class="hparameter">outActiveInputsList</span> with
+information about all inputs belonging to node that are currently connected
+to some output; the number of elements that
+<span class="hparameter">outActiveInputsList</span> can hold is passed in
+<span class="hparameter">numListInputs</span>.
+Similarly, <span class="hmethod">GetFreeInputsFor()</span> fills
+the array <span class="hparameter">outFreeInputsList</span> with
+information about all inputs that are still available in the specified
+node. Specifying a <span class="hparameter">filterType</span> other than
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_NO_TYPE</span></code> lets you obtain
+a list of inputs for a specific media type (or for inputs that can handle
+any media type). This is especially useful if you’re only interested in a
+list of accepted media types your application supports.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>Even though a node may report that a specific number of free inputs are
+available, it is possible that a node might create more inputs on demand.
+There is no way to know if this might happen, so <span class="hmethod">GetFreeInputsFor()</span> may
+not tell you whether or not a node can accept all the connections you’d
+like to make.</p>
+</div>
+<p>Both functions return the number of elements actually returned in the
+buffer in <span class="hparameter">outNumInputs</span>. If this number is less
+than <span class="hparameter">numListInputs</span>, your
+buffer was too small to receive all the results of the query. In this
+case, you might want to resize your array and try again.
+These functions will deadlock if called from a node’s control thread or
+while the control thread is blocked.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error cloning the node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_NOT_FOUND</span></code></p></td>
+<td><p>The requested node couldn’t be cloned.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster22GetConnectedOutputsForERK10media_nodeP12media_output5int32P5int32">
+</section>
+<section id="_CPPv4N12BMediaRoster17GetFreeOutputsForERK10media_nodeP12media_output5int32P5int3210media_type">
+</section>
+<h3>
+GetConnectedOutputsFor(), GetFreeOutputsFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetConnectedOutputsFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">media_output</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outActiveOutputsList</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numListOutputs</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outNumOutputs</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetFreeOutputsFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">media_output</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFreeOutputsList</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numListOutputs</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outNumOutputs</span>, <span class="n">media_type</span><span class="w"> </span><span class="n sig-param">filterType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_MEDIA_UNKNOWN_TYPE</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetConnectedOutputsFor()</span> fills the array of
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">output()</span></code>
+structures specified by <span class="hparameter">outActiveOutputsList</span> with information about all outputs
+belonging to node that are currently connected to some input; the number
+of elements that <span class="hparameter">outActiveOutputsList</span> can hold is passed in
+<span class="hparameter">numListOutputs</span>.
+Similarly, <span class="hmethod">GetFreeOutputsFor()</span> fills the array <span class="hparameter">outFreeOutputsList</span> with
+information about all outputs that are still available in the specified
+node. Specifying a <span class="hparameter">filterType</span> other than <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_UNKNOWN_TYPE</span></code> lets you
+obtain a list of outputs for a specific media type (or for outputs that
+can handle any media type). This is especially useful if you’re only
+interested in a list of accepted media types your application supports.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>Even though a node may report that a specific number of free outputs
+are available, it is possible that a node might create more outputs on
+demand. There is no way to know if this might happen, so
+<span class="hmethod">GetFreeOutputsFor()</span> may not tell you whether or not a node can accept all
+the connections you’d like to make.</p>
+</div>
+<p>Both functions return the number of elements actually returned in the
+buffer in <span class="hparameter">outNumOutputs</span>. If this number is
+less than <span class="hparameter">numListOutputs</span>, your
+buffer was too small to receive all the results of the query. In this
+case, you might want to resize your array and try again.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>These functions will deadlock if called from a node’s control thread or
+while the control thread is blocked.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_NODE</span></code></p></td>
+<td><p>The node isn’t a buffer producer.</p></td>
+</tr>
+<tr class="row-even"><td><p>Other errors.</p></td>
+<td><p>An error occurred communicating with the producer or with the Media Server.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster23GetDormantFlavorInfoForERK17dormant_node_infoP19dormant_flavor_info">
+</section>
+<h3>
+GetDormantFlavorInfoFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetDormantFlavorInfoFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">dormant_node_info</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">inDormantNode</span>, <span class="n">dormant_flavor_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFlavor</span><span class="sig-paren">)</span></pre><p>This function returns, in <span class="hparameter">outFlavor</span>, information describing the dormant
+flavors supported by the dormant node <span class="hparameter">inDormantNode</span>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Messaging errors.</p></td>
+<td><p>An error occurred communicating with the Media Server.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster15GetDormantNodesEP17dormant_node_infoP5int32PK12media_formatPK12media_formatPc6uint646uint64">
+</section>
+<h3>
+GetDormantNodes()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetDormantNodes</span><span class="sig-paren">(</span><span class="n">dormant_node_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outDormantNodeList</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inOutNumNodes</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">hasInputFormat</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">hasOutputFormat</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">uint64</span><span class="w"> </span><span class="n sig-param">requireKinds</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="n">uint64</span><span class="w"> </span><span class="n sig-param">denyKinds</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>Queries dormant nodes (those nodes that live in add-ons, rather
+than in the application) and returns those who match the specified inputs.
+If <span class="hparameter">hasInputFormat</span> isn’t
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, the node has to be a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferConsumer</span></code>
+and have an input format compatible with the format described in
+<span class="hparameter">hasInputFormat</span>. Likewise, if
+<span class="hparameter">hasOutputFormat</span> isn’t
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, the node has to be a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferProducer</span></code>
+that’s compatible with the format described in
+<span class="hparameter">hasOutputFormat.</span>
+If name isn’t <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, the node has to have a
+name that equals <span class="hparameter">name</span>, or, if the last character
+of name is an asterisk (“*”), a name whose initial characters
+match name up to, but not including, the asterisk.
+The <span class="hparameter">requireKinds</span> and
+<span class="hparameter">denyKinds</span> arguments specifiy, respectively, the
+kinds that must be supported, and the kinds that must not be supported by
+the returned nodes.
+Matching nodes are returned in
+<span class="hparameter">outDormantNodeList</span>. You should pass the size of
+the <span class="hparameter">outDormantNodeList</span> array (the number of
+elements that the array can hold) in
+<span class="hparameter">inOutNumNodes</span>; when this function returns, the
+value in <span class="hparameter">inOutNumNodes</span> will be changed to the
+actual number of matching nodes found, unless an error occurs.
+Nodes you obtain using
+<span class="hmethod">GetDormantNodes()</span> must be released when you’re
+done using them. To do this, be sure they’re stopped and disconnected, then
+call
+<a class="reference internal" href="#_CPPv4N12BMediaRoster11ReleaseNodeERK10media_node" title="BMediaRoster::ReleaseNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReleaseNode()</span></code></a>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error cloning the node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_NOT_FOUND</span></code></p></td>
+<td><p>The requested node couldn’t be cloned.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster17GetFileFormatsForERK10media_nodeP17media_file_formatP5int32">
+</section>
+<h3>
+GetFileFormatsFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetFileFormatsFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">fileInterface</span>, <span class="n">media_file_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFormatList</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inOutFormatCount</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>Given a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFileInterface</span></code>
+node in <span class="hparameter">fileInterface</span>, returns information about
+the file formats the file interface can deal with in the array
+<span class="hparameter">outFormatList</span>. On entry,
+<span class="hparameter">inOutFormatCount</span> points to the number of
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">file()</span></code>
+structures that can fit in the array specified by
+<span class="hparameter">outFormatList</span>. Upon return, it will contain the
+actual number of formats returned, unless
+<span class="hmethod">GetFileFormatsFor()</span> returns an error.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>This function will deadlock if called from a node’s control thread or
+while the control thread is blocked.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error sending the set mode request.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_NOT_FOUND</span></code></p></td>
+<td><p>The requested node couldn’t be cloned.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster12GetFormatForERK12media_outputP12media_format6uint32">
+</section>
+<h3>
+GetFormatFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetFormatFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_output</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">output</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioFormat</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetFormatFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_input</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">input</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioFormat</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetFormatFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">input</span>, <span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioFormat</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">quality</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_MEDIA_ANY_QUALITY</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetFormatFor()</span> returns the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+being used by the given object, which may be a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">output()</span></code>,
+a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">input()</span></code>, or
+a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">node()</span></code>.
+Pass in <span class="hparameter">ioFormat</span> a pointer to a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
+object to be filled out with the object’s format.
+The <span class="hparameter">flags</span> currently must be zero.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
+<td><p>You can’t pass <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> for <span class="hparameter">ioFormat</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_NODE</span></code></p></td>
+<td><p>The node isn’t of the correct type for the given request.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_SOURCE</span></code></p></td>
+<td><p>The node’s <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">source()</span></code> is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>Messaging errors.</p></td>
+<td><p>An error occurred communicating with the Media Server.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster20GetInitialLatencyForER10media_nodeP9bigtime_tP6uint32">
+</section>
+<h3>
+GetInitialLatencyFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetInitialLatencyFor</span><span class="sig-paren">(</span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">producer</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outLatency</span>, <span class="n">uint32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFlags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Returns, in <span class="hparameter">outLatency</span>, the
+additional amount of time in microseconds the
+specified producer node requires in order to synchronize to a signal. For
+example, a TV capture card that’s started while the capture is in the
+middle of a field will have to wait until the next field begins before
+actually starting to produce buffers.
+<span class="hparameter">outFlags</span> is set to the flags
+returned by the producer. Currently there
+aren’t any flags defined, so this will be returned as zero for now.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
+<td><p><span class="hparameter">outLatency</span> was specified as <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_NODE</span></code></p></td>
+<td><p><span class="hparameter">producer</span> isn’t a valid node.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Port errors.</p></td>
+<td><p>An error occurred communicating with the producer.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster15GetInstancesForE14media_addon_id5int32P13media_node_idP5int32">
+</section>
+<h3>
+GetInstancesFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetInstancesFor</span><span class="sig-paren">(</span><span class="n">media_addon_id</span><span class="w"> </span><span class="n sig-param">addon</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flavor</span>, <span class="n">media_node_id</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outID</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioCount</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>Given the specified <span class="hparameter">addon</span> ID and
+<span class="hparameter">flavor</span>, this function fills the <span class="hparameter">outID</span>
+list with up to <span class="hparameter">ioCount</span> node IDs that were derived from the specified
+add-on. If you specify zero for <span class="hparameter">ioCount</span>, one node ID will be returned. On
+return, <span class="hparameter">ioCount</span> is changed to indicate how many nodes have been returned
+in the list.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Port errors.</p></td>
+<td><p>Communication with the Media Server failed.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster13GetLatencyForERK10media_nodeP9bigtime_t">
+</section>
+<h3>
+GetLatencyFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetLatencyFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">producer</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outLatency</span><span class="sig-paren">)</span></pre><p>Reports in <span class="hparameter">outLatency</span> the maximum latency
+found downstream from the specified
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferProducer</span></code>,
+<span class="hparameter">producer</span>, given the current connections.
+If an error occurs, the value in <span class="hparameter">outLatency</span> is unreliable.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>This function will deadlock if called from a node’s control thread or
+while the control thread is blocked.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>Unable to get the latency.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster12GetLiveNodesEP14live_node_infoP5int32PK12media_formatPK12media_formatPKc6uint64">
+</section>
+<h3>
+GetLiveNodes()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetLiveNodes</span><span class="sig-paren">(</span><span class="n">live_node_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outLiveNodeList</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioTotalCount</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">hasInput</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">hasOutput</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">uint64</span><span class="w"> </span><span class="n sig-param">nodeKinds</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>Queries the Media Server for a list of all currently active nodes
+(whether they’re running or not), and fills the array specified by
+<span class="hparameter">outLiveNodeList</span> with information about the nodes. The size of the array
+should be specified—in terms of how many elements it can
+contain—by the <span class="hparameter">ioTotalCount</span> argument; the actual number of entries
+in the returned list will be stored in <span class="hparameter">ioTotalCount</span> before the call
+returns.
+An active node is a node that is preloaded by the system and is always
+available for use, as opposed to a dormant node, which resides in an
+add-on and is only loaded when instantiated using
+<a class="reference internal" href="#_CPPv4N12BMediaRoster22InstantiateDormantNodeERK17dormant_node_infoP10media_node" title="BMediaRoster::InstantiateDormantNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InstantiateDormantNode()</span></code></a>.
+You can obtain a more specific result list by specifying one or
+more of the <span class="hparameter">hasInput</span>,
+<span class="hparameter">hasOutput</span>, <span class="hparameter">name</span>, and
+<span class="hparameter">nodeKinds</span> arguments.
+<span class="hparameter">hasInput</span> and
+<span class="hparameter">hasOutput</span> let you restrict the resulting list to
+containing nodes that accept as input (or output) the specified
+format.
+You should always specify 0 for <span class="hparameter">nodeKinds</span>;
+this parameter is currently not used.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>Unable to get the list of live nodes.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster20GetNodeAttributesForERK10media_nodeP21media_node_attributes6size_t">
+</section>
+<h3>
+GetNodeAttributesFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetNodeAttributesFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">media_node_attributes</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outArray</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">inMaxCount</span><span class="sig-paren">)</span></pre><p>Fills the array <span class="hparameter">outArray</span> with up
+to <span class="hparameter">inMaxCount</span> attributes of the given
+node. Returns the number of attributes returned. If the result is less
+than zero, an error occurred.</p>
+<section id="_CPPv4N12BMediaRoster10GetNodeForE13media_node_idP10media_node">
+</section>
+<h3>
+GetNodeFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetNodeFor</span><span class="sig-paren">(</span><span class="n">media_node_id</span><span class="w"> </span><span class="n sig-param">nodeID</span>, <span class="n">media_node</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">clonedNode</span><span class="sig-paren">)</span></pre><p>Given a node specified by <span class="hparameter">node_id</span>,
+<span class="hmethod">GetNodeFor()</span> returns in <span class="hparameter">clonedNode</span> a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">node()</span></code>
+reference to a clone of the node. You can then use the
+<span class="hparameter">clonedNode</span> to query the node for available
+inputs, outputs, and so forth.
+Once your application has finished using the returned node (and it’s been
+stopped and disconnected), you should release it by calling
+<a class="reference internal" href="#_CPPv4N12BMediaRoster11ReleaseNodeERK10media_node" title="BMediaRoster::ReleaseNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReleaseNode()</span></code></a>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error cloning the node.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BMessageerrors.</p></td>
+<td><p>Unable to get the list of live nodes.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster18GetParameterWebForERK10media_nodePP13BParameterWeb">
+</section>
+<h3>
+GetParameterWebFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetParameterWebFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">BParameterWeb</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">outWeb</span><span class="sig-paren">)</span></pre><p>Instantiates a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code>
+that describes the internal layout of a
+specific controllable node and stores a pointer to the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code> in
+<span class="hparameter">outWeb</span>. You can then walk the various
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code>s
+within the web to figure out what there is to control, and to present a user interface to
+the node’s parameters. Delete the web pointed to by <span class="hparameter">outWeb</span> when you’re
+done with it.
+Note that the
+<a class="reference internal" href="#_CPPv4N12BMediaRoster17StartControlPanelEK10media_nodeP9Messenger" title="BMediaRoster::StartControlPanel"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StartControlPanel()</span></code></a>
+function provides an easy, painless way
+to automatically present user interface for configuring nodes.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>This function will deadlock if called from a node’s control thread or
+while the control thread is blocked.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error obtaining the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_NODE</span></code></p></td>
+<td><p>The requested node is invalid.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster21GetReadFileFormatListERK17dormant_node_infoP17media_file_format5int32P5int32">
+</section>
+<section id="_CPPv4N12BMediaRoster22GetWriteFileFormatListERK17dormant_node_infoP17media_file_format5int32P5int32">
+</section>
+<h3>
+GetReadFileFormatList(), GetWriteFileFormatList()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetReadFileFormatList</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">dormant_node_info</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">inNode</span>, <span class="n">media_file_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outReadFormats</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">inReadCount</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outReadCount</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetWriteFileFormatList</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">dormant_node_info</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">inNode</span>, <span class="n">media_file_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outWriteFormats</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">inWriteCount</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outWriteCount</span><span class="sig-paren">)</span></pre><p>These two functions return lists of file formats that the dormant node
+described by <span class="hparameter">inNode</span> can read or write.
+<span class="hmethod">GetReadFileFormatList()</span> returns in the
+array specified by <span class="hparameter">outReadFormats</span> a list of file
+formats the node can read. Specify in
+<span class="hparameter">inReadCount</span> the number of formats that can be
+held by the <span class="hparameter">outReadFormats</span> array. On exit,
+<span class="hparameter">outReadCount</span> indicates how many formats are
+being returned in the array.
+<span class="hmethod">GetWriteFileFormatList()</span> returns in
+the array specified by <span class="hparameter">outWriteFormats</span> a list of
+file formats the node can write. Specify in
+<span class="hparameter">inWriteCount</span> the number of formats that can be
+held by the <span class="hparameter">outWriteFormats</span> array. On exit,
+<span class="hparameter">outWriteCount</span> indicates how many formats are
+being returned in the array.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>The list was returned without error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
+<td><p><span class="hparameter">outReadFormats</span> or <span class="hparameter">outWriteFormats</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>BMessageerrors.</p></td>
+<td><p>An error occurred communicating with the Media Server.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster16GetRealtimeFlagsEP6uint32">
+</section>
+<section id="_CPPv4N12BMediaRoster16SetRealtimeFlagsE6uint32">
+</section>
+<h3>
+GetRealtimeFlags(), SetRealtimeFlags()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetRealtimeFlags</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outEnabled</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SetRealtimeFlags</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">inEnabled</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetRealtimeFlags()</span> returns flags that
+the Media Server uses to determine whether or not memory needs to be locked
+down. <span class="hmethod">SetRealtimeFlags()</span> sets these flags, and
+is generally only called by the Media preference application.
+Any or all of these flags can be set, in combination.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_REALTIME_ALLOCATOR</span></code></p></td>
+<td><p>When set, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">alloc()</span></code> will return locked memory.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_REALTIME_AUDIO</span></code></p></td>
+<td><p>Audio add-ons in the Media Server are locked in memory, and should lock their thread stacks using <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">realtime()</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_REALTIME_VIDEO</span></code></p></td>
+<td><p>Video add-ons are locked in memory, and should lock their thread stacks using <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">realtime()</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_REALTIME_ANYKIND</span></code></p></td>
+<td><p>All Media add-ons are locked in memory, and should lock their thread stacks using <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">realtime()</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>See the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaNode</span> <span class="pre">overview</span></code>
+for a discussion of realtime allocation and thread stack locking.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>Unable to set or retrieve the realtime flags.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster18GetStartLatencyForERK10media_nodeP9bigtime_t">
+</section>
+<h3>
+GetStartLatencyFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetStartLatencyFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">timeSource</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outLatency</span><span class="sig-paren">)</span></pre><p>Reports in <span class="hparameter">outLatency</span> the maximum
+latency found downstream from the time source specified by
+<span class="hparameter">timeSource</span>, given the current
+connections.
+If an error occurs, the value in
+<span class="hparameter">outLatency</span> is unreliable.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>This function will deadlock if called from a node’s control thread or
+while the control thread is blocked.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No errors.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>Unable to get the latency.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster19GetSystemTimeSourceEP10media_node">
+</section>
+<h3>
+GetSystemTimeSource()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetSystemTimeSource</span><span class="sig-paren">(</span><span class="n">media_node</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">clonedTimeSource</span><span class="sig-paren">)</span></pre><p>This function returns, in <span class="hparameter">clonedTimeSource</span>, a reference to a clone of the
+system time source. The system time source is the fallback time source
+used when no other source is available; its time is derived from the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">time()</span></code>
+real-time clock. As such, it’s quite accurate, but has no
+relevant relationship to the timing of the hardware devices being used
+for media input and output. Thus it’s not a good choice for a master
+clock—but it’s there if nothing else is available.
+By default, new nodes are slaved to the system time source.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error cloning the node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_NOT_FOUND</span></code></p></td>
+<td><p>The time source couldn’t be cloned.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster13GetTimeSourceEP10media_node">
+</section>
+<section id="_CPPv4N12BMediaRoster17MakeTimeSourceForER10media_node">
+</section>
+<h3>
+GetTimeSource(), MakeTimeSourceFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetTimeSource</span><span class="sig-paren">(</span><span class="n">media_node</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outNode</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BTimeSource</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">MakeTimeSourceFor</span><span class="sig-paren">(</span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetTimeSource()</span> returns, in
+<span class="hparameter">outNode</span>, the preferred master clock to which
+other nodes can be slaved. By slaving all nodes to a single master clock,
+good synchronization can be ensured.
+Typically, the preferred master clock will be the same node as the
+default audio output (assuming that the audio output node is also a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimeSource</span></code>,
+which should be the case). The sound circuitry’s DAC is then
+used as a timing reference. Although this may be less accurate than the
+system clock (as defined by the global
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">time()</span></code>
+function),
+glitch-free audio performance is best ensured by using the audio output
+to synchronize media operations.
+By default, nodes are slaved to the system time source (see
+<a class="reference internal" href="#_CPPv4N12BMediaRoster19GetSystemTimeSourceEP10media_node" title="BMediaRoster::GetSystemTimeSource"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetSystemTimeSource()</span></code></a>
+above). Usually you’ll want to use this function to
+obtain a more accurate time source, then slave your nodes to it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">media_node</span> <span class="n">timeSource</span><span class="p">;</span>
+<span class="n">roster</span><span class="o">-&gt;</span><span class="n">GetTimeSource</span><span class="p">(</span><span class="o">&amp;</span><span class="n">media_node</span><span class="p">);</span>
+<span class="n">roster</span><span class="o">-&gt;</span><span class="n">SetTimeSourceFor</span><span class="p">(</span><span class="n">myNode</span><span class="p">,</span> <span class="n">timeSource</span><span class="o">.</span><span class="n">node</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This will slave the previously-created node myNode to the preferred time
+source.
+<span class="hmethod">MakeTimeSourceFor()</span> returns a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimeSource</span></code>
+object corresponding to the
+specified node’s time source. This object can then be used to issue
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimeSource</span></code>
+calls to determine and adjust timing issues (for instance, to
+determine the current performance time). When you’re done with the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimeSource</span></code>,
+you should call
+<a class="reference internal" href="#_CPPv4N12BMediaRoster11ReleaseNodeERK10media_node" title="BMediaRoster::ReleaseNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReleaseNode()</span></code></a>
+on it.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error locating the default input node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_NOT_FOUND</span></code></p></td>
+<td><p>The default node couldn’t be identified.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster22InstantiateDormantNodeERK17dormant_node_infoP10media_node">
+</section>
+<h3>
+InstantiateDormantNode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">InstantiateDormantNode</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">dormant_node_info</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">inInfo</span>, <span class="n">media_node</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outNode</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">InstantiateDormantNode</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">dormant_node_info</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">inInfo</span>, <span class="n">media_node</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outNode</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="sig-paren">)</span></pre><p>These functions instantiate a node from an add-on, given the information
+specified in the dormant_node_info structure.
+The addon field should be filled out to contain the add-on ID of the
+add-on from which the node should be instantiated, and the flavor_id
+should be the flavor ID number the node should be instantiated to
+process. Typically you’ll use a function such as
+<a class="reference internal" href="#_CPPv4N12BMediaRoster15GetDormantNodesEP17dormant_node_infoP5int32PK12media_formatPK12media_formatPc6uint646uint64" title="BMediaRoster::GetDormantNodes"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetDormantNodes()</span></code></a>
+to find a dormant_node_info structure that describes a suitable node.
+When you’re done using the node, and have stopped and disconnected it,
+you should always call
+<a class="reference internal" href="#_CPPv4N12BMediaRoster11ReleaseNodeERK10media_node" title="BMediaRoster::ReleaseNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReleaseNode()</span></code></a>
+to let the Media Server know you’re
+finished with it. This lets the Media Server track whether or not the
+node’s add-on can be unloaded, based on the number of applications still
+using it.
+The difference between these two functions is that the second form lets
+you specify flags controlling how the node is instantiated. The
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FLAVOR_IS_GLOBAL</span></code> flag instantiates the node in the Media Add-on
+Server’s memory space, while the <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FLAVOR_IS_LOCAL</span></code> flag instantiates the
+node in your application’s memory. Using <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FLAVOR_IS_LOCAL</span></code> protects other
+applications—not to mention the Media Server—from being
+derailed if the node crashes. Whenever possible, you should instantiate
+nodes locally. You should only use <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FLAVOR_IS_GLOBAL</span></code> if you need the
+node to stay around after your application exits.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error instantiating the node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_NOT_FOUND</span></code></p></td>
+<td><p>The requested node couldn’t be instantiated.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster10MediaFlagsE11media_flagsPv6size_t">
+</section>
+<h3>
+MediaFlags()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">MediaFlags</span><span class="sig-paren">(</span><span class="n">media_flags</span><span class="w"> </span><span class="n sig-param">flag</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">bufferSize</span><span class="sig-paren">)</span></pre><p>Asks the Media Server about its support for specific features and
+capabilities.
+The specified buffer will be filled with the data indicating the
+value of the specified <span class="hparameter">flag</span>. If the buffer is
+too small (as indicated by <span class="hparameter">bufferSize</span>), only the
+first <span class="hparameter">bufferSize</span> bytes of the result data will
+be stored in the buffer, but no error will occur.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_FLAGS_VERSION</span></code></p></td>
+<td><p>Returns the Media Kit version as an int32 value.</p></td>
+</tr>
+</tbody>
+</table>
+<p>If the result is negative, an error occurred, or the Media Server isn’t
+running.</p>
+<section id="_CPPv4N12BMediaRoster9NodeIDForE7port_id">
+</section>
+<h3>
+NodeIDFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">media_node_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">NodeIDFor</span><span class="sig-paren">(</span><span class="n">port_id</span><span class="w"> </span><span class="n sig-param">sourceOrDestinationPort</span><span class="sig-paren">)</span></pre><p>Given a source or destination port, this function returns the
+corresponding node’s ID number.</p>
+<section id="_CPPv4N12BMediaRoster11PrerollNodeERK10media_node">
+</section>
+<h3>
+PrerollNode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">PrerollNode</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span><span class="sig-paren">)</span></pre><p>Calling <span class="hmethod">PrerollNode()</span> sends a preroll
+message to the specified <span class="hparameter">node</span>; the node’s
+<a class="reference internal" href="media-node.html#_CPPv4N10BMediaNode7PrerollEv" title="BMediaNode::Preroll"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Preroll()</span></code></a>
+hook function will be called. When that hook returns,
+<span class="hmethod">PrerollNode()</span> will also return. A node that’s been prerolled should
+respond very quickly to a
+<a class="reference internal" href="#_CPPv4N12BMediaRoster9StartNodeEK10media_node9bigtime_t" title="BMediaRoster::StartNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StartNode()</span></code></a>
+call, because the time-consuming setup operations should have been done already by the
+<a class="reference internal" href="media-node.html#_CPPv4N10BMediaNode7PrerollEv" title="BMediaNode::Preroll"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Preroll()</span></code></a>
+hook.
+While it’s not mandatory for an application to call
+<span class="hmethod">PrerollNode()</span> before calling
+<a class="reference internal" href="#_CPPv4N12BMediaRoster9StartNodeEK10media_node9bigtime_t" title="BMediaRoster::StartNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StartNode()</span></code></a>,
+it’s recommended, because doing so may improve
+real-time performance once the node is started.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>This function will deadlock if called from a node’s control thread or
+while the control thread is blocked.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error sending the set mode request.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_NOT_FOUND</span></code></p></td>
+<td><p>The requested node couldn’t be cloned.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster12RegisterNodeEP10BMediaNode">
+</section>
+<section id="_CPPv4N12BMediaRoster14UnregisterNodeEP10BMediaNode">
+</section>
+<h3>
+RegisterNode(), UnregisterNode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">RegisterNode</span><span class="sig-paren">(</span><span class="n">BMediaNode</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">node</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">UnregisterNode</span><span class="sig-paren">(</span><span class="n">BMediaNode</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">node</span><span class="sig-paren">)</span></pre><p><span class="hmethod">RegisterNode()</span> registers an object of a class derived from
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaNode</span></code>
+with the media roster and assigns it a node_id. This function should be
+called once a <span class="hclass">BMediaNode</span>-derived object is fully-constructed and before
+any attempt is made to connect the node to some other participant in the
+Media Server.
+<span class="hmethod">RegisterNode()</span> is called automatically for nodes instantiated from
+add-ons, but your application will have to call it for any nodes it
+creates itself.
+If you create your own subclass of
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaNode</span></code>,
+its constructor can call <span class="hmethod">RegisterNode()</span> itself just before returning (it must be the last thing
+the constructor does).
+<span class="hmethod">UnregisterNode()</span> unregisters a node
+from the Media Server. It’s called automatically by the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaNode</span></code>
+destructor, but it might be convenient to call it sometime before you
+delete your node instance, depending on your implementation and
+circumstances.
+These functions are generally only used if you’re creating your own node
+class.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error sending the seek request.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
+<td><p>Invalid <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaNode</span></code> specified.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster11ReleaseNodeERK10media_node">
+</section>
+<h3>
+ReleaseNode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">ReleaseNode</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span><span class="sig-paren">)</span></pre><p>Releases the specified node, which has previously been obtained by using
+the <a class="reference internal" href="#_CPPv4N12BMediaRoster22InstantiateDormantNodeERK17dormant_node_infoP10media_node" title="BMediaRoster::InstantiateDormantNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InstantiateDormantNode()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N12BMediaRoster10GetNodeForE13media_node_idP10media_node" title="BMediaRoster::GetNodeFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNodeFor()</span></code></a>,
+or default node functions (such as
+<a class="reference internal" href="#_CPPv4N12BMediaRoster14GetVideoOutputEP10media_node" title="BMediaRoster::GetVideoOutput"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetVideoOutput()</span></code></a> or
+<a class="reference internal" href="#_CPPv4N12BMediaRoster13GetAudioMixerEP10media_node" title="BMediaRoster::GetAudioMixer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetAudioMixer()</span></code></a>).</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error releasing the node.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BMessageerrors.</p></td>
+<td><p>The node couldn’t be released.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster8RollNodeERK10media_node9bigtime_t9bigtime_t9bigtime_t">
+</section>
+<h3>
+RollNode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">RollNode</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">startPerformanceTime</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">stopPerformanceTime</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">atMediaTime</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="n">B_INFINITE_TIMEOUT</span><span class="sig-paren">)</span></pre><p>Atomically queues a start and stop for the given node. The node will
+start playing at the performance time indicated by <span class="hparameter">startPerformanceTime</span>,
+and will stop playing at the performance time indicated by
+<span class="hparameter">stopPerformanceTime</span>.
+If the <span class="hparameter">atMediaTime</span> argument is given, a seek to that media time is also
+queued.
+This function is especially useful for the offline rendering case (the
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OFFLINE</span></code> run mode). It lets you render a certain time range without
+accidentally going too far; if you queue up a start and stop using
+<a class="reference internal" href="media-node.html#_CPPv4N10BMediaNode5StartE9bigtime_t" title="BMediaNode::Start"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Start()</span></code></a> and
+<a class="reference internal" href="media-node.html#_CPPv4N10BMediaNode4StopE9bigtime_tb" title="BMediaNode::Stop"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Stop()</span></code></a>,
+the node may have already rendered past your desired stop time before your
+<a class="reference internal" href="media-node.html#_CPPv4N10BMediaNode4StopE9bigtime_tb" title="BMediaNode::Stop"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Stop()</span></code></a>
+call occurs.
+<a class="reference internal" href="#_CPPv4N12BMediaRoster8RollNodeERK10media_node9bigtime_t9bigtime_t9bigtime_t" title="BMediaRoster::RollNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RollNode()</span></code></a>
+avoids that problem.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_NODE</span></code></p></td>
+<td><p>The node isn’t valid.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster6RosterEP8status_t">
+</section>
+<section id="_CPPv4N12BMediaRoster13CurrentRosterEv">
+</section>
+<h3>
+Roster(), CurrentRoster()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BMediaRoster</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">Roster</span><span class="sig-paren">(</span><span class="n">status_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outError</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BMediaRoster</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">CurrentRoster</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Roster()</span> returns a pointer to the
+default <span class="hclass">BMediaRoster</span> instance, or creates the
+<span class="hclass">BMediaRoster</span> instance if it doesn’t exist yet,
+then returns a pointer to it. If you don’t want to create the roster if it
+doesn’t already exist, use the <span class="hmethod">CurrentRoster()</span>
+function (it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if there’s no
+roster).
+Since <span class="hmethod">CurrentRoster()</span> doesn’t create a
+media roster, you obviously must use <span class="hmethod">Roster()</span>
+at least once in your application to create one.
+These static member functions should be called by explicit scope,
+and never by dereference; this is how you get the
+<span class="hclass">BMediaRoster</span> through which all other media
+roster functions are called. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BMediaRoster</span><span class="o">*</span> <span class="n">r</span> <span class="o">=</span> <span class="n">BMediaRoster</span><span class="p">::</span><span class="n">Roster</span><span class="p">();</span>
+<span class="n">status_t</span> <span class="n">err</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">GetFreeOutputsFor</span><span class="p">(</span><span class="n">some_node</span><span class="p">,</span> <span class="n">some_array</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>On return, <span class="hparameter">outError</span> is set to
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if the default
+<span class="hclass">BMediaRoster</span> was successfully returned, or a
+negative error code if something went wrong (for example, if the Media
+Server isn’t running). If <span class="hparameter">outError</span> is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, no error code is returned.
+In any case, <span class="hmethod">Roster()</span> returns
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if an error occurs.</p>
+<section id="_CPPv4N12BMediaRoster8SeekNodeERK10media_node9bigtime_t9bigtime_t">
+</section>
+<h3>
+SeekNode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SeekNode</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">newMediaTime</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">atPerformanceTime</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>Sends the specified <span class="hparameter">node</span> a request that
+it change its playing location to the media time
+<span class="hparameter">newMediaTime</span> once the performance time
+<span class="hparameter">atPerformanceTime</span> is reached.
+If the node isn’t running, the seek request is processed immediately, and
+the <span class="hparameter">atPerformanceTime</span> argument is ignored.
+The error returned by this function only indicates whether or not the
+request was sent successfully; the node may later run into problems
+trying to perform the seek operation.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>If the node is a time source, and you want to operate on the time
+source aspect of the node (to seek all slaved nodes), you should call
+<a class="reference internal" href="#_CPPv4N12BMediaRoster14SeekTimeSourceERK10media_node9bigtime_t9bigtime_t" title="BMediaRoster::SeekTimeSource"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SeekTimeSource()</span></code></a>
+instead.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error sending the seek request.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors</p></td>
+<td><p>Are node specific</p></td>
+</tr>
+</tbody>
+</table>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N12BMediaRoster9StartNodeEK10media_node9bigtime_t" title="BMediaRoster::StartNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StartNode()</span></code></a>,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StopNode()</span></code></p>
+<section id="_CPPv4N12BMediaRoster14SeekTimeSourceERK10media_node9bigtime_t9bigtime_t">
+</section>
+<h3>
+SeekTimeSource()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SeekTimeSource</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">timeSource</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">newPerformanceTime</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">atRealTime</span><span class="sig-paren">)</span></pre><p>Sends the specified timeSource a request that it change the performance
+time it outputs to its slaved nodes to the time <span class="hparameter">newPerformanceTime</span> once
+the performance time <span class="hparameter">atRealTime</span> is reached.
+If the <span class="hparameter">timeSource</span> isn’t running, the seek request is processed
+immediately, and the atRealTime argument is ignored.
+The error returned by this function only indicates whether or not the
+request was sent successfully; the node may later run into problems
+trying to perform the seek operation.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error sending the seek request.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors</p></td>
+<td><p>Are node specific</p></td>
+</tr>
+</tbody>
+</table>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N12BMediaRoster15StartTimeSourceEK10media_node9bigtime_t" title="BMediaRoster::StartTimeSource"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StartTimeSource()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N12BMediaRoster14StopTimeSourceEK10media_node9bigtime_tb" title="BMediaRoster::StopTimeSource"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StopTimeSource()</span></code></a></p>
+<section id="_CPPv4N12BMediaRoster13SetAudioInputERK10media_node">
+</section>
+<section id="_CPPv4N12BMediaRoster13SetVideoInputERK10media_node">
+</section>
+<h3>
+SetAudioInput(), SetVideoInput()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SetAudioInput</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">defaultNode</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SetAudioInput</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">dormant_node_info</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">defaultNodeInfo</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SetVideoInput</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">defaultNode</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SetVideoInput</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">dormant_node_info</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">defaultNodeInfo</span><span class="sig-paren">)</span></pre><p>These functions set the preferred nodes for audio and video input. If the
+specified node isn’t capable of being the system default, an error will
+be returned (for example, nodes defined by an application can’t be the
+system default—only nodes defined by Media Kit add-ons can be
+system defaults).</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>In general, you shouldn’t call these functions unless you’re writing
+software that reimplements the functionality of the BeOS Audio or Video
+preference panels.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error setting the default input node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_NOT_FOUND</span></code></p></td>
+<td><p>The default node couldn’t be changed.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster14SetAudioOutputERK10media_node">
+</section>
+<section id="_CPPv4N12BMediaRoster14SetVideoOutputERK10media_node">
+</section>
+<h3>
+SetAudioOutput(), SetVideoOutput()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SetAudioOutput</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">defaultNode</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SetAudioOutput</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">dormant_node_info</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">defaultNodeInfo</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SetAudioOutput</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_input</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">inputToOutput</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SetVideoOutput</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">defaultNode</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SetVideoOutput</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">dormant_node_info</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">defaultNodeInfo</span><span class="sig-paren">)</span></pre><p>These functions set the preferred nodes for audio and video output. If
+the specified node isn’t capable of being the system default, an error
+will be returned (for example, nodes defined by an application can’t be
+the system default—only nodes defined by Media Kit add-ons can be
+system defaults).</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>In general, you shouldn’t call these functions unless you’re writing
+software that reimplements the functionality of the BeOS Audio or Video
+preference panels.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error setting the default output node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_NOT_FOUND</span></code></p></td>
+<td><p>The default node couldn’t be changed.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster15SetProducerRateERK10media_node5int325int32">
+</section>
+<h3>
+SetProducerRate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SetProducerRate</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numerator</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">demominator</span><span class="sig-paren">)</span></pre><p>This function is called to tell the producer to resample the data rate by
+the specified factor. Specifying a value of 1 (ie,
+<span class="hparameter">numerator</span>/<span class="hparameter">denominator</span>
+= 1) indicates that the data should be output at the same playback rate
+that it comes into the node at. The format of the data should be
+unchanged.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>Nodes are not required to support this mechanism for controlling their
+data rate, so this call may have no effect.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>Returned by <a class="reference internal" href="buffer-producer.html#_CPPv4N15BBufferProducer11SetPlayRateE5int325int32" title="BBufferProducer::SetPlayRate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBufferProducer::SetPlayRate()</span></code></a>.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster23SetProducerRunModeDelayERK10media_node9bigtime_tN10BMediaNode8run_modeE">
+</section>
+<h3>
+SetProducerRunModeDelay()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SetProducerRunModeDelay</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">delay</span>, <span class="n">BMediaNode</span><span class="p">::</span><span class="n">run_mode</span><span class="w"> </span><span class="n sig-param">mode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_RECORDING</span><span class="sig-paren">)</span></pre><p>Sets the run mode for the given producer node to <span class="hparameter">mode</span>. Also sets the
+specified <span class="hparameter">delay</span> to be added to each buffer sent by the producer node.
+This function should only be called for <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_RECORDING</span></code> mode; it’s provided
+to compensate when you connect a node that’s in recording mode to a node
+that isn’t.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_NODE</span></code></p></td>
+<td><p>The node is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p>Port errors.</p></td>
+<td><p>An error occurred communicating with the Media Server.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster9SetRefForERK10media_nodeR9entry_refbP9bigtime_t">
+</section>
+<section id="_CPPv4N12BMediaRoster9GetRefForERK10media_nodeP9entry_refP9BMimeType">
+</section>
+<h3>
+SetRefFor(), GetRefFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SetRefFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">fileInterface</span>, <span class="n">entry_ref</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">file</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">createAndTruncate</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outDuration</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">GetRefFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">fileInterface</span>, <span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFile</span>, <span class="n">BMimeType</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outMimeType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetRefFor()</span> tells the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFileInterface</span></code>
+<span class="hparameter">fileInterface</span> to work on the file
+whose entry_ref is specified by <span class="hparameter">file</span>.
+If <span class="hparameter">createAndTruncate</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, any
+previous file with that reference is deleted and the file will be
+prepared for new output. If <span class="hparameter">createAndTruncate</span> is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, <span class="hparameter">outDuration</span> will,
+on return, contain the duration of the performance data found in the file.
+<span class="hmethod">GetRefFor()</span> fills out the specified
+entry_ref, <span class="hparameter">outFile</span>, to reference the
+file with which the specified <span class="hparameter">fileInterface</span> node is working. If
+<span class="hparameter">outMimeType</span> isn’t <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, it’ll contain a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMimeType</span></code>
+object describing the file’s type, unless an error occurs.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>These functions will deadlock if called from a node’s control thread or
+while the control thread is blocked.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_NODE</span></code></p></td>
+<td><p>The specified node doesn’t exist, or isn’t a file interface.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster14SetRunModeNodeERK10media_node9bigtime_tN10BMediaNode8run_modeE">
+</section>
+<h3>
+SetRunModeNode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SetRunModeNode</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">delay</span>, <span class="n">BMediaNode</span><span class="p">::</span><span class="n">run_mode</span><span class="w"> </span><span class="n sig-param">newMode</span><span class="sig-paren">)</span></pre><p>Sends the specified <span class="hparameter">node</span> a request that it change its policy for handling
+situations where it falls behind during real-time processing.
+The error returned by this function only indicates whether or not the
+request was sent successfully.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error sending the set mode request.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_NODE</span></code></p></td>
+<td><p>The specified node is invalid.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster16SetTimeSourceForE13media_node_id13media_node_id">
+</section>
+<h3>
+SetTimeSourceFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SetTimeSourceFor</span><span class="sig-paren">(</span><span class="n">media_node_id</span><span class="w"> </span><span class="n sig-param">node</span>, <span class="n">media_node_id</span><span class="w"> </span><span class="n sig-param">timeSource</span><span class="sig-paren">)</span></pre><p>Tells the specified <span class="hparameter">node</span> to slave its
+timing to <span class="hparameter">timeSource</span>. Once this is
+done, the node will receive its notion of the passage of time from
+<span class="hparameter">timeSource</span>. As such, it will pause whenever timeSource is stopped, and so
+forth.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>By default, nodes are slaved to the system time source, so you only
+need to call this function if you need to slave a node to a different
+time source.</p>
+</div>
+<p>The node will take whatever precautions are necessary to remain faithful
+to the notion of time presented by <span class="hparameter">timeSource</span> without causing glitches in
+the presentation of its media. For example, if a sound card node has a
+DAC that drifts from <span class="hparameter">timeSource</span>, it might try to fix the problem by
+varying the sampling rate slightly, or by dropping or doubling buffers
+occasionally. This is why you should usually use the preferred time
+source—rather than the system time source—as your master time
+source. The preferred time source will usually be derived directly from
+the DAC being used to produce the media output.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BMessageerrors.</p></td>
+<td><p>Unable to set the time source.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster8SniffRefERK9entry_ref6uint64P17dormant_node_infoP9BMimeType">
+</section>
+<section id="_CPPv4N12BMediaRoster11SniffRefForERK10media_nodeRK9entry_ref6uint64P17dormant_node_infoP9BMimeType">
+</section>
+<h3>
+SniffRef(), SniffRefFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SniffRef</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">uint64</span><span class="w"> </span><span class="n sig-param">requireNodeKinds</span>, <span class="n">dormant_node_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outNode</span>, <span class="n">BMimeType</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outMimeType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SniffRefFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">fileInterface</span>, <span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">uint64</span><span class="w"> </span><span class="n sig-param">requireNodeKinds</span>, <span class="n">dormant_node_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outNode</span>, <span class="n">BMimeType</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outMimeType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SniffRef()</span> asks all
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaAddOn</span></code>
+instances that satisfy the
+<span class="hparameter">requireNodeKinds</span> restraint to identify the file. The <span class="hparameter">requireNodeKinds</span>
+argument should contain flags composited from the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">node()</span></code>
+constants.
+The node that returns the greatest
+<span class="hparameter">outCapability</span> value will be chosen, and a
+reference to it put in <span class="hparameter">outNode</span>. The
+MIME type of the file will be put into
+<span class="hparameter">outMimeType</span>.
+In simpler terms: <span class="hmethod">SniffRef()</span> returns the node that can best handle the
+media data in the specified file.
+<span class="hmethod">SniffRefFor()</span>, on the other hand,
+asks the specified <span class="hparameter">fileInterface</span> node
+to examine the file. If the node recognizes the file, the MIME type of
+the file is stored in the buffer <span class="hparameter">outMimeType</span>, and the node’s capability
+to handle the file is returned in <span class="hparameter">outCapability</span>.
+If the node doesn’t recognize the file, an error is returned. If the node
+recognizes the file format but finds no recognizable data within the
+file, <span class="hparameter">outCapability</span> is set to 0.0 and no error is returned.
+In either case, the higher the <span class="hparameter">outCapability</span> value returned, the more
+appropriate the node is for handling the media data in the file.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>These functions will deadlock if called from a node’s control thread or
+while the control thread is blocked.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No errors.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_NODE</span></code></p></td>
+<td><p>The specified node is invalid, or isn’t a file interface.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster17StartControlPanelEK10media_nodeP9Messenger">
+</section>
+<h3>
+StartControlPanel()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">StartControlPanel</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="n sig-param">node</span>, <span class="n">Messenger</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outMessenger</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Tells the specified node to start its custom control panel, which is
+started outside your application. There’s no way to tell when the user
+has closed the control panel, other than by indirectly detecting possible
+changes to the node, such as a renegotiation of the format of data being
+output by the node.
+If a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code>
+is provided as input to <span class="hmethod">StartControlPanel()</span>,
+the function returns in <span class="hparameter">outMessenger</span> a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">Messenger</span></code>
+that can be used to communicate with the control panel.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>These functions will deadlock if called from a node’s control thread or
+while the control thread is blocked.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error starting the control panel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_NODE</span></code></p></td>
+<td><p>The specified node is invalid.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster9StartNodeEK10media_node9bigtime_t">
+</section>
+<h3>
+StartNode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">StartNode</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="n sig-param">node</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">atPerformanceTime</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">StartNode</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="n sig-param">node</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">atPerformanceTime</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">immediate</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p><span class="hmethod">StartNode()</span> sends the specified node a request to start streaming data at
+the performance time specified by the <span class="hparameter">atPerformanceTime</span> argument,
+according to that node’s time source.
+By default, nodes are in a stopped state upon creation, so you have to
+call <span class="hmethod">StartNode()</span> once you have a reference to it before anything will
+happen. Starting a node that’s already running has no effect.
+<span class="hmethod">StopNode()</span> sends node a request to
+stop streaming data once the specified performance time
+<span class="hparameter">atPerformanceTime</span> is reached, according to that
+node’s time source. Stopping a node that’s already stopped has no effect.
+If <span class="hparameter">immediate</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>,
+the node is instructed to stop immediately and the
+<span class="hparameter">atPerformanceTime</span> argument is ignored; if
+<span class="hparameter">immediate</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, the
+node is stopped at the specified performance time.
+In either case, the requested change will occur at the time specified by
+<span class="hparameter">atPerformanceTime</span>.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>If the node is a time source, and you want to operate on the time
+source aspect of the node (to start or stop all slaved nodes), you should
+call
+<a class="reference internal" href="#_CPPv4N12BMediaRoster14SeekTimeSourceERK10media_node9bigtime_t9bigtime_t" title="BMediaRoster::SeekTimeSource"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SeekTimeSource()</span></code></a>
+instead.</p>
+</div>
+<p>The error returned by these functions only indicates whether or not the
+request was sent successfully; the node may later run into problems
+trying to start or stop its media and you won’t know it based on the
+result of these functions.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p><span class="hmethod">StopNode()</span> will deadlock if called from a node’s control thread or
+while the control thread is blocked.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error sending the start or stop request.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>Are node specific.</p></td>
+</tr>
+</tbody>
+</table>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N12BMediaRoster8SeekNodeERK10media_node9bigtime_t9bigtime_t" title="BMediaRoster::SeekNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SeekNode()</span></code></a></p>
+<section id="_CPPv4N12BMediaRoster15StartTimeSourceEK10media_node9bigtime_t">
+</section>
+<section id="_CPPv4N12BMediaRoster14StopTimeSourceEK10media_node9bigtime_tb">
+</section>
+<h3>
+StartTimeSource(), StopTimeSource()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">StartTimeSource</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="n sig-param">timeSource</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">atRealTime</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">StopTimeSource</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="n sig-param">timeSource</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">atRealTime</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">immediate</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p><span class="hmethod">StartTimeSource()</span> sends the
+specified <span class="hparameter">timeSource</span> a request to start
+running at the real time specified by the <span class="hparameter">atRealTime</span> argument.
+<span class="hmethod">StopTimeSource()</span> sends node a request
+to stop the specified <span class="hparameter">timeSource</span> once the
+specified real time <span class="hparameter">atRealTime</span> is reached.
+Stopping a time source that’s already stopped has no effect. If
+<span class="hparameter">immediate</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the
+time source is instructed to stop immediately and the
+<span class="hparameter">atRealTime</span> argument is ignored; if
+<span class="hparameter">immediate</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, the
+time source is stopped at the specified real time.
+In either case, the requested change will occur at the time specified by
+<span class="hparameter">atRealTime</span>.
+The error returned by these functions only indicates whether or not the
+request was sent successfully; the node may later run into problems
+trying to start or stop and you won’t know it based on the result of
+these functions.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error sending the start or stop request.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>Are node specific.</p></td>
+</tr>
+</tbody>
+</table>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N12BMediaRoster14SeekTimeSourceERK10media_node9bigtime_t9bigtime_t" title="BMediaRoster::SeekTimeSource"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SeekTimeSource()</span></code></a></p>
+<section id="_CPPv4N12BMediaRoster13StartWatchingERK10BMessenger">
+</section>
+<section id="_CPPv4N12BMediaRoster12StopWatchingERK10BMessenger">
+</section>
+<h3>
+StartWatching(), StopWatching()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">StartWatching</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BMessenger</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">notifyHandler</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">StartWatching</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BMessenger</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">notifyHandler</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">notificationType</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">StartWatching</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BMessenger</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">notifyHandler</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">notificationType</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">StopWatching</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BMessenger</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">notifyHandler</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">StopWatching</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BMessenger</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">notifyHandler</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">notificationType</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">StopWatching</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BMessenger</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">notifyHandler</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">node</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">notificationType</span><span class="sig-paren">)</span></pre><p><span class="hmethod">StartWatching()</span> registers the specified
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code> or
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>
+as a recipient of notification messages from the Media Server.
+<span class="hmethod">StopWatching()</span>
+cancels this registration so that no further notifications will be sent.
+If you’re only interested in a particular notification type, you can
+specify that code in the <span class="hparameter">notificationType</span> argument. If you don’t specify
+a notification type, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_WILDCARD</span></code> is assumed; this matches all
+notification types. You can also specify that you want to watch a
+specific node; if you don’t specify a node, you’ll receive notifications
+for all nodes.
+Events are sent to registered
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code>s and
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>s
+when certain events
+happen, such as nodes being created or deleted, or connections being made
+or broken.
+See
+“<span class="xref std std-ref">Notification Messages</span>”
+for a list of the notifications you can
+receive, and the formats of the corresponding messages.
+Although the Media Server will automatically cancel notifications to
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code>s
+and <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>s
+that go away without explicitly calling
+<span class="hmethod">StopWatching()</span>, this detection is expensive and may briefly interrupt the
+media system, so you should always call <span class="hmethod">StopWatching()</span> before allowing a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code> or
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>
+to go away.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error cloning the node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_NOT_FOUND</span></code></p></td>
+<td><p>The requested node couldn’t be cloned.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BMediaRoster10SyncToNodeEK10media_node9bigtime_t9bigtime_t">
+</section>
+<h3>
+SyncToNode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaRoster</span><span class="p">::</span></span><span class="n">SyncToNode</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="n sig-param">node</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">atPerformanceTime</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">timeout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_INFINITE_TIMEOUT</span><span class="sig-paren">)</span></pre><p>If you want to detect the arrival of a specific performance time on
+a given node, you can do that by calling
+<span class="hmethod">SyncToNode()</span>. Specify the node you want to
+monitor in <span class="hparameter">node</span>, and the time you want to be
+notified of in <span class="hparameter">atPerformanceTime</span>. You can,
+optionally, specify a <span class="hparameter">timeout</span>; if the sync
+hasn’t occurred in <span class="hparameter">timeout</span> microseconds, the
+request will time out.
+This function doesn’t return until either the specified performance time
+arrives, or the sync operation times out.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>All’s well.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_NODE</span></code></p></td>
+<td><p>The specified node is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMED_OUT</span></code></p></td>
+<td><p>The request timed out.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Port errors.</p></td>
+<td><p>An error occurred communicating with the Media Server.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>Declared in: media/MediaRoster.h</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CONNECT_MUTED</span></code></p></td>
+<td><p>The connection should be muted on creation.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-node.html">BMediaNode</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-theme.html">BMediaTheme</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

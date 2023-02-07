@@ -1,0 +1,543 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BAppFileInfo &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BDirectory" href="directory.html" />
+    <link rel="prev" title="The Application Kit" href="../opengl/overview.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BAppFileInfo</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../opengl/overview.html">The Application Kit</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="directory.html">BDirectory</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BAppFileInfo</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N12BAppFileInfo12BAppFileInfoEv">BAppFileInfo</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BAppFileInfoD0Ev">~BAppFileInfo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4NK12BAppFileInfo11GetAppFlagsEP6uint32">GetAppFlags</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BAppFileInfo11SetAppFlagsE6uint32">SetAppFlags</a></li>
+<li><a class="reference internal" href="#_CPPv4NK12BAppFileInfo7GetIconEP7BBitmap9icon_size">GetIcon</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BAppFileInfo7SetIconEP7BBitmap9icon_size">SetIcon</a></li>
+<li><a class="reference internal" href="#_CPPv4NK12BAppFileInfo14GetIconForTypeEPKcP7BBitmap9icon_size">GetIconForType</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BAppFileInfo14SetIconForTypeEPKcP7BBitmap9icon_size">SetIconForType</a></li>
+<li><a class="reference internal" href="#_CPPv4NK12BAppFileInfo12GetSignatureEPc">GetSignature</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BAppFileInfo12SetSignatureEPKc">SetSignature</a></li>
+<li><a class="reference internal" href="#_CPPv4NK12BAppFileInfo17GetSupportedTypesEP8BMessage">GetSupportedTypes</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BAppFileInfo17SetSupportedTypesEPK8BMessage">SetSupportedTypes</a></li>
+<li><a class="reference internal" href="#_CPPv4NK12BAppFileInfo14GetVersionInfoEP12version_info12version_kind">GetVersionInfo</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BAppFileInfo14SetVersionInfoEPK12version_info12version_kind">SetVersionInfo</a></li>
+<li><a class="reference internal" href="#_CPPv4NK12BAppFileInfo9InitCheckEv">InitCheck</a></li>
+<li><a class="reference internal" href="#_CPPv4NK12BAppFileInfo15IsSupportedTypeEPKc">IsSupportedType</a></li>
+<li><a class="reference internal" href="#_CPPv4NK12BAppFileInfo8SupportsEP9BMimeType">Supports</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BAppFileInfo15SetInfoLocationE13info_location">SetInfoLocation</a></li>
+<li><a class="reference internal" href="#_CPPv4NK12BAppFileInfo17IsUsingAttributesEv">IsUsingAttributes</a></li>
+<li><a class="reference internal" href="#_CPPv4NK12BAppFileInfo16IsUsingResourcesEv">IsUsingResources</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BAppFileInfo5SetToEP5BFile">SetTo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#defined-types">Defined Types</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bappfileinfo">
+<h1>BAppFileInfo<a class="headerlink" href="#bappfileinfo" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N12BAppFileInfo12BAppFileInfoEv">
+</section>
+<h3>
+BAppFileInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BAppFileInfo12BAppFileInfoEv" title="BAppFileInfo::BAppFileInfo"><span class="n">BAppFileInfo</span></a><span class="p">::</span></span><span class="n">BAppFileInfo</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BAppFileInfo12BAppFileInfoEP5BFile" title="BAppFileInfo::BAppFileInfo"><span class="n">BAppFileInfo</span></a><span class="p">::</span></span><span class="n">BAppFileInfo</span><span class="sig-paren">(</span><span class="n">BFile</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file</span><span class="sig-paren">)</span></pre><p>The default constructor creates a new, uninitialized <span class="hclass">BAppFileInfo</span> object.
+To initialize you have to follow this construction with a call to
+<a class="reference internal" href="#_CPPv4N12BAppFileInfo5SetToEP5BFile" title="BAppFileInfo::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>.</p>
+<p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code>
+version intializes the <span class="hclass">BAppFileInfo</span> by passing the argument to
+<a class="reference internal" href="#_CPPv4N12BAppFileInfo5SetToEP5BFile" title="BAppFileInfo::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>.</p>
+<section id="_CPPv4N12BAppFileInfoD0Ev">
+</section>
+<h3>
+~BAppFileInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">~BAppFileInfo</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Destroys the object. The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code>
+that was used to initialize this object isn’t touched.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4NK12BAppFileInfo11GetAppFlagsEP6uint32">
+</section>
+<section id="_CPPv4N12BAppFileInfo11SetAppFlagsE6uint32">
+</section>
+<h3>
+GetAppFlags(), SetAppFlags()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">GetAppFlags</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">flags</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">SetAppFlags</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="sig-paren">)</span></pre><p>These functions get and set the executable’s “app flags.” These are the
+constants that determine whether an executable can only be launched once,
+whether it runs in the background, and so on. The app flag constants are
+defined in
+app/Roster.h;
+the flags must include one of the following…</p>
+<ul class="simple">
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SINGLE_LAUNCH</span></code></p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MULTIPLE_LAUNCH</span></code></p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_EXCLUSIVE_LAUNCH</span></code></p></li>
+</ul>
+<p>…plus either of these two:</p>
+<ul class="simple">
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BACKGROUND_APP</span></code></p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ARGV_ONLY</span></code></p></li>
+</ul>
+<p>See the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code>
+class for details on the meanings of these constants.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>Everything went fine.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code></p></td>
+<td><p>The object is not properly initialized.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
+<td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> flags.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_TYPE</span></code></p></td>
+<td><p>The attribute/resources the flags are stored in have the wrong type.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code></p></td>
+<td><p>No application flags are set on the file.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4NK12BAppFileInfo7GetIconEP7BBitmap9icon_size">
+</section>
+<section id="_CPPv4N12BAppFileInfo7SetIconEP7BBitmap9icon_size">
+</section>
+<section id="_CPPv4NK12BAppFileInfo14GetIconForTypeEPKcP7BBitmap9icon_size">
+</section>
+<section id="_CPPv4N12BAppFileInfo14SetIconForTypeEPKcP7BBitmap9icon_size">
+</section>
+<h3>
+GetIcon(), SetIcon(), GetIconForType(), SetIconForType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">GetIcon</span><span class="sig-paren">(</span><span class="n">BBitmap</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">icon</span>, <span class="n">icon_size</span><span class="w"> </span><span class="n sig-param">which</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">SetIcon</span><span class="sig-paren">(</span><span class="n">BBitmap</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">icon</span>, <span class="n">icon_size</span><span class="w"> </span><span class="n sig-param">which</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">GetIconForType</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file_type</span>, <span class="n">BBitmap</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">icon</span>, <span class="n">icon_size</span><span class="w"> </span><span class="n sig-param">which</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">SetIconForType</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file_type</span>, <span class="n">BBitmap</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">icon</span>, <span class="n">icon_size</span><span class="w"> </span><span class="n sig-param">which</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetIcon()</span> and <span class="hmethod">SetIcon()</span>
+get and set the icons that are represent the
+executable. <span class="hmethod">GetIconForType()</span> and <span class="hmethod">SetIconForType()</span> get and set the icons
+that the executable uses when it writes (or otherwise “takes possession
+of”) a file of the given type, identified by <span class="hparameter">file_type</span>. You specify which
+icon you want (large or small) by passing <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_LARGE_ICON</span></code> or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MINI_ICON</span></code> as
+the <span class="hparameter">which</span> argument.</p>
+<p>The icon is passed in or returned through the icon argument. The bitmap
+must be the proper size: 32x32 for the large icon, 16x16 for the small
+one. In <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code> lingo, that’s
+<code class="docutils literal notranslate"><span class="pre">BRect(0,</span> <span class="pre">0,</span> <span class="pre">31,</span> <span class="pre">31)</span></code> and
+<code class="docutils literal notranslate"><span class="pre">BRect(0,</span> <span class="pre">0,</span> <span class="pre">15,</span> <span class="pre">15)</span></code>.
+The bitmap’s color space must be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CMAP8</span></code>. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BBitmap</span><span class="o">*</span> <span class="n">bitmap</span> <span class="o">=</span> <span class="n">new</span> <span class="n">BBitmap</span><span class="p">(</span><span class="n">BRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span> <span class="n">B_CMAP8</span><span class="p">);</span>
+<span class="n">appFileInfo</span><span class="o">.</span><span class="n">GetIcon</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span> <span class="n">B_LARGE_ICON</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can remove an icon by passing <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> as the <span class="hparameter">icon</span>
+argument to <span class="hmethod">SetIcon()</span>.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>To create a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code>
+you must have a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">be()</span></code>
+object ; the object needn’t be running.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>Success</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>(<span class="hmethod">Get…()</span>) <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> <span class="hclass">BBitmap</span>, or invalid <span class="hparameter">file_type</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>(<span class="hmethod">Set…()</span>) The bitmap data isn’t the proper size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
+<td><p>The object is not properly initialized.</p></td>
+</tr>
+</tbody>
+</table>
+<h3>
+</h3><p>An application’s preferred app must be itself; an add-on is more flexible. For syntax, see
+<a class="reference internal" href="node-info.html#_CPPv4N9BNodeInfo15SetPreferredAppEPKc8app_verb" title="BNodeInfo::SetPreferredApp"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BNodeInfo::SetPreferredApp()</span></code></a>.</p>
+<section id="_CPPv4NK12BAppFileInfo12GetSignatureEPc">
+</section>
+<section id="_CPPv4N12BAppFileInfo12SetSignatureEPKc">
+</section>
+<h3>
+GetSignature(), SetSignature()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">GetSignature</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">SetSignature</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span><span class="sig-paren">)</span></pre><p>These functions get and set the executable’s MIME type signature. The
+<span class="hparameter">signature</span> buffer you pass to <span class="hmethod">GetSignature()</span> should be at least
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MIME_TYPE_LENGTH</span></code> characters long; the
+<span class="hmethod">SetSignature()</span> buffer must be no
+longer than that.</p>
+<p>When you set an executable’s signature, the signature is installed in the
+File Type database if it’s not there already. The old signature isn’t
+removed from the database.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>Success.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></td>
+<td><p>(<span class="hmethod">Get…()</span>) The executable doesn’t have a signature.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>(<span class="hmethod">Set…()</span>) <span class="hparameter">signature</span> is too long.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4NK12BAppFileInfo17GetSupportedTypesEP8BMessage">
+</section>
+<section id="_CPPv4N12BAppFileInfo17SetSupportedTypesEPK8BMessage">
+</section>
+<h3>
+GetSupportedTypes(), SetSupportedTypes()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">GetSupportedTypes</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">types</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">SetSupportedTypes</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">types</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">SetSupportedTypes</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">types</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">sync_all</span><span class="sig-paren">)</span></pre><p>These functions get and set the MIME file types that this executable can
+read and/or write. The <span class="hparameter">types</span>
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> that you pass in looks like this:</p>
+<p>FieldTypeDescriptiontypes (array)B_STRING_TYPEAn array of MIME strings.</p>
+<p><span class="hmethod">GetSupportedTypes()</span> copies the types
+into the types field;
+<span class="hmethod">SetSupportedTypes()</span> reads them from the field. The message’s command
+constants (its what value) is ignored.</p>
+<p>Here we print an executable’s supported types:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BMessage</span> <span class="n">msg</span><span class="p">;</span>
+<span class="n">uint32</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">char</span><span class="o">*</span> <span class="n">ptr</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">appFileInfo</span><span class="o">.</span><span class="n">GetSupportedTypes</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="o">!=</span> <span class="n">B_OK</span><span class="p">)</span>
+   <span class="o">/*</span> <span class="n">Handle</span> <span class="n">the</span> <span class="n">error</span><span class="o">.</span> <span class="o">*/</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">FindString</span><span class="p">(</span><span class="s2">&quot;types&quot;</span><span class="p">,</span> <span class="n">i</span><span class="o">++</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ptr</span><span class="p">)</span> <span class="o">==</span> <span class="n">B_OK</span><span class="p">)</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;&gt; Supported Type: </span><span class="si">%s</span><span class="s2">n&quot;</span><span class="p">,</span> <span class="n">ptr</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If <span class="hmethod">SetSupportedTypes()</span> names a type that doesn’t already appear in the
+File Type database, the new type is added to the database and its
+preferred handler is set to the executable that this <span class="hclass">BAppFileInfo</span> object
+represents.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p><span class="hmethod">SetSupportedTypes()</span> clobbers an executable’s existing set of supported
+types. If you want to augment an executable’s supported types, you should
+retrieve the existing set, add the new ones, and then call
+<span class="hmethod">SetSupportedTypes()</span>.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>Success.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<td><p>Insufficient memory to copy the types.</p></td>
+</tr>
+</tbody>
+</table>
+<p>See Also:
+<a class="reference internal" href="#_CPPv4NK12BAppFileInfo8SupportsEP9BMimeType" title="BAppFileInfo::Supports"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Supports()</span></code></a></p>
+<h3>
+</h3><p>Implementation detail; see “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Functions()</span></code>”. An
+executable’s default file type (for both applications and add-ons) is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_APP_MIME_TYPE</span></code>. This value mustn’t be changed. For syntax, see
+<a class="reference internal" href="node-info.html#_CPPv4N9BNodeInfo7SetTypeEPKc" title="BNodeInfo::SetType"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BNodeInfo::SetType()</span></code></a>.</p>
+<section id="_CPPv4NK12BAppFileInfo14GetVersionInfoEP12version_info12version_kind">
+</section>
+<section id="_CPPv4N12BAppFileInfo14SetVersionInfoEPK12version_info12version_kind">
+</section>
+<h3>
+GetVersionInfo(), SetVersionInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">GetVersionInfo</span><span class="sig-paren">(</span><span class="n">version_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span>, <span class="n">version_kind</span><span class="w"> </span><span class="n sig-param">kind</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">SetVersionInfo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">version_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span>, <span class="n">version_kind</span><span class="w"> </span><span class="n sig-param">kind</span><span class="sig-paren">)</span></pre><p>The functions get and set the application’s “version info.” The
+information is recorded in the version_info structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">version_info</span> <span class="p">{</span>
+   <span class="n">uint32</span> <span class="n">major</span><span class="p">;</span>
+   <span class="n">uint32</span> <span class="n">middle</span><span class="p">;</span>
+   <span class="n">uint32</span> <span class="n">minor</span><span class="p">;</span>
+   <span class="n">uint32</span> <span class="n">variety</span><span class="p">;</span>
+   <span class="n">uint32</span> <span class="n">internal</span><span class="p">;</span>
+   <span class="n">char</span> <span class="n">short_info</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+   <span class="n">char</span> <span class="n">long_info</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The field names (and types) provide suggestions for the type of info they
+want to store.</p>
+<p>There are two kinds of version info, as specified by the <span class="hparameter">kind</span> argument:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_APP_VERSION_KIND</span></code></p></td>
+<td><p>Provides information about this specific app.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SYSTEM_VERSION_KIND</span></code></p></td>
+<td><p>Provides information about the “suite,” or other grouping of apps, that this app belongs to.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Again, the uses of the two kinds is up to the app
+developer—currently, nothing in the BeOS depends on any information
+being stored in either version_info structure.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The version_info was found or set.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></td>
+<td><p>(<span class="hmethod">Get…()</span>) the app doesn’t have the requested version info.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4NK12BAppFileInfo9InitCheckEv">
+</section>
+<h3>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the status of the most recent initialization.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The object was successfully initialized.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>The object is uninitialized.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4NK12BAppFileInfo15IsSupportedTypeEPKc">
+</section>
+<section id="_CPPv4NK12BAppFileInfo8SupportsEP9BMimeType">
+</section>
+<h3>
+IsSupportedType(), Supports()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">IsSupportedType</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">type</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">Supports</span><span class="sig-paren">(</span><span class="n">BMimeType</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">type</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the app supports the given MIME type and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if it
+doesn’t. <span class="hmethod">IsSupportedType()</span> always returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the application
+supports “application/octet-stream”, while <span class="hmethod">Supports()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> only
+if <span class="hparameter">type</span> is explicitly supported.</p>
+<p>See Also:
+<a class="reference internal" href="#_CPPv4NK12BAppFileInfo17GetSupportedTypesEP8BMessage" title="BAppFileInfo::GetSupportedTypes"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetSupportedTypes()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N12BAppFileInfo17SetSupportedTypesEPK8BMessage" title="BAppFileInfo::SetSupportedTypes"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetSupportedTypes()</span></code></a></p>
+<section id="_CPPv4N12BAppFileInfo15SetInfoLocationE13info_location">
+</section>
+<section id="_CPPv4NK12BAppFileInfo17IsUsingAttributesEv">
+</section>
+<section id="_CPPv4NK12BAppFileInfo16IsUsingResourcesEv">
+</section>
+<h3>
+SetInfoLocation(), IsUsingAttributes(), IsUsingResources()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">SetInfoLocation</span><span class="sig-paren">(</span><span class="n">info_location</span><span class="w"> </span><span class="n sig-param">loc</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">IsUsingAttributes</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">IsUsingResources</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetInfoLocation()</span> sets the location where
+the <span class="hclass">BAppFileInfo</span> object stores
+its information. It can store them as either attributes, resources, or
+both. <span class="hparameter">loc</span> takes the following values:</p>
+<ul class="simple">
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_USE_ATTRIBUTES</span></code></p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_USE_RESOURCES</span></code></p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_USE_BOTH</span></code></p></li>
+</ul>
+<p><span class="hmethod">IsUsingAttributes()</span> and <span class="hmethod">IsUsingResources()</span>
+return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the
+<span class="hclass">BAppFileInfo</span> object is storing information in the designated location and
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
+<section id="_CPPv4N12BAppFileInfo5SetToEP5BFile">
+</section>
+<h3>
+SetTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAppFileInfo</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="n">BFile</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BAppFileInfo</span> object by pointing it
+to <span class="hparameter">file</span>, which must be a valid (initialized)
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code> object, and
+must not be locked. The <span class="hclass">BFile</span> is
+not copied, or re-opened by <span class="hclass">BAppFileInfo</span>. In particular, the <span class="hclass">BAppFileInfo</span>
+uses <span class="hparameter">file</span>’s file descriptor, and doesn’t destroy the <span class="hclass">BFile</span> object when it
+(the <span class="hclass">BAppFileInfo</span>) is destroyed or reinitialized.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>The <span class="hclass">BAppFileInfo</span> object doesn’t check to make sure that the file that
+you pass in really is an executable. Passing in a non-executable (a plain
+file, a directory, etc.) could corrupt the file.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The object was successfully initialized.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p><span class="hparameter">file</span> is invalid (uninitialized).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>Declared in: storage/AppFileInfo.h</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_APP_VERSION_KIND</span></code></p></td>
+<td><p>Records information about a specific application.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SYSTEM_VERSION_KIND</span></code></p></td>
+<td><p>Records information about a “suite,” or other grouping of applications, that the application belongs to.</p></td>
+</tr>
+</tbody>
+</table>
+<p>These constants are used when setting or retrieving the version
+information attached to an application. There are two version information
+records for each application, and these two constants select which one
+you wish to reference. Although there is no prescribed use for these
+structures or their constants, it is suggested that <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_APP_VERSION_KIND</span></code> be
+used for application-specific version information, and
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SYSTEM_VERSION_KIND</span></code> be used for information about the suite of
+applications to which the application belongs.</p>
+</section>
+<section id="defined-types">
+<h2>Defined Types<a class="headerlink" href="#defined-types" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>Declared in: storage/AppFileInfo.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">version_info</span> <span class="p">{</span>
+    <span class="n">uint32</span>    <span class="n">major</span><span class="p">;</span>
+    <span class="n">uint32</span>    <span class="n">middle</span><span class="p">;</span>
+    <span class="n">uint32</span>    <span class="n">minor</span><span class="p">;</span>
+    <span class="n">uint32</span>    <span class="n">variety</span><span class="p">;</span>
+    <span class="n">uint32</span>    <span class="n">internal</span><span class="p">;</span>
+    <span class="n">char</span>      <span class="n">short_info</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+    <span class="n">char</span>      <span class="n">long_info</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The version_info structure is used to contain version information about
+an application. Although none of these fields have prescribed uses, and
+you can use them for anything you want, their names do hint at their
+suggested uses.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../opengl/overview.html">The Application Kit</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="directory.html">BDirectory</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

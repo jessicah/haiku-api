@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BLocker &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMallocIO" href="malloc-io.html" />
+    <link rel="prev" title="BList" href="list.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BLocker</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="list.html">BList</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="malloc-io.html">BMallocIO</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BLocker</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N7BLocker7BLockerEv">BLocker</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BLockerD0Ev">~BLocker</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N7BLocker4LockEv">Lock</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BLocker15LockWithTimeoutE9bigtime_t">LockWithTimeout</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BLocker6UnlockEv">Unlock</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BLocker13LockingThreadEv">LockingThread</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BLocker8IsLockedEv">IsLocked</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BLocker10CountLocksEv">CountLocks</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BLocker17CountLockRequestsEv">CountLockRequests</a></li>
+<li><a class="reference internal" href="#_CPPv4NK7BLocker3SemEv">Sem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="blocker">
+<h1>BLocker<a class="headerlink" href="#blocker" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N7BLocker7BLockerEv">
+</section>
+<h3>
+BLocker()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BLocker7BLockerEv" title="BLocker::BLocker"><span class="n">BLocker</span></a><span class="p">::</span></span><span class="n">BLocker</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BLocker7BLockerEPKc" title="BLocker::BLocker"><span class="n">BLocker</span></a><span class="p">::</span></span><span class="n">BLocker</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BLocker7BLockerEb" title="BLocker::BLocker"><span class="n">BLocker</span></a><span class="p">::</span></span><span class="n">BLocker</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">benaphore_style</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BLocker7BLockerEPKcb" title="BLocker::BLocker"><span class="n">BLocker</span></a><span class="p">::</span></span><span class="n">BLocker</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">benaphore_style</span><span class="sig-paren">)</span></pre><p>Sets up the object, creating a semaphore to implement the locking mechanism. The optional <span class="hparameter">name</span> is for diagnostics and debugging.</p>
+<p>By default, a <span class="hclass">BLocker</span> is implemented as a benaphore—a hybrid integer mutex and semaphore. This allows for faster performance when there is little contention for the lock. If you’d rather use a pure semaphore for locking, then pass <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> as the <span class="hparameter">benaphore_style</span> argument.</p>
+<section id="_CPPv4N7BLockerD0Ev">
+</section>
+<h3>
+~BLocker()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BLocker</span><span class="p">::</span></span><span class="n">~BLocker</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Destroys the lock, deleting the controlling semaphore. If there are any threads blocked waiting to lock the object, they’re immediately unblocked.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N7BLocker4LockEv">
+</section>
+<section id="_CPPv4N7BLocker15LockWithTimeoutE9bigtime_t">
+</section>
+<section id="_CPPv4N7BLocker6UnlockEv">
+</section>
+<h3>
+Lock(), LockWithTimeout(), Unlock()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLocker</span><span class="p">::</span></span><span class="n">Lock</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLocker</span><span class="p">::</span></span><span class="n">LockWithTimeout</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">timeout</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLocker</span><span class="p">::</span></span><span class="n">Unlock</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Lock()</span> tries to lock the <span class="hclass">BLocker</span>. The function returns a) when the lock is acquired (return = <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>), or b) immediately if the <span class="hclass">BLocker</span>s semaphore is deleted, most commonly as a result of deleting the object (return = <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>). A thread can nest <span class="hmethod">Lock()</span> calls, but each call must be balanced by a concomitant <span class="hmethod">Unlock()</span>.</p>
+<p><span class="hmethod">LockWithTimeout()</span> lets you declare a time limit, specified in microseconds. If <span class="hmethod">LockWithTimeout()</span> can’t acquire the lock before the time limit expires, it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMED_OUT</span></code>. If the timeout is 0, this function immediately returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> (if it locked the <span class="hclass">BLocker</span>) or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code> (if it failed to obtain the lock). If the timeout is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INFINITE_TIMEOUT</span></code>, it blocks without limit, just as <span class="hmethod">Lock()</span> does. Note that if <span class="hmethod">Lock()</span> returns 0 (<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>), it has failed to lock the <span class="hclass">BLocker</span>, but if <span class="hmethod">LockWithTimeout()</span> returns 0 (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>), it has succeeded.</p>
+<p><span class="hmethod">Unlock()</span> releases one level of nested locks and returns immediately. If there are threads blocked waiting for the lock when the lock is released, the thread that’s been waiting the longest acquires the lock.</p>
+<p>Any thread can call <span class="hmethod">Unlock()</span> on any <span class="hclass">BLocker</span>—the thread needn’t be the lock’s current holder. Call <span class="hmethod">IsLocked()</span> before calling <span class="hmethod">Unlock()</span> if you want to make sure you own a lock before you unlock it.</p>
+<section id="_CPPv4NK7BLocker13LockingThreadEv">
+</section>
+<section id="_CPPv4NK7BLocker8IsLockedEv">
+</section>
+<section id="_CPPv4NK7BLocker10CountLocksEv">
+</section>
+<section id="_CPPv4NK7BLocker17CountLockRequestsEv">
+</section>
+<section id="_CPPv4NK7BLocker3SemEv">
+</section>
+<h3>
+LockingThread(), IsLocked(), CountLocks(), CountLockRequests(), Sem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">thread_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLocker</span><span class="p">::</span></span><span class="n">LockingThread</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLocker</span><span class="p">::</span></span><span class="n">IsLocked</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLocker</span><span class="p">::</span></span><span class="n">CountLocks</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLocker</span><span class="p">::</span></span><span class="n">CountLockRequests</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">sem_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLocker</span><span class="p">::</span></span><span class="n">Sem</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions provide information that may be useful for debugging purposes.</p>
+<p><span class="hmethod">LockingThread()</span> returns the thread that currently has the <span class="hclass">BLocker</span> locked, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code> if the <span class="hclass">BLocker</span> isn’t locked.</p>
+<p><span class="hmethod">IsLocked()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the calling thread currently has the <span class="hclass">BLocker</span> locked (if it’s the locking thread) and <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not (if some other thread is the locking thread of the <span class="hclass">BLocker</span> isn’t locked).</p>
+<p><span class="hmethod">CountLocks()</span> returns the number of times the locking thread has locked the <span class="hclass">BLocker</span>—the number of <span class="hmethod">Lock()</span> (or <span class="hmethod">LockWithTimeout()</span>) calls that have not yet been balanced by matching <span class="hmethod">Unlock()</span> calls.</p>
+<p><span class="hmethod">CountLockRequests()</span> returns the number of threads currently trying to lock the <span class="hclass">BLocker</span>. The count includes the thread that currently holds the lock plus all threads currently waiting to acquire it.</p>
+<p><span class="hmethod">Sem()</span> returns the sem_id for the semaphore that the <span class="hclass">BLocker</span> uses to implement the locking mechanism.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="list.html">BList</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="malloc-io.html">BMallocIO</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

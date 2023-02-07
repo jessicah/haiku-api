@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BSymLink &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BVolume" href="volume.html" />
+    <link rel="prev" title="BStatable" href="statable.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BSymLink</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="statable.html">BStatable</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="volume.html">BVolume</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BSymLink</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N8BSymLink8BSymLinkEv">BSymLink</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BSymLinkD0Ev">~BSymLink</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N8BSymLink10IsAbsoluteEv">IsAbsolute</a></li>
+<li><a class="reference internal" href="#_CPPv4NK8BSymLink14MakeLinkedPathEPK10BDirectoryP5BPath">MakeLinkedPath</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BSymLink8ReadLinkEPc6size_t">ReadLink</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bsymlink">
+<h1>BSymLink<a class="headerlink" href="#bsymlink" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N8BSymLink8BSymLinkEv">
+</section>
+<h3>
+BSymLink()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BSymLink8BSymLinkEv" title="BSymLink::BSymLink"><span class="n">BSymLink</span></a><span class="p">::</span></span><span class="n">BSymLink</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BSymLink8BSymLinkEPK9entry_ref" title="BSymLink::BSymLink"><span class="n">BSymLink</span></a><span class="p">::</span></span><span class="n">BSymLink</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BSymLink8BSymLinkEPK6BEntry" title="BSymLink::BSymLink"><span class="n">BSymLink</span></a><span class="p">::</span></span><span class="n">BSymLink</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BEntry</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">entry</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BSymLink8BSymLinkEPKc" title="BSymLink::BSymLink"><span class="n">BSymLink</span></a><span class="p">::</span></span><span class="n">BSymLink</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BSymLink8BSymLinkEPK10BDirectoryPKc" title="BSymLink::BSymLink"><span class="n">BSymLink</span></a><span class="p">::</span></span><span class="n">BSymLink</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BDirectory</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">dir</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BSymLink8BSymLinkERK8BSymLink" title="BSymLink::BSymLink"><span class="n">BSymLink</span></a><span class="p">::</span></span><span class="n">BSymLink</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8BSymLink8BSymLinkERK8BSymLink" title="BSymLink::BSymLink"><span class="n">BSymLink</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">link</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BSymLink</span> object, initializes it according to the arguments,
+and sets <a class="reference internal" href="node.html#_CPPv4NK5BNode9InitCheckEv" title="BNode::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>
+to return the status of the initialization.</p>
+<ul class="simple">
+<li><p>The default constructor does nothing and sets <a class="reference internal" href="node.html#_CPPv4NK5BNode9InitCheckEv" title="BNode::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>. To initialize the object, call <a class="reference internal" href="node.html#_CPPv4N5BNode5SetToEPK9entry_ref" title="BNode::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>.</p></li>
+<li><p>The copy constructor creates a new <span class="hclass">BSymLink</span> that’s open on the same node as that of the argument.</p></li>
+<li><p>For information on the other constructors, see the analogous <a class="reference internal" href="node.html#_CPPv4N5BNode5SetToEPK9entry_ref" title="BNode::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> functions in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code> class; <span class="hclass">BSymLink</span> inherits them without change.</p></li>
+</ul>
+<section id="_CPPv4N8BSymLinkD0Ev">
+</section>
+<h3>
+~BSymLink()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSymLink</span><span class="p">::</span></span><span class="n">~BSymLink</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Closes the object’s file descriptor and destroys the object.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N8BSymLink10IsAbsoluteEv">
+</section>
+<h3>
+IsAbsolute()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSymLink</span><span class="p">::</span></span><span class="n">IsAbsolute</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the symlink contains an absolute pathname.</p>
+<section id="_CPPv4NK8BSymLink14MakeLinkedPathEPK10BDirectoryP5BPath">
+</section>
+<h3>
+MakeLinkedPath()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSymLink</span><span class="p">::</span></span><span class="n">MakeLinkedPath</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BDirectory</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">dir</span>, <span class="n">BPath</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSymLink</span><span class="p">::</span></span><span class="n">MakeLinkedPath</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">dirPath</span>, <span class="n">BPath</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>This function creates an absolute pathname to the linked-to entry and
+returns it as a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPath</span></code> object. For this to work you have to tell the
+object which directory you want to reckon off of (in case the symlink
+specifies a relative path). This should be the directory in which the
+symlink itself lives.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>Remember—a <span class="hclass">BSymLink</span> is a node, and nodes don’t know what
+directory they live in. That’s why you have to tell it here.</p>
+</div>
+<p>If the symlink contains an absolute path, then the <span class="hparameter">dir</span> or <span class="hparameter">dirPath</span>
+arguments are ignored. Nonetheless, they must be supplied.</p>
+<p>The function returns the length of the pathname that’s set in
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPath</span></code> (or
+an error).</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FILE_ERROR</span></code>.</p></td>
+<td><p>The object is uninitialized.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>The object doesn’t refer to a symlink, or <span class="hparameter">dir</span>/<span class="hparameter">dirPath</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_TOO_LONG</span></code>.</p></td>
+<td><p>They concatenated pathname is too long.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N8BSymLink8ReadLinkEPc6size_t">
+</section>
+<h3>
+ReadLink()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSymLink</span><span class="p">::</span></span><span class="n">ReadLink</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buf</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">length</span><span class="sig-paren">)</span></pre><p>Copies the contents of the symlink into <span class="hparameter">buf</span>. <span class="hparameter">length</span> is the size of the
+buffer; to be perfectly safe, the buffer should be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PATH_NAME_LENGTH</span></code>
+characters long. The function returns the number of bytes that were
+copied (or it returns an error).</p>
+<p>The symlink’s contents is the pathname (relative or absolute) to the
+linked-to entry. Note that since the pathname might be relative,
+<span class="hmethod">ReadLink()</span> can’t give you a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPath</span></code> object. If you want a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPath</span></code> to the
+linked-to entry, see
+<a class="reference internal" href="#_CPPv4NK8BSymLink14MakeLinkedPathEPK10BDirectoryP5BPath" title="BSymLink::MakeLinkedPath"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeLinkedPath()</span></code></a>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FILE_ERROR</span></code>.</p></td>
+<td><p>The object is uninitialized.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>The object doesn’t refer to a symlink.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="statable.html">BStatable</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="volume.html">BVolume</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

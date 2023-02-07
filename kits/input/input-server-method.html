@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BInputServerMethod &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="The Input Server" href="introduction.html" />
+    <link rel="prev" title="BInputServerFilter" href="input-server-filter.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BInputServerMethod</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="input-server-filter.html">BInputServerFilter</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="introduction.html">The Input Server</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BInputServerMethod</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N18BInputServerMethod18BInputServerMethodEPKcPK5uchar">BInputServerMethod</a></li>
+<li><a class="reference internal" href="#_CPPv4N18BInputServerMethod18BInputServerMethodEv">BInputServerMethod</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hook-functions">Hook Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N18BInputServerMethod15MethodActivatedEb">MethodActivated</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N18BInputServerMethod14EnqueueMessageEP8BMessage">EnqueueMessage</a></li>
+<li><a class="reference internal" href="#_CPPv4N18BInputServerMethod7SetNameEPKc">SetName</a></li>
+<li><a class="reference internal" href="#_CPPv4N18BInputServerMethod7SetIconEPK5uchar">SetIcon</a></li>
+<li><a class="reference internal" href="#_CPPv4N18BInputServerMethod7SetMenuEPK5BMenuK10BMessenger">SetMenu</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="binputservermethod">
+<h1>BInputServerMethod<a class="headerlink" href="#binputservermethod" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N18BInputServerMethod18BInputServerMethodEPKcPK5uchar">
+</section>
+<h3>
+BInputServerMethod()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N18BInputServerMethod18BInputServerMethodEPKcPK5uchar" title="BInputServerMethod::BInputServerMethod"><span class="n">BInputServerMethod</span></a><span class="p">::</span></span><span class="n">BInputServerMethod</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="n">uchar</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">icon</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BInputServerMethod</span> object. You can initialize the
+object—set initial values, spawn threads, etc.—either here or
+in the inherited function
+<a class="reference internal" href="input-server-filter.html#_CPPv4N18BInputServerFilter9InitCheckEv" title="BInputServerFilter::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>
+function, which is called immediately after the constructor.
+<span class="hparameter">name</span> is a textual name describing the input
+method, and <span class="hparameter">icon</span> is the raw data for a 16x16 8-bit
+icon built from the standard BeOS palette. This name and icon will be
+displayed in the input method menu (the little keyboard icon in the
+Deskbar). When the user selects your input method from the menu, your
+<a class="reference internal" href="#_CPPv4N18BInputServerMethod15MethodActivatedEb" title="BInputServerMethod::MethodActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MethodActivated()</span></code></a>
+function is called.</p>
+<section id="_CPPv4N18BInputServerMethod18BInputServerMethodEv">
+</section>
+<h3>
+BInputServerMethod()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N18BInputServerMethod18BInputServerMethodEv" title="BInputServerMethod::BInputServerMethod"><span class="n">BInputServerMethod</span></a><span class="p">::</span></span><span class="n">BInputServerMethod</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Deletes the <span class="hclass">BInputServerMethod</span> object. The destructor is invoked by the
+Input Server only—you never delete a <span class="hclass">BInputServerMethod</span> object from
+your own code. If this object has spawned its own threads or allocated
+memory on the heap, it must clean up after itself here.</p>
+</section>
+<section id="hook-functions">
+<h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N18BInputServerMethod15MethodActivatedEb">
+</section>
+<h3>
+MethodActivated()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputServerMethod</span><span class="p">::</span></span><span class="n">MethodActivated</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">active</span><span class="sig-paren">)</span></pre><p>The <span class="hmethod">MethodActivated()</span> hook function is
+invoked by the Input Server when the user activates your input method
+(<span class="hparameter">active</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>) or deactivates
+it (<span class="hparameter">active</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>). This is
+your chance to activate any helper threads or loopers to the fact that
+you’ll be handling input events soon.
+Return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if that’s OK, or something else if it’s not. The default
+implementation returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N18BInputServerMethod14EnqueueMessageEP8BMessage">
+</section>
+<h3>
+EnqueueMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputServerMethod</span><span class="p">::</span></span><span class="n">EnqueueMessage</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Inserts the specified <span class="hparameter">message</span> into the Input Server’s event queue; the
+message continues down-stream from this point, passing through additional
+active input methods and input filters on its way to the App Server.</p>
+<section id="_CPPv4N18BInputServerMethod7SetNameEPKc">
+</section>
+<h3>
+SetName()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputServerMethod</span><span class="p">::</span></span><span class="n">SetName</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><p>Changes your input method’s name, as found in the input method menu of
+the Deskbar.
+The Input Server makes a copy of <span class="hparameter">name</span>.</p>
+<section id="_CPPv4N18BInputServerMethod7SetIconEPK5uchar">
+</section>
+<h3>
+SetIcon()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputServerMethod</span><span class="p">::</span></span><span class="n">SetIcon</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">uchar</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">icon</span><span class="sig-paren">)</span></pre><p>Changes your input method’s icon, as found in the input method menu of
+the Deskbar. <span class="hparameter">icon</span> should be raw data for a 16x16 8-bit icon built from
+the standard BeOS palette.
+The Input Server makes a copy of <span class="hparameter">icon</span>.</p>
+<section id="_CPPv4N18BInputServerMethod7SetMenuEPK5BMenuK10BMessenger">
+</section>
+<h3>
+SetMenu()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputServerMethod</span><span class="p">::</span></span><span class="n">SetMenu</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BMenu</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">menu</span>, <span class="k">const</span><span class="w"> </span><span class="n">BMessenger</span><span class="w"> </span><span class="n sig-param">target</span><span class="sig-paren">)</span></pre><p>Lets you assign a menu to your input method’s entry in the input method
+menu of the Deskbar. Messages generated by the menu are sent to target.
+Passing a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> <span class="hparameter">menu</span>
+disables your input method’s menu.
+You retain ownership of <span class="hparameter">menu</span>; be careful not
+to delete it while the Input Server is still using it.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="input-server-filter.html">BInputServerFilter</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="introduction.html">The Input Server</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

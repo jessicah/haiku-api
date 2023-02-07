@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BOutlineListView &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BPicture" href="picture.html" />
+    <link rel="prev" title="BMenuItem" href="menu-item.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BOutlineListView</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="menu-item.html">BMenuItem</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="picture.html">BPicture</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BOutlineListView</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView16BOutlineListViewE5BRectPKc14list_view_type6uint326uint32">BOutlineListView</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListViewD0Ev">~BOutlineListView</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hook-functions">Hook Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView7KeyDownEPKc5int32">KeyDown</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView9MouseDownE6BPoint">MouseDown</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView7AddItemEP9BListItem">AddItem</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView8AddUnderEP9BListItemP9BListItem">AddUnder</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView7AddListEP5BList">AddList</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BOutlineListView7ArchiveEP8BMessageb">Archive</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView8CollapseEP9BListItem">Collapse</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView6ExpandEP9BListItem">Expand</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BOutlineListView15CountItemsUnderEP9BListItemb">CountItemsUnder</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView13EachItemUnderEP9BListItembPFP9BListItemP9BListItemPvEPv">EachItemUnder</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BOutlineListView18FullListCountItemsEv">FullListCountItems</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BOutlineListView24FullListCurrentSelectionE5int32">FullListCurrentSelection</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BOutlineListView17FullListFirstItemEv">FullListFirstItem</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BOutlineListView16FullListLastItemEv">FullListLastItem</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BOutlineListView15FullListIndexOfE6BPoint">FullListIndexOf</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BOutlineListView14FullListItemAtE5int32">FullListItemAt</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BOutlineListView15FullListHasItemEP9BListItem">FullListHasItem</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BOutlineListView15FullListIsEmptyEv">FullListIsEmpty</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView17FullListDoForEachEPFbP9BListItemE">FullListDoForEach</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView17FullListSortItemsEPFiPK9BListItemPK9BListItemE">FullListSortItems</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView10IsExpandedE5int32">IsExpanded</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BOutlineListView11ItemUnderAtEP9BListItemb5int32">ItemUnderAt</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView9MakeEmptyEv">MakeEmpty</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView10RemoveItemEP9BListItem">RemoveItem</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView11RemoveItemsE5int325int32">RemoveItems</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView14SortItemsUnderEP9BListItembPFiPK9BListItemPK9BListItemE">SortItemsUnder</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView9SuperitemEPK9BListItem">Superitem</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#static-functions">Static Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N16BOutlineListView11InstantiateEP8BMessage">Instantiate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="boutlinelistview">
+<h1>BOutlineListView<a class="headerlink" href="#boutlinelistview" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N16BOutlineListView16BOutlineListViewE5BRectPKc14list_view_type6uint326uint32">
+</section>
+<h3>
+BOutlineListView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N16BOutlineListView16BOutlineListViewE5BRectPKc14list_view_type6uint326uint32" title="BOutlineListView::BOutlineListView"><span class="n">BOutlineListView</span></a><span class="p">::</span></span><span class="n">BOutlineListView</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="n">list_view_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_SINGLE_SELECTION_LIST</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_LEFT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FOLLOW_TOP</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FRAME_EVENTS</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_NAVIGABLE</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N16BOutlineListView16BOutlineListViewEP8BMessage" title="BOutlineListView::BOutlineListView"><span class="n">BOutlineListView</span></a><span class="p">::</span></span><span class="n">BOutlineListView</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BOutlineListView</span>. This constructor matches the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code>
+constructor in every detail, including default arguments. All argument
+values are passed to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code>
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code> without change. The
+<span class="hclass">BOutlineListView</span> class doesn’t do any initialization of its own.</p>
+<section id="_CPPv4N16BOutlineListViewD0Ev">
+</section>
+<h3>
+~BOutlineListView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">~BOutlineListView</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Does nothing; this class relies on the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code>
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code> destructor.</p>
+</section>
+<section id="hook-functions">
+<h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N16BOutlineListView7KeyDownEPKc5int32">
+</section>
+<h3>
+KeyDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">KeyDown</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bytes</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numBytes</span><span class="sig-paren">)</span></pre><p>Augments the inherited version of
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">KeyDown()</span></code> to allow users to navigate
+the outline hierarchy using the arrow keys and to expand or collapse
+sections of the outline using Control—arrow key combinations.</p>
+<section id="_CPPv4N16BOutlineListView9MouseDownE6BPoint">
+</section>
+<h3>
+MouseDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">MouseDown</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><p>Augments the inherited version of
+<a class="reference internal" href="view.html#_CPPv4N5BView9MouseDownE6BPoint" title="BView::MouseDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MouseDown()</span></code></a>
+to permit users to expand
+and collapse sections of the outline by clicking on an item’s latch.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N16BOutlineListView7AddItemEP9BListItem">
+</section>
+<section id="_CPPv4N16BOutlineListView8AddUnderEP9BListItemP9BListItem">
+</section>
+<h3>
+AddItem(), AddUnder()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">AddItem</span><span class="sig-paren">(</span><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span><span class="sig-paren">)</span><br /><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">AddItem</span><span class="sig-paren">(</span><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">AddUnder</span><span class="sig-paren">(</span><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span>, <span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">superitem</span><span class="sig-paren">)</span></pre><p>These functions add an <span class="hparameter">item</span> to the list.
+<span class="hmethod">AddItem()</span> adds the item at
+<span class="hparameter">index</span>—where the index counts all items assigned to the
+<span class="hclass">BOutlineListView</span>—or, if an <span class="hparameter">index</span>
+isn’t specified, at the end of the
+list. The two versions of this function override their
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code>
+counterparts to ensure that the item is correctly entered into the
+outline. If the item is added to a portion of the list that is collapsed,
+it won’t be visible.</p>
+<p><span class="hmethod">AddUnder()</span> adds an <span class="hparameter">item</span>
+immediately after another item in the list and at
+one outline level deeper. The level of the <span class="hparameter">item</span> is modified accordingly.
+Thus, the item already in the list becomes the superitem for the newly
+added <span class="hparameter">item</span>. If its new superitem is collapsed or is in a collapsed part
+of the list, the item will not be visible.</p>
+<p>Unlike <span class="hmethod">AddUnder()</span>, <span class="hmethod">AddItem()</span>
+respects the outline level of the item. By
+setting the item’s level before calling <span class="hmethod">AddItem()</span>, you can add it as a
+subitem to an item at a higher outline level or insert it as a superitem
+to items at a lower level.</p>
+<p>See also:
+the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListItem</span></code> class</p>
+<section id="_CPPv4N16BOutlineListView7AddListEP5BList">
+</section>
+<h3>
+AddList()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">AddList</span><span class="sig-paren">(</span><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">newItems</span><span class="sig-paren">)</span><br /><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">AddList</span><span class="sig-paren">(</span><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">newItems</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Adds a group of items to the list just as
+<a class="reference internal" href="#_CPPv4N16BOutlineListView7AddItemEP9BListItem" title="BOutlineListView::AddItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddItem()</span></code></a> adds a single item.
+The <span class="hparameter">index</span> counts all items assigned to the <span class="hclass">BOutlineListView</span>.
+The <span class="hparameter">newItems</span>
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BList</span></code> must contain pointers to
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListItem</span></code> objects.</p>
+<p>See also:
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListView::AddList()</span></code></p>
+<section id="_CPPv4NK16BOutlineListView7ArchiveEP8BMessageb">
+</section>
+<h3>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Archives the <span class="hclass">BOutlineListView</span> object much as the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code> function in
+the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code> class
+does, but makes sure that all items are archived,
+including items in collapsed sections of the list, when the <span class="hparameter">deep</span> flag is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>See also:
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListView::Archive()</span></code>,
+<a class="reference internal" href="#_CPPv4N16BOutlineListView11InstantiateEP8BMessage" title="BOutlineListView::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
+<section id="_CPPv4N16BOutlineListView8CollapseEP9BListItem">
+</section>
+<section id="_CPPv4N16BOutlineListView6ExpandEP9BListItem">
+</section>
+<h3>
+Collapse(), Expand()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">Collapse</span><span class="sig-paren">(</span><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">Expand</span><span class="sig-paren">(</span><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span><span class="sig-paren">)</span></pre><p>These functions collapse and expand the section of the list controlled by
+the <span class="hparameter">item</span> superitem. If <span class="hparameter">item</span>
+isn’t a superitem, it is nevertheless flagged
+as expanded or collapsed so that it will behave appropriately in case it
+does become a superitem.</p>
+<p>See also:
+<a class="reference internal" href="list-item.html#_CPPv4N9BListItem11SetExpandedEb" title="BListItem::SetExpanded"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListItem::SetExpanded()</span></code></a></p>
+<section id="_CPPv4NK16BOutlineListView15CountItemsUnderEP9BListItemb">
+</section>
+<h3>
+CountItemsUnder()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">CountItemsUnder</span><span class="sig-paren">(</span><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">underItem</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">oneLevelOnly</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Counts the items located under the <span class="hparameter">underItem</span> superitem and returns that
+value. If the <span class="hparameter">oneLevelOnly</span> argument is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, only items directly
+contained within the specified superitem are considered. If <span class="hparameter">oneLevelOnly</span>
+is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, all subitems of the specified item are considered, as are all
+subitems of those subitems and so forth.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>When <span class="hparameter">oneLevelOnly</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>,
+<span class="hmethod">CountItemsUnder()</span> acts just like
+<a class="reference internal" href="#_CPPv4NK16BOutlineListView18FullListCountItemsEv" title="BOutlineListView::FullListCountItems"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FullListCountItems()</span></code></a>,
+except the first item in the list that’s considered
+is <span class="hparameter">underItem</span> instead of the first item in the full list.</p>
+</div>
+<p>See also:
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListView::CountItems()</span></code></p>
+<section id="_CPPv4N16BOutlineListView13EachItemUnderEP9BListItembPFP9BListItemP9BListItemPvEPv">
+</section>
+<h3>
+EachItemUnder()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">EachItemUnder</span><span class="sig-paren">(</span><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">underItem</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">oneLevelOnly</span>, <span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="p">(</span><span class="p">*</span><span class="n sig-param">eachFunc</span><span class="p">)</span><span class="p">(</span><span class="n">BListItem</span><span class="p">*</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="p">*</span><span class="p">)</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span><span class="sig-paren">)</span></pre><p>Calls the function <span class="hparameter">eachFunc</span> for every item
+located under the <span class="hparameter">underItem</span>
+superitem. If <span class="hparameter">oneLevelOnly</span> is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, <span class="hparameter">eachFunc</span> is only called for items
+located directly under the <span class="hparameter">underItem</span>; if
+<span class="hparameter">oneLevelOnly</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, the
+<span class="hparameter">eachFunc</span> is called once for every subitem of
+<span class="hparameter">underItem</span>, including
+subitems of subitems, recursively.</p>
+<p>The <span class="hparameter">data</span> argument is passed through to each call
+to the <span class="hparameter">eachFunc</span> function
+as the second argument to that function, and may be used for whatever
+purpose your <span class="hparameter">eachFunc</span> requires.</p>
+<p>If the <span class="hparameter">eachFunc</span> function returns a pointer to a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListItem</span></code> (rather than
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>), processing is stopped immediately, even if there are items still
+unvisited. The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListItem</span></code>
+pointer returned by the <span class="hparameter">eachFunc</span> function is
+returned by <span class="hmethod">EachItemUnder()</span>.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>When <span class="hparameter">oneLevelOnly</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>,
+<span class="hmethod">EachItemUnder()</span> acts just like
+<a class="reference internal" href="#_CPPv4N16BOutlineListView17FullListDoForEachEPFbP9BListItemE" title="BOutlineListView::FullListDoForEach"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FullListDoForEach()</span></code></a>,
+except the first item in the list that’s considered
+is <span class="hparameter">underItem</span> instead of the first item in the full list.</p>
+</div>
+<p>See also:
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListView::DoForEach()</span></code></p>
+<section id="_CPPv4NK16BOutlineListView18FullListCountItemsEv">
+</section>
+<section id="_CPPv4NK16BOutlineListView24FullListCurrentSelectionE5int32">
+</section>
+<section id="_CPPv4NK16BOutlineListView17FullListFirstItemEv">
+</section>
+<section id="_CPPv4NK16BOutlineListView16FullListLastItemEv">
+</section>
+<section id="_CPPv4NK16BOutlineListView15FullListIndexOfE6BPoint">
+</section>
+<section id="_CPPv4NK16BOutlineListView14FullListItemAtE5int32">
+</section>
+<section id="_CPPv4NK16BOutlineListView15FullListHasItemEP9BListItem">
+</section>
+<section id="_CPPv4NK16BOutlineListView15FullListIsEmptyEv">
+</section>
+<section id="_CPPv4N16BOutlineListView17FullListDoForEachEPFbP9BListItemE">
+</section>
+<section id="_CPPv4N16BOutlineListView17FullListSortItemsEPFiPK9BListItemPK9BListItemE">
+</section>
+<h3>
+FullListCountItems(), FullListCurrentSelection(), FullListFirstItem(), FullListLastItem(), FullListIndexOf(), FullListItemAt(), FullListHasItem(), FullListIsEmpty(), FullListDoForEach(), FullListSortItems()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">FullListCountItems</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">FullListCurrentSelection</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">FullListFirstItem</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">FullListLastItem</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">FullListIndexOf</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">FullListIndexOf</span><span class="sig-paren">(</span><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">FullListItemAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">FullListHasItem</span><span class="sig-paren">(</span><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">FullListIsEmpty</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">FullListDoForEach</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">func</span><span class="p">)</span><span class="p">(</span><span class="n">BListItem</span><span class="p">*</span><span class="p">)</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em">void BOutlineListView::FullListDoForEach(bool (*func)(BListItem*), void* ))</pre><pre style="background: #f3f3f3; line-height: 2em">void BOutlineListView::FullListDoForEach(bool (*func)(BListItem*), void* ), void* )</pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">FullListSortItems</span><span class="sig-paren">(</span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">compareFunc</span><span class="p">)</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">BListItem</span><span class="p">*</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BListItem</span><span class="p">*</span><span class="p">)</span><span class="sig-paren">)</span></pre><p>These functions parallel a similar set of functions defined in the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code> class.
+The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code>
+functions have identical names, but
+without the <span class="hmethod">FullList…()</span> prefix. When applied to a
+<span class="hclass">BOutlineListView</span>
+object, the inherited functions consider only items in sections of the
+outline that can be displayed on-screen—that is, they skip over
+items in collapsed portions of the list.</p>
+<p>These <span class="hclass">BOutlineListView</span> functions, on the other hand, consider all items
+in the list. For example,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">IndexOf()</span></code> and
+<span class="hmethod">FullListIndexOf()</span>
+both return an index to a given item. However, for
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">IndexOf()</span></code> the index is to the
+position of the item in the list that can be currently displayed, but for
+<span class="hmethod">FullListIndexOf()</span>
+it’s to the item’s position in the full list, including collapsed sections.</p>
+<section id="_CPPv4N16BOutlineListView10IsExpandedE5int32">
+</section>
+<h3>
+IsExpanded()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">IsExpanded</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the item at <span class="hparameter">index</span>
+is marked as controlling an expanded section of the list, and
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if it’s marked as controlling a collapsed
+section or if there’s no item at that index. If a superitem is expanded,
+the <span class="hclass">BOutlineListView</span> can display its subitems; if not, the subitems are
+hidden.</p>
+<p>The <span class="hparameter">index</span> passed to this function is to the full list of items assigned
+to the <span class="hclass">BOutlineListView</span>.</p>
+<p>See also:
+<a class="reference internal" href="list-item.html#_CPPv4NK9BListItem10IsExpandedEv" title="BListItem::IsExpanded"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListItem::IsExpanded()</span></code></a></p>
+<section id="_CPPv4NK16BOutlineListView11ItemUnderAtEP9BListItemb5int32">
+</section>
+<h3>
+ItemUnderAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">ItemUnderAt</span><span class="sig-paren">(</span><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">underItem</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">oneLevelOnly</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a pointer to the <span class="hparameter">index</span>th item under
+the specified <span class="hparameter">underItem</span>. If
+<span class="hparameter">oneLevelOnly</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>,
+only items located directly under the <span class="hparameter">underItem</span> are
+considered. If <span class="hparameter">oneLevelOnly</span> is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, subitems are scanned recursively to
+locate the appropriate index.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>When <span class="hparameter">oneLevelOnly</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>,
+<span class="hmethod">ItemUnderAt()</span> acts just like
+<a class="reference internal" href="#_CPPv4NK16BOutlineListView14FullListItemAtE5int32" title="BOutlineListView::FullListItemAt"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FullListItemAt()</span></code></a>,
+except the first item in the list that’s considered is
+<span class="hparameter">underItem</span> instead of the first item in the full list.</p>
+</div>
+<section id="_CPPv4N16BOutlineListView9MakeEmptyEv">
+</section>
+<h3>
+MakeEmpty()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">MakeEmpty</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Overrides the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code>
+version of <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeEmpty()</span></code>
+to remove all items from the list. The
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code>
+version of this function won’t work as advertised
+on a <span class="hclass">BOutlineListView</span>.</p>
+<section id="_CPPv4N16BOutlineListView10RemoveItemEP9BListItem">
+</section>
+<section id="_CPPv4N16BOutlineListView11RemoveItemsE5int325int32">
+</section>
+<h3>
+RemoveItem(), RemoveItems()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">RemoveItem</span><span class="sig-paren">(</span><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span><span class="sig-paren">)</span><br /><span class="k">virtual</span><span class="w"> </span><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">RemoveItem</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">RemoveItems</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">count</span><span class="sig-paren">)</span></pre><p>These functions work like their
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code>
+counterparts, except that:</p>
+<ul class="simple">
+<li><p>They can remove items from any part of the list, including collapsed sections. The index counts all items assigned to the <span class="hclass">BOutlineListView</span>; the specified item can be hidden.</p></li>
+<li><p>If the item being removed is a superitem, they also remove all of its subitems.</p></li>
+</ul>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code>
+versions of these functions will not produce reliable
+results when applied to a <span class="hclass">BOutlineListView</span>, even if the item being
+removed is in an expanded section of the list and is not a superitem.</p>
+</div>
+<p>See also:
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListView::RemoveItem()</span></code></p>
+<section id="_CPPv4N16BOutlineListView14SortItemsUnderEP9BListItembPFiPK9BListItemPK9BListItemE">
+</section>
+<h3>
+SortItemsUnder()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">SortItemsUnder</span><span class="sig-paren">(</span><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">underItem</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">oneLevelOnly</span>, <span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">compareFunc</span><span class="p">)</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">BListItem</span><span class="p">*</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BListItem</span><span class="p">*</span><span class="p">)</span><span class="sig-paren">)</span></pre><p>Sorts the items located under the specified <span class="hparameter">underItem</span>. If <span class="hparameter">oneLevelOnly</span> is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, only items located directly under the <span class="hparameter">underItem</span> are considered. If
+<span class="hparameter">oneLevelOnly</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, subitems are scanned recursively and sorted.</p>
+<p>The hierarchy of the list is ignored when sorting with <span class="hparameter">oneLevelOnly</span> set
+to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>; items can (and will) be moved from one level to another. If you
+want to sort without moving items from one level to another, you should
+call <span class="hmethod">SortItemsUnder()</span> once for each superitem with <span class="hparameter">oneLevelOnly</span> set to
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>When <span class="hparameter">oneLevelOnly</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>,
+<span class="hmethod">SortItemsUnder()</span> acts just like
+<a class="reference internal" href="#_CPPv4N16BOutlineListView17FullListSortItemsEPFiPK9BListItemPK9BListItemE" title="BOutlineListView::FullListSortItems"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FullListSortItems()</span></code></a>,
+except the first item in the list that’s considered
+is <span class="hparameter">underItem</span> instead of the first item in the full list.</p>
+</div>
+<section id="_CPPv4N16BOutlineListView9SuperitemEPK9BListItem">
+</section>
+<h3>
+Superitem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">Superitem</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BListItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span><span class="sig-paren">)</span></pre><p>Returns the superitem for the <span class="hparameter">item</span> passed as an argument—that is,
+the item under which the argument <span class="hparameter">item</span> is grouped—or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the
+<span class="hparameter">item</span> is at the outermost level of the outline (level 0) or isn’t in the
+list.</p>
+</section>
+<section id="static-functions">
+<h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N16BOutlineListView11InstantiateEP8BMessage">
+</section>
+<h3>
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BOutlineListView</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BOutlineListView</span> object, allocated by new and created with
+the version of the constructor that takes a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive. However,
+this function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the specified
+<span class="hparameter">archive</span> doesn’t contain data
+for a <span class="hclass">BOutlineListView</span> object.</p>
+<p>See also:
+<a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">object()</span></code>,
+<a class="reference internal" href="#_CPPv4NK16BOutlineListView7ArchiveEP8BMessageb" title="BOutlineListView::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="menu-item.html">BMenuItem</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="picture.html">BPicture</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,495 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMediaAddOn &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMediaBufferDecoder" href="media-buffer-decoder.html" />
+    <link rel="prev" title="BFileInterface" href="file-interface.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMediaAddOn</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="file-interface.html">BFileInterface</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-buffer-decoder.html">BMediaBufferDecoder</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BMediaAddOn</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N11BMediaAddOn11BMediaAddOnE8image_id">BMediaAddOn</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N11BMediaAddOn9AutoStartE5int32PP10BMediaNodeP5int32Pb">AutoStart</a></li>
+<li><a class="reference internal" href="#_CPPv4N11BMediaAddOn12CountFlavorsEv">CountFlavors</a></li>
+<li><a class="reference internal" href="#_CPPv4N11BMediaAddOn19GetConfigurationForEP10BMediaNodeP8BMessage">GetConfigurationFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N11BMediaAddOn17GetFileFormatListE5int32P17media_file_format5int32P5int32P17media_file_format5int32P5int32Pv">GetFileFormatList</a></li>
+<li><a class="reference internal" href="#_CPPv4N11BMediaAddOn17GetFileFormatListE5int32PPK11flavor_info">GetFileFormatList</a></li>
+<li><a class="reference internal" href="#_CPPv4N11BMediaAddOn7ImageIDEv">ImageID</a></li>
+<li><a class="reference internal" href="#_CPPv4N11BMediaAddOn9InitCheckEPPKc">InitCheck</a></li>
+<li><a class="reference internal" href="#_CPPv4N11BMediaAddOn18InstantiateNodeForEPK11flavor_infoP8BMessageP8status_t">InstantiateNodeFor</a></li>
+<li><a class="reference internal" href="#_CPPv4N11BMediaAddOn8SniffRefERK9entry_refP9BMimeTypePfP5int32">SniffRef</a></li>
+<li><a class="reference internal" href="#_CPPv4N11BMediaAddOn9SniffTypeER9BMimeTypePfP5int32">SniffType</a></li>
+<li><a class="reference internal" href="#_CPPv4N11BMediaAddOn13SniffTypeKindER9BMimeType6uint64PfP5int32Pv">SniffTypeKind</a></li>
+<li><a class="reference internal" href="#_CPPv4N11BMediaAddOn14WantsAutoStartEv">WantsAutoStart</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#global-c-functions">Global C Functions</a></li>
+<li><a class="reference internal" href="#defined-types">Defined Types</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmediaaddon">
+<h1>BMediaAddOn<a class="headerlink" href="#bmediaaddon" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N11BMediaAddOn11BMediaAddOnE8image_id">
+</section>
+<h3>
+BMediaAddOn()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BMediaAddOn11BMediaAddOnE8image_id" title="BMediaAddOn::BMediaAddOn"><span class="n">BMediaAddOn</span></a><span class="p">::</span></span><span class="n">BMediaAddOn</span><span class="sig-paren">(</span><span class="n">image_id</span><span class="w"> </span><span class="n sig-param">image</span><span class="sig-paren">)</span></pre><p>This is the <span class="hclass">BMediaAddOn</span> constructor; your derived class should perform
+whatever initialization is necessary in the constructor, and handle any
+activities necessary in order to properly comply with the media add-on
+protocol.
+The image_id identifies the add-on image from which the add-on was
+loaded. Your make_media_addon() function should be sure to save the image
+ID passed to it and pass that value through to the <span class="hclass">BMediaAddOn</span>
+constructor, or the Media Kit will be unhappy with you.</p>
+<h3>
+</h3><pre style="background: #f3f3f3; line-height: 2em">BMediaAddOn::~BMediaAddOn()()</pre><p>You should never delete a <span class="hclass">BMediaAddOn</span> yourself; the Media Server will do
+this when the add-on is no longer needed. However, if you’re implementing
+a media add-on, this is a good place to handle disposing of memory you’ve
+allocated.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N11BMediaAddOn9AutoStartE5int32PP10BMediaNodeP5int32Pb">
+</section>
+<h3>
+AutoStart()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaAddOn</span><span class="p">::</span></span><span class="n">AutoStart</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span>, <span class="n">BMediaNode</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">outNode</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outInternalID</span>, <span class="kt">bool</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outHasMore</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>If
+<a class="reference internal" href="#_CPPv4N11BMediaAddOn14WantsAutoStartEv" title="BMediaAddOn::WantsAutoStart"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">WantsAutoStart()</span></code></a>
+returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, you’ll get repeated calls to
+<span class="hmethod">AutoStart()</span> when your add-on is loaded.
+Your <span class="hmethod">AutoStart()</span> function should be implemented to instantiate nodes to
+your liking, one for each call to <span class="hmethod">AutoStart()</span>.
+Each time <span class="hmethod">AutoStart()</span> is
+called, <span class="hparameter">index</span> will be one higher than the previous pass. After creating
+the new node, store a pointer to it in <span class="hparameter">outNode</span>,
+and set <span class="hparameter">outInternalID</span> to
+the internal ID of the flavor represented by that node.
+Before returning, set <span class="hparameter">outHasMore</span> to
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if there are more nodes to
+start, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if there aren’t.
+Return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if you return a valid node. If there aren’t any more nodes to
+be started, return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_INDEX</span></code>. If the specified index fails, but there
+may be other nodes to start, return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ADDON_FAILED</span></code>.</p>
+<section id="_CPPv4N11BMediaAddOn12CountFlavorsEv">
+</section>
+<h3>
+CountFlavors()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaAddOn</span><span class="p">::</span></span><span class="n">CountFlavors</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Implement this hook function to return the number of flavors your add-on
+can deal with.</p>
+<section id="_CPPv4N11BMediaAddOn19GetConfigurationForEP10BMediaNodeP8BMessage">
+</section>
+<h3>
+GetConfigurationFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaAddOn</span><span class="p">::</span></span><span class="n">GetConfigurationFor</span><span class="sig-paren">(</span><span class="n">BMediaNode</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">node</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">config</span><span class="sig-paren">)</span></pre><p>Implement this function to save information about how the given <span class="hparameter">node</span> is
+configured into the specified message. This lets the node’s configuration
+be saved to disk for future rehydration using
+<a class="reference internal" href="#_CPPv4N11BMediaAddOn18InstantiateNodeForEPK11flavor_infoP8BMessageP8status_t" title="BMediaAddOn::InstantiateNodeFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InstantiateNodeFor()</span></code></a>.
+Note that it’s not reasonable to save information about what connections
+are routed through the node, since the other nodes probably won’t exist
+when the node is rehydrated. It’s up to the application to reconstruct
+the connections itself, as it wishes.
+If the configuration information is stashed into <span class="hparameter">config</span> without errors,
+return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>; otherwise, return an appropriate error code.</p>
+<section id="_CPPv4N11BMediaAddOn17GetFileFormatListE5int32P17media_file_format5int32P5int32P17media_file_format5int32P5int32Pv">
+</section>
+<h3>
+GetFileFormatList()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaAddOn</span><span class="p">::</span></span><span class="n">GetFileFormatList</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">flavorID</span>, <span class="n">media_file_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outWritableFormats</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">inWriteItems</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outWriteItems</span>, <span class="n">media_file_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outReadableFormats</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">inReadItems</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outReadItems</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">reserved</span><span class="sig-paren">)</span></pre><p>If your add-on provides nodes that can either read or write media data
+from files, you should implement this function to describe the
+media_file_formats you can read and write.
+On input, the <span class="hparameter">flavorID</span> argument
+indicates which flavor you should return information about. You should fill
+the array <span class="hparameter">outWritableFormats</span> with a list of the
+file formats the corresponding flavor can write, and the
+<span class="hparameter">outReadableFormats</span> array with a list of the file
+formats the flavor can read. The <span class="hparameter">inWriteItems</span>
+and <span class="hparameter">inReadItems</span> arguments indicate how many
+items can be stored in each array.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>Both <span class="hparameter">outWritableFormats</span> and
+<span class="hparameter">outReadableFormats</span> can be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. Don’t write
+into these arrays if the corresponding pointer is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</div>
+<p>On output, you should set <span class="hparameter">outWriteItems</span> to be the number of file formats
+you can write—even if it’s larger than <span class="hparameter">inWriteItems</span>. This lets the
+caller resize the array and call you back to get the complete list.
+Likewise, <span class="hparameter">outReadItems</span> should be set to the number of file formats you
+can read.
+The <span class="hparameter">reserved</span> argument isn’t currently used, and should always be
+specified as <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>Only implement this function if your node derives from
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFileInterface</span></code>.</p>
+</div>
+<p>If an error occurs, return an appropriate error code; otherwise, return
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+<section id="_CPPv4N11BMediaAddOn17GetFileFormatListE5int32PPK11flavor_info">
+</section>
+<h3>
+GetFileFormatList()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaAddOn</span><span class="p">::</span></span><span class="n">GetFileFormatList</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">flavorNum</span>, <span class="k">const</span><span class="w"> </span><span class="n">flavor_info</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">outInfo</span><span class="sig-paren">)</span></pre><p>Implement <span class="hmethod">GetFlavorAt()</span> to
+store in <span class="hparameter">outInfo</span> a pointer to a static
+flavor_info
+structure describing one flavor supported by your add-on. The
+data pointed to by <span class="hparameter">outInfo</span> will be copied by the Media Kit after
+<span class="hmethod">GetFlavorAt()</span> returns. For example, if your add-on only supports one
+flavor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flavor_info</span> <span class="n">flavorInfo</span><span class="p">;</span>
+<span class="n">status_t</span> <span class="n">MyMediaAddOn</span><span class="p">::</span><span class="n">GetFlavorAt</span><span class="p">(</span><span class="n">int32</span> <span class="n">n</span><span class="p">,</span> <span class="n">const</span> <span class="n">flavor_info</span><span class="o">**</span> <span class="n">out_info</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">B_ERROR</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="n">flavorInfo</span><span class="o">-&gt;</span><span class="n">internal_id</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+   <span class="n">flavorInfo</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">=</span> <span class="n">strdup</span><span class="p">(</span><span class="s2">&quot;My Media Node&quot;</span><span class="p">);</span>
+   <span class="n">flavorInfo</span><span class="o">-&gt;</span><span class="n">info</span> <span class="o">=</span> <span class="n">strdup</span><span class="p">(</span><span class="s2">&quot;This node receives video from spy cameras</span>
+   <span class="n">at</span> <span class="n">area</span> <span class="n">pizza</span> <span class="n">parlors</span> <span class="ow">and</span> <span class="n">determines</span> <span class="n">which</span> <span class="n">one</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">least</span> <span class="n">busy</span><span class="o">.</span><span class="s2">&quot;);</span>
+   <span class="n">flavorInfo</span><span class="o">-&gt;</span><span class="n">kinds</span> <span class="o">=</span> <span class="n">B_BUFFER_CONSUMER</span> <span class="o">|</span> <span class="n">B_PHYSICAL_OUTPUT</span><span class="p">;</span>
+   <span class="n">flavorInfo</span><span class="o">-&gt;</span><span class="n">flavor_flags</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="n">flavorInfo</span><span class="o">-&gt;</span><span class="n">possible_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="o">//</span> <span class="n">Set</span> <span class="n">up</span> <span class="n">the</span> <span class="nb">list</span> <span class="n">of</span> <span class="nb">input</span> <span class="n">formats</span><span class="o">.</span> <span class="n">We</span> <span class="n">only</span> <span class="n">support</span>
+   <span class="o">//</span> <span class="n">raw</span> <span class="n">video</span> <span class="nb">input</span><span class="o">.</span>
+   <span class="n">flavorInfo</span><span class="o">-&gt;</span><span class="n">in_format_count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+   <span class="n">media_format</span><span class="o">*</span> <span class="n">aFormat</span> <span class="o">=</span> <span class="n">new</span> <span class="n">media_format</span><span class="p">;</span>
+   <span class="n">aFormat</span><span class="o">-&gt;</span><span class="nb">type</span> <span class="o">=</span> <span class="n">B_MEDIA_RAW_VIDEO</span><span class="p">;</span>
+   <span class="n">aFormat</span><span class="o">-&gt;</span><span class="n">u</span><span class="o">.</span><span class="n">raw_video</span> <span class="o">=</span> <span class="n">media_raw_video_format</span><span class="p">::</span><span class="n">wildcard</span><span class="p">;</span>
+   <span class="n">flavorInfo</span><span class="o">-&gt;</span><span class="n">in_formats</span> <span class="o">=</span> <span class="n">aFormat</span><span class="p">;</span>
+   <span class="o">//</span> <span class="n">We</span> <span class="n">don</span><span class="s1">&#39;t output.</span>
+   <span class="n">flavorInfo</span><span class="o">-&gt;</span><span class="n">out_format_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="n">flavorInfo</span><span class="o">-&gt;</span><span class="n">out_formats</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="o">//</span> <span class="n">And</span> <span class="nb">set</span> <span class="n">up</span> <span class="n">the</span> <span class="n">result</span> <span class="n">pointer</span>
+   <span class="o">*</span><span class="n">out_info</span> <span class="o">=</span> <span class="n">flavorInfo</span><span class="p">;</span>
+   <span class="k">return</span> <span class="n">B_OK</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>If you allocate memory for the
+flavor_info
+structure, be sure to
+discard it before your add-on is unloaded (the destructor is a good place
+to do this). If you forget to discard the memory, you’ll leak, and that
+can be really embarrassing.</p>
+</div>
+<p>If <span class="hparameter">flavorNum</span> is greater than
+<span class="hmethod">CountFlavors()</span>-1 (in other words, if the
+requested number is larger than the number of flavors you support),
+return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>. Otherwise, return
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> or, if an error occurs, an
+appropriate error code.</p>
+<section id="_CPPv4N11BMediaAddOn7ImageIDEv">
+</section>
+<h3>
+ImageID()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">image_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaAddOn</span><span class="p">::</span></span><span class="n">ImageID</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the add-on’s image ID, as specified by the
+<span class="hclass">BMediaAddOn</span>
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>.
+Your make_media_addon() function should be sure to save the image ID
+passed to it and pass that value through to the <span class="hclass">BMediaAddOn</span> constructor,
+or the Media Kit will be unhappy with you.</p>
+<section id="_CPPv4N11BMediaAddOn9InitCheckEPPKc">
+</section>
+<h3>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaAddOn</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">outFailureText</span><span class="sig-paren">)</span></pre><p>Implement this hook function to set <span class="hparameter">outFailureText</span> to point to a static
+text buffer that contains a message explaining why your add-on failed the
+most recent operation requested by the Media Server. This doesn’t include
+errors reported by nodes instantiated by your add-on, but only to errors
+caused directly by your <span class="hclass">BMediaAddOn</span>-derived object.
+The buffer pointed to by <span class="hparameter">outFailureText</span> shouldn’t go away until the
+add-on is reloaded or a new call to <span class="hmethod">InitCheck()</span> is made.
+Also returned is the actual result code from that operation; if all is
+well, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> should be returned.</p>
+<section id="_CPPv4N11BMediaAddOn18InstantiateNodeForEPK11flavor_infoP8BMessageP8status_t">
+</section>
+<h3>
+InstantiateNodeFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">BMediaNode</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaAddOn</span><span class="p">::</span></span><span class="n">InstantiateNodeFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">flavor_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">config</span>, <span class="n">status_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outError</span><span class="sig-paren">)</span></pre><p>Given the information in <span class="hparameter">info</span> (which might be a copy of information you
+previously returned from a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetFlavorAt()</span></code>
+call), you should instantiate a
+new object of the node class referenced by <span class="hparameter">info</span>’s
+internal_id field and
+return a pointer to that node.
+The <span class="hparameter">config</span> message might contain
+information saved by a previous instance of the same flavor node, and
+should be used to configure the new node if possible.
+<span class="hparameter">config</span> will never be
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, although it may not have any fields of
+interest in it.
+The simplest implementation of this function, in which there’s no
+configuration possible, might look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BMediaNode</span><span class="o">*</span> <span class="n">BMyConsumerAddOn</span><span class="p">::</span><span class="n">InstantiateNodeFor</span><span class="p">(</span><span class="n">const</span> <span class="n">flavor_info</span><span class="o">*</span> <span class="n">info</span><span class="p">,</span>
+            <span class="n">BMessage</span><span class="o">*</span> <span class="n">config</span><span class="p">,</span> <span class="n">status_t</span><span class="o">*</span> <span class="n">outError</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="n">new</span> <span class="n">MyConsumerNode</span><span class="p">((</span><span class="n">const</span> <span class="n">char</span> <span class="o">*</span><span class="p">)</span> <span class="s2">&quot;My Consumer Node&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If a new instance can’t be instantiated, set
+<span class="hparameter">outError</span> to an appropriate
+error code and return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. Otherwise, set
+<span class="hparameter">outError</span> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+<section id="_CPPv4N11BMediaAddOn8SniffRefERK9entry_refP9BMimeTypePfP5int32">
+</section>
+<section id="_CPPv4N11BMediaAddOn9SniffTypeER9BMimeTypePfP5int32">
+</section>
+<section id="_CPPv4N11BMediaAddOn13SniffTypeKindER9BMimeType6uint64PfP5int32Pv">
+</section>
+<h3>
+SniffRef(), SniffType(), SniffTypeKind()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaAddOn</span><span class="p">::</span></span><span class="n">SniffRef</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">file</span>, <span class="n">BMimeType</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outMimeType</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outQuality</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outInternalID</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaAddOn</span><span class="p">::</span></span><span class="n">SniffType</span><span class="sig-paren">(</span><span class="n">BMimeType</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">mimeType</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outQuality</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outInternalID</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaAddOn</span><span class="p">::</span></span><span class="n">SniffTypeKind</span><span class="sig-paren">(</span><span class="n">BMimeType</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">mimeType</span>, <span class="n">uint64</span><span class="w"> </span><span class="n sig-param">inKinds</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outQuality</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outInternalID</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">reserved</span><span class="sig-paren">)</span></pre><p>If your add-on supports
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFileInterface</span></code>
+nodes, you may implement <span class="hmethod">SniffRef()</span>. Given the
+specified <span class="hparameter">file</span>, examine the file and set
+<span class="hparameter">outMimeType</span> to describe the
+MIME type of the file.
+Additionally, you can implement <span class="hmethod">SniffType()</span> to report how well your
+add-on can handle a file containing data of the MIME type specified by
+<span class="hparameter">mimeType</span>.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>If your node deals with both producers and consumers, you shouldn’t
+implement <span class="hmethod">SniffType()</span>. Implement
+<span class="hmethod">SniffTypeKind()</span> instead. If
+<span class="hmethod">SniffTypeKind()</span> is implemented,
+<span class="hmethod">SniffType()</span> won’t be called.</p>
+</div>
+<p><span class="hmethod">SniffTypeKind()</span> limits the
+search to the kinds indicated by <span class="hparameter">inKinds</span>. This
+lets the caller indicate whether it’s looking for a consumer or a
+producer, for example.
+In any case, you should also store, in <span class="hparameter">outQuality</span>, a value representing
+the quality level at which your add-on can interpret the data in the file
+(where 0.0 means you can’t handle it well at all and 1.0 means you can
+handle it perfectly), and in <span class="hparameter">outInternalID</span>, the internal ID of the flavor
+that handles the data.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>Don’t implement these functions if your add-on doesn’t support
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFileInterface</span></code>
+nodes.</p>
+</div>
+<p>Return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if you’ve successfully
+identified the node; otherwise, return
+an appropriate error code.</p>
+<section id="_CPPv4N11BMediaAddOn14WantsAutoStartEv">
+</section>
+<h3>
+WantsAutoStart()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaAddOn</span><span class="p">::</span></span><span class="n">WantsAutoStart</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Implement this hook function to return <span class="hparameter">true</span> if there are one or more node
+flavors supported by your add-on that want to be instantiated
+automatically when the add-on is loaded, instead of waiting until they’re
+explicitly instantiated by an application’s request later. Return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>
+otherwise.</p>
+</section>
+<section id="global-c-functions">
+<h2>Global C Functions<a class="headerlink" href="#global-c-functions" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>BMediaAddOn* make_media_addon(
+make_media_addon() is the global C function your add-on needs to
+implement in order to make itself available to the world. It will be
+called when the Media Server loads your add-on, and you should return an
+instance of your <span class="hclass">BMediaAddOn</span>-derived class, with the appropriate
+overrides to the hook functions.
+The <span class="hparameter">addonID</span> argument is your add-on’s
+image ID. Your make_media_addon()
+function should be sure to save the image ID passed to it and pass that
+value through to the <span class="hclass">BMediaAddOn</span>
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>, or the Media Kit will be
+unhappy with you.
+This function can be quite simple:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BMediaAddOn</span><span class="o">*</span> <span class="n">make_media_addon</span><span class="p">(</span><span class="n">image_id</span> <span class="n">myImage</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="n">new</span> <span class="n">MyConsumerAddOn</span><span class="p">(</span><span class="n">myImage</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>It simply creates an instance of the add-on object (in this case,
+<span class="hclass">MyConsumerAddOn</span>), and returns it.</p>
+</section>
+<section id="defined-types">
+<h2>Defined Types<a class="headerlink" href="#defined-types" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>Declared in: media/MediaAddOn.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">dormant_flavor_info</span> <span class="p">:</span> <span class="n">public</span> <span class="n">flavor_info</span><span class="p">,</span> <span class="n">public</span> <span class="n">BFlattenable</span> <span class="p">{</span>
+   <span class="n">dormant_node_info</span><span class="p">();</span>
+   <span class="n">virtual</span> <span class="o">~</span><span class="n">dormant_node_info</span><span class="p">();</span>
+   <span class="n">dormant_flavor_info</span><span class="p">(</span><span class="n">const</span> <span class="n">dormant_flavor_info</span><span class="o">&amp;</span><span class="p">);</span>
+   <span class="n">dormant_flavor_info</span><span class="o">&amp;</span> <span class="n">operator</span><span class="o">=</span><span class="p">(</span><span class="n">const</span> <span class="n">dormant_flavor_info</span><span class="o">&amp;</span><span class="p">);</span>
+   <span class="n">dormant_flavor_info</span><span class="o">&amp;</span> <span class="n">operator</span><span class="o">=</span><span class="p">(</span><span class="n">const</span> <span class="n">flavor_info</span><span class="o">&amp;</span><span class="p">);</span>
+   <span class="n">dormant_node_info</span> <span class="n">node_info</span><span class="p">;</span>
+   <span class="n">void</span> <span class="n">set_name</span><span class="p">(</span><span class="n">const</span> <span class="n">char</span><span class="o">*</span> <span class="n">in_name</span><span class="p">);</span>
+   <span class="n">void</span> <span class="n">set_info</span><span class="p">(</span><span class="n">const</span> <span class="n">char</span><span class="o">*</span> <span class="n">in_info</span><span class="p">);</span>
+   <span class="n">void</span> <span class="n">add_in_format</span><span class="p">(</span><span class="n">const</span> <span class="n">media_format</span><span class="o">&amp;</span> <span class="n">in_format</span><span class="p">);</span>
+   <span class="n">void</span> <span class="n">add_out_format</span><span class="p">(</span><span class="n">const</span> <span class="n">media_format</span><span class="o">&amp;</span> <span class="n">out_format</span><span class="p">);</span>
+   <span class="n">virtual</span> <span class="nb">bool</span> <span class="n">IsFixedSize</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
+   <span class="n">virtual</span> <span class="n">type_code</span> <span class="n">TypeCode</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
+   <span class="n">virtual</span> <span class="n">ssize_t</span> <span class="n">FlattenedSize</span><span class="p">()</span> <span class="n">const</span><span class="p">;</span>
+   <span class="n">virtual</span> <span class="n">status_t</span> <span class="n">Flatten</span><span class="p">(</span><span class="n">void</span><span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">ssize_t</span> <span class="n">size</span><span class="p">)</span> <span class="n">const</span><span class="p">;</span>
+   <span class="n">virtual</span> <span class="n">status_t</span> <span class="n">Unflatten</span><span class="p">(</span><span class="n">type_code</span> <span class="n">c</span><span class="p">,</span> <span class="n">const</span> <span class="n">void</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="n">ssize_t</span> <span class="n">size</span><span class="p">);</span>
+<span class="n">private</span><span class="p">:</span>
+   <span class="n">void</span> <span class="n">assign_atoms</span><span class="p">(</span><span class="n">const</span> <span class="n">flavor_info</span><span class="o">&amp;</span> <span class="n">that</span><span class="p">);</span>
+   <span class="n">media_addon_id</span> <span class="n">addon</span><span class="p">;</span>
+   <span class="n">int32</span> <span class="n">flavor_id</span><span class="p">;</span>
+   <span class="n">char</span> <span class="n">name</span><span class="p">[</span><span class="n">B_MEDIA_NAME_LENGTH</span><span class="p">];</span>
+<span class="n">private</span><span class="p">:</span>
+   <span class="n">char</span> <span class="n">reserved</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>The dormant_flavor_info structure describes a flavor
+in a dormant node.</p>
+<h3>
+</h3><p>Declared in: media/MediaAddOn.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">dormant_node_info</span> <span class="p">{</span>
+   <span class="n">dormant_node_info</span><span class="p">();</span>
+   <span class="o">~</span><span class="n">dormant_node_info</span><span class="p">();</span>
+   <span class="n">media_addon_id</span> <span class="n">addon</span><span class="p">;</span>
+   <span class="n">int32</span> <span class="n">flavor_id</span><span class="p">;</span>
+   <span class="n">char</span> <span class="n">name</span><span class="p">[</span><span class="n">B_MEDIA_NAME_LENGTH</span><span class="p">];</span>
+<span class="n">private</span><span class="p">:</span>
+   <span class="n">char</span> <span class="n">reserved</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>The dormant_node_info structure describes a node that resides in an
+add-on and that may not be in memory. You might use it when issuing the
+<a class="reference internal" href="media-roster.html#_CPPv4N12BMediaRoster22InstantiateDormantNodeERK17dormant_node_infoP10media_node" title="BMediaRoster::InstantiateDormantNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaRoster::InstantiateDormantNode()</span></code></a>
+to instantiate a node, for example.
+The addon field indicates the ID number of the media add-on in which the
+node resides, and the flavor_id is the flavor ID internal to that add-on
+indicating which flavor the node should represent. The name field is the
+node’s name.</p>
+<h3>
+</h3><p>Declared in: media/MediaAddOn.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">flavor_info</span> <span class="p">{</span>
+   <span class="n">char</span><span class="o">*</span> <span class="n">name</span><span class="p">;</span>
+   <span class="n">char</span><span class="o">*</span> <span class="n">info</span><span class="p">;</span>
+   <span class="n">uint64</span> <span class="n">kinds</span><span class="p">;</span>
+   <span class="n">uint32</span> <span class="n">flavor_flags</span><span class="p">;</span>
+   <span class="n">int32</span> <span class="n">internal_id</span><span class="p">;</span>
+   <span class="n">int32</span> <span class="n">possible_count</span><span class="p">;</span>
+   <span class="n">int32</span> <span class="n">in_format_count</span><span class="p">;</span>
+   <span class="n">uint32</span> <span class="n">in_format_flags</span><span class="p">;</span>
+   <span class="n">const</span> <span class="n">media_format</span><span class="o">*</span> <span class="n">in_formats</span><span class="p">;</span>
+   <span class="n">int32</span> <span class="n">out_format_count</span><span class="p">;</span>
+   <span class="n">uint32</span> <span class="n">out_format_flags</span><span class="p">;</span>
+   <span class="n">const</span> <span class="n">media_format</span><span class="o">*</span> <span class="n">out_formats</span><span class="p">;</span>
+   <span class="n">uint32</span> <span class="n">_reserved_</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+<span class="n">private</span><span class="p">:</span>
+   <span class="n">flavor_info</span><span class="o">&amp;</span> <span class="n">operator</span><span class="o">=</span><span class="p">(</span><span class="n">const</span> <span class="n">flavor_info</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nameandinfo</p></td>
+<td><p>Provide a human-readable name, and information about the flavor.</p></td>
+</tr>
+<tr class="row-odd"><td><p>kinds</p></td>
+<td><p>Should be set to the node kind. See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">node()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>flavor_flags</p></td>
+<td><p>Contains flags providing additional information about the flavor.B_FLAVOR_IS_GLOBALThe flavor will be forced into the Media Add-on Server, and only one instance of it will exist.B_FLAVOR_IS_LOCALThe flavor will be forced into the loading application, and many instances of it may exist.If neither flag is specified, the Media Kit will decide what to do with the flavor.</p></td>
+</tr>
+<tr class="row-odd"><td><p>internal_id</p></td>
+<td><p>Is an internal ID number that your add-on can use to identify the flavor; the flavor will be requested by the Media Kit using this ID number.</p></td>
+</tr>
+<tr class="row-even"><td><p>possible_count</p></td>
+<td><p>Specifies to the Media Kit the maximum number of instances of your node can be in existence at the same time. For example, if your node provides support for a particular sound card, this value should be equal to the number of cards you support that are currently installed in the computer.</p></td>
+</tr>
+<tr class="row-odd"><td><p>in_format_count</p></td>
+<td><p>Specifies how many input formats the flavor supports.</p></td>
+</tr>
+<tr class="row-even"><td><p>in_formats</p></td>
+<td><p>Is a list of all the input formats supported by the flavor.</p></td>
+</tr>
+<tr class="row-odd"><td><p>in_format_flags</p></td>
+<td><p>Provides informational flags about the flavor’s inputs. There currently aren’t any defined flags, so set this field to 0.</p></td>
+</tr>
+<tr class="row-even"><td><p>out_format_count</p></td>
+<td><p>Specifies how many output formats the flavor supports.</p></td>
+</tr>
+<tr class="row-odd"><td><p>out_formats</p></td>
+<td><p>Is a list of all the output formats supported by the flavor.</p></td>
+</tr>
+<tr class="row-even"><td><p>out_format_flags</p></td>
+<td><p>Provides informational flags about the flavor’s outputs. There currently aren’t any defined flags, so set this field to 0.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="file-interface.html">BFileInterface</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-buffer-decoder.html">BMediaBufferDecoder</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

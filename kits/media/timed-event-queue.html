@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BTimedEventQueue &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="The Application Kit" href="../midi2/overview.html" />
+    <link rel="prev" title="BTimeSource" href="time-source.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BTimedEventQueue</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="time-source.html">BTimeSource</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../midi2/overview.html">The Application Kit</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BTimedEventQueue</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N16BTimedEventQueue16BTimedEventQueueEv">BTimedEventQueue</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BTimedEventQueueD0Ev">~BTimedEventQueue</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N16BTimedEventQueue8AddEventERK17media_timed_event">AddEvent</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BTimedEventQueue9DoForEachE13for_each_hookPv9bigtime_t14time_directionb5int32">DoForEach</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BTimedEventQueue10EventCountEv">EventCount</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BTimedEventQueue14FindFirstMatchE9bigtime_t14time_directionb5int32">FindFirstMatch</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BTimedEventQueue10FirstEventEv">FirstEvent</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BTimedEventQueue14FirstEventTimeEv">FirstEventTime</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BTimedEventQueue11FlushEventsE9bigtime_t14time_directionb5int32">FlushEvents</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BTimedEventQueue9HasEventsEv">HasEvents</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BTimedEventQueue9LastEventEv">LastEvent</a></li>
+<li><a class="reference internal" href="#_CPPv4NK16BTimedEventQueue13LastEventTimeEv">LastEventTime</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BTimedEventQueue11RemoveEventEPK17media_timed_event">RemoveEvent</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BTimedEventQueue16RemoveFirstEventEPK17media_timed_event">RemoveFirstEvent</a></li>
+<li><a class="reference internal" href="#_CPPv4N16BTimedEventQueue14SetCleanupHookE12cleanup_hookPv">SetCleanupHook</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#defined-types">Defined Types</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="btimedeventqueue">
+<h1>BTimedEventQueue<a class="headerlink" href="#btimedeventqueue" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N16BTimedEventQueue16BTimedEventQueueEv">
+</section>
+<h3>
+BTimedEventQueue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N16BTimedEventQueue16BTimedEventQueueEv" title="BTimedEventQueue::BTimedEventQueue"><span class="n">BTimedEventQueue</span></a><span class="p">::</span></span><span class="n">BTimedEventQueue</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Initializes a new, empty, timed event queue.</p>
+<section id="_CPPv4N16BTimedEventQueueD0Ev">
+</section>
+<h3>
+~BTimedEventQueue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimedEventQueue</span><span class="p">::</span></span><span class="n">~BTimedEventQueue</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Flushes the queue and deallocates memory allocated by the object.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N16BTimedEventQueue8AddEventERK17media_timed_event">
+</section>
+<h3>
+AddEvent()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimedEventQueue</span><span class="p">::</span></span><span class="n">AddEvent</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_timed_event</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">event</span><span class="sig-paren">)</span></pre><p>Adds the specified event to the queue.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>The event was added.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
+<td><p>Unknown or invalid event type (you can’t use <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_EVENT</span></code> or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ANY_EVENT</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code></p></td>
+<td><p>The queue hasn’t been initialized.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N16BTimedEventQueue9DoForEachE13for_each_hookPv9bigtime_t14time_directionb5int32">
+</section>
+<h3>
+DoForEach()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimedEventQueue</span><span class="p">::</span></span><span class="n">DoForEach</span><span class="sig-paren">(</span><span class="n">for_each_hook</span><span class="w"> </span><span class="n sig-param">hook</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">context</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">time</span>, <span class="n">time_direction</span><span class="w"> </span><span class="n sig-param">direction</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">inclusive</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">event</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_ANY_EVENT</span><span class="sig-paren">)</span></pre><p>For each event in the queue matching the specified parameters, the hook
+function is called. The <span class="hparameter">context</span> pointer is passed through to the hook
+function, and may point to anything your hook function requires.</p>
+<ul class="simple">
+<li><p>Setting <span class="hparameter">direction</span> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ALWAYS</span></code> indicates that all events of the type indicated by <span class="hparameter">event</span> should be processed. The <span class="hparameter">time</span> and <span class="hparameter">inclusive</span> arguments are ignored.</p></li>
+<li><p>Setting <span class="hparameter">direction</span> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BEFORE_TIME</span></code> indicates that all matching events occurring before the specified <span class="hparameter">time</span> should be processed. If <span class="hparameter">inclusive</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, events occurring at <span class="hparameter">time</span> are also processed.</p></li>
+<li><p>Setting <span class="hparameter">direction</span> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_AT_TIME</span></code> processes all matching events scheduled at the specified <span class="hparameter">time</span>. The <span class="hparameter">inclusive</span> argument is ignored.</p></li>
+<li><p>If <span class="hparameter">direction</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_AFTER_TIME</span></code>, all matching events scheduled to occur after the specified <span class="hparameter">time</span> are processed. If <span class="hparameter">inclusive</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, events scheduled to occur at <span class="hparameter">time</span> are also processed.</p></li>
+</ul>
+<p>This provides a means for you to scan through the queue and perform
+a particular act on every node (or all nodes of a certain type, or that
+occur at certain times). If you want to process all events, you can specify
+a <span class="hparameter">time</span> of
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INFINITE_TIMEOUT</span></code> and a
+<span class="hparameter">direction</span> of
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BEFORE_TIME</span></code>.
+The hook function should return a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">queue()</span></code>
+value.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">queue_action</span> <span class="n">MyHook</span><span class="p">(</span><span class="n">media_timed_event</span><span class="o">*</span> <span class="n">event</span><span class="p">,</span> <span class="n">void</span><span class="o">*</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">event</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="o">/*</span> <span class="n">countdown</span> <span class="n">finished</span><span class="p">,</span> <span class="n">do</span> <span class="n">something</span> <span class="o">*/</span>
+      <span class="k">return</span> <span class="n">BTimedEventQueue</span><span class="p">::</span><span class="n">B_REMOVE_EVENT</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="n">event</span><span class="o">-&gt;</span><span class="n">data</span><span class="o">--</span><span class="p">;</span>
+   <span class="k">return</span> <span class="n">BTimedEventQueue</span><span class="p">::</span><span class="n">B_NO_ACTION</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this example, the hook function processes the event (and indicates on
+return that it should be removed from the queue) if the data field of the
+event structure is zero; otherwise data is decremented and the event is
+left alone.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>The events were processed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
+<td><p>An undefined error occurred.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4NK16BTimedEventQueue10EventCountEv">
+</section>
+<h3>
+EventCount()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimedEventQueue</span><span class="p">::</span></span><span class="n">EventCount</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the number of events in the queue.</p>
+<section id="_CPPv4N16BTimedEventQueue14FindFirstMatchE9bigtime_t14time_directionb5int32">
+</section>
+<h3>
+FindFirstMatch()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="n">media_timed_event</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BTimedEventQueue</span><span class="p">::</span></span><span class="n">FindFirstMatch</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">eventTime</span>, <span class="n">time_direction</span><span class="w"> </span><span class="n sig-param">direction</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">inclusive</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">event</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_ANY_EVENT</span><span class="sig-paren">)</span></pre><p>Searches the event queue for the first event matching the given
+specifications. The search begins at the time specified by
+<span class="hparameter">eventTime</span>, and progresses in the specified
+<span class="hparameter">direction</span>.</p>
+<ul class="simple">
+<li><p>Setting <span class="hparameter">direction</span> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ALWAYS</span></code> indicates that all events of the type indicated by <span class="hparameter">event</span> should be scanned. The <span class="hparameter">eventTime</span> and <span class="hparameter">inclusive</span> arguments are ignored.</p></li>
+<li><p>Setting <span class="hparameter">direction</span> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BEFORE_TIME</span></code> indicates that all matching events occurring before the specified <span class="hparameter">eventTime</span> should be scanned. If <span class="hparameter">inclusive</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, events occurring at <span class="hparameter">eventTime</span> are also scanned.</p></li>
+<li><p>Setting <span class="hparameter">direction</span> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_AT_TIME</span></code> scans all matching events scheduled at the specified <span class="hparameter">eventTime</span>. The <span class="hparameter">inclusive</span> argument is ignored.</p></li>
+<li><p>If <span class="hparameter">direction</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_AFTER_TIME</span></code>, all matching events scheduled to occur after the specified <span class="hparameter">eventTime</span> are scanned. If <span class="hparameter">inclusive</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, events scheduled to occur at <span class="hparameter">eventTime</span> are also scanned.</p></li>
+</ul>
+<p>If you want to scan all events, you can specify a time of
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INFINITE_TIMEOUT</span></code> and a direction of
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BEFORE_TIME</span></code>.
+If no matching event is found, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> is
+returned.</p>
+<section id="_CPPv4NK16BTimedEventQueue10FirstEventEv">
+</section>
+<section id="_CPPv4NK16BTimedEventQueue14FirstEventTimeEv">
+</section>
+<h3>
+FirstEvent(), FirstEventTime()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="n">media_timed_event</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BTimedEventQueue</span><span class="p">::</span></span><span class="n">FirstEvent</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimedEventQueue</span><span class="p">::</span></span><span class="n">FirstEventTime</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">FirstEvent()</span> returns the first event
+in the queue, without removing it from the queue.
+<span class="hmethod">FirstEventTime()</span> returns the first
+event’s time, in microseconds.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error occurred.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code></p></td>
+<td><p>The queue hasn’t been initialized.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INFINITE_TIMEOUT</span></code></p></td>
+<td><p>The queue is empty (<span class="hmethod">FirstEventTime()</span> only).</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4NK16BTimedEventQueue11FlushEventsE9bigtime_t14time_directionb5int32">
+</section>
+<h3>
+FlushEvents()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimedEventQueue</span><span class="p">::</span></span><span class="n">FlushEvents</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">time</span>, <span class="n">time_direction</span><span class="w"> </span><span class="n sig-param">direction</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">inclusive</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">event</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_ANY_EVENT</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Flushes the specified events from the queue. You specify which events to
+flush by indicating a <span class="hparameter">time</span> from which events should be flushed, a
+<span class="hparameter">direction</span> in which to search for events to flush, and the type of events
+to flush:</p>
+<ul class="simple">
+<li><p>Setting <span class="hparameter">direction</span> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ALWAYS</span></code> indicates that all events of the type indicated by <span class="hparameter">event</span> should be flushed. The <span class="hparameter">eventTime</span> and <span class="hparameter">inclusive</span> arguments are ignored.</p></li>
+<li><p>Setting <span class="hparameter">direction</span> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BEFORE_TIME</span></code> indicates that all matching events occurring before the specified <span class="hparameter">eventTime</span> should be flushed. If <span class="hparameter">inclusive</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, events occurring at <span class="hparameter">eventTime</span> are also flushed.</p></li>
+<li><p>Setting <span class="hparameter">direction</span> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_AT_TIME</span></code> flushes all matching events scheduled at the specified <span class="hparameter">eventTime</span>. The <span class="hparameter">inclusive</span> argument is ignored.</p></li>
+<li><p>If <span class="hparameter">direction</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_AFTER_TIME</span></code>, all matching events scheduled to occur after the specified <span class="hparameter">eventTime</span> are flushed. If <span class="hparameter">inclusive</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, events scheduled to occur at <span class="hparameter">eventTime</span> are also flushed.</p></li>
+</ul>
+<p>If you want to flush all events, you can specify a time of
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INFINITE_TIMEOUT</span></code> and a direction of
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BEFORE_TIME</span></code>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>The events were flushed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
+<td><p>An undefined error occurred.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N16BTimedEventQueue9HasEventsEv">
+</section>
+<h3>
+HasEvents()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimedEventQueue</span><span class="p">::</span></span><span class="n">HasEvents</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if there are events in the
+queue, otherwise returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<section id="_CPPv4NK16BTimedEventQueue9LastEventEv">
+</section>
+<section id="_CPPv4NK16BTimedEventQueue13LastEventTimeEv">
+</section>
+<h3>
+LastEvent(), LastEventTime()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="n">media_timed_event</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BTimedEventQueue</span><span class="p">::</span></span><span class="n">LastEvent</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimedEventQueue</span><span class="p">::</span></span><span class="n">LastEventTime</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">LastEvent()</span> returns the last event
+in the queue, without removing it from the queue.
+<span class="hmethod">LastEventTime()</span> returns the last event’s
+time, in microseconds.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>No error occurred.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code></p></td>
+<td><p>The queue hasn’t been initialized.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INFINITE_TIMEOUT</span></code></p></td>
+<td><p>The queue is empty (<span class="hmethod">LastEventTime()</span> only).</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N16BTimedEventQueue11RemoveEventEPK17media_timed_event">
+</section>
+<section id="_CPPv4N16BTimedEventQueue16RemoveFirstEventEPK17media_timed_event">
+</section>
+<h3>
+RemoveEvent(), RemoveFirstEvent()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimedEventQueue</span><span class="p">::</span></span><span class="n">RemoveEvent</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_timed_event</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">event</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimedEventQueue</span><span class="p">::</span></span><span class="n">RemoveFirstEvent</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_timed_event</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">event</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p><span class="hmethod">RemoveEvent()</span> removes the specified
+event from the queue.
+<span class="hmethod">RemoveFirstEvent()</span> removes the first
+event from the queue. If <span class="hparameter">outEvent</span>
+isn’t <span class="hparameter">NULL</span>, the specified buffer is filled with a copy of the event
+that’s been removed.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>The event was removed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code></p></td>
+<td><p>The queue hasn’t been initialized.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N16BTimedEventQueue14SetCleanupHookE12cleanup_hookPv">
+</section>
+<h3>
+SetCleanupHook()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimedEventQueue</span><span class="p">::</span></span><span class="n">SetCleanupHook</span><span class="sig-paren">(</span><span class="n">cleanup_hook</span><span class="w"> </span><span class="n sig-param">hook</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">context</span><span class="sig-paren">)</span></pre><p>Sets up the cleanup hook function specified by hook to be called for
+events as they’re removed from the queue. The hook will be called only
+for events with
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">cleanup()</span></code>
+values of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DELETE</span></code> or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_USER_CLEANUP</span></code> or
+greater.</p>
+</section>
+<section id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>Declared in: media/TimedEventQueue.h</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_CLEANUP</span></code></p></td>
+<td><p>Don’t clean up when the event is removed from the queue.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_RECYCLE_BUFFER</span></code></p></td>
+<td><p><span class="hclass">BTimedEventQueue</span> should recycle the buffer when the buffer event is removed from the queue.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_EXPIRE_TIMER</span></code></p></td>
+<td><p>Call <a class="reference internal" href="media-node.html#_CPPv4N10BMediaNode12TimerExpiredE9bigtime_t5int328status_t" title="BMediaNode::TimerExpired"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">TimerExpired()</span></code></a> on the event’s data field.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_USER_CLEANUP</span></code></p></td>
+<td><p>Base value for user-defined cleanup types.</p></td>
+</tr>
+</tbody>
+</table>
+<p>These values define how <span class="hclass">BTimedEventQueue</span>
+should handle removing events from the queue. If the flag is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_USER_CLEANUP</span></code> or greater, the cleanup hook
+function is called when the event is removed.</p>
+<h3>
+</h3><p>Declared in: media/TimedEventQueue.h</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_EVENT</span></code></p></td>
+<td><p>Don’t push buffers of this type. It’s a return value only.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ANY_EVENT</span></code></p></td>
+<td><p>Don’t push buffers of this type; it’s used in searches only.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_START</span></code></p></td>
+<td><p>A start event.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STOP</span></code></p></td>
+<td><p>A stop event.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SEEK</span></code></p></td>
+<td><p>A seek event.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WARP</span></code></p></td>
+<td><p>A warp event.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMER</span></code></p></td>
+<td><p>A timer event.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HANDLE_BUFFER</span></code></p></td>
+<td><p>Represents a buffer queued to be handled. The event’s pointer is a pointer to a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBuffer</span></code> object.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DATA_STATUS</span></code></p></td>
+<td><p>Represents a data status event.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HARDWARE</span></code></p></td>
+<td><p>A hardware event.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PARAMETER</span></code></p></td>
+<td><p>The buffer contains changes to parameter values; pass it to <a class="reference internal" href="controllable.html#_CPPv4N13BControllable18ApplyParameterDataEPKv6size_t" title="BControllable::ApplyParameterData"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControllable::ApplyParameterData()</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_USER_EVENT</span></code></p></td>
+<td><p>Base value for user-defined events.</p></td>
+</tr>
+</tbody>
+</table>
+<p>These values describe type types of events that a
+<span class="hclass">BTimedEventQueue</span> can handle.</p>
+<h3>
+</h3><p>Declared in: media/TimedEventQueue.h</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DONE</span></code></p></td>
+<td><p>End the <a class="reference internal" href="#_CPPv4N16BTimedEventQueue9DoForEachE13for_each_hookPv9bigtime_t14time_directionb5int32" title="BTimedEventQueue::DoForEach"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DoForEach()</span></code></a> pass.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_ACTION</span></code></p></td>
+<td><p>Do nothing for this event.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_REMOVE_EVENT</span></code></p></td>
+<td><p>Remove the event.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_RESORT_QUEUE</span></code></p></td>
+<td><p>Sort the queue again to ensure that events are still in the right order.</p></td>
+</tr>
+</tbody>
+</table>
+<p>These queue action values are returned by the hook function used by
+<a class="reference internal" href="#_CPPv4N16BTimedEventQueue9DoForEachE13for_each_hookPv9bigtime_t14time_directionb5int32" title="BTimedEventQueue::DoForEach"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DoForEach()</span></code></a>;
+these values indicate what
+<a class="reference internal" href="#_CPPv4N16BTimedEventQueue9DoForEachE13for_each_hookPv9bigtime_t14time_directionb5int32" title="BTimedEventQueue::DoForEach"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DoForEach()</span></code></a>
+should do to the event after the hook has processed it.</p>
+<h3>
+</h3><p>Declared in: media/TimedEventQueue.h</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ALWAYS</span></code></p></td>
+<td><p>Matches events occurring at any time.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BEFORE_TIME</span></code></p></td>
+<td><p>Matches events occurring before a specified time.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_AT_TIME</span></code></p></td>
+<td><p>Matches events occurring at a specified time.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_AFTER_TIME</span></code></p></td>
+<td><p>Matches events occurring after a specified time.</p></td>
+</tr>
+</tbody>
+</table>
+<p>These values are used to indicate a search direction through the time
+continuum.</p>
+</section>
+<section id="defined-types">
+<h2>Defined Types<a class="headerlink" href="#defined-types" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>Declared in: media/TimedEventQueue.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">queue_action</span> <span class="p">(</span><span class="o">*</span><span class="n">cleanup_hook</span><span class="p">)(</span><span class="n">media_timed_event</span><span class="o">*</span> <span class="n">event</span><span class="p">,</span>
+                                     <span class="n">void</span><span class="o">*</span> <span class="n">context</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The cleanup_hook type is used to define a hook
+function called while removing an event from the queue; it’s set by calling
+<a class="reference internal" href="#_CPPv4N16BTimedEventQueue14SetCleanupHookE12cleanup_hookPv" title="BTimedEventQueue::SetCleanupHook"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetCleanupHook()</span></code></a>.</p>
+<h3>
+</h3><p>Declared in: media/TimedEventQueue.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">queue_action</span> <span class="p">(</span><span class="o">*</span><span class="n">for_each_hook</span><span class="p">)(</span><span class="n">media_timed_event</span><span class="o">*</span> <span class="n">event</span><span class="p">,</span>
+                                      <span class="n">void</span><span class="o">*</span> <span class="n">context</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The for_each_hook type is used to define a hook function called by
+<a class="reference internal" href="#_CPPv4N16BTimedEventQueue9DoForEachE13for_each_hookPv9bigtime_t14time_directionb5int32" title="BTimedEventQueue::DoForEach"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DoForEach()</span></code></a>.</p>
+<h3>
+</h3><p>Declared in: media/TimedEventQueue.h</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">media_timed_event</span> <span class="p">{</span>
+   <span class="n">media_timed_event</span><span class="p">();</span>
+   <span class="n">media_timed_event</span><span class="p">(</span><span class="n">bigtime_t</span> <span class="n">inTime</span><span class="p">,</span> <span class="n">int32</span> <span class="n">inType</span><span class="p">);</span>
+   <span class="n">media_timed_event</span><span class="p">(</span><span class="n">bigtime_t</span> <span class="n">inTime</span><span class="p">,</span> <span class="n">int32</span> <span class="n">inType</span><span class="p">,</span> <span class="n">void</span><span class="o">*</span> <span class="n">inPointer</span><span class="p">,</span>
+            <span class="n">uint32</span> <span class="n">inCleanup</span><span class="p">);</span>
+   <span class="n">media_timed_event</span><span class="p">(</span><span class="n">bigtime_t</span> <span class="n">inTime</span><span class="p">,</span> <span class="n">int32</span> <span class="n">inType</span><span class="p">,</span>
+            <span class="n">void</span><span class="o">*</span> <span class="n">inPointer</span><span class="p">,</span> <span class="n">uint32</span> <span class="n">inCleanup</span><span class="p">,</span>
+            <span class="n">int32</span> <span class="n">inData</span><span class="p">,</span> <span class="n">int64</span> <span class="n">inBigdata</span><span class="p">,</span>
+            <span class="n">char</span><span class="o">*</span> <span class="n">inUserData</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">dataSize</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+   <span class="n">media_timed_event</span><span class="p">(</span><span class="n">const</span> <span class="n">media_timed_event</span><span class="o">&amp;</span> <span class="n">clone</span><span class="p">);</span>
+   <span class="n">void</span> <span class="n">operator</span><span class="o">=</span><span class="p">(</span><span class="n">const</span> <span class="n">media_timed_event</span><span class="o">&amp;</span> <span class="n">clone</span><span class="p">);</span>
+   <span class="o">~</span><span class="n">media_timed_event</span><span class="p">();</span>
+   <span class="n">bigtime_t</span> <span class="n">event_time</span><span class="p">;</span>
+   <span class="n">int32</span> <span class="nb">type</span><span class="p">;</span>
+   <span class="n">void</span><span class="o">*</span> <span class="n">pointer</span><span class="p">;</span>
+   <span class="n">uint32</span> <span class="n">cleanup</span><span class="p">;</span>
+   <span class="n">int32</span> <span class="n">data</span><span class="p">;</span>
+   <span class="n">int64</span> <span class="n">bigdata</span><span class="p">;</span>
+   <span class="n">char</span> <span class="n">user_data</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+   <span class="n">uint32</span> <span class="n">_reserved_media_timed_event_</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Describes a media event:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>event_time</p></td>
+<td><p>Indicates the time at which the event is scheduled to occur.</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p>Indicates the type of event, as an event_type.</p></td>
+</tr>
+<tr class="row-even"><td><p>pointer</p></td>
+<td><p>Is a pointer to event-specific data owned by the event.</p></td>
+</tr>
+<tr class="row-odd"><td><p>cleanup</p></td>
+<td><p>Is the cleanup_flag value for the event.</p></td>
+</tr>
+<tr class="row-even"><td><p>data</p></td>
+<td><p>Is an event-specific 32-bit value.</p></td>
+</tr>
+<tr class="row-odd"><td><p>bigdata</p></td>
+<td><p>Is an event-specific 64-bit value.</p></td>
+</tr>
+<tr class="row-even"><td><p>user_data</p></td>
+<td><p>Is user-defined data.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="time-source.html">BTimeSource</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../midi2/overview.html">The Application Kit</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

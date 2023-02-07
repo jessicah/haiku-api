@@ -1,195 +1,213 @@
-
-
 # BMessage
+
+Documentation Organisation in Haiku Book:
+
+- Public Member Functions (ctor/dtor here)
+- Allocation Operations
+    - operator=
+    - operator new
+    - operator delete
+- Statistics and Miscellaneous Information
+    - GetInfo
+    - CountNames
+    - IsEmpty
+    - IsSystem -- really?
+    - IsReply -- one of the others seems better to me...
+    - PrintToStream
+    - Rename -- uh?
+- Delivery Information
+    - WasDelivered
+    - IsSourceWaiting
+    - IsSourceRemote
+    - ReturnAddress
+    - Previous
+    - WasDropped
+    - DropPoint
+- Replying
+    - SendReply
+- Flattening
+    - FlattenedSize
+    - Flatten
+    - Unflatten
+- Specifiers (Scripting)
+    - AddSpecifier
+    - SetCurrentSpecifier
+    - GetCurrentSpecifier
+    - HasSpecifiers
+- Adding Data
+    - Add...
+- Removing Data
+    - RemoveData
+    - RemoveName
+    - MakeEmpty
+- Finding Data
+    - Find... returning status_t
+- Replacing Data
+    - Replace...
+- Message Comparison
+    - HasSameData
+- Finding Data (Deprecated)
+    - Has...
+    - Find... returning value
+- Getting Data
+    - Get...
+- Setting Data
+    - Set...
+
+A container that can be sent and received using the Haiku messaging subsystem.
+
+This class is at the center of the web of messaging classes, in the sense that it defines the actual
+structure of the messages. Messages have two **important elements**: the {hfield}`what` identifier, and the
+data members. The first can be directly manipulated, the latter can be manipulated through
+{cpp:func}`~BMessage::AddData()`, {cpp:func}`~BMessage::FindData()` and
+{cpp:func}`~BMessage::ReplaceData()` and their derivatives. Neither of these elements are mandatory.
+
+The second important role of {cpp:class}`BMessage` is that it stores **metadata**: who sent the
+message and with what intention? The methods of {cpp:class}`BMessage` will disclose if the message
+was a reply ({cpp:func}`~BMessage::IsReply()`), where it came from
+({cpp:func}`~BMessage::IsSourceRemote()`), whether a reply is expected
+({cpp:func}`~BMessage::IsSourceWaiting()`), and in case the message is a reply, what it's a reply to
+({cpp:func}`~BMessage::Previous()`).
+
+Mostly, messages are used to pass information between the objects in your application, but because
+messages ae such flexible data containers, they are also often used for other **data storage
+purposes**. Many applications store their settings as messages. Because messages can be flattened to
+data streams (such as files), they provide an easy but powerful tool for data storage.
+
+All methods can be classified in these areas:
+
+- Adding, Finding, Replacing and Removing data.
+- Statistics and miscellaneous information.
+- Delivery information.
+- Utilities to reply to messages.
+
+To see how messages fit in with the greater picture, have a look at the "Messaging Introduction".
 
 ## Data Members
 
-```{cpp:member} uint32 BMessage::what
-```
-
-### what
-
-:::{code} cpp
-public uint32 what;
+::::{abi-group}
+:::{cpp:member} uint32 BMessage::what
 :::
 
 A coded constant that captures what the message is about.
+::::
 
 ## Constructor and Destructor
 
-```{cpp:function} BMessage::BMessage(uint32 command)
-```
-```{cpp:function} BMessage::BMessage(const BMessage& message)
-```
-```{cpp:function} BMessage::BMessage()
-```
-
-### BMessage()
-
-:::{code} cpp
-BMessage(uint32 command);
-BMessage(const BMessage& message);
-BMessage();
+::::{abi-group}
+:::{cpp:function} BMessage::BMessage(uint32 command)
+:::
+:::{cpp:function} BMessage::BMessage(const BMessage& message)
+:::
+:::{cpp:function} BMessage::BMessage()
 :::
 
-Creates a new `BMessage` object that has the given `command` constant, or that's a copy of another
+Creates a new {hclass}`BMessage` object that has the given {hparam}`command` constant, or that's a copy of another
 `BMessage`. If it's a copy, the new object contains the same command constant and data fields as
-`message`.
+{hparam}`message`.
 
 See also: {cpp:func}`BLooper::DetachCurrentMessage()`.
+::::
 
-### ~BMessage()
-
-:::{code} cpp
-virtual ~BMessage();
+::::{abi-group}
+:::{cpp:function} virtual BMessage::~BMessage()
 :::
 
 Frees all memory allocated to hold message data. If the message sender is expecting a reply but
-hasn't received one, a default reply (with {cpp:enum}`B_NO_REPLY` as the `what` data member) is sent
+hasn't received one, a default reply (with {cpp:enum}`B_NO_REPLY` as the {hfield}`what` data member) is sent
 before the message is destroyed.
 
 The system retains ownership of the messages it delivers to you. Each message loop routinely deletes
-delivered `BMessage`s after the application is finished responding to them.
+delivered {hclass}`BMessage`s after the application is finished responding to them.
+::::
 
 ## Member Functions
 
-### AddData(), AddBool(), AddInt8(), AddInt16(), AddInt32(), AddInt64(), AddFloat(), AddDouble(), AddString(), AddPoint(), AddRect(), AddRef(), AddMessage(), AddMessenger(), AddPointer(), AddFlat()
+::::{abi-group}
 
-```{cpp:function} status_t BMessage::AddData(const char* name, type_code type, const void* data, ssize_t numBytes, bool fixedSize = true, int32 numItems = 1)
-```
-:::{code} cpp
-status_t AddData(const char* name,
-                type_code type,
-                const void* data,
-                ssize_t numBytes,
-                bool fixedSize = true,
-                int32 numItems = 1);
+:::{cpp:function} status_t BMessage::AddData(const char* name, type_code type, const void* data, ssize_t numBytes, bool fixedSize = true, int32 numItems = 1)
 :::
-```{cpp:function} status_t BMessage::BMessage::AddBool(const char* name, bool aBool)
-```
-:::{code} cpp
-status_t AddBool(const char* name, bool aBool);
+:::{cpp:function} status_t BMessage::AddBool(const char* name, bool data)
 :::
-```{cpp:function} BMessage::AddInt8()
-```
-:::{code} cpp
-status_t AddInt8(const char* name, int8 anInt8);
+:::{cpp:function} status_t BMessage::AddInt8(const char* name, int8 data)
 :::
-```{cpp:function} BMessage::AddInt16()
-```
-:::{code} cpp
-status_t AddInt16(const char* name, int16 anInt16);
+:::{cpp:function} status_t BMessage::AddInt16(const char* name, int16 data)
 :::
-```{cpp:function} BMessage::AddInt32()
-```
-:::{code} cpp
-status_t AddInt32(const char* name, int32 anInt32);
+:::{cpp:function} status_t BMessage::AddInt32(const char* name, int32 data)
 :::
-```{cpp:function} BMessage::AddInt64()
-```
-:::{code} cpp
-status_t AddInt64(const char* name, int64 anInt64);
+:::{cpp:function} status_t BMessage::AddInt64(const char* name, int64 data)
 :::
-```{cpp:function} BMessage::AddFloat()
-```
-:::{code} cpp
-status_t AddFloat(const char* name, float anloat);
+:::{cpp:function} status_t BMessage::AddFloat(const char* name, float data)
 :::
-```{cpp:function} BMessage::AddDouble()
-```
-:::{code} cpp
-status_t AddDouble(const char* name, double aDouble);
+:::{cpp:function} status_t BMessage::AddDouble(const char* name, double data)
 :::
-```{cpp:function} BMessage::AddString()
-```
-:::{code} cpp
-status_t AddString(const char* name, const char *string);
-status_t AddString(const char* name, const BString string);
+:::{cpp:function} status_t BMessage::AddString(const char* name, const char *string)
 :::
-```{cpp:function} BMessage::AddPoint()
-```
-:::{code} cpp
-status_t AddPoint(const char* name, BPoint point);
+:::{cpp:function} status_t BMessage::AddString(const char* name, const BString string)
 :::
-```{cpp:function} BMessage::AddRect()
-```
-:::{code} cpp
-status_t AddRect(const char* name, BRect rect);
+:::{cpp:function} status_t BMessage::AddPoint(const char* name, BPoint point)
 :::
-```{cpp:function} BMessage::AddRef()
-```
-:::{code} cpp
-status_t AddRef(const char* name, const entry_ref* ref);
+:::{cpp:function} status_t BMessage::AddRect(const char* name, BRect rect)
 :::
-```{cpp:function} BMessage::AddMessage()
-```
-:::{code} cpp
-status_t AddMessage(const char* name, const BMessage* message);
+:::{cpp:function} status_t BMessage::AddRef(const char* name, const entry_ref* ref)
 :::
-```{cpp:function} BMessage::AddMessenger()
-```
-:::{code} cpp
-status_t AddMessenger(const char* name, BMessenger messenger);
+:::{cpp:function} status_t BMessage::AddMessage(const char* name, const BMessage* message)
 :::
-```{cpp:function} BMessage::AddPointer()
-```
-:::{code} cpp
-status_t AddPointer(const char* name, const void* pointer);
+:::{cpp:function} status_t BMessage::AddMessenger(const char* name, BMessenger messenger)
 :::
-```{cpp:function} BMessage::AddFlat()
-```
-:::{code} cpp
-status_t AddFlat(const char* name, BFlattenable* object, int32 numItems = 1);
+:::{cpp:function} status_t BMessage::AddPointer(const char* name, const void* pointer)
+:::
+:::{cpp:function} status_t BMessage::AddFlat(const char* name, BFlattenable* object, int32 numItems = 1)
 :::
 
-These functions add data to the field named `name` and assign a data type to the field. Field names
+These functions add data to the field named {hparam}`name` and assign a data type to the field. Field names
 can be no longer than 255 characters. If more than one item of data is added under the same name,
-the `BMessage` creates an array of data for that name. Each time you add another value (to the same
+the {hclass}`BMessage` creates an array of data for that name. Each time you add another value (to the same
 name), the value is added to the end of the array---you can't add a value at a specific index. A
 given field can only store one type of data.
 
-`AddData()` copies `numBytes` of `data` into the field, and assigns the data a `type` code. It
-copies whatever the `data` pointer points to. For example, if you want to add a string of characters
-to the message, `data` should be the string pointer (`char*`). If you want to add only the string
-pointer, not the characters themselves, `data` should be a pointer to the pointer (`char**`). The
-assigned `type` must be a specific data type; it should not be {cpp:enum}`B_ANY_TYPE`.
+{hmethod}`AddData()` copies {hparam}`numBytes` of {hparam}`data` into the field, and assigns the data a {hparam}`type` code. It
+copies whatever the {hparam}`data` pointer points to. For example, if you want to add a string of characters
+to the message, {hparam}`data` should be the string pointer (`char*`). If you want to add only the string
+pointer, not the characters themselves, {hparam}`data` should be a pointer to the pointer (`char**`). The
+assigned {hparam}`type` must be a specific data type; it should not be {cpp:enum}`B_ANY_TYPE`.
 
-When you call `AddData()` to place the first item in an array under a new name, you can provide it
-with two arguments, `fixedSize` and `numItems`, that will improve the object's efficiency. If the
-`fixedSize` flag is {cpp:expr}`true`, each item in the array must have the same number of bytes; if
-the flag is {cpp:expr}`false`, items can vary in size. `numItems` tells the object to pre-allocate
-storage for some number of items. This isn't a limit, you can add more than `numItems` to the field.
+When you call {hmethod}`AddData()` to place the first item in an array under a new name, you can provide it
+with two arguments, {hparam}`fixedSize` and {hparam}`numItems`, that will improve the object's efficiency. If the
+{hparam}`fixedSize` flag is {cpp:expr}`true`, each item in the array must have the same number of bytes; if
+the flag is {cpp:expr}`false`, items can vary in size. {hparam}`numItems` tells the object to pre-allocate
+storage for some number of items. This isn't a limit, you can add more than {hparam}`numItems` to the field.
 
-Most of the other functions are variants of `AddData()` that hard-code the field's type. For
-example, `AddFloat()` assigns the type {cpp:enum}`B_FLOAT_TYPE`; `AddBool()` assigns
+Most of the other functions are variants of {hmethod}`AddData()` that hard-code the field's type. For
+example, {hmethod}`AddFloat()` assigns the type {cpp:enum}`B_FLOAT_TYPE`; {hmethod}`AddBool()` assigns
 {cpp:enum}`B_BOOL_TYPE`, and so on.
 
-`AddString()`, like `AddData()`, takes a pointer to the data it adds, or you can use a
-{cpp:class}`BString` object. The `string` must be null-terminated; the null character is counted and
-copied into the message. Similarly, `AddRef()` adds the pointed to `entry_ref` structure to the
-message (and the variable-length name that's one of the elements of the structure); `AddMessage()`
-adds one `BMessage` to another.
+{hmethod}`AddString()`, like {hmethod}`AddData()`, takes a pointer to the data it adds, or you can use a
+{cpp:class}`BString` object. The {hparam}`string` must be null-terminated; the null character is counted and
+copied into the message. Similarly, {hmethod}`AddRef()` adds the pointed to {hparam}`entry_ref` structure to the
+message (and the variable-length name that's one of the elements of the structure); {hmethod}`AddMessage()`
+adds one {hclass}`BMessage` to another.
 
-The other functions are simply passed the data directly. For example, `AddInt32()` takes an int32 or
-uint32 and `AddMessenger()` takes a {cpp:class}`BMessenger` object, whereas `AddData()` would be
-passed a pointer to an int32 and a pointer to a {cpp:class}`BMessenger`. `AddPointer()` adds only
-the pointer it's passed, not the data it points to. To accomplish the same thing, `AddData()` would
+The other functions are simply passed the data directly. For example, {hmethod}`AddInt32()` takes an int32 or
+uint32 and {hmethod}`AddMessenger()` takes a {cpp:class}`BMessenger` object, whereas {hmethod}`AddData()` would be
+passed a pointer to an int32 and a pointer to a {cpp:class}`BMessenger`. {hmethod}`AddPointer()` adds only
+the pointer it's passed, not the data it points to. To accomplish the same thing, {hmethod}`AddData()` would
 take a pointer to the pointer. (The pointer will be valid only locally; it won't be useful to a
 remote destination.)
 
-`AddFlat()` flattens an `object` (by calling its `Flatten()` function) and adds the flat data to the
+{hmethod}`AddFlat()` flattens an {hparam}`object` (by calling its {hmethod}`Flatten()` function) and adds the flat data to the
 message. It calls the object's {cpp:func}`~BFlattenable::TypeCode()` function to learn the type code
-it should associated with the data. Objects that are added through `AddFlat()` must inherit from
+it should associated with the data. Objects that are added through {hmethod}`AddFlat()` must inherit from
 {cpp:class}`BFlattenable` (defined in the "Support Kit").
 
-You can also provide a `numItems` hint to `AddFlat()` when you call it to set up a new array.
-`AddFlat()` calls the object's {cpp:func}`~BFlattenable::IsFixedSize()` function to discover whether
+You can also provide a {hparam}`numItems` hint to {hmethod}`AddFlat()` when you call it to set up a new array.
+{hmethod}`AddFlat()` calls the object's {cpp:func}`~BFlattenable::IsFixedSize()` function to discover whether
 all items in the array will be the same size.
 
 The functions return a {cpp:enum}`B_ERROR` if the data is too massive to be added to the message,
 {cpp:enum}`B_BAD_TYPE` if the data can't be added to an existing array because it's the wrong type,
-{cpp:enum}`B_NO_MEMORY` if the `BMessage` can't get enough memory to hold the data, and
-{cpp:enum}`B_BAD_VALUE` if the proposed `name` for the data is longer than 255 bytes. If all goes
+{cpp:enum}`B_NO_MEMORY` if the {hclass}`BMessage` can't get enough memory to hold the data, and
+{cpp:enum}`B_BAD_VALUE` if the proposed {hparam}`name` for the data is longer than 255 bytes. If all goes
 well, they return {cpp:enum}`B_OK`.
 
 There's no limit on the number of named fields a message can contain, or on the size a field's data.
@@ -200,82 +218,160 @@ information in a common location (a file, a private clipboard, a shared area of 
 refer to it in the message.
 
 See also: {cpp:func}`~BMessage::FindData()`, {cpp:func}`~BMessage::GetInfo()`
+::::
 
-### AddSpecifier()
-
-```{cpp:function} BMessage::AddSpecifier()
-```
-:::{code} cpp
-status_t AddSpecifier(const BMessage* message);
-status_t AddSpecifier(const char* property);
-status_t AddSpecifier(const char* property, int32 index);
-status_t AddSpecifier(const char* property, int32 index, int32 range);
-status_t AddSpecifier(const char* property, const char* name);
+::::{abi-group}
+:::{cpp:function} status_t BMessage::AddSpecifier(const BMessage* message)
+:::
+:::{cpp:function} status_t BMessage::AddSpecifier(const char* property)
+:::
+:::{cpp:function} status_t BMessage::AddSpecifier(const char* property, int32 index)
+:::
+:::{cpp:function} status_t BMessage::AddSpecifier(const char* property, int32 index, int32 range)
+:::
+:::{cpp:function} status_t BMessage::AddSpecifier(const char* property, const char* name)
 :::
 
 Adds a specifier to the specifier stack. There are several variations of this method. The first adds
-the specifier `message` to the specifier stack. The other methods add a specifier targeting the
-property `property`, which specifier constants {cpp:enum}`B_DIRECT_SPECIFIER`,
+the specifier {hparam}`message` to the specifier stack. The other methods add a specifier targeting the
+property {hparam}`property`, which specifier constants {cpp:enum}`B_DIRECT_SPECIFIER`,
 {cpp:enum}`B_INDEX_SPECIFIER`, {cpp:enum}`B_RANGE_SPECIFIER`, and {cpp:enum}`B_NAME_SPECIFIER`. For
-all other specifiers, you must construct the specifier separately and then call `AddSpecifier()` on
+all other specifiers, you must construct the specifier separately and then call {hmethod}`AddSpecifier()` on
 the message. For more information about specifiers, see the "Scripting" section near the beginning
 of this chapter.
 
-Specifiers are stored in a data array named "specifiers". However, since `AddSpecifier()` also sets
+Specifiers are stored in a data array named "specifiers". However, since {hmethod}`AddSpecifier()` also sets
 the notion of the current specifier, specifiers should always be added to a scripting message with
 this method rather than with {cpp:func}`~BMessage::AddMessage()`.
 
-`AddSpecifier()` returns {cpp:enum}`B_OK` if it's able to add the specifier to the `BMessage` and an
+{hmethod}`AddSpecifier()` returns {cpp:enum}`B_OK` if it's able to add the specifier to the {hclass}`BMessage` and an
 error code, generally only {cpp:enum}`B_NO_MEMORY` to indicate that it has run out of memory, if
 not.
 
 See also: {cpp:func}`~BMessage::GetCurrentSpecifier()`, {cpp:func}`~BMessage::HasSpecifiers()`,
 {cpp:func}`~BMessage::PopSpecifier()`.
+::::
 
-### CountNames()
-
-```{cpp:function} BMessage::CountNames()
-```
-:::{code} cpp
-int32 CountNames(type_code type) const;
+::::{abi-group}
+:::{cpp:function} int32 BMessage::CountNames(type_code type) const
 :::
 
-Returns the number of named data fields in the `BMessage` that store data of the specified `type`.
+Returns the number of named data fields in the {hclass}`BMessage` that store data of the specified {hparam}`type`.
 An array of information held under a single name counts as one field; each name is counted only
 once, no matter how many data items are stored under that name.
 
-If `type` is {cpp:enum}`B_ANY_TYPE`, this function counts all named fields. If `type` is a specific
+If {hparam}`type` is {cpp:enum}`B_ANY_TYPE`, this function counts all named fields. If {hparam}`type` is a specific
 type, it counts only fields that store data registered as that type.
 
 See also: {cpp:func}`~BMessage::GetInfo()`.
+::::
 
-### FindData(), FindBool(), FindInt8(), FindInt16(), FindInt32(), FindInt64(), FindFloat(), FindDouble(), FindString(), FindPoint(), FindRect(), FindRef(), FindMessage(), FindMessenger(), FindPointer(), FindFlat()
+::::{abi-group}
 
-These functions retrieve data from the `BMessage`. Each looks for data stored under the specified
-`name`. If more than one data item has the same name, an `index` can be provided to tell the
-function which item in the `name` array it should find. Indices begin at 0. If an `index` isn't
+:::{admonition} Deprecated Methods
+:class: warning
+These methods are likely to be removed in Haiku/R2, as they have been replaced by safer and more
+powerful methods. The replacements return a {cpp:expr}`bool` of whether the data could be found, and a default
+value to return if it wasn't found, as well as other convenience functions.
+
+These are implemented for the purpose of binary compatibility.
+:::
+
+:::{cpp:function} status_t BMessage::FindData(const char* name, type_code type, int32 index, const void** data, ssize_t* numBytes) const
+:::
+:::{cpp:function} status_t BMessage::FindData(const char* name, type_code type, const void** data, ssize_t* numBytes) const
+:::
+:::{cpp:function} status_t BMessage::FindBool(const char* name, int32 index, bool* aBool) const
+:::
+:::{cpp:function} status_t BMessage::FindBool(const char* name, bool* aBool) const
+:::
+:::{cpp:function} status_t BMessage::FindInt8(const char* name, int32 index, int8* anInt8) const
+:::
+:::{cpp:function} status_t BMessage::FindInt8(const char* name, int8* anInt8) const
+:::
+:::{cpp:function} status_t BMessage::FindInt16(const char* name, int32 index, int16* anInt16) const
+:::
+:::{cpp:function} status_t BMessage::FindInt16(const char* name, int16* anInt16) const
+:::
+:::{cpp:function} status_t BMessage::FindInt32(const char* name, int32 index, int32* anInt32) const
+:::
+:::{cpp:function} status_t BMessage::FindInt32(const char* name, int32* anInt32) const
+:::
+:::{cpp:function} status_t BMessage::FindInt64(const char* name, int32 index, int64* anInt64) const
+:::
+:::{cpp:function} status_t BMessage::FindInt64(const char* name, int64* anInt64) const
+:::
+:::{cpp:function} status_t BMessage::FindFloat(const char* name, int32 index, float* aFloat) const
+:::
+:::{cpp:function} status_t BMessage::FindFloat(const char* name, float* aFloat) const
+:::
+:::{cpp:function} status_t BMessage::FindDouble(const char* name, int32 index, double* aDouble) const
+:::
+:::{cpp:function} status_t BMessage::FindDouble(const char* name, double* aDouble) const
+:::
+:::{cpp:function} status_t BMessage::FindString(const char* name, int32 index, const char** string) const
+:::
+:::{cpp:function} status_t BMessage::FindString(const char* name, const char** string) const
+:::
+:::{cpp:function} status_t BMessage::FindString(const char* name, int32 index, BString* string) const
+:::
+:::{cpp:function} status_t BMessage::FindString(const char* name, BString* string) const
+:::
+:::{cpp:function} status_t BMessage::FindPoint(const char* name, int32 index, BPoint* point) const
+:::
+:::{cpp:function} status_t BMessage::FindPoint(const char* name, BPoint* point) const
+:::
+:::{cpp:function} status_t BMessage::FindRect(const char* name, int32 index, BRect* rect) const
+:::
+:::{cpp:function} status_t BMessage::FindRect(const char* name, BRect* rect) const
+:::
+:::{cpp:function} status_t BMessage::FindRef(const char* name, int32 index, entry_ref* ref) const
+:::
+:::{cpp:function} status_t BMessage::FindRef(const char* name, entry_ref* ref) const
+:::
+:::{cpp:function} status_t BMessage::FindMessage(const char* name, int32 index, BMessage* message) const
+:::
+:::{cpp:function} status_t BMessage::FindMessage(const char* name, BMessage* message) const
+:::
+:::{cpp:function} status_t BMessage::FindMessenger(const char* name, int32 index, BMessenger* messenger) const
+:::
+:::{cpp:function} status_t BMessage::FindMessenger(const char* name, BMessenger* messenger) const
+:::
+:::{cpp:function} status_t BMessage::FindPointer(const char* name, int32 index, void** pointer) const
+:::
+:::{cpp:function} status_t BMessage::FindPointer(const char* name, void** pointer) const
+:::
+:::{cpp:function} status_t BMessage::FindFlat(const char* name, int32 index, BFlattenable* object) const
+:::
+:::{cpp:function} status_t BMessage::FindFlat(const char* name, BFlattenable* object) const
+:::
+
+These functions retrieve data from the {hclass}`BMessage`. Each looks for data stored under the specified
+{hparam}`name`. If more than one data item has the same name, an {hparam}`index` can be provided to tell the
+function which item in the {hparam}`name` array it should find. Indices begin at 0. If an {hparam}`index` isn't
 provided, the function will find the first, or only, item in the array.
 
 :::{admonition} Important
 :class: warning
-In all cases except `FindData()` and `FindString()`, the data that's retrieved from the `BMessage`
+In all cases except {hmethod}`FindData()` and {hmethod}`FindString()`, the data that's retrieved from the {hclass}`BMessage`
 is copied into the reference argument; the caller is responsible for freeing the copied data. For
-`FindData()` and the non-{cpp:class}`BString` version of `FindString()`, a pointer to the data is
-returned; the `BMessage` retains ownership of the actual data and will delete the data when the
+{hmethod}`FindData()` and the non-{cpp:class}`BString` version of {hmethod}`FindString()`, a pointer to the data is
+returned; the {hclass}`BMessage` retains ownership of the actual data and will delete the data when the
 object itself is deleted.
 :::
 
-`FindData()` places, in `*data`, a pointer to the requested data item. The size of the item in bytes
-is written to `numBytes`. If `type` is {cpp:enum}`B_ANY_TYPE`, it provides a pointer to the data no
+{hmethod}`FindData()` places, in {hparam}`*data`, a pointer to the requested data item. The size of the item in bytes
+is written to {hparam}`numBytes`. If {hparam}`type` is {cpp:enum}`B_ANY_TYPE`, it provides a pointer to the data no
 matter what type it actually is. But if `type` is a specific data type, it provides the pointer only
-if the `name` field holds data of that particular type.
+if the {hparam}`name` field holds data of that particular type.
 
-The other functions are specialized versions of `FindData()`. They match the corresponding Add...()
+The other functions are specialized versions of {hmethod}`FindData()`. They match the corresponding {hmethod}`Add...()`
 methods and search for named data of a particular type, as described below:
 
 :::{list-table}
 ---
 header-rows: 1
+align: left
 ---
 -
     - Function
@@ -341,117 +437,94 @@ header-rows: 1
 
 The other type-specific functions retrieve the requested data item from the message by copying it to
 the variable referred to by the last argument; you get the data, not just a pointer to it. For
-example, `FindMessenger()` assigns the {cpp:class}`BMessenger` it finds in the message to the
-`messenger` object, whereas `FindData()` would provide only a pointer to a {cpp:class}`BMessenger`.
-`FindPointer()` puts the found pointer in the `void*` variable that `pointer` refers to;
-`FindData()`, as ilustrated above, would provide a pointer to the pointer. (If the message was
+example, {hmethod}`FindMessenger()` assigns the {cpp:class}`BMessenger` it finds in the message to the
+{hparam}`messenger` object, whereas {hmethod}`FindData()` would provide only a pointer to a {cpp:class}`BMessenger`.
+{hmethod}`FindPointer()` puts the found pointer in the {cpp:expr}`void*` variable that {hparam}`pointer` refers to;
+{hmethod}`FindData()`, as ilustrated above, would provide a pointer to the pointer. (If the message was
 delivered from a remote source, pointers retrieved from the message won't be valid.)
 
-`FindRef()` retrieves an `entry_ref` structure; the data that's used to reconstitute the structure
-may have been added as an `entry_ref` (through `AddRef()`), or as a flattened {cpp:class}`BPath`
-object (`AddFlat()`).
+{hmethod}`FindRef()` retrieves an {hclass}`entry_ref` structure; the data that's used to reconstitute the structure
+may have been added as an {hclass}`entry_ref` (through {hmethod}`AddRef()`), or as a flattened {cpp:class}`BPath`
+object ({hmethod}`AddFlat()`).
 
-`FindFlat()` assigns the object stored in the `BMessage` to the `object` passed as an argument, it
-calls the `object`'s {cpp:func}`~BMessage::Unflatten()` function and passes it the flat data from
+{hmethod}`FindFlat()` assigns the object stored in the {hclass}`BMessage` to the {hparam}`object` passed as an argument, it
+calls the {hparam}`object`'s {cpp:func}`~BMessage::Unflatten()` function and passes it the flat data from
 the message, provided that the two objects have compatible types. The argument object's
-`AllowTypeCode()` function must return {cpp:enum}`true` when tested with the type code stored in the
-message; if not, `FindFlat()` fails and returns {cpp:enum}`B_BAD_VALUE`.
+{hmethod}`AllowTypeCode()` function must return {cpp:expr}`true` when tested with the type code stored in the
+message; if not, {hmethod}`FindFlat()` fails and returns {cpp:enum}`B_BAD_VALUE`.
 
-If these functions can't find any data associated with `name`, they return a
-{cpp:enum}`B_NAME_NOT_FOUND` error. If they can't find `name` data of the requested `type` (or the
-type the function returns), they return {cpp:enum}`B_BAD_TYPE`. If the `index` is out of range, they
+If these functions can't find any data associated with {hparam}`name`, they return a
+{cpp:enum}`B_NAME_NOT_FOUND` error. If they can't find {hparam}`name` data of the requested {hparam}`type` (or the
+type the function returns), they return {cpp:enum}`B_BAD_TYPE`. If the {hparam}`index` is out of range, they
 return {cpp:enum}`B_BAD_INDEX`. You can rely on the values they retrieve only if they return
 {cpp:enum}`B_OK` and the data was correctly recorded when it was added to the message.
 
-When they fail, `FindData()` and `FindString()` provide {cpp:enum}`NULL` pointers. `FindRect()`
-hands you an invalid rectangle and `FindMessenger()` and invalid {cpp:class}`BMessenger`. Most of
+When they fail, {hmethod}`FindData()` and {hmethod}`FindString()` provide {cpp:enum}`NULL` pointers. {hmethod}`FindRect()`
+hands you an invalid rectangle and {hmethod}`FindMessenger()` and invalid {cpp:class}`BMessenger`. Most of
 the other functions set the data values to 0, which may be indistinguishable from valid values.
 
-Find a data item doesn't remove it from the `BMessage`.
+Find a data item doesn't remove it from the {hclass}`BMessage`.
 
-(Several functions, such as `FindRect()` and `FindInt32`, have versions that return the found value
+(Several functions, such as {hmethod}`FindRect()` and {hmethod}`FindInt32`, have versions that return the found value
 directly. These versions don't report errors and may not be supported in the future.)
 
 See also: {cpp:func}`~BMessage::GetInfo()`, {cpp:func}`~BMessage::AddData()`.
+::::
 
-### Flatten(), Unflatten(), FlattenedSize()
-
-```{cpp:function} BMessage::Flatten()
-```
-:::{code} cpp
-status_t Flatten(BDataIO* object, ssize_t* numBytes = NULL) const;
-status_t Flatten(char* address, ssize_t* numBytes = NULL) const;
+::::{abi-group}
+:::{admonition} ABI
+:class: note
+Because of historical reasons and for binary compatibility, this class provides a flattening API
+without inheriting the {cpp:class}`BFlattenable` class. The API is more or less the same, but you
+are inconvenienced when you want to use messages in methods that handle {cpp:class}`BFlattenable`
+objects.
 :::
 
-```{cpp:function} BMessage::Unflatten()
-```
-:::{code} cpp
-status_t Unflatten(BDataIO* object);
-status_t Unflatten(const char* address);
+:::{cpp:function} status_t BMessage::Flatten(BDataIO* object, ssize_t* numBytes = NULL) const
+:::
+:::{cpp:function} status_t BMessage::Flatten(char* address, ssize_t* numBytes = NULL) const
+:::
+:::{cpp:function} status_t BMessage::Unflatten(BDataIO* object)
+:::
+:::{cpp:function} status_t BMessage::Unflatten(const char* address)
+:::
+:::{cpp:function} ssize_t BMessage::FlattenedSize() const
 :::
 
-```{cpp:function} BMessage::FlattenedSize()
-```
-:::{code} cpp
-ssize_t FlattenedSize() const;
-:::
+These functions write the {hclass}`BMessage` and the data in contains to a "flat" (untyped) buffer of bytes,
+and reconstruct a {hclass}`BMessage` object from such a buffer.
 
-These functions write the `BMessage` and the data in contains to a "flat" (untyped) buffer of bytes,
-and reconstruct a `BMessage` object from such a buffer.
+If a passed {cpp:class}`BDataIO` {hparam}`object` (including a {cpp:class}`BFile`), {hmethod}`Flatten()` calls the
+object's {hmethod}`Write()` function to write the message data. If passed the {hparam}`address` of a buffer, it
+begins writing at the start of the buffer. {hmethod}`FlattenedSize()` returns the number of bytes you must
+provide in the buffer to hold the flattened object. {hmethod}`Flatten()` places the number of bytes actually
+written in the variable that its {hparam}`numBytes` argument refers to.
 
-If a passed {cpp:class}`BDataIO` `object` (including a {cpp:class}`BFile`), `Flatten()` calls the
-object's `Write()` function to write the message data. If passed the `address` of a buffer, it
-begins writing at the start of the buffer. `FlattenedSize()` returns the number of bytes you must
-provide in the buffer to hold the flattened object. `Flatten()` places the number of bytes actually
-written in the variable that its `numBytes` argument refers to.
-
-`Unflatten()` empties the `BMessage` of any information it may happen to contain, then initializes
+{hmethod}`Unflatten()` empties the {hclass}`BMessage` of any information it may happen to contain, then initializes
 the object from data read from the buffer. If passed a {cpp:class}`BDataIO` object, it calls the
-object's `Read()` function to read the message data. If passed a buffer `address`, it begins reading
-at the start of the buffer. It's up to the caller to make sure than `Unflatten()` reads data that
-`Flatten()` wrote and that pointers are positioned correctly.
+object's {hmethod}`Read()` function to read the message data. If passed a buffer {hparam}`address`, it begins reading
+at the start of the buffer. It's up to the caller to make sure than {hmethod}`Unflatten()` reads data that
+{hmethod}`Flatten()` wrote and that pointers are positioned correctly.
 
-`Flatten()` returns any errors encountered when writing the data, of {cpp:enum}`B_OK` if there is no
+{hmethod}`Flatten()` returns any errors encountered when writing the data, of {cpp:enum}`B_OK` if there is no
 error.
 
 If it doesn't recognize the data in the buffer as being a flattened object or there's a failure in
-reading the data, `Unflatten()` returns {cpp:enum}`B_BAD_VALUE`. If it doesn't have adequate memory
+reading the data, {hmethod}`Unflatten()` returns {cpp:enum}`B_BAD_VALUE`. If it doesn't have adequate memory
 to recreate the whole message, it returns {cpp:enum}`B_NO_MEMORY`. Otherwise, it returns
 {cpp:enum}`B_OK`.
 
 See also: the {cpp:class}`BDataIO` class in the "Support Kit".
+::::
 
-:::{api:section}
----
-members:
- - uint32 BMessage::what
-functions:
- - status_t BMessage::GetCurrentSpecifier(int32* index, BMessage* specifier = NULL,
-        int32* what = NULL, const char** property = NULL) const
- - status_t BMessage::PopSpecifier()
----
-
-`GetCurrentSpecifier()` unpacks the current specifier in the `BMessage`, the one at the top of the
-specifier stack; `PopSpecifer()` changes the notion of which specifier is current, by popping the
-current one from the stack.
-
-These functions aid in implementing a class-specific version of {cpp:class}`BHandler`'s
-{cpp:func}`~BHandler::ResolveSpecifier()` function---the first gets the specifier that needs to be
-resolved, and the second pops it from the stack....
+::::{abi-group}
+:::{cpp:function} status_t BMessage::GetCurrentSpecifier(int32* index, BMessage* specifier = NULL, int32* what = NULL, const char** property = NULL) const
+:::
+:::{cpp:function} status_t BMessage::PopSpecifier()
 :::
 
-::::{api:section}
-:::{api:function}
-status_t BMessage::GetCurrentSpecifier(int32* index, BMessage* specifier = NULL,
-    int32* what = NULL, const char** property = NULL) const
-:::
-
-:::{api:function}
-status_t BMessage::PopSpecifier()
-:::
-
-`GetCurrentSpecifier()` unpacks the current specifier in the `BMessage`, the one at the top of the
-specifier stack; `PopSpecifier()` changes the notion of which specifier is current, by popping the
+{hmethod}`GetCurrentSpecifier()` unpacks the current specifier in the {hclass}`BMessage`, the one at the top of the
+specifier stack; {hmethod}`PopSpecifer()` changes the notion of which specifier is current, by popping the
 current one from the stack.
 
 These functions aid in implementing a class-specific version of {cpp:class}`BHandler`'s
@@ -460,21 +533,21 @@ resolved, and the second pops it from the stack after it is resolved. You can al
 examine relevent specifiers when handling a message that targets an object property (such as
 {cpp:enum}`B_GET_PROPERTY`).
 
-A scripting `BMessage` keeps specifiers in a data array named "specifiers"; each specifier is itself
-a `BMessage`, but one with a special structure and purpose in the scripting system. See the
+A scripting {hclass}`BMessage` keeps specifiers in a data array named "specifiers"; each specifier is itself
+a {hclass}`BMessage`, but one with a special structure and purpose in the scripting system. See the
 "Scripting" section near the beginning of this chapter for an overview of the system and the place
 of specifiers in it.
 
-The specifiers in a message are ordered and, until `PopSpecifier()` is called, the one that was
-added last, the one with the greatest index, is the current specifier. `PopSpecifier()` merely
+The specifiers in a message are ordered and, until {hmethod}`PopSpecifier()` is called, the one that was
+added last, the one with the greatest index, is the current specifier. {hmethod}`PopSpecifier()` merely
 decrements the index that picks the current specifier; it doesn't delete anything from the
-`BMessage`.
+{hclass}`BMessage`.
 
-`GetCurrentSpecifier()` puts the index of the current specifier in the variable that its first
-argument, `index`, refers to. If other arguments are provided, it makes the `specifier` `BMessage` a
-copy of the current specifier. It also extracts two pieces of information from the `specifier`. If
-places the `what` data member of the specifier in the `what` variable and a pointer to the property
-name in the `property` variable. These last two output arguments won't be valid if the `specifier`
+{hmethod}`GetCurrentSpecifier()` puts the index of the current specifier in the variable that its first
+argument, {hparam}`index`, refers to. If other arguments are provided, it makes the {hparam}`specifier` {hclass}`BMessage` a
+copy of the current specifier. It also extracts two pieces of information from the {hparam}`specifier`. It
+places the {hfield}`what` data member of the specifier in the {hparam}`what` variable and a pointer to the property
+name in the {hparam}`property` variable. These last two output arguments won't be valid if the {hparam}`specifier`
 argument is {cpp:enum}`NULL`.
 
 Both functions fail if the {hclass}`BMessage` doesn't contain specifiers. In addition,
@@ -485,71 +558,16 @@ message loop. When it fails, {hmethod}`GetCurrentSpecifier()` returns
 {cpp:enum}`B_BAD_SCRIPT_SYNTAX`, but {hmethod}`PopSpecifier()` returns {cpp:enum}`B_BAD_VALUE`. On
 success, both functions return {cpp:enum}`B_OK`.
 
-See also: {cpp:func}`~BMessage::AddSpecifier()`, {cpp:func}`~BMessage:HasSpecifier()`,
+See also: {cpp:func}`~BMessage::AddSpecifier()`, {cpp:func}`~BMessage::HasSpecifiers()`,
 {cpp:func}`BHandler::ResolveSpecifier()`.
 ::::
 
-### GetCurrentSpecifier(), PopSpecifier()
-
-```{cpp:function} BMessage::GetCurrentSpecifier()
-```
-:::{code} cpp
-status_t GetCurrentSpecifier(int32* index, BMessage* specifier = NULL, int32* what = NULL, const
-    char** property = NULL) const;
+::::{abi-group}
+:::{cpp:function} status_t BMessage::GetInfo(const char* name, type_code* typeFound, int32* countFound = NULL) const
 :::
-```{cpp:function} BMessage::PopSpecifier()
-```
-:::{code} cpp
-status_t PopSpecifier();
+:::{cpp:function} status_t BMessage::GetInfo(const char* name, type_code* typeFound, bool* fixedSize) const
 :::
-
-`GetCurrentSpecifier()` unpacks the current specifier in the `BMessage`, the one at the top of the
-specifier stack; `PopSpecifier()` changes the notion of which specifier is current, by popping the
-current one from the stack.
-
-These functions aid in implementing a class-specific version of {cpp:class}`BHandler`'s
-{cpp:func}`~BHandler::ResolveSpecifier()` function---the first gets the specifier that needs to be
-resolved, and the second pops it from the stack after it is resolved. You can also call them to
-examine relevant specifiers when handling a message that targets an object property (such as
-{cpp:enum}`B_GET_PROPERTY`).
-
-A scripting `BMessage` keeps specifiers in a data array named "specifiers"; each specifier is itself
-a `BMessage`, but one with a special structure and purpose in the scripting system. See the
-"Scripting" section near the beginning of this chapter for an overview of the system and the place
-of specifiers in it.
-
-The specifiers in a message are ordered and, until `PopSpecifier()` is called, the one that was
-added last, the one with the greatest index, is the current specifier. `PopSpecifier()` merely
-decremements the index that picks the current specifier; it doesn't delete anything from the
-`BMessage`.
-
-`GetCurrentSpecifier()` puts the index of the current specifier in the variable that its first
-argument, `index`, refers to. If other arguments are provided, it makes the `specifier` `BMessage` a
-copy of the current specifier. It also extracts two pieces of information from the `specifier`. If
-places the `what` data member of the specifier in the `what` variable and a pointer to the property
-name in the `property` variable. These last two output arguments won't be valid if the `specifier`
-argument is {cpp:enum}`NULL`.
-
-Both functions fail if the {hclass}`BMessage` doesn't contain specifiers. In addition,
-{hmethod}`GetCurrentSpecifier()` fails if it can't find data in the {hclass}`BMessage` for its
-{hparameter}`specifier` and {hparameter}`property` arguments, and {hmethod}`PopSpecifier()` fails if
-the {hclass}`BMessage` isn't one that has been delivered to you after being processed through a
-message loop. When it fails, {hmethod}`GetCurrentSpecifier()` returns
-{cpp:enum}`B_BAD_SCRIPT_SYNTAX`, but {hmethod}`PopSpecifier()` returns {cpp:enum}`B_BAD_VALUE`. On
-success, both functions return {cpp:enum}`B_OK`.
-
-See also: {cpp:func}`~BMessage::AddSpecifier()`, {cpp:func}`~BMessage:HasSpecifier()`,
-{cpp:func}`BHandler::ResolveSpecifier()`.
-
-### GetInfo()
-
-```{cpp:function} BMessage::GetInfo()
-```
-:::{code} cpp
-status_t GetInfo(const char* name, type_code* typeFound, int32* countFound = NULL) const;
-status_t GetInfo(const char* name, type_code* typeFound, bool* fixedSize) const;
-status_t GetInfo(type_code type, int32 index, char** nameFound, type_code* typeFound,
-    int32* countFound = NULL) const;
+:::{cpp:function} status_t BMessage::GetInfo(type_code type, int32 index, char** nameFound, type_code* typeFound, int32* countFound = NULL) const
 :::
 
 Provides information about the data fields stored in the {hclass}`BMessage`.
@@ -562,8 +580,8 @@ referred to by {hparameter}`countFound`. It then returns {cpp:enum}`B_OK`. If it
 0, and returns {cpp:enum}`B_NAME_NOT_FOUND` (without modifying the {hparameter}`typeFound` variable).
 
 When the {hparameter}`fixedSize` argument is specified, the bool referenced by {hparameter}`fixedSize`
-is set to {cpp:enum}`true` if all items in the array specified by {hparameter}`name` must be the same
-size, and {cpp:enum}`false` if the items can be of different sizes (see
+is set to {cpp:expr}`true` if all items in the array specified by {hparameter}`name` must be the same
+size, and {cpp:expr}`false` if the items can be of different sizes (see
 {cpp:func}`~BMessage::AddData()`).
 
 When passed a {hparameter}`type` and an {hparameter}`index`, {hmethod}`GetInfo()` looks only at fields
@@ -616,82 +634,61 @@ when {hmethod}`GetInfo()` returns {cpp:enum}`B_NAME_NOT_FOUND`. If the requested
 {hclass}`BMessage`.
 
 See also: {cpp:func}`~BMessage::AddData()`, {cpp:func}`~BMessage::FindData()`.
+::::
 
-### HasSpecifiers()
-
-```{cpp:function} BMessage::HasSpecifiers()
-```
-:::{code} cpp
-bool HasSpecifiers() const;
+::::{abi-group}
+:::{cpp:function} bool BMessage::HasSpecifiers() const
 :::
 
-Returns {cpp:enum}`true` if the {hclass}`BMessage` has specifiers added by
-{cpp:func}`~BMessage::AddSpecifier()` function, and {cpp:enum}`false` if not.
+Returns {cpp:expr}`true` if the {hclass}`BMessage` has specifiers added by
+{cpp:func}`~BMessage::AddSpecifier()` function, and {cpp:expr}`false` if not.
 
 See also: {cpp:func}`~BMessage::AddSpecifier()`, {cpp:func}`~BMessage::GetCurrentSpecifier()`.
+::::
 
-### IsSystem()
-
-```{cpp:function} BMessage::IsSystem()
-```
-:::{code} cpp
-bool IsSystem() const;
+::::{abi-group}
+:::{cpp:function} bool BMessage::IsSystem() const
 :::
 
-Returns {cpp:enum}`true` if the {hfield}`what` data member of the {hclass}`BMessage` object
-identifies it as a system-defined message, and {cpp:enum}`false` if not.
+Returns {cpp:expr}`true` if the {hfield}`what` data member of the {hclass}`BMessage` object
+identifies it as a system-defined message, and {cpp:expr}`false` if not.
+::::
 
-### MakeEmpty(), IsEmpty()
-
-```{cpp:function} BMessage::MakeEmpty()
-```
-:::{code} cpp
-status_t MakeEmpty();
+::::{abi-group}
+:::{cpp:function} status_t BMessage::MakeEmpty()
 :::
-```{cpp:function} BMessage::IsEmpty()
-```
-:::{code} cpp
-bool IsEmpty() const;
+:::{cpp:function} bool BMessage::IsEmpty() const
 :::
 
 {hmethod}`MakeEmpty()` removes and frees all data that has been added to the {hclass}`BMessage`,
 without altering the {hfield}`what` constant. It returns {cpp:enum}`B_OK`, unless the message can't
 be altered (as it can't if it's being dragged), in which case it returns {cpp:enum}`B_ERROR`.
 
-{hmethod}`IsEmpty()` returns {cpp:enum}`true` if the {hclass}`BMessage` has no data (whether or not
-is was emptied by {hmethod}`MakeEmpty()`), and {cpp:enum}`false` if it has some.
+{hmethod}`IsEmpty()` returns {cpp:expr}`true` if the {hclass}`BMessage` has no data (whether or not
+is was emptied by {hmethod}`MakeEmpty()`), and {cpp:expr}`false` if it has some.
 
 See also: {cpp:func}`~BMessage::RemoveName()`
+::::
 
-### PrintToStream()
-
-```{cpp:function} BMessage::PrintToStream()
-```
-:::{code} cpp
-void PrintToStream() const;
+::::{abi-group}
+:::{cpp:function} void BMessage::PrintToStream() const
 :::
 
 Prints information about the {hclass}`BMessage` to the standard output stream (stdout). Each field
 of named data is reported in the following format,
 
-<pre class='highlight'>
+<div class='highlight'><pre>
 #entry <em>name</em>, type = <em>type</em>, count = <em>count</em>
-</pre>
+</pre></div>
 
 where _name_ is the name that the data is registered under, _type_ is the constant that indicates
 what type of data it is, and _count_ is the number of data items in the named array.
+::::
 
-### RemoveName(), RemoveData()
-
-```{cpp:function} BMessage::RemoveName()
-```
-:::{code} cpp
-status_t RemoveName(const char* name);
+::::{abi-group}
+:::{cpp:function} status_t BMessage::RemoveName(const char* name)
 :::
-```{cpp:function} BMessage::RemoveData()
-```
-:::{code} cpp
-status_t RemoveData(const char* name, int32 index = 0);
+:::{cpp:function} status_t BMessage::RemoveData(const char* name, int32 index = 0)
 :::
 
 {hmethod}`RemoveName()` removes all data entered in the {hclass}`BMessage` under {hparameter}`name`
@@ -707,8 +704,77 @@ can't for a message that's being dragged), they both return {cpp:enum}`B_ERROR`.
 index is too high), or {cpp:enum}`B_BAD_VALUE` (the value passed is a negative number).
 
 See also: {cpp:func}`~BMessage::MakeEmpty()`.
+::::
 
-### ReplaceData(), ReplaceBool(), ReplaceInt8(), ReplaceInt16(), ReplaceInt32(), ReplaceInt64(), ReplaceFloat(), ReplaceDouble(), ReplaceString(), ReplacePoint(), ReplaceRect(), ReplaceRef(), ReplaceMessage(), ReplaceMessenger(), ReplacePointer(), ReplaceFlat()
+::::{abi-group}
+:::{cpp:function} status_t BMessage::ReplaceData(const char* name, type_code type, const void* data, ssize_t numBytes)
+:::
+:::{cpp:function} status_t BMessage::ReplaceData(const char* name, type_code type, int32 index, const void* data, ssize_t numBytes)
+:::
+:::{cpp:function} status_t BMessage::ReplaceBool(const char* name, bool aBool)
+:::
+:::{cpp:function} status_t BMessage::ReplaceBool(const char* name, int32 index, bool aBool)
+:::
+:::{cpp:function} status_t BMessage::ReplaceInt8(const char* name, int8 anInt8)
+:::
+:::{cpp:function} status_t BMessage::ReplaceInt8(const char* name, int32 index, int8 anInt8)
+:::
+:::{cpp:function} status_t BMessage::ReplaceInt16(const char* name, int16 anInt16)
+:::
+:::{cpp:function} status_t BMessage::ReplaceInt16(const char* name, int32 index, int16 anInt16)
+:::
+:::{cpp:function} status_t BMessage::ReplaceInt32(const char* name, int32 anInt32)
+:::
+:::{cpp:function} status_t BMessage::ReplaceInt32(const char* name, int32 index, int32 anInt32)
+:::
+:::{cpp:function} status_t BMessage::ReplaceInt64(const char* name, int64 anInt64)
+:::
+:::{cpp:function} status_t BMessage::ReplaceInt64(const char* name, int32 index, int64 anInt64)
+:::
+:::{cpp:function} status_t BMessage::ReplaceFloat(const char* name, float aFloat)
+:::
+:::{cpp:function} status_t BMessage::ReplaceFloat(const char* name, int32 index, float aFloat)
+:::
+:::{cpp:function} status_t BMessage::ReplaceDouble(const char* name, double aDouble)
+:::
+:::{cpp:function} status_t BMessage::ReplaceDouble(const char* name, int32 index, double aDouble)
+:::
+:::{cpp:function} status_t BMessage::ReplaceString(const char* name, const char* aString)
+:::
+:::{cpp:function} status_t BMessage::ReplaceString(const char* name, int32 index, const char* aString)
+:::
+:::{cpp:function} status_t BMessage::ReplaceString(const char* name, BString& aString)
+:::
+:::{cpp:function} status_t BMessage::ReplaceString(const char* name, int32 index, BString& aString)
+:::
+:::{cpp:function} status_t BMessage::ReplacePoint(const char* name, BPoint point)
+:::
+:::{cpp:function} status_t BMessage::ReplacePoint(const char* name, int32 index, BPoint point)
+:::
+:::{cpp:function} status_t BMessage::ReplaceRect(const char* name, BRect rect)
+:::
+:::{cpp:function} status_t BMessage::ReplaceRect(const char* name, int32 index, BRect rect)
+:::
+:::{cpp:function} status_t BMessage::ReplaceRef(const char* name, entry_ref* ref)
+:::
+:::{cpp:function} status_t BMessage::ReplaceRef(const char* name, int32 index, entry_ref* ref)
+:::
+:::{cpp:function} status_t BMessage::ReplaceMessage(const char* name, BMessage* message)
+:::
+:::{cpp:function} status_t BMessage::ReplaceMessage(const char* name, int32 index, BMessage* message)
+:::
+:::{cpp:function} status_t BMessage::ReplaceMessenger(const char* name, BMessenger messenger)
+:::
+:::{cpp:function} status_t BMessage::ReplaceMessenger(const char* name, int32 index, BMessenger messenger)
+:::
+:::{cpp:function} status_t BMessage::ReplacePointer(const char* name, const void* pointer)
+:::
+:::{cpp:function} status_t BMessage::ReplacePointer(const char* name, int32 index, const void* pointer)
+:::
+:::{cpp:function} status_t BMessage::ReplaceFlat(const char* name, BFlattenable* object)
+:::
+:::{cpp:function} status_t BMessage::ReplaceFlat(const char* name, int32 index, BFlattenable* object)
+:::
 
 These functions replace a data item in the {hparameter}`name` field with another item passed as an
 argument. If an {hparameter}`index` is provided, they replace the item in the {hparameter}`name`
@@ -738,13 +804,10 @@ the {hparameter}`name` field doesn't exist, or {cpp:enum}`B_BAD_TYPE` if the fie
 data of the specified type.
 
 See also: {cpp:func}`~BMessage::AddData()`.
+::::
 
-### ReturnAddress()
-
-```{cpp:function} BMessage::ReturnAddress()
-```
-:::{code} cpp
-BMessenger ReturnAddress();
+::::{abi-group}
+:::{cpp:function} BMessenger BMessage::ReturnAddress()
 :::
 
 Returns a {cpp:class}`BMessenger` object that can be used to reply to the {hclass}`BMessage`.
@@ -757,16 +820,16 @@ If you want to use the {hmethod}`ReturnAddress()` {cpp:class}`BMessenger` to sen
 reply, you must do so before the {hclass}`BMessage` is deleted and a default reply is sent.
 
 See also: {cpp:func}`~BMessage::SendReply()`, {cpp:func}`~BMessage::WasDelivered()`.
+::::
 
-### SendReply()
-
-```{cpp:function} BMessage::SendReply()
-```
-:::{code} cpp
-status_t SendReply(BMessage* message, BMessage* reply, bigtime_t sendTimeout = B_INFINITE_TIMEOUT, bigtime_t replyTimeout = B_INFINITE_TIMEOUT);
-status_t SendReply(BMessage* message, BHandler* replyHandler = NULL, bigtime_t sendTimeout = B_INFINITE_TIMEOUT);
-status_t SendReply(uint32 command, BMessage* reply);
-status_t SendReply(uint32 command, BHandler* replyHandler = NULL);
+::::{abi-group}
+:::{cpp:function} status_t BMessage::SendReply(BMessage* message, BMessage* reply, bigtime_t sendTimeout = B_INFINITE_TIMEOUT, bigtime_t replyTimeout = B_INFINITE_TIMEOUT)
+:::
+:::{cpp:function} status_t BMessage::SendReply(BMessage* message, BHandler* replyHandler = NULL, bigtime_t sendTimeout = B_INFINITE_TIMEOUT)
+:::
+:::{cpp:function} status_t BMessage::SendReply(uint32 command, BMessage* reply)
+:::
+:::{cpp:function} status_t BMessage::SendReply(uint32 command, BHandler* replyHandler = NULL)
 :::
 
 Sends a reply {hparameter}`message` back to the sender of the {hclass}`BMessage` (in the case of a
@@ -829,7 +892,8 @@ informative return values are as follows:
 
 :::{list-table}
 ---
-header-rows: 1
+header-rows: 0
+align: left
 ---
 
 -
@@ -856,53 +920,38 @@ scheduled to be deleted, you may be able to detach it from the message loop. See
 
 See also: {cpp:func}`BMessenger::SendMessage()`, {cpp:func}`BMessenger::DetachCurrentMessage()`,
 {cpp:func}`~BMessage::ReturnAddress()`.
+::::
 
-### WasDelivered(), IsSourceRemote(), IsSourceWaiting(), IsReply(), Previous()
-
-```{cpp:function} BMessage::WasDelivered()
-```
-:::{code} cpp
-bool WasDelivered() const;
+::::{abi-group}
+:::{cpp:function} bool BMessage::WasDelivered() const
 :::
-```{cpp:function} BMessage::IsSourceRemote()
-```
-:::{code} cpp
-bool IsSourceRemote() const;
+:::{cpp:function} bool BMessage::IsSourceRemote() const
 :::
-```{cpp:function} BMessage::IsSourceWaiting()
-```
-:::{code} cpp
-bool IsSourceWaiting() const;
+:::{cpp:function} bool BMessage::IsSourceWaiting() const
 :::
-```{cpp:function} BMessage::IsReply()
-```
-:::{code} cpp
-bool IsReply() const;
+:::{cpp:function} bool BMessage::IsReply() const
 :::
-```{cpp:function} BMessage::Previous()
-```
-:::{code} cpp
-const BMessage* Previous() const;
+:::{cpp:function} const BMessage* BMessage::Previous() const
 :::
 
 These functions can help if you're engaged in an exchange of messages or managing an ongoing
 communication.
 
 {hmethod}`WasDelivered()` indicates whether it's possible to send a reply to a message. It returns
-{cpp:enum}`true` for a {hclass}`BMessage` that was posted, sent, or dropped -- that is, one that has
-been processed through a message loop---and {cpp:enum}`false` for a message that has not yet been
+{cpp:expr}`true` for a {hclass}`BMessage` that was posted, sent, or dropped -- that is, one that has
+been processed through a message loop---and {cpp:expr}`false` for a message that has not yet been
 delivered by any means.
 
-{hmethod}`IsSourceRemote()` returns {cpp:enum}`true` if the message had its source in another
-application, and {cpp:enum}`false` if the source is local or the message hasn't been delivered yet.
+{hmethod}`IsSourceRemote()` returns {cpp:expr}`true` if the message had its source in another
+application, and {cpp:expr}`false` if the source is local or the message hasn't been delivered yet.
 
-{hmethod}`IsSourceWaiting()` returns {cpp:enum}`true` if the message source is waiting for a
-synchronous reply, and {cpp:enum}`false` if not. The source thread can request and wait for a reply
+{hmethod}`IsSourceWaiting()` returns {cpp:expr}`true` if the message source is waiting for a
+synchronous reply, and {cpp:expr}`false` if not. The source thread can request and wait for a reply
 when calling either {cpp:class}`BMessenger`'s {cpp:func}`~BMessenger::SendMessage()` or
 {hclass}`BMessage`'s {cpp:func}`~BMessage::SendReply()` function.
 
-{hmethod}`IsReply()` returns {cpp:enum}`true` if the {hclass}`BMessage` is a reply to a previous
-message (if it was sent by the {cpp:func}`~BMessage::SendReply()` function), and {cpp:enum}`false`
+{hmethod}`IsReply()` returns {cpp:expr}`true` if the {hclass}`BMessage` is a reply to a previous
+message (if it was sent by the {cpp:func}`~BMessage::SendReply()` function), and {cpp:expr}`false`
 if not.
 
 {hmethod}`Previous()` returns the previous message -- the message to which the current
@@ -915,22 +964,16 @@ to another message.
 
 See also: {cpp:func}`BMessenger::SendMessage()`, {cpp:func}`~BMessage::SendReply()`,
 {cpp:func}`~BMessage::ReturnAddress()`.
+::::
 
-### WasDropped(), DropPoint()
-
-```{cpp:function} BMessage::WasDropped()
-```
-:::{code} cpp
-bool WasDropped() const;
+::::{abi-group}
+:::{cpp:function} bool BMessage::WasDropped() const
 :::
-```{cpp:function} BMessage::DropPoint()
-```
-:::{code} cpp
-BPoint DropPoint(BPoint* offset = NULL) const;
+:::{cpp:function} BPoint BMessage::DropPoint(BPoint* offset = NULL) const
 :::
 
-{hmethod}`WasDropped()` returns {cpp:enum}`true` if the user delivered the {hclass}`BMessage` by
-dragging and dropping it, and {cpp:enum}`false` if the message was posted or sent in application
+{hmethod}`WasDropped()` returns {cpp:expr}`true` if the user delivered the {hclass}`BMessage` by
+dragging and dropping it, and {cpp:expr}`false` if the message was posted or sent in application
 code or if it hasn't yet been delivered at all.
 
 {hmethod}`DropPoint()` reports the point where the cursor was located when the message was dropped
@@ -940,18 +983,16 @@ based on the image or rectangle the user dragged. The {hparameter}`offset` assum
 system with (0.0, 0.0) at the left top corner of the dragged rectangle or image.
 
 Since any value can be a valid coordinate, {hmethod}`DropPoint()` produces reliable results only if
-{hmethod}`WasDropped()` returns {cpp:enum}`true`.
+{hmethod}`WasDropped()` returns {cpp:expr}`true`.
 
 See also: {cpp:func}`BView::DragMessage()`.
+::::
 
 ## Operators
 
 ### = (assignment)
 
-```{cpp:function} BMessage BMessage::operator=(const BMessage&);
-```
-:::{code} cpp
-BMessage operator=(const BMessage&);
+:::{cpp:function} BMessage BMessage::operator=(const BMessage&)
 :::
 
 Assigns one {hclass}`BMessage` object to another. After the assignment, the two objects are
@@ -959,21 +1000,16 @@ duplicates of each other without shared data.
 
 ### new
 
-```{cpp:function} void* BMessage::operator new(size_t numBytes);
-```
-:::{code} cpp
-void* operator new(size_t numBytes);
+:::{cpp:function} void* BMessage::operator new(size_t numBytes)
 :::
 
-Alloctes memory for a {hclass}`BMessage` object, or takes the memory from a previously allocated
+Allocates memory for a {hclass}`BMessage` object, or takes the memory from a previously allocated
 cache. The caching mechanism is an efficient way of managing memory for objects that are created
 frequently and used for short periods of time, as {hclass}`BMessage`s typically are.
 
 ### delete
-```{cpp:function} void BMessage::operator delete(void* memory, size_t numBytes);
-```
-:::{code} cpp
-void operator delete(void* memory, size_t numBytes);
+
+:::{cpp:function} void BMessage::operator delete(void* memory, size_t numBytes)
 :::
 
 Frees memory allocated by the {hclass}`BMessage` version of {hmethod}`new`, which may mean restoring
@@ -1001,4 +1037,5 @@ what other information the specifier contains, and how it should be interpreted.
 backwards from the end of a list. A {cpp:enum}`B_NAME_SPECIFIER` message includes a {hfield}`name`
 field that names the requested item.
 
-See also: {cpp:func}`~BMessage::AddSpecifier()`, the "Scripting" chapter.
+See also: {cpp:func}`~BMessage::AddSpecifier()`, the
+["Scripting"](/system-overview//application/scripting) chapter.

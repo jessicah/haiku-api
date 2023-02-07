@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Message Constants &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="The Application Kit" href="overview.html" />
+    <link rel="prev" title="The Input Server" href="introduction.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Message Constants</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="introduction.html">The Input Server</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="overview.html">The Application Kit</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Message Constants</a><ul>
+<li><a class="reference internal" href="#input-device-event-messages">Input Device Event Messages</a></li>
+<li><a class="reference internal" href="#input-device-control-messages">Input Device Control Messages</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="message-constants">
+<h1>Message Constants<a class="headerlink" href="#message-constants" title="Permalink to this heading">¶</a></h1>
+<section id="input-device-event-messages">
+<h2>Input Device Event Messages<a class="headerlink" href="#input-device-event-messages" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><ul class="simple">
+<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MOUSE()</span></code></p></li>
+<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MOUSE()</span></code></p></li>
+<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MOUSE()</span></code></p></li>
+</ul>
+<p>Note that a pointing device isn’t expected to send the
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MOUSE_ENTER_EXIT</span></code> message.</p>
+<h3>
+</h3><ul class="simple">
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_KEY_DOWN</span></code></p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_UNMAPPED_KEY_DOWN</span></code></p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_KEY_UP</span></code></p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_UMAPPED_KEY_UP</span></code></p></li>
+<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MODIFIERS_CHANGED</span></code></p></li>
+</ul>
+</section>
+<section id="input-device-control-messages">
+<h2>Input Device Control Messages<a class="headerlink" href="#input-device-control-messages" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CLICK_SPEED_CHANGED</span></code></p></td>
+<td><p>Requests that the receiver change the mouse double-click speed to the value retrieved through <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">click()</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MOUSE_MAP_CHANGED</span></code></p></td>
+<td><p>Requests that the receiver change the mouse map (the correspondence between physical mouse buttons and the <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PRIMARY_MOUSE_BUTTON</span></code>, et. al., constants) to the map retrieved through <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">mouse()</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MOUSE_SPEED_CHANGED</span></code></p></td>
+<td><p>Requests that the receiver change the mouse speed to the value retrieved through <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">mouse()</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MOUSE_TYPE_CHANGED</span></code></p></td>
+<td><p>Requests that the receiver change the mouse type (the number of buttons) to the type retrieved through <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">mouse()</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<h3>
+</h3><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_KEY_LOCKS_CHANGED</span></code></p></td>
+<td><p>Requests that the receiver change the state of the locked keys (caps lock, num lock, etc.). To get the desired state of the locking keys, read the states out of the key map returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">key()</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_KEY_MAP_CHANGED</span></code></p></td>
+<td><p>Requests that the receiver change the keyboard’s key map—the mapping between physical keys and the character codes they generate. The new key map is returned by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">key()</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_KEY_REPEAT_DELAY_CHANGED</span></code></p></td>
+<td><p>Requests that the receiver change the delay before a held key starts generating repeated characters to the value retrieved through <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">key()</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_KEY_REPEAT_RATE_CHANGED</span></code></p></td>
+<td><p>Requests that the receiver change the speed at which a held key generates repeated characters to the value retrieved through <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">key()</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<h3>
+</h3><p>The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">input()</span></code>
+function lets you ask the Input Server to send
+you a message when a device starts or stops, or when the set of
+registered devices changes. These “device monitoring” notifications are
+sent to the target specified in the function. The command constant is
+always <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_DEVICES_CHANGED.</span></code>
+The be:opcode field will be one of:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_DEVICE_ADDED</span></code></p></td>
+<td><p>An input device has been added to the system.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_DEVICE_REMOVED</span></code></p></td>
+<td><p>An input device has been removed from the system.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_DEVICE_STARTED</span></code></p></td>
+<td><p>An input device has been started.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_DEVICE_STOPPED</span></code></p></td>
+<td><p>An input device has been stopped.</p></td>
+</tr>
+</tbody>
+</table>
+<h3>
+</h3><p>Active input methods send input method events
+(<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_METHOD_EVENT</span></code>
+messages) downstream to application views to help integrate the method’s
+work with the view’s display. Inside each
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_METHOD_EVENT</span></code> message is
+a be:opcode field indicating the type of
+input method event:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_METHOD_CHANGED</span></code></p></td>
+<td><p>Sent whenever the user changes the text during an input transaction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_METHOD_LOCATION_REQUEST</span></code></p></td>
+<td><p>Sent whenever the input method needs to know the on-screen locations of characters in the input transaction.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_METHOD_STARTED</span></code></p></td>
+<td><p>Sent when a new input transaction is beginning.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_METHOD_STOPPED</span></code></p></td>
+<td><p>Sent when an input transaction is completed.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="introduction.html">The Input Server</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="overview.html">The Application Kit</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

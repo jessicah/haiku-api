@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BFileInterface &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMediaAddOn" href="media-add-on.html" />
+    <link rel="prev" title="BDiscreteParameter" href="discrete-parameter.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BFileInterface</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="discrete-parameter.html">BDiscreteParameter</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-add-on.html">BMediaAddOn</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BFileInterface</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N14BFileInterface14BFileInterfaceEv">BFileInterface</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N14BFileInterface23DisposeFileFormatCookieE5int32">DisposeFileFormatCookie</a></li>
+<li><a class="reference internal" href="#_CPPv4N14BFileInterface13HandleMessageE5int32PKv6size_t">HandleMessage</a></li>
+<li><a class="reference internal" href="#_CPPv4N14BFileInterface11GetDurationEP9bigtime_t">GetDuration</a></li>
+<li><a class="reference internal" href="#_CPPv4N14BFileInterface17GetNextFileFormatEP5int32P17media_file_format">GetNextFileFormat</a></li>
+<li><a class="reference internal" href="#_CPPv4N14BFileInterface6GetRefEPK9entry_refP9BMimeType">GetRef</a></li>
+<li><a class="reference internal" href="#_CPPv4N14BFileInterface6SetRefERK9entry_refbP9bigtime_t">SetRef</a></li>
+<li><a class="reference internal" href="#_CPPv4N14BFileInterface8SniffRefEPK9entry_refPcPf">SniffRef</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bfileinterface">
+<h1>BFileInterface<a class="headerlink" href="#bfileinterface" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N14BFileInterface14BFileInterfaceEv">
+</section>
+<h3>
+BFileInterface()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N14BFileInterface14BFileInterfaceEv" title="BFileInterface::BFileInterface"><span class="n">BFileInterface</span></a><span class="p">::</span></span><span class="n">BFileInterface</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Constructor.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N14BFileInterface23DisposeFileFormatCookieE5int32">
+</section>
+<h3>
+DisposeFileFormatCookie()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFileInterface</span><span class="p">::</span></span><span class="n">DisposeFileFormatCookie</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">cookie</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>This function must be implemented to dispose of a <span class="hparameter">cookie</span> used for
+iterating over file formats your node supports. If the cookie is a
+reference to a data block, you should free it; otherwise, you can just
+return without doing anything.</p>
+<section id="_CPPv4N14BFileInterface13HandleMessageE5int32PKv6size_t">
+</section>
+<h3>
+HandleMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFileInterface</span><span class="p">::</span></span><span class="n">HandleMessage</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">message</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p>Implement this function to handle messages that arrive on your control
+port; see
+<a class="reference internal" href="media-node.html#_CPPv4N10BMediaNode13HandleMessageE5int32PKv6size_t" title="BMediaNode::HandleMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaNode::HandleMessage()</span></code></a>
+for details.</p>
+<section id="_CPPv4N14BFileInterface11GetDurationEP9bigtime_t">
+</section>
+<h3>
+GetDuration()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFileInterface</span><span class="p">::</span></span><span class="n">GetDuration</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outDuration</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Implement this function to return in <span class="hparameter">outDuration</span> the duration, in
+microseconds of the media data in the file currently being worked on.
+If there is no file in use, or the file isn’t valid, return a negative
+error code; otherwise, return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+<section id="_CPPv4N14BFileInterface17GetNextFileFormatEP5int32P17media_file_format">
+</section>
+<h3>
+GetNextFileFormat()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFileInterface</span><span class="p">::</span></span><span class="n">GetNextFileFormat</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span>, <span class="n">media_file_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFormat</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>The first time this function is called, <span class="hparameter">cookie</span> will be 0. Return
+information about the first file format you support in <span class="hparameter">outFormat</span> and set
+cookie to some meaningful (non-zero) value that you can use to track
+where you are in the list of formats you support, then return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.
+On successive calls to <span class="hmethod">GetNextFileFormat()</span>, you should return successive
+file format information and change <span class="hparameter">cookie</span> as necessary to remember where
+you are in the list. Return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> each time you successfully return
+information about a file format.
+Once you run out of formats, return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p>
+<section id="_CPPv4N14BFileInterface6GetRefEPK9entry_refP9BMimeType">
+</section>
+<section id="_CPPv4N14BFileInterface6SetRefERK9entry_refbP9bigtime_t">
+</section>
+<h3>
+GetRef(), SetRef()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFileInterface</span><span class="p">::</span></span><span class="n">GetRef</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outRef</span>, <span class="n">BMimeType</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outMimeType</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFileInterface</span><span class="p">::</span></span><span class="n">SetRef</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">file</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">create</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outDuration</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Implement <span class="hmethod">GetRef()</span> function to return,
+in <span class="hparameter">outRef</span>, the entry_ref of the
+file with which the node is currently working. You should also return the
+MIME type of the file in <span class="hparameter">outMimeType</span>.
+When an application or other client wants your node to use a specific
+file, the <span class="hmethod">SetRef()</span> function will be called. The file to be used is
+specified by <span class="hparameter">file</span>, which may or may not exist.
+If <span class="hparameter">create</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, you
+should create a new file (erasing an existing file, if one’s already
+there), initialize the file for writing, then store 0 in <span class="hparameter">outDuration</span>.
+If <span class="hparameter">create</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>,
+you should open the existing file and put the actual
+running time of the file into <span class="hparameter">outDuration</span>.
+Return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if successful; otherwise, return a negative error code, as
+appropriate. If you forget to implement these functions, they’ll always
+return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p>
+<section id="_CPPv4N14BFileInterface8SniffRefEPK9entry_refPcPf">
+</section>
+<h3>
+SniffRef()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFileInterface</span><span class="p">::</span></span><span class="n">SniffRef</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file</span>, <span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outMimeType</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outQuality</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>When the system (or an application program) finds an unknown file, it can
+call <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaRoster</span></code>
+to try to identify the file. Your node’s <span class="hmethod">SniffRef()</span>
+function will be called so your node can look at the file.
+Inspect the file referenced by file. If you can handle the format, set
+<span class="hparameter">outMimeType</span> to the MIME
+type of the file format (the buffer is 256 bytes
+long), and set <span class="hparameter">outQuality</span> to indicate how well you can process the file
+(where 0.0 means you can’t handle it at all and 1.0 means the file format
+is a privately-owned format that your application handles perfectly).
+If you know how to identify the file, but not how to play or record it,
+return 0.0 for <span class="hparameter">outQuality</span>.
+If you know how to decode only some parts of the file, but not all of
+them, set <span class="hparameter">outQuality</span> to 0.4 or to 0.6 if you can handle both audio and
+video contained in the file, but not other forms of media data that are
+present.
+Set <span class="hparameter">outQuality</span> to 0.9 if
+you can handle the format very well, but it’s a
+publicly-defined format whose specifications you don’t control. You
+should only return an <span class="hparameter">outQuality</span> value of 1.0 if the file format
+specifications are in your control and you implement them perfectly.
+Interpolate between these values to give the best estimate you can of
+your ability to handle the file, so selection of the most suitable node
+can be made. For instance, if your node does low-quality but high-speed
+processing of an audio format, you might subtract a little bit from the
+<span class="hparameter">outQuality</span> value you might otherwise return.
+Return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if you successfully sniff the file and have something to say
+about its contents; otherwise return an appropriate error code. If you
+don’t know the file format at all, you should return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_NO_HANDLER</span></code>.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="discrete-parameter.html">BDiscreteParameter</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-add-on.html">BMediaAddOn</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

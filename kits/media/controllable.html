@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BControllable &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BDiscreteParameter" href="discrete-parameter.html" />
+    <link rel="prev" title="BContinuousParameter" href="continuous-parameter.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BControllable</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="continuous-parameter.html">BContinuousParameter</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="discrete-parameter.html">BDiscreteParameter</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BControllable</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N13BControllable13BControllableEv">BControllable</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N13BControllable25BroadcastChangedParameterE5int32">BroadcastChangedParameter</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BControllable26BroadcastNewParameterValueE9bigtime_t5int32Pv6size_t">BroadcastNewParameterValue</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BControllable17GetParameterValueE5int32P9bigtime_tPvP6size_t">GetParameterValue</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BControllable17SetParameterValueE5int329bigtime_tPKv6size_t">SetParameterValue</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BControllable13HandleMessageE5int32PKvP6size_t">HandleMessage</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BControllable16LockParameterWebEv">LockParameterWeb</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BControllable18UnlockParameterWebEv">UnlockParameterWeb</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BControllable17MakeParameterDataEPK5int325int32PvP6size_t">MakeParameterData</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BControllable18ApplyParameterDataEPKv6size_t">ApplyParameterData</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BControllable15SetParameterWebEP13BParameterWeb">SetParameterWeb</a></li>
+<li><a class="reference internal" href="#_CPPv4N13BControllable17StartControlPanelEP10BMessenger">StartControlPanel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bcontrollable">
+<h1>BControllable<a class="headerlink" href="#bcontrollable" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N13BControllable13BControllableEv">
+</section>
+<h3>
+BControllable()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">explicit</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BControllable13BControllableEv" title="BControllable::BControllable"><span class="n">BControllable</span></a><span class="p">::</span></span><span class="n">BControllable</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The <span class="hclass">BControllable</span> constructor. You should override this in your derived
+class to create a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code>
+object, configure it to describe the available parameters, and call
+<a class="reference internal" href="#_CPPv4N13BControllable15SetParameterWebEP13BParameterWeb" title="BControllable::SetParameterWeb"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetParameterWeb()</span></code></a>
+with that object before returning.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N13BControllable25BroadcastChangedParameterE5int32">
+</section>
+<h3>
+BroadcastChangedParameter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BControllable</span><span class="p">::</span></span><span class="n">BroadcastChangedParameter</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">parameterID</span><span class="sig-paren">)</span></pre><p>When the configuration of a specific parameter changes, you should call
+this function with the ID of the changed parameter so that clients know
+that they need to check with the node to determine the parameter’s new
+configuration.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The configuration of a parameter changes only when the range of
+possible values for the parameter changes. For example, if the
+parameter’s value is a CD track number, the configuration would change
+(thus requiring a call to
+<a class="reference internal" href="#_CPPv4N13BControllable25BroadcastChangedParameterE5int32" title="BControllable::BroadcastChangedParameter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BroadcastChangedParameter()</span></code></a>)
+if the user put in a different CD with a different number of tracks on it.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>No errors.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>See <a class="reference internal" href="../application/messenger.html#_CPPv4NK10BMessenger11SendMessageEP8BMessageP8BMessage9bigtime_t9bigtime_t" title="BMessenger::SendMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessenger::SendMessage()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N13BControllable26BroadcastNewParameterValueE9bigtime_t5int32Pv6size_t">
+</section>
+<h3>
+BroadcastNewParameterValue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BControllable</span><span class="p">::</span></span><span class="n">BroadcastNewParameterValue</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">when</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">newValue</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">valueSize</span><span class="sig-paren">)</span></pre><p>Call this function when a parameter value change takes effect and you
+want people that are interested in knowing about the change to stay in
+sync with you. Unlike
+<a class="reference internal" href="#_CPPv4N13BControllable25BroadcastChangedParameterE5int32" title="BControllable::BroadcastChangedParameter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BroadcastChangedParameter()</span></code></a>,
+this function actually passes along the new value of the parameter.
+The <span class="hparameter">when</span> argument indicates the
+performance time at which the change took effect. The
+<span class="hparameter">id</span> indicates the parameter ID of the parameter
+whose value changed. <span class="hparameter">newValue</span> is a pointer to
+the parameter’s data, and <span class="hparameter">valueSize</span> defines the
+size of that data.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>An error occurred communicating with the Media Server, or with a node in the roster.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N13BControllable17GetParameterValueE5int32P9bigtime_tPvP6size_t">
+</section>
+<section id="_CPPv4N13BControllable17SetParameterValueE5int329bigtime_tPKv6size_t">
+</section>
+<h3>
+GetParameterValue(), SetParameterValue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BControllable</span><span class="p">::</span></span><span class="n">GetParameterValue</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">parameterID</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">lastChangeTime</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">value</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioSize</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BControllable</span><span class="p">::</span></span><span class="n">SetParameterValue</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">parameterID</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">changeTime</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">value</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>You should implement
+<span class="hmethod">GetParameterValue()</span> to store the value of the
+parameter with the specified <span class="hparameter">parameterID</span> in the
+memory pointed to by <span class="hparameter">value</span>. The
+size_t value pointed to by
+<span class="hparameter">ioSize</span> specifies the size of the value buffer;
+prior to returning, your implementation of
+<span class="hmethod">GetParameterValue()</span> should change
+<span class="hparameter">ioSize</span> to the actual size of the returned
+data.
+Also, you should set <span class="hparameter">lastChangeTime</span>
+to the time at which the control’s value most recently changed.
+<span class="hmethod">GetParameterValue()</span> should return
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> when done, or an appropriate error
+code if something goes wrong.
+Likewise, you should implement <span class="hmethod">SetParameterValue()</span> to change the value of
+the parameter; the <span class="hparameter">changeTime</span> argument is the performance time at which
+the change should occur; in other words, you may need to queue the
+request so it can be handled at the requested time. <span class="hparameter">value</span> points to the
+value to which the parameter should be set, and <span class="hparameter">size</span> is the number of
+bytes of data in the value.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>It’s possible that a single parameter may have several channels of
+values, if that parameter is a multi-channel parameter. For example, if
+the parameter is a two-channel slider (such as a stereo gain control,
+where the left and right channels are controlled individually within a
+single parameter), the <span class="hparameter">value</span> argument would point to an array of two
+floats, and <span class="hparameter">size</span> would be 8
+(<code class="docutils literal notranslate"><span class="pre">sizeof(float)</span> <span class="pre">*</span> <span class="pre">2</span></code>).</p>
+</div>
+<section id="_CPPv4N13BControllable13HandleMessageE5int32PKvP6size_t">
+</section>
+<h3>
+HandleMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BControllable</span><span class="p">::</span></span><span class="n">HandleMessage</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">message</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <a class="reference internal" href="#_CPPv4N13BControllable13HandleMessageE5int32PKvP6size_t" title="BControllable::HandleMessage::size_t"><span class="n">size_t</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">size_t</span><span class="sig-paren">)</span></pre><p>When your node’s service loop receives a message, in addition to passing
+it to <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaNode</span></code>
+and other superclasses of your node, you should also
+pass it to
+<span class="hmethod">HandleMessage()</span>.
+You should start at the most-derived class’ implementation of
+<span class="hmethod">HandleMessage()</span> and work your way
+upward until <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> is returned.
+If it’s a message intended for the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControllable</span></code> interface, it’ll be
+dispatched and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> will be returned; otherwise,
+<span class="hmethod">HandleMessage()</span> will
+return an error so you know to try something else.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Message</span> <span class="n">received</span> <span class="o">*/</span>
+<span class="k">if</span> <span class="p">((</span><span class="n">BControllable</span><span class="p">::</span><span class="n">HandleMessage</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span> <span class="o">!=</span> <span class="n">B_OK</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+         <span class="p">(</span><span class="n">BMediaNode</span><span class="p">::</span><span class="n">HandleMessage</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span> <span class="o">!=</span> <span class="n">B_OK</span><span class="p">))</span> <span class="p">{</span>
+   <span class="n">BMediaNode</span><span class="p">::</span><span class="n">HandleMessage</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this example, the
+<span class="hclass">BControllable</span> implementation of <span class="hmethod">HandleMessage()</span> gets
+the first crack at handling the request. If it doesn’t know what to do
+with the message, it’s forwarded to
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaNode</span></code>’s
+implementation. If the
+message still isn’t handled, it’s then sent to
+<a class="reference internal" href="media-node.html#_CPPv4N10BMediaNode16HandleBadMessageE5int32PKv6size_t" title="BMediaNode::HandleBadMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaNode::HandleBadMessage()</span></code></a>
+to be dealt with.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The message was dispatched.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>Each message code may respond with various error codes.</p></td>
+</tr>
+</tbody>
+</table>
+<p>See also: “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AboutMultipleVirtualInheritance()</span></code>”</p>
+<section id="_CPPv4N13BControllable16LockParameterWebEv">
+</section>
+<section id="_CPPv4N13BControllable18UnlockParameterWebEv">
+</section>
+<h3>
+LockParameterWeb(), UnlockParameterWeb()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BControllable</span><span class="p">::</span></span><span class="n">LockParameterWeb</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BControllable</span><span class="p">::</span></span><span class="n">UnlockParameterWeb</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">LockParameterWeb()</span> locks the web to
+prevent access to it while you’re working on it, and
+<span class="hmethod">UnlockParameterWeb()</span> releases it when you’re
+done. You should surround your accesses to the web with these
+calls:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LockParameterWeb</span><span class="p">();</span>
+<span class="n">Web</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">MakeGroup</span><span class="p">(</span><span class="s2">&quot;EqualizerControls&quot;</span><span class="p">);</span>
+<span class="o">...</span>
+<span class="n">UnlockParameterWeb</span><span class="p">();</span>
+</pre></div>
+</div>
+<section id="_CPPv4N13BControllable17MakeParameterDataEPK5int325int32PvP6size_t">
+</section>
+<section id="_CPPv4N13BControllable18ApplyParameterDataEPKv6size_t">
+</section>
+<h3>
+MakeParameterData(), ApplyParameterData()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BControllable</span><span class="p">::</span></span><span class="n">MakeParameterData</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">parameterList</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numParameters</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioSize</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BControllable</span><span class="p">::</span></span><span class="n">ApplyParameterData</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">value</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">ioSize</span><span class="sig-paren">)</span></pre><p>The <span class="hmethod">MakeParameterData()</span> utility function takes a list of parameter IDs
+from <span class="hparameter">parameterList</span> and calls
+<a class="reference internal" href="#_CPPv4N13BControllable17GetParameterValueE5int32P9bigtime_tPvP6size_t" title="BControllable::GetParameterValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetParameterValue()</span></code></a>
+for each of them,
+storing the values in the specified <span class="hparameter">buffer</span> until the size specified in
+<span class="hparameter">ioSize</span> is filled, or all the parameters are read. The number of bytes of
+the buffer used will be returned in <span class="hparameter">ioSize</span>.
+If your <span class="hclass">BControllable</span> is also a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferConsumer</span></code> that accepts
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_PARAMETERS</span></code> type data on some input, call
+<span class="hmethod">ApplyParameterData()</span>
+with <span class="hparameter">value</span> set to the result of
+<a class="reference internal" href="buffer.html#_CPPv4N7BBuffer4DataEv" title="BBuffer::Data"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBuffer::Data()</span></code></a>
+and <span class="hparameter">size</span> set to
+<a class="reference internal" href="buffer.html#_CPPv4N7BBuffer8SizeUsedEv" title="BBuffer::SizeUsed"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBuffer::SizeUsed()</span></code></a>.
+This function will then parse the parameter change
+requests in the buffer and dispatch them to your <span class="hmethod">SetParameterValue()</span>
+function to fulfill the requests.
+This lets your node support easy automation of parameter information.
+Even more benefit can be obtained by also deriving from
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferProducer</span></code>,
+and providing an output for the <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_PARAMETERS</span></code> data format, so that
+changes can be recorded as they occur. This provides a mechanism for
+automating the parameters by recording a user’s changes to them, then
+playing back the changes later.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>No errors.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<td><p>The output buffer is too small.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N13BControllable15SetParameterWebEP13BParameterWeb">
+</section>
+<h3>
+SetParameterWeb()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BControllable</span><span class="p">::</span></span><span class="n">SetParameterWeb</span><span class="sig-paren">(</span><span class="n">BParameterWeb</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">web</span><span class="sig-paren">)</span><br /><span class="n">BParameterWeb</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BControllable</span><span class="p">::</span></span><span class="n">SetParameterWeb</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Your constructor should create a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code>
+object and call
+<span class="hmethod">SetParameterWeb()</span> with it as an argument. This will describe to the
+outside world what parameters are available and how they relate to each
+other; in other words, this describes your internal signal path, and how
+it can be manipulated.
+If the <span class="hparameter">web</span> argument isn’t
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, and is different from the
+previously-established web for the <span class="hclass">BControllable</span> node, a
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_WEB_CHANGED</span></code> message is sent to everyone watching for media
+notifications. See
+<a class="reference internal" href="media-roster.html#_CPPv4N12BMediaRoster13StartWatchingERK10BMessenger" title="BMediaRoster::StartWatching"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StartWatching()</span></code></a>
+for more information.
+<span class="hmethod">SetParameterWeb()</span> will
+return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if the web was set without errors;
+otherwise an error code will be returned.
+The <span class="hmethod">Web()</span> function returns the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code>
+assigned to the <span class="hclass">BControllable</span>.</p>
+<section id="_CPPv4N13BControllable17StartControlPanelEP10BMessenger">
+</section>
+<h3>
+StartControlPanel()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BControllable</span><span class="p">::</span></span><span class="n">StartControlPanel</span><span class="sig-paren">(</span><span class="n">BMessenger</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outMessenger</span><span class="sig-paren">)</span></pre><p>This hook function is called whenever a client application wants the node
+to present its own control panel user interface (so that the user can
+configure the node).
+On return, <span class="hparameter">outMessenger</span> is a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code>
+that you can use to communicate with the control panel.
+Because the add-on lives in the Media Server, and a problem in the user
+interface could bring down the entire system, it’s recommended that the
+control panel run as its own team. This can be done easily by writing
+your node as both a Media Server add-on (by exporting
+make_media_addon())
+and an application (by implementing main() and including
+start_dyn.o
+among the link libraries). Be sure you have the multi-launch application
+flags set on your add-on, or this won’t work right.
+Then your <span class="hmethod">StartControlPanel()</span>
+implementation can simply launch the add-on
+as an application, and if the user double-clicks the add-on, they’ll be
+presented with the control panel. In addition, the user benefits by only
+having to install a single file for your add-on to work properly.
+The first argv argument to your main() function will be a string of the
+format “node=%d” with the node ID in question as “%d”.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The above implementation suggestion (providing your control panel by
+launching the add-on as an application) is the default behavior of
+<span class="hmethod">StartControlPanel()</span>, so if that’s how
+you implement your <span class="hclass">BControllable</span>,
+you don’t have to override <span class="hmethod">StartControlPanel()</span>
+at all. In this case, the returned
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code>
+is for the control panel application, and not for a particular
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> or
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
+therein.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>No errors occurred.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<td><p>Node wasn’t loaded from an add-on.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>An error occurred locating the image from which the node was loaded, or the add-on can’t be launched as an application.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_LAUNCH_FAILED</span></code>.</p></td>
+<td><p>The control panel couldn’t be launched for some other reason, such as insufficient memory.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="continuous-parameter.html">BContinuousParameter</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="discrete-parameter.html">BDiscreteParameter</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BPicture &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BPictureButton" href="picture-button.html" />
+    <link rel="prev" title="BOutlineListView" href="outline-list-view.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BPicture</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="outline-list-view.html">BOutlineListView</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="picture-button.html">BPictureButton</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BPicture</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N8BPicture8BPictureEv">BPicture</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BPictureD0Ev">~BPicture</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4NK8BPicture7ArchiveEP8BMessageb">Archive</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BPicture4PlayEPPv5int32Pv">Play</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#static-functions">Static Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N8BPicture11InstantiateEP8BMessage">Instantiate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#archived-fields">Archived Fields</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bpicture">
+<h1>BPicture<a class="headerlink" href="#bpicture" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N8BPicture8BPictureEv">
+</section>
+<h3>
+BPicture()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BPicture8BPictureEv" title="BPicture::BPicture"><span class="n">BPicture</span></a><span class="p">::</span></span><span class="n">BPicture</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BPicture8BPictureERK8BPicture" title="BPicture::BPicture"><span class="n">BPicture</span></a><span class="p">::</span></span><span class="n">BPicture</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8BPicture8BPictureERK8BPicture" title="BPicture::BPicture"><span class="n">BPicture</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">picture</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BPicture8BPictureEP8BMessage" title="BPicture::BPicture"><span class="n">BPicture</span></a><span class="p">::</span></span><span class="n">BPicture</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BPicture</span> object by ensuring that it’s empty, or by
+copying data from another picture or archive of a <span class="hclass">BPicture</span> object.</p>
+<section id="_CPPv4N8BPictureD0Ev">
+</section>
+<h3>
+~BPicture()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPicture</span><span class="p">::</span></span><span class="n">~BPicture</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Destroys the Application Server’s record of the
+<span class="hclass">BPicture</span> object and deletes all its picture data.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4NK8BPicture7ArchiveEP8BMessageb">
+</section>
+<h3>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPicture</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Archives the <span class="hclass">BPicture</span> by
+recording its current settings in the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
+<span class="hparameter">archive</span>.</p>
+<p>See also:
+<a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N8BPicture11InstantiateEP8BMessage" title="BPicture::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a>
+static function</p>
+<section id="_CPPv4N8BPicture4PlayEPPv5int32Pv">
+</section>
+<h3>
+Play()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BPicture</span><span class="p">::</span></span><span class="n">Play</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">callBackTable</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">tableEntries</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">user</span><span class="sig-paren">)</span></pre><p>Plays back a picture using a user’s rendering functions. The functions
+are passed in <span class="hparameter">callBackTable</span>, an array of function pointers.
+<span class="hparameter">tableEntries</span>
+contains the number of functions in the table. The functions perform
+various tasks such as drawing lines and text. <span class="hparameter">user</span> is passed to each
+function, providing a hook for passing additional data to the call back
+functions. The functions, along with their positions in the call back
+table, are detailed below.</p>
+<p>IndexFunction prototype0no operation1MovePenBy(void* user, BPoint delta)2StrokeLine(void* user, BPoint start, BPoint end)3StrokeRect(void* user, BRect rect)4FillRect(void* user, BRect rect)5StrokeRoundRect(void* user, BRect rect, BPoint radii)6FillRoundRect(void* user, BRect rect, BPoint radii)7StrokeBezier(void* user, BPoint* control)8FillBezier(void* user, BPoint* control)9StrokeArc(void* user, BPoint center, BPoint radii, float startTheta, float arcTheta)10FillArc(void* user, BPoint center, BPoint radii, float startTheta, float arcTheta)11StrokeEllipse(void* user, BPoint center, BPoint radii)12FillEllipse(void* user, BPoint center, BPoint radii)13StrokePolygon(void* user, int32 numPoints, BPoint* points, bool isClosed)14FillPolygon(void* user, int32 numPoints, BPoint* points, bool isClosed)15Reserved16Reserved17DrawString(void* user, char* string, float deltax, float deltay)18DrawPixels(void* user, BRect src, BRect dest, int32 width, int32 height, int32 bytesPerRow, int32 pixelFormat, int32 flags, void* data)19Reserved20SetClippingRects(void* user, BRect* rects, uint32 numRects)21Reserved22PushState(void* user)23PopState(void* user)24EnterStateChange(void* user)25ExitStateChange(void* user)26EnterFontState(void* user)27ExitFontState(void* user)28SetOrigin(void* user, BPoint pt)29SetPenLocation(void* user, BPoint pt)30SetDrawingMode(void* user, drawing_mode mode)31SetLineMode(void* user, cap_mode capMode, join_mode joinMode, float miterLimit)32SetPenSize(void* user, float size)33SetForeColor(void* user, rgb_color color)34SetBackColor(void* user, rgb_color color)35SetStipplePattern(void* user, pattern p)36SetScale(void* user, float scale)37SetFontFamily(void* user, char* family)38SetFontStyle(void* user, char* style)39SetFontSpacing(void* user, int32 spacing)40SetFontSize(void* user, float size)41SetFontRotate(void* user, float rotation)42SetFontEncoding(void* user, int32 encoding)43SetFontFlags(void* user, int32 flags)44SetFontShear(void* user, float shear)45Reserved46SetFontFace(void* user, int32 flags)</p>
+<p>While many of these functions are similar to those found in <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>, there
+are some important differences:</p>
+<ul class="simple">
+<li><p>The return value of the functions is ignored.</p></li>
+<li><p>The <span class="hmethod">Fill…()</span> and <span class="hmethod">Stroke…()</span> functions do not explicitly specify patterns. Instead, they should be drawn in the current pattern, as set by the <span class="hmethod">SetStipplePattern()</span> (callback #35). Note that there is no equivalent to <span class="hmethod">SetStipplePattern()</span> in <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>.</p></li>
+<li><p>The <span class="hparameter">deltax</span> and <span class="hparameter">deltay</span> arguments passed to <span class="hmethod">DrawString()</span> are escapement delta values; the string should be drawn at the current pen position.</p></li>
+<li><p><span class="hmethod">MovePenBy()</span> uses a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPoint</span></code> to specify the amount to move the pen. The x component of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPoint</span></code> gives the x offset and the y component the y offset.</p></li>
+<li><p>Similarly, <span class="hmethod">…RoundRect()</span> and <span class="hmethod">…Ellipse()</span> use a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPoint</span></code> to specify the two separate radius components. The x component gives the x radius and the y component the y radius.</p></li>
+<li><p><span class="hmethod">DrawPixels()</span> is a <span class="hclass">BPicture</span>-specific primitive for rendering bitmaps. It is a request to copy the <span class="hparameter">src</span> rectangle from the raw color information in <span class="hparameter">data</span> to the <span class="hparameter">dest</span> rectangle of the current rendering area. <span class="hparameter">width</span>, <span class="hparameter">height</span>, <span class="hparameter">bytesPerRow</span>, and <span class="hparameter">pixelFormat</span> provide all the information necessary to interpret data. <span class="hparameter">flags</span> is currently always zero and should be ignored. <span class="hparameter">src</span> and <span class="hparameter">dest</span> need not have the same dimensions; in these cases, the function should scale the bitmap appropriately.</p></li>
+<li><p><span class="hmethod">SetClippingRects()</span> is a <span class="hclass">BPicture</span>-specific primitive approximating <span class="hmethod">ConstrainClippingRegion()</span>. It instructs the renderer to replace the current clipping region with the union of the rectangles passed to SetClippingRects().</p></li>
+<li><p>Changes in the graphics state are sandwiched between calls to <span class="hmethod">EnterStateChange()</span> and <span class="hmethod">ExitStateChange()</span>. State change functions will only be called between these functions. No other call backs will be called between these functions. State change functions are all <span class="hmethod">Set…()</span> functions in addition to <span class="hmethod">EnterFontState()</span> and <span class="hmethod">ExitFontState()</span>.</p></li>
+<li><p>Similarly, changes to the font state are sandwiched between calls to <span class="hmethod">EnterFontState()</span> and <span class="hmethod">ExitFontState()</span>. Font state change functions will only be called between these functions. No other call backs will be called between these functions. Font state change functions are all <span class="hmethod">SetFont…()</span> functions. Many of the font state functions are found in BFont rather than <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>.</p></li>
+<li><p><span class="hmethod">SetFontRotate()</span> sets the rotation of the font. Unlike the <a class="reference internal" href="font.html#_CPPv4N5BFont11SetRotationEf" title="BFont::SetRotation"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFont::SetRotation()</span></code></a> function, the angle here is specified in radians, rather than in degrees. You can convert the value into degrees by using the forumla:degrees = (rotation*180.0) / 3.14159265369);</p></li>
+</ul>
+</section>
+<section id="static-functions">
+<h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N8BPicture11InstantiateEP8BMessage">
+</section>
+<h3>
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BPicture</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BPicture</span> object, allocated by new and created with the
+version of the constructor that takes a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
+archive. However, if the
+archive message doesn’t contain data for a <span class="hclass">BPicture</span> object, this
+function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p>See also:
+<a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">object()</span></code>,
+<a class="reference internal" href="#_CPPv4NK8BPicture7ArchiveEP8BMessageb" title="BPicture::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
+</section>
+<section id="archived-fields">
+<h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="outline-list-view.html">BOutlineListView</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="picture-button.html">BPictureButton</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

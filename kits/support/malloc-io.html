@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMallocIO &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMemoryIO" href="memory-io.html" />
+    <link rel="prev" title="BLocker" href="locker.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMallocIO</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="locker.html">BLocker</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="memory-io.html">BMemoryIO</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BMallocIO</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N9BMallocIO9BMallocIOEv">BMallocIO</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BMallocIOD0Ev">~BMallocIO</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4NK9BMallocIO6BufferEv">Buffer</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BMallocIO12BufferLengthEv">BufferLength</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BMallocIO6ReadAtE5off_tPv6size_t">ReadAt</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BMallocIO4SeekE5off_t5int32">Seek</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BMallocIO8PositionEv">Position</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BMallocIO7WriteAtE5off_tPKv6size_t">WriteAt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmallocio">
+<h1>BMallocIO<a class="headerlink" href="#bmallocio" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N9BMallocIO9BMallocIOEv">
+</section>
+<h3>
+BMallocIO()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BMallocIO9BMallocIOEv" title="BMallocIO::BMallocIO"><span class="n">BMallocIO</span></a><span class="p">::</span></span><span class="n">BMallocIO</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The <span class="hclass">BMallocIO</span> constructor creates an empty object and sets the default block size to 256 bytes. The constructor doesn’t allocate any memory; memory is allocated when you first write to the object or when you call <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetSize()</span></code> to set the amount of memory.</p>
+<section id="_CPPv4N9BMallocIOD0Ev">
+</section>
+<h3>
+~BMallocIO()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BMallocIO</span><span class="p">::</span></span><span class="n">~BMallocIO</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The <span class="hclass">BMallocIO</span> destructor frees all memory that was allocated by the object.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4NK9BMallocIO6BufferEv">
+</section>
+<section id="_CPPv4NK9BMallocIO12BufferLengthEv">
+</section>
+<h3>
+Buffer(), BufferLength()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMallocIO</span><span class="p">::</span></span><span class="n">Buffer</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">size_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMallocIO</span><span class="p">::</span></span><span class="n">BufferLength</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Buffer()</span> returns a pointer to the memory that the <span class="hclass">BMallocIO</span> object has allocated, or <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if it hasn’t yet had occasion to allocate any memory.</p>
+<p><span class="hmethod">BufferLenth()</span> returns the number of data bytes in the buffer (not necessarily the full number of bytes that were allocated).</p>
+<section id="_CPPv4N9BMallocIO6ReadAtE5off_tPv6size_t">
+</section>
+<h3>
+ReadAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMallocIO</span><span class="p">::</span></span><span class="n">ReadAt</span><span class="sig-paren">(</span><span class="n">off_t</span><span class="w"> </span><span class="n sig-param">position</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">numBytes</span><span class="sig-paren">)</span></pre><p>Reads up to <span class="hparameter">numBytes</span> of data from the object and copies it into the <span class="hparameter">buffer</span>. Returns the actual number of bytes placed in the buffer. The data is read beginning at <span class="hparameter">position</span> offset.</p>
+<p>This function doesn’t read beyond the end of the data. If there are fewer than <span class="hparameter">numBytes</span> of data available at the <span class="hparameter">position</span> offset, it reads only through to the last data byte and returns a smaller number than <span class="hparameter">numBytes</span>. If <span class="hparameter">position</span> is out of range, it returns 0.</p>
+<section id="_CPPv4N9BMallocIO4SeekE5off_t5int32">
+</section>
+<section id="_CPPv4NK9BMallocIO8PositionEv">
+</section>
+<h3>
+Seek(), Position()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">off_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMallocIO</span><span class="p">::</span></span><span class="n">Seek</span><span class="sig-paren">(</span><span class="n">off_t</span><span class="w"> </span><span class="n sig-param">position</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">mode</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">off_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMallocIO</span><span class="p">::</span></span><span class="n">Position</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hparameter">Seek()</span> sets the position in the data buffer where the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Read()</span></code> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Write()</span></code> functions (inherited from <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPositionIO</span></code>) begin reading and writing. How the <span class="hparameter">position</span> argument is understood depends on the <span class="hparameter">mode</span> flag. There are three possible modes:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">SEEK_SET</span></code></p></td>
+<td><p>The <span class="hparameter">position</span> passed is an offset from the beginning of allocated memory; in other words, the current position is set to <span class="hparameter">position</span>. For this mode, <span class="hparameter">position</span> should be a positive value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">SEEK_CUR</span></code></p></td>
+<td><p>The <span class="hparameter">position</span> argument is an offset from the current position; the value of the argument is added to the current position.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">SEEK_END</span></code></p></td>
+<td><p>The <span class="hparameter">position</span> argument is an offset from the end of the object’s data (not necessarily from the end of allocated memory). Positive values seek beyond the end of the data; negative values seek backwards into the data.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Attempts to seek beyond the end of allocated memory are legal. What <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Write()</span></code> is subsequently called, the object updaates its conception of where the data ends to bring the current position within range. If necessary, enough memory will be allocated to accommodate any data added at the current position.</p>
+<p>Both <span class="hmethod">Seek()</span> and <span class="hmethod">Position()</span> return the current position as an offset in bytes from the beginning of allocatedd memory.</p>
+<section id="_CPPv4N9BMallocIO7WriteAtE5off_tPKv6size_t">
+</section>
+<h3>
+WriteAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMallocIO</span><span class="p">::</span></span><span class="n">WriteAt</span><span class="sig-paren">(</span><span class="n">off_t</span><span class="w"> </span><span class="n sig-param">position</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">numBytes</span><span class="sig-paren">)</span></pre><p>Copies <span class="hparameter">numBytes</span> of data from <span class="hparameter">buffer</span> into the object’s data beginning at <span class="hparameter">position</span>.</p>
+<p>A successful <span class="hmethod">WriteAt()</span> always returns <span class="hparameter">numBytes</span>. <span class="hmethod">WriteAt()</span> reallocates the buffer (in multiples of the block size) if it needs more room. If the reallocation fails, this function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="locker.html">BLocker</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="memory-io.html">BMemoryIO</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

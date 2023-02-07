@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BPrintJob &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BRadioButton" href="radio-button.html" />
+    <link rel="prev" title="BPopUpMenu" href="pop-up-menu.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BPrintJob</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="pop-up-menu.html">BPopUpMenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="radio-button.html">BRadioButton</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BPrintJob</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob9BPrintJobEPKc">BPrintJob</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJobD0Ev">~BPrintJob</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob8BeginJobEv">BeginJob</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob9CancelJobEv">CancelJob</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob11CanContinueEv">CanContinue</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob9CommitJobEv">CommitJob</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob10ConfigPageEv">ConfigPage</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob9ConfigJobEv">ConfigJob</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob8DrawViewEP5BView5BRect6BPoint">DrawView</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob9SpoolPageEv">SpoolPage</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob9FirstPageEv">FirstPage</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob8LastPageEv">LastPage</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob13GetResolutionEP5int32P5int32">GetResolution</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob9PaperRectEv">PaperRect</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob13PrintableRectEv">PrintableRect</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob11PrinterTypeEPv">PrinterType</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob11SetSettingsEP8BMessage">SetSettings</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BPrintJob8SettingsEv">Settings</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BPrintJob22IsSettingsMessageValidEP8BMessage">IsSettingsMessageValid</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bprintjob">
+<h1>BPrintJob<a class="headerlink" href="#bprintjob" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N9BPrintJob9BPrintJobEPKc">
+</section>
+<h3>
+BPrintJob()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BPrintJob9BPrintJobEPKc" title="BPrintJob::BPrintJob"><span class="n">BPrintJob</span></a><span class="p">::</span></span><span class="n">BPrintJob</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BPrintJob</span> object and assigns the job a <span class="hparameter">name</span>.
+The Print Server isn’t contacted until
+<a class="reference internal" href="#_CPPv4N9BPrintJob10ConfigPageEv" title="BPrintJob::ConfigPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ConfigPage()</span></code></a> or
+<a class="reference internal" href="#_CPPv4N9BPrintJob9ConfigJobEv" title="BPrintJob::ConfigJob"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ConfigJob()</span></code></a> is called. The
+spool file isn’t created until
+<a class="reference internal" href="#_CPPv4N9BPrintJob8BeginJobEv" title="BPrintJob::BeginJob"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BeginJob()</span></code></a>
+prepares for the production of pages.</p>
+<section id="_CPPv4N9BPrintJobD0Ev">
+</section>
+<h3>
+~BPrintJob()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">~BPrintJob</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees all memory allocated by the object.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N9BPrintJob8BeginJobEv">
+</section>
+<h3>
+BeginJob()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">BeginJob</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Opens a spool file for the job and prepares for the production of a
+series of pages. Call this function only once per printing
+session—just after initializing the job and just before drawing the
+first page.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N9BPrintJob9CommitJobEv" title="BPrintJob::CommitJob"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CommitJob()</span></code></a>,
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>” in the class overview</p>
+<section id="_CPPv4N9BPrintJob9CancelJobEv">
+</section>
+<h3>
+CancelJob()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">CancelJob</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Cancels the print job programmatically and gets rid of the spool file.
+The job cannot be restarted; you must destroy the <span class="hclass">BPrintJob</span> object.
+Create a new object to renew printing.</p>
+<section id="_CPPv4N9BPrintJob11CanContinueEv">
+</section>
+<h3>
+CanContinue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">CanContinue</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if there’s no impediment to continuing with the print job,
+and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if the user has canceled the job, the spool file has grown too
+big, or something else has happened to terminate printing. It’s a good
+idea to liberally sprinkle <span class="hmethod">CanContinue()</span> queries throughout your printing
+code to make sure that the work you’re about to do won’t be wasted.</p>
+<p>See also:
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>”
+in the class overview</p>
+<section id="_CPPv4N9BPrintJob9CommitJobEv">
+</section>
+<h3>
+CommitJob()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">CommitJob</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Commits all spooled pages to the printer. This ends the print job; when
+<span class="hmethod">CommitJob()</span> returns, the <span class="hclass">BPrintJob</span>
+object can be deleted. <span class="hmethod">CommitJob()</span> can
+be called only once per job.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N9BPrintJob8BeginJobEv" title="BPrintJob::BeginJob"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BeginJob()</span></code></a>,
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>”
+in the class overview</p>
+<section id="_CPPv4N9BPrintJob10ConfigPageEv">
+</section>
+<section id="_CPPv4N9BPrintJob9ConfigJobEv">
+</section>
+<h3>
+ConfigPage(), ConfigJob()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">ConfigPage</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">ConfigJob</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions contact the Print Server and have the server interact
+with the user to lay out the document on a page (in the case of
+<span class="hmethod">ConfigPage()</span>) or to define a print job
+(in the case of <span class="hmethod">ConfigJob()</span>). The
+page layout includes such things as the orientation of the image
+(portrait or landscape), the dimensions of the paper on which the
+document will be printed, and the size of the margins. The job definition
+includes such things as which pages are to be printed and the number of
+copies.</p>
+<p>Both functions record the user’s choices in a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> object that
+<a class="reference internal" href="#_CPPv4N9BPrintJob8SettingsEv" title="BPrintJob::Settings"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Settings()</span></code></a> returns.</p>
+<p>If <a class="reference internal" href="#_CPPv4N9BPrintJob11SetSettingsEP8BMessage" title="BPrintJob::SetSettings"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetSettings()</span></code></a>
+has been called to establish a default configuration for
+the page layout or the job, these functions will pass it to the Print Server so the server can present it to the user. Otherwise, the server
+will choose a default configuration to show the user.</p>
+<p>These two functions return status_t error codes, despite having return
+values that are declared int32. They return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code> if they have trouble
+communicating with the server or if the job can’t be established for any
+reason. They return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if all goes well.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N9BPrintJob11SetSettingsEP8BMessage" title="BPrintJob::SetSettings"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetSettings()</span></code></a>,
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>” and
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>”
+in the class overview</p>
+<section id="_CPPv4N9BPrintJob8DrawViewEP5BView5BRect6BPoint">
+</section>
+<section id="_CPPv4N9BPrintJob9SpoolPageEv">
+</section>
+<h3>
+DrawView(), SpoolPage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">DrawView</span><span class="sig-paren">(</span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">view</span>, <span class="n">BRect</span><span class="w"> </span><span class="n sig-param">rect</span>, <span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">SpoolPage</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">DrawView()</span> calls upon a <span class="hparameter">view</span> to draw the
+<span class="hparameter">rect</span> portion of its display at
+the location specified by <span class="hparameter">point</span> on the page. As a result, the <span class="hparameter">view</span>’s
+<a class="reference internal" href="view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a>
+function will be called with <span class="hparameter">rect</span> passed as the update rectangle.
+The rectangle should be stated in the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>’s coordinate system. The
+<span class="hparameter">point</span> should be stated in a coordinate system that has the origin at the
+top left corner of the printable rectangle. Together the
+<span class="hparameter">rect</span> and <span class="hparameter">point</span>
+should be fashioned so that the entire rectangle lies within the
+boundaries of the page’s printable area.</p>
+<p>The <span class="hparameter">view</span> must be attached to a window; that is, it must be known to the
+Application Server. However, when printing, a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> can be asked to draw
+portions of its display that are not visible on-screen. Its drawing is
+not limited by the clipping region, its bounds rectangle, or the frame
+rectangles of ancestor views.</p>
+<p>Any number of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s
+can draw on a page if they are subjects of separate
+<span class="hmethod">DrawView()</span> calls.</p>
+<p><span class="hmethod">DrawView()</span> renders the entire hierarchy of
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s attached to the
+specified <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>.</p>
+<p>Note the following bugs (which will be fixed in subsequent releases):</p>
+<ul class="simple">
+<li><p>BeOS 5 (and earlier) renders only the first two hierarchy levels correctly.</p></li>
+<li><p>Hidden <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s (and views without <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WILL_DRAW</span></code> specified) are rendered.</p></li>
+<li><p><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BScrollBar</span></code> and derived <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s aren’t rendered.</p></li>
+<li><p>View background and overlay bitmaps are ignored; instead, the view color is printed.</p></li>
+</ul>
+<p>After all views have drawn and the page is complete,
+<span class="hmethod">SpoolPage()</span> adds it
+to the spool file. <span class="hmethod">SpoolPage()</span>
+must be called once to terminate each page.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N9BPrintJob13PrintableRectEv" title="BPrintJob::PrintableRect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PrintableRect()</span></code></a>,
+<a class="reference internal" href="view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Draw()</span></code></a>,
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>” in the
+class overview</p>
+<section id="_CPPv4N9BPrintJob9FirstPageEv">
+</section>
+<section id="_CPPv4N9BPrintJob8LastPageEv">
+</section>
+<h3>
+FirstPage(), LastPage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">FirstPage</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">LastPage</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions return the first and last pages that should be printed as
+part of the current job. If the pages are not set (for example, if the
+current job has been canceled), <span class="hmethod">FirstPage()</span>
+returns 0 and <span class="hmethod">LastPage()</span>
+returns a very large number (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">LONG_MAX</span></code>).</p>
+<section id="_CPPv4N9BPrintJob13GetResolutionEP5int32P5int32">
+</section>
+<h3>
+GetResolution()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">GetResolution</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">xdpi</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ydpi</span><span class="sig-paren">)</span></pre><p>Fills the <span class="hparameter">xdpi</span> and <span class="hparameter">ydpi</span>
+variables with the X and Y resolution of the
+printer, in dots per inch.</p>
+<section id="_CPPv4N9BPrintJob9PaperRectEv">
+</section>
+<section id="_CPPv4N9BPrintJob13PrintableRectEv">
+</section>
+<h3>
+PaperRect(), PrintableRect()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">PaperRect</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">PrintableRect</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">PaperRect()</span> returns a rectangle that records the presumed size of the
+paper that the printer will use. Its left and top sides are at 0.0, so
+its right and bottom coordinates reflect the size of a sheet of paper.
+The size depends on choices made by the user when setting up the page
+layout.</p>
+<p><span class="hmethod">PrintableRect()</span> returns a rectangle that encloses the portion of a page
+where printing can appear. It’s stated in the same coordinate system as
+the rectangle returned by <span class="hmethod">PaperRect()</span>, but excludes the margins around
+the edge of the paper. When drawing on the printed page, the left top
+corner of this rectangle is taken to be the coordinate origin, (0.0, 0.0).</p>
+<p>The “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>”
+section in the class overview illustrates these
+rectangles and their coordinate systems.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N9BPrintJob8DrawViewEP5BView5BRect6BPoint" title="BPrintJob::DrawView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawView()</span></code></a></p>
+<section id="_CPPv4N9BPrintJob11PrinterTypeEPv">
+</section>
+<h3>
+PrinterType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">PrinterType</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Returns a code identifying whether the printer is color or black and
+white. The argument is currently not used.</p>
+<p>The return value will be either <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BW_PRINTER</span></code>
+or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_COLOR_PRINTER</span></code>.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>In the current release of BeOS, this function always returns
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_COLOR_PRINTER</span></code>, since there’s no printer driver API for determining the
+printer type yet.</p>
+</div>
+<p>If an error occurs, this function will return an appropriate error code
+(for example, if the Print Server isn’t running).</p>
+<section id="_CPPv4N9BPrintJob11SetSettingsEP8BMessage">
+</section>
+<section id="_CPPv4N9BPrintJob8SettingsEv">
+</section>
+<section id="_CPPv4NK9BPrintJob22IsSettingsMessageValidEP8BMessage">
+</section>
+<h3>
+SetSettings(), Settings(), IsSettingsMessageValid()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">SetSettings</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">configuration</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">Settings</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPrintJob</span><span class="p">::</span></span><span class="n">IsSettingsMessageValid</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">configuration</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the group of parameters that define how a
+document should be printed. The parameters include some that capture the
+page layout of the document and some that define the current job. They’re
+recorded in a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
+object that can be regarded as a black box; the
+data in the message are interpreted by the Print Server and will be
+documented where the print driver API is documented.</p>
+<p>Instead of looking in the <span class="hmethod">Settings()</span>
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>, rely on <span class="hclass">BPrintJob</span>
+functions to provide specific information about the layout and the print
+job. Currently, there are only two functions –
+<a class="reference internal" href="#_CPPv4N9BPrintJob9FirstPageEv" title="BPrintJob::FirstPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FirstPage()</span></code></a> and
+<a class="reference internal" href="#_CPPv4N9BPrintJob8LastPageEv" title="BPrintJob::LastPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LastPage()</span></code></a>,
+which return the first and last pages that need to be printed.</p>
+<p><span class="hmethod">Settings()</span> can be called to get the current configuration message, which
+can then be flattened and stored with the document. You can retrieve it
+later and pass it to <span class="hmethod">SetSettings()</span> to set initial configuration values
+the next time the document is printed, as discussed in the
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>” and
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>”
+sections of the class overview.</p>
+<p>If the message passed to settings doesn’t contain all the information
+needed to properly configure the print job, the printer add-on being used
+will either determine appropriate default values or present a
+configuration dialog box.</p>
+<p><span class="hmethod">SetSettings()</span> assumes ownership of the object it’s passed. If your
+application needs to retain the object, pass a copy to
+<span class="hmethod">SetSettings()</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_job_object</span><span class="o">.</span><span class="n">SetSettings</span><span class="p">(</span><span class="n">new</span> <span class="n">BMessage</span><span class="p">(</span><span class="n">settings_message</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>On the other hand, <span class="hmethod">Settings()</span> transfers ownership of the object it
+returns to the caller; you don’t need to make a copy.</p>
+<p><span class="hmethod">IsMessageSettingsValid()</span> returns
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the specified message is a valid
+settings message; otherwise it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N9BPrintJob10ConfigPageEv" title="BPrintJob::ConfigPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ConfigPage()</span></code></a></p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="pop-up-menu.html">BPopUpMenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="radio-button.html">BRadioButton</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

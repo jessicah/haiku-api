@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BClipboard &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BCursor" href="cursor.html" />
+    <link rel="prev" title="BApplication Overview" href="application/overview-old.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BClipboard</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="application/overview-old.html">BApplication Overview</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="cursor.html">BCursor</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BClipboard</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N10BClipboard10BClipboardEPKcb">BClipboard</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BClipboardD0Ev">~BClipboard</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N10BClipboard5ClearEv">Clear</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BClipboard6CommitEv">Commit</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BClipboard6RevertEv">Revert</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BClipboard4DataEv">Data</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BClipboard10DataSourceEv">DataSource</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BClipboard10LocalCountEv">LocalCount</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BClipboard11SystemCountEv">SystemCount</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BClipboard4LockEv">Lock</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BClipboard6UnlockEv">Unlock</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BClipboard8IsLockedEv">IsLocked</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BClipboard4NameEv">Name</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BClipboard13StartWatchingE10BMessenger">StartWatching</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BClipboard12StopWatchingE10BMessenger">StopWatching</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#global-variables">Global Variables</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bclipboard">
+<h1>BClipboard<a class="headerlink" href="#bclipboard" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N10BClipboard10BClipboardEPKcb">
+</section>
+<h3>
+BClipboard()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BClipboard10BClipboardEPKcb" title="BClipboard::BClipboard"><span class="n">BClipboard</span></a><span class="p">::</span></span><span class="n">BClipboard</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">discard</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BClipboard</span> object that refers to the
+<span class="hparameter">name</span> clipboard. The clipboard itself is created if a
+clipboard of that name doesn’t already exist.
+The <span class="hparameter">discard</span> flag is currently unused.</p>
+<section id="_CPPv4N10BClipboardD0Ev">
+</section>
+<h3>
+~BClipboard()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BClipboard</span><span class="p">::</span></span><span class="n">~BClipboard</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Destroys the <span class="hclass">BClipboard</span> object. The clipboard
+itself and the data it contains are not affected by the object’s destruction.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N10BClipboard5ClearEv">
+</section>
+<section id="_CPPv4N10BClipboard6CommitEv">
+</section>
+<section id="_CPPv4N10BClipboard6RevertEv">
+</section>
+<h3>
+Clear(), Commit(), Revert()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BClipboard</span><span class="p">::</span></span><span class="n">Clear</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BClipboard</span><span class="p">::</span></span><span class="n">Commit</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BClipboard</span><span class="p">::</span></span><span class="n">Revert</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions are used when you’re writing data to the clipboard.
+<span class="hmethod">Clear()</span> prepares your <span class="hclass">BClipboard</span>
+for writing. You call <span class="hmethod">Clear()</span> just before you add
+new data to your clipboard message. <span class="hmethod">Commit()</span> copies your
+<span class="hclass">BClipboard</span> data back to the clipboard. See
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>”
+for an example of these functions.
+<span class="hmethod">Revert()</span> refreshes the <span class="hclass">BClipboard</span>’s
+data message by uploading it from the clipboard. The function is provided for
+the (rare) case where you alter your <span class="hclass">BClipboard</span>’s data message,
+and then decide to back out of the change. In this case, you should call
+<span class="hmethod">Revert()</span> (rather than <span class="hmethod">Commit()</span>).
+If you don’t revert, your <span class="hclass">BClipboard</span>’s message will still
+contain your unwanted change, even if you unlock and then re-lock the object.
+All three functions return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code> if the
+<span class="hclass">BClipboard</span> isn’t locked, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> otherwise.</p>
+<section id="_CPPv4NK10BClipboard4DataEv">
+</section>
+<h3>
+Data()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BClipboard</span><span class="p">::</span></span><span class="n">Data</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
+object that holds the <span class="hclass">BClipboard</span>’s data, or
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the <span class="hclass">BClipboard</span> isn’t
+locked. You’re expected to read and write the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> directly;
+however, you may not free it or dispatch it like a normal <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>. If you change
+the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> and
+want to write it back to the clipboard, you have to call
+<span class="hmethod">Commit()</span> after you make the change.
+See
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>”
+for more information.</p>
+<section id="_CPPv4NK10BClipboard10DataSourceEv">
+</section>
+<h3>
+DataSource()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMessenger</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BClipboard</span><span class="p">::</span></span><span class="n">DataSource</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> that targets
+the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code>
+object of the application that last committed data to the clipboard. The
+<span class="hclass">BClipboard</span> needn’t be locked.</p>
+<section id="_CPPv4NK10BClipboard10LocalCountEv">
+</section>
+<section id="_CPPv4NK10BClipboard11SystemCountEv">
+</section>
+<h3>
+LocalCount(), SystemCount()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">uint32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BClipboard</span><span class="p">::</span></span><span class="n">LocalCount</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">uint32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BClipboard</span><span class="p">::</span></span><span class="n">SystemCount</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions return the clipboard count. <span class="hmethod">LocalCount()</span>
+uses a cached count, while <span class="hmethod">SystemCount()</span> asks the
+Application Server for the more accurate system counter.</p>
+<section id="_CPPv4N10BClipboard4LockEv">
+</section>
+<section id="_CPPv4N10BClipboard6UnlockEv">
+</section>
+<section id="_CPPv4N10BClipboard8IsLockedEv">
+</section>
+<h3>
+Lock(), Unlock(), IsLocked()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BClipboard</span><span class="p">::</span></span><span class="n">Lock</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BClipboard</span><span class="p">::</span></span><span class="n">Unlock</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BClipboard</span><span class="p">::</span></span><span class="n">IsLocked</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Lock()</span> uploads data from the clipboard into your
+<span class="hclass">BClipboard</span> object, and locks the object so no other
+thread in your application can use it. You must call
+<span class="hmethod">Lock()</span> before reading or writing the
+<span class="hclass">BClipboard</span>. <span class="hmethod">Lock()</span> blocks
+if the object is already locked. It returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if
+the lock was acquired, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if the
+<span class="hclass">BClipboard</span> object was deleted while
+<span class="hmethod">Lock()</span> was blocked.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>There’s no way to tell <span class="hmethod">Lock()</span> to time out.</p>
+</div>
+<p><span class="hmethod">Unlock()</span> unlocks the object so other threads in your application can use it.
+<span class="hmethod">IsLocked()</span> hardly needs to be documented.</p>
+<section id="_CPPv4NK10BClipboard4NameEv">
+</section>
+<h3>
+Name()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BClipboard</span><span class="p">::</span></span><span class="n">Name</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the name of the clipboard. The object needn’t be locked.</p>
+<section id="_CPPv4N10BClipboard13StartWatchingE10BMessenger">
+</section>
+<section id="_CPPv4N10BClipboard12StopWatchingE10BMessenger">
+</section>
+<h3>
+StartWatching(), StopWatching()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BClipboard</span><span class="p">::</span></span><span class="n">StartWatching</span><span class="sig-paren">(</span><span class="n">BMessenger</span><span class="w"> </span><span class="n sig-param">target</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BClipboard</span><span class="p">::</span></span><span class="n">StopWatching</span><span class="sig-paren">(</span><span class="n">BMessenger</span><span class="w"> </span><span class="n sig-param">target</span><span class="sig-paren">)</span></pre><p>If you want to be alerted when the clipboard changes, call
+<span class="hmethod">StartWatching()</span>, passing a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> to be the
+target for the notification. When the clipboard changes, a
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CLIPBOARD_CHANGED</span></code> message will be sent to the
+target.
+<span class="hmethod">StopWatching()</span> stops monitoring the clipboard for changes.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>No error.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>You get the idea.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="global-variables">
+<h2>Global Variables<a class="headerlink" href="#global-variables" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BClipboard</span><span class="o">*</span> <span class="n">be_clipboard</span>
+</pre></div>
+</div>
+<p>This variable gives applications access to the system clipboard—the
+shared repository of data for cut, copy, and paste operations. It’s
+initialized at startup.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="application/overview-old.html">BApplication Overview</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="cursor.html">BCursor</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

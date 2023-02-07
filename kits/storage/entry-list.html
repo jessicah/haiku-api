@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BEntryList &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BFile" href="file.html" />
+    <link rel="prev" title="BEntry" href="entry.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BEntryList</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="entry.html">BEntry</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="file.html">BFile</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BEntryList</a><ul>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N10BEntryList12CountEntriesEv">CountEntries</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BEntryList12GetNextEntryEP6BEntryb">GetNextEntry</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BEntryList10GetNextRefEP9entry_ref">GetNextRef</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BEntryList14GetNextDirentsEP6dirent6size_t5int32">GetNextDirents</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BEntryList6RewindEv">Rewind</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bentrylist">
+<h1>BEntryList<a class="headerlink" href="#bentrylist" title="Permalink to this heading">¶</a></h1>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N10BEntryList12CountEntriesEv">
+</section>
+<h3>
+CountEntries()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BEntryList</span><span class="p">::</span></span><span class="n">CountEntries</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Returns the number of entries that are in the entry list.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>For <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BQuery</span></code>
+this is a no-op. Also,
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code>’s implementation
+manipulates the entry list pointer; thus, you shouldn’t call
+<span class="hmethod">CountEntries()</span> while you’re iterating through the directory’s entries.</p>
+</div>
+<section id="_CPPv4N10BEntryList12GetNextEntryEP6BEntryb">
+</section>
+<section id="_CPPv4N10BEntryList10GetNextRefEP9entry_ref">
+</section>
+<section id="_CPPv4N10BEntryList14GetNextDirentsEP6dirent6size_t5int32">
+</section>
+<h3>
+GetNextEntry(), GetNextRef(), GetNextDirents()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BEntryList</span><span class="p">::</span></span><span class="n">GetNextEntry</span><span class="sig-paren">(</span><span class="n">BEntry</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">entry</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">traverse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BEntryList</span><span class="p">::</span></span><span class="n">GetNextRef</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BEntryList</span><span class="p">::</span></span><span class="n">GetNextDirents</span><span class="sig-paren">(</span><span class="n">dirent</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buf</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">bufsize</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">count</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">INT_MAX</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>These functions return the “next” entry in the entry list as a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code>,
+entry_ref, or dirent structure. The end of the list is signalled by…</p>
+<ul class="simple">
+<li><p><span class="hmethod">GetNextEntry()</span> and <span class="hmethod">GetNextRef()</span> return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></li>
+<li><p><span class="hmethod">GetNextDirents()</span> returns 0.</p></li>
+</ul>
+<p>If the <span class="hparameter">traverse</span> argument is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, symlinks are traversed.</p>
+<p>See the <span class="xref std std-ref">class overview</span> for more information.</p>
+<section id="_CPPv4N10BEntryList6RewindEv">
+</section>
+<h3>
+Rewind()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BEntryList</span><span class="p">::</span></span><span class="n">Rewind</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Rewinds the entry list pointer so it points to the first element in the
+list.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>For <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BQuery</span></code> this is a no-op.</p>
+</div>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="entry.html">BEntry</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="file.html">BFile</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

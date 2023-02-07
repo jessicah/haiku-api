@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BPopUpMenu &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BPrintJob" href="print-job.html" />
+    <link rel="prev" title="BPolygon" href="polygon.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BPopUpMenu</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="polygon.html">BPolygon</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="print-job.html">BPrintJob</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BPopUpMenu</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N10BPopUpMenu10BPopUpMenuEPKcbb11menu_layout">BPopUpMenu</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BPopUpMenuD0Ev">~BPopUpMenu</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4NK10BPopUpMenu7ArchiveEP8BMessageb">Archive</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BPopUpMenu2GoE6BPointbbb">Go</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BPopUpMenu14ScreenLocationEv">ScreenLocation</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BPopUpMenu20SetAsyncAutoDestructEb">SetAsyncAutoDestruct</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BPopUpMenu17AsyncAutoDestructEv">AsyncAutoDestruct</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#static-functions">Static Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N10BPopUpMenu11InstantiateEP8BMessage">Instantiate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bpopupmenu">
+<h1>BPopUpMenu<a class="headerlink" href="#bpopupmenu" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N10BPopUpMenu10BPopUpMenuEPKcbb11menu_layout">
+</section>
+<h3>
+BPopUpMenu()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BPopUpMenu10BPopUpMenuEPKcbb11menu_layout" title="BPopUpMenu::BPopUpMenu"><span class="n">BPopUpMenu</span></a><span class="p">::</span></span><span class="n">BPopUpMenu</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">radioMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">labelFromMarked</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span>, <span class="n">menu_layout</span><span class="w"> </span><span class="n sig-param">layout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_ITEMS_IN_COLUMN</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BPopUpMenu10BPopUpMenuEP8BMessage" title="BPopUpMenu::BPopUpMenu"><span class="n">BPopUpMenu</span></a><span class="p">::</span></span><span class="n">BPopUpMenu</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BPopUpMenu</span> object. If the object
+is added to a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code>,
+its <span class="hparameter">name</span> also becomes the initial label of its controlling item (just as
+for other <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code>s).</p>
+<p>If the <span class="hparameter">labelFromMarked</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>
+(as it is by default), the label of
+the controlling item will change to reflect the label of the item that
+the user last selected. In addition, the menu will operate in radio mode
+(regardless of the value passed as the <span class="hparameter">radioMode</span> flag). When the menu
+pops up, it will position itself so that the marked item appears directly
+over the controlling item in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code>.</p>
+<p>If <span class="hparameter">labelFromMarked</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, the
+menu pops up so that its first item is over the controlling item.</p>
+<p>If the <span class="hparameter">radioMode</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>
+(as it is by default), the last item
+selected by the user will always be marked. In this mode, one and only
+one item within the menu can be marked at a time. If
+<span class="hparameter">radioMode</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>,
+items aren’t automatically marked or unmarked.</p>
+<p>However, the <span class="hparameter">radioMode</span> flag has no effect unless
+the <span class="hparameter">labelFromMarked</span> flag
+is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>. As long as <span class="hparameter">labelFromMarked</span>
+is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, radio mode will also be
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>The layout of the items in a <span class="hclass">BPopUpMenu</span> can be either
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_ROW</span></code> or
+the default <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_COLUMN</span></code>. It should never be
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_MATRIX</span></code>. The
+menu is resized so that it exactly fits the items that are added to it.</p>
+<p>The new <span class="hclass">BPopUpMenu</span> is empty; you add items to it by calling
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code>’s
+<a class="reference internal" href="menu.html#_CPPv4N5BMenu7AddItemEP9BMenuItem" title="BMenu::AddItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddItem()</span></code></a> function.</p>
+<p>See also:
+<a class="reference internal" href="menu.html#_CPPv4N5BMenu12SetRadioModeEb" title="BMenu::SetRadioMode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::SetRadioMode()</span></code></a>,
+<a class="reference internal" href="menu.html#_CPPv4N5BMenu18SetLabelFromMarkedEb" title="BMenu::SetLabelFromMarked"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::SetLabelFromMarked()</span></code></a></p>
+<section id="_CPPv4N10BPopUpMenuD0Ev">
+</section>
+<h3>
+~BPopUpMenu()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPopUpMenu</span><span class="p">::</span></span><span class="n">~BPopUpMenu</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Does nothing. The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code>
+destructor is sufficient to clean up after a <span class="hclass">BPopUpMenu</span>.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4NK10BPopUpMenu7ArchiveEP8BMessageb">
+</section>
+<h3>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPopUpMenu</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of <a class="reference internal" href="menu.html#_CPPv4NK5BMenu7ArchiveEP8BMessageb" title="BMenu::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a>
+and stores the <span class="hclass">BPopUpMenu</span> in the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive.</p>
+<p>See also:
+<a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N10BPopUpMenu11InstantiateEP8BMessage" title="BPopUpMenu::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
+<section id="_CPPv4N10BPopUpMenu2GoE6BPointbbb">
+</section>
+<h3>
+Go()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMenuItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BPopUpMenu</span><span class="p">::</span></span><span class="n">Go</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">screenPoint</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deliversMessage</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">openAnyway</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">asynchronous</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span><br /><span class="n">BMenuItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BPopUpMenu</span><span class="p">::</span></span><span class="n">Go</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">screenPoint</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deliversMessage</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">openAnyway</span>, <span class="n">BRect</span><span class="w"> </span><span class="n sig-param">clickToOpenRect</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">asynchronous</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>Places the pop-up menu on-screen so that its left top corner is located
+at <span class="hparameter">screenPoint</span> in the screen coordinate system.
+If the <span class="hparameter">asynchronous</span> flag
+is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, <span class="hmethod">Go()</span> returns right
+away; the return value is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. Otherwise, it
+doesn’t return until the user dismisses the menu from the screen. If the
+user invoked an item in the menu, it returns a pointer to the item. If no
+item was invoked, it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p><span class="hmethod">Go()</span> is typically called from within the
+<a class="reference internal" href="view.html#_CPPv4N5BView9MouseDownE6BPoint" title="BView::MouseDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MouseDown()</span></code></a>
+function of a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">MyView</span><span class="p">::</span><span class="n">MouseDown</span><span class="p">(</span><span class="n">BPoint</span> <span class="n">point</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">BMenuItem</span><span class="o">*</span> <span class="n">selected</span><span class="p">;</span>
+   <span class="n">BMessage</span><span class="o">*</span> <span class="n">copy</span><span class="p">;</span>
+   <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+   <span class="n">ConvertToScreen</span><span class="p">(</span><span class="o">&amp;</span><span class="n">point</span><span class="p">);</span>
+   <span class="n">selected</span> <span class="o">=</span> <span class="n">myPopUp</span><span class="o">-&gt;</span><span class="n">Go</span><span class="p">(</span><span class="n">point</span><span class="p">);</span>
+   <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+   <span class="k">if</span> <span class="p">(</span> <span class="n">selected</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="n">BLooper</span> <span class="o">*</span><span class="n">looper</span><span class="p">;</span>
+      <span class="n">BHandler</span> <span class="o">*</span><span class="n">target</span> <span class="o">=</span> <span class="n">selected</span><span class="o">-&gt;</span><span class="n">Target</span><span class="p">(</span><span class="o">&amp;</span><span class="n">looper</span><span class="p">);</span>
+      <span class="n">looper</span><span class="o">-&gt;</span><span class="n">PostMessage</span><span class="p">(</span><span class="n">selected</span><span class="o">-&gt;</span><span class="n">Message</span><span class="p">(),</span> <span class="n">target</span><span class="p">);</span>
+   <span class="p">}</span>
+   <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><span class="hmethod">Go()</span> operates in two modes:</p>
+<ul class="simple">
+<li><p>If the <span class="hparameter">deliversMessage</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the <span class="hclass">BPopUpMenu</span> works just like a menu that’s controlled by a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code>. When the user invokes an item in the menu, the item posts a message to its target.</p></li>
+<li><p>If the <span class="hparameter">deliversMessage</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, a message is not posted. Invoking an item doesn’t automatically accomplish anything. It’s up to the application to look at the returned <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code> and decide what to do. It can mimic the behavior of other menus and post the message—as shown in the example above—or it can take some other course of action.</p></li>
+</ul>
+<p><span class="hmethod">Go()</span> always puts the pop-up menu on-screen, but ordinarily keeps it there
+only as long as the user holds a mouse button down. When the user
+releases the button, the menu is hidden and <span class="hmethod">Go()</span> returns. However, the
+<span class="hparameter">openAnyway</span> flag and the <span class="hparameter">clickToOpenRect</span> arguments can alter this behavior
+so that the menu will stay open even when the user releases the mouse
+button (or even if a mouse button was never down). It will take another
+user action—such as invoking an item in the menu or clicking
+elsewhere—to dismiss the menu.</p>
+<p>If the <span class="hparameter">openAnyway</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>,
+<span class="hmethod">Go()</span> keeps the menu on-screen even if no
+mouse buttons are held down. This permits a user to open and operate a
+pop-up menu from the keyboard. If <span class="hparameter">openAnyway</span> is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, mouse actions
+determine whether the menu stays on-screen.</p>
+<p>If the user has the click-to-open menu preference turned on and releases
+the mouse button while the cursor lies inside the <span class="hparameter">clickToOpenRect</span>
+rectangle, <span class="hmethod">Go()</span> interprets the action as clicking to open the menu and
+keeps it on-screen. If the cursor is outside the rectangle when the mouse
+button goes up, the menu is removed from the screen and <span class="hmethod">Go()</span> returns. The
+rectangle should be stated in the screen coordinate system.</p>
+<p>Once <span class="hmethod">Go()</span> returns, your application should delete
+the <span class="hclass">BPopUpMenu</span> object.</p>
+<p>See also:
+<a class="reference internal" href="../application/invoker.html#_CPPv4N8BInvoker10SetMessageEP8BMessage" title="BInvoker::SetMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BInvoker::SetMessage()</span></code></a></p>
+<section id="_CPPv4N10BPopUpMenu14ScreenLocationEv">
+</section>
+<h3>
+ScreenLocation()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">BPoint</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPopUpMenu</span><span class="p">::</span></span><span class="n">ScreenLocation</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Determines where the pop-up menu should appear on-screen (when it’s being
+run automatically, not by <span class="hmethod">Go()</span>). As explained in the description of the
+class constructor, this largely depends on whether the label of the
+superitem changes to reflect the item that’s currently marked in the
+menu. The point returned is stated in the screen coordinate system.</p>
+<p>This function is called only for <span class="hclass">BPopUpMenu</span>s that have been added to a
+menu hierarchy (a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code>).
+You should not call it to determine the
+point to pass to <span class="hmethod">Go()</span>. However, you can override it to change where a
+customized pop-up menu defined in a derived class appears on-screen when
+it’s controlled by a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code>.</p>
+<p>See also:
+<a class="reference internal" href="menu.html#_CPPv4N5BMenu18SetLabelFromMarkedEb" title="BMenu::SetLabelFromMarked"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::SetLabelFromMarked()</span></code></a>,
+<a class="reference internal" href="menu.html#_CPPv4N5BMenu14ScreenLocationEv" title="BMenu::ScreenLocation"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::ScreenLocation()</span></code></a>,
+the <span class="hclass">BPopUpMenu</span> constructor</p>
+<section id="_CPPv4N10BPopUpMenu20SetAsyncAutoDestructEb">
+</section>
+<section id="_CPPv4NK10BPopUpMenu17AsyncAutoDestructEv">
+</section>
+<h3>
+SetAsyncAutoDestruct(), AsyncAutoDestruct()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPopUpMenu</span><span class="p">::</span></span><span class="n">SetAsyncAutoDestruct</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">state</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPopUpMenu</span><span class="p">::</span></span><span class="n">AsyncAutoDestruct</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetAsyncAutoDestruct()</span> lets you specify whether
+you want <span class="hclass">BPopUpMenu</span> to
+automatically delete its
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code>
+when the pop-up menu closes. If you want the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code>
+to be deleted, specify <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> for <span class="hparameter">state</span>.</p>
+<p><span class="hmethod">AsyncAutoDestruct()</span> returns the current state of the flag.</p>
+</section>
+<section id="static-functions">
+<h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N10BPopUpMenu11InstantiateEP8BMessage">
+</section>
+<h3>
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BPopUpMenu</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BPopUpMenu</span> object, allocated by new and created with the
+version of the constructor that takes a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive. However, if the
+archive message doesn’t contain data for a <span class="hclass">BPopUpMenu</span>, this function
+returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p>See also:
+<a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">object()</span></code>,
+<a class="reference internal" href="menu.html#_CPPv4NK5BMenu7ArchiveEP8BMessageb" title="BMenu::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="polygon.html">BPolygon</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="print-job.html">BPrintJob</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,489 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BSoundPlayer &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BTimeCode" href="time-code.html" />
+    <link rel="prev" title="BSmallBuffer" href="small-buffer.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BSoundPlayer</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="small-buffer.html">BSmallBuffer</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="time-code.html">BTimeCode</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BSoundPlayer</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer11BTimeSourceEPKcPFvPvPv6size_tRK22media_raw_audio_formatEPFvPv25sound_player_notificationEPv">BTimeSource</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayerD0Ev">~BSoundPlayer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4NK12BSoundPlayer12BufferPlayerEv">BufferPlayer</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer15SetBufferPlayerEPFvPvPv6size_tRK22media_raw_audio_formatE">SetBufferPlayer</a></li>
+<li><a class="reference internal" href="#_CPPv4NK12BSoundPlayer6CookieEv">Cookie</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer9SetCookieEPv">SetCookie</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer11CurrentTimeEv">CurrentTime</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer15PerformanceTimeEv">PerformanceTime</a></li>
+<li><a class="reference internal" href="#_CPPv4NK12BSoundPlayer13EventNotifierEv">EventNotifier</a></li>
+<li><a class="reference internal" href="#_CPPv4NK12BSoundPlayer6FormatEv">Format</a></li>
+<li><a class="reference internal" href="#_CPPv4NK12BSoundPlayer13EventNotifierEP10media_nodeP5int32PfPf">EventNotifier</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer7HasDataEv">HasData</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer10SetHasDataEb">SetHasData</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer9InitCheckEv">InitCheck</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer7LatencyEv">Latency</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer12SetCallbacksEPFvPvPv6size_tRK22media_raw_audio_formatEPFvPv25sound_player_notificationEPv">SetCallbacks</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer12SetInitErrorE8status_t">SetInitError</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer14SetSoundVolumeE7play_idf">SetSoundVolume</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer5StartEv">Start</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer4StopEbb">Stop</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer12StartPlayingEP6BSound9bigtime_t">StartPlaying</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer11StopPlayingE7play_id">StopPlaying</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer12WaitForSoundE7play_id">WaitForSound</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer9IsPlayingE7play_id">IsPlaying</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer6VolumeEv">Volume</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer9SetVolumeEf">SetVolume</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer8VolumeDBEv">VolumeDB</a></li>
+<li><a class="reference internal" href="#_CPPv4N12BSoundPlayer11SetVolumeDBEf">SetVolumeDB</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#defined-types">Defined Types</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bsoundplayer">
+<h1>BSoundPlayer<a class="headerlink" href="#bsoundplayer" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N12BSoundPlayer11BTimeSourceEPKcPFvPvPv6size_tRK22media_raw_audio_formatEPFvPv25sound_player_notificationEPv">
+</section>
+<h3>
+BTimeSource()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">BTimeSource</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">PlayBuffer</span><span class="p">)</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">media_raw_audio_format</span><span class="w"> </span><span class="p">&amp;</span><span class="n">format</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">Notifier</span><span class="p">)</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="p">,</span><span class="w"> </span><span class="n">sound_player_notification</span><span class="w"> </span><span class="n">what</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">BTimeSource</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_raw_audio_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">format</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">PlayBuffer</span><span class="p">)</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">media_raw_audio_format</span><span class="w"> </span><span class="p">&amp;</span><span class="n">format</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">Notifier</span><span class="p">)</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="p">,</span><span class="w"> </span><span class="n">sound_player_notification</span><span class="w"> </span><span class="n">what</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">BTimeSource</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_node</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">toNode</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_multi_audio_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">format</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_input</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">input</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">PlayBuffer</span><span class="p">)</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">media_raw_audio_format</span><span class="w"> </span><span class="p">&amp;</span><span class="n">format</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">Notifier</span><span class="p">)</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="p">,</span><span class="w"> </span><span class="n">sound_player_notification</span><span class="w"> </span><span class="n">what</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BSoundPlayer</span> object. The
+<span class="hparameter">name</span> argument specifies the name to be assigned
+to the sound player node (if you specify <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, a
+generic name will be assigned).
+The <span class="hparameter">PlayBuffer</span> argument specifies a pointer to a member function that
+processes data and inserts it into buffers for playback; specify NULL if you want to use the BSoundPlayer for playing BSounds. The parameters to
+the <span class="hparameter">PlayBuffer</span> function are (in order):</p>
+<ul class="simple">
+<li><p>Pointer to the cookie.</p></li>
+<li><p>Pointer to the buffer to play.</p></li>
+<li><p>Size of the buffer.</p></li>
+<li><p>Format of the audio data in the buffer.</p></li>
+</ul>
+<p>The <span class="hparameter">Notifier</span> parameter specifies a pointer to a member function that
+receives notifications when events of interest occur, such as playback
+starting or stopping. Specify <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> to use the default notification
+handler. There are three possible notifications:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STARTED</span></code>and<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STOPPED</span></code></p></td>
+<td><p>Indicate that the <span class="hclass">BSoundPlayer</span> was started or stopped. These receive a pointer to the <span class="hclass">BSoundPlayer</span> object as an argument.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SOUND_DONE</span></code></p></td>
+<td><p>Indicates that a sound has finished playing. In this case, there are two arguments: the first is a play_id indicating which sound finished playing, and the other is a boolean which is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the sound played at all, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if the sound never played.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>If the callback handlers are members of a class, they must be static
+members.</p>
+</div>
+<p>The <span class="hparameter">cookie</span> parameter is a pointer that
+you can use for your own purposes; it’s most useful if you’re using a
+custom <span class="hparameter">PlayBuffer</span> or
+<span class="hparameter">Notifier</span>.
+The second form of the constructor lets you specify in the
+<span class="hparameter">format</span> argument the format of the audio that the
+<span class="hclass">BSoundPlayer</span> will perform. Since
+<span class="hclass">BSoundPlayer</span> can only play raw sound formats,
+this is specified using the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">raw()</span></code>
+structure.
+The third form of the constructor lets you specify a node through which
+the sound should be played, and also uses a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">multi()</span></code>
+to specify the sound’s format, instead of the older
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">raw()</span></code>.
+You should call
+<a class="reference internal" href="#_CPPv4N12BSoundPlayer9InitCheckEv" title="BSoundPlayer::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>
+before using your <span class="hclass">BSoundPlayer</span> object; this
+will let you determine whether or not the object was successfully
+constructed. One situation in which
+<a class="reference internal" href="#_CPPv4N12BSoundPlayer9InitCheckEv" title="BSoundPlayer::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>
+might indicate an error is if the user doesn’t have a sound card installed.</p>
+<section id="_CPPv4N12BSoundPlayerD0Ev">
+</section>
+<h3>
+~BSoundPlayer()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">~BSoundPlayer</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Stops playback, if sound is playing,
+releases references to any BSound objects that are in use by the BSoundPlayer,
+and frees all memory used by the <span class="hclass">BSoundPlayer</span>.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4NK12BSoundPlayer12BufferPlayerEv">
+</section>
+<section id="_CPPv4N12BSoundPlayer15SetBufferPlayerEPFvPvPv6size_tRK22media_raw_audio_formatE">
+</section>
+<h3>
+BufferPlayer(), SetBufferPlayer()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BufferPlayerFunc</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">BufferPlayer</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">SetBufferPlayer</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">PlayBuffer</span><span class="p">)</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">media_raw_audio_format</span><span class="w"> </span><span class="p">&amp;</span><span class="n">format</span><span class="p">)</span><span class="sig-paren">)</span></pre><p><span class="hmethod">BufferPlayer()</span> returns a pointer to the
+current play buffer function, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the default
+player is in use.
+<span class="hmethod">SetBufferPlayer()</span> lets you change the play
+buffer function.</p>
+<section id="_CPPv4NK12BSoundPlayer6CookieEv">
+</section>
+<section id="_CPPv4N12BSoundPlayer9SetCookieEPv">
+</section>
+<h3>
+Cookie(), SetCookie()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">Cookie</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">SetCookie</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Cookie()</span> returns the current cookie
+assigned to the <span class="hclass">BSoundPlayer</span>.
+<span class="hmethod">SetCookie()</span> lets you change the cookie
+assigned to the <span class="hclass">BSoundPlayer</span>.</p>
+<section id="_CPPv4N12BSoundPlayer11CurrentTimeEv">
+</section>
+<section id="_CPPv4N12BSoundPlayer15PerformanceTimeEv">
+</section>
+<h3>
+CurrentTime(), PerformanceTime()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">CurrentTime</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">PerformanceTime</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">CurrentTime()</span> returns the current
+media time, and <span class="hmethod">PerformanceTime()</span>
+returns the current performance time of the sound player node being used
+by the <span class="hclass">BSoundPlayer</span>.
+<span class="hmethod">PerformanceTime()</span> will return
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code> if the <span class="hclass">BSoundPlayer</span>
+object hasn’t been properly initialized.</p>
+<section id="_CPPv4NK12BSoundPlayer13EventNotifierEv">
+</section>
+<h3>
+EventNotifier()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">EventNotifierFunc</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">EventNotifier</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em">void BSoundPlayer::SetNotifier(void (*Notifier)(void* , sound_player_notification what, ...)))</pre><p><span class="hmethod">EventNotifier()</span> returns a
+pointer to the current event notification
+handler function, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the default player is in
+use.
+<span class="hmethod">SetNotifier()</span> lets you change the event
+notification handler function.</p>
+<section id="_CPPv4NK12BSoundPlayer6FormatEv">
+</section>
+<h3>
+Format()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">media_raw_audio_format</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">Format</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <span class="hclass">BSoundPlayer</span>’s format. Since
+the sound is always a raw sound format, the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">raw()</span></code>
+structure is used.</p>
+<section id="_CPPv4NK12BSoundPlayer13EventNotifierEP10media_nodeP5int32PfPf">
+</section>
+<h3>
+EventNotifier()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">EventNotifierFunc</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">EventNotifier</span><span class="sig-paren">(</span><span class="n">media_node</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outNode</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outParameter</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outMinDB</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outMaxDB</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns information about the
+<span class="hclass">BSoundPlayer</span>’s volume control. Pass pointers to
+variables to be filled (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> is not permitted),
+and on return these values will be set to describe the player as
+follows:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>outNode</p></td>
+<td><p>Is the node to which the <span class="hclass">BSoundPlayer</span>’s audio output will be directed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>outParameter</p></td>
+<td><p>Is the parameter ID for the volume control.</p></td>
+</tr>
+<tr class="row-even"><td><p>outMinDB</p></td>
+<td><p>Is the minimum volume in decibels.</p></td>
+</tr>
+<tr class="row-odd"><td><p>outMaxDB</p></td>
+<td><p>Is the maximum volume in decibels.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BSoundPlayer7HasDataEv">
+</section>
+<section id="_CPPv4N12BSoundPlayer10SetHasDataEb">
+</section>
+<h3>
+HasData(), SetHasData()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">HasData</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">SetHasData</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">hasData</span><span class="sig-paren">)</span></pre><p><span class="hmethod">HasData()</span> returns
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if there’s sound queued for playback, or
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> otherwise.
+<span class="hmethod">SetHasData()</span> specifies whether or not
+there’s sound scheduled for playback.
+The purpose of these functions is to optimize the
+<span class="hclass">BSoundPlayer</span>; if there’s no data queued for
+playback, the sound player node is told this, which lets it optimize its
+performance. If you’re using a buffer player function, you must use
+<span class="hmethod">SetHasData()</span> to indicate that there’s data to
+play:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SetHasData</span><span class="p">(</span><span class="n">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="_CPPv4N12BSoundPlayer9InitCheckEv">
+</section>
+<h3>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the status code resulting from constructing the
+<span class="hclass">BSoundPlayer</span> object. You should call this after
+constructing the object; if the returned value is anything other than
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>, you shouldn’t use the object.</p>
+<section id="_CPPv4N12BSoundPlayer7LatencyEv">
+</section>
+<h3>
+Latency()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">Latency</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the <span class="hclass">BSoundPlayer</span>’s latency.</p>
+<section id="_CPPv4N12BSoundPlayer12SetCallbacksEPFvPvPv6size_tRK22media_raw_audio_formatEPFvPv25sound_player_notificationEPv">
+</section>
+<h3>
+SetCallbacks()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">SetCallbacks</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">PlayBuffer</span><span class="p">)</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">media_raw_audio_format</span><span class="w"> </span><span class="p">&amp;</span><span class="n">format</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="p">*</span><span class="n sig-param">Notifier</span><span class="p">)</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="p">,</span><span class="w"> </span><span class="n">sound_player_notification</span><span class="w"> </span><span class="n">what</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Sets the play buffer handler function, the event notification handler
+function, and the cookie all in one atomic operation.</p>
+<section id="_CPPv4N12BSoundPlayer12SetInitErrorE8status_t">
+</section>
+<h3>
+SetInitError()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">SetInitError</span><span class="sig-paren">(</span><span class="n">status_t</span><span class="w"> </span><span class="n sig-param">inError</span><span class="sig-paren">)</span></pre><p>Sets the status code that will be returned by
+<a class="reference internal" href="#_CPPv4N12BSoundPlayer9InitCheckEv" title="BSoundPlayer::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>.</p>
+<section id="_CPPv4N12BSoundPlayer14SetSoundVolumeE7play_idf">
+</section>
+<h3>
+SetSoundVolume()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">SetSoundVolume</span><span class="sig-paren">(</span><span class="n">play_id</span><span class="w"> </span><span class="n sig-param">sound</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">volume</span><span class="sig-paren">)</span></pre><p>Sets the volume (from 0.0 to 1.0) of the specified sound.</p>
+<section id="_CPPv4N12BSoundPlayer5StartEv">
+</section>
+<section id="_CPPv4N12BSoundPlayer4StopEbb">
+</section>
+<h3>
+Start(), Stop()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">Start</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">Stop</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">block</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">flush</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Start()</span> activates the
+<span class="hclass">BSoundPlayer</span> by starting the time source and the
+sound player node. The <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STARTED</span></code> notification is
+sent to the <span class="hclass">BSoundPlayer</span>’s notification
+handler.
+<span class="hmethod">Stop()</span> deactivates the
+<span class="hclass">BSoundPlayer</span> by stopping the player node (if
+<span class="hparameter">block</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the
+<span class="hmethod">Stop()</span> function blocks until the node is
+stopped). If <span class="hparameter">flush</span> is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the queued sounds are all deleted from
+memory.
+While the <span class="hclass">BSoundPlayer</span> is running, the
+play buffer function (if you’ve specified one) will be called for each
+buffer that passes through the <span class="hclass">BSoundPlayer</span>’s
+playback node. This hook function can be used to implement code that
+performs more advanced playback of sound, such as sound that’s generated
+on-the-fly, or is filtered before playback.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>The sound playback was started.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other errors.</p></td>
+<td><p>As returned by the <span class="hclass">BMediaRoster</span>’s <a class="reference internal" href="media-roster.html#_CPPv4N12BMediaRoster9StartNodeEK10media_node9bigtime_t" title="BMediaRoster::StartNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StartNode()</span></code></a> function.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BSoundPlayer12StartPlayingEP6BSound9bigtime_t">
+</section>
+<section id="_CPPv4N12BSoundPlayer11StopPlayingE7play_id">
+</section>
+<section id="_CPPv4N12BSoundPlayer12WaitForSoundE7play_id">
+</section>
+<section id="_CPPv4N12BSoundPlayer9IsPlayingE7play_id">
+</section>
+<h3>
+StartPlaying(), StopPlaying(), WaitForSound(), IsPlaying()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">play_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">StartPlaying</span><span class="sig-paren">(</span><span class="n">BSound</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">sound</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">atTime</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="n">play_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">StartPlaying</span><span class="sig-paren">(</span><span class="n">BSound</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">sound</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">atTime</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">withVolume</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">StopPlaying</span><span class="sig-paren">(</span><span class="n">play_id</span><span class="w"> </span><span class="n sig-param">id</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">WaitForSound</span><span class="sig-paren">(</span><span class="n">play_id</span><span class="w"> </span><span class="n sig-param">id</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">IsPlaying</span><span class="sig-paren">(</span><span class="n">play_id</span><span class="w"> </span><span class="n sig-param">id</span><span class="sig-paren">)</span></pre><p><span class="hmethod">StartPlaying()</span>
+schedules the specified <span class="hclass">BSound</span> to begin playback
+at the performance time specified by <span class="hparameter">atTime</span>; if
+<span class="hparameter">atTime</span> is 0, the sound begins playing
+immediately (or as soon as <span class="hmethod">Start()</span> is called,
+if the <span class="hclass">BSoundPlayer</span> hasn’t been started yet).
+The play_id returned by this function is used to identify
+the sound later. If it’s negative, an error occurred (see the list below
+for possible values). The second form of
+<span class="hmethod">StartPlaying()</span> lets you specify a volume at
+which the sound should play.
+<span class="hmethod">StopPlaying()</span> stops
+playing the sound specified by the given
+<span class="hparameter">id</span>.
+<span class="hmethod">WaitForSound()</span> waits
+until the specified sound stops playing.
+<span class="hmethod">IsPlaying()</span> returns
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the specified sound is playing; otherwise,
+it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></th>
+<th class="head"><p>No error.</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_FORMAT</span></code></p></td>
+<td><p>The audio isn’t in a supported format (<span class="hmethod">StartPlaying()</span>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
+<td><p>The specified id doesn’t exist (<span class="hmethod">WaitForSound()</span> and <span class="hmethod">IsPlaying()</span>).</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N12BSoundPlayer6VolumeEv">
+</section>
+<section id="_CPPv4N12BSoundPlayer9SetVolumeEf">
+</section>
+<h3>
+Volume(), SetVolume()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">Volume</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">SetVolume</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">newVolume</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Volume()</span> returns the current playback volume.
+<span class="hmethod">SetVolume()</span> changes the playback volume.
+This volume is the overall volume of all the sounds being played by the
+<span class="hclass">BSoundPlayer</span>.To control the volumes of individual sounds, use the SetSoundVolume() function.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The volume can range from 0.0 to 1.0, where 0.0 is silent and 1.0 is
+maximum loudness.</p>
+</div>
+<p>If you’d rather handle the volume using decibels instead of the
+percentage range, you can use the
+<a class="reference internal" href="#_CPPv4N12BSoundPlayer8VolumeDBEv" title="BSoundPlayer::VolumeDB"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">VolumeDB()</span></code></a> and
+<a class="reference internal" href="#_CPPv4N12BSoundPlayer11SetVolumeDBEf" title="BSoundPlayer::SetVolumeDB"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetVolumeDB()</span></code></a>
+functions.</p>
+<section id="_CPPv4N12BSoundPlayer8VolumeDBEv">
+</section>
+<section id="_CPPv4N12BSoundPlayer11SetVolumeDBEf">
+</section>
+<h3>
+VolumeDB(), SetVolumeDB()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">VolumeDB</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSoundPlayer</span><span class="p">::</span></span><span class="n">SetVolumeDB</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">newVolume</span><span class="sig-paren">)</span></pre><p><span class="hmethod">VolumeDB()</span> returns the current playback volume in decibels.
+<span class="hmethod">SetVolumeDB()</span> sets the playback volume, in decibels.
+This volume is the overall volume of all the sounds being played by the
+<span class="hclass">BSoundPlayer</span>. To control the volumes of individual sounds, use the
+<a class="reference internal" href="#_CPPv4N12BSoundPlayer14SetSoundVolumeE7play_idf" title="BSoundPlayer::SetSoundVolume"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetSoundVolume()</span></code></a>
+function.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The possible range of volumes can be obtained by calling
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetVolumeInfo()</span></code>.</p>
+</div>
+<p>If you’d rather handle the volume using a percentage range instead of
+decibels, you can use the
+<a class="reference internal" href="#_CPPv4N12BSoundPlayer6VolumeEv" title="BSoundPlayer::Volume"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Volume()</span></code></a> and
+<a class="reference internal" href="#_CPPv4N12BSoundPlayer9SetVolumeEf" title="BSoundPlayer::SetVolume"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetVolume()</span></code></a>
+functions.</p>
+</section>
+<section id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STARTED</span></code></p></td>
+<td><p>The <span class="hclass">BSoundPlayer</span> has been started via the Start() function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STOPPED</span></code></p></td>
+<td><p>The <span class="hclass">BSoundPlayer</span>’s Stop() function has been called.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SOUND_DONE</span></code></p></td>
+<td><p>A sound has finished playing.</p></td>
+</tr>
+</tbody>
+</table>
+<p>These constants are passed to event notification handler functions to
+indicate what sort of interesting event has occurred.</p>
+</section>
+<section id="defined-types">
+<h2>Defined Types<a class="headerlink" href="#defined-types" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">int32</span> <span class="n">play_id</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Identifies a particular sound that’s being played by the
+<span class="hclass">BSoundPlayer</span>;
+<a class="reference internal" href="#_CPPv4N12BSoundPlayer12StartPlayingEP6BSound9bigtime_t" title="BSoundPlayer::StartPlaying"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StartPlaying()</span></code></a>
+returns values of this type.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="small-buffer.html">BSmallBuffer</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="time-code.html">BTimeCode</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

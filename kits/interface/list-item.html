@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BListItem &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMenu" href="menu.html" />
+    <link rel="prev" title="BFont" href="font.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BListItem</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="font.html">BFont</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="menu.html">BMenu</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BListItem</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N9BListItem9BListItemE6uint32b">BListItem</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BListItemD0Ev">~BListItem</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hook-functions">Hook Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N9BListItem8DrawItemEP5BView5BRectb">DrawItem</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BListItem6UpdateEP5BViewPK5BFont">Update</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4NK9BListItem12OutlineLevelEv">OutlineLevel</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BListItem6SelectEv">Select</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BListItem8DeselectEv">Deselect</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BListItem10IsSelectedEv">IsSelected</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BListItem10SetEnabledEb">SetEnabled</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BListItem9IsEnabledEv">IsEnabled</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BListItem11SetExpandedEb">SetExpanded</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BListItem10IsExpandedEv">IsExpanded</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BListItem9SetHeightEf">SetHeight</a></li>
+<li><a class="reference internal" href="#_CPPv4N9BListItem8SetWidthEf">SetWidth</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BListItem6HeightEv">Height</a></li>
+<li><a class="reference internal" href="#_CPPv4NK9BListItem5WidthEv">Width</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#archived-fields">Archived Fields</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="blistitem">
+<h1>BListItem<a class="headerlink" href="#blistitem" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N9BListItem9BListItemE6uint32b">
+</section>
+<h3>
+BListItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BListItem9BListItemE6uint32b" title="BListItem::BListItem"><span class="n">BListItem</span></a><span class="p">::</span></span><span class="n">BListItem</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">level</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">expanded</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BListItem9BListItemEP8BMessage" title="BListItem::BListItem"><span class="n">BListItem</span></a><span class="p">::</span></span><span class="n">BListItem</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>The constructors create a new <span class="hclass">BListItem</span> object. The level and expanded
+arguments are only used if the item is added to a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BOutlineListView</span></code>
+object; see
+<a class="reference internal" href="outline-list-view.html#_CPPv4N16BOutlineListView7AddItemEP9BListItem" title="BOutlineListView::AddItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BOutlineListView::AddItem()</span></code></a>
+for more information.</p>
+<section id="_CPPv4N9BListItemD0Ev">
+</section>
+<h3>
+~BListItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BListItem</span><span class="p">::</span></span><span class="n">~BListItem</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The destructor is empty.</p>
+</section>
+<section id="hook-functions">
+<h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N9BListItem8DrawItemEP5BView5BRectb">
+</section>
+<h3>
+DrawItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BListItem</span><span class="p">::</span></span><span class="n">DrawItem</span><span class="sig-paren">(</span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">owner</span>, <span class="n">BRect</span><span class="w"> </span><span class="n sig-param">itemRect</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">drawEverything</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Hook function that’s invoked when the item’s owner (a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code> object)
+needs to draw this item. <span class="hparameter">itemRect</span> is the area within the owner to which
+the item’s drawing is clipped. If <span class="hparameter">drawEverything</span> is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, this function
+should touch every pixel in <span class="hparameter">itemRect</span>; if it’s
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, the function can
+assume that the background color for the item is already painted.
+<span class="hmethod">DrawItem()</span> should be implemented to visually reflect the state of the
+item, highlighting it if it’s selected, dimming it if it’s disabled, and
+so on.</p>
+<p>The owner view provides the drawing environment for this item. All
+drawing instructions should be invoked on owner.
+See
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>”
+for an example <span class="hmethod">DrawItem()</span> function.</p>
+<section id="_CPPv4N9BListItem6UpdateEP5BViewPK5BFont">
+</section>
+<h3>
+Update()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BListItem</span><span class="p">::</span></span><span class="n">Update</span><span class="sig-paren">(</span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">owner</span>, <span class="k">const</span><span class="w"> </span><span class="n">BFont</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">font</span><span class="sig-paren">)</span></pre><p>Hook function that’s called whenever the item’s <span class="hparameter">owner</span> changes in a way
+that could affect the appearance of this item. It’s always called when
+the item is added to a list view.</p>
+<p>The default implementation sets the item’s width to that of the owner,
+and sets its height so it will accommodate <span class="hparameter">font</span> (the owner’s current
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFont</span></code> setting).</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4NK9BListItem12OutlineLevelEv">
+</section>
+<h3>
+OutlineLevel()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">uint32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BListItem</span><span class="p">::</span></span><span class="n">OutlineLevel</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the outline level of the item; this is only meaningful if the
+item is in a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BOutlineListView</span></code>.</p>
+<section id="_CPPv4N9BListItem6SelectEv">
+</section>
+<section id="_CPPv4N9BListItem8DeselectEv">
+</section>
+<section id="_CPPv4NK9BListItem10IsSelectedEv">
+</section>
+<h3>
+Select(), Deselect(), IsSelected()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BListItem</span><span class="p">::</span></span><span class="n">Select</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BListItem</span><span class="p">::</span></span><span class="n">Deselect</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BListItem</span><span class="p">::</span></span><span class="n">IsSelected</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Select()</span> and <span class="hmethod">Deselect()</span>
+set the item’s selected state; <span class="hmethod">IsSelected()</span>
+returns the state. The setting functions don’t automatically update the
+item’s display: After calling <span class="hmethod">Select()</span> or
+<span class="hmethod">Deselect()</span>, you must tell the
+owner to redrawn this item (see
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListView::InvalidateItem()</span></code>).</p>
+<p>Also, <span class="hmethod">Select()</span> doesn’t deselect the current selection. If this item is
+part of a single-selection list view, you have to deselect the current
+selection yourself.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>If possible, you should use <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code>’s versions of these functions
+(see
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListView::Select()</span></code>.
+They update the view and manage the selection for you.</p>
+</div>
+<section id="_CPPv4N9BListItem10SetEnabledEb">
+</section>
+<section id="_CPPv4NK9BListItem9IsEnabledEv">
+</section>
+<h3>
+SetEnabled(), IsEnabled()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BListItem</span><span class="p">::</span></span><span class="n">SetEnabled</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">enabled</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BListItem</span><span class="p">::</span></span><span class="n">IsEnabled</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetEnabled()</span> sets the list item’s enabled state; <span class="hmethod">IsEnabled()</span> returns the
+state. A disabled item can’t be selected by the user or by
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListView::Select()</span></code>
+, but it can be selected through
+<a class="reference internal" href="#_CPPv4N9BListItem6SelectEv" title="BListItem::Select"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListItem::Select()</span></code></a>.
+If an item is already selected, <span class="hmethod">SetEnabled</span>(<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>)
+doesn’t deselect it.</p>
+<p>After calling <span class="hmethod">SetEnabled()</span>, you must tell the owner list view to redraw
+the item (see
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListView::InvalidateItem()</span></code>).</p>
+<p>Note that <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code>
+doesn’t provide smart versions of these functions (as it does for
+<span class="hmethod">Select()</span>).</p>
+<section id="_CPPv4N9BListItem11SetExpandedEb">
+</section>
+<section id="_CPPv4NK9BListItem10IsExpandedEv">
+</section>
+<h3>
+SetExpanded(), IsExpanded()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BListItem</span><span class="p">::</span></span><span class="n">SetExpanded</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">expanded</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BListItem</span><span class="p">::</span></span><span class="n">IsExpanded</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the item’s expanded state. This is only
+meaningful if the item is part of a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BOutlineListView</span></code>.
+The item is not automatically redrawn; you must tell the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BOutlineListView</span></code>
+to redraw the item (and its sublist) through
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListView::InvalidateItem()</span></code>.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>If possible, you should use
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BOutlineListView</span></code>’s
+<a class="reference internal" href="outline-list-view.html#_CPPv4N16BOutlineListView6ExpandEP9BListItem" title="BOutlineListView::Expand"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Expand()</span></code></a> and
+<a class="reference internal" href="outline-list-view.html#_CPPv4N16BOutlineListView8CollapseEP9BListItem" title="BOutlineListView::Collapse"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Collapse()</span></code></a>
+functions instead of <span class="hmethod">SetExpanded()</span>. The
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BOutlineListView</span></code>
+functions redraw the affected part of the list for you.</p>
+</div>
+<section id="_CPPv4N9BListItem9SetHeightEf">
+</section>
+<section id="_CPPv4N9BListItem8SetWidthEf">
+</section>
+<section id="_CPPv4NK9BListItem6HeightEv">
+</section>
+<section id="_CPPv4NK9BListItem5WidthEv">
+</section>
+<h3>
+SetHeight(), SetWidth(), Height(), Width()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BListItem</span><span class="p">::</span></span><span class="n">SetHeight</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BListItem</span><span class="p">::</span></span><span class="n">SetWidth</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BListItem</span><span class="p">::</span></span><span class="n">Height</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BListItem</span><span class="p">::</span></span><span class="n">Width</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the width and height of the item. The
+item’s dimensions are adjusted when
+<a class="reference internal" href="#_CPPv4N9BListItem6UpdateEP5BViewPK5BFont" title="BListItem::Update"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Update()</span></code></a>
+is called.</p>
+</section>
+<section id="archived-fields">
+<h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="font.html">BFont</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="menu.html">BMenu</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

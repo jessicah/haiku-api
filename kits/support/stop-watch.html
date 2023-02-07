@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BStopWatch &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BString" href="string.html" />
+    <link rel="prev" title="BPositionIO" href="position-io.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BStopWatch</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="position-io.html">BPositionIO</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="string.html">BString</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BStopWatch</a><ul>
+<li><a class="reference internal" href="#constructor-and-desctructor">Constructor and Desctructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N10BStopWatch10BStopWatchEPKcb">BStopWatch</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BStopWatchD0Ev">~BStopWatch</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4NK10BStopWatch11ElapsedTimeEv">ElapsedTime</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BStopWatch3LapEv">Lap</a></li>
+<li><a class="reference internal" href="#_CPPv4NK10BStopWatch4NameEv">Name</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BStopWatch7SuspendEv">Suspend</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BStopWatch6ResumeEv">Resume</a></li>
+<li><a class="reference internal" href="#_CPPv4N10BStopWatch5ResetEv">Reset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bstopwatch">
+<h1>BStopWatch<a class="headerlink" href="#bstopwatch" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-desctructor">
+<h2>Constructor and Desctructor<a class="headerlink" href="#constructor-and-desctructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N10BStopWatch10BStopWatchEPKcb">
+</section>
+<h3>
+BStopWatch()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BStopWatch10BStopWatchEPKcb" title="BStopWatch::BStopWatch"><span class="n">BStopWatch</span></a><span class="p">::</span></span><span class="n">BStopWatch</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">silent</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>Creates a <span class="hclass">BStopWatch</span> object, names it, and starts its timer. If <span class="hparameter">silent</span> is
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> (the default), the object will print its elapsed time when it’s destroyed;
+otherwise the message isn’t printed. To get the elapsed time from a silent <span class="hclass">BStopWatch</span>,
+call <a class="reference internal" href="#_CPPv4NK10BStopWatch11ElapsedTimeEv" title="BStopWatch::ElapsedTime"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ElapsedTime()</span></code></a>.</p>
+<section id="_CPPv4N10BStopWatchD0Ev">
+</section>
+<h3>
+~BStopWatch()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BStopWatch</span><span class="p">::</span></span><span class="n">~BStopWatch</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Stops the object’s timer, prints a timing message to standard out (unless it’s running silently),
+and then destroys the object. By default the timing messages looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">StopWatch</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">f</span> <span class="n">usecs</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>If you’ve recorded some lap points (through the <a class="reference internal" href="#_CPPv4N10BStopWatch3LapEv" title="BStopWatch::Lap"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lap()</span></code></a> function), you’ll
+also see the lap times as well:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">StopWatch</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">f</span> <span class="n">usecs</span><span class="o">.</span>
+<span class="p">[</span><span class="n">Lap</span><span class="c1">#: soFar#thisLap] [Lap#: soFar#thisLap] [Lap#: soFar#this]...</span>
+</pre></div>
+</div>
+<p>… where <em>Lap#</em> is the number of the lap, <em>soFar</em> was the total elapsed time at that lap, and
+<em>thisLap</em> was the time it took to complete the lap.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4NK10BStopWatch11ElapsedTimeEv">
+</section>
+<h3>
+ElapsedTime()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStopWatch</span><span class="p">::</span></span><span class="n">ElapsedTime</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the elapsed time, in microseconds, since the object was created or last <span class="hmethod">Reset()</span>.
+This function doesn’t print the time message, nor does it touch the timer (the timer keeps
+running—unless it’s <a class="reference internal" href="#_CPPv4N10BStopWatch7SuspendEv" title="BStopWatch::Suspend"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Suspend()</span></code></a>ed).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BStopWatch</span> <span class="n">watch</span><span class="p">(</span><span class="s2">&quot;Timer 0&quot;</span><span class="p">);</span>
+<span class="o">//</span> <span class="o">...</span>
+<span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Elapsed time: </span><span class="si">%Ld</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">watch</span><span class="o">.</span><span class="n">ElapsedTime</span><span class="p">());</span>
+</pre></div>
+</div>
+<section id="_CPPv4N10BStopWatch3LapEv">
+</section>
+<h3>
+Lap()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStopWatch</span><span class="p">::</span></span><span class="n">Lap</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Records a “lap point” and returns the total elapsed time so far. The lap point times are printed
+individually when the object is destroyed, provided the object isn’t silent. You can record as many
+as eight lap points; if you ask for a ninth lap point, the lap isn’t recorded and this function
+returns 0. See <a class="reference internal" href="#_CPPv4N10BStopWatchD0Ev" title="BStopWatch::~BStopWatch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">~BStopWatch()</span></code></a> for a description of what the lap points look
+like when they’re printed.</p>
+<section id="_CPPv4NK10BStopWatch4NameEv">
+</section>
+<h3>
+Name()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BStopWatch</span><span class="p">::</span></span><span class="n">Name</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the name of the object, as set in the constructor.</p>
+<section id="_CPPv4N10BStopWatch7SuspendEv">
+</section>
+<section id="_CPPv4N10BStopWatch6ResumeEv">
+</section>
+<section id="_CPPv4N10BStopWatch5ResetEv">
+</section>
+<h3>
+Suspend(), Resume(), Reset()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStopWatch</span><span class="p">::</span></span><span class="n">Suspend</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStopWatch</span><span class="p">::</span></span><span class="n">Resume</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStopWatch</span><span class="p">::</span></span><span class="n">Reset</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions affect the object’s timer:</p>
+<ul class="simple">
+<li><p><span class="hmethod">Suspend()</span> stops the timer but doesn’t reset it.</p></li>
+<li><p><span class="hmethod">Resume()</span> starts the timer running again.</p></li>
+<li><p><span class="hmethod">Reset()</span> sets the elapsed time to 0, but doesn’t stop the timer. You can call
+<span class="hmethod">Reset()</span> at any time, regardless of whether the object is running or suspended.</p></li>
+</ul>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="position-io.html">BPositionIO</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="string.html">BString</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

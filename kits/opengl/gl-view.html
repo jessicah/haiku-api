@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BGLView &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="The Application Kit" href="overview.html" />
+    <link rel="prev" title="The Application Kit" href="../network/overview.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BGLView</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../network/overview.html">The Application Kit</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="overview.html">The Application Kit</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BGLView</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N7BGLView7BGLViewE5BRectPKc5int325int325int32">BGLView</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BGLViewD0Ev">~BGLView</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N7BGLViewD0Ev">~BGLView</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BGLView12CopyPixelsInEP7BBitmap6BPoint">CopyPixelsIn</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BGLView13CopyPixelsOutE6BPointP7BBitmap">CopyPixelsOut</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BGLView15DirectConnectedEP18direct_buffer_info">DirectConnected</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BGLView4DrawE5BRect">Draw</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BGLView12EmbeddedViewEv">EmbeddedView</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BGLView16EnableDirectModeEb">EnableDirectMode</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BGLView13ErrorCallbackE6GLenum">ErrorCallback</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BGLView12FrameResizedEff">FrameResized</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BGLView6LockGLEv">LockGL</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BGLView8UnlockGLEv">UnlockGL</a></li>
+<li><a class="reference internal" href="#_CPPv4N7BGLView11SwapBuffersEv">SwapBuffers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bglview">
+<h1>BGLView<a class="headerlink" href="#bglview" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N7BGLView7BGLViewE5BRectPKc5int325int325int32">
+</section>
+<h3>
+BGLView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BGLView7BGLViewE5BRectPKc5int325int325int32" title="BGLView::BGLView"><span class="n">BGLView</span></a><span class="p">::</span></span><span class="n">BGLView</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">resizingMode</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">type</span><span class="sig-paren">)</span></pre><p>Initializes the view, then creates a new OpenGL drawing context and
+attaches it to the view. The <span class="hparameter">type</span> argument specifies the OpenGL type
+specification for the view:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">BGL_RGB</span></code></p></td>
+<td><p>Use RGB graphics instead of indexed color (8-bit). This is the default if neither <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">BGL_RGB</span></code> nor <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">BGL_INDEX</span></code> is specified.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">BGL_INDEX</span></code></p></td>
+<td><p>Use indexed color (8-bit graphics). Not currently supported.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">BGL_SINGLE</span></code></p></td>
+<td><p>Use single-buffering; all rendering is done directly to the display. This is not currently supported by the BeOS implementation of OpenGL. This is the default if neither <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">BGL_SINGLE</span></code> nor <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">BGL_DOUBLE</span></code> is specified.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">BGL_DOUBLE</span></code></p></td>
+<td><p>Use double-buffered graphics. All rendering is done to an offscreen buffer and only becomes visible when the <a class="reference internal" href="#_CPPv4N7BGLView11SwapBuffersEv" title="BGLView::SwapBuffers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SwapBuffers()</span></code></a> function is called.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">BGL_ACCUM</span></code></p></td>
+<td><p>Requests that the view have an accumulation buffer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">BGL_ALPHA</span></code></p></td>
+<td><p>Requests that the view’s color buffer include an alpha component.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">BGL_DEPTH</span></code></p></td>
+<td><p>Requests that the view have a depth buffer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">BGL_STENCIL</span></code></p></td>
+<td><p>Requests that the view have a stencil buffer.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N7BGLViewD0Ev">
+</section>
+<h3>
+~BGLView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BGLView</span><span class="p">::</span></span><span class="n">~BGLView</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Disposes of the OpenGL context for the view.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N7BGLViewD0Ev">
+</section>
+<h3>
+~BGLView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BGLView</span><span class="p">::</span></span><span class="n">~BGLView</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Calls the inherited version of
+<a class="reference internal" href="../interface/view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AttachedToWindow()</span></code></a>
+and sets the view color to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TRANSPARENT_32_BIT</span></code>
+(this improves performance by preventing the
+Application Server from erasing the view, since OpenGL takes over
+responsibility for drawing into the view).</p>
+<section id="_CPPv4N7BGLView12CopyPixelsInEP7BBitmap6BPoint">
+</section>
+<section id="_CPPv4N7BGLView13CopyPixelsOutE6BPointP7BBitmap">
+</section>
+<h3>
+CopyPixelsIn(), CopyPixelsOut()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BGLView</span><span class="p">::</span></span><span class="n">CopyPixelsIn</span><span class="sig-paren">(</span><span class="n">BBitmap</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">source</span>, <span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">dest</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BGLView</span><span class="p">::</span></span><span class="n">CopyPixelsOut</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">source</span>, <span class="n">BBitmap</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">dest</span><span class="sig-paren">)</span></pre><p>These functions copy pixel data into and out of the OpenGL draw buffer
+for the context.
+<span class="hmethod">CopyPixelsIn()</span> copies the entire
+contents of the <span class="hparameter">source</span>
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code>
+into the OpenGL context, offset such that the top-left corner of the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code>
+is drawn at the point dest in the OpenGL buffer.
+<span class="hmethod">CopyPixelsOut()</span> copies from the OpenGL draw buffer into the specified
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code>.
+The area copied is the size of the dest bitmap and contains all
+data from the specified source <span class="hparameter">point</span> to the bottom-right corner of the
+buffer.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>If the source is larger than the destination, it’s clipped at the
+bottom and right edges to fit; no scaling is performed Also, the OpenGL
+context and the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code>
+must be in the same color space.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<td><p>The data was copied without error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
+<td><p>The current draw buffer is not valid, or the destination buffer’s width or height is less than or equal to zero.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_TYPE</span></code></p></td>
+<td><p>The source and destination are in different color spaces.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4N7BGLView15DirectConnectedEP18direct_buffer_info">
+</section>
+<h3>
+DirectConnected()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BGLView</span><span class="p">::</span></span><span class="n">DirectConnected</span><span class="sig-paren">(</span><span class="n">direct_buffer_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">directInfo</span><span class="sig-paren">)</span></pre><p>If the <span class="hclass">BGLView</span> is in a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code>,
+you should call this from your
+<a class="reference internal" href="../game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BDirectWindow::DirectConnected()</span></code></a>
+function to let OpenGL update the window properly.</p>
+<section id="_CPPv4N7BGLView4DrawE5BRect">
+</section>
+<h3>
+Draw()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BGLView</span><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">updateRect</span><span class="sig-paren">)</span></pre><p>Refreshes the contents of the <span class="hclass">BGLView</span> by
+copying the frontbuffer to the screen.
+If the view’s color space is eight bits deep and the
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">GL_DITHER</span></code> OpenGL option is enabled, the display is
+dithered.</p>
+<section id="_CPPv4N7BGLView12EmbeddedViewEv">
+</section>
+<h3>
+EmbeddedView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BGLView</span><span class="p">::</span></span><span class="n">EmbeddedView</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns a pointer to an embedded view that encompasses the current OpenGL
+drawing buffer, as defined by OpenGL, for the <span class="hclass">BGLView</span>. If the view is
+single-buffered, this will be the frontbuffer, and if the view is
+double-buffered, the embedded view will encompass the backbuffer.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p><span class="hmethod">EmbeddedView()</span> returns
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if, for any reason,
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
+functions can’t
+be used in the GL buffer. Starting with BeOS R4, this function always
+returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, as the new, high-performance implementation of OpenGL does
+not support tinkering with the view.</p>
+</div>
+<section id="_CPPv4N7BGLView16EnableDirectModeEb">
+</section>
+<h3>
+EnableDirectMode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BGLView</span><span class="p">::</span></span><span class="n">EnableDirectMode</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">enabled</span><span class="sig-paren">)</span></pre><p>Call this function to tell the <span class="hclass">BGLView</span>
+whether or not it should render in direct mode. If you’re using a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code>
+and want video refreshes to be done through the direct window method, pass
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> for <span class="hparameter">enabled</span>. If
+you don’t want to use the direct window method, pass
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<section id="_CPPv4N7BGLView13ErrorCallbackE6GLenum">
+</section>
+<h3>
+ErrorCallback()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BGLView</span><span class="p">::</span></span><span class="n">ErrorCallback</span><span class="sig-paren">(</span><span class="n">GLenum</span><span class="w"> </span><span class="n sig-param">errorCode</span><span class="sig-paren">)</span></pre><p>Called when an OpenGL error occurs. By default, this function invokes the
+debugger with an error message reading “GL: Error code $xxxx.” You can
+(and probably should) reimplement this function to cope with errors more
+gracefully.</p>
+<section id="_CPPv4N7BGLView12FrameResizedEff">
+</section>
+<h3>
+FrameResized()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BGLView</span><span class="p">::</span></span><span class="n">FrameResized</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">width</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><p>Calls the inherited version of
+<a class="reference internal" href="../interface/view.html#_CPPv4N5BView12FrameResizedEff" title="BView::FrameResized"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FrameResized()</span></code></a>,
+releases tables that need to be recalculated, and resizes the OpenGL buffers.
+You can augment this function to perform other necessary tasks, such as
+adjusting your <span class="hclass">BGLView</span>’s coordinate system.</p>
+<section id="_CPPv4N7BGLView6LockGLEv">
+</section>
+<section id="_CPPv4N7BGLView8UnlockGLEv">
+</section>
+<h3>
+LockGL(), UnlockGL()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BGLView</span><span class="p">::</span></span><span class="n">LockGL</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BGLView</span><span class="p">::</span></span><span class="n">UnlockGL</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions lock and unlock the OpenGL context. You must lock the
+context before issuing any OpenGL commands, and unlock it when you’re
+done—this is how OpenGL knows which context the drawing commands
+are intended for, since OpenGL itself isn’t encapsulated within the
+<span class="hclass">BGLView</span> class. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LockGL</span><span class="p">();</span>            <span class="o">/*</span> <span class="n">lock</span> <span class="n">the</span> <span class="n">OpenGL</span> <span class="n">context</span>
+<span class="n">glEnable</span><span class="p">(</span><span class="n">GL_DITHER</span><span class="p">);</span> <span class="o">/*</span> <span class="n">turn</span> <span class="n">on</span> <span class="n">dithering</span> <span class="n">support</span> <span class="o">*/</span>
+<span class="n">UnlockGL</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Failing to lock and unlock the context appropriately will result in
+unpredictable behavior and may cause your application to crash.</p>
+<section id="_CPPv4N7BGLView11SwapBuffersEv">
+</section>
+<h3>
+SwapBuffers()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BGLView</span><span class="p">::</span></span><span class="n">SwapBuffers</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BGLView</span><span class="p">::</span></span><span class="n">SwapBuffers</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">vSync</span><span class="sig-paren">)</span></pre><p>Swaps the front buffer and back buffer, then redraws the contents of the
+<span class="hclass">BGLView</span>.
+This function has no effect if the view is single-buffered.
+If <span class="hparameter">vSync</span> is specified and is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the swap is synchronized with vertical
+blanking.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../network/overview.html">The Application Kit</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="overview.html">The Application Kit</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

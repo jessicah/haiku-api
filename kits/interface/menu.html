@@ -1,0 +1,628 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMenu &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMenuBar" href="menu-bar.html" />
+    <link rel="prev" title="BListItem" href="list-item.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMenu</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="list-item.html">BListItem</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="menu-bar.html">BMenuBar</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BMenu</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N5BMenu5BMenuEPKc11menu_layout">BMenu</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenuD0Ev">~BMenu</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hook-functions">Hook Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N5BMenu16AttachedToWindowEv">AttachedToWindow</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu4DrawE5BRect">Draw</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu7KeyDownEPKc5int32">KeyDown</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N5BMenu7AddItemEP9BMenuItem">AddItem</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu16AddSeparatorItemEv">AddSeparatorItem</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BMenu7ArchiveEP8BMessageb">Archive</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BMenu10CountItemsEv">CountItems</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BMenu8FindItemEPKc">FindItem</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu10FindMarkedEv">FindMarked</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu4HideEv">Hide</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu4ShowEb">Show</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BMenu7IndexOfEP9BMenuItem">IndexOf</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu16InvalidateLayoutEv">InvalidateLayout</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BMenu6ItemAtE5int32">ItemAt</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BMenu9SubmenuAtE5int32">SubmenuAt</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BMenu6LayoutEv">Layout</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu10RemoveItemE5int32">RemoveItem</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu14ScreenLocationEv">ScreenLocation</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu10SetEnabledEb">SetEnabled</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BMenu9IsEnabledEv">IsEnabled</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu14SetItemMarginsEffff">SetItemMargins</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu14GetItemMarginsEPfPfPfPf">GetItemMargins</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu18SetLabelFromMarkedEb">SetLabelFromMarked</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu17IsLabelFromMarkedEv">IsLabelFromMarked</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu18SetMaxContentWidthEf">SetMaxContentWidth</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BMenu15MaxContentWidthEv">MaxContentWidth</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu12SetRadioModeEb">SetRadioMode</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu11IsRadioModeEv">IsRadioMode</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu17SetTargetForItemsEP8BHandler">SetTargetForItems</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu18SetTriggersEnabledEb">SetTriggersEnabled</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BMenu18AreTriggersEnabledEv">AreTriggersEnabled</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BMenu9SuperitemEv">Superitem</a></li>
+<li><a class="reference internal" href="#_CPPv4NK5BMenu9SupermenuEv">Supermenu</a></li>
+<li><a class="reference internal" href="#_CPPv4N5BMenu5TrackEbP5BRect">Track</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#static-functions">Static Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N5BMenu11InstantiateEP8BMessage">Instantiate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scripting-support">Scripting Support</a></li>
+<li><a class="reference internal" href="#archived-fields">Archived Fields</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmenu">
+<h1>BMenu<a class="headerlink" href="#bmenu" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N5BMenu5BMenuEPKc11menu_layout">
+</section>
+<h3>
+BMenu()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BMenu5BMenuEPKc11menu_layout" title="BMenu::BMenu"><span class="n">BMenu</span></a><span class="p">::</span></span><span class="n">BMenu</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="n">menu_layout</span><span class="w"> </span><span class="n sig-param">layout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_ITEMS_IN_COLUMN</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BMenu5BMenuEPKcff" title="BMenu::BMenu"><span class="n">BMenu</span></a><span class="p">::</span></span><span class="n">BMenu</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">width</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">height</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BMenu5BMenuEP8BMessage" title="BMenu::BMenu"><span class="n">BMenu</span></a><span class="p">::</span></span><span class="n">BMenu</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span><br /><span class="k">protected</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BMenu5BMenuE5BRectPKc6uint326uint3211menu_layoutb" title="BMenu::BMenu"><span class="n">BMenu</span></a><span class="p">::</span></span><span class="n">BMenu</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">resizingMode</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span>, <span class="n">menu_layout</span><span class="w"> </span><span class="n sig-param">layout</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">resizeToFit</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BMenu</span> object. The name of the object becomes the initial
+label of the supermenu item that controls the menu and brings it to the
+screen. (It’s also the name that can be passed to
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>’s
+<a class="reference internal" href="view.html#_CPPv4NK5BView8FindViewEPKc" title="BView::FindView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindView()</span></code></a>
+function.)</p>
+<p>A new <span class="hclass">BMenu</span> object doesn’t contain any items; you need to call
+<a class="reference internal" href="#_CPPv4N5BMenu7AddItemEP9BMenuItem" title="BMenu::AddItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddItem()</span></code></a>
+to set up its contents.</p>
+<p>A menu can arrange its items in any of three ways:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_COLUMN</span></code></p></td>
+<td><p>The items are stacked vertically in a column, one on top of the other, as in a typical menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_ROW</span></code></p></td>
+<td><p>The items are laid out horizontally in a row, from end to end, as in a typical menu bar.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_MATRIX</span></code></p></td>
+<td><p>The items are arranged in a custom fashion, such as a matrix.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Either <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_ROW</span></code> or the default <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_COLUMN</span></code> can be passed as
+the layout argument to the public constructor. (A column is the default
+for ordinary menus; a row is the default for
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code>s.) This version of
+the constructor isn’t designed for <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_MATRIX</span></code> layouts.</p>
+<p>A <span class="hclass">BMenu</span> object can arrange items that are laid out in a column or a row
+entirely on its own. The menu will be resized to exactly fit the items
+that are added to it.</p>
+<p>However, when items are laid out in a custom matrix, the menu needs more
+help. First, the constructor must be informed of the exact width and
+height of the menu rectangle. The version of the constructor that takes
+these two parameters is designed just for matrix menus—it sets the
+layout to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_MATRIX</span></code>. Then, when items are added to the menu, the
+<span class="hclass">BMenu</span> object expects to be informed of their precise positions within the
+specified area. The menu is not resized to fit the items that are added.
+Finally, when items in the matrix change, you must take care of any
+required adjustments in the layout yourself.</p>
+<p>The protected version of the constructor is supplied for derived classes
+that don’t simply devise different sorts of menu items or arrange them in
+a different way, but invent a different kind of menu. If the
+<span class="hparameter">resizeToFit</span> flag is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, it’s expected that the layout will be
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_COLUMN</span></code> or
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_ROW</span></code>. The menu will resize itself to fit
+the items that are added to it. If the layout is
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_MATRIX</span></code>, the
+<span class="hparameter">resizeToFit</span> flag should be
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<section id="_CPPv4N5BMenuD0Ev">
+</section>
+<h3>
+~BMenu()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">~BMenu</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Deletes all the items that were added to the menu and frees all memory
+allocated by the <span class="hclass">BMenu</span> object. Deleting the items serves also to delete
+any submenus those items control and, thus, the whole branch of the menu
+hierarchy.</p>
+</section>
+<section id="hook-functions">
+<h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N5BMenu16AttachedToWindowEv">
+</section>
+<h3>
+AttachedToWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Finishes initializing the <span class="hclass">BMenu</span> object by laying out its items and
+resizing the <span class="hclass">BMenu</span> view to fit. This function is called for you each time
+the <span class="hclass">BMenu</span> is assigned to a window. For a submenu, that means each time
+the menu is shown on-screen.</p>
+<p>See also:
+<a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::AttachedToWindow()</span></code></a></p>
+<section id="_CPPv4N5BMenu4DrawE5BRect">
+</section>
+<h3>
+Draw()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">updateRect</span><span class="sig-paren">)</span></pre><p>Draws the menu. This function is called for you whenever the menu is
+placed on-screen or is updated while on-screen. It’s not a function you
+need to call yourself.</p>
+<p>See also:
+<a class="reference internal" href="view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Draw()</span></code></a></p>
+<section id="_CPPv4N5BMenu7KeyDownEPKc5int32">
+</section>
+<h3>
+KeyDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">KeyDown</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bytes</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numBytes</span><span class="sig-paren">)</span></pre><p>Handles keyboard navigation through the menu. This function is called to
+respond to messages reporting key-down events. It should not be called
+from application code.</p>
+<p>See also:
+<a class="reference internal" href="view.html#_CPPv4N5BView7KeyDownEPKc5int32" title="BView::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::KeyDown()</span></code></a></p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N5BMenu7AddItemEP9BMenuItem">
+</section>
+<h3>
+AddItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">AddItem</span><span class="sig-paren">(</span><span class="n">BMenuItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span><span class="sig-paren">)</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">AddItem</span><span class="sig-paren">(</span><span class="n">BMenuItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">AddItem</span><span class="sig-paren">(</span><span class="n">BMenuItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span>, <span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span><span class="sig-paren">)</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">AddItem</span><span class="sig-paren">(</span><span class="n">BMenu</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">submenu</span><span class="sig-paren">)</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">AddItem</span><span class="sig-paren">(</span><span class="n">BMenu</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">submenu</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">AddItem</span><span class="sig-paren">(</span><span class="n">BMenu</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">submenu</span>, <span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span><span class="sig-paren">)</span></pre><p>Adds an item to the menu list at <span class="hparameter">index</span>—or, if no index is
+mentioned, to the end of the list. If items are arranged in a matrix
+rather than a list, it’s necessary to specify the item’s <span class="hparameter">frame</span>
+rectangle—the exact position where it should be located in the menu
+view. Assume a coordinate system for the menu that has the origin, (0.0,
+0.0), at the left top corner of the view rectangle. The rectangle will
+have the width and height that were specified when the menu was
+constructed.</p>
+<p>The versions of this function that take an <span class="hparameter">index</span> (even an implicit one)
+can be used only if the menu arranges items in a column or row
+(<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_COLUMN</span></code> or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_ROW</span></code>); it’s an error to use them for
+items arranged in a matrix. Conversely, the versions of this function
+that take a frame rectangle can be used only if the menu arranges items
+in a matrix (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_MATRIX</span></code>); it’s an error to use them for items
+arranged in a list.</p>
+<p>If a <span class="hparameter">submenu</span> is specified rather than an <span class="hparameter">item</span>,
+<span class="hmethod">AddItem()</span> constructs a
+controlling <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code> for the
+submenu and adds the item to the menu.</p>
+<p>If it’s unable to add the item to the menu—for example, if the
+index is out-of-range or the wrong version of the function has been
+called—<span class="hmethod">AddItem()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>. If successful, it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>See also:
+the <span class="hclass">BMenu</span> constructor,
+the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code> class,
+<a class="reference internal" href="#_CPPv4N5BMenu10RemoveItemE5int32" title="BMenu::RemoveItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RemoveItem()</span></code></a></p>
+<section id="_CPPv4N5BMenu16AddSeparatorItemEv">
+</section>
+<h3>
+AddSeparatorItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">AddSeparatorItem</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Creates an instance of the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSeparatorItem</span></code>
+class and adds it to the end of the menu list, returning
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if successful and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if not (a very
+unlikely possibility). This function is a shorthand for:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BSeparatorItem</span><span class="o">*</span> <span class="n">separator</span> <span class="o">=</span> <span class="n">new</span> <span class="n">BSeparatorItem</span><span class="p">;</span>
+<span class="n">AddItem</span><span class="p">(</span><span class="n">separator</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>A separator serves only to separate other items in the list. It counts as
+an item and has an indexed position in the list, but it doesn’t do
+anything. It’s drawn as a horizontal line across the menu. Therefore,
+it’s appropriately added only to menus where the items are laid out in a
+column.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N5BMenu7AddItemEP9BMenuItem" title="BMenu::AddItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddItem()</span></code></a></p>
+<section id="_CPPv4NK5BMenu7ArchiveEP8BMessageb">
+</section>
+<h3>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of <a class="reference internal" href="view.html#_CPPv4NK5BView7ArchiveEP8BMessageb" title="BView::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a>,
+then archives the <span class="hclass">BMenu</span> by
+recording its layout and all current settings in the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> <span class="hparameter">archive</span>. If
+the <span class="hparameter">deep</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, all of the menu items are also archived.</p>
+<p>See also:
+<a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N5BMenu11InstantiateEP8BMessage" title="BMenu::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
+<section id="_CPPv4NK5BMenu10CountItemsEv">
+</section>
+<h3>
+CountItems()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">CountItems</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the total number of items in the menu, including separator items.</p>
+<section id="_CPPv4NK5BMenu8FindItemEPKc">
+</section>
+<h3>
+FindItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMenuItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">FindItem</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">BMenuItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">FindItem</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">command</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the item with the specified <span class="hparameter">label</span>—or the one that sends a
+message with the specified <span class="hparameter">command</span>. If there’s more than one item in the
+menu hierarchy with that particular <span class="hparameter">label</span> or associated with that
+particular <span class="hparameter">command</span>, this function returns the first one it finds. It
+recursively searches the menu by working down the list of items in order.
+If an item controls a submenu, it searches the submenu before returning
+to check any remaining items in the menu.</p>
+<p>If none of the items in the menu hierarchy meet the stated criterion,
+<span class="hmethod">FindItem()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<section id="_CPPv4N5BMenu10FindMarkedEv">
+</section>
+<h3>
+FindMarked()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMenuItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">FindMarked</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the first marked item in the menu list (the one with the lowest
+index), or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if no item is marked.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N5BMenu12SetRadioModeEb" title="BMenu::SetRadioMode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetRadioMode()</span></code></a>,
+<a class="reference internal" href="menu-item.html#_CPPv4N9BMenuItem9SetMarkedEb" title="BMenuItem::SetMarked"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenuItem::SetMarked()</span></code></a></p>
+<section id="_CPPv4N5BMenu4HideEv">
+</section>
+<section id="_CPPv4N5BMenu4ShowEb">
+</section>
+<h3>
+Hide(), Show()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">Hide</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">Show</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">selectFirst</span><span class="sig-paren">)</span><br /><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">Show</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions hide the menu (remove the <span class="hclass">BMenu</span> view from the window it’s
+in and remove the window from the screen) and show it (attach the <span class="hclass">BMenu</span>
+to a window and place the window on-screen). If the <span class="hparameter">selectFirst</span> flag
+passed to <span class="hmethod">Show()</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the first item in the menu will be selected
+when it’s shown. If <span class="hparameter">selectFirst</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, the menu is shown without a
+selected item.</p>
+<p>The version of <span class="hmethod">Show()</span> that doesn’t take an argument simply calls the
+version that does and passes it a <span class="hparameter">selectFirst</span> value of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p>These functions are not ones that you’d ordinarily call, even when
+implementing a derived class. You’d need them only if you’re implementing
+a nonstandard menu of some kind and want to control when the menu appears
+on-screen.</p>
+<p>See also:
+<a class="reference internal" href="view.html#_CPPv4N5BView4ShowEv" title="BView::Show"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Show()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N5BMenu5TrackEbP5BRect" title="BMenu::Track"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Track()</span></code></a></p>
+<section id="_CPPv4NK5BMenu7IndexOfEP9BMenuItem">
+</section>
+<h3>
+IndexOf()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">IndexOf</span><span class="sig-paren">(</span><span class="n">BMenuItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">IndexOf</span><span class="sig-paren">(</span><span class="n">BMenu</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">submenu</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the index of the specified menu <span class="hparameter">item</span>—or the item that
+controls the specified <span class="hparameter">submenu</span>. Indices record the position of the item
+in the menu list. They begin at 0 for the item at the top of a column or
+at the left of a row and include separator items.</p>
+<p>If the menu doesn’t contain the specified <span class="hparameter">item</span>, or the item that controls
+<span class="hparameter">submenu</span>, the return value will be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N5BMenu7AddItemEP9BMenuItem" title="BMenu::AddItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddItem()</span></code></a></p>
+<section id="_CPPv4N5BMenu16InvalidateLayoutEv">
+</section>
+<h3>
+InvalidateLayout()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">InvalidateLayout</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Forces the <span class="hclass">BMenu</span> to recalculate the layout of all menu items and,
+consequently, its own size. It can do this only if the items are arranged
+in a row or a column. If the items are arranged in a matrix, it’s up to
+you to keep their layout up-to-date.</p>
+<p>All <span class="hclass">BMenu</span> and
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code>
+functions that change an item in a way that might
+affect the overall menu automatically invalidate the menu’s layout so it
+will be recalculated. For example, changing the label of an item might
+cause the menu to become wider (if it needs more room to accommodate the
+longer label) or narrower (if it no longer needs as much room as before).</p>
+<p>Therefore, you don’t need to call <span class="hmethod">InvalidateLayout()</span> after using a kit
+function to change a menu or menu item; it’s called for you. You’d call
+it only when making some other change to a menu.</p>
+<p>See also: the <span class="hclass">BMenu</span>
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code></p>
+<section id="_CPPv4NK5BMenu6ItemAtE5int32">
+</section>
+<section id="_CPPv4NK5BMenu9SubmenuAtE5int32">
+</section>
+<h3>
+ItemAt(), SubmenuAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMenuItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">ItemAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMenu</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">SubmenuAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions return the item at <span class="hparameter">index</span>—or the submenu controlled
+by the item at <span class="hparameter">index</span>. If there’s no item at the index,
+they return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.
+<span class="hmethod">SubmenuAt()</span> is a shorthand for:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ItemAt</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">Submenu</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>It returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the item at <span class="hparameter">index</span>
+doesn’t control a submenu.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N5BMenu7AddItemEP9BMenuItem" title="BMenu::AddItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddItem()</span></code></a></p>
+<section id="_CPPv4NK5BMenu6LayoutEv">
+</section>
+<h3>
+Layout()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">menu_layout</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">Layout</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_COLUMN</span></code> if the items in the menu are stacked in a
+column from top to bottom, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_ROW</span></code> if they’re stretched out in a
+row from left to right, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ITEMS_IN_MATRIX</span></code> if they’re arranged in some
+custom fashion. By default <span class="hclass">BMenu</span> items are arranged in a column and
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code> items in a row.</p>
+<p>The layout is established by the constructor.</p>
+<p>See also:
+The <span class="hclass">BMenu</span> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code> and
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>.</p>
+<section id="_CPPv4N5BMenu10RemoveItemE5int32">
+</section>
+<h3>
+RemoveItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMenuItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">RemoveItem</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">RemoveItem</span><span class="sig-paren">(</span><span class="n">BMenuItem</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">item</span><span class="sig-paren">)</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">RemoveItem</span><span class="sig-paren">(</span><span class="n">BMenu</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">submenu</span><span class="sig-paren">)</span></pre><p>Removes the item at <span class="hparameter">index</span>, or the specified <span class="hparameter">item</span>, or the item that
+controls the specified <span class="hparameter">submenu</span>. Removing the item doesn’t free it.</p>
+<ul class="simple">
+<li><p>If passed an <span class="hparameter">index</span>, this function returns a pointer to the item so you can free it. It returns a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> pointer if the item couldn’t be removed (for example, if the <span class="hparameter">index</span> is out-of-range).</p></li>
+<li><p>If passed an <span class="hparameter">item</span>, it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the item was in the list and could be removed, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if not.</p></li>
+<li><p>If passed a <span class="hparameter">submenu</span>, it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the submenu is controlled by an item in the menu and that item could be removed, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p></li>
+</ul>
+<p>When an item is removed from a menu, it loses its target; the cached
+value is set to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. If the item controls a submenu, it remains attached
+to the submenu even after being removed.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N5BMenu7AddItemEP9BMenuItem" title="BMenu::AddItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddItem()</span></code></a></p>
+<section id="_CPPv4N5BMenu14ScreenLocationEv">
+</section>
+<h3>
+ScreenLocation()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">BPoint</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">ScreenLocation</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the point where the left top corner of the menu should appear
+when the menu is shown on-screen. The point is specified in the screen
+coordinate system.</p>
+<p>This function is called each time a hidden menu (a submenu of another
+menu) is brought to the screen. It can be overridden in a derived class
+to change where the menu appears. For example, the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPopUpMenu</span></code> class
+overrides it so that a pop-up menu pops up over the controlling item.</p>
+<section id="_CPPv4N5BMenu10SetEnabledEb">
+</section>
+<section id="_CPPv4NK5BMenu9IsEnabledEv">
+</section>
+<h3>
+SetEnabled(), IsEnabled()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">SetEnabled</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">enabled</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">IsEnabled</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetEnabled()</span> enables the <span class="hclass">BMenu</span>
+if the <span class="hparameter">enabled</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, and disables
+it if <span class="hparameter">enabled</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>. If the menu is a submenu, this enables or
+disables its controlling item, just as if <span class="hmethod">SetEnabled()</span> were called for
+that item. The controlling item is updated so that it displays its new
+state, if it happens to be visible on-screen.</p>
+<p>Disabling a menu disables its entire branch of the menu hierarchy. All
+items in the menu, including those that control other menus, are disabled.</p>
+<p><span class="hmethod">IsEnabled()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if
+the <span class="hclass">BMenu</span>, and every <span class="hclass">BMenu</span> above it in the
+menu hierarchy, is enabled. It returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if the
+<span class="hclass">BMenu</span>, or any <span class="hclass">BMenu</span>
+above it in the menu hierarchy, is disabled.</p>
+<p>See also:
+<a class="reference internal" href="menu-item.html#_CPPv4N9BMenuItem10SetEnabledEb" title="BMenuItem::SetEnabled"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenuItem::SetEnabled()</span></code></a></p>
+<section id="_CPPv4N5BMenu14SetItemMarginsEffff">
+</section>
+<section id="_CPPv4N5BMenu14GetItemMarginsEPfPfPfPf">
+</section>
+<h3>
+SetItemMargins(), GetItemMargins()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">SetItemMargins</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">left</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">top</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">right</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">bottom</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">GetItemMargins</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">left</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">top</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">right</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bottom</span><span class="sig-paren">)</span></pre><p>These functions set and get the margins around each item in the <span class="hclass">BMenu</span>.
+For the purposes of this function, you should assume that all items are
+enclosed in a rectangle of the same size, one big enough for the largest
+item. Keyboard shortcuts are displayed in the right margin and check
+marks in the left.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N5BMenu18SetMaxContentWidthEf" title="BMenu::SetMaxContentWidth"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetMaxContentWidth()</span></code></a></p>
+<section id="_CPPv4N5BMenu18SetLabelFromMarkedEb">
+</section>
+<section id="_CPPv4N5BMenu17IsLabelFromMarkedEv">
+</section>
+<h3>
+SetLabelFromMarked(), IsLabelFromMarked()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">SetLabelFromMarked</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">flag</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">IsLabelFromMarked</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetLabelFromMarked()</span> determines whether the label of the item that
+controls the menu (the label of the superitem) should be taken from the
+currently marked item within the menu. If <span class="hparameter">flag</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the menu is
+placed in radio mode and the superitem’s label is reset each time the
+user selects a different item. If <span class="hparameter">flag</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, the setting for radio
+mode doesn’t change and the label of the superitem isn’t automatically
+reset.</p>
+<p><span class="hmethod">IsLabelFromMarked()</span> returns whether the superitem’s label is taken from
+the marked item (but not necessarily whether the <span class="hclass">BMenu</span> is in radio mode).</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N5BMenu12SetRadioModeEb" title="BMenu::SetRadioMode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetRadioMode()</span></code></a></p>
+<section id="_CPPv4N5BMenu18SetMaxContentWidthEf">
+</section>
+<section id="_CPPv4NK5BMenu15MaxContentWidthEv">
+</section>
+<h3>
+SetMaxContentWidth(), MaxContentWidth()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">SetMaxContentWidth</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">width</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">MaxContentWidth</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the maximum width of an item’s content
+area. The content area is where the item label is drawn; it excludes the
+margin on the left where a check mark might be placed and the margin on
+the right where a shortcut character or a submenu symbol might appear.
+The content area is the same size for all items in the menu.</p>
+<p>Normally, a menu will be wide enough to accommodate its longest item.
+However, items wider than the maximum set by <span class="hmethod">SetMaxContentWidth()</span> are
+truncated to fit.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N5BMenu14SetItemMarginsEffff" title="BMenu::SetItemMargins"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetItemMargins()</span></code></a>,
+<a class="reference internal" href="menu-item.html#_CPPv4N9BMenuItem13TruncateLabelEfPc" title="BMenuItem::TruncateLabel"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenuItem::TruncateLabel()</span></code></a></p>
+<section id="_CPPv4N5BMenu12SetRadioModeEb">
+</section>
+<section id="_CPPv4N5BMenu11IsRadioModeEv">
+</section>
+<h3>
+SetRadioMode(), IsRadioMode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">SetRadioMode</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">flag</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">IsRadioMode</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetRadioMode()</span> puts the <span class="hclass">BMenu</span>
+in radio mode if <span class="hparameter">flag</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> and takes it
+out of radio mode if <span class="hparameter">flag</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.
+In radio mode, only one item in the
+menu can be marked at a time. If the user selects an item, a check mark
+is placed in front of it automatically (you don’t need to call
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code>’s
+<a class="reference internal" href="menu-item.html#_CPPv4N9BMenuItem9SetMarkedEb" title="BMenuItem::SetMarked"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetMarked()</span></code></a>
+function; it’s called for you). If another item
+was marked at the time, its mark is removed. Selecting a currently marked
+item retains the mark.</p>
+<p><span class="hmethod">IsRadioMode()</span> returns whether the
+<span class="hclass">BMenu</span> is currently in radio mode. The
+default radio mode is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> for ordinary
+<span class="hclass">BMenu</span>s, but <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> for
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPopUpMenu</span></code>s.</p>
+<p><span class="hmethod">SetRadioMode()</span> doesn’t change any of the items in the menu. If you want
+an initial item to be marked when the menu is put into radio mode, you
+must mark it yourself.</p>
+<p>When <span class="hmethod">SetRadioMode()</span> turns radio mode off, it calls SetLabelFromMarked()
+and passes it an argument of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>—turning off the feature that
+changes the label of the menu’s superitem each time the marked item
+changes. Similarly, when
+<a class="reference internal" href="#_CPPv4N5BMenu18SetLabelFromMarkedEb" title="BMenu::SetLabelFromMarked"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetLabelFromMarked()</span></code></a>
+turns on this feature, it calls <span class="hmethod">SetRadioMode()</span> and
+passes it an argument of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>—turning
+radio mode on.</p>
+<section id="_CPPv4N5BMenu17SetTargetForItemsEP8BHandler">
+</section>
+<h3>
+SetTargetForItems()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">SetTargetForItems</span><span class="sig-paren">(</span><span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span><span class="sig-paren">)</span><br /><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">SetTargetForItems</span><span class="sig-paren">(</span><span class="n">BMessenger</span><span class="w"> </span><span class="n sig-param">messenger</span><span class="sig-paren">)</span></pre><p>Assigns <span class="hparameter">handler</span> or <span class="hparameter">messenger</span>
+as the target for all the items in the menu.
+The proposed target is subject to the restrictions imposed by the
+<span class="hmethod">SetTarget()</span> function that
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code> inherits from
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInvoker</span></code> in the
+Application Kit. See that function for further information.</p>
+<p>If it’s unable to set the target of any item, <span class="hmethod">SetTargetForItems()</span> aborts
+and returns the error it encountered. If successful in setting the target
+of all items, it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+<p>This function doesn’t work recursively (it doesn’t descend into
+submenus), and it only acts on items that are currently in the <span class="hclass">BMenu</span> (it
+doesn’t affect items that are added later).</p>
+<section id="_CPPv4N5BMenu18SetTriggersEnabledEb">
+</section>
+<section id="_CPPv4NK5BMenu18AreTriggersEnabledEv">
+</section>
+<h3>
+SetTriggersEnabled(), AreTriggersEnabled()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">SetTriggersEnabled</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">flag</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">AreTriggersEnabled</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetTriggersEnabled()</span> enables the triggers for all items in the menu if
+<span class="hparameter">flag</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> and disables them if
+<span class="hparameter">flag</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.
+<span class="hmethod">AreTriggersEnabled()</span>
+returns whether the triggers are currently enabled or disabled. They’re
+enabled by default.</p>
+<p>Triggers are displayed to the user only if they’re enabled, and only when
+keyboard actions can operate the menu.</p>
+<p>Triggers are appropriate for some menus, but not for others.
+<span class="hmethod">SetTriggersEnabled()</span> is typically called to
+initialize the <span class="hclass">BMenu</span> when
+it’s constructed, not to enable and disable triggers as the application
+is running. If triggers are ever enabled for a menu, they should always
+be enabled; if they’re ever disabled, they should always be disabled.</p>
+<p>See also:
+<a class="reference internal" href="menu-item.html#_CPPv4N9BMenuItem10SetTriggerEc" title="BMenuItem::SetTrigger"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenuItem::SetTrigger()</span></code></a></p>
+<section id="_CPPv4NK5BMenu9SuperitemEv">
+</section>
+<section id="_CPPv4NK5BMenu9SupermenuEv">
+</section>
+<h3>
+Superitem(), Supermenu()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMenuItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">Superitem</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMenu</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">Supermenu</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions return the supermenu item that controls the <span class="hclass">BMenu</span> and the
+supermenu where that item is located. The supermenu could be a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code>
+object. If the <span class="hclass">BMenu</span> hasn’t been made the submenu of another menu, both
+functions return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p>See also:
+<a class="reference internal" href="#_CPPv4N5BMenu7AddItemEP9BMenuItem" title="BMenu::AddItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddItem()</span></code></a></p>
+<section id="_CPPv4N5BMenu5TrackEbP5BRect">
+</section>
+<h3>
+Track()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMenuItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">Track</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">openAnyway</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span>, <span class="n">BRect</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">clickToOpenRect</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Initiates tracking of the cursor within the menu. This function passes
+tracking control to submenus (and submenus of submenus) depending on
+where the user moves the mouse. If the user ends tracking by invoking an
+item, <span class="hmethod">Track()</span> returns the item. If the user didn’t invoke any item, it
+returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. The item doesn’t have to be located in
+the <span class="hclass">BMenu</span>; it could,
+for example, belong to a submenu of the <span class="hclass">BMenu</span>.</p>
+<p>If the <span class="hparameter">openAnyway</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>,
+<span class="hmethod">Track()</span> opens the menu and leaves it open
+even though a mouse button isn’t held down. This enables menu navigation
+from the keyboard. If a <span class="hparameter">clickToOpenRect</span> is specified and the user has set
+the click-to-open preference, <span class="hmethod">Track()</span> will leave the menu open if the
+user releases the mouse button while the cursor is inside the rectangle.
+The rectangle should be stated in the screen coordinate system.</p>
+<p><span class="hmethod">Track()</span> is called by the <span class="hclass">BMenu</span> to initiate tracking in the menu
+hierarchy. You would need to call it yourself only if you’re implementing
+a different kind of menu that starts to track the cursor under
+nonstandard circumstances.</p>
+</section>
+<section id="static-functions">
+<h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N5BMenu11InstantiateEP8BMessage">
+</section>
+<h3>
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenu</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BMenu</span> object, allocated by new and created with the version
+of the constructor that takes a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
+archive. However, if the <span class="hparameter">archive</span>
+message doesn’t contain data for a <span class="hclass">BMenu</span> object,
+<span class="hmethod">Instantiate()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p>See also:
+<a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">object()</span></code>,
+<a class="reference internal" href="#_CPPv4NK5BMenu7ArchiveEP8BMessageb" title="BMenu::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
+</section>
+<section id="scripting-support">
+<h2>Scripting Support<a class="headerlink" href="#scripting-support" title="Permalink to this heading">¶</a></h2>
+<h3>
+</h3><p>The “Enabled” property reflects whether the menu or menu item is enabled
+or disabled.</p>
+<p>MessageSpecifiersDescriptionB_GET_PROPERTYB_DIRECT_SPECIFIERReturns true if menu or menu item is enabled; false otherwise.B_SET_PROPERTYB_DIRECT_SPECIFIEREnables or disables menu or menu item.</p>
+<h3>
+</h3><p>The “Label” property refers to the text label of a menu or menu item.</p>
+<p>MessageSpecifiersDescriptionB_GET_PROPERTYB_DIRECT_SPECIFIERReturns the string label of the menu or menu item.B_SET_PROPERTYB_DIRECT_SPECIFIERSets the string label of the menu or menu item.</p>
+<h3>
+</h3><p>The “Mark” property refers to whether or not a given menu item or a given
+menu’s superitem is marked.</p>
+<p>MessageSpecifiersDescriptionB_GET_PROPERTYB_DIRECT_SPECIFIERReturns true if the menu item or the menu’s superitem is marked; false otherwise.B_SET_PROPERTYB_DIRECT_SPECIFIERMarks or unmarks the menu item or the menu’s superitem.</p>
+<h3>
+</h3><p>The “Menu” property refers to individual <span class="hclass">BMenu</span>s in the menu.</p>
+<p>MessageSpecifiersDescriptionB_CREATE_PROPERTYB_NAME_SPECIFIER, B_INDEX_SPECIFIER, B_REVERSE_INDEX_SPECIFIERAdds a new menu item at the specified index with the text label found in “data” and the int32 command found in “what” (used as the what field in the BMessage sent by the item).B_DELETE_PROPERTYB_NAME_SPECIFIER, B_INDEX_SPECIFIER, B_REVERSE_INDEX_SPECIFIERRemoves the selected menu or menus.any otherB_NAME_SPECIFIER, B_INDEX_SPECIFIER, B_REVERSE_INDEX_SPECIFIERDirects scripting message to the specified menu, first popping the current specifier off the stack.</p>
+<h3>
+</h3><p>The “MenuItem” property refers to individual <span class="hclass">BMenu</span>Items in the menu.</p>
+<p>MessageSpecifiersDescriptionB_COUNT_PROPERTIESB_DIRECT_SPECIFIERCounts the number of menu items in the specified menu.B_CREATE_PROPERTYB_NAME_SPECIFIER, B_INDEX_SPECIFIER, B_REVERSE_INDEX_SPECIFIERAdds a new menu item at the specified index with the text label found in “data” and the int32 command found in “what” (used as the what field in the BMessage sent by the item).B_DELETE_PROPERTYB_NAME_SPECIFIER, B_INDEX_SPECIFIER, B_REVERSE_INDEX_SPECIFIERRemoves the specified menu item from its parent menu.B_EXECUTE_PROPERTYB_NAME_SPECIFIER, B_INDEX_SPECIFIER, B_REVERSE_INDEX_SPECIFIERInvokes the specified menu item.any otherB_NAME_SPECIFIER, B_INDEX_SPECIFIER, B_REVERSE_INDEX_SPECIFIERDirects scripting message to the specified menu, first popping the current specifier off the stack.</p>
+</section>
+<section id="archived-fields">
+<h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="list-item.html">BListItem</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="menu-bar.html">BMenuBar</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>
