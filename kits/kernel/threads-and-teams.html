@@ -43,9 +43,45 @@
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Threads And Teams</a><ul>
-<li><a class="reference internal" href="#thread-and-team-functions">Thread and Team Functions</a></li>
-<li><a class="reference internal" href="#thread-and-team-structures-and-types">Thread and Team Structures and Types</a></li>
-<li><a class="reference internal" href="#thread-and-team-constants">Thread and Team Constants</a></li>
+<li><a class="reference internal" href="#thread-and-team-functions">Thread and Team Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv431estimate_max_scheduling_latency9thread_id">estimate_max_scheduling_latency</a></li>
+<li><a class="reference internal" href="#_CPPv411exit_thread8status_t">exit_thread</a></li>
+<li><a class="reference internal" href="#_CPPv411kill_thread9thread_id">kill_thread</a></li>
+<li><a class="reference internal" href="#_CPPv49kill_team7team_id">kill_team</a></li>
+<li><a class="reference internal" href="#_CPPv411find_threadPKc">find_thread</a></li>
+<li><a class="reference internal" href="#_CPPv413get_team_info7team_idP9team_info">get_team_info</a></li>
+<li><a class="reference internal" href="#_CPPv418get_next_team_infoP5int32P9team_info">get_next_team_info</a></li>
+<li><a class="reference internal" href="#_CPPv415get_thread_info9thread_idP11thread_info">get_thread_info</a></li>
+<li><a class="reference internal" href="#_CPPv420get_next_thread_info7team_idP5int32P11thread_info">get_next_thread_info</a></li>
+<li><a class="reference internal" href="#_CPPv413rename_thread9thread_idPKc">rename_thread</a></li>
+<li><a class="reference internal" href="#_CPPv413resume_thread9thread_id">resume_thread</a></li>
+<li><a class="reference internal" href="#_CPPv412receive_data9thread_idPv6size_t">receive_data</a></li>
+<li><a class="reference internal" href="#_CPPv49send_data9thread_idPv6size_t">send_data</a></li>
+<li><a class="reference internal" href="#_CPPv48has_data9thread_id">has_data</a></li>
+<li><a class="reference internal" href="#_CPPv419set_thread_priority9thread_id5int32">set_thread_priority</a></li>
+<li><a class="reference internal" href="#_CPPv423suggest_thread_priority6uint325int329bigtime_t9bigtime_t">suggest_thread_priority</a></li>
+<li><a class="reference internal" href="#_CPPv46snooze9bigtime_t5int32">snooze</a></li>
+<li><a class="reference internal" href="#_CPPv412snooze_until9bigtime_ti">snooze_until</a></li>
+<li><a class="reference internal" href="#_CPPv412spawn_thread11thread_funcPKc5int32Pv">spawn_thread</a></li>
+<li><a class="reference internal" href="#_CPPv414suspend_thread9thread_id">suspend_thread</a></li>
+<li><a class="reference internal" href="#_CPPv415wait_for_thread9thread_idP8status_t">wait_for_thread</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#thread-and-team-structures-and-types">Thread and Team Structures and Types</a><ul>
+<li><a class="reference internal" href="#team-id-thread-id">team_id, thread_id</a></li>
+<li><a class="reference internal" href="#team-info">team_info</a></li>
+<li><a class="reference internal" href="#thread-func">thread_func</a></li>
+<li><a class="reference internal" href="#thread-info">thread_info</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#thread-and-team-constants">Thread and Team Constants</a><ul>
+<li><a class="reference internal" href="#_CPPv413B_SYSTEM_TEAM">B_SYSTEM_TEAM</a></li>
+<li><a class="reference internal" href="#_CPPv417B_SYSTEM_TIMEBASE">B_SYSTEM_TIMEBASE</a></li>
+<li><a class="reference internal" href="#be-task-flags">be_task_flags</a></li>
+<li><a class="reference internal" href="#thread-priority-values">Thread Priority Values</a></li>
+<li><a class="reference internal" href="#thread-state">thread_state</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -58,24 +94,47 @@
       <div class="content" role="main">
         
   <section id="threads-and-teams">
-<h1>Threads And Teams<a class="headerlink" href="#threads-and-teams" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv417Threads And Teams">Threads And Teams<a class="headerlink" href="#threads-and-teams" title="Permalink to this heading">¶</a></h1>
+<table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Declared in:</p></td>
+<td><p>kernel/OS.h</p></td>
+</tr>
+<tr class="row-even"><td><p>Library:</p></td>
+<td><p>libroot.so</p></td>
+</tr>
+</tbody>
+</table>
+<p>A thread is a synchronous process that executes a series of program
+instructions. When you launch an application, an initial thread—the main
+thread—is automatically created (or spawned) and told to run. From the main
+thread you can spawn and run additional threads; from each of these threads
+you can spawn and run more threads, and so on. The collection of threads
+that are spawned from the main thread—in other words, the threads that
+comprise an application—is called a team. All the threads in all teams run
+concurrently and asynchronously with each other.</p>
+<p>For more information on threads and teams, see “<span class="xref std std-ref">Threads And Teams Overview</span>”.</p>
 <section id="thread-and-team-functions">
 <h2>Thread and Team Functions<a class="headerlink" href="#thread-and-team-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv431estimate_max_scheduling_latency9thread_id">
+</section>
 <h3>
-</h3><p>Declared in: kernel/scheduler.h</p>
-<pre style="background: #f3f3f3; line-height: 2em">bigtime_t Threads And Teams::estimate_max_scheduling_latency(thread_id thread = -1)</pre><p>Returns the scheduling latency, in microseconds, of the specified thread.
-Specify a thread_id of -1 to return the scheduling latency of the current
-thread.</p>
+estimate_max_scheduling_latency()</h3><p>Declared in: kernel/scheduler.h</p>
+<pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="n">estimate_max_scheduling_latency</span><span class="sig-paren">(</span><span class="n">thread_id</span><span class="w"> </span><span class="n sig-param">thread</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="m">1</span><span class="sig-paren">)</span></pre><p>Returns the scheduling latency, in microseconds, of the specified thread.
+Specify a <span class="htype">thread_id</span> of -1 to return the scheduling latency of the
+current thread.</p>
+<section id="_CPPv411exit_thread8status_t">
+</section>
+<section id="_CPPv411kill_thread9thread_id">
+</section>
+<section id="_CPPv49kill_team7team_id">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">void Threads And Teams::exit_thread(status_t return_value)</pre><pre style="background: #f3f3f3; line-height: 2em">status_t Threads And Teams::kill_thread(thread_id thread)</pre><pre style="background: #f3f3f3; line-height: 2em">status_t Threads And Teams::kill_team(team_id team)</pre><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span> <span class="n">on_exit_thread</span><span class="p">(</span><span class="n">void</span> <span class="p">(</span><span class="o">*</span><span class="n">callback</span><span class="p">)(</span><span class="n">void</span> <span class="o">*</span><span class="p">),</span> <span class="n">void</span> <span class="o">*</span><span class="n">data</span><span class="p">)</span>
+exit_thread(), kill_thread(), kill_team()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="n">exit_thread</span><span class="sig-paren">(</span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n sig-param">return_value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">kill_thread</span><span class="sig-paren">(</span><span class="n">thread_id</span><span class="w"> </span><span class="n sig-param">thread</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">kill_team</span><span class="sig-paren">(</span><span class="n">team_id</span><span class="w"> </span><span class="n sig-param">team</span><span class="sig-paren">)</span></pre><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span><span class="w"> </span><span class="n">on_exit_thread</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">callback</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>These functions command one or more threads to halt execution:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Function</p></th>
 <th class="head"><p>Description</p></th>
@@ -83,268 +142,257 @@ thread.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>exit_thread()</p></td>
-<td><p>Tells the calling thread to exit with a return value as given by the argument. Declaring the return value is only useful if some other thread is sitting in a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">for()</span></code> call on this thread. exit_thread() sends a signal to the thread (after caching the return value in a known place).</p></td>
+<td><p>Tells the calling thread to exit with a return value as given by the
+argument. Declaring the return value is only useful if some other thread is
+sitting in a <span class="xref std std-ref">wait_for_thread()</span> call on this thread. exit_thread()
+sends a signal to the thread (after caching the return value in a known
+place).</p></td>
 </tr>
 <tr class="row-odd"><td><p>kill_thread()</p></td>
-<td><p>Kills the thread given by the argument. The value that the thread will return to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">for()</span></code> is undefined and can’t be relied upon. kill_thread() is the same as sending a SIGKILLTHR signal to the thread.</p></td>
+<td><p>Kills the thread given by the argument. The value that the thread will
+return to <span class="xref std std-ref">wait_for_thread()</span> is undefined and can’t be relied upon.
+kill_thread() is the same as sending a SIGKILLTHR signal to the thread.</p></td>
 </tr>
 <tr class="row-even"><td><p>kill_team()</p></td>
-<td><p>Kills all the threads within the given team. Again, the threads’ return values are random. kill_team() is the same as sending a SIGKILL signal to any thread in the team. Each of the threads in the team is then handed a SIGKILLTHR signal.</p></td>
+<td><p>Kills all the threads within the given team. Again, the threads’ return
+values are random. kill_team() is the same as sending a SIGKILL signal to
+any thread in the team. Each of the threads in the team is then handed a
+SIGKILLTHR signal.</p></td>
 </tr>
 <tr class="row-odd"><td><p>on_exit_thread()</p></td>
-<td><p>Sets up the specified callback to be executed when the calling thread exits. The callback will receive the pointer data as an input argument.</p></td>
+<td><p>Sets up the specified callback to be executed when the calling thread
+exits. The callback will receive the pointer data as an input argument.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Exiting a thread is a fairly safe thing to do—since a thread can
-only exit itself, it’s assumed that the thread knows what it’s doing.
-Killing some other thread or an entire team is a bit more drastic since
-the death certificate(s) will be delivered at an indeterminate time. In
-addition, killing a thread can leak memory since resources that were
-allocated by the thread may not be freed. Killing an entire team, on the
-other hand, won’t leak since the system reclaims all resources when the
-team dies.
-Keep in mind that threads die automatically (and their resources are
+<p>Exiting a thread is a fairly safe thing to do—since a thread can only exit
+itself, it’s assumed that the thread knows what it’s doing. Killing some
+other thread or an entire team is a bit more drastic since the death
+certificate(s) will be delivered at an indeterminate time. In addition,
+killing a thread can leak memory since resources that were allocated by the
+thread may not be freed. Killing an entire team, on the other hand, won’t
+leak since the system reclaims all resources when the team dies.</p>
+<p>Keep in mind that threads die automatically (and their resources are
 reclaimed) if they’re allowed to exit naturally. You should only need to
 kill a thread if something has gone screwy.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The thread or team was successfully killed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_THREAD_ID</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_THREAD_ID</span></code>.</p></td>
 <td><p>Invalid thread value.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_TEAM_ID</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_TEAM_ID</span></code>.</p></td>
 <td><p>Invalid team value.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
-<td><p>Returned by on_exit_thread() if there’s no memory to construct the internal callback record.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<td><p>Returned by on_exit_thread() if there’s no memory to construct the
+internal callback record.</p></td>
 </tr>
 </tbody>
 </table>
+<section id="_CPPv411find_threadPKc">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">thread_id Threads And Teams::find_thread(const char* name)</pre><p>Finds and returns the thread with the given <span class="hparameter">name</span>. A
-<span class="hparameter">name</span> argument of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>
-returns the calling thread.
-A thread’s name is assigned when the thread is spawned. The name can be
-changed thereafter through the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>
-function. Keep in mind
-that thread names needn’t be unique: If two (or more) threads boast the
-same name, a find_thread() call on that name returns the first so-named
-thread that it finds. There’s no way to iterate through identically-named
-threads.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+find_thread()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">thread_id</span><span class="w"> </span><span class="n">find_thread</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><p>Finds and returns the thread with the given <span class="hparameter">name</span>. A
+<span class="hparameter">name</span> argument of <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> returns the calling thread.</p>
+<p>A thread’s name is assigned when the thread is spawned. The name can be
+changed thereafter through the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">rename_thread()</span></code>
+function. Keep in mind that thread names needn’t be unique: If two (or
+more) threads boast the same name, a find_thread() call on that name
+returns the first so-named thread that it finds. There’s no way to iterate
+through identically-named threads.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_NOT_FOUND</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NAME_NOT_FOUND</span></code>.</p></td>
 <td><p><span class="hparameter">name</span> doesn’t identify a valid thread.</p></td>
 </tr>
 </tbody>
 </table>
+<section id="_CPPv413get_team_info7team_idP9team_info">
+</section>
+<section id="_CPPv418get_next_team_infoP5int32P9team_info">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">status_t Threads And Teams::get_team_info(team_id team, team_info* info)</pre><pre style="background: #f3f3f3; line-height: 2em">status_t Threads And Teams::get_next_team_info(int32* cookie, team_info* info)</pre><p>The functions copy, into the <span class="hparameter">info</span>
-argument, the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">info()</span></code> structure for a
-particular team. The get_team_info() function retrieves information for
-the team identified by <span class="hparameter">team</span>. For information about the kernel, use
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SYSTEM_TEAM</span></code> as the team argument.
-The get_next_team_info() version lets you step through the list of all
-teams. The <span class="hparameter">cookie</span> argument is a placemark; you set it to 0 on your first
-call, and let the function do the rest. The function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>
-when there are no more areas to visit:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Get</span> <span class="n">the</span> <span class="n">team_info</span> <span class="k">for</span> <span class="n">every</span> <span class="n">team</span><span class="o">.</span> <span class="o">*/</span>
-<span class="n">team_info</span> <span class="n">info</span><span class="p">;</span>
-<span class="n">int32</span> <span class="n">cookie</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="k">while</span> <span class="p">(</span><span class="n">get_next_team_info</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cookie</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">info</span><span class="p">)</span> <span class="o">==</span> <span class="n">B_OK</span><span class="p">)</span>
-   <span class="o">...</span>
+get_team_info(), get_next_team_info()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">get_team_info</span><span class="sig-paren">(</span><span class="n">team_id</span><span class="w"> </span><span class="n sig-param">team</span>, <span class="n">team_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">get_next_team_info</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span>, <span class="n">team_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><p>The functions copy, into the <span class="hparameter">info</span> argument, the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">team_info</span></code> structure for a particular team. The
+get_team_info() function retrieves information for the team identified by
+<span class="hparameter">team</span>. For information about the kernel, use
+<a class="reference internal" href="#_CPPv413B_SYSTEM_TEAM" title="B_SYSTEM_TEAM"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SYSTEM_TEAM</span></code></a> as the team argument.</p>
+<p>The get_next_team_info() version lets you step through the list of all
+teams. The <span class="hparameter">cookie</span> argument is a placemark; you set it to 0 on
+your first call, and let the function do the rest. The function returns
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code> when there are no more areas to visit:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Get the team_info for every team. */</span><span class="w"></span>
+<span class="n">team_info</span><span class="w"> </span><span class="n">info</span><span class="p">;</span><span class="w"></span>
+<span class="n">int32</span><span class="w"> </span><span class="n">cookie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">get_next_team_info</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cookie</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">info</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
 </pre></div>
 </div>
-<p>See
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">info()</span></code>
-for a description of that structure.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<p>See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">team_info</span></code> for a description of that
+structure.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The desired team information was found.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_TEAM_ID</span></code>.</p></td>
-<td><p><span class="hparameter">team</span> doesn’t identify an existing team, or there are no more areas to visit.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_TEAM_ID</span></code>.</p></td>
+<td><p><span class="hparameter">team</span> doesn’t identify an existing team, or there are no more
+areas to visit.</p></td>
 </tr>
 </tbody>
 </table>
+<section id="_CPPv415get_thread_info9thread_idP11thread_info">
+</section>
+<section id="_CPPv420get_next_thread_info7team_idP5int32P11thread_info">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">status_t Threads And Teams::get_thread_info(thread_id thread, thread_info* info)</pre><pre style="background: #f3f3f3; line-height: 2em">status_t Threads And Teams::get_next_thread_info(team_id team, int32* cookie, thread_info* info)</pre><p>These functions copy, into the <span class="hparameter">info</span>
-argument, the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">info()</span></code>
-structure for a particular thread:
-The get_thread_info() function gets the
-information for the thread identified by <span class="hparameter">thread</span>.
-The get_next_thread_info() function lets you step through the list of a
-team’s threads through iterated calls. The <span class="hparameter">team</span> argument identifies the
-team you want to look at; a <span class="hparameter">team</span> value of 0 means the team of the calling
-thread. The <span class="hparameter">cookie</span> argument is a placemark; you set it to 0 on your first
-call, and let the function do the rest. The function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>
-when there are no more threads to visit:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Get</span> <span class="n">the</span> <span class="n">thread_info</span> <span class="k">for</span> <span class="n">every</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">team</span><span class="o">.</span> <span class="o">*/</span>
-<span class="n">thread_info</span> <span class="n">info</span><span class="p">;</span>
-<span class="n">int32</span> <span class="n">cookie</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="k">while</span> <span class="p">(</span><span class="n">get_next_thread_info</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cookie</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">info</span><span class="p">)</span> <span class="o">==</span> <span class="n">B_OK</span><span class="p">)</span>
-   <span class="o">...</span>
+get_thread_info(), get_next_thread_info()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">get_thread_info</span><span class="sig-paren">(</span><span class="n">thread_id</span><span class="w"> </span><span class="n sig-param">thread</span>, <span class="n">thread_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">get_next_thread_info</span><span class="sig-paren">(</span><span class="n">team_id</span><span class="w"> </span><span class="n sig-param">team</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span>, <span class="n">thread_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><p>These functions copy, into the <span class="hparameter">info</span> argument, the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread_info</span></code> structure for a particular thread:</p>
+<p>The get_thread_info() function gets the information for the thread
+identified by <span class="hparameter">thread</span>.</p>
+<p>The get_next_thread_info() function lets you step through the list of a
+team’s threads through iterated calls. The <span class="hparameter">team</span> argument
+identifies the team you want to look at; a <span class="hparameter">team</span> value of 0 means
+the team of the calling thread. The <span class="hparameter">cookie</span> argument is a
+placemark; you set it to 0 on your first call, and let the function do the
+rest. The function returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code> when there are no
+more threads to visit:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Get the thread_info for every thread in this team. */</span><span class="w"></span>
+<span class="n">thread_info</span><span class="w"> </span><span class="n">info</span><span class="p">;</span><span class="w"></span>
+<span class="n">int32</span><span class="w"> </span><span class="n">cookie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">get_next_thread_info</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cookie</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">info</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The value of the priority field describes the thread’s “urgency”; the
-higher the value, the more urgent the thread. The more urgent the thread,
-the more attention it gets from the CPU. Expected priority values fall
-between 0 and 120.
-See “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ThreadPriorities()</span></code>”
-for the full story.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<p>The value of the <span class="hparameter">priority</span> field describes the thread’s
+“urgency”; the higher the value, the more urgent the thread. The more
+urgent the thread, the more attention it gets from the CPU. Expected
+priority values fall between 0 and 120. See “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Thread</span> <span class="pre">Priorities</span></code>” for the full story.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The thread was found; <span class="hparameter">info</span> contains valid information.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
-<td><p><span class="hparameter">thread</span> doesn’t identify an existing thread, <span class="hparameter">team</span> doesn’t identify an existing team, or there are no more threads to visit.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p><span class="hparameter">thread</span> doesn’t identify an existing thread, <span class="hparameter">team</span>
+doesn’t identify an existing team, or there are no more threads to visit.</p></td>
 </tr>
 </tbody>
 </table>
+<section id="_CPPv413rename_thread9thread_idPKc">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">status_t Threads And Teams::rename_thread(thread_id thread, const char* name)</pre><p>Changes the name of the given thread to <span class="hparameter">name</span>. The name can be no longer
-than <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OS_NAME_LENGTH</span></code> (32 characters).</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+rename_thread()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">rename_thread</span><span class="sig-paren">(</span><span class="n">thread_id</span><span class="w"> </span><span class="n sig-param">thread</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><p>Changes the name of the given thread to <span class="hparameter">name</span>. The name can be no
+longer than <a class="reference internal" href="miscellaneous.html#_CPPv416B_OS_NAME_LENGTH" title="B_OS_NAME_LENGTH"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OS_NAME_LENGTH</span></code></a> (32 characters).</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The thread was successfully named.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_THREAD_ID</span></code>.</p></td>
-<td><p><span class="hparameter">thread</span> argument isn’t a valid thread_id number.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_THREAD_ID</span></code>.</p></td>
+<td><p><span class="hparameter">thread</span> argument isn’t a valid <span class="htype">thread_id</span> number.</p></td>
 </tr>
 </tbody>
 </table>
+<section id="_CPPv413resume_thread9thread_id">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">status_t Threads And Teams::resume_thread(thread_id thread)</pre><p>Tells a new or suspended thread to begin executing instructions. If the
+resume_thread()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">resume_thread</span><span class="sig-paren">(</span><span class="n">thread_id</span><span class="w"> </span><span class="n sig-param">thread</span><span class="sig-paren">)</span></pre><p>Tells a new or suspended thread to begin executing instructions. If the
 thread has just been spawned, it enters and executes the thread function
-declared in <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>.
-If the thread was previously suspended(through
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>),
-it continues from where it was suspended.
-You can’t use this function to wake up a sleeping thread, or to unblock a
+declared in <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">spawn_thread()</span></code>. If the thread was
+previously suspended(through <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">suspend_thread()</span></code>), it continues from where it was suspended.</p>
+<p>You can’t use this function to wake up a sleeping thread, or to unblock a
 thread that’s waiting to acquire a semaphore or waiting in a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>
-call. However, you can unblock any of these threads by
-suspending and then resuming. Blocked threads that are resumed return
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INTERRUPTED</span></code>.
-resume_thread() is the same as sending a
-SIGCONT signal to the thread.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">receive_data()</span></code> call. However, you can unblock
+any of these threads by suspending and then resuming. Blocked threads that
+are resumed return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INTERRUPTED</span></code>.</p>
+<p>resume_thread() is the same as sending a SIGCONT signal to the thread.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The thread was successfully resumed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_THREAD_ID</span></code>.</p></td>
-<td><p><span class="hparameter">thread</span> argument isn’t a valid thread_id number.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_THREAD_ID</span></code>.</p></td>
+<td><p><span class="hparameter">thread</span> argument isn’t a valid <span class="htype">thread_id</span> number.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_THREAD_STATE</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_THREAD_STATE</span></code>.</p></td>
 <td><p>The thread isn’t suspended.</p></td>
 </tr>
 </tbody>
 </table>
+<section id="_CPPv412receive_data9thread_idPv6size_t">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">int32 Threads And Teams::receive_data(thread_id sender, void* buffer, size_t buffer_size)</pre><p>Retrieves a message from the thread’s message cache. The message will
-have been placed there through a previous
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>
-function call. If the cache is empty, receive_data()
-blocks until one shows up—it never returns empty-handed.
-The thread_id of the thread that called
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>
-is returned by reference in the sender argument. Note that there’s no guarantee that the
-sender will still be alive by the time you get its ID. Also, the value of
-sender going into the function is ignored—you can’t ask for a
-message from a particular sender.
-The
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>
-function copies two pieces of data into a thread’s
-message cache:</p>
+receive_data()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="n">receive_data</span><span class="sig-paren">(</span><span class="n">thread_id</span><span class="w"> </span><span class="n sig-param">sender</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">buffer_size</span><span class="sig-paren">)</span></pre><p>Retrieves a message from the thread’s message cache. The message will have
+been placed there through a previous <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">send_data()</span></code>
+function call. If the cache is empty, receive_data() blocks until one shows
+up—it never returns empty-handed.</p>
+<p>The <span class="htype">thread_id</span> of the thread that called <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">send_data()</span></code> is returned by reference in the sender argument. Note that
+there’s no guarantee that the sender will still be alive by the time you
+get its ID. Also, the value of sender going into the function is
+ignored—you can’t ask for a message from a particular sender.</p>
+<p>The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">send_data()</span></code> function copies two pieces of
+data into a thread’s message cache:</p>
 <ul class="simple">
 <li><p>A single four-byte code that’s delivered as receive_data()’s return value,</p></li>
-<li><p>and an arbitrarily long data buffer that’s copied into receive_data()’s buffer argument (you must allocate and free buffer yourself). The <span class="hparameter">buffer_size</span> argument tells the function how many bytes of data to copy. If you don’t need the data buffer—if the code value returned directly by the function is sufficient—you set <span class="hparameter">buffer</span> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> and <span class="hparameter">buffer_size</span> to 0.</p></li>
+<li><p>and an arbitrarily long data buffer that’s copied into receive_data()’s
+buffer argument (you must allocate and free buffer yourself). The
+<span class="hparameter">buffer_size</span> argument tells the function how many bytes of data to
+copy. If you don’t need the data buffer—if the code value returned directly
+by the function is sufficient—you set <span class="hparameter">buffer</span> to <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>
+and <span class="hparameter">buffer_size</span> to 0.</p></li>
 </ul>
-<p>Unfortunately, there’s no way to tell how much data is in the cache
-before you call receive_data():</p>
+<p>Unfortunately, there’s no way to tell how much data is in the cache before
+you call receive_data():</p>
 <ul class="simple">
-<li><p>If there’s more data than buffer can accommodate, the unaccommodated portion is discarded—a second receive_data() call will not read the rest of the message.</p></li>
-<li><p>Conversely, if receive_data() asks for more data than was sent, the function returns with the excess portion of buffer unmodified—receive_data() doesn’t wait for another <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code> call to provide more data with which to fill up the buffer.</p></li>
+<li><p>If there’s more data than buffer can accommodate, the unaccommodated
+portion is discarded—a second receive_data() call will not read the rest of
+the message.</p></li>
+<li><p>Conversely, if receive_data() asks for more data than was sent, the
+function returns with the excess portion of buffer
+unmodified—receive_data() doesn’t wait for another <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">send_data()</span></code> call to provide more data with which to fill up the buffer.</p></li>
 </ul>
-<p>Each receive_data() corresponds to exactly one
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>.
-Lacking a previous invocation of its mate, receive_data() will block until
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>
-is called. If you don’t want to block, you should call
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>
-before calling receive_data() (and proceed to
-receive_data()
-only if <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>
-returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>).</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<p>Each receive_data() corresponds to exactly one <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">send_data()</span></code>. Lacking a previous invocation of its mate, receive_data()
+will block until <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">send_data()</span></code> is called. If you
+don’t want to block, you should call <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">has_data()</span></code>
+before calling receive_data() (and proceed to receive_data() only if
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">has_data()</span></code> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>).</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
@@ -354,147 +402,145 @@ returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class
 <tr class="row-even"><td><p>If successful</p></td>
 <td><p>Returns the message’s four-byte code.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INTERRUPTED</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INTERRUPTED</span></code>.</p></td>
 <td><p>A blocked receive_data() call was interrupted by a signal.</p></td>
 </tr>
 </tbody>
 </table>
+<section id="_CPPv49send_data9thread_idPv6size_t">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">status_t Threads And Teams::send_data(thread_id sender, void* buffer, size_t buffer_size)</pre><p>send_data() copies a message into thread’s message cache. The target
+send_data()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">send_data</span><span class="sig-paren">(</span><span class="n">thread_id</span><span class="w"> </span><span class="n sig-param">sender</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">buffer_size</span><span class="sig-paren">)</span></pre><p>send_data() copies a message into thread’s message cache. The target
 thread retrieves the message (and empties the cache) by calling
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>.
-There are two parts to the message:</p>
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">receive_data()</span></code>.</p>
+<p>There are two parts to the message:</p>
 <ul class="simple">
-<li><p>A single four-byte code passed as an argument to send_data() and returned directly by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>.</p></li>
-<li><p>A <span class="hparameter">buffer</span> of data that’s <span class="hparameter">buffer_size</span> bytes long (<span class="hparameter">buffer</span> can be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, in which case <span class="hparameter">buffer_size</span> should be 0). The data is copied into the target thread’s cache, and then copied into <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>’s <span class="hparameter">buffer</span> (which must be allocated). The calling threads retain responsibility for freeing their buffers.</p></li>
+<li><p>A single four-byte code passed as an argument to send_data() and returned
+directly by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">receive_data()</span></code>.</p></li>
+<li><p>A <span class="hparameter">buffer</span> of data that’s <span class="hparameter">buffer_size</span> bytes long
+(<span class="hparameter">buffer</span> can be <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>, in which case
+<span class="hparameter">buffer_size</span> should be 0). The data is copied into the target
+thread’s cache, and then copied into <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">receive_data()</span></code>’s <span class="hparameter">buffer</span> (which must be allocated). The calling
+threads retain responsibility for freeing their buffers.</p></li>
 </ul>
-<p>In addition to returning the <span class="hparameter">code</span> directly, and copying the message data
-into its <span class="hparameter">buffer</span> argument,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>
-sets <span class="hparameter">sender</span> to the id of the thread that sent the message.
-send_data() blocks if there’s an unread message in the target thread’s
+<p>In addition to returning the <span class="hparameter">code</span> directly, and copying the
+message data into its <span class="hparameter">buffer</span> argument, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">receive_data()</span></code> sets <span class="hparameter">sender</span> to the id of the thread that sent
+the message.</p>
+<p>send_data() blocks if there’s an unread message in the target thread’s
 cache; otherwise it returns immediately (i.e. it doesn’t wait for the
-target to call <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>.
-Analogously, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>
-blocks until there’s a message to retrieve.
-In the following example, the main thread spawns a thread, sends it a
+target to call <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">receive_data()</span></code>. Analogously,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">receive_data()</span></code> blocks until there’s a message
+to retrieve.</p>
+<p>In the following example, the main thread spawns a thread, sends it a
 message, and then tells the thread to run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">main</span><span class="p">()</span>
-<span class="p">{</span>
-   <span class="n">thread_id</span> <span class="n">other_thread</span><span class="p">;</span>
-   <span class="n">int32</span> <span class="n">code</span> <span class="o">=</span> <span class="mi">63</span><span class="p">;</span>
-   <span class="n">char</span> <span class="o">*</span><span class="n">buf</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span><span class="p">;</span>
-   <span class="n">other_thread</span> <span class="o">=</span> <span class="n">spawn_thread</span><span class="p">(</span><span class="n">thread_func</span><span class="p">,</span> <span class="o">...</span><span class="p">);</span>
-   <span class="n">send_data</span><span class="p">(</span><span class="n">other_thread</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="p">)</span><span class="n">buf</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
-   <span class="n">resume_thread</span><span class="p">(</span><span class="n">other_thread</span><span class="p">);</span>
-   <span class="o">...</span>
-<span class="p">}</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">thread_id</span><span class="w"> </span><span class="n">other_thread</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">63</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">other_thread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawn_thread</span><span class="p">(</span><span class="n">thread_func</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w"></span>
+<span class="w">   </span><span class="n">send_data</span><span class="p">(</span><span class="n">other_thread</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span><span class="w"></span>
+<span class="w">   </span><span class="n">resume_thread</span><span class="p">(</span><span class="n">other_thread</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>To retrieve the message, the target thread calls
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">int32</span> <span class="n">thread_func</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">data</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="n">thread_id</span> <span class="n">sender</span><span class="p">;</span>
-   <span class="n">int32</span> <span class="n">code</span><span class="p">;</span>
-   <span class="n">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span>
-   <span class="n">code</span> <span class="o">=</span> <span class="n">receive_data</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sender</span><span class="p">,</span> <span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="p">)</span><span class="n">buf</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
-   <span class="o">...</span>
-<span class="p">}</span>
+<p>To retrieve the message, the target thread calls <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">receive_data()</span></code>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">int32</span><span class="w"> </span><span class="nf">thread_func</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">thread_id</span><span class="w"> </span><span class="n">sender</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w"> </span><span class="n">code</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">receive_data</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span><span class="w"></span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Keep in mind that the message data is copied into the buffer; you must
 allocate adequate storage for the data. If the buffer isn’t big enough to
 accommodate all the datain the message, the left-over portion is thrown
-away. Note, however, that there isn’t any way for a thread to determine
-how much data has been copied into its message cache.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+away. Note, however, that there isn’t any way for a thread to determine how
+much data has been copied into its message cache.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The data was successfuly sent.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_THREAD_ID</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_THREAD_ID</span></code>.</p></td>
 <td><p><span class="hparameter">thread</span> doesn’t identify a valid thread.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
 <td><p>The target couldn’t allocate enough memory for its copy of buffer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INTERRUPTED</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INTERRUPTED</span></code>.</p></td>
 <td><p>The function blocked, but a signal unblocked it.</p></td>
 </tr>
 </tbody>
 </table>
+<section id="_CPPv48has_data9thread_id">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">bool Threads And Teams::has_data(thread_id thread)</pre><p>has_data() returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if
-<span class="hparameter">thread</span> has a message in its message cache.
-Ostensibly, you use this function before calling
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code> or
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>
-to avoid blocking:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if (!has_data(target_thread))
-   err = send_data(target_thread, ...);
-/* or */
-if (has_data(find_thread(NULL))
-   code = receive_data(...);
+has_data()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="n">has_data</span><span class="sig-paren">(</span><span class="n">thread_id</span><span class="w"> </span><span class="n sig-param">thread</span><span class="sig-paren">)</span></pre><p>has_data() returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if <span class="hparameter">thread</span> has a message in
+its message cache. Ostensibly, you use this function before calling
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">send_data()</span></code> or <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">receive_data()</span></code> to avoid blocking:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">has_data</span><span class="p">(</span><span class="n">target_thread</span><span class="p">))</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">send_data</span><span class="p">(</span><span class="n">target_thread</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w"></span>
+
+<span class="cm">/* or */</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">has_data</span><span class="p">(</span><span class="n">find_thread</span><span class="p">(</span><span class="nb">NULL</span><span class="p">))</span><span class="w"></span>
+<span class="w">   </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">receive_data</span><span class="p">(...);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This works for
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>,
-but notice that there’s a race condition between the
-has_data() and
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code>
-calls. Another thread could send a message to the target in the interim.</p>
+<p>This works for <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">receive_data()</span></code>, but notice that
+there’s a race condition between the has_data() and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">send_data()</span></code> calls. Another thread could send a message to the target in
+the interim.</p>
+<section id="_CPPv419set_thread_priority9thread_id5int32">
+</section>
+<section id="_CPPv423suggest_thread_priority6uint325int329bigtime_t9bigtime_t">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">status_t Threads And Teams::set_thread_priority(thread_id thread, int32 new_priority)</pre><pre style="background: #f3f3f3; line-height: 2em">int32 Threads And Teams::suggest_thread_priority(uint32 what = B_DEFAULT_MEDIA_PRIORITY, int32 period = 0, bigtime_t jitter = 0, bigtime_t length = 0)</pre><p>Declared in:  kernel/scheduler.h
-set_thread_priority() resets the given thread’s priority to <span class="hparameter">new_priority</span>.
-The priority is expected to be between 0 and 120.
-See “Thread Priorities”
-for a description of the priority scheme, and
-“Thread Priority Values”
-for a list of pre-defined priority constants.
-suggest_thread_priority() takes information about a thread and returns a
+set_thread_priority(), suggest_thread_priority()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">set_thread_priority</span><span class="sig-paren">(</span><span class="n">thread_id</span><span class="w"> </span><span class="n sig-param">thread</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">new_priority</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="n">suggest_thread_priority</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">what</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_DEFAULT_MEDIA_PRIORITY</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">period</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">jitter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">length</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>Declared in:  kernel/scheduler.h</p>
+<p>set_thread_priority() resets the given thread’s priority to
+<span class="hparameter">new_priority</span>. The priority is expected to be between 0 and 120.
+See “Thread Priorities” for a description of the priority scheme, and
+“Thread Priority Values” for a list of pre-defined priority constants.</p>
+<p>suggest_thread_priority() takes information about a thread and returns a
 suggested priority that you can pass to set_thread_priority() (or, more
-likely, to
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>).
-The <span class="hparameter">what</span> value is a bit mask that indicates the type of activities the
-thread will be used for. The possible values are listed in
-Suggested Thread Priorities.
-<span class="hparameter">period</span> is the number of times per second the thread needs to be run
-(specify 0 if it needs to run continuously). <span class="hparameter">jitter</span> is an estimate, in
-microseconds, of how much the period can vary as long as the average
-stays at <span class="hparameter">period</span> times per second.
-<span class="hparameter">length</span> is an approximation of the amount of time, in microseconds, the
-thread will typically run per invocation (i.e., the amount of time that
-will pass between the moment it receives a message, through processing
-it, until it’s again waiting for another message).
-For example, if you’re spawning a thread to handle video refresh for a
-computer game, and you want the display to update 30 times per second,
-you might use code similar to the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">int32</span> <span class="n">priority</span><span class="p">;</span>
-<span class="n">priority</span> <span class="o">=</span> <span class="n">suggest_thread_priority</span><span class="p">(</span><span class="n">B_LIVE_3D_RENDERING</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">150</span><span class="p">);</span>
-<span class="n">th</span> <span class="o">=</span> <span class="n">spawn_thread</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s2">&quot;render_thread&quot;</span><span class="p">,</span> <span class="n">priority</span><span class="p">,</span> <span class="n">NULL</span><span class="p">)</span>
+likely, to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">spawn_thread()</span></code>).</p>
+<p>The <span class="hparameter">what</span> value is a bit mask that indicates the type of
+activities the thread will be used for. The possible values are listed in
+Suggested Thread Priorities.</p>
+<p><span class="hparameter">period</span> is the number of times per second the thread needs to be
+run (specify 0 if it needs to run continuously). <span class="hparameter">jitter</span> is an
+estimate, in microseconds, of how much the period can vary as long as the
+average stays at <span class="hparameter">period</span> times per second.</p>
+<p><span class="hparameter">length</span> is an approximation of the amount of time, in
+microseconds, the thread will typically run per invocation (i.e., the
+amount of time that will pass between the moment it receives a message,
+through processing it, until it’s again waiting for another message).</p>
+<p>For example, if you’re spawning a thread to handle video refresh for a
+computer game, and you want the display to update 30 times per second, you
+might use code similar to the following:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">int32</span><span class="w"> </span><span class="n">priority</span><span class="p">;</span><span class="w"></span>
+<span class="n">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">suggest_thread_priority</span><span class="p">(</span><span class="n">B_LIVE_3D_RENDERING</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">);</span><span class="w"></span>
+<span class="n">th</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawn_thread</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;render_thread&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">priority</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>This spawns the rendering thread with a priority appropriate for a thread
 for live 3D rendering which wants to be run 30 times per second, with a
 variation of only 1000 microseconds. Each invocation of the thread’s code
 is estimated to take 150 microseconds. Obviously the jitter and length
-values would have to be tuned to the particular application.
-set_thread_priority() returns…</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+values would have to be tuned to the particular application.</p>
+<p>set_thread_priority() returns…</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
@@ -504,26 +550,43 @@ set_thread_priority() returns…</p>
 <tr class="row-even"><td><p>Positive integers.</p></td>
 <td><p>If the function is successful, the previous priority is returned.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_THREAD_ID</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_THREAD_ID</span></code>.</p></td>
 <td><p><span class="hparameter">thread</span> doesn’t identify a valid thread.</p></td>
 </tr>
 </tbody>
 </table>
+<section id="_CPPv46snooze9bigtime_t5int32">
+</section>
+<section id="_CPPv412snooze_until9bigtime_ti">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">status_t Threads And Teams::snooze(bigtime_t microseconds, int32 new_priority)</pre><pre style="background: #f3f3f3; line-height: 2em">status_t Threads And Teams::snooze_until(bigtime_t microseconds, int timebase)</pre><p>snooze() blocks the calling thread for
-the given number of <span class="hparameter">microseconds</span>.
-snooze_until() blocks until an absolute time measured in the given
-<span class="hparameter">timebase</span>. Currently, the only allowed value for <span class="hparameter">timebase</span> is
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SYSTEM_TIMEBASE</span></code>, which measures time against the system clock (as
-reported by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">time()</span></code>).</p>
+snooze(), snooze_until()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">snooze</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">microseconds</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">new_priority</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">snooze_until</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">microseconds</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">timebase</span><span class="sig-paren">)</span></pre><p>snooze() blocks the calling thread for the given number of
+<span class="hparameter">microseconds</span>.</p>
+<p>snooze_until() blocks until an absolute time measured in the given
+<span class="hparameter">timebase</span>. Currently, the only allowed value for
+<span class="hparameter">timebase</span> is <a class="reference internal" href="#_CPPv417B_SYSTEM_TIMEBASE" title="B_SYSTEM_TIMEBASE"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SYSTEM_TIMEBASE</span></code></a>, which measures
+time against the system clock (as reported by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">system_time()</span></code>).</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The thread went to sleep and is now awake.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INTERRUPTED</span></code>.</p></td>
+<td><p>The thread received a signal while it was sleeping.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv412spawn_thread11thread_funcPKc5int32Pv">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">thread_id Threads And Teams::spawn_thread(thread_func func, const char* name, int32 priority, void* data)</pre><p>Creates a new thread and returns its thread_id identifier (a positive
-integer). The arguments are:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+spawn_thread()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">thread_id</span><span class="w"> </span><span class="n">spawn_thread</span><span class="sig-paren">(</span><span class="n">thread_func</span><span class="w"> </span><span class="n sig-param">func</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">priority</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span><span class="sig-paren">)</span></pre><p>Creates a new thread and returns its <span class="htype">thread_id</span> identifier (a
+positive integer). The arguments are:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Description</p></th>
@@ -531,13 +594,18 @@ integer). The arguments are:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>func</p></td>
-<td><p>Is a pointer to a thread function. This is the function that the thread will execute when it’s told to run. See “The Thread Function” for details.</p></td>
+<td><p>Is a pointer to a thread function. This is the function that the thread
+will execute when it’s told to run. See “The Thread Function” for details.</p></td>
 </tr>
 <tr class="row-odd"><td><p>name</p></td>
-<td><p>Is the name that you wish to give the thread. It can be, at most, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OS_NAME_LENGTH</span></code> (32) characters long.</p></td>
+<td><p>Is the name that you wish to give the thread. It can be, at most,
+<a class="reference internal" href="miscellaneous.html#_CPPv416B_OS_NAME_LENGTH" title="B_OS_NAME_LENGTH"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OS_NAME_LENGTH</span></code></a> (32) characters long.</p></td>
 </tr>
 <tr class="row-even"><td><p>priority</p></td>
-<td><p>Is the CPU priority level of the thread. This value should be between 0 and 120; he higher the priority, the more attention the thread gets. See Thread Priorities for a description of the priorities, and Thread Priority Values for a list of priority constants.</p></td>
+<td><p>Is the CPU priority level of the thread. This value should be between 0
+and 120; he higher the priority, the more attention the thread gets. See
+Thread Priorities for a description of the priorities, and Thread Priority
+Values for a list of priority constants.</p></td>
 </tr>
 <tr class="row-odd"><td><p>data</p></td>
 <td><p>Is forwarded as the argument to the thread function.</p></td>
@@ -545,355 +613,374 @@ integer). The arguments are:</p>
 </tbody>
 </table>
 <p>A newly spawned thread is in a suspended state
-(<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_THREAD_SUSPENDED</span></code>). To
-tell the thread to run, you pass its thread_id to the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>
-function. The thread will continue to run until the thread function
-exits, or until the thread is explicitly killed (through a signal or a
-call to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>, or
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">team()</span></code>).</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_THREAD_SUSPENDED</span></code>). To tell the thread to run, you pass
+its <span class="htype">thread_id</span> to the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">resume_thread()</span></code>
+function. The thread will continue to run until the thread function exits,
+or until the thread is explicitly killed (through a signal or a call to
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">exit_thread()</span></code>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">kill_thread()</span></code>, or <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">kill_team()</span></code>).</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MORE_THREADS</span></code>.</p></td>
-<td><p>All thread_id numbers are currently in use.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MORE_THREADS</span></code>.</p></td>
+<td><p>All <span class="htype">thread_id</span> numbers are currently in use.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
 <td><p>Not enough memory to allocate the resources for another thread.</p></td>
 </tr>
 </tbody>
 </table>
+<section id="_CPPv414suspend_thread9thread_id">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">status_t Threads And Teams::suspend_thread(thread_id thread)</pre><p>Halts the execution of the given thread, but doesn’t kill the thread
-entirely. The thread remains suspended (suspend_thread() blocks) until
-it’s told to run through the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>
+suspend_thread()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">suspend_thread</span><span class="sig-paren">(</span><span class="n">thread_id</span><span class="w"> </span><span class="n sig-param">thread</span><span class="sig-paren">)</span></pre><p>Halts the execution of the given thread, but doesn’t kill the thread
+entirely. The thread remains suspended (suspend_thread() blocks) until it’s
+told to run through the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">resume_thread()</span></code>
 function. Nothing prevents you from suspending your own thread, i.e.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">suspend_thread</span><span class="p">(</span><span class="n">find_thread</span><span class="p">(</span><span class="n">NULL</span><span class="p">));</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">suspend_thread</span><span class="p">(</span><span class="n">find_thread</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Of course, this is only smart if you have some other thread that will
-resume you later.
-You can suspend any thread, regardless of its current state. But be
+resume you later.</p>
+<p>You can suspend any thread, regardless of its current state. But be
 careful: If the thread is blocked on a semaphore (for example), the
-subsequent
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>
-call will “hop over” the semaphore acquisition.
-Suspensions don’t nest. A single
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code> unsuspends a thread
-regardless of the number of suspend_thread() calls it has received.
-suspend_thread() is the same as sending a
-SIGSTOP signal to the thread.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+subsequent <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">resume_thread()</span></code> call will “hop
+over” the semaphore acquisition.</p>
+<p>Suspensions don’t nest. A single <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">resume_thread()</span></code> unsuspends a thread regardless of the number of
+suspend_thread() calls it has received.</p>
+<p>suspend_thread() is the same as sending a SIGSTOP signal to the thread.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The thread is now suspended.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_THREAD_ID</span></code>.</p></td>
-<td><p>thread isn’t a valid thread_id number.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_THREAD_ID</span></code>.</p></td>
+<td><p>thread isn’t a valid <span class="htype">thread_id</span> number.</p></td>
 </tr>
 </tbody>
 </table>
+<section id="_CPPv415wait_for_thread9thread_idP8status_t">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">status_t Threads And Teams::wait_for_thread(thread_id thread, status_t* exit_value)</pre><p>This function causes the calling thread to wait until thread (the “target
+wait_for_thread()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">wait_for_thread</span><span class="sig-paren">(</span><span class="n">thread_id</span><span class="w"> </span><span class="n sig-param">thread</span>, <a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">exit_value</span><span class="sig-paren">)</span></pre><p>This function causes the calling thread to wait until thread (the “target
 thread”) has died. If thread is suspended (or freshly spawned),
-wait_for_thread() will resume it.
-When the target thread is dead, the value that was returned by its thread
-function (or imposed by
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>)
-is returned in <span class="hparameter">exit_value</span>. If the
-target thread was killed (by
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code> or
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">team()</span></code>),
-or if the thread function doesn’t return a value, the value returned in
-<span class="hparameter">exit_value</span> will be unreliable.
-You must pass a valid pointer as the second argument to
-wait_for_thread(). You mustn’t pass
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> even if you’re not interested in
-the return value.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+wait_for_thread() will resume it.</p>
+<p>When the target thread is dead, the value that was returned by its thread
+function (or imposed by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">exit_thread()</span></code>) is
+returned in <span class="hparameter">exit_value</span>. If the target thread was killed (by
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">kill_thread()</span></code> or <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">kill_team()</span></code>), or if the thread function doesn’t return a value, the value
+returned in <span class="hparameter">exit_value</span> will be unreliable.</p>
+<p>You must pass a valid pointer as the second argument to wait_for_thread().
+You mustn’t pass <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> even if you’re not interested in the
+return value.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The target is now dead.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_THREAD_ID</span></code>.</p></td>
-<td><p><span class="hparameter">thread</span> isn’t a valid thread_id number.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_THREAD_ID</span></code>.</p></td>
+<td><p><span class="hparameter">thread</span> isn’t a valid <span class="htype">thread_id</span> number.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INTERRUPTED</span></code>.</p></td>
-<td><p>The target was killed by a signal. This includes <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">team()</span></code>, and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INTERRUPTED</span></code>.</p></td>
+<td><p>The target was killed by a signal. This includes <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">kill_thread()</span></code>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">kill_team()</span></code>, and
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">exit_thread()</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="thread-and-team-structures-and-types">
 <h2>Thread and Team Structures and Types<a class="headerlink" href="#thread-and-team-structures-and-types" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">int32</span> <span class="n">team_id</span> <span class="p">;</span>
-<span class="n">typedef</span> <span class="n">int32</span> <span class="n">thread_id</span> <span class="p">;</span>
+<section id="team-id-thread-id">
+<h3>team_id, thread_id<a class="headerlink" href="#team-id-thread-id" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">team_id</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">thread_id</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>These id numbers uniquely identify teams and threads, respecitvely.</p>
-<h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
-    <span class="n">team_id</span>   <span class="n">team</span><span class="p">;</span>
-    <span class="n">int32</span>     <span class="n">thread_count</span><span class="p">;</span>
-    <span class="n">int32</span>     <span class="n">image_count</span><span class="p">;</span>
-    <span class="n">int32</span>     <span class="n">area_count</span><span class="p">;</span>
-    <span class="n">thread_id</span> <span class="n">debugger_nub_thread</span><span class="p">;</span>
-    <span class="n">port_id</span>   <span class="n">debugger_nub_port</span><span class="p">;</span>
-    <span class="n">int32</span>     <span class="n">argc</span><span class="p">;</span>
-    <span class="n">char</span>      <span class="n">args</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
-    <span class="n">uid_t</span>     <span class="n">uid</span><span class="p">;</span>
-    <span class="n">gid_t</span>     <span class="n">gid</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">team_info</span><span class="p">;</span>
+</section>
+<section id="team-info">
+<h3>team_info<a class="headerlink" href="#team-info" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">team_id</span><span class="w">   </span><span class="n">team</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">int32</span><span class="w">     </span><span class="n">thread_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">int32</span><span class="w">     </span><span class="n">image_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">int32</span><span class="w">     </span><span class="n">area_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">thread_id</span><span class="w"> </span><span class="n">debugger_nub_thread</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">port_id</span><span class="w">   </span><span class="n">debugger_nub_port</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">int32</span><span class="w">     </span><span class="n">argc</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w">      </span><span class="n">args</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="kt">uid_t</span><span class="w">     </span><span class="n">uid</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">gid_t</span><span class="w">     </span><span class="n">gid</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">team_info</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The team_info structure returns information about a team. To retrieve one
-of these structures, use
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">team()</span></code> or
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">next()</span></code>.
-The first field is obvious; the next three reasonably so: They give the
-number of threads that have been spawned, images that have been loaded,
-and areas that have been created or cloned within this team.
-The debugger fields are used by the, uhm, the…debugger?
-The argc field is the number of command line arguments that were used to
-launch the team; args is a copy of the first 64 characters from the
-command line invocation. If this team is an application that was launched
-through the user interface (by double-clicking, or by accepting a dropped
-icon), then argc is 1 and args is the name of the application’s
-executable file.
-uid and gid identify the user
-and group that “owns” the team. You can use
-these values to play permission games.</p>
-<h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">int32</span> <span class="p">(</span><span class="o">*</span><span class="n">thread_func</span><span class="p">)(</span><span class="n">void</span> <span class="o">*</span><span class="n">data</span><span class="p">);</span>
+<p>The <span class="htype">team_info</span> structure returns information about a team. To
+retrieve one of these structures, use <span class="xref std std-ref">get_team_info()</span> or
+<span class="xref std std-ref">get_next_team_info()</span>.</p>
+<p>The first field is obvious; the next three reasonably so: They give the
+number of threads that have been spawned, images that have been loaded, and
+areas that have been created or cloned within this team.</p>
+<p>The debugger fields are used by the, uhm, the…debugger?</p>
+<p>The <span class="hparameter">argc</span> field is the number of command line arguments that were
+used to launch the team; <span class="hparameter">args</span> is a copy of the first 64
+characters from the command line invocation. If this team is an application
+that was launched through the user interface (by double-clicking, or by
+accepting a dropped icon), then <span class="hparameter">argc</span> is 1 and <span class="hparameter">args</span> is
+the name of the application’s executable file.</p>
+<p><span class="hparameter">uid</span> and <span class="hparameter">gid</span> identify the user and group that “owns”
+the team. You can use these values to play permission games.</p>
+</section>
+<section id="thread-func">
+<h3>thread_func<a class="headerlink" href="#thread-func" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">thread_func</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>thread_func is the prototype for a thread’s thread function. You specify
-a thread function by passing a thread_func as the first argument to
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>;
-the last argument to
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>
-is forwarded as the thread function’s data argument. When the thread function exits, the
-spawned thread is automatically killed. To retrieve a thread_func’s
-return value, some other thread must be waiting in a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">for()</span></code>
-call.
-Note that
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>
-doesn’t copy the data that data points to. It
-simply passes the pointer through literally. Never pass a pointer that’s
-allocated locally (on the stack).</p>
-<h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
-    <span class="n">thread_id</span>    <span class="n">thread</span><span class="p">;</span>
-    <span class="n">team_id</span>      <span class="n">team</span><span class="p">;</span>
-    <span class="n">char</span>         <span class="n">name</span><span class="p">[</span><span class="n">B_OS_NAME_LENGTH</span><span class="p">];</span>
-    <span class="n">thread_state</span> <span class="n">state</span><span class="p">;</span>
-    <span class="n">sem_id</span>       <span class="n">sem</span><span class="p">;</span>
-    <span class="n">int32</span>        <span class="n">priority</span><span class="p">;</span>
-    <span class="n">bigtime_t</span>    <span class="n">user_time</span><span class="p">;</span>
-    <span class="n">bigtime_t</span>    <span class="n">kernel_time</span><span class="p">;</span>
-    <span class="n">void</span> <span class="o">*</span>       <span class="n">stack_base</span><span class="p">;</span>
-    <span class="n">void</span> <span class="o">*</span>       <span class="n">stack_end</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">thread_info</span>
+<p><span class="htype">thread_func</span> is the prototype for a thread’s thread function. You
+specify a thread function by passing a <span class="htype">thread_func</span> as the first
+argument to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">spawn_thread()</span></code>; the last argument
+to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">spawn_thread()</span></code> is forwarded as the thread
+function’s data argument. When the thread function exits, the spawned
+thread is automatically killed. To retrieve a <span class="htype">thread_func</span>’s return
+value, some other thread must be waiting in a <span class="xref std std-ref">wait_for_thread()</span>
+call.</p>
+<p>Note that <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">spawn_thread()</span></code> doesn’t copy the data
+that data points to. It simply passes the pointer through literally. Never
+pass a pointer that’s allocated locally (on the stack).</p>
+</section>
+<section id="thread-info">
+<h3>thread_info<a class="headerlink" href="#thread-info" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">thread_id</span><span class="w">    </span><span class="kr">thread</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">team_id</span><span class="w">      </span><span class="n">team</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w">         </span><span class="n">name</span><span class="p">[</span><span class="n">B_OS_NAME_LENGTH</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">thread_state</span><span class="w"> </span><span class="n">state</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">sem_id</span><span class="w">       </span><span class="n">sem</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">int32</span><span class="w">        </span><span class="n">priority</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">bigtime_t</span><span class="w">    </span><span class="n">user_time</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">bigtime_t</span><span class="w">    </span><span class="n">kernel_time</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w">       </span><span class="n">stack_base</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w">       </span><span class="n">stack_end</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">thread_info</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The thread_info structure contains information about a thread. To
-retrieve one of these structure, use
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code> or
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">next()</span></code>.
-The thread, team,
-and name fields contain the indicated information.
-state describes what the thread is currently doing (see
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">state()</span></code> for
-the list of states). If the thread is waiting to acquire a semaphore, sem
-is that semaphore.
-priority is a value that indicates the level of attention the thread gets
-(see Thread Priority).
-user_time and kernel_time
-are the amounts of time, in microseconds, the
-thread has spent executing user code and the amount of time the kernel
-has run on the thread’s behalf, respectively.
-stack_base and stack_end
-are pointers to the first byte and last bytes in
-the thread’s execution stack. Currently, the stack size is fixed at
-around 256k.</p>
+<p>The <span class="htype">thread_info</span> structure contains information about a thread. To
+retrieve one of these structure, use <span class="xref std std-ref">get_thread_info()</span> or
+<span class="xref std std-ref">get_next_thread_info()</span>.</p>
+<p>The <span class="hparameter">thread</span>, <span class="hparameter">team</span>, and <span class="hparameter">name</span> fields contain
+the indicated information.</p>
+<p><span class="hparameter">state</span> describes what the thread is currently doing (see
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread_state</span></code> for the list of states). If the
+thread is waiting to acquire a semaphore, sem is that semaphore.</p>
+<p><span class="hparameter">priority</span> is a value that indicates the level of attention the
+thread gets (see Thread Priority).</p>
+<p><span class="hparameter">user_time</span> and <span class="hparameter">kernel_time</span> are the amounts of time, in
+microseconds, the thread has spent executing user code and the amount of
+time the kernel has run on the thread’s behalf, respectively.</p>
+<p><span class="hparameter">stack_base</span> and <span class="hparameter">stack_end</span> are pointers to the first
+byte and last bytes in the thread’s execution stack. Currently, the stack
+size is fixed at around 256k.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>The two stack pointers are currently inverted such that stack_base is
-less than stack_end.
-(In a stack-grows-down world, the base should be
-greater than the end.)</p>
+<p>The two stack pointers are currently inverted such that
+<span class="hparameter">stack_base</span> is <strong>less</strong> than <span class="hparameter">stack_end</span>. (In a
+stack-grows-down world, the base should be greater than the end.)</p>
 </div>
+</section>
 </section>
 <section id="thread-and-team-constants">
 <h2>Thread and Team Constants<a class="headerlink" href="#thread-and-team-constants" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv413B_SYSTEM_TEAM">
+</section>
 <h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define B_SYSTEM_TEAM ...</span>
+B_SYSTEM_TEAM</h3></pre><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define B_SYSTEM_TEAM ...</span>
 </pre></div>
 </div>
-<p>Use this constant as the first argument to
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">team()</span></code>
-to get team information about the kernel).</p>
+<p>Use this constant as the first argument to <span class="xref std std-ref">get_team_info()</span> to get
+team information about the kernel).</p>
+<section id="_CPPv417B_SYSTEM_TIMEBASE">
+</section>
 <h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define B_SYSTEM_TIMEBASE ...</span>
+B_SYSTEM_TIMEBASE</h3></pre><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define B_SYSTEM_TIMEBASE ...</span>
 </pre></div>
 </div>
 <p>The system timebase constant is used as a basis for time measurement in
-the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">until()</span></code>
-function. (Currently, it’s the only timebase available.)</p>
-<h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="n">be_task_flags</span> <span class="p">{</span>
-    <span class="n">B_DEFAULT_MEDIA_PRIORITY</span><span class="p">,</span>
-    <span class="n">B_OFFLINE_PROCESSING</span><span class="p">,</span>
-    <span class="n">B_STATUS_RENDERING</span><span class="p">,</span>
-    <span class="n">B_USER_INPUT_HANDLING</span><span class="p">,</span>
-    <span class="n">B_LIVE_VIDEO_MANIPULATION</span><span class="p">,</span>
-    <span class="n">B_VIDEO_PLAYBACK</span><span class="p">,</span>
-    <span class="n">B_VIDEO_RECORDING</span><span class="p">,</span>
-    <span class="n">B_LIVE_AUDIO_MANIPULATION</span><span class="p">,</span>
-    <span class="n">B_AUDIO_PLAYBACK</span><span class="p">,</span>
-    <span class="n">B_AUDIO_RECORDING</span><span class="p">,</span>
-    <span class="n">B_LIVE_3D_RENDERING</span><span class="p">,</span>
-    <span class="n">B_NUMBER_CRUNCHING</span>
-<span class="p">};</span>
+the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">snooze_until()</span></code> function. (Currently, it’s
+the only timebase available.)</p>
+<section id="be-task-flags">
+<h3>be_task_flags<a class="headerlink" href="#be-task-flags" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span><span class="w"> </span><span class="n">be_task_flags</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_DEFAULT_MEDIA_PRIORITY</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_OFFLINE_PROCESSING</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_STATUS_RENDERING</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_USER_INPUT_HANDLING</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_LIVE_VIDEO_MANIPULATION</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_VIDEO_PLAYBACK</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_VIDEO_RECORDING</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_LIVE_AUDIO_MANIPULATION</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_AUDIO_PLAYBACK</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_AUDIO_RECORDING</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_LIVE_3D_RENDERING</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_NUMBER_CRUNCHING</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Declared in: kernel/scheduler.h</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DEFAULT_MEDIA_PRIORITY</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DEFAULT_MEDIA_PRIORITY</span></code>.</p></td>
 <td><p>The thread isn’t doing anything specialized.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OFFLINE_PROCESSING</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OFFLINE_PROCESSING</span></code>.</p></td>
 <td><p>The thread is doing non-real-time computations.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STATUS_RENDERING</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STATUS_RENDERING</span></code>.</p></td>
 <td><p>The thread is rendering a status or preview display.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_USER_INPUT_HANDLING</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_USER_INPUT_HANDLING</span></code>.</p></td>
 <td><p>The thread is handling user input.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_LIVE_VIDEO_MANIPULATION</span></code>.</p></td>
-<td><p>The thread is processing live video (filtering, compression, decompression, etc.).</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LIVE_VIDEO_MANIPULATION</span></code>.</p></td>
+<td><p>The thread is processing live video (filtering, compression,
+decompression, etc.).</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_VIDEO_PLAYBACK</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_VIDEO_PLAYBACK</span></code>.</p></td>
 <td><p>The thread is playing back video from a hardware device.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_VIDEO_RECORDING</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_VIDEO_RECORDING</span></code>.</p></td>
 <td><p>The thread is recording video from a hardware device.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_LIVE_AUDIO_MANIPULATION</span></code>.</p></td>
-<td><p>The thread is doing real-time manipulation of live audio data (filtering, compression, decompression, etc.).</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LIVE_AUDIO_MANIPULATION</span></code>.</p></td>
+<td><p>The thread is doing real-time manipulation of live audio data (filtering,
+compression, decompression, etc.).</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_AUDIO_PLAYBACK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_AUDIO_PLAYBACK</span></code>.</p></td>
 <td><p>The thread is playing back audio from a hardware device.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_AUDIO_RECORDING</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_AUDIO_RECORDING</span></code>.</p></td>
 <td><p>The thread is recording audio from a hardware device.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_LIVE_3D_RENDERING</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LIVE_3D_RENDERING</span></code>.</p></td>
 <td><p>The thread is performing live 3D rendering.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NUMBER_CRUNCHING</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NUMBER_CRUNCHING</span></code>.</p></td>
 <td><p>The thread is doing data processing.</p></td>
 </tr>
 </tbody>
 </table>
 <p>These constants describe what the thread is designed to do. You use these
 constants when asking for a suggested priority (see
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>).</p>
+<span class="xref std std-ref">suggest_thread_priority()</span>).</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>These constants may not be used as actual thread priority
-values—do not pass one of these values as the priority argument to
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>.</p>
+<p>These constants may not be used as actual thread priority values—do not
+pass one of these values as the priority argument to
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">spawn_thread()</span></code>.</p>
 </div>
-<h3>
-</h3><p>Time-Sharing PriorityValueB_LOW_PRIORITY5B_NORMAL_PRIORITY10B_DISPLAY_PRIORITY15B_URGENT_DISPLAY_PRIORITY20
-Real-Time PriorityValueB_REAL_TIME_DISPLAY_PRIORITY100B_URGENT_PRIORITY110B_REAL_TIME_PRIORITY120
-The thread priority values are used to set the “urgency” of a thread.
+</section>
+<section id="thread-priority-values">
+<h3>Thread Priority Values<a class="headerlink" href="#thread-priority-values" title="Permalink to this heading">¶</a></h3>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Time-Sharing Priority</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LOW_PRIORITY</span></code></p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NORMAL_PRIORITY</span></code></p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DISPLAY_PRIORITY</span></code></p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_URGENT_DISPLAY_PRIORITY</span></code></p></td>
+<td><p>20</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Real-Time Priority</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REAL_TIME_DISPLAY_PRIORITY</span></code></p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_URGENT_PRIORITY</span></code></p></td>
+<td><p>110</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REAL_TIME_PRIORITY</span></code></p></td>
+<td><p>120</p></td>
+</tr>
+</tbody>
+</table>
+<p>The thread priority values are used to set the “urgency” of a thread.
 Although you can reset a thread’s priority through
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>,
-the priority is initially—and almost always permanently—set
-in <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>.</p>
-<h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span> <span class="n">thread_state</span>
+<span class="xref std std-ref">set_thread_priority()</span>, the priority is initially—and almost always
+permanently—set in <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">spawn_thread()</span></code>.</p>
+</section>
+<section id="thread-state">
+<h3>thread_state<a class="headerlink" href="#thread-state" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">thread_state</span><span class="w"></span>
 </pre></div>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_THREAD_RUNNING</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_THREAD_RUNNING</span></code>.</p></td>
 <td><p>The thread is currently receiving attention from a CPU.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_THREAD_READY</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_THREAD_READY</span></code>.</p></td>
 <td><p>The thread is waiting for its turn to receive attention.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_THREAD_SUSPENDED</span></code>.</p></td>
-<td><p>The thread has been suspended or is freshly-spawned and is waiting to start.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_THREAD_SUSPENDED</span></code>.</p></td>
+<td><p>The thread has been suspended or is freshly-spawned and is waiting to
+start.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_THREAD_WAITING</span></code>.</p></td>
-<td><p>The thread is waiting to acquire a semaphore. The sem field of the thread’s <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">info()</span></code> structure will tell you which semaphore.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_THREAD_WAITING</span></code>.</p></td>
+<td><p>The thread is waiting to acquire a semaphore. The <span class="hparameter">sem</span> field of
+the thread’s <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread_info</span></code> structure will tell you
+which semaphore.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_THREAD_RECEIVING</span></code>.</p></td>
-<td><p>The thread is sitting in a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">data()</span></code> function call.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_THREAD_RECEIVING</span></code>.</p></td>
+<td><p>The thread is sitting in a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">receive_data()</span></code>
+function call.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_THREAD_ASLEEP</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_THREAD_ASLEEP</span></code>.</p></td>
 <td><p>The thread is sitting in a <span class="xref std std-ref">snooze()</span> call.</p></td>
 </tr>
 </tbody>
 </table>
 <p>A thread’s state tells you what the thread is currently doing. To get the
-state, look in the state field of the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">info()</span></code>
-structure (retrieved through
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>).</p>
+state, look in the state field of the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread_info</span></code> structure (retrieved through <span class="xref std std-ref">get_thread_info()</span>).</p>
+</section>
 </section>
 </section>
 

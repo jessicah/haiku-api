@@ -69,99 +69,75 @@
       <div class="content" role="main">
         
   <section id="bparameterweb">
-<h1>BParameterWeb<a class="headerlink" href="#bparameterweb" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv413BParameterWeb">BParameterWeb<a class="headerlink" href="#bparameterweb" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N13BParameterWeb13BParameterWebEv">
 </section>
 <h3>
-BParameterWeb()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BParameterWeb13BParameterWebEv" title="BParameterWeb::BParameterWeb"><span class="n">BParameterWeb</span></a><span class="p">::</span></span><span class="n">BParameterWeb</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The <span class="hclass">BParameterWeb</span> constructor. You’ll
-usually create one <span class="hclass">BParameterWeb</span>
-object per
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControllable</span></code>
-node; to attach a <span class="hclass">BParameterWeb</span> to a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControllable</span></code>
-node, you should call
-<a class="reference internal" href="controllable.html#_CPPv4N13BControllable15SetParameterWebEP13BParameterWeb" title="BControllable::SetParameterWeb"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControllable::SetParameterWeb()</span></code></a>.</p>
+BParameterWeb()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BParameterWeb13BParameterWebEv" title="BParameterWeb::BParameterWeb"><span class="n">BParameterWeb</span></a><span class="p">::</span></span><span class="n">BParameterWeb</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The <span class="hclass">BParameterWeb</span> constructor. You’ll usually create one
+<span class="hclass">BParameterWeb</span> object per <a class="reference internal" href="controllable.html#_CPPv413BControllable" title="BControllable"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControllable</span></code></a> node; to
+attach a <span class="hclass">BParameterWeb</span> to a <a class="reference internal" href="controllable.html#_CPPv413BControllable" title="BControllable"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControllable</span></code></a> node, you
+should call <a class="reference internal" href="controllable.html#_CPPv4N13BControllable15SetParameterWebEP13BParameterWeb" title="BControllable::SetParameterWeb"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControllable::SetParameterWeb()</span></code></a>.</p>
 <section id="_CPPv4N13BParameterWebD0Ev">
 </section>
 <h3>
-~BParameterWeb()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BParameterWeb</span><span class="p">::</span></span><span class="n">~BParameterWeb</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Once you’ve called
-<a class="reference internal" href="controllable.html#_CPPv4N13BControllable15SetParameterWebEP13BParameterWeb" title="BControllable::SetParameterWeb"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControllable::SetParameterWeb()</span></code></a>,
-the node takes responsibility for the parameter web object and you shouldn’t delete it.
-If you don’t call
-<a class="reference internal" href="controllable.html#_CPPv4N13BControllable15SetParameterWebEP13BParameterWeb" title="BControllable::SetParameterWeb"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControllable::SetParameterWeb()</span></code></a>,
-then delete the <span class="hclass">BParameterWeb</span> object when you’re done with it.</p>
+~BParameterWeb()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BParameterWeb" title="BParameterWeb"><span class="n">BParameterWeb</span></a><span class="p">::</span></span><span class="n">~BParameterWeb</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Once you’ve called <a class="reference internal" href="controllable.html#_CPPv4N13BControllable15SetParameterWebEP13BParameterWeb" title="BControllable::SetParameterWeb"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControllable::SetParameterWeb()</span></code></a>, the node
+takes responsibility for the parameter web object and you shouldn’t delete
+it.</p>
+<p>If you don’t call <a class="reference internal" href="controllable.html#_CPPv4N13BControllable15SetParameterWebEP13BParameterWeb" title="BControllable::SetParameterWeb"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControllable::SetParameterWeb()</span></code></a>, then delete
+the <span class="hclass">BParameterWeb</span> object when you’re done with it.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N13BParameterWeb11CountGroupsEv">
 </section>
 <h3>
-CountGroups()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameterWeb</span><span class="p">::</span></span><span class="n">CountGroups</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the number of
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterGroup</span></code>
-objects that are currently attached to the <span class="hclass">BParameterWeb</span>.</p>
+CountGroups()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BParameterWeb" title="BParameterWeb"><span class="n">BParameterWeb</span></a><span class="p">::</span></span><span class="n">CountGroups</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the number of <a class="reference internal" href="parameter-group.html#_CPPv415BParameterGroup" title="BParameterGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterGroup</span></code></a> objects that are
+currently attached to the <span class="hclass">BParameterWeb</span>.</p>
 <section id="_CPPv4N13BParameterWeb15CountParametersEv">
 </section>
 <h3>
-CountParameters()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameterWeb</span><span class="p">::</span></span><span class="n">CountParameters</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the number of
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code>s
-in the entire web, including those in all
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterGroup</span></code>s
-attached to it.</p>
+CountParameters()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BParameterWeb" title="BParameterWeb"><span class="n">BParameterWeb</span></a><span class="p">::</span></span><span class="n">CountParameters</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the number of <a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code></a>s in the entire web,
+including those in all <a class="reference internal" href="parameter-group.html#_CPPv415BParameterGroup" title="BParameterGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterGroup</span></code></a>s attached to it.</p>
 <section id="_CPPv4N13BParameterWeb7GroupAtE5int32">
 </section>
 <h3>
-GroupAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BParameterGroup</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameterWeb</span><span class="p">::</span></span><span class="n">GroupAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Returns the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterGroup</span></code>
-located at the specified <span class="hparameter">index</span> within the
-list of groups contained by the <span class="hclass">BParameterWeb</span>.
-The first group is numbered 0, so the maximum legal value for <span class="hparameter">index</span> is
-<a class="reference internal" href="parameter-group.html#_CPPv4N15BParameterGroup11CountGroupsEv" title="BParameterGroup::CountGroups"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountGroups()</span></code></a>-1.
-If the specified <span class="hparameter">index</span> is outside that range, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> is
-returned.</p>
+GroupAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="parameter-group.html#_CPPv415BParameterGroup" title="BParameterGroup"><span class="n">BParameterGroup</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BParameterWeb" title="BParameterWeb"><span class="n">BParameterWeb</span></a><span class="p">::</span></span><span class="n">GroupAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Returns the <a class="reference internal" href="parameter-group.html#_CPPv415BParameterGroup" title="BParameterGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterGroup</span></code></a> located at the specified
+<span class="hparameter">index</span> within the list of groups contained by the
+<span class="hclass">BParameterWeb</span>.</p>
+<p>The first group is numbered 0, so the maximum legal value for
+<span class="hparameter">index</span> is <a class="reference internal" href="parameter-group.html#_CPPv4N15BParameterGroup11CountGroupsEv" title="BParameterGroup::CountGroups"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountGroups()</span></code></a>-1. If the specified <span class="hparameter">index</span> is
+outside that range, <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> is returned.</p>
 <section id="_CPPv4N13BParameterWeb9MakeGroupEPKc">
 </section>
 <h3>
-MakeGroup()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BParameterGroup</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameterWeb</span><span class="p">::</span></span><span class="n">MakeGroup</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><p>Creates a new
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterGroup</span></code>
-object to be used for grouping parameters within the <span class="hclass">BParameterWeb</span>,
-and attaches it to the <span class="hclass">BParameterWeb</span>.
-All
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code>s
-created in the group will belong to that group, and, by
-recursion, to the web itself.</p>
+MakeGroup()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="parameter-group.html#_CPPv415BParameterGroup" title="BParameterGroup"><span class="n">BParameterGroup</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BParameterWeb" title="BParameterWeb"><span class="n">BParameterWeb</span></a><span class="p">::</span></span><span class="n">MakeGroup</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><p>Creates a new <a class="reference internal" href="parameter-group.html#_CPPv415BParameterGroup" title="BParameterGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterGroup</span></code></a> object to be used for grouping
+parameters within the <span class="hclass">BParameterWeb</span>, and attaches it to the
+<span class="hclass">BParameterWeb</span>.</p>
+<p>All <a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code></a>s created in the group will belong to that
+group, and, by recursion, to the web itself.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>You can nest
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterGroup</span></code>s
-if you want to; however,
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code>s
-can’t be shared among multiple groups.</p>
+<p>You can nest <a class="reference internal" href="parameter-group.html#_CPPv415BParameterGroup" title="BParameterGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterGroup</span></code></a>s if you want to; however,
+<a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code></a>s can’t be shared among multiple groups.</p>
 </div>
 <section id="_CPPv4N13BParameterWeb4NodeEv">
 </section>
 <h3>
-Node()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">media_node</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameterWeb</span><span class="p">::</span></span><span class="n">Node</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">node()</span></code>
-for the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControllable</span></code>
-node that owns this <span class="hclass">BParameterWeb</span> object.
-If the <span class="hclass">BParameterWeb</span> hasn’t been attached to a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControllable</span></code>
-node yet, <code class="docutils literal notranslate"><span class="pre">media_node::null</span></code>
-is returned.</p>
+Node()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">media_node</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BParameterWeb" title="BParameterWeb"><span class="n">BParameterWeb</span></a><span class="p">::</span></span><span class="n">Node</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_node</span></code> for the
+<a class="reference internal" href="controllable.html#_CPPv413BControllable" title="BControllable"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControllable</span></code></a> node that owns this <span class="hclass">BParameterWeb</span>
+object.</p>
+<p>If the <span class="hclass">BParameterWeb</span> hasn’t been attached to a
+<a class="reference internal" href="controllable.html#_CPPv413BControllable" title="BControllable"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControllable</span></code></a> node yet, <code class="docutils literal notranslate"><span class="pre">media_node::null</span></code> is returned.</p>
 <section id="_CPPv4N13BParameterWeb11ParameterAtE5int32">
 </section>
 <h3>
-ParameterAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BParameter</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameterWeb</span><span class="p">::</span></span><span class="n">ParameterAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Returns the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code>
-at the specified <span class="hparameter">index</span> within the entire
-<span class="hclass">BParameterWeb</span>, including those in all attached groups. The first
-parameter is numbered 0, so the maximum legal value for <span class="hparameter">index</span> is
-<a class="reference internal" href="parameter-group.html#_CPPv4N15BParameterGroup15CountParametersEv" title="BParameterGroup::CountParameters"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountParameters()</span></code></a>-1.
-If the specified <span class="hparameter">index</span> is outside that range, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>
-is returned.</p>
+ParameterAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BParameterWeb" title="BParameterWeb"><span class="n">BParameterWeb</span></a><span class="p">::</span></span><span class="n">ParameterAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Returns the <a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code></a> at the specified <span class="hparameter">index</span>
+within the entire <span class="hclass">BParameterWeb</span>, including those in all attached
+groups. The first parameter is numbered 0, so the maximum legal value for
+<span class="hparameter">index</span> is <a class="reference internal" href="parameter-group.html#_CPPv4N15BParameterGroup15CountParametersEv" title="BParameterGroup::CountParameters"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountParameters()</span></code></a>-1. If the specified <span class="hparameter">index</span> is
+outside that range, <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> is returned.</p>
 </section>
 </section>
 

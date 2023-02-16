@@ -49,12 +49,25 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#allowstypecode">AllowsTypeCode()</a><ul>
 <li><a class="reference internal" href="#_CPPv4NK13BPropertyInfo9FindMatchEP8BMessage5int32P8BMessage5int32PKcPv">FindMatch</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#flatten">Flatten()</a></li>
+<li><a class="reference internal" href="#flattenedsize">FlattenedSize()</a></li>
+<li><a class="reference internal" href="#isfixedsize">IsFixedSize()</a></li>
+<li><a class="reference internal" href="#typecode">TypeCode()</a><ul>
 <li><a class="reference internal" href="#_CPPv4NK13BPropertyInfo13PrintToStreamEv">PrintToStream</a></li>
 <li><a class="reference internal" href="#_CPPv4NK13BPropertyInfo12PropertyInfoEv">PropertyInfo</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#defined-types">Defined Types</a></li>
+<li><a class="reference internal" href="#unflatten">Unflatten()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#defined-types">Defined Types</a><ul>
+<li><a class="reference internal" href="#property-info">property_info</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -67,83 +80,80 @@
       <div class="content" role="main">
         
   <section id="bpropertyinfo">
-<h1>BPropertyInfo<a class="headerlink" href="#bpropertyinfo" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv413BPropertyInfo">BPropertyInfo<a class="headerlink" href="#bpropertyinfo" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N13BPropertyInfo13BPropertyInfoEP13property_infob">
 </section>
 <h3>
-BPropertyInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BPropertyInfo13BPropertyInfoEP13property_infob" title="BPropertyInfo::BPropertyInfo"><span class="n">BPropertyInfo</span></a><span class="p">::</span></span><span class="n">BPropertyInfo</span><span class="sig-paren">(</span><span class="n">property_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">free_on_delete</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>Initializes the object with the specified zero-terminated array <span class="hparameter">p</span> of
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">info()</span></code>.
-Passing <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> in
-<span class="hparameter">free_on_delete</span> instructs the object to
-free the memory associated with the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">info()</span></code> when the object is
-destroyed. <span class="hclass">BPropertyInfo</span> does not copy the array, so it is important that
-the array is not deleted or otherwise destroyed while the <span class="hclass">BPropertyInfo</span>
-is in use.</p>
+BPropertyInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BPropertyInfo13BPropertyInfoEP13property_infob" title="BPropertyInfo::BPropertyInfo"><span class="n">BPropertyInfo</span></a><span class="p">::</span></span><span class="n">BPropertyInfo</span><span class="sig-paren">(</span><span class="n">property_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">free_on_delete</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>Initializes the object with the specified zero-terminated array
+<span class="hparameter">p</span> of <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">property_info</span></code>. Passing
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> in <span class="hparameter">free_on_delete</span> instructs the object to free
+the memory associated with the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">property_info</span></code>
+when the object is destroyed. <span class="hclass">BPropertyInfo</span> does not copy the
+array, so it is important that the array is not deleted or otherwise
+destroyed while the <span class="hclass">BPropertyInfo</span> is in use.</p>
 <section id="_CPPv4N13BPropertyInfoD0Ev">
 </section>
 <h3>
-~BPropertyInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BPropertyInfo</span><span class="p">::</span></span><span class="n">~BPropertyInfo</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>If <span class="hparameter">free_on_delete</span> is set to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> in the
-constructor, the destructor frees all memory associated with the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">info()</span></code>.
-Otherwise, it does nothing.</p>
+~BPropertyInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BPropertyInfo" title="BPropertyInfo"><span class="n">BPropertyInfo</span></a><span class="p">::</span></span><span class="n">~BPropertyInfo</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>If <span class="hparameter">free_on_delete</span> is set to <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> in the constructor,
+the destructor frees all memory associated with the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">property_info</span></code>. Otherwise, it does nothing.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>See
-<a class="reference internal" href="../support/flattenable.html#_CPPv4NK12BFlattenable14AllowsTypeCodeE9type_code" title="BFlattenable::AllowsTypeCode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFlattenable::AllowsTypeCode()</span></code></a>.</p>
+<section id="allowstypecode">
+<h3>AllowsTypeCode()<a class="headerlink" href="#allowstypecode" title="Permalink to this heading">¶</a></h3>
+<p>See <a class="reference internal" href="../support/flattenable.html#_CPPv4NK12BFlattenable14AllowsTypeCodeE9type_code" title="BFlattenable::AllowsTypeCode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFlattenable::AllowsTypeCode()</span></code></a>.</p>
 <section id="_CPPv4NK13BPropertyInfo9FindMatchEP8BMessage5int32P8BMessage5int32PKcPv">
 </section>
-<h3>
-FindMatch()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPropertyInfo</span><span class="p">::</span></span><span class="n">FindMatch</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">msg</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">spec</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">form</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">prop</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Passed a property name in <span class="hparameter">prop</span>, a specifier in
-<span class="hparameter">form</span>, and a command in
-<span class="hparameter">msg</span>-&gt;what, searches the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">info()</span></code>
-array for an item supporting the
+<h4>
+FindMatch()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BPropertyInfo" title="BPropertyInfo"><span class="n">BPropertyInfo</span></a><span class="p">::</span></span><span class="n">FindMatch</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">msg</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span>, <a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">spec</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">form</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">prop</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Passed a property name in <span class="hparameter">prop</span>, a specifier in <span class="hparameter">form</span>,
+and a command in <span class="hparameter">msg</span>-&gt;<span class="hparameter">what</span>, searches the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">property_info</span></code> array for an item supporting the
 specified scripting request. If <span class="hparameter">index</span> is nonzero, then
-<span class="hmethod">FindMatch()</span> only searches those
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">info()</span></code>
-structures with the wildcard command (first
-element of command array equal to 0). Otherwise, it searches through all available
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">info()</span></code>
-structures for a match. If a match is found, it
-fills the memory at <span class="hparameter">data</span> with the contents of the extra_data
-field of the
-match and returns the index of the match in the array. Otherwise, it
-returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p>
-<h3>
-</h3><p>See
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFlattenable::Flatten()</span></code>.</p>
-<h3>
-</h3><p>See
-<a class="reference internal" href="../support/flattenable.html#_CPPv4NK12BFlattenable13FlattenedSizeEv" title="BFlattenable::FlattenedSize"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFlattenable::FlattenedSize()</span></code></a>.</p>
-<h3>
-</h3><p>See
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFlattenable::IsFixedSize()</span></code>.</p>
-<h3>
-</h3><p>See
-<a class="reference internal" href="../support/flattenable.html#_CPPv4NK12BFlattenable8TypeCodeEv" title="BFlattenable::TypeCode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFlattenable::TypeCode()</span></code></a>.</p>
+<span class="hmethod">FindMatch()</span> only searches those <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">property_info</span></code> structures with the wildcard command (first element of
+command array equal to 0). Otherwise, it searches through all available
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">property_info</span></code> structures for a match. If a
+match is found, it fills the memory at <span class="hparameter">data</span> with the contents of
+the <span class="hparameter">extra_data</span> field of the match and returns the index of the
+match in the array. Otherwise, it returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p>
+</section>
+<section id="flatten">
+<h3>Flatten()<a class="headerlink" href="#flatten" title="Permalink to this heading">¶</a></h3>
+<p>See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFlattenable::Flatten()</span></code>.</p>
+</section>
+<section id="flattenedsize">
+<h3>FlattenedSize()<a class="headerlink" href="#flattenedsize" title="Permalink to this heading">¶</a></h3>
+<p>See <a class="reference internal" href="../support/flattenable.html#_CPPv4NK12BFlattenable13FlattenedSizeEv" title="BFlattenable::FlattenedSize"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFlattenable::FlattenedSize()</span></code></a>.</p>
+</section>
+<section id="isfixedsize">
+<h3>IsFixedSize()<a class="headerlink" href="#isfixedsize" title="Permalink to this heading">¶</a></h3>
+<p>See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFlattenable::IsFixedSize()</span></code>.</p>
+</section>
+<section id="typecode">
+<h3>TypeCode()<a class="headerlink" href="#typecode" title="Permalink to this heading">¶</a></h3>
+<p>See <a class="reference internal" href="../support/flattenable.html#_CPPv4NK12BFlattenable8TypeCodeEv" title="BFlattenable::TypeCode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFlattenable::TypeCode()</span></code></a>.</p>
 <section id="_CPPv4NK13BPropertyInfo13PrintToStreamEv">
 </section>
-<h3>
-PrintToStream()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPropertyInfo</span><span class="p">::</span></span><span class="n">PrintToStream</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Prints information about the <span class="hclass">BPropertyInfo</span> to standard output.</p>
+<h4>
+PrintToStream()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BPropertyInfo" title="BPropertyInfo"><span class="n">BPropertyInfo</span></a><span class="p">::</span></span><span class="n">PrintToStream</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Prints information about the <span class="hclass">BPropertyInfo</span> to standard output.</p>
 <section id="_CPPv4NK13BPropertyInfo12PropertyInfoEv">
 </section>
-<h3>
-PropertyInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="n">property_info</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BPropertyInfo</span><span class="p">::</span></span><span class="n">PropertyInfo</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">info()</span></code>
-list associated with the object.</p>
-<h3>
-</h3><p>See
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFlattenable::Unflatten()</span></code>.</p>
+<h4>
+PropertyInfo()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="n">property_info</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BPropertyInfo" title="BPropertyInfo"><span class="n">BPropertyInfo</span></a><span class="p">::</span></span><span class="n">PropertyInfo</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">property_info</span></code> list associated
+with the object.</p>
+</section>
+<section id="unflatten">
+<h3>Unflatten()<a class="headerlink" href="#unflatten" title="Permalink to this heading">¶</a></h3>
+<p>See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFlattenable::Unflatten()</span></code>.</p>
+</section>
 </section>
 <section id="defined-types">
 <h2>Defined Types<a class="headerlink" href="#defined-types" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">property_info</span> <span class="p">{</span>
+<section id="property-info">
+<h3>property_info<a class="headerlink" href="#property-info" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">property_info</span> <span class="p">{</span>
     <span class="n">char</span><span class="o">*</span>  <span class="n">name</span><span class="p">;</span>
     <span class="n">uint32</span> <span class="n">commands</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
     <span class="n">uint32</span> <span class="n">specifiers</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
@@ -152,11 +162,7 @@ list associated with the object.</p>
 <span class="p">};</span>
 </pre></div>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Description</p></th>
@@ -167,19 +173,26 @@ list associated with the object.</p>
 <td><p>Provides the name of the property this structure describes.</p></td>
 </tr>
 <tr class="row-odd"><td><p>commands</p></td>
-<td><p>Is a zero-terminated array of commands understood by the property, i.e. <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_GET_PROPERTY</span></code>. If the first element is 0, it represents a wildcard matching all possible commands.</p></td>
+<td><p>Is a zero-terminated array of commands understood by the property, i.e.
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_PROPERTY</span></code>. If the first element is 0, it represents
+a wildcard matching all possible commands.</p></td>
 </tr>
 <tr class="row-even"><td><p>specifiers</p></td>
-<td><p>Is a zero-terminated array of the specifiers understood by the property, i.e. <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DIRECT_SPECIFIER</span></code>. If the first element is 0, it represents a wildcard matching all possible specifiers.</p></td>
+<td><p>Is a zero-terminated array of the specifiers understood by the property,
+i.e. <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_SPECIFIER</span></code>. If the first element is 0, it
+represents a wildcard matching all possible specifiers.</p></td>
 </tr>
 <tr class="row-odd"><td><p>usage</p></td>
-<td><p>Gives a human-readable string describing the property and its allowable commands and specifiers.</p></td>
+<td><p>Gives a human-readable string describing the property and its allowable
+commands and specifiers.</p></td>
 </tr>
 <tr class="row-even"><td><p>extra_data</p></td>
-<td><p>Is an area free for general use; the operating system does not touch its contents.</p></td>
+<td><p>Is an area free for general use; the operating system does not touch its
+contents.</p></td>
 </tr>
 </tbody>
 </table>
+</section>
 </section>
 </section>
 

@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Constants And Defined Types &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Driver Settings API" href="driver-settings-api.html" />
+    <link rel="prev" title="The area_malloc Module" href="area-malloc.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Constants And Defined Types</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="area-malloc.html">The area_malloc Module</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="driver-settings-api.html">Driver Settings API</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Constants And Defined Types</a><ul>
+<li><a class="reference internal" href="#constants">Constants</a><ul>
+<li><a class="reference internal" href="#_CPPv424B_CUR_DRIVER_API_VERSION">B_CUR_DRIVER_API_VERSION</a></li>
+<li><a class="reference internal" href="#_CPPv417B_GET_DEVICE_SIZE">B_GET_DEVICE_SIZE</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#defined-types">Defined Types</a><ul>
+<li><a class="reference internal" href="#device-geometry">device_geometry</a></li>
+<li><a class="reference internal" href="#device-hooks">device_hooks</a></li>
+<li><a class="reference internal" href="#device-icon">device_icon</a></li>
+<li><a class="reference internal" href="#driver-path">driver_path</a></li>
+<li><a class="reference internal" href="#open-device-iterator">open_device_iterator</a></li>
+<li><a class="reference internal" href="#partition-info">partition_info</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="constants-and-defined-types">
+<h1 id="CPPv427Constants And Defined Types">Constants And Defined Types<a class="headerlink" href="#constants-and-defined-types" title="Permalink to this heading">¶</a></h1>
+<p>Declared in: drivers/Drivers.h</p>
+<p>This section covers constants and types defined for use by kernel drivers
+and modules.</p>
+<section id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv424B_CUR_DRIVER_API_VERSION">
+</section>
+<h3>
+B_CUR_DRIVER_API_VERSION</h3></pre><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define B_CUR_DRIVER_API_VERSION N</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="#_CPPv424B_CUR_DRIVER_API_VERSION" title="B_CUR_DRIVER_API_VERSION"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CUR_DRIVER_API_VERSION</span></code></a> constant indicates what
+version of the driver API your driver will be built to.</p>
+<p>See also: “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Symbols</span> <span class="pre">Drivers</span> <span class="pre">Export</span></code>”</p>
+<section id="_CPPv417B_GET_DEVICE_SIZE">
+</section>
+<h3>
+B_GET_DEVICE_SIZE</h3></pre><table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#_CPPv417B_GET_DEVICE_SIZE" title="B_GET_DEVICE_SIZE"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_DEVICE_SIZE</span></code></a></p></td>
+<td><p>Returns a <span class="htype">size_t</span> indicating the device size in bytes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SET_DEVICE_SIZE</span></code></p></td>
+<td><p>Sets the device size to the value pointed to by data.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SET_NONBLOCKING_IO</span></code></p></td>
+<td><p>Sets the device to use nonblocking I/O.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SET_BLOCKING_IO</span></code></p></td>
+<td><p>Sets the device to use blocking I/O.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_READ_STATUS</span></code></p></td>
+<td><p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the device can read without blocking,
+otherwise <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_WRITE_STATUS</span></code></p></td>
+<td><p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the device can write without blocking,
+otherwise <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_GEOMETRY</span></code></p></td>
+<td><p>Fills out the specified <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">device_geometry</span></code>
+structure to describe the device.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_DRIVER_FOR_DEVICE</span></code></p></td>
+<td><p>Returns the path of the driver executable handling the device.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_PARTITION_INFO</span></code></p></td>
+<td><p>Returns a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">partition_info</span></code> structure for the
+device.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SET_PARTITION</span></code></p></td>
+<td><p>Creates a user-defined partition. data points to a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">partition_info</span></code> structure.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FORMAT_DEVICE</span></code></p></td>
+<td><p>Formats the device. data should point to a boolean value: If
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, the device is formatted low-level. If it’s
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>, the formatting is &lt;<??>&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EJECT_DEVICE</span></code></p></td>
+<td><p>Ejects the device.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_ICON</span></code></p></td>
+<td><p>Fills out the specified <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">device_icon</span></code> {htype}``
+structure to describe the device’s icon.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_BIOS_GEOMETRY</span></code></p></td>
+<td><p>Fills out a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">device_geometry</span></code> structure to
+describe the device as the BIOS sees it.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_MEDIA_STATUS</span></code></p></td>
+<td><p>Gets the status of the media in the device by placing a <span class="htype">status_t</span>
+at the location pointed to by data.</p>
+<p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_MEDIA_STATUS</span></code> returns one of these values in data:</p>
+<dl class="simple myst">
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_ERROR</span></code>.</dt><dd><p>The media is ready.</p>
+</dd>
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DEV_NO_MEDIA</span></code>.</dt><dd><p>No media in the device</p>
+</dd>
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DEV_NOT_READY</span></code>.</dt><dd><p>The device isn’t ready.</p>
+</dd>
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DEV_MEDIA_CHANGED</span></code>.</dt><dd><p>The media changed since the time that the device was opened, or since the
+time of the last <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_MEDIA_STATUS</span></code> request.</p>
+</dd>
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DEV_MEDIA_CHANGE_REQUEST</span></code>.</dt><dd><p>The user wants to remove the media.</p>
+</dd>
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DEV_DOOR_OPEN</span></code>.</dt><dd><p>The drive “door” is open.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LOAD_MEDIA</span></code></p></td>
+<td><p>Loads the media.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_BIOS_DRIVE_ID</span></code></p></td>
+<td><p>Returns the BIOS ID for the device.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SET_UNINTERRUPTABLE_IO</span></code></p></td>
+<td><p>Prevents <span class="hkey">control</span>+<span class="hkey">C</span> from interrupting I/O.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SET_INTERRUPTABLE_IO</span></code></p></td>
+<td><p>Allows <span class="hkey">control</span>+<span class="hkey">C</span> to interrupt I/O.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FLUSH_DRIVE_CACHE</span></code></p></td>
+<td><p>Flushes the drive’s cache.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_NEXT_OPEN_DEVICE</span></code></p></td>
+<td><p>Iterates through open devices; data points to an
+<span class="htype">open_device_iterator</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ADD_FIXED_DRIVER</span></code></p></td>
+<td><p>For internal use only.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REMOVE_FIXED_DRIVER</span></code></p></td>
+<td><p>For internal use only.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_AUDIO_DRIVER_BASE</span></code></p></td>
+<td><p>Base for codes in audio_driver.h.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MIDI_DRIVER_BASE</span></code></p></td>
+<td><p>Base for codes in midi_driver.h.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_JOYSTICK_DRIVER_BASE</span></code></p></td>
+<td><p>Base for codes in joystick.h.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GRAPHIC_DRIVER_BASE</span></code></p></td>
+<td><p>Base for codes in graphic_driver.h.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DEVICE_OP_CODES_END</span></code></p></td>
+<td><p>End of Be-defined control IDs.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="defined-types">
+<h2>Defined Types<a class="headerlink" href="#defined-types" title="Permalink to this heading">¶</a></h2>
+<section id="device-geometry">
+<h3>device_geometry<a class="headerlink" href="#device-geometry" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">uint32</span><span class="w"> </span><span class="n">bytes_per_sector</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">uint32</span><span class="w"> </span><span class="n">sectors_per_track</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">uint32</span><span class="w"> </span><span class="n">cylinder_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">uint32</span><span class="w"> </span><span class="n">head_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">uchar</span><span class="w"> </span><span class="n">device_type</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">removable</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">read_only</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">write_once</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">device_geometry</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The device_geometry structure is returned by the
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_GEOMETRY</span></code> driver control function. Its fields are:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bytes_per_sector</p></td>
+<td><p>Indicates how many bytes each sector of the disk contains.</p></td>
+</tr>
+<tr class="row-odd"><td><p>sectors_per_track</p></td>
+<td><p>Indicates how many sectors each disk track contains.</p></td>
+</tr>
+<tr class="row-even"><td><p>cylinder_count</p></td>
+<td><p>Indicates the number of cylinders the disk contains.</p></td>
+</tr>
+<tr class="row-odd"><td><p>head_count</p></td>
+<td><p>Indicates how many heads the disk has.</p></td>
+</tr>
+<tr class="row-even"><td><p>device_type</p></td>
+<td><p>Specifies the type of device; there’s a list of device type definitions
+below.</p></td>
+</tr>
+<tr class="row-odd"><td><p>removable</p></td>
+<td><p>Is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the device’s media can be removed from the drive,
+and is <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> otherwise.</p></td>
+</tr>
+<tr class="row-even"><td><p>read_only</p></td>
+<td><p>Is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the media is read-only (such as CD-ROM), or
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if the media can be both read from and written.</p></td>
+</tr>
+<tr class="row-odd"><td><p>write_once</p></td>
+<td><p>Is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the media can only be written to once (such as
+CD-recordable), or <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if there’s no limit to the number of
+times the media can be written to.</p></td>
+</tr>
+</tbody>
+</table>
+<p>If you need to compute the total size of the device in bytes, you can
+obtain this figure using the following simple formula:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">disk_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">geometry</span><span class="p">.</span><span class="n">cylinder_count</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">geometry</span><span class="p">.</span><span class="n">sectors_per_track</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<span class="n">geometry</span><span class="p">.</span><span class="n">head_count</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">geometry</span><span class="p">.</span><span class="n">bytes_per_sector</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The device type returned in <span class="hparameter">device_type</span> is one of:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DISK</span></code></p></td>
+<td><p>Hard disk, floppy disk, etc.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TAPE</span></code></p></td>
+<td><p>Tape drive.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PRINTER</span></code></p></td>
+<td><p>Printer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CPU</span></code></p></td>
+<td><p>CPU device.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WORM</span></code></p></td>
+<td><p>Write-once, read-many device (such as CD-recordable).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CD</span></code></p></td>
+<td><p>CD-ROM.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SCANNER</span></code></p></td>
+<td><p>Scanner.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OPTICAL</span></code></p></td>
+<td><p>Optical device</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_JUKEBOX</span></code></p></td>
+<td><p>Jukebox device.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NETWORK</span></code></p></td>
+<td><p>Network device.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="device-hooks">
+<h3>device_hooks<a class="headerlink" href="#device-hooks" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">device_open_hook</span><span class="w"> </span><span class="n">open</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">device_close_hook</span><span class="w"> </span><span class="n">close</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">device_free_hook</span><span class="w"> </span><span class="n">free</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">device_control_hook</span><span class="w"> </span><span class="n">control</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">device_read_hook</span><span class="w"> </span><span class="n">read</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">device_write_hook</span><span class="w"> </span><span class="n">write</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">device_select_hook</span><span class="w"> </span><span class="n">select</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">device_deselect_hook</span><span class="w"> </span><span class="n">deselect</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">device_readv_hook</span><span class="w"> </span><span class="n">readv</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">device_writev_hook</span><span class="w"> </span><span class="n">writev</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">device_hooks</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This structure is used by device drivers to export their function hooks to
+the kernel.</p>
+</section>
+<section id="device-icon">
+<h3>device_icon<a class="headerlink" href="#device-icon" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">int32</span><span class="w"> </span><span class="n">icon_size</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="n">icon_data</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">device_icon</span><span class="w"></span>
+</pre></div>
+</div>
+<p>When you want to obtain an icon for a specific device, call ioctl() on the
+open device, specifying the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_ICON</span></code> opcode. Pass in
+data a pointer to a <span class="htype">device_icon</span> structure in which
+<span class="hparameter">icon_size</span> indicates the size of icon you want and
+<span class="hparameter">icon_data</span> points to a buffer large enough to receive the icon’s
+data.</p>
+<p><span class="hparameter">icon_size</span> can be either <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MINI_ICON</span></code>, in which
+case the buffer pointed to by <span class="hparameter">icon_data</span> should be large enough to
+receive a 16x16 8-bit bitmap (256-byte), or <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LARGE_ICON</span></code>,
+in which case the buffer should be large enough to receive a 32x32 8-bit
+bitmap (1024-byte). The most obvious way to set up this buffer would be to
+create a <a class="reference internal" href="../../kits/interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> of the appropriate size and color depth and
+use its buffer, like this:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">BBitmap</span><span class="w"> </span><span class="nf">bits</span><span class="p">(</span><span class="n">BRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">B_MINI_ICON</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">B_MINI_ICON</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">B_CMAP8</span><span class="p">));</span><span class="w"></span>
+<span class="n">device_icon</span><span class="w"> </span><span class="n">iconrec</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">iconrec</span><span class="p">.</span><span class="n">icon_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B_MINI_ICON</span><span class="p">;</span><span class="w"></span>
+<span class="n">iconrec</span><span class="p">.</span><span class="n">icon_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bits</span><span class="p">.</span><span class="n">Bits</span><span class="p">();</span><span class="w"></span>
+<span class="n">status_t</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ioctl</span><span class="p">(</span><span class="n">dev_fd</span><span class="p">,</span><span class="w"> </span><span class="n">B_GET_ICON</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">iconrec</span><span class="p">);</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* enjoy the icon */</span><span class="w"></span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
+<span class="w">   </span><span class="n">view</span><span class="o">-&gt;</span><span class="n">DrawBitmap</span><span class="p">(</span><span class="n">bits</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* I don&#39;t like icons anyway */</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="driver-path">
+<h3>driver_path<a class="headerlink" href="#driver-path" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">driver_path</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Used by the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_DRIVER_FOR_DEVICE</span></code> control function to
+return the pathname of the specified device.</p>
+</section>
+<section id="open-device-iterator">
+<h3>open_device_iterator<a class="headerlink" href="#open-device-iterator" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">uint32</span><span class="w"> </span><span class="n">cookie</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">device</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">open_device_iterator</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Used by the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_NEXT_OPEN_DEVICE</span></code> control function. The
+first time you call this function, your <span class="htype">open_device_iterator</span>
+should have cookie initialized to 0. Then just keep calling it over and
+over; each time you’ll get the name of the next open device. When an error
+is returned, you’re done.</p>
+</section>
+<section id="partition-info">
+<h3>partition_info<a class="headerlink" href="#partition-info" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">off_t</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">off_t</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">int32</span><span class="w"> </span><span class="n">logical_block_size</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">int32</span><span class="w"> </span><span class="n">session</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">int32</span><span class="w"> </span><span class="n">partition</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">device</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">partition_info</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The <span class="htype">partition_info</span> structure describes a disk partition, and is
+used by the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_PARTITION_INFO</span></code> and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SET_PARTITION</span></code> control commands.</p>
+<p>The fields are:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>offset</p></td>
+<td><p>Is the offset, in bytes, from the beginning of the disk to the beginning
+of the partition.</p></td>
+</tr>
+<tr class="row-odd"><td><p>size</p></td>
+<td><p>Is the size, in bytes, of the partition.</p></td>
+</tr>
+<tr class="row-even"><td><p>logical_block_size</p></td>
+<td><p>Is the block size with which the file system was written to the partition.</p></td>
+</tr>
+<tr class="row-odd"><td><p>sessionandpartition</p></td>
+<td><p>Are the session and partition ID numbers for the partition.</p></td>
+</tr>
+<tr class="row-even"><td><p>device</p></td>
+<td><p>Is the pathname of the physical device on which the partition is located.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="area-malloc.html">The area_malloc Module</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="driver-settings-api.html">Driver Settings API</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

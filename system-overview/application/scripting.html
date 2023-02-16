@@ -17,45 +17,77 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BJoystick" href="../device/joystick.html" />
+    <link rel="prev" title="BRoster" href="roster.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
-          <span>The Haiku Book  documentation</span></a></h1>
+          <span>API Documentation</span></a></h1>
         <h2 class="heading"><span>Scripting</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
+        «&#160;&#160;<a href="roster.html">BRoster</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../device/joystick.html">BJoystick</a>&#160;&#160;»
         </p>
 
       </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Scripting</a></li>
+<li><a class="reference internal" href="#basics">Basics</a><ul>
+<li><a class="reference internal" href="#commands">Commands</a></li>
+<li><a class="reference internal" href="#properties-and-specifiers">Properties and Specifiers</a></li>
+<li><a class="reference internal" href="#the-specifier-stack">The Specifier Stack</a></li>
+<li><a class="reference internal" href="#replies">Replies</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-and-sending-scripting-messages">Creating and Sending Scripting Messages</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#suites">Suites</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#making-objects-scriptable">Making Objects Scriptable</a></li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
       <div class="content" role="main">
         
-        
   <section id="scripting">
-<h1>Scripting<a class="headerlink" href="#scripting" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv49Scripting">Scripting<a class="headerlink" href="#scripting" title="Permalink to this heading">¶</a></h1>
 <p>Scripting provides a mechanism for programmatically controlling some other application by sending it
 special scripting commands. These commands are defined by the “scripted” application itself. For
 example, if you want some other application to be able to tell your application to perform the
 “FlipOver” operation, you have to publish the format of the “FlipOver” command. The set of
 operations that you want to expose is called a “suite”.</p>
 <p>Haiku defines some number of suites that correspond to particular classes. For example, all
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code> objects respond to the commands defined in the “vnd.Be-application” suite.
+<a class="reference internal" href="../../kits/application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> objects respond to the commands defined in the “vnd.Be-application” suite.
 One of the commands in the suite gives you access to the application’s windows. When you’ve located
 the window that you want, you can move it, close it, resize it, and so on, according to the commands
 in the “vnd.Be-window” suite.</p>
 </section>
 <hr class="docutils" />
 <section id="basics">
-<h1>Basics<a class="headerlink" href="#basics" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv46Basics">Basics<a class="headerlink" href="#basics" title="Permalink to this heading">¶</a></h1>
 <p>The scripting framework defines the following notions: commands, properties, and specifiers. If you
 are familiar with AppleScript, these are equivalent to verbs, nouns, and adjectives. Commands act on
 a specific instance of a property, as determined by the specifiers.</p>
 <section id="commands">
 <h2>Commands<a class="headerlink" href="#commands" title="Permalink to this heading">¶</a></h2>
-<p>The command conveys the action of a scripting command and is stored in the <span class="cpp-expr sig sig-inline cpp"><span class="n">what</span></span> field of
-the scripting <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. There are six standard commands (defined in <code class="docutils literal notranslate"><span class="pre">app/Message.h</span></code>).</p>
+<p>The command conveys the action of a scripting command and is stored in the <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="../../output.html#_CPPv44what" title="what"><span class="n">what</span></a></span> field of
+the scripting <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. There are six standard commands (defined in <code class="docutils literal notranslate"><span class="pre">app/Message.h</span></code>).</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 50%" />
@@ -97,24 +129,24 @@ command, it runs the risk of being unusable by general scripting tools.</p>
 <section id="properties-and-specifiers">
 <h2>Properties and Specifiers<a class="headerlink" href="#properties-and-specifiers" title="Permalink to this heading">¶</a></h2>
 <p>A property represents a scriptable feature of an object. Properties are named; these names are
-strings unique within a class. For example, a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> defines properties such as
+strings unique within a class. For example, a <a class="reference internal" href="../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> defines properties such as
 “Frame”, “Title”, and “View”. The data type of the property and its allowable values are determined
 by the property. For example, the window’s “Frame” accepts <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_RECT_TYPE</span></code> values while the
 “Title” is a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code>.</p>
-<p>Sometimes a property is represented by another object. For example, <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>’s “View”
-designates a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>, an object which hsa a set of properties distinct from those of
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>.</p>
+<p>Sometimes a property is represented by another object. For example, <a class="reference internal" href="../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>’s “View”
+designates a <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>, an object which hsa a set of properties distinct from those of
+<a class="reference internal" href="../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>.</p>
 <p>An object may have more than one instance of a given property. For example, the “Window” property of
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code>, has as many instances as there are windows in the application. As a
+<a class="reference internal" href="../../kits/application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a>, has as many instances as there are windows in the application. As a
 result, there is some ambiguity when you ask for the Window of an application. Instead, it’s more
 correct to ask for the first Window, of the Window named “Snyder”. In other words, a property is not
 enough to identify a feature; a specific instance must be picked out as well.</p>
 <p>Specifiers are used to target (“specify”) particular instances of properties. A specifier is a
-<a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> containing the following elements:</p>
+<a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> containing the following elements:</p>
 <ul class="simple">
 <li><p>The name of the property in the “property” field, stored as a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code>.</p></li>
 <li><p>The specifier constant, indicating a method of identifying a specific instance of the property, in
-the <span class="cpp-expr sig sig-inline cpp"><span class="n">what</span></span> field along with any necessary supporting fields.</p></li>
+the <span class="cpp-expr sig sig-inline cpp"><a class="reference internal" href="../../output.html#_CPPv44what" title="what"><span class="n">what</span></a></span> field along with any necessary supporting fields.</p></li>
 </ul>
 <p>There are seven standard specifier constants (defined in <code class="docutils literal notranslate"><span class="pre">app/Message.h</span></code>):</p>
 <table class="docutils align-default">
@@ -161,7 +193,7 @@ there may be user-defined (or perhaps more properly object-defined) specifiers. 
 specifier constants should be greater than <code class="docutils literal notranslate"><span class="pre">B_SPECIFIERS_END</span></code> to prevent conflicts with
 Haiku-defined specifiers.</p>
 <p>Specifiers are added to the “specifier” field of a scripting message using
-<a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage12AddSpecifierEv" title="BMessage::AddSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessage::AddSpecifier()</span></code></a>. There are several variants of this method, including shortcuts
+<a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage12AddSpecifierEPK8BMessage" title="BMessage::AddSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessage::AddSpecifier()</span></code></a>. There are several variants of this method, including shortcuts
 for adding <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DIRECT_SPECIFIER</span></code>, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INDEX_SPECIFIER</span></code>,
 <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_RANGE_SPECIFIER</span></code>, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_SPECIFIER</span></code> specifiers. For all other
 specifiers, you must manually construct the specifier and add it to the scripting message with
@@ -173,15 +205,15 @@ message.AddSpecifier(&amp;specifier);	// add the specifier to the message
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>You <em>must</em> use <a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage12AddSpecifierEv" title="BMessage::AddSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessage::AddSpecifier()</span></code></a> to add specifiers to a <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>; it
-performs additional scripting support work that <a class="reference internal" href="../../kits/application/message/detail.html#_CPPv410AddMessagev" title="AddMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddMessage()</span></code></a> doesn’t.</p>
+<p>You <em>must</em> use <a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage12AddSpecifierEPK8BMessage" title="BMessage::AddSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessage::AddSpecifier()</span></code></a> to add specifiers to a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>; it
+performs additional scripting support work that <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddMessage()</span></code> doesn’t.</p>
 </div>
 </section>
 <section id="the-specifier-stack">
 <h2>The Specifier Stack<a class="headerlink" href="#the-specifier-stack" title="Permalink to this heading">¶</a></h2>
-<p>In general, an application will not be able to obtain a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> for the target
-object; instead, it’ll have to settle for a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> targeting the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code> of the program containing the desired object. In these cases, a single
+<p>In general, an application will not be able to obtain a <a class="reference internal" href="../../kits/application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> for the target
+object; instead, it’ll have to settle for a <a class="reference internal" href="../../kits/application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> targeting the
+<a class="reference internal" href="../../kits/application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> of the program containing the desired object. In these cases, a single
 specifier may be insufficient to target a scripting message. The true power of specifiers lies in
 their ability to be chained together in the specifier stack.</p>
 <p>An example best illustrates the operation of the specifier stack. The following code snippet creates
@@ -195,9 +227,9 @@ message.AddSpecifier(&quot;Window&quot;, 1);
 <p>Repeated calls to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddSpecifier()</span></code> build the specifier stack. The order of the calls is
 very important; the specifies are evaluated in the opposite order from which they were added. When
 this message is received by the target application, it will first peel off the third specifier and
-direct the message to the second window of the application. The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> will then peel
+direct the message to the second window of the application. The <a class="reference internal" href="../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> will then peel
 off the second specifier and direct the message to the window’s key menu bar. The first specifier
-(“Label”) is then processed by the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code>. This process is covered in more detail
+(“Label”) is then processed by the <a class="reference internal" href="../../kits/interface/menu-bar.html#_CPPv48BMenuBar" title="BMenuBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code></a>. This process is covered in more detail
 below under <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ResolveSpecifier()</span></code>.</p>
 </section>
 <section id="replies">
@@ -206,7 +238,7 @@ below under <code class="xref cpp cpp-func docutils literal notranslate"><span c
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">what</span></code> data member defaults to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_REPLY</span></code> unless some other constant is appropriate.
 For example; if the message was not understood, the object responds with a
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MESSAGE_NOT_UNDERSTOOD</span></code> <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>.</p></li>
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MESSAGE_NOT_UNDERSTOOD</span></code> <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>.</p></li>
 <li><p>The <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code> field <code class="docutils literal notranslate"><span class="pre">error</span></code> contains the error code for the operation. This field
 is always present.</p></li>
 <li><p>Responses to a successful <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_GET_PROPERTY</span></code> request will additionally contain the value
@@ -219,7 +251,7 @@ those cases, consult the documentation for the class in question.</p>
 </section>
 </section>
 <section id="creating-and-sending-scripting-messages">
-<h1>Creating and Sending Scripting Messages<a class="headerlink" href="#creating-and-sending-scripting-messages" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv439Creating and Sending Scripting Messages">Creating and Sending Scripting Messages<a class="headerlink" href="#creating-and-sending-scripting-messages" title="Permalink to this heading">¶</a></h1>
 <p>The scripting facilities of an application can be invoked in three easy steps:</p>
 <ol class="arabic simple">
 <li><p>Set the command constant for the scripting message.</p></li>
@@ -257,7 +289,7 @@ of the object it is scripting. Having a method of discovering the scripting abil
 enables more dynamic uses of scripting.</p>
 <p>An object’s scripting abilities are organized into one or more scripting “suites,” a set of
 supported messages and associated specifiers. A suite is identified by a MIME-like string with the
-“suite” supertype. For example, <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code> implements the “suite/vnd.Be-control”
+“suite” supertype. For example, <a class="reference internal" href="../../kits/interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> implements the “suite/vnd.Be-control”
 scripting suite. Nothing prevents two objects from implementing the same suite; two sound editors,
 for example, could have different implementations of a common scripting suite for filtering audio
 data.</p>
@@ -271,58 +303,64 @@ message.AddSpecifier(&quot;Suites&quot;);
 messenger.SendMessage(&amp;message, &amp;reply);
 </pre></div>
 </div>
-<p>The target object responds with a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_REPLY</span></code> <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> with the following
+<p>The target object responds with a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_REPLY</span></code> <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> with the following
 fields:</p>
 <ul class="simple">
 <li><p>The error code in <code class="docutils literal notranslate"><span class="pre">error</span></code>.</p></li>
 <li><p>An array named <code class="docutils literal notranslate"><span class="pre">suites</span></code> containing the names of the suites supported by the object.</p></li>
-<li><p>An array named <code class="docutils literal notranslate"><span class="pre">messages</span></code> containing flattened <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPropertyInfo</span></code> objects describing the
+<li><p>An array named <code class="docutils literal notranslate"><span class="pre">messages</span></code> containing flattened <a class="reference internal" href="../../kits/application/property-info.html#_CPPv413BPropertyInfo" title="BPropertyInfo"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPropertyInfo</span></code></a> objects describing the
 supported messages and specifiers for the various supported suites.</p></li>
 </ul>
-<p>Less usefully, you can send a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_GET_SUPPORTED_SUITES</span></code> <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> directly to
+<p>Less usefully, you can send a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_GET_SUPPORTED_SUITES</span></code> <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> directly to
 an object and obtain its supported suites in an identically-formed reply.</p>
 <p>Every scriptable object supports the “suite/vn.Be-handler” suite by dint of its
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code> heritage. This suite is sometimes referred to as the “universal suite.” It
+<a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> heritage. This suite is sometimes referred to as the “universal suite.” It
 performs the following functions:</p>
 <ul class="simple">
 <li><p>Implements the “Suites” property and responds to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_GET_SUPPORTED_SUITES</span></code> messages, as
 described above.</p></li>
-<li><p>Implements the “Messenger” property, allowing the caller to obtain a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> to
+<li><p>Implements the “Messenger” property, allowing the caller to obtain a <a class="reference internal" href="../../kits/application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> to
 the object, simplifying further communication with the object.</p></li>
-<li><p>Implements the “InternalName” property, returning the name of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code>.</p></li>
+<li><p>Implements the “InternalName” property, returning the name of the <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>.</p></li>
 <li><p>Responds to any other scripting requests with a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MESSAGE_NOT_UNDERSTOOD</span></code>
-<a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. This is a “catch-all” response after all the other objects in the hierarchy
+<a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. This is a “catch-all” response after all the other objects in the hierarchy
 have rejected the scripting request.</p></li>
 </ul>
 </section>
 </section>
 <hr class="docutils" />
 <section id="making-objects-scriptable">
-<h1>Making Objects Scriptable<a class="headerlink" href="#making-objects-scriptable" title="Permalink to this heading">¶</a></h1>
-<p>Since scripting messages are passed via <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code>s, objects accepting scripting
-messages must be derived from <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code>. Typically, adding scripting support entails
+<h1 id="CPPv425Making Objects Scriptable">Making Objects Scriptable<a class="headerlink" href="#making-objects-scriptable" title="Permalink to this heading">¶</a></h1>
+<p>Since scripting messages are passed via <a class="reference internal" href="../../kits/application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a>s, objects accepting scripting
+messages must be derived from <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>. Typically, adding scripting support entails
 little more than overriding the following methods:</p>
 <ul class="simple">
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::ResolveSpecifier()</span></code> directs the scripting message to the appropriate
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code>.</p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::MessageReceived()</span></code> implements the scripting requests.</p></li>
-<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::GetSupportedSuites()</span></code> publishes the supported scripting suites.</p></li>
+<li><p><a class="reference internal" href="../../kits/application/handler.html#_CPPv4N8BHandler16ResolveSpecifierEP8BMessage5int32P8BMessage5int32PKc" title="BHandler::ResolveSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::ResolveSpecifier()</span></code></a> directs the scripting message to the appropriate
+<a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>.</p></li>
+<li><p><a class="reference internal" href="../../kits/application/handler.html#_CPPv4N8BHandler15MessageReceivedEP8BMessage" title="BHandler::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::MessageReceived()</span></code></a> implements the scripting requests.</p></li>
+<li><p><a class="reference internal" href="../../kits/application/handler.html#_CPPv4N8BHandler18GetSupportedSuitesEP8BMessage" title="BHandler::GetSupportedSuites"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::GetSupportedSuites()</span></code></a> publishes the supported scripting suites.</p></li>
 </ul>
-<p>See the documentation of these functions in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code> class for details.</p>
+<p>See the documentation of these functions in the <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> class for details.</p>
 </section>
 
 
+        <div class="clearer"></div>
       </div>
+          </div>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
+        «&#160;&#160;<a href="roster.html">BRoster</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../device/joystick.html">BJoystick</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Haiku.
+        &#169; Copyright 2023, Haiku, Inc..
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>

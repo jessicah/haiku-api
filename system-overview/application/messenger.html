@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMessenger &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BPropertyInfo" href="property-info.html" />
+    <link rel="prev" title="Messaging" href="messaging.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMessenger</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="messaging.html">Messaging</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="property-info.html">BPropertyInfo</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmessenger">
+<h1 id="CPPv410BMessenger">BMessenger<a class="headerlink" href="#bmessenger" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../kits/application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> represents and sends messages to a message
+target, where the target is a <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> and, optionally, a
+specific <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> within that looper. The target can live in
+the same application as the <a class="reference internal" href="../../kits/application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> (a local target), or it
+can live in some other application (a remote target).</p>
+<p><a class="reference internal" href="../../kits/application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a>’s most significant function is
+<a class="reference internal" href="../../kits/application/messenger.html#_CPPv4NK10BMessenger11SendMessageEP8BMessageP8BMessage9bigtime_t9bigtime_t" title="BMessenger::SendMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SendMessage()</span></code></a>, which sends its
+argument <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> to the target.</p>
+<div class="note admonition">
+<p class="admonition-title" id="CPPv44Note">Note</p>
+<p>For a local target, <a class="reference internal" href="../../kits/application/messenger.html#_CPPv4NK10BMessenger11SendMessageEP8BMessageP8BMessage9bigtime_t9bigtime_t" title="BMessenger::SendMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SendMessage()</span></code></a> is
+roughly equivalent, in terms of efficiency, to posting a message directly
+to the <a class="reference internal" href="../../kits/application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a>’s target (i.e
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper11PostMessageEP8BMessage" title="BLooper::PostMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::PostMessage()</span></code></a>).</p>
+</div>
+<p>The global <code class="xref cpp cpp-var docutils literal notranslate"><span class="pre">be_app_messenger</span></code> <a class="reference internal" href="../../kits/application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> pointer,
+which targets <code class="xref cpp cpp-var docutils literal notranslate"><span class="pre">be_app</span></code>’s main message loop, is automatically
+initialized for you when you create your <a class="reference internal" href="../../kits/application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> object.
+You can use it wherever <a class="reference internal" href="../../kits/application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a>s are called for.</p>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="messaging.html">Messaging</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="property-info.html">BPropertyInfo</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

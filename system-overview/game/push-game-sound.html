@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BPushGameSound &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BSimpleGameSound" href="simple-game-sound.html" />
+    <link rel="prev" title="BFileGameSound" href="file-game-sound.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BPushGameSound</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="file-game-sound.html">BFileGameSound</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="simple-game-sound.html">BSimpleGameSound</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BPushGameSound</a><ul>
+<li><a class="reference internal" href="#how-it-works">How It Works</a><ul>
+<li><a class="reference internal" href="#exclusive-access">Exclusive Access</a></li>
+<li><a class="reference internal" href="#the-neverending-story">The Neverending Story</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bpushgamesound">
+<h1 id="CPPv414BPushGameSound">BPushGameSound<a class="headerlink" href="#bpushgamesound" title="Permalink to this heading">¶</a></h1>
+<p>The <a class="reference internal" href="../../kits/game/push-game-sound.html#_CPPv414BPushGameSound" title="BPushGameSound"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPushGameSound</span></code></a> class lets you push buffers of audio data,
+instead of waiting to be asked for them.</p>
+<section id="how-it-works">
+<h2>How It Works<a class="headerlink" href="#how-it-works" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="../../kits/game/push-game-sound.html#_CPPv414BPushGameSound" title="BPushGameSound"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPushGameSound</span></code></a> class uses a single sound buffer,
+consisting of multiple pages, which play continuously in a loop. Each page
+is used to construct an audio <a class="reference internal" href="../../kits/media/buffer.html#_CPPv47BBuffer" title="BBuffer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBuffer</span></code></a> that eventually gets
+played, and is then recycled and reused again later.</p>
+<p>For example, if the sound buffer is 256 kilobytes, and each page is 4
+kilobytes, there are 64 pages of audio. When you start the
+<a class="reference internal" href="../../kits/game/push-game-sound.html#_CPPv414BPushGameSound" title="BPushGameSound"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPushGameSound</span></code></a> object, playback begins with the first page. A
+<a class="reference internal" href="../../kits/media/buffer.html#_CPPv47BBuffer" title="BBuffer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBuffer</span></code></a> is constructed using that page, then played, and then
+the buffer is recycled, and the next page is used to create another
+<a class="reference internal" href="../../kits/media/buffer.html#_CPPv47BBuffer" title="BBuffer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBuffer</span></code></a>, and so forth. This continues to the 64th page. Once
+that page is played, playback loops back to the first page again.</p>
+<p>Your code pushes audio data into these audio pages. There are two ways you
+can do this.</p>
+<section id="exclusive-access">
+<h3>Exclusive Access<a class="headerlink" href="#exclusive-access" title="Permalink to this heading">¶</a></h3>
+<p>The first way is to ask the <a class="reference internal" href="../../kits/game/push-game-sound.html#_CPPv414BPushGameSound" title="BPushGameSound"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPushGameSound</span></code></a> class to give you
+a page to fill with audio data. This is done by calling
+<a class="reference internal" href="../../kits/game/push-game-sound.html#_CPPv4N14BPushGameSound12LockNextPageEPPvP6size_t" title="BPushGameSound::LockNextPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LockNextPage()</span></code></a>. This gives you
+exclusive access to the next audio page that needs to be filled; you can
+fill it with whatever sound you want to push, then call
+<a class="reference internal" href="../../kits/game/push-game-sound.html#_CPPv4N14BPushGameSound10UnlockPageEPv" title="BPushGameSound::UnlockPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">UnlockPage()</span></code></a> to release it. It
+won’t be played while it’s locked, so you need to stuff your sound into it
+and release it as quickly as possible.</p>
+</section>
+<section id="the-neverending-story">
+<h3>The Neverending Story<a class="headerlink" href="#the-neverending-story" title="Permalink to this heading">¶</a></h3>
+<p>The second way takes better planning, but can give you lower overhead.
+Call <a class="reference internal" href="../../kits/game/push-game-sound.html#_CPPv4N14BPushGameSound13LockForCyclicEPPvP6size_t" title="BPushGameSound::LockForCyclic"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LockForCyclic()</span></code></a> to request
+access to the entire sound buffer area. This doesn’t give you exclusive
+access, so playback never stops—it keeps looping the entire time, while you
+write into it. The <a class="reference internal" href="../../kits/game/push-game-sound.html#_CPPv4N14BPushGameSound15CurrentPositionEv" title="BPushGameSound::CurrentPosition"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CurrentPosition()</span></code></a> function tells you where in the buffer
+area playback is currently occurring.</p>
+<p>Your mission (should you choose to accept it) is to stuff audio into the
+buffer, keeping ahead of this position far enough that playback never
+catches up to you. As a general rule, you should try to stay at least a
+page ahead of the current playback position. Keep in mind that when you
+reach the end of the buffer area, you need to wrap back to the beginning.</p>
+<p>This takes more careful effort on your part, but once you have your code
+properly tuned, you can get very low overhead audio playback this way.</p>
+</section>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="file-game-sound.html">BFileGameSound</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="simple-game-sound.html">BSimpleGameSound</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

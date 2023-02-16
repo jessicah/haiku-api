@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BFileGameSound &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BPushGameSound" href="push-game-sound.html" />
+    <link rel="prev" title="BDirectWindow" href="direct-window.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BFileGameSound</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="direct-window.html">BDirectWindow</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="push-game-sound.html">BPushGameSound</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bfilegamesound">
+<h1 id="CPPv414BFileGameSound">BFileGameSound<a class="headerlink" href="#bfilegamesound" title="Permalink to this heading">¶</a></h1>
+<p>If you want to play back audio from a disk file, such as background music,
+or low-priority sound effects, <a class="reference internal" href="../../kits/game/file-game-sound.html#_CPPv414BFileGameSound" title="BFileGameSound"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFileGameSound</span></code></a> is for you.</p>
+<p>Keep in mind that if the sound needs to play at precise moments, or
+latency is an issue, that <a class="reference internal" href="../../kits/game/file-game-sound.html#_CPPv414BFileGameSound" title="BFileGameSound"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFileGameSound</span></code></a> may not be
+appropriate for your needs.</p>
+<p>Using <a class="reference internal" href="../../kits/game/file-game-sound.html#_CPPv414BFileGameSound" title="BFileGameSound"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFileGameSound</span></code></a> is easy, and it supports automatically
+looping sounds. The following code snippet starts up the theme music for
+the hot new game “Mystery Warriors From the Doomed Planet Z”:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BFileGameSound</span><span class="w"> </span><span class="n">themeSong</span><span class="p">(</span><span class="s">&quot;music/theme.aif&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="n">themeSong</span><span class="p">.</span><span class="n">StartPlaying</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This starts up a looped sound from the file music/theme.aif. If you want
+the theme to only play through once, just specify <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> instead
+of <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> for the looping argument to the
+<a class="reference internal" href="../../kits/game/file-game-sound.html#_CPPv414BFileGameSound" title="BFileGameSound"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFileGameSound</span></code></a> constructor.</p>
+<p>You can pause the <a class="reference internal" href="../../kits/game/file-game-sound.html#_CPPv414BFileGameSound" title="BFileGameSound"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFileGameSound</span></code></a> by calling
+<a class="reference internal" href="../../kits/game/file-game-sound.html#_CPPv4N14BFileGameSound9SetPausedEb9bigtime_t" title="BFileGameSound::SetPaused"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetPaused()</span></code></a>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">themeSong</span><span class="p">.</span><span class="n">SetPaused</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This pauses the sound, effective immediately. The pause can optionally be
+ramped, so that the sound slows down or speeds up to reach the new setting.
+For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">themeSong</span><span class="p">.</span><span class="n">SetPaused</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This causes the sound to slow down over the course of two seconds, until
+it’s stopped.</p>
+<p>The inverse is also possible:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">themeSong</span><span class="p">.</span><span class="n">SetPaused</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This resumes playback immediately. You can ramp the resume by specifying a
+non-zero value for the ramp time.</p>
+<p><a class="reference internal" href="../../kits/game/file-game-sound.html#_CPPv414BFileGameSound" title="BFileGameSound"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFileGameSound</span></code></a> uses the <a class="reference internal" href="../../kits/media/media-file.html#_CPPv410BMediaFile" title="BMediaFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaFile</span></code></a> class to
+access the sound file. If <a class="reference internal" href="../../kits/media/media-file.html#_CPPv410BMediaFile" title="BMediaFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaFile</span></code></a> can’t identify the sound,
+the file is assumed to contain raw 44.1kHz, 16-bit stereo.</p>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="direct-window.html">BDirectWindow</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="push-game-sound.html">BPushGameSound</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

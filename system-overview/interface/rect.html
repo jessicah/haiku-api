@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BRect &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BRegion" href="region.html" />
+    <link rel="prev" title="BRadioButton" href="radio-button.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BRect</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="radio-button.html">BRadioButton</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="region.html">BRegion</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BRect</a><ul>
+<li><a class="reference internal" href="#rectangle-size-and-area">Rectangle Size and Area</a></li>
+<li><a class="reference internal" href="#rectangle-validity">Rectangle Validity</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="brect">
+<h1 id="CPPv45BRect">BRect<a class="headerlink" href="#brect" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../kits/interface/rect.html#_CPPv45BRect" title="BRect"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code></a> object represents a rectangle. <a class="reference internal" href="../../kits/interface/rect.html#_CPPv45BRect" title="BRect"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code></a>s
+are used throughout the Interface Kit to define the frames of windows,
+views, bitmaps—even the screen itself. A <a class="reference internal" href="../../kits/interface/rect.html#_CPPv45BRect" title="BRect"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code></a> is defined by
+its four sides, expressed as the public data members <span class="hparameter">left</span>,
+<span class="hparameter">top</span>, <span class="hparameter">right</span>, and <span class="hparameter">bottom</span>.</p>
+<p><img alt="A rectangle" src="system-overview/interface/images/TheInterfaceKit/rect1.png" /></p>
+<p>When used in the screen coordinate system(as a window or view’s frame, for
+example) a <a class="reference internal" href="../../kits/interface/rect.html#_CPPv45BRect" title="BRect"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code></a>’s sides are aligned with the x and y axes (as
+shown here), and its coordinate values, which are stored as floats, are
+floored.</p>
+<section id="rectangle-size-and-area">
+<h2>Rectangle Size and Area<a class="headerlink" href="#rectangle-size-and-area" title="Permalink to this heading">¶</a></h2>
+<p>You would expect a <a class="reference internal" href="../../kits/interface/rect.html#_CPPv45BRect" title="BRect"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code></a> defined thus…:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BRect</span><span class="w"> </span><span class="nf">rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>…to have a width of 3.0 and a height of 3.0. These, indeed, are the values
+returned by the <a class="reference internal" href="../../kits/interface/rect.html#_CPPv4NK5BRect5WidthEv" title="BRect::Width"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Width()</span></code></a> and <a class="reference internal" href="../../kits/interface/rect.html#_CPPv4NK5BRect6HeightEv" title="BRect::Height"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Height()</span></code></a> functions. However, the coordinate system considers
+integer coordinates to fall in the center of pixels, so the rectangle
+“touches” a 4x4 pixel grid when it’s applied to the screen—it appears one
+pixel wider and one higher than <a class="reference internal" href="../../kits/interface/rect.html#_CPPv4NK5BRect5WidthEv" title="BRect::Width"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Width()</span></code></a> and
+<a class="reference internal" href="../../kits/interface/rect.html#_CPPv4NK5BRect6HeightEv" title="BRect::Height"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Height()</span></code></a> would have you believe. The mapping of
+rectangle coordinates to pixels is explained in greater detail in
+“<span class="xref std std-ref">The Coordinate Space</span>”.</p>
+<p><img alt="Pixels Covered By A Rectangle" src="system-overview/interface/images/TheInterfaceKit/pix_grid.png" /></p>
+<p>A rectangle’s area includes the points that lie along its sides, but it
+doesn’t necessarily contain the entire area of the pixels that it “lights
+up.” For example, consider the point at (3.1, 3.1). This point falls
+outside the (0,0,3,3) <a class="reference internal" href="../../kits/interface/rect.html#_CPPv45BRect" title="BRect"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code></a> defined above (i.e the point
+doesn’t Intersect() with the <a class="reference internal" href="../../kits/interface/rect.html#_CPPv45BRect" title="BRect"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code></a>), even though it
+corresponds to one of the pixels that the <a class="reference internal" href="../../kits/interface/rect.html#_CPPv45BRect" title="BRect"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code></a> touches (as
+shown here).</p>
+<p><img alt="Point Outside Rectangle But Drawn Anyway" src="system-overview/interface/images/TheInterfaceKit/rect_point.png" /></p>
+</section>
+<section id="rectangle-validity">
+<h2>Rectangle Validity<a class="headerlink" href="#rectangle-validity" title="Permalink to this heading">¶</a></h2>
+<p>To represent a valid rectangle, a <a class="reference internal" href="../../kits/interface/rect.html#_CPPv45BRect" title="BRect"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code></a>’s top value must be
+less than or equal to bottom, and its left must be less than or equal to
+right. Invalid rectangles are meaningless and can’t be used (to define a
+window or view’s area, etc.) Note that the <a class="reference internal" href="../../kits/interface/rect.html#_CPPv45BRect" title="BRect"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code></a> constructor
+and <span class="hmethod">Set…()</span> function don’t prevent you from creating an invalid
+rectangle. Use the <a class="reference internal" href="../../kits/interface/rect.html#_CPPv4NK5BRect7IsValidEv" title="BRect::IsValid"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">IsValid()</span></code></a> boolean function
+to test a <a class="reference internal" href="../../kits/interface/rect.html#_CPPv45BRect" title="BRect"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code></a> object’s validity.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="radio-button.html">BRadioButton</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="region.html">BRegion</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

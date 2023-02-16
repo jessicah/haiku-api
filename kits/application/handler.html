@@ -53,6 +53,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#archive">Archive()</a><ul>
 <li><a class="reference internal" href="#_CPPv4N8BHandler18GetSupportedSuitesEP8BMessage">GetSupportedSuites</a></li>
 <li><a class="reference internal" href="#_CPPv4N8BHandler10LockLooperEv">LockLooper</a></li>
 <li><a class="reference internal" href="#_CPPv4N8BHandler21LockLooperWithTimeoutE9bigtime_t">LockLooperWithTimeout</a></li>
@@ -74,9 +75,22 @@
 <li><a class="reference internal" href="#_CPPv4N8BHandler15StopWatchingAllE10BMessenger">StopWatchingAll</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#static-functions">Static Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#static-functions">Static Functions</a><ul>
+<li><a class="reference internal" href="#instantiate">Instantiate()</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#archived-fields">Archived Fields</a></li>
-<li><a class="reference internal" href="#scripting-suites-and-properties">Scripting Suites and Properties</a></li>
+<li><a class="reference internal" href="#scripting-suites-and-properties">Scripting Suites and Properties</a><ul>
+<li><a class="reference internal" href="#suite-suite-vnd-be-handler">Suite: “suite/vnd.Be-handler”</a><ul>
+<li><a class="reference internal" href="#internalname">“InternalName”</a></li>
+<li><a class="reference internal" href="#messenger">“Messenger”</a></li>
+<li><a class="reference internal" href="#suites">“Suites”</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -89,200 +103,280 @@
       <div class="content" role="main">
         
   <section id="bhandler">
-<h1>BHandler<a class="headerlink" href="#bhandler" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv48BHandler">BHandler<a class="headerlink" href="#bhandler" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N8BHandler8BHandlerEPKc">
 </section>
 <h3>
-BHandler()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BHandler8BHandlerEPKc" title="BHandler::BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">BHandler</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BHandler8BHandlerEP8BMessage" title="BHandler::BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">BHandler</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BHandler</span> by assigning it a <span class="hparameter">name</span>
-and registering it with the messaging system. <span class="hclass">BHandler</span>s can also
-be reconstructed from a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
-<span class="hparameter">archive</span>.</p>
+BHandler()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BHandler8BHandlerEPKc" title="BHandler::BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">BHandler</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BHandler8BHandlerEP8BMessage" title="BHandler::BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">BHandler</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BHandler</span> by assigning it a <span class="hparameter">name</span> and
+registering it with the messaging system. <span class="hclass">BHandler</span>s can also be
+reconstructed from a <a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> <span class="hparameter">archive</span>.</p>
 <section id="_CPPv4N8BHandlerD0Ev">
 </section>
 <h3>
-~BHandler()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">~BHandler</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Deletes any <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code>s assigned to the <span class="hclass">BHandler</span>.</p>
+~BHandler()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">~BHandler</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Deletes any <a class="reference internal" href="message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code></a>s assigned to the
+<span class="hclass">BHandler</span>.</p>
 </section>
 <section id="hook-functions">
 <h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N8BHandler15MessageReceivedEP8BMessage">
 </section>
 <h3>
-MessageReceived()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">MessageReceived</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Implemented by derived classes to respond to messages that are received by
-the <span class="hclass">BHandler</span>. The default
-implementation of this function responds only to scripting requests. It
-passes all other messages to the next handler by calling that object’s
-version of <span class="hmethod">MessageReceived()</span>.</p>
+MessageReceived()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">MessageReceived</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Implemented by derived classes to respond to messages that are received by
+the <span class="hclass">BHandler</span>. The default implementation of this function
+responds only to scripting requests. It passes all other messages to the
+next handler by calling that object’s version of
+<span class="hmethod">MessageReceived()</span>.</p>
 <p>A typical <span class="hmethod">MessageReceived()</span> implementation distinguishes
 between messages by looking at its command constant (i.e. the
-what field). For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">MyHandler</span><span class="p">::</span><span class="n">MessageReceived</span><span class="p">(</span><span class="n">BMessage</span><span class="o">*</span> <span class="n">message</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="n">switch</span> <span class="p">(</span> <span class="n">message</span><span class="o">-&gt;</span><span class="n">what</span> <span class="p">)</span> <span class="p">{</span>
-   <span class="k">case</span> <span class="n">COMMAND_ONE</span><span class="p">:</span>
-      <span class="n">HandleCommandOne</span><span class="p">();</span>
-      <span class="k">break</span><span class="p">;</span>
-   <span class="k">case</span> <span class="n">COMMAND_TWO</span><span class="p">:</span>
-      <span class="n">HandleCommandTwo</span><span class="p">();</span>
-      <span class="k">break</span><span class="p">;</span>
-   <span class="o">...</span>
-   <span class="n">default</span><span class="p">:</span>
-      <span class="n">baseClass</span><span class="p">::</span><span class="n">MessageReceived</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
-      <span class="k">break</span><span class="p">;</span>
-   <span class="o">...</span>
-   <span class="p">}</span>
-<span class="p">}</span>
+<span class="hparameter">what</span> field). For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">MyHandler::MessageReceived</span><span class="p">(</span><span class="n">BMessage</span><span class="o">*</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">message</span><span class="o">-&gt;</span><span class="n">what</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">COMMAND_ONE</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">HandleCommandOne</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">COMMAND_TWO</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">HandleCommandTwo</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
+<span class="w">   </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">baseClass</span><span class="o">::</span><span class="n">MessageReceived</span><span class="p">(</span><span class="n">message</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>It’s essential that all unhandled messages are passed to the base class implementation of MessageReceived(), as shown here. The handler chain model depends on it.</p>
-<p>If the message comes to the end of the line—if it’s not recognized
-and there is no next handler—the <span class="hclass">BHandler</span>
-version of this function sends a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MESSAGE()</span></code>
-reply to notify the message source.</p>
+<table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>{ref}``</p></td>
+<td><p>It’s essential that all unhandled messages are passed to the base class
+implementation of <span class="hmethod">MessageReceived()</span>, as shown here. The handler
+chain model depends on it.</p></td>
+</tr>
+</tbody>
+</table>
+<p>If the message comes to the end of the line—if it’s not recognized and
+there is no next handler—the <span class="hclass">BHandler</span> version of this function
+sends a <a class="reference internal" href="../../constants.html#_CPPv424B_MESSAGE_NOT_UNDERSTOOD" title="B_MESSAGE_NOT_UNDERSTOOD"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MESSAGE_NOT_UNDERSTOOD</span></code></a> reply to notify the
+message source.</p>
 <div class="important admonition">
 <p class="admonition-title">Important</p>
-<p>Do not delete the argument message when you’re done with. It doesn’t belong to you.</p>
+<p>Do not delete the argument message when you’re done with. It doesn’t
+belong to you.</p>
 </div>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>See <a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a></p>
+<section id="archive">
+<h3>Archive()<a class="headerlink" href="#archive" title="Permalink to this heading">¶</a></h3>
+<p>See <a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a></p>
 <section id="_CPPv4N8BHandler18GetSupportedSuitesEP8BMessage">
 </section>
-<h3>
-GetSupportedSuites()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">GetSupportedSuites</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Implemented by derived classes to report the suites of messages and
+<h4>
+GetSupportedSuites()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">GetSupportedSuites</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Implemented by derived classes to report the suites of messages and
 specifiers they understand. This function is called in response to either a
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_GET_PROPERTIES</span></code> scripting message for the
-“Suites” property or a
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_GET_SUPPORTED_SUITES</span></code> message.</p>
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_PROPERTIES</span></code> scripting message for the “Suites”
+property or a <a class="reference internal" href="../../constants.html#_CPPv422B_GET_SUPPORTED_SUITES" title="B_GET_SUPPORTED_SUITES"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_SUPPORTED_SUITES</span></code></a> message.</p>
 <p>Each derived class should add the names of the suites it implements to the
-suites array of <span class="hparameter">message</span>. Each item in
-the array is a MIME string with the “suite”
-supertype. In addition, the class should add corresponding flattened <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPropertyInfo</span></code> objects
-in the messages array. A typical implementation of
+<span class="hparameter">suites</span> array of <span class="hparameter">message</span>. Each item in the array is a
+MIME string with the “suite” supertype. In addition, the class should add
+corresponding flattened <a class="reference internal" href="property-info.html#_CPPv413BPropertyInfo" title="BPropertyInfo"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPropertyInfo</span></code></a> objects in the
+<span class="hparameter">messages</span> array. A typical implementation of
 <span class="hmethod">GetSupportedSuites()</span> looks like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span> <span class="n">MyHandler</span><span class="p">::</span><span class="n">GetSupportedSuites</span><span class="p">(</span><span class="n">BMessage</span><span class="o">*</span> <span class="n">message</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="n">message</span><span class="o">-&gt;</span><span class="n">AddString</span><span class="p">(</span><span class="s2">&quot;suites&quot;</span><span class="p">,</span> <span class="s2">&quot;suite/vnd.Me-my_handler&quot;</span><span class="p">));</span>
-   <span class="n">BPropertyInfo</span> <span class="n">prop_info</span><span class="p">(</span><span class="n">prop_list</span><span class="p">);</span>
-   <span class="n">message</span><span class="o">-&gt;</span><span class="n">AddFlat</span><span class="p">(</span><span class="s2">&quot;messages&quot;</span><span class="p">,</span> <span class="n">prop_info</span><span class="p">);</span>
-   <span class="k">return</span> <span class="n">BHandler</span><span class="p">::</span><span class="n">GetSupportedSuites</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span><span class="w"> </span><span class="nf">MyHandler::GetSupportedSuites</span><span class="p">(</span><span class="n">BMessage</span><span class="o">*</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">message</span><span class="o">-&gt;</span><span class="n">AddString</span><span class="p">(</span><span class="s">&quot;suites&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;suite/vnd.Me-my_handler&quot;</span><span class="p">));</span><span class="w"></span>
+<span class="w">   </span><span class="n">BPropertyInfo</span><span class="w"> </span><span class="n">prop_info</span><span class="p">(</span><span class="n">prop_list</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">message</span><span class="o">-&gt;</span><span class="n">AddFlat</span><span class="p">(</span><span class="s">&quot;messages&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">prop_info</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">BHandler</span><span class="o">::</span><span class="n">GetSupportedSuites</span><span class="p">(</span><span class="n">message</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The value returned by <span class="hmethod">GetSupportedSuites()</span> is added
-to <span class="hparameter">message</span> in the int32
-be:error field.</p>
-<p><span class="hclass">BHandler</span>’s version
-of this function adds the universal suite “suite/vnd.Be-handler”
-to <span class="hparameter">message</span> then returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+<p>The value returned by <span class="hmethod">GetSupportedSuites()</span> is added to
+<span class="hparameter">message</span> in the <span class="htype">int32</span> <span class="hparameter">be:error</span> field.</p>
+<p><span class="hclass">BHandler</span>’s version of this function adds the universal suite
+“suite/vnd.Be-handler” to <span class="hparameter">message</span> then returns
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
 <section id="_CPPv4N8BHandler10LockLooperEv">
 </section>
 <section id="_CPPv4N8BHandler21LockLooperWithTimeoutE9bigtime_t">
 </section>
 <section id="_CPPv4N8BHandler12UnlockLooperEv">
 </section>
-<h3>
-LockLooper(), LockLooperWithTimeout(), UnlockLooper()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">LockLooper</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">LockLooperWithTimeout</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">timeout</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">UnlockLooper</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These are “smart” versions of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>’s locking functions
-(<a class="reference internal" href="looper.html#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::Lock()</span></code></a> et.
-al.). The difference between the versions is that these functions retrieve
-the handler’s looper and lock it (or unlock it) in a pseudo-atomic
-operation, thus avoiding a race condition. Anytime you’re tempted to write
-code such as this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">DON</span><span class="s1">&#39;T DO THIS */</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">myHandler</span><span class="o">-&gt;</span><span class="n">Looper</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">Lock</span><span class="p">())</span> <span class="p">{</span>
-   <span class="o">...</span>
-   <span class="n">myHandler</span><span class="o">-&gt;</span><span class="n">Looper</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">Unlock</span><span class="p">();</span>
-<span class="p">}</span>
+<h4>
+LockLooper(), LockLooperWithTimeout(), UnlockLooper()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">LockLooper</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">LockLooperWithTimeout</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">timeout</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">UnlockLooper</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These are “smart” versions of <a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>’s locking functions
+(<a class="reference internal" href="looper.html#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::Lock()</span></code></a> et. al.). The difference between the versions is
+that these functions retrieve the handler’s looper and lock it (or unlock
+it) in a pseudo-atomic operation, thus avoiding a race condition. Anytime
+you’re tempted to write code such as this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* DON&#39;T DO THIS */</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">myHandler</span><span class="o">-&gt;</span><span class="n">Looper</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">Lock</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
+<span class="w">   </span><span class="n">myHandler</span><span class="o">-&gt;</span><span class="n">Looper</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">Unlock</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Don’t do it. Instead, do this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">DO</span> <span class="n">THIS</span> <span class="n">INSTEAD</span> <span class="o">*/</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">myHandler</span><span class="o">-&gt;</span><span class="n">LockLooper</span><span class="p">())</span> <span class="p">{</span>
-   <span class="o">...</span>
-   <span class="n">myHandler</span><span class="o">-&gt;</span><span class="n">UnlockLooper</span><span class="p">();</span>
-<span class="p">}</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* DO THIS INSTEAD */</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">myHandler</span><span class="o">-&gt;</span><span class="n">LockLooper</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
+<span class="w">   </span><span class="n">myHandler</span><span class="o">-&gt;</span><span class="n">UnlockLooper</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Except for an additional return value in
-<span class="hmethod">LockLooperWithTimeout()</span>, these functions are
-identical to their <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code> analogues. See
-<a class="reference internal" href="looper.html#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::Lock()</span></code></a>
-for details.</p>
-<p><span class="hmethod">LockLooper()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if
-it was able to lock the looper, or if it’s already locked by the calling
-thread, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> otherwise. If the handler changes
-loopers during the call, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> is returned.</p>
+<span class="hmethod">LockLooperWithTimeout()</span>, these functions are identical to their
+<a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> analogues. See <a class="reference internal" href="looper.html#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::Lock()</span></code></a> for details.</p>
+<p><span class="hmethod">LockLooper()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if it was able to lock
+the looper, or if it’s already locked by the calling thread, and
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> otherwise. If the handler changes loopers during the
+call, <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> is returned.</p>
 <p><span class="hmethod">LockLooperWithTimeout()</span> returns:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The looper was successfully locked.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMED_OUT</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TIMED_OUT</span></code>.</p></td>
 <td><p>The call timed out without locking the looper.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
 <td><p>This handler’s looper is invalid.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MISMATCHED_VALUES</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MISMATCHED_VALUES</span></code>.</p></td>
 <td><p>The handler switched loopers during the call.</p></td>
 </tr>
 </tbody>
 </table>
 <section id="_CPPv4NK8BHandler6LooperEv">
 </section>
-<h3>
-Looper()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BLooper</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">Looper</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>
-object that the <span class="hclass">BHandler</span> has been added to. The
-function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the object hasn’t been added
-to a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>. A
-<span class="hclass">BHandler</span> can be associated with only one <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code> at a time.</p>
-<p>Note that a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>
-object automatically adds itself (as a handler) to itself (as a looper),
-and a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>
-automatically adds its child views. To explicitly add a handler to a
-looper, you call <a class="reference internal" href="looper.html#_CPPv4N7BLooper10AddHandlerEP8BHandler" title="BLooper::AddHandler"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::AddHandler()</span></code></a>.</p>
+<h4>
+Looper()</h4><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">Looper</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> object that the <span class="hclass">BHandler</span> has
+been added to. The function returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the object hasn’t
+been added to a <a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>. A <span class="hclass">BHandler</span> can be
+associated with only one <a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> at a time.</p>
+<p>Note that a <a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> object automatically adds itself (as a
+handler) to itself (as a looper), and a <a class="reference internal" href="../interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> automatically
+adds its child views. To explicitly add a handler to a looper, you call
+<a class="reference internal" href="looper.html#_CPPv4N7BLooper10AddHandlerEP8BHandler" title="BLooper::AddHandler"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::AddHandler()</span></code></a>.</p>
 <section id="_CPPv4N8BHandler16ResolveSpecifierEP8BMessage5int32P8BMessage5int32PKc">
 </section>
-<h3>
-ResolveSpecifier()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">ResolveSpecifier</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">specifier</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">what</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">property</span><span class="sig-paren">)</span></pre><p>Implemented by derived classes to determine the proper handler for a
-scripting message. The message is targeted to the
-<span class="hclass">BHandler</span>, but the specifiers may indicate that it
-should be assigned to another object. It’s the job of
-<span class="hmethod">ResolveSpecifier()</span> to examine the current
+<h4>
+ResolveSpecifier()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">ResolveSpecifier</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span>, <a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">specifier</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">what</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">property</span><span class="sig-paren">)</span></pre><p>Implemented by derived classes to determine the proper handler for a
+scripting message. The message is targeted to the <span class="hclass">BHandler</span>, but
+the specifiers may indicate that it should be assigned to another object.
+It’s the job of <span class="hmethod">ResolveSpecifier()</span> to examine the current
 specifier (or more, if necessary) and return the object that should either
 handle the message or look at the next specifier. This function is called
 before the message is dispatched and before any filtering functions are
 called.</p>
-<p>The first argument, <span class="hparameter">message</span>, points to the scripting
-message under consideration. The current specifier is passed in
-<span class="hparameter">specifier</span>; it will be at index
-<span class="hparameter">index</span> in the specifier array of message. Finally,
-<span class="hparameter">what</span> contains the what data member of
-<span class="hparameter">specifier</span> while <span class="hparameter">property</span>
-contains the name of the targetted property.</p>
+<p>The first argument, <span class="hparameter">message</span>, points to the scripting message
+under consideration. The current specifier is passed in
+<span class="hparameter">specifier</span>; it will be at index <span class="hparameter">index</span> in the specifier
+array of message. Finally, <span class="hparameter">what</span> contains the what data member of
+<span class="hparameter">specifier</span> while <span class="hparameter">property</span> contains the name of the
+targetted property.</p>
 <p><span class="hmethod">ResolveSpecifier()</span> returns a pointer to the next
-<span class="hclass">BHandler</span> that should look at the message. To
-identify the <span class="hclass">BHandler</span>, it tries these methods, in
-order:</p>
-<p>Method 1:If the <span class="hparameter">specifier</span> identifies a <span class="hclass">BHandler</span> belonging to another <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>, it should send the <span class="hparameter">message</span> to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code> and return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. The message will be handled in the message loop of the other <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>; it won’t be further processed in this one. For example, a <span class="hclass">BHandler</span> that kept a list of proxies might use code like the following:if ( (strcmp(property, “Proxy”) == 0) &amp;&amp; (what == B_INDEX_SPECIFIER) ) { int32 i; if ( specifier-&gt;FindInt32(“index”, i) == B_OK ) { MyProxy* proxy = (MyProxy*)proxyList-&gt;ItemAt(i); if ( proxy ) { message-&gt;PopSpecifier(); if ( proxy-&gt;Looper() != Looper() ) { proxy-&gt;Looper()-&gt;PostMessage(message, proxy); return NULL; } } … } … }Since this function resolved the specifier at <span class="hparameter">index</span>, it calls <a class="reference internal" href="message.html#_CPPv4N8BMessage12PopSpecifierEv" title="BMessage::PopSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PopSpecifier()</span></code></a> to decrement the index before forwarding the message. Otherwise, the next handler would try to resolve the same specifier.
-Method 2:If the <span class="hparameter">specifier</span> picks out another <span class="hclass">BHandler</span> object belonging to the same <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>, <span class="hmethod">ResolveSpecifier()</span> can return that <span class="hclass">BHandler</span>. For example:if ( proxy ) { message-&gt;PopSpecifier(); if ( proxy-&gt;Looper() != Looper() ) { proxy-&gt;Looper()-&gt;PostMessage(message, proxy); return NULL; } else { return proxy; } }This, in effect, puts the returned object in the <span class="hclass">BHandler</span>’s place as the designated handler for the message. The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code> will give the returned handler a chance to respond to the message or resolve the next specifier.Again, <a class="reference internal" href="message.html#_CPPv4N8BMessage12PopSpecifierEv" title="BMessage::PopSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PopSpecifier()</span></code></a> should be called so that an attempt isn’t made to resolve the same specifier twice.
-Method 3:If it can resolve all remaining specifiers and recognizes the message as one that the <span class="hclass">BHandler</span> itself can handle, it should return the <span class="hclass">BHandler</span> (this). For example:if ( (strcmp(property, “Value”) == 0) &amp;&amp; (message-&gt;what == B_GET_PROPERTY) ) return this;This confirms the <span class="hclass">BHandler</span> as the message target. <span class="hmethod">ResolveSpecifier()</span> won’t be called again, so it’s not necessary to call <a class="reference internal" href="message.html#_CPPv4N8BMessage12PopSpecifierEv" title="BMessage::PopSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PopSpecifier()</span></code></a> before returning.
-Method 4:If it doesn’t recognize the property or can’t resolve the specifier, it should call (and return the value returned by) the inherited version of <span class="hmethod">ResolveSpecifier()</span>.
-ExamplesThe <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code> object takes the first path when it resolves a specifier for a “Window” property; it sends the message to the specified <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> and returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. A <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> follows the second path when it resolves a specifier for a “View” property; it returns the specified <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>. Thus, a message initially targeted to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code> object can find its way to a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>.<span class="hclass">BHandler</span>’s version of <span class="hmethod">ResolveSpecifier()</span> recognizes a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_GET_PROPERTY</span></code> <span class="hparameter">message</span> with a direct <span class="hparameter">specifier</span> requesting a “Suite” for the supported suites, “Messenger” for the <span class="hclass">BHandler</span>, or the <span class="hclass">BHandler</span>’s “InternalName” (the same name that its <span class="hmethod">Name()</span> function returns). In all three cases, it assigns the <span class="hclass">BHandler</span>(this) as the object responsible for the message.For all other specifiers and messages, it sends a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MESSAGE_NOT_UNDERSTOOD</span></code> reply and returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. The reply message has an error field with <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SCRIPT_SYNTAX</span></code> as the error and a message field with a longer textual explanation of the error.</p>
+<span class="hclass">BHandler</span> that should look at the message. To identify the
+<span class="hclass">BHandler</span>, it tries these methods, in order:</p>
+<p class="rubric">Method 1:</p>
+<p>If the <span class="hparameter">specifier</span> identifies a <span class="hclass">BHandler</span> belonging to
+another <a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>, it should send the <span class="hparameter">message</span> to the
+<a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> and return <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>. The message will be
+handled in the message loop of the other <a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>; it won’t be
+further processed in this one. For example, a <span class="hclass">BHandler</span> that kept
+a list of proxies might use code like the following:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">property</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Proxy&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">what</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_INDEX_SPECIFIER</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">specifier</span><span class="o">-&gt;</span><span class="n">FindInt32</span><span class="p">(</span><span class="s">&quot;index&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">MyProxy</span><span class="o">*</span><span class="w"> </span><span class="n">proxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">MyProxy</span><span class="o">*</span><span class="p">)</span><span class="n">proxyList</span><span class="o">-&gt;</span><span class="n">ItemAt</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">proxy</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">message</span><span class="o">-&gt;</span><span class="n">PopSpecifier</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">proxy</span><span class="o">-&gt;</span><span class="n">Looper</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">Looper</span><span class="p">()</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">               </span><span class="n">proxy</span><span class="o">-&gt;</span><span class="n">Looper</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">PostMessage</span><span class="p">(</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">proxy</span><span class="p">);</span><span class="w"></span>
+<span class="w">               </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Since this function resolved the specifier at <span class="hparameter">index</span>, it calls
+<a class="reference internal" href="message.html#_CPPv4N8BMessage12PopSpecifierEv" title="BMessage::PopSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PopSpecifier()</span></code></a> to decrement the index
+before forwarding the message. Otherwise, the next handler would try to
+resolve the same specifier.</p>
+<p class="rubric">Method 2:</p>
+<p>If the <span class="hparameter">specifier</span> picks out another <span class="hclass">BHandler</span> object
+belonging to the same <a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>, <span class="hmethod">ResolveSpecifier()</span>
+can return that <span class="hclass">BHandler</span>. For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">proxy</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">message</span><span class="o">-&gt;</span><span class="n">PopSpecifier</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">proxy</span><span class="o">-&gt;</span><span class="n">Looper</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">Looper</span><span class="p">()</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">proxy</span><span class="o">-&gt;</span><span class="n">Looper</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">PostMessage</span><span class="p">(</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">proxy</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">proxy</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This, in effect, puts the returned object in the <span class="hclass">BHandler</span>’s
+place as the designated handler for the message. The <a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>
+will give the returned handler a chance to respond to the message or
+resolve the next specifier.</p>
+<p>Again, <a class="reference internal" href="message.html#_CPPv4N8BMessage12PopSpecifierEv" title="BMessage::PopSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PopSpecifier()</span></code></a> should be
+called so that an attempt isn’t made to resolve the same specifier twice.</p>
+<p class="rubric">Method 3:</p>
+<p>If it can resolve all remaining specifiers and recognizes the message as
+one that the <span class="hclass">BHandler</span> itself can handle, it should return the
+<span class="hclass">BHandler</span> (<span class="hparameter">this</span>). For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">property</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Value&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">     </span><span class="p">(</span><span class="n">message</span><span class="o">-&gt;</span><span class="n">what</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_GET_PROPERTY</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This confirms the <span class="hclass">BHandler</span> as the message target.
+<span class="hmethod">ResolveSpecifier()</span> won’t be called again, so it’s not necessary
+to call <a class="reference internal" href="message.html#_CPPv4N8BMessage12PopSpecifierEv" title="BMessage::PopSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PopSpecifier()</span></code></a> before
+returning.</p>
+<p class="rubric">Method 4:</p>
+<p>If it doesn’t recognize the property or can’t resolve the specifier, it
+should call (and return the value returned by) the inherited version of
+<span class="hmethod">ResolveSpecifier()</span>.</p>
+<p class="rubric">Examples</p>
+<p>The <a class="reference internal" href="application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> object takes the first path when it resolves
+a specifier for a “Window” property; it sends the message to the specified
+<a class="reference internal" href="../interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> and returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>. A <a class="reference internal" href="../interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>
+follows the second path when it resolves a specifier for a “View” property;
+it returns the specified <a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>. Thus, a message initially
+targeted to the <a class="reference internal" href="application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> object can find its way to a
+<a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>.</p>
+<p><span class="hclass">BHandler</span>’s version of <span class="hmethod">ResolveSpecifier()</span> recognizes a
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_PROPERTY</span></code> <span class="hparameter">message</span> with a direct
+<span class="hparameter">specifier</span> requesting a “Suite” for the supported suites,
+“Messenger” for the <span class="hclass">BHandler</span>, or the <span class="hclass">BHandler</span>’s
+“InternalName” (the same name that its <span class="hmethod">Name()</span> function returns).
+In all three cases, it assigns the <span class="hclass">BHandler</span>(<span class="hparameter">this</span>) as
+the object responsible for the message.</p>
+<p>For all other specifiers and messages, it sends a
+<a class="reference internal" href="../../constants.html#_CPPv424B_MESSAGE_NOT_UNDERSTOOD" title="B_MESSAGE_NOT_UNDERSTOOD"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MESSAGE_NOT_UNDERSTOOD</span></code></a> reply and returns
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>. The reply message has an <span class="hparameter">error</span> field with
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SCRIPT_SYNTAX</span></code> as the error and a <span class="hparameter">message</span>
+field with a longer textual explanation of the error.</p>
 <section id="_CPPv4N8BHandler13SetFilterListEP5BList">
 </section>
 <section id="_CPPv4NK8BHandler10FilterListEv">
@@ -291,93 +385,73 @@ ExamplesThe <code class="xref cpp cpp-class docutils literal notranslate"><span 
 </section>
 <section id="_CPPv4N8BHandler12RemoveFilterEP14BMessageFilter">
 </section>
-<h3>
-SetFilterList(), FilterList(), AddFilter(), RemoveFilter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">SetFilterList</span><span class="sig-paren">(</span><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">list</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">FilterList</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">AddFilter</span><span class="sig-paren">(</span><span class="n">BMessageFilter</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">filter</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">RemoveFilter</span><span class="sig-paren">(</span><span class="n">BMessageFilter</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">filter</span><span class="sig-paren">)</span></pre><p>These functions manage a list of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code>
-objects associated with the <span class="hclass">BHandler</span>.</p>
-<p><span class="hmethod">SetFilterList()</span> assigns the
-<span class="hclass">BHandler</span> a new <span class="hparameter">list</span> of
-filters; the list must contain pointers to instances of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code> class
-or to instances of classes that derive from <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code>. The
-new list replaces any list of filters previously assigned. All objects in
-the previous list are deleted, as is the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BList</span></code> that contains them. If
-list is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, the current list is removed without a
-replacement. <span class="hmethod">FilterList()</span> returns the current list
-of filters.</p>
-<p><span class="hmethod">AddFilter()</span> adds a <span class="hparameter">filter</span>
-to the end of the <span class="hclass">BHandler</span>’s list of filters. It
-creates the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BList</span></code>
+<h4>
+SetFilterList(), FilterList(), AddFilter(), RemoveFilter()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">SetFilterList</span><span class="sig-paren">(</span><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">list</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">FilterList</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">AddFilter</span><span class="sig-paren">(</span><a class="reference internal" href="message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><span class="n">BMessageFilter</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">filter</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">RemoveFilter</span><span class="sig-paren">(</span><a class="reference internal" href="message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><span class="n">BMessageFilter</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">filter</span><span class="sig-paren">)</span></pre><p>These functions manage a list of <a class="reference internal" href="message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code></a> objects
+associated with the <span class="hclass">BHandler</span>.</p>
+<p><span class="hmethod">SetFilterList()</span> assigns the <span class="hclass">BHandler</span> a new
+<span class="hparameter">list</span> of filters; the list must contain pointers to instances of
+the <a class="reference internal" href="message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code></a> class or to instances of classes that
+derive from <a class="reference internal" href="message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code></a>. The new list replaces any list of
+filters previously assigned. All objects in the previous list are deleted,
+as is the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BList</span></code> that contains them. If list is
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>, the current list is removed without a replacement.
+<span class="hmethod">FilterList()</span> returns the current list of filters.</p>
+<p><span class="hmethod">AddFilter()</span> adds a <span class="hparameter">filter</span> to the end of the
+<span class="hclass">BHandler</span>’s list of filters. It creates the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BList</span></code>
 object if it doesn’t already exist. By default, BHandlers don’t maintain a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BList</span></code> of filters until
-one is assigned or the first <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code> is
-added. <span class="hmethod">RemoveFilter()</span> removes a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BList</span></code> of filters until one is assigned or the first
+<a class="reference internal" href="message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code></a> is added. <span class="hmethod">RemoveFilter()</span> removes a
 <span class="hparameter">filter</span> from the list without deleting it. It returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if successful, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if
-it can’t find the specified filter in the list (or the list doesn’t exist).
-It leaves the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BList</span></code> in
-place even after removing the last filter.</p>
-<p>For <span class="hmethod">SetFilterList()</span>,
-<span class="hmethod">AddFilter()</span> and
-<span class="hmethod">RemoveFilter()</span> to work, the
-<span class="hclass">BHandler</span> must be assigned to a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code> object and the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code> must be
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if successful, and <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if it can’t find the
+specified filter in the list (or the list doesn’t exist). It leaves the
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BList</span></code> in place even after removing the last filter.</p>
+<p>For <span class="hmethod">SetFilterList()</span>, <span class="hmethod">AddFilter()</span> and
+<span class="hmethod">RemoveFilter()</span> to work, the <span class="hclass">BHandler</span> must be assigned
+to a <a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> object and the <a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> must be
 locked.</p>
-<p>See also:
-<a class="reference internal" href="looper.html#_CPPv4N7BLooper19SetCommonFilterListEP5BList" title="BLooper::SetCommonFilterList"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::SetCommonFilterList()</span></code></a>,
-<a class="reference internal" href="looper.html#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::Lock()</span></code></a>,
-the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code> class</p>
+<p>See also: <a class="reference internal" href="looper.html#_CPPv4N7BLooper19SetCommonFilterListEP5BList" title="BLooper::SetCommonFilterList"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::SetCommonFilterList()</span></code></a>,
+<a class="reference internal" href="looper.html#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::Lock()</span></code></a>, the <a class="reference internal" href="message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code></a> class</p>
 <section id="_CPPv4N8BHandler7SetNameEPKc">
 </section>
 <section id="_CPPv4NK8BHandler4NameEv">
 </section>
-<h3>
-SetName(), Name()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">SetName</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">Name</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the name that identifies the
-<span class="hclass">BHandler</span>. The name is originally set by the
-constructor. <span class="hmethod">SetName()</span> assigns the
-<span class="hclass">BHandler</span> a new name, and
-<span class="hmethod">Name()</span> returns the current name. The string
-returned by <span class="hmethod">Name()</span> belongs to the
-<span class="hclass">BHandler</span> object; it shouldn’t be altered or freed.</p>
-<p>See also:
-The <span class="hclass">BHandler</span> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>,
-<a class="reference internal" href="../interface/view.html#_CPPv4NK5BView8FindViewEPKc" title="BView::FindView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::FindView()</span></code></a> in th
-<span class="xref std std-ref">Interface Kit</span></p>
+<h4>
+SetName(), Name()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">SetName</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">Name</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the name that identifies the
+<span class="hclass">BHandler</span>. The name is originally set by the constructor.
+<span class="hmethod">SetName()</span> assigns the <span class="hclass">BHandler</span> a new name, and
+<span class="hmethod">Name()</span> returns the current name. The string returned by
+<span class="hmethod">Name()</span> belongs to the <span class="hclass">BHandler</span> object; it shouldn’t be
+altered or freed.</p>
+<p>See also: The <span class="hclass">BHandler</span> <a class="reference internal" href="#_CPPv4N8BHandler8BHandlerEPKc" title="BHandler::BHandler"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a>, <a class="reference internal" href="../interface/view.html#_CPPv4NK5BView8FindViewEPKc" title="BView::FindView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::FindView()</span></code></a> in th <span class="xref std std-ref">Interface Kit</span></p>
 <section id="_CPPv4N8BHandler14SetNextHandlerEP8BHandler">
 </section>
 <section id="_CPPv4NK8BHandler11NextHandlerEv">
 </section>
-<h3>
-SetNextHandler(), NextHandler()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">SetNextHandler</span><span class="sig-paren">(</span><span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">NextHandler</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetNextHandler()</span> reorders the objects in the
-handler chain so that <span class="hparameter">handler</span> follows this
-<span class="hclass">BHandler</span>. This <span class="hclass">BHandler</span> and
-<span class="hparameter">handler</span> must already be part of the same chain,
-and the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>
-they belong to must be locked. The order of objects in the handler chain
-affects the way in-coming messages are handled (as explained in
-“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Messaging()</span></code>”.
-By default handlers are placed in the order that they’re added (through
+<h4>
+SetNextHandler(), NextHandler()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">SetNextHandler</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">NextHandler</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetNextHandler()</span> reorders the objects in the handler chain so
+that <span class="hparameter">handler</span> follows this <span class="hclass">BHandler</span>. This
+<span class="hclass">BHandler</span> and <span class="hparameter">handler</span> must already be part of the same
+chain, and the <a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> they belong to must be locked. The
+order of objects in the handler chain affects the way in-coming messages
+are handled (as explained in “<span class="xref std std-ref">Inheritance and the Handler Chain</span>”. By
+default handlers are placed in the order that they’re added (through
 <a class="reference internal" href="looper.html#_CPPv4N7BLooper10AddHandlerEP8BHandler" title="BLooper::AddHandler"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::AddHandler()</span></code></a>).</p>
-<p><span class="hmethod">NextHandler()</span> returns this object’s next handler.
-If this object is at the end of the chain, it returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p><span class="hmethod">NextHandler()</span> returns this object’s next handler. If this
+object is at the end of the chain, it returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
 <section id="_CPPv4N8BHandler11SendNoticesE6uint32PK8BMessage">
 </section>
-<h3>
-SendNotices()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">SendNotices</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">what</span>, <span class="k">const</span><span class="w"> </span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">msg</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>Sends a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OBSERVER()</span></code>
-message to each <span class="hclass">BHandler</span> object (or “observer”)
-that’s observing this handler (the “notifier”). To observe
-a notifier, the observer calls
-<a class="reference internal" href="#_CPPv4N8BHandler13StartWatchingE10BMessenger6uint32" title="BHandler::StartWatching"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StartWatching()</span></code></a>.
-The <span class="hparameter">what</span> argument describes the type of change
-that’s prompting this notification; only those observers that have
-registered to be notified about what (or that are watching all changes)
-are sent notifications.</p>
-<p>The
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OBSERVER()</span></code>
-messages that are
-sent are copied from <span class="hparameter">msg</span> with the what argument
-added as the be:old_what field. Note that
-<span class="hparameter">msg</span>’s original what field is clobbered.</p>
+<h4>
+SendNotices()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">SendNotices</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">what</span>, <span class="k">const</span><span class="w"> </span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">msg</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>Sends a <a class="reference internal" href="../../constants.html#_CPPv424B_OBSERVER_NOTICE_CHANGE" title="B_OBSERVER_NOTICE_CHANGE"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OBSERVER_NOTICE_CHANGE</span></code></a> message to each
+<span class="hclass">BHandler</span> object (or “observer”) that’s observing this handler
+(the “notifier”). To observe a notifier, the observer calls
+<a class="reference internal" href="#_CPPv4N8BHandler13StartWatchingE10BMessenger6uint32" title="BHandler::StartWatching"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StartWatching()</span></code></a>. The <span class="hparameter">what</span>
+argument describes the type of change that’s prompting this notification;
+only those observers that have registered to be notified about what (or
+that are watching all changes) are sent notifications.</p>
+<p>The <a class="reference internal" href="../../constants.html#_CPPv424B_OBSERVER_NOTICE_CHANGE" title="B_OBSERVER_NOTICE_CHANGE"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OBSERVER_NOTICE_CHANGE</span></code></a> messages that are sent are
+copied from <span class="hparameter">msg</span> with the what argument added as the
+<span class="hparameter">be:old_what</span> field. Note that <span class="hparameter">msg</span>’s original
+<span class="hparameter">what</span> field is clobbered.</p>
 <section id="_CPPv4N8BHandler13StartWatchingE10BMessenger6uint32">
 </section>
 <section id="_CPPv4N8BHandler16StartWatchingAllE10BMessenger">
@@ -386,71 +460,135 @@ added as the be:old_what field. Note that
 </section>
 <section id="_CPPv4N8BHandler15StopWatchingAllE10BMessenger">
 </section>
-<h3>
-StartWatching(), StartWatchingAll(), StopWatching(), StopWatchingAll()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">StartWatching</span><span class="sig-paren">(</span><span class="n">BMessenger</span><span class="w"> </span><span class="n sig-param">watcher</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">what</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">StartWatching</span><span class="sig-paren">(</span><span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">watcher</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">what</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">StartWatchingAll</span><span class="sig-paren">(</span><span class="n">BMessenger</span><span class="w"> </span><span class="n sig-param">watcher</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">StartWatchingAll</span><span class="sig-paren">(</span><span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">watcher</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">StopWatching</span><span class="sig-paren">(</span><span class="n">BMessenger</span><span class="w"> </span><span class="n sig-param">watcher</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">what</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">StopWatching</span><span class="sig-paren">(</span><span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">watcher</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">what</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">StopWatchingAll</span><span class="sig-paren">(</span><span class="n">BMessenger</span><span class="w"> </span><span class="n sig-param">watcher</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BHandler</span><span class="p">::</span></span><span class="n">StopWatchingAll</span><span class="sig-paren">(</span><span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">watcher</span><span class="sig-paren">)</span></pre><p>The <span class="hclass">BHandler</span> class provides the concept of a
-notifier. Notifiers maintain one or more
-states that other entities might want to monitor changes to. These states
-are identified by a 32-bit <span class="hparameter">what</span> code. Another entity
-a <span class="hclass">BHandler</span> or a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> can watch for
-changes notifiers’ states. These are called observers.</p>
-<p><span class="hmethod">StartWatching()</span> registers the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> or
-<span class="hclass">BHandler</span> specified by <span class="hparameter">watcher</span>
-to be notified whenever the state specified by <span class="hparameter">what</span>
-changes. <span class="hmethod">StartWatchingAll()</span> registers the
-specified <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> or
-<span class="hclass">BHandler</span> to be notified when any of the notifer’s
-states change.</p>
+<h4>
+StartWatching(), StartWatchingAll(), StopWatching(), StopWatchingAll()</h4><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">StartWatching</span><span class="sig-paren">(</span><a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><span class="n">BMessenger</span></a><span class="w"> </span><span class="n sig-param">watcher</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">what</span><span class="sig-paren">)</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">StartWatching</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">watcher</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">what</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">StartWatchingAll</span><span class="sig-paren">(</span><a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><span class="n">BMessenger</span></a><span class="w"> </span><span class="n sig-param">watcher</span><span class="sig-paren">)</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">StartWatchingAll</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">watcher</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">StopWatching</span><span class="sig-paren">(</span><a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><span class="n">BMessenger</span></a><span class="w"> </span><span class="n sig-param">watcher</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">what</span><span class="sig-paren">)</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">StopWatching</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">watcher</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">what</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">StopWatchingAll</span><span class="sig-paren">(</span><a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><span class="n">BMessenger</span></a><span class="w"> </span><span class="n sig-param">watcher</span><span class="sig-paren">)</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="p">::</span></span><span class="n">StopWatchingAll</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">watcher</span><span class="sig-paren">)</span></pre><p>The <span class="hclass">BHandler</span> class provides the concept of a notifier. Notifiers
+maintain one or more states that other entities might want to monitor
+changes to. These states are identified by a 32-bit <span class="hparameter">what</span> code.
+Another entity a <span class="hclass">BHandler</span> or a <a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> can watch
+for changes notifiers’ states. These are called observers.</p>
+<p><span class="hmethod">StartWatching()</span> registers the <a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> or
+<span class="hclass">BHandler</span> specified by <span class="hparameter">watcher</span> to be notified whenever
+the state specified by <span class="hparameter">what</span> changes.
+<span class="hmethod">StartWatchingAll()</span> registers the specified
+<a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> or <span class="hclass">BHandler</span> to be notified when any of
+the notifer’s states change.</p>
 <p><span class="hmethod">StartWatching()</span> works by sending a message to the
-<span class="hclass">BHandler</span> you want to observe, with a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> back to the
-observer, so both must be attached to a looper at the time
+<span class="hclass">BHandler</span> you want to observe, with a <a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> back
+to the observer, so both must be attached to a looper at the time
 <span class="hmethod">StartWatching()</span> is called.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>The forms of <span class="hmethod">StartWatching()</span> and
-<span class="hmethod">StartWatchingAll()</span> that accept a
-<span class="hclass">BHandler</span> can be used to observe a handler that’s not
-yet attached to a looper. However, these only work if the observer and
+<p>The forms of <span class="hmethod">StartWatching()</span> and <span class="hmethod">StartWatchingAll()</span>
+that accept a <span class="hclass">BHandler</span> can be used to observe a handler that’s
+not yet attached to a looper. However, these only work if the observer and
 notifier are both in the same looper.</p>
 </div>
-<p><span class="hmethod">StopWatching()</span> ceases monitoring of the state
-<span class="hparameter">what</span>. <span class="hmethod">StopWatchingAll()</span>, by
-some odd coincidence, stops all monitoring by the
-<span class="hclass">BHandler</span> or <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> specified by
+<p><span class="hmethod">StopWatching()</span> ceases monitoring of the state <span class="hparameter">what</span>.
+<span class="hmethod">StopWatchingAll()</span>, by some odd coincidence, stops all monitoring
+by the <span class="hclass">BHandler</span> or <a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> specified by
 <span class="hparameter">watcher</span>.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>No error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_HANDLER</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_HANDLER</span></code>.</p></td>
 <td><p>The specified <span class="hclass">BHandler</span> isn’t valid.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
+</section>
 <section id="static-functions">
 <h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>See <a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a></p>
+<section id="instantiate">
+<h3>Instantiate()<a class="headerlink" href="#instantiate" title="Permalink to this heading">¶</a></h3>
+<p>See <a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a></p>
+</section>
 </section>
 <section id="archived-fields">
 <h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">_name</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>The object’s name (see <a class="reference internal" href="#_CPPv4N8BHandler7SetNameEPKc" title="BHandler::SetName"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetName()</span></code></a>).</p></td>
+</tr>
+</tbody>
+</table>
+<p><span class="hclass">BHandler</span> records its own name.</p>
 </section>
 <section id="scripting-suites-and-properties">
 <h2>Scripting Suites and Properties<a class="headerlink" href="#scripting-suites-and-properties" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>“InternalName”MessageSpecifiersReply TypeB_GET_PROPERTYB_DIRECT_SPECIFIERB_STRING_TYPEReturns the handler’s name.
-“Messenger”MessageSpecifiersReply TypeB_GET_PROPERTYB_DIRECT_SPECIFIERB_MESSENGER_TYPEReturns a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> for the handler.
-“Suites”MessageSpecifiersReply TypeB_GET_PROPERTYB_DIRECT_SPECIFIERB_STRING_TYPE arrayReturns an array of suites that the target supports, identified by name (e.g. “suite/vnd.Be-handler”).</p>
+<section id="suite-suite-vnd-be-handler">
+<h3>Suite: “suite/vnd.Be-handler”<a class="headerlink" href="#suite-suite-vnd-be-handler" title="Permalink to this heading">¶</a></h3>
+<section id="internalname">
+<h4>“InternalName”<a class="headerlink" href="#internalname" title="Permalink to this heading">¶</a></h4>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Message</p></th>
+<th class="head"><p>Specifiers</p></th>
+<th class="head"><p>Reply Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_PROPERTY</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_SPECIFIER</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Returns the handler’s name.</p>
+</section>
+<section id="messenger">
+<h4>“Messenger”<a class="headerlink" href="#messenger" title="Permalink to this heading">¶</a></h4>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Message</p></th>
+<th class="head"><p>Specifiers</p></th>
+<th class="head"><p>Reply Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_PROPERTY</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_SPECIFIER</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MESSENGER_TYPE</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Returns a <a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> for the handler.</p>
+</section>
+<section id="suites">
+<h4>“Suites”<a class="headerlink" href="#suites" title="Permalink to this heading">¶</a></h4>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Message</p></th>
+<th class="head"><p>Specifiers</p></th>
+<th class="head"><p>Reply Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_PROPERTY</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_SPECIFIER</span></code></p></td>
+<td><p>B_STRING_TYPE array</p></td>
+</tr>
+</tbody>
+</table>
+<p>Returns an array of suites that the target supports, identified by name
+(e.g. “suite/vnd.Be-handler”).</p>
+</section>
+</section>
 </section>
 </section>
 

@@ -59,45 +59,41 @@
       <div class="content" role="main">
         
   <section id="breffilter">
-<h1>BRefFilter<a class="headerlink" href="#breffilter" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv410BRefFilter">BRefFilter<a class="headerlink" href="#breffilter" title="Permalink to this heading">¶</a></h1>
 <section id="hook-functions">
 <h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N10BRefFilter6FilterEPK9entry_refP5BNodeP4statPKc">
 </section>
 <h3>
-Filter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRefFilter</span><span class="p">::</span></span><span class="n">Filter</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span>, <span class="n">BNode</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">node</span>, <span class="k">struct</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">st</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">filetype</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Filter()</span> is a hook function that’s invoked whenever the file panel to
-which it’s been assigned reads the entries in its “panel directory.” The
-function is invoked once for each entry in the directory. All the
-arguments to the function refer to the entry currently under
-consideration. (Note that the function is never sent an abstract entry,
-so the <span class="hparameter">node</span>, <span class="hparameter">st</span>, and <span class="hparameter">filetype</span>
-arguments will always be valid.)</p>
-<p>Your implementation of <span class="hmethod">Filter()</span> can use any or all of the arguments to
-figure out if the entry is a valid candidate for display in the file
-panel’s file list. Simply return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> to indicate if the entry
-is a winner or a loser.</p>
+Filter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BRefFilter" title="BRefFilter"><span class="n">BRefFilter</span></a><span class="p">::</span></span><span class="n">Filter</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span>, <a class="reference internal" href="node.html#_CPPv45BNode" title="BNode"><span class="n">BNode</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">node</span>, <span class="k">struct</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">st</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">filetype</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Filter()</span> is a hook function that’s invoked whenever the file
+panel to which it’s been assigned reads the entries in its “panel
+directory.” The function is invoked once for each entry in the directory.
+All the arguments to the function refer to the entry currently under
+consideration. (Note that the function is never sent an abstract entry, so
+the <span class="hparameter">node</span>, <span class="hparameter">st</span>, and <span class="hparameter">filetype</span> arguments will
+always be valid.)</p>
+<p>Your implementation of <span class="hmethod">Filter()</span> can use any or all of the
+arguments to figure out if the entry is a valid candidate for display in
+the file panel’s file list. Simply return <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> or
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> to indicate if the entry is a winner or a loser.</p>
 <p>Technically, <span class="hmethod">Filter()</span> is invoked when…</p>
 <ul class="simple">
-<li><p>…the file panel’s panel directory is set, either through the <span class="hclass">BFilePanel</span> constructor or the <a class="reference internal" href="file-panel.html#_CPPv4N10BFilePanel17SetPanelDirectoryEP6BEntry" title="BFilePanel::SetPanelDirectory"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetPanelDirectory()</span></code></a>, and when…</p></li>
-<li><p>…the file panel’s <a class="reference internal" href="file-panel.html#_CPPv4N10BFilePanel7RefreshEv" title="BFilePanel::Refresh"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Refresh()</span></code></a> function is called.</p></li>
+<li><p>…the file panel’s panel directory is set, either through the
+<span class="hclass">BFilePanel</span> constructor or the <a class="reference internal" href="file-panel.html#_CPPv4N10BFilePanel17SetPanelDirectoryEP6BEntry" title="BFilePanel::SetPanelDirectory"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetPanelDirectory()</span></code></a>, and when…</p></li>
+<li><p>…the file panel’s <a class="reference internal" href="file-panel.html#_CPPv4N10BFilePanel7RefreshEv" title="BFilePanel::Refresh"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Refresh()</span></code></a> function is
+called.</p></li>
 </ul>
 <p>A <span class="hclass">BRefFilter</span> can be assigned to more than one
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFilePanel</span></code> object
-(assignation is performed through
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFilePanel</span></code>’s constructor or
-<a class="reference internal" href="file-panel.html#_CPPv4N10BFilePanel12SetRefFilterEP10BRefFilter" title="BFilePanel::SetRefFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetRefFilter()</span></code></a>
-function). But it’s not probably not a great idea to do
-so: At any particular invocation of <span class="hmethod">Filter()</span>, the
-<span class="hclass">BRefFilter</span> doesn’t
-which <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFilePanel</span></code> object it’s working for.</p>
-<p>You maintain ownership of the <span class="hclass">BRefFilter</span> objects that you create.
-Assigning a ref filter to a file panel does not hand ownership of the
-<span class="hclass">BRefFilter</span> to the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFilePanel</span></code>. You shouldn’t delete a
-<span class="hclass">BRefFilter</span> while a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFilePanel</span></code>
-is still using it; but it’s your responsibility to delete it
-when it’s done.</p>
+<a class="reference internal" href="file-panel.html#_CPPv410BFilePanel" title="BFilePanel"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFilePanel</span></code></a> object (assignation is performed through
+<a class="reference internal" href="file-panel.html#_CPPv410BFilePanel" title="BFilePanel"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFilePanel</span></code></a>’s constructor or <a class="reference internal" href="file-panel.html#_CPPv4N10BFilePanel12SetRefFilterEP10BRefFilter" title="BFilePanel::SetRefFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetRefFilter()</span></code></a> function). But it’s not probably not a great
+idea to do so: At any particular invocation of <span class="hmethod">Filter()</span>, the
+<span class="hclass">BRefFilter</span> doesn’t which <a class="reference internal" href="file-panel.html#_CPPv410BFilePanel" title="BFilePanel"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFilePanel</span></code></a> object it’s
+working for.</p>
+<p>You maintain ownership of the <span class="hclass">BRefFilter</span> objects that you
+create. Assigning a ref filter to a file panel does not hand ownership of
+the <span class="hclass">BRefFilter</span> to the <a class="reference internal" href="file-panel.html#_CPPv410BFilePanel" title="BFilePanel"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFilePanel</span></code></a>. You shouldn’t
+delete a <span class="hclass">BRefFilter</span> while a <a class="reference internal" href="file-panel.html#_CPPv410BFilePanel" title="BFilePanel"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFilePanel</span></code></a> is still
+using it; but it’s your responsibility to delete it when it’s done.</p>
 </section>
 </section>
 

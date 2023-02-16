@@ -65,37 +65,51 @@
       <div class="content" role="main">
         
   <section id="bcursor">
-<h1>BCursor<a class="headerlink" href="#bcursor" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv47BCursor">BCursor<a class="headerlink" href="#bcursor" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N7BCursor7BCursorEPKv">
 </section>
 <h3>
-BCursor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BCursor7BCursorEPKv" title="BCursor::BCursor"><span class="n">BCursor</span></a><span class="p">::</span></span><span class="n">BCursor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cursorData</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BCursor7BCursorEP8BMessage" title="BCursor::BCursor"><span class="n">BCursor</span></a><span class="p">::</span></span><span class="n">BCursor</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the new cursor object. If you specify a
-non-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> value for <span class="hparameter">cursorData</span>,
-the cursor is initialized with the specified cursor data.</p>
-<p>If you specify a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> value for
-<span class="hparameter">cursorData</span>, the cursor is useless; since this class
-doesn’t currently provide a means of setting the cursor data once the
-object is instantiated, you’re out of luck, so why bother?</p>
-<p><span class="hclass">BCursor</span> doesn’t currently implement archiving, so
-you shouldn’t use the second form.</p>
+BCursor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BCursor7BCursorEPKv" title="BCursor::BCursor"><span class="n">BCursor</span></a><span class="p">::</span></span><span class="n">BCursor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cursorData</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BCursor7BCursorEP8BMessage" title="BCursor::BCursor"><span class="n">BCursor</span></a><span class="p">::</span></span><span class="n">BCursor</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the new cursor object. If you specify a non-<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>
+value for <span class="hparameter">cursorData</span>, the cursor is initialized with the
+specified cursor data.</p>
+<p>If you specify a <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> value for <span class="hparameter">cursorData</span>, the
+cursor is useless; since this class doesn’t currently provide a means of
+setting the cursor data once the object is instantiated, you’re out of
+luck, so why bother?</p>
+<p><span class="hclass">BCursor</span> doesn’t currently implement archiving, so you shouldn’t
+use the second form.</p>
 <section id="_CPPv4N7BCursorD0Ev">
 </section>
 <h3>
-~BCursor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BCursor</span><span class="p">::</span></span><span class="n">~BCursor</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Releases any resources used by the cursor.</p>
+~BCursor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BCursor" title="BCursor"><span class="n">BCursor</span></a><span class="p">::</span></span><span class="n">~BCursor</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Releases any resources used by the cursor.</p>
 </section>
 <section id="static-functions">
 <h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N7BCursor11InstantiateEP8BMessage">
 </section>
 <h3>
-Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BCursor</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Not currently implemented; always returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BCursor" title="BCursor"><span class="n">BCursor</span></a><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Not currently implemented; always returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
 <p>See also: <a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
 <a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a></p>
 </section>
 <section id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: app/AppDefs.h</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">B_HAND_CURSOR</span><span class="p">[]</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">B_I_BEAM_CURSOR</span><span class="p">[]</span><span class="w"></span>
+</pre></div>
+</div>
+<p>These constants contain all the data needed to set the cursor to the
+default hand image or to the standard I-beam image for text selection.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="n">BCursor</span><span class="o">*</span><span class="w"> </span><span class="n">B_CURSOR_SYSTEM_DEFAULT</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="n">BCursor</span><span class="o">*</span><span class="w"> </span><span class="n">B_CURSOR_I_BEAM</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The second two constants are <a class="reference internal" href="#_CPPv47BCursor" title="BCursor"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCursor</span></code></a> objects and produce the
+same cursors the first two constants.</p>
+<p>See also: <a class="reference internal" href="application.html#_CPPv4N12BApplication9SetCursorEPKv" title="BApplication::SetCursor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BApplication::SetCursor()</span></code></a></p>
 </section>
 </section>
 

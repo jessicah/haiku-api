@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Add-on Protocol &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Background Images" href="background-images.html" />
+    <link rel="prev" title="Haiku Package File Format" href="../packageManagement/fileFormat.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Add-on Protocol</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../packageManagement/fileFormat.html">Haiku Package File Format</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="background-images.html">Background Images</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Add-on Protocol</a><ul>
+<li><a class="reference internal" href="#process-refs">process_refs()</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="add-on-protocol">
+<h1 id="CPPv415Add-on Protocol">Add-on Protocol<a class="headerlink" href="#add-on-protocol" title="Permalink to this heading">¶</a></h1>
+<p>The Tracker provides a convenient shortcut mechanism through the use of
+add-ons. A user can access a special add-ons menu by right clicking in the
+Tracker. The Tracker interacts with an add-on through the process_refs()
+function described below.</p>
+<p>Tracker add-ons should be placed in /boot/home/config/add-ons/Tracker. A
+shortcut key can be associated with the add-on by appending a dash followed
+by the shortcut key to the filename of the add-on.</p>
+<section id="process-refs">
+<h2>process_refs()<a class="headerlink" href="#process-refs" title="Permalink to this heading">¶</a></h2>
+<p>Declared in:  add-ons/tracker/TrackerAddOn.h</p>
+<p>The Tracker calls this function when the user invokes the add-on. The
+current directory is found in <span class="hparameter">dir_ref</span>.<span class="hparameter">msg</span> is a standard
+<a class="reference internal" href="../../constants.html#_CPPv415B_REFS_RECEIVED" title="B_REFS_RECEIVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REFS_RECEIVED</span></code></a> <span class="hclass">BMessage</span> with the
+<span class="hparameter">refs</span> array containing the <span class="htype">entry_ref</span>s of the files
+selected by the user. The third argument is currently unused.</p>
+<p>process_refs() runs in a separate thread within the Tracker’s team, so if
+your add-on crashes, the Tracker goes too.</p>
+<p>A simple Tracker Add-On follows. It simply takes the contents of the
+arguments to process_refs() and outputs them in a window.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Application.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;InterfaceKit.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;StorageKit.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;be/add-ons/tracker/TrackerAddon.h&gt;</span><span class="cp"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">process_refs</span><span class="p">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="n">dir_ref</span><span class="p">,</span><span class="w"> </span><span class="n">BMessage</span><span class="w"> </span><span class="o">*</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">BWindow</span><span class="w"> </span><span class="o">*</span><span class="n">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BWindow</span><span class="p">(</span><span class="n">BRect</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">),</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;Sample Tracker Add-on&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">B_TITLED_WINDOW</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">BTextView</span><span class="w"> </span><span class="o">*</span><span class="n">view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BTextView</span><span class="p">(</span><span class="n">BRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;view&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="n">BRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span><span class="w"> </span><span class="n">B_FOLLOW_ALL_SIDES</span><span class="p">,</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="w">       </span><span class="n">B_FULL_UPDATE_ON_RESIZE</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">BPath</span><span class="w"> </span><span class="n">path</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">BEntry</span><span class="w"> </span><span class="n">entry</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dir_ref</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">entry</span><span class="p">.</span><span class="n">GetPath</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">view</span><span class="o">-&gt;</span><span class="n">Insert</span><span class="p">(</span><span class="s">&quot;Current Directory: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">view</span><span class="o">-&gt;</span><span class="n">Insert</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">view</span><span class="o">-&gt;</span><span class="n">Insert</span><span class="p">(</span><span class="s">&quot;n&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">refs</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">entry_ref</span><span class="w"> </span><span class="n">file_ref</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">refs</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindRef</span><span class="p">(</span><span class="s">&quot;refs&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">refs</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">file_ref</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_NO_ERROR</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="n">refs</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">refs</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">              </span><span class="n">view</span><span class="o">-&gt;</span><span class="n">Insert</span><span class="p">(</span><span class="s">&quot;Selected files:n&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">entry</span><span class="p">.</span><span class="n">SetTo</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file_ref</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">entry</span><span class="p">.</span><span class="n">GetPath</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">view</span><span class="o">-&gt;</span><span class="n">Insert</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="n">view</span><span class="o">-&gt;</span><span class="n">Insert</span><span class="p">(</span><span class="s">&quot;n&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">refs</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">view</span><span class="o">-&gt;</span><span class="n">Insert</span><span class="p">(</span><span class="s">&quot;No files selected.n&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">view</span><span class="o">-&gt;</span><span class="n">MakeEditable</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">window</span><span class="o">-&gt;</span><span class="n">AddChild</span><span class="p">(</span><span class="n">view</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">window</span><span class="o">-&gt;</span><span class="n">Show</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">main</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">BApplication</span><span class="p">(</span><span class="s">&quot;application/x-sample-tracker-add-on&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">BAlert</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Sample Tracker Add-on&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;swell&quot;</span><span class="p">))</span><span class="o">-&gt;</span><span class="n">Go</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">be_app</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../packageManagement/fileFormat.html">Haiku Package File Format</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="background-images.html">Background Images</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

@@ -72,7 +72,10 @@
 <li><a class="reference internal" href="#_CPPv4NK17BMediaEventLooper8RunStateEv">RunState</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#constants">Constants</a><ul>
+<li><a class="reference internal" href="#run-state">run_state</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -85,40 +88,38 @@
       <div class="content" role="main">
         
   <section id="bmediaeventlooper">
-<h1>BMediaEventLooper<a class="headerlink" href="#bmediaeventlooper" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv417BMediaEventLooper">BMediaEventLooper<a class="headerlink" href="#bmediaeventlooper" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N17BMediaEventLooper17BMediaEventLooperEP6uint32">
 </section>
 <h3>
 BMediaEventLooper()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">explicit</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N17BMediaEventLooper17BMediaEventLooperEP6uint32" title="BMediaEventLooper::BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">BMediaEventLooper</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">apiVersion</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_BEOS_VERSION</span><span class="sig-paren">)</span></pre><p>You need to override this function to handle your node’s initialization
-needs. The <span class="hparameter">apiVersion</span> argument indicates the version of the BeOS API the
-object was written for; you should let the default value be
-used—this will cause your node to inherit the API version of the
-BeOS version you’re compiling under.</p>
+needs. The <span class="hparameter">apiVersion</span> argument indicates the version of the BeOS
+API the object was written for; you should let the default value be
+used—this will cause your node to inherit the API version of the BeOS
+version you’re compiling under.</p>
 <section id="_CPPv4N17BMediaEventLooperD0Ev">
 </section>
 <h3>
-~BMediaEventLooper()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">~BMediaEventLooper</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Calls
-<a class="reference internal" href="#_CPPv4N17BMediaEventLooper4QuitEv" title="BMediaEventLooper::Quit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Quit()</span></code></a>
-to stop the control thread and free allocated memory.</p>
+~BMediaEventLooper()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">~BMediaEventLooper</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Calls <a class="reference internal" href="#_CPPv4N17BMediaEventLooper4QuitEv" title="BMediaEventLooper::Quit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Quit()</span></code></a> to stop the control
+thread and free allocated memory.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N17BMediaEventLooper12CleanUpEventEPK17media_timed_event">
 </section>
 <h3>
-CleanUpEvent()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">CleanUpEvent</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_timed_event</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">event</span><span class="sig-paren">)</span></pre><p>Implement this function to clean up after custom events you’ve created
-and added to your queue. It’s called when a custom event is removed from
-the queue, to let you handle any special tidying-up that the event might
+CleanUpEvent()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">CleanUpEvent</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_timed_event</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">event</span><span class="sig-paren">)</span></pre><p>Implement this function to clean up after custom events you’ve created and
+added to your queue. It’s called when a custom event is removed from the
+queue, to let you handle any special tidying-up that the event might
 require.</p>
 <section id="_CPPv4N17BMediaEventLooper11ControlLoopEv">
 </section>
 <h3>
-ControlLoop()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">ControlLoop</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>This function waits for messages, pops events off the queue, and calls
-<a class="reference internal" href="#_CPPv4N17BMediaEventLooper13DispatchEventEPK17media_timed_event9bigtime_tb" title="BMediaEventLooper::DispatchEvent"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchEvent()</span></code></a>.
-It’s called automatically when the <span class="hclass">BMediaEventLooper</span> is
-<a class="reference internal" href="#_CPPv4N17BMediaEventLooper3RunEv" title="BMediaEventLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a>.</p>
+ControlLoop()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">ControlLoop</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>This function waits for messages, pops events off the queue, and calls
+<a class="reference internal" href="#_CPPv4N17BMediaEventLooper13DispatchEventEPK17media_timed_event9bigtime_tb" title="BMediaEventLooper::DispatchEvent"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchEvent()</span></code></a>. It’s called
+automatically when the <span class="hclass">BMediaEventLooper</span> is <a class="reference internal" href="#_CPPv4N17BMediaEventLooper3RunEv" title="BMediaEventLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a>.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
 <p>If you choose to reimplement this function, be very careful; it’s very
@@ -127,171 +128,154 @@ easy to cause Bad Things to happen.</p>
 <section id="_CPPv4N17BMediaEventLooper13ControlThreadEv">
 </section>
 <h3>
-ControlThread()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">thread_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">ControlThread</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the control thread’s
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">id()</span></code>.</p>
+ControlThread()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">thread_id</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">ControlThread</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the control thread’s <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread_id</span></code>.</p>
 <section id="_CPPv4N17BMediaEventLooper13DispatchEventEPK17media_timed_event9bigtime_tb">
 </section>
 <h3>
-DispatchEvent()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">DispatchEvent</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_timed_event</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">event</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">lateness</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">realTimeEvent</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>Calls
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">HandleEvent()</span></code>
-to let your code handle the specified event. If your
-code doesn’t handle it, this function may have a default handler to
-process it. In general, you won’t call this function.
-<span class="hclass">BMediaEventLooper</span> compensates your
-performance time by adding the event latency (see
-<a class="reference internal" href="#_CPPv4N17BMediaEventLooper15SetEventLatencyE9bigtime_t" title="BMediaEventLooper::SetEventLatency"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetEventLatency()</span></code></a>)
-and the scheduling latency (or, for
-real-time events, only the scheduling latency).
-It’s the control loop’s job to remove the event from the queue; this
+DispatchEvent()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">DispatchEvent</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_timed_event</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">event</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">lateness</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">realTimeEvent</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>Calls <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">HandleEvent()</span></code> to let
+your code handle the specified event. If your code doesn’t handle it, this
+function may have a default handler to process it. In general, you won’t
+call this function.</p>
+<p><span class="hclass">BMediaEventLooper</span> compensates your performance time by adding
+the event latency (see <a class="reference internal" href="#_CPPv4N17BMediaEventLooper15SetEventLatencyE9bigtime_t" title="BMediaEventLooper::SetEventLatency"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetEventLatency()</span></code></a>) and the scheduling latency (or, for
+real-time events, only the scheduling latency).</p>
+<p>It’s the control loop’s job to remove the event from the queue; this
 function doesn’t do that.</p>
 <section id="_CPPv4N17BMediaEventLooper10EventQueueEv">
 </section>
 <section id="_CPPv4N17BMediaEventLooper13RealTimeQueueEv">
 </section>
 <h3>
-EventQueue(), RealTimeQueue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BTimedEventQueue</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">EventQueue</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BTimedEventQueue</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">RealTimeQueue</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">EventQueue()</span> returns a
-pointer to the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimedEventQueue</span></code>
-used by the
-message handler. <span class="hmethod">RealTimeQueue()</span> returns a pointer to the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimedEventQueue</span></code>
-used to queue real-time events.</p>
+EventQueue(), RealTimeQueue()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="timed-event-queue.html#_CPPv416BTimedEventQueue" title="BTimedEventQueue"><span class="n">BTimedEventQueue</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">EventQueue</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="timed-event-queue.html#_CPPv416BTimedEventQueue" title="BTimedEventQueue"><span class="n">BTimedEventQueue</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">RealTimeQueue</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">EventQueue()</span> returns a pointer to the
+<a class="reference internal" href="timed-event-queue.html#_CPPv416BTimedEventQueue" title="BTimedEventQueue"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimedEventQueue</span></code></a> used by the message handler.
+<span class="hmethod">RealTimeQueue()</span> returns a pointer to the
+<a class="reference internal" href="timed-event-queue.html#_CPPv416BTimedEventQueue" title="BTimedEventQueue"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimedEventQueue</span></code></a> used to queue real-time events.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
 <p>Events in the real-time queue are handled according to their real time,
 while events in the normal event queue are handled based on their
 performance time. So the values of the time stamps on events in these two
-queues are handled differently; keep this in mind if you need to peek
-into the queues yourself.</p>
+queues are handled differently; keep this in mind if you need to peek into
+the queues yourself.</p>
 </div>
 <section id="_CPPv4N17BMediaEventLooper11ControlLoopEPK17media_timed_event9bigtime_tb">
 </section>
 <h3>
-ControlLoop()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">ControlLoop</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_timed_event</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">event</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">lateness</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">realTimeEvent</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>Implement this function to handle incoming media events. The <span class="hparameter">event</span>
-argument references a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">timed()</span></code>
-structure that describes the
-event. <span class="hparameter">lateness</span> indicates how late the
-event is, and <span class="hparameter">realTimeEvent</span> is
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the event needs to be handled in real time.
-The <span class="hclass">BMediaEventLooper</span> will call this function from the
-<a class="reference internal" href="#_CPPv4N17BMediaEventLooper13DispatchEventEPK17media_timed_event9bigtime_tb" title="BMediaEventLooper::DispatchEvent"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchEvent()</span></code></a>
-function. It’s the control loop’s job to remove the event from the queue.</p>
+ControlLoop()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">ControlLoop</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_timed_event</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">event</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">lateness</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">realTimeEvent</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>Implement this function to handle incoming media events. The
+<span class="hparameter">event</span> argument references a <span class="xref std std-ref">media_timed_event</span> structure
+that describes the event. <span class="hparameter">lateness</span> indicates how late the event
+is, and <span class="hparameter">realTimeEvent</span> is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the event needs to
+be handled in real time.</p>
+<p>The <span class="hclass">BMediaEventLooper</span> will call this function from the
+<a class="reference internal" href="#_CPPv4N17BMediaEventLooper13DispatchEventEPK17media_timed_event9bigtime_tb" title="BMediaEventLooper::DispatchEvent"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchEvent()</span></code></a> function.
+It’s the control loop’s job to remove the event from the queue.</p>
 <section id="_CPPv4N17BMediaEventLooper14NodeRegisteredEv">
 </section>
 <h3>
-NodeRegistered()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">NodeRegistered</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The Media Server calls this hook function after the node has been
-registered. This is derived from
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaNode</span></code>;
-<span class="hclass">BMediaEventLooper</span> implements it to call
-<a class="reference internal" href="#_CPPv4N17BMediaEventLooper3RunEv" title="BMediaEventLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a>
-automatically when the node is registered; if you implement
-<span class="hmethod">NodeRegistered()</span> you should call through to
-<a class="reference internal" href="media-node.html#_CPPv4N10BMediaNode14NodeRegisteredEv" title="BMediaNode::NodeRegistered"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaNode::NodeRegistered()</span></code></a>
-after you’ve done your custom operations.</p>
+NodeRegistered()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">NodeRegistered</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The Media Server calls this hook function after the node has been
+registered. This is derived from <a class="reference internal" href="media-node.html#_CPPv410BMediaNode" title="BMediaNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaNode</span></code></a>;
+<span class="hclass">BMediaEventLooper</span> implements it to call <a class="reference internal" href="#_CPPv4N17BMediaEventLooper3RunEv" title="BMediaEventLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a> automatically when the node is registered; if you
+implement <span class="hmethod">NodeRegistered()</span> you should call through to
+<a class="reference internal" href="media-node.html#_CPPv4N10BMediaNode14NodeRegisteredEv" title="BMediaNode::NodeRegistered"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaNode::NodeRegistered()</span></code></a> after you’ve done your custom
+operations.</p>
 <section id="_CPPv4N17BMediaEventLooper4QuitEv">
 </section>
 <h3>
-Quit()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">Quit</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Closes the node’s control port and closes the control thread. Blocks
-until the control thread is gone.</p>
+Quit()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">Quit</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Closes the node’s control port and closes the control thread. Blocks until
+the control thread is gone.</p>
 <section id="_CPPv4N17BMediaEventLooper3RunEv">
 </section>
 <h3>
-Run()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">Run</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Spawns and runs the control thread; this is called automatically by the
+Run()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">Run</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Spawns and runs the control thread; this is called automatically by the
 default <a class="reference internal" href="#_CPPv4N17BMediaEventLooper14NodeRegisteredEv" title="BMediaEventLooper::NodeRegistered"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NodeRegistered()</span></code></a>
-implementation. If you override
-<a class="reference internal" href="#_CPPv4N17BMediaEventLooper14NodeRegisteredEv" title="BMediaEventLooper::NodeRegistered"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NodeRegistered()</span></code></a>,
-be sure you call through to the default implementation, or call
-<span class="hmethod">Run()</span>.</p>
+implementation. If you override <a class="reference internal" href="#_CPPv4N17BMediaEventLooper14NodeRegisteredEv" title="BMediaEventLooper::NodeRegistered"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NodeRegistered()</span></code></a>, be sure you call through to the
+default implementation, or call <span class="hmethod">Run()</span>.</p>
 <section id="_CPPv4NK17BMediaEventLooper17SchedulingLatencyEv">
 </section>
 <h3>
-SchedulingLatency()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">SchedulingLatency</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the scheduling latnecy, in microseconds, of the node.</p>
+SchedulingLatency()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">SchedulingLatency</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the scheduling latnecy, in microseconds, of the node.</p>
 <section id="_CPPv4N17BMediaEventLooper17SetBufferDurationE9bigtime_t">
 </section>
 <section id="_CPPv4NK17BMediaEventLooper14BufferDurationEv">
 </section>
 <h3>
-SetBufferDuration(), BufferDuration()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">SetBufferDuration</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">duration</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">BufferDuration</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetBufferDuration()</span> sets the duration
-of the node’s buffers. The duration is clamped to 0 if it’s less than 0.
-<span class="hmethod">BufferDuration()</span> returns the duration
-of the nodes’ buffers.</p>
+SetBufferDuration(), BufferDuration()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">SetBufferDuration</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">duration</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">BufferDuration</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetBufferDuration()</span> sets the duration of the node’s buffers.
+The duration is clamped to 0 if it’s less than 0.</p>
+<p><span class="hmethod">BufferDuration()</span> returns the duration of the nodes’ buffers.</p>
 <section id="_CPPv4N17BMediaEventLooper15SetEventLatencyE9bigtime_t">
 </section>
 <section id="_CPPv4NK17BMediaEventLooper12EventLatencyEv">
 </section>
 <h3>
-SetEventLatency(), EventLatency()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">SetEventLatency</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">latency</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">EventLatency</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetEventLatency()</span> sets the event latency. The event latency is the
-upstream and downstream algorithmic latency of your node—but should
-not include scheduling latency. This latency is taken into account by the
-<span class="hclass">BMediaEventLooper</span> when deciding when to pop events off the queue for you
-to process.
-<span class="hmethod">EventLatency()</span> returns the event latency.</p>
+SetEventLatency(), EventLatency()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">SetEventLatency</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">latency</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">EventLatency</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetEventLatency()</span> sets the event latency. The event latency is
+the upstream and downstream algorithmic latency of your node—but should not
+include scheduling latency. This latency is taken into account by the
+<span class="hclass">BMediaEventLooper</span> when deciding when to pop events off the queue
+for you to process.</p>
+<p><span class="hmethod">EventLatency()</span> returns the event latency.</p>
 <section id="_CPPv4N17BMediaEventLooper14SetOfflineTimeE9bigtime_t">
 </section>
 <section id="_CPPv4N17BMediaEventLooper11OfflineTimeEv">
 </section>
 <h3>
-SetOfflineTime(), OfflineTime()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">SetOfflineTime</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">offlineTime</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">OfflineTime</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetOfflineTime()</span> sets the time that
-<span class="hmethod">OfflineTime()</span> will return.
-Augment <span class="hmethod">OfflineTime()</span> to compute the node’s current time; it’s called by
-the Media Kit when it’s in offline mode. Update any appropriate internal
-information as well, then call through to the <span class="hclass">BMediaEventLooper</span>
-implementation.</p>
+SetOfflineTime(), OfflineTime()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">SetOfflineTime</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">offlineTime</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">OfflineTime</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetOfflineTime()</span> sets the time that <span class="hmethod">OfflineTime()</span>
+will return.</p>
+<p>Augment <span class="hmethod">OfflineTime()</span> to compute the node’s current time; it’s
+called by the Media Kit when it’s in offline mode. Update any appropriate
+internal information as well, then call through to the
+<span class="hclass">BMediaEventLooper</span> implementation.</p>
 <section id="_CPPv4N17BMediaEventLooper11SetPriorityE5int32">
 </section>
 <section id="_CPPv4NK17BMediaEventLooper8PriorityEv">
 </section>
 <h3>
-SetPriority(), Priority()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">SetPriority</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">priority</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">Priority</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetPriority()</span> sets the control thread’s priority. Values less than 0 are
-clamped to 0, and values greater than 120 are clamped to 120.
-<span class="hmethod">Priority()</span> returns the control thread’s current priority.</p>
+SetPriority(), Priority()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">SetPriority</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">priority</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">Priority</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetPriority()</span> sets the control thread’s priority. Values less
+than 0 are clamped to 0, and values greater than 120 are clamped to 120.</p>
+<p><span class="hmethod">Priority()</span> returns the control thread’s current priority.</p>
 <section id="_CPPv4N17BMediaEventLooper11SetRunStateE9run_state">
 </section>
 <section id="_CPPv4NK17BMediaEventLooper8RunStateEv">
 </section>
 <h3>
-SetRunState(), RunState()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">SetRunState</span><span class="sig-paren">(</span><span class="n">run_state</span><span class="w"> </span><span class="n sig-param">state</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">run_state</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaEventLooper</span><span class="p">::</span></span><span class="n">RunState</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetRunState()</span> sets the node’s current run state.
-<span class="hmethod">RunState()</span> returns the current run state.</p>
+SetRunState(), RunState()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">SetRunState</span><span class="sig-paren">(</span><span class="n">run_state</span><span class="w"> </span><span class="n sig-param">state</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">run_state</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BMediaEventLooper" title="BMediaEventLooper"><span class="n">BMediaEventLooper</span></a><span class="p">::</span></span><span class="n">RunState</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetRunState()</span> sets the node’s current run state.</p>
+<p><span class="hmethod">RunState()</span> returns the current run state.</p>
 </section>
 <section id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>Declared in: media/MediaEventLooper.h</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<section id="run-state">
+<h3>run_state<a class="headerlink" href="#run-state" title="Permalink to this heading">¶</a></h3>
+<p>Declared in: media/MediaEventLooper.h</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_IN_DISTRESS</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_IN_DISTRESS</span></code>.</p></td>
 <td><p>The node is experiencing problems.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_UNREGISTERED</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_UNREGISTERED</span></code>.</p></td>
 <td><p>The node hasn’t been registered with the Media roster yet.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STOPPED</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STOPPED</span></code>.</p></td>
 <td><p>The node isn’t running.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STARTED</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STARTED</span></code>.</p></td>
 <td><p>The node is running.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_QUITTING</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_QUITTING</span></code>.</p></td>
 <td><p>The node’s in the process of shutting down.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TERMINATED</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TERMINATED</span></code>.</p></td>
 <td><p>The node has been terminated.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_USER_RUN_STATES</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_USER_RUN_STATES</span></code>.</p></td>
 <td><p>Base for user-defined run states.</p></td>
 </tr>
 </tbody>
 </table>
+</section>
 </section>
 </section>
 

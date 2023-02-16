@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>The area_malloc Module &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Constants And Defined Types" href="constants-defined-types.html" />
+    <link rel="prev" title="BDeskbar" href="../deskbar/deskbar.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>The area_malloc Module</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../deskbar/deskbar.html">BDeskbar</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="constants-defined-types.html">Constants And Defined Types</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">The area_malloc Module</a><ul>
+<li><a class="reference internal" href="#module-functions">Module Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv411create_pool6uint326size_t6uint326uint32">create_pool</a></li>
+<li><a class="reference internal" href="#_CPPv411delete_poolPKv">delete_pool</a></li>
+<li><a class="reference internal" href="#_CPPv46mallocPKv6size_t">malloc</a></li>
+<li><a class="reference internal" href="#_CPPv46callocPKv6size_t6size_t">calloc</a></li>
+<li><a class="reference internal" href="#_CPPv47reallocPKvPv6size_t">realloc</a></li>
+<li><a class="reference internal" href="#_CPPv44freePKvPv">free</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constants">Constants</a><ul>
+<li><a class="reference internal" href="#_CPPv425B_AREA_MALLOC_MODULE_NAME">B_AREA_MALLOC_MODULE_NAME</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="the-area-malloc-module">
+<h1 id="CPPv422The area_malloc Module">The area_malloc Module<a class="headerlink" href="#the-area-malloc-module" title="Permalink to this heading">¶</a></h1>
+<p>Declared in: drivers/area_malloc.h</p>
+<p>The area_malloc module provides a means for your driver to allocate memory
+in areas instead of on the heap. It provides <span class="xref std std-ref">malloc()</span>,
+<span class="xref std std-ref">calloc()</span>, <span class="xref std std-ref">realloc()</span>, and <span class="xref std std-ref">free()</span> functions that work
+just like their POSIX counterparts, except they require a pool argument as
+their first input.</p>
+<div class="warning admonition">
+<p class="admonition-title" id="CPPv47Warning">Warning</p>
+<p>These functions aren’t safe to call from interrupt handlers; they may
+block on semaphores.</p>
+</div>
+<p>The area_malloc functions are thread-safe in relation to one another, but
+not in relation to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">delete_pool()</span></code>. Be sure you
+don’t call <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">delete_pool()</span></code> on the pool you’re
+using until you know none of the other functions might be called.
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">create_pool()</span></code> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">delete_pool()</span></code> are safe in relation to each other.</p>
+<p>When the last user of the module puts it away, any remaining pools are
+automatically deleted.</p>
+<section id="module-functions">
+<h2>Module Functions<a class="headerlink" href="#module-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv411create_pool6uint326size_t6uint326uint32">
+</section>
+<section id="_CPPv411delete_poolPKv">
+</section>
+<h3>
+create_pool(), delete_pool()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n">create_pool</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">addressSpec</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">lockSpec</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">protection</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">delete_pool</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">poolID</span><span class="sig-paren">)</span></pre><p>create_pool() creates a new pool of memory from which to allocate. The
+parameters are the same as those used by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">create_area()</span></code>, so you have complete control over the area’s
+characteristics (except for its name). Returns an opaque pool idenfityer,
+or <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the creation failed. The ability to share resources
+allocated from the pool is determined by the permissions and protections
+used to create the area.</p>
+<p>delete_pool() deletes the pool specified by the opaque <span class="hparameter">poolID</span>
+given. Any pointers returned by the other functions in the module are
+immediately invalid. Returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> if the pool was
+deleted, otherwise <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p>
+<section id="_CPPv46mallocPKv6size_t">
+</section>
+<section id="_CPPv46callocPKv6size_t6size_t">
+</section>
+<section id="_CPPv47reallocPKvPv6size_t">
+</section>
+<h3>
+malloc(), calloc(), realloc()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n">malloc</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">poolID</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n">calloc</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">poolID</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">numMembers</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n">realloc</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">poolID</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ptr</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p>malloc() allocates a block of <span class="hparameter">size</span> bytes and returns a pointer
+to it.</p>
+<p>calloc() allocates a block that can contain <span class="hparameter">numMembers</span> items of
+the specified <span class="hparameter">size</span> and returns a poiner to it.</p>
+<p>realloc() resizes the memory block pointed to by <span class="hparameter">ptr</span> to the
+indicated <span class="hparameter">size</span>. Resizing a block can require that the memory be
+relocated, so this function returns the new pointer.</p>
+<p>Each of these operations functions in the pool specified by
+<span class="hparameter">poolID</span>.</p>
+<p>If there’s not enough memory to allocate the requested block, these
+functions return <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<section id="_CPPv44freePKvPv">
+</section>
+<h3>
+free()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n">free</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">poolID</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ptr</span><span class="sig-paren">)</span></pre><p>Releases the memory block pointed to by <span class="hparameter">ptr</span> from the pool
+specified by <span class="hparameter">poolID</span>.</p>
+</section>
+<section id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv425B_AREA_MALLOC_MODULE_NAME">
+</section>
+<h3>
+B_AREA_MALLOC_MODULE_NAME</h3></pre><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define B_AREA_MALLOC_MODULE_NAME &quot;generic/area_malloc/v1&quot;</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="#_CPPv425B_AREA_MALLOC_MODULE_NAME" title="B_AREA_MALLOC_MODULE_NAME"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_AREA_MALLOC_MODULE_NAME</span></code></a> constant identifies the
+area_malloc module; use this constant to open the module.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../deskbar/deskbar.html">BDeskbar</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="constants-defined-types.html">Constants And Defined Types</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

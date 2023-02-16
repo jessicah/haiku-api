@@ -78,7 +78,10 @@
 <li><a class="reference internal" href="#_CPPv4N11BMediaTrack11WriteFramesEPv5int325int32">WriteFrames</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#constants">Constants</a><ul>
+<li><a class="reference internal" href="#media-seek-type">media_seek_type</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -91,17 +94,15 @@
       <div class="content" role="main">
         
   <section id="bmediatrack">
-<h1>BMediaTrack<a class="headerlink" href="#bmediatrack" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv411BMediaTrack">BMediaTrack<a class="headerlink" href="#bmediatrack" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N11BMediaTrack11BMediaTrackEv">
 </section>
 <h3>
-BMediaTrack()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BMediaTrack11BMediaTrackEv" title="BMediaTrack::BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">BMediaTrack</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Destructor. You shouldn’t delete a <span class="hclass">BMediaTrack</span> directly; instead, use
-<a class="reference internal" href="media-file.html#_CPPv4N10BMediaFile12ReleaseTrackEP11BMediaTrack" title="BMediaFile::ReleaseTrack"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaFile::ReleaseTrack()</span></code></a> or
-<a class="reference internal" href="media-file.html#_CPPv4N10BMediaFile16ReleaseAllTracksEv" title="BMediaFile::ReleaseAllTracks"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaFile::ReleaseAllTracks()</span></code></a>,
-or let
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaFile</span></code>
+BMediaTrack()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BMediaTrack11BMediaTrackEv" title="BMediaTrack::BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">BMediaTrack</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Destructor. You shouldn’t delete a <span class="hclass">BMediaTrack</span> directly;
+instead, use <a class="reference internal" href="media-file.html#_CPPv4N10BMediaFile12ReleaseTrackEP11BMediaTrack" title="BMediaFile::ReleaseTrack"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaFile::ReleaseTrack()</span></code></a> or
+<a class="reference internal" href="media-file.html#_CPPv4N10BMediaFile16ReleaseAllTracksEv" title="BMediaFile::ReleaseAllTracks"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaFile::ReleaseAllTracks()</span></code></a>, or let <a class="reference internal" href="media-file.html#_CPPv410BMediaFile" title="BMediaFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaFile</span></code></a>
 destroy the track objects when it’s deleted.</p>
 </section>
 <section id="member-functions">
@@ -109,30 +110,27 @@ destroy the track objects when it’s deleted.</p>
 <section id="_CPPv4NK11BMediaTrack12AddCopyrightEPKc">
 </section>
 <h3>
-AddCopyright()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">AddCopyright</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Sets the track’s copyright notice to the text specified by data,
-replacing the existing copyright notice if one exists.</p>
+AddCopyright()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">AddCopyright</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Sets the track’s copyright notice to the text specified by data, replacing
+the existing copyright notice if one exists.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>The <span class="hclass">BMediaTrack</span> class doesn’t automatically perform any locking to
-prevent multiple writes to the track from occurring at the same time. If
-you have multiple threads writing into the same <span class="hclass">BMediaTrack</span>, you must use
-a locking mechanism (such as a semaphore) to keep writes from overlapping.</p>
+<p>The <span class="hclass">BMediaTrack</span> class doesn’t automatically perform any locking
+to prevent multiple writes to the track from occurring at the same time. If
+you have multiple threads writing into the same <span class="hclass">BMediaTrack</span>, you
+must use a locking mechanism (such as a semaphore) to keep writes from
+overlapping.</p>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The copyright was set.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">EPERM</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">EPERM</span></code></p></td>
 <td><p>The file isn’t opened for writing.</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors.</p></td>
@@ -143,29 +141,26 @@ a locking mechanism (such as a semaphore) to keep writes from overlapping.</p>
 <section id="_CPPv4NK11BMediaTrack12AddTrackInfoE6uint32PKv6size_t6uint32">
 </section>
 <h3>
-AddTrackInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">AddTrackInfo</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">code</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Adds an informational record of the specified type to the track. The
-record is specified by the <span class="hparameter">data</span> pointer,
-and is <span class="hparameter">size</span> bytes long. flags
-contains flags that modify the operation (none are defined at this time).</p>
+AddTrackInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">AddTrackInfo</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">code</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Adds an informational record of the specified type to the track. The
+record is specified by the <span class="hparameter">data</span> pointer, and is <span class="hparameter">size</span>
+bytes long. flags contains flags that modify the operation (none are
+defined at this time).</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>The <span class="hclass">BMediaTrack</span> class doesn’t automatically perform any locking to
-prevent multiple writes to the track from occurring at the same time. If
-you have multiple threads writing into the same <span class="hclass">BMediaTrack</span>, you must use
-a locking mechanism (such as a semaphore) to keep writes from overlapping.</p>
+<p>The <span class="hclass">BMediaTrack</span> class doesn’t automatically perform any locking
+to prevent multiple writes to the track from occurring at the same time. If
+you have multiple threads writing into the same <span class="hclass">BMediaTrack</span>, you
+must use a locking mechanism (such as a semaphore) to keep writes from
+overlapping.</p>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The format was successfully returned.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Other errors.</p></td>
@@ -176,46 +171,40 @@ a locking mechanism (such as a semaphore) to keep writes from overlapping.</p>
 <section id="_CPPv4NK11BMediaTrack11CountFramesEv">
 </section>
 <h3>
-CountFrames()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int64</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">CountFrames</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the total number of frames in the track.</p>
+CountFrames()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int64</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">CountFrames</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the total number of frames in the track.</p>
 <section id="_CPPv4NK11BMediaTrack12CurrentFrameEv">
 </section>
 <h3>
-CurrentFrame()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int64</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">CurrentFrame</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the current frame in the track (the frame that will be read next
+CurrentFrame()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int64</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">CurrentFrame</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the current frame in the track (the frame that will be read next
 by <a class="reference internal" href="#_CPPv4N11BMediaTrack10ReadFramesEPvP5int64P12media_header" title="BMediaTrack::ReadFrames"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadFrames()</span></code></a>.</p>
 <section id="_CPPv4NK11BMediaTrack11CurrentTimeEv">
 </section>
 <h3>
-CurrentTime()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">CurrentTime</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the current position within the track, expressed in microseconds
+CurrentTime()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">CurrentTime</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the current position within the track, expressed in microseconds
 since the start of the track.</p>
 <section id="_CPPv4NK11BMediaTrack13DecodedFormatEP12media_format">
 </section>
 <h3>
-DecodedFormat()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">DecodedFormat</span><span class="sig-paren">(</span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioFormat</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Negotiates the format that the codec will output when decoding the
-track’s data. Pass in <span class="hparameter">ioFormat</span> the format that you want (with wildcards
-as applicable). The codec will find and return in <span class="hparameter">ioFormat</span> its best
-matching format; this format will then be used when outputting decoded
-data via
-<a class="reference internal" href="#_CPPv4N11BMediaTrack10ReadFramesEPvP5int64P12media_header" title="BMediaTrack::ReadFrames"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadFrames()</span></code></a>.
-The format is typically of a
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_RAW_AUDIO</span></code>
-or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_RAW_VIDEO</span></code>
-flavor.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+DecodedFormat()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">DecodedFormat</span><span class="sig-paren">(</span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioFormat</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Negotiates the format that the codec will output when decoding the track’s
+data. Pass in <span class="hparameter">ioFormat</span> the format that you want (with wildcards
+as applicable). The codec will find and return in <span class="hparameter">ioFormat</span> its
+best matching format; this format will then be used when outputting decoded
+data via <a class="reference internal" href="#_CPPv4N11BMediaTrack10ReadFramesEPvP5int64P12media_header" title="BMediaTrack::ReadFrames"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadFrames()</span></code></a>.</p>
+<p>The format is typically of a <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_RAW_AUDIO</span></code> or
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_RAW_VIDEO</span></code> flavor.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The format was successfully negotiated and returned.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
-<td><p>The <span class="hclass">BMediaTrack</span> wasn’t properly initialized, or there’s no codec for the track’s data.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
+<td><p>The <span class="hclass">BMediaTrack</span> wasn’t properly initialized, or there’s no codec
+for the track’s data.</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors.</p></td>
 <td><p>The error returned depends on the codec interpreting the data.</p></td>
@@ -225,25 +214,20 @@ flavor.</p>
 <section id="_CPPv4NK11BMediaTrack8DurationEv">
 </section>
 <h3>
-Duration()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">Duration</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the total duration of the track, in microseconds.</p>
+Duration()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">Duration</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the total duration of the track, in microseconds.</p>
 <section id="_CPPv4NK11BMediaTrack13EncodedFormatEP12media_format">
 </section>
 <h3>
-EncodedFormat()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">EncodedFormat</span><span class="sig-paren">(</span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFormat</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the “native” encoded format of the track’s data. This is the
-format of the data returned by
-<a class="reference internal" href="#_CPPv4N11BMediaTrack9ReadChunkEPPcP5int32P12media_header" title="BMediaTrack::ReadChunk"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadChunk()</span></code></a>.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+EncodedFormat()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">EncodedFormat</span><span class="sig-paren">(</span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFormat</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the “native” encoded format of the track’s data. This is the
+format of the data returned by <a class="reference internal" href="#_CPPv4N11BMediaTrack9ReadChunkEPPcP5int32P12media_header" title="BMediaTrack::ReadChunk"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadChunk()</span></code></a>.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The format was successfully returned.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Other errors.</p></td>
@@ -256,38 +240,30 @@ format of the data returned by
 <section id="_CPPv4NK11BMediaTrack20FindKeyFrameForFrameEP5int645int32">
 </section>
 <h3>
-FindKeyFrameForTime(), FindKeyFrameForFrame()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">FindKeyFrameForTime</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inOutTime</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">FindKeyFrameForFrame</span><span class="sig-paren">(</span><span class="n">int64</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inOutFrame</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">FindKeyFrameForTime()</span> accepts in
-<span class="hparameter">inOutTime</span> a time, and returns in
-<span class="hparameter">inOutTime</span> the time at which the closest key
-frame to that time begins. Likewise,
-<span class="hmethod">FindKeyFrameForFrame()</span> returns the closest key
-frame number to the specified frame.
-The <span class="hparameter">flags</span> argument lets you indicate
-whether to seek forward or backward for the key frame.
-If you want to find the nearest key frame before the indicated
-frame or time, specify
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MEDIA()</span></code>
-in flags. If you want to find the nearest key frame after the indicated frame or time,
-specify
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MEDIA()</span></code>.</p>
+FindKeyFrameForTime(), FindKeyFrameForFrame()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">FindKeyFrameForTime</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inOutTime</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">FindKeyFrameForFrame</span><span class="sig-paren">(</span><span class="n">int64</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inOutFrame</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">FindKeyFrameForTime()</span> accepts in <span class="hparameter">inOutTime</span> a time,
+and returns in <span class="hparameter">inOutTime</span> the time at which the closest key frame
+to that time begins. Likewise, <span class="hmethod">FindKeyFrameForFrame()</span> returns
+the closest key frame number to the specified frame.</p>
+<p>The <span class="hparameter">flags</span> argument lets you indicate whether to seek forward or
+backward for the key frame.</p>
+<p>If you want to find the nearest key frame before the indicated frame or
+time, specify <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_SEEK_CLOSEST_BACKWARD</span></code> in flags. If
+you want to find the nearest key frame after the indicated frame or time,
+specify <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_SEEK_CLOSEST_FORWARD</span></code>.</p>
 <section id="_CPPv4N11BMediaTrack5FlushEv">
 </section>
 <h3>
-Flush()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">Flush</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Flushes all buffered encoded data to disk; you should call this function
+Flush()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">Flush</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Flushes all buffered encoded data to disk; you should call this function
 after you’ve finished writing the last frame to the track. This ensures
 that everything’s flushed at the right offset into the file.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The buffers were flushed.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Other errors.</p></td>
@@ -298,23 +274,19 @@ that everything’s flushed at the right offset into the file.</p>
 <section id="_CPPv4NK11BMediaTrack12GetCodecInfoEP16media_codec_info">
 </section>
 <h3>
-GetCodecInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">GetCodecInfo</span><span class="sig-paren">(</span><span class="n">media_codec_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">codecInfo</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns information about the codec being used to read or write the
+GetCodecInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">GetCodecInfo</span><span class="sig-paren">(</span><span class="n">media_codec_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">codecInfo</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns information about the codec being used to read or write the
 track’s data.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The codec info was returned.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_TYPE</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_TYPE</span></code></p></td>
 <td><p>There’s no valid codec in use by the track.</p></td>
 </tr>
 </tbody>
@@ -324,39 +296,32 @@ track’s data.</p>
 <section id="_CPPv4N11BMediaTrack19SetEncodeParametersEP17encode_parameters">
 </section>
 <h3>
-GetEncodeParameters(), SetEncodeParameters()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">GetEncodeParameters</span><span class="sig-paren">(</span><span class="n">encode_parameters</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">parameters</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">SetEncodeParameters</span><span class="sig-paren">(</span><span class="n">encode_parameters</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">parameters</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetEncodeParameters()</span> returns the
-encode_parameters
-being used when encoding data on the track.
-<span class="hmethod">SetEncodeParameters()</span> changes the
-encode_parameters
+GetEncodeParameters(), SetEncodeParameters()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">GetEncodeParameters</span><span class="sig-paren">(</span><span class="n">encode_parameters</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">parameters</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">SetEncodeParameters</span><span class="sig-paren">(</span><span class="n">encode_parameters</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">parameters</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetEncodeParameters()</span> returns the <span class="htype">encode_parameters</span>
+being used when encoding data on the track.</p>
+<p><span class="hmethod">SetEncodeParameters()</span> changes the <span class="htype">encode_parameters</span>
 being used while encoding data.</p>
 <section id="_CPPv4N11BMediaTrack16GetParameterViewEv">
 </section>
 <h3>
-GetParameterView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">GetParameterView</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-containing controls for adjusting the codec’s and track’s
-parameters. Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if there isn’t a view available.</p>
+GetParameterView()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">GetParameterView</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns a <a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> containing controls for adjusting the codec’s
+and track’s parameters. Returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if there isn’t a view
+available.</p>
 <section id="_CPPv4NK11BMediaTrack9InitCheckEv">
 </section>
 <h3>
-InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a status code indicating whether or not the track was
-successfully and completely instantiated.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a status code indicating whether or not the track was successfully
+and completely instantiated.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The track was constructed properly.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
 <td><p>An error occurred setting up the track.</p></td>
 </tr>
 </tbody>
@@ -364,29 +329,25 @@ successfully and completely instantiated.</p>
 <section id="_CPPv4N11BMediaTrack9ReadChunkEPPcP5int32P12media_header">
 </section>
 <h3>
-ReadChunk()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">ReadChunk</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">outBuffer</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioSize</span>, <span class="n">media_header</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">header</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Returns in <span class="hparameter">outBuffer</span> a pointer
-to the next <span class="hparameter">ioSize</span> bytes of the media
-track; the actual number of bytes returned is returned in <span class="hparameter">ioSize</span>; this
-may be different if the end of the track is reached. The header is set to
-describe the returned buffer.
-The data returned by this function isn’t decoded. Typically you’ll only
+ReadChunk()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">ReadChunk</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">outBuffer</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioSize</span>, <span class="n">media_header</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">header</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Returns in <span class="hparameter">outBuffer</span> a pointer to the next <span class="hparameter">ioSize</span>
+bytes of the media track; the actual number of bytes returned is returned
+in <span class="hparameter">ioSize</span>; this may be different if the end of the track is
+reached. The header is set to describe the returned buffer.</p>
+<p>The data returned by this function isn’t decoded. Typically you’ll only
 use this function if there’s no codec available to decode the media data.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The format was successfully negotiated and returned.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
-<td><p>The <span class="hclass">BMediaTrack</span> wasn’t properly initialized, or there’s no codec for the track’s data.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
+<td><p>The <span class="hclass">BMediaTrack</span> wasn’t properly initialized, or there’s no codec
+for the track’s data.</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors.</p></td>
 <td><p>The error returned depends on the codec interpreting the data.</p></td>
@@ -396,38 +357,33 @@ use this function if there’s no codec available to decode the media data.</p>
 <section id="_CPPv4N11BMediaTrack10ReadFramesEPvP5int64P12media_header">
 </section>
 <h3>
-ReadFrames()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">ReadFrames</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outBuffer</span>, <span class="n">int64</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFrameCount</span>, <span class="n">media_header</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outHeader</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">ReadFrames</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outBuffer</span>, <span class="n">int64</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFrameCount</span>, <span class="n">media_header</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outHeader</span>, <span class="n">media_decode_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><p>Fills the buffer pointed to by <span class="hparameter">outBuffer</span> with the next frames or samples
-from the track, starting at the current position. For video tracks, the
-next frame of video is decoded and stored into the output buffer. For
+ReadFrames()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">ReadFrames</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outBuffer</span>, <span class="n">int64</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFrameCount</span>, <span class="n">media_header</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outHeader</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">ReadFrames</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outBuffer</span>, <span class="n">int64</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFrameCount</span>, <span class="n">media_header</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outHeader</span>, <span class="n">media_decode_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><p>Fills the buffer pointed to by <span class="hparameter">outBuffer</span> with the next frames or
+samples from the track, starting at the current position. For video tracks,
+the next frame of video is decoded and stored into the output buffer. For
 audio tracks, the buffer is filled with the number of frames negotiated
-using
-<a class="reference internal" href="#_CPPv4NK11BMediaTrack13DecodedFormatEP12media_format" title="BMediaTrack::DecodedFormat"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DecodedFormat()</span></code></a>.
-If the end of the track is reached before the
-buffer is filled, a partial buffer will be returned.
-On return, <span class="hparameter">outFrameCount</span> indicates the number of frames returned, and
-<span class="hparameter">outHeader</span>, if you specified a non-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> value, contains the header of the
-buffer containing the frame or frames. You can obtain useful information
-(such as the media start time for the buffer) from the header.
-The second form of this function lets you provide a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">decode()</span></code>
-structure to provide additional information to the decoder, such as how
-much time it’s allowed to use to decode the data and format- and
-codec-specific information.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+using <a class="reference internal" href="#_CPPv4NK11BMediaTrack13DecodedFormatEP12media_format" title="BMediaTrack::DecodedFormat"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DecodedFormat()</span></code></a>. If the end
+of the track is reached before the buffer is filled, a partial buffer will
+be returned.</p>
+<p>On return, <span class="hparameter">outFrameCount</span> indicates the number of frames
+returned, and <span class="hparameter">outHeader</span>, if you specified a non-<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>
+value, contains the header of the buffer containing the frame or frames.
+You can obtain useful information (such as the media start time for the
+buffer) from the header.</p>
+<p>The second form of this function lets you provide a
+<span class="xref std std-ref">media_decode_info</span> structure to provide additional information to the
+decoder, such as how much time it’s allowed to use to decode the data and
+format- and codec-specific information.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The frames have been returned.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">EPERM</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">EPERM</span></code></p></td>
 <td><p>The file wasn’t opened for reading.</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors.</p></td>
@@ -438,40 +394,33 @@ codec-specific information.</p>
 <section id="_CPPv4N11BMediaTrack13ReplaceFramesEPvP5int64P12media_header">
 </section>
 <h3>
-ReplaceFrames()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">ReplaceFrames</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inBuffer</span>, <span class="n">int64</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioFrameCount</span>, <span class="n">media_header</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">header</span><span class="sig-paren">)</span></pre><p>Replaces the number of frames specified in <span class="hparameter">ioFrameCount</span> in the track.
-<span class="hparameter">inBuffer</span> points to the source buffer for the new frames.</p>
+ReplaceFrames()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">ReplaceFrames</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inBuffer</span>, <span class="n">int64</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioFrameCount</span>, <span class="n">media_header</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">header</span><span class="sig-paren">)</span></pre><p>Replaces the number of frames specified in <span class="hparameter">ioFrameCount</span> in the
+track. <span class="hparameter">inBuffer</span> points to the source buffer for the new frames.</p>
 <section id="_CPPv4N11BMediaTrack11SeekToFrameEP5int645int32">
 </section>
 <section id="_CPPv4N11BMediaTrack10SeekToTimeEP9bigtime_t5int32">
 </section>
 <h3>
-SeekToFrame(), SeekToTime()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">SeekToFrame</span><span class="sig-paren">(</span><span class="n">int64</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioFrame</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">SeekToTime</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioTime</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>Seeks to the specified position in the track.
-<span class="hmethod">SeekToFrame()</span> accepts a destination position
-as a frame number, and <span class="hmethod">SeekToTime()</span> accepts a
-destination position as time in microseconds. They each return (in
-<span class="hparameter">ioFrame</span> or in <span class="hparameter">ioTime</span>)
-the position to which they actually moved.
-For example, if a video codec is only capable of seeking to key
-frames, the returned <span class="hparameter">ioFrame</span> might be different
-than the one specified on input.
-If you want to seek explicitly to the nearest key frame before the
-current frame, specify
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MEDIA()</span></code>
-in <span class="hparameter">flags</span>. If you want to find the nearest key frame
-after the current time, specify
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MEDIA()</span></code>.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+SeekToFrame(), SeekToTime()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">SeekToFrame</span><span class="sig-paren">(</span><span class="n">int64</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioFrame</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">SeekToTime</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioTime</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>Seeks to the specified position in the track. <span class="hmethod">SeekToFrame()</span>
+accepts a destination position as a frame number, and
+<span class="hmethod">SeekToTime()</span> accepts a destination position as time in
+microseconds. They each return (in <span class="hparameter">ioFrame</span> or in
+<span class="hparameter">ioTime</span>) the position to which they actually moved.</p>
+<p>For example, if a video codec is only capable of seeking to key frames,
+the returned <span class="hparameter">ioFrame</span> might be different than the one specified on
+input.</p>
+<p>If you want to seek explicitly to the nearest key frame before the current
+frame, specify <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_SEEK_CLOSEST_BACKWARD</span></code> in
+<span class="hparameter">flags</span>. If you want to find the nearest key frame after the
+current time, specify <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_SEEK_CLOSEST_FORWARD</span></code>.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The format was successfully returned.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Other errors.</p></td>
@@ -484,29 +433,23 @@ after the current time, specify
 <section id="_CPPv4N11BMediaTrack17GetParameterValueE5int32PKvP6size_t">
 </section>
 <h3>
-SetParameterValue(), GetParameterValue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">SetParameterValue</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">value</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">GetParameterValue</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">value</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetParameterValue()</span> sets the value
-of the parameter specified by <span class="hparameter">id</span> to
-the data pointed to by <span class="hparameter">value</span>; this data is
-<span class="hparameter">size</span> bytes long.
-<span class="hmethod">GetParameterValue()</span> returns
-in <span class="hparameter">value</span> the value of the specified
-parameter, and the size of the value in bytes in the
+SetParameterValue(), GetParameterValue()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">SetParameterValue</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">value</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">GetParameterValue</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">value</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetParameterValue()</span> sets the value of the parameter specified
+by <span class="hparameter">id</span> to the data pointed to by <span class="hparameter">value</span>; this data is
+<span class="hparameter">size</span> bytes long.</p>
+<p><span class="hmethod">GetParameterValue()</span> returns in <span class="hparameter">value</span> the value of the
+specified parameter, and the size of the value in bytes in the
 <span class="hparameter">size</span> argument.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>No error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">EPERM</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">EPERM</span></code></p></td>
 <td><p>The codec isn’t configurable.</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors.</p></td>
@@ -519,23 +462,19 @@ parameter, and the size of the value in bytes in the
 <section id="_CPPv4N11BMediaTrack10GetQualityEPf">
 </section>
 <h3>
-SetQuality(), GetQuality()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">SetQuality</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">quality</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">GetQuality</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">quality</span><span class="sig-paren">)</span></pre><p>These functions set and return the codec’s quality setting (where 1.0
+SetQuality(), GetQuality()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">SetQuality</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">quality</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">GetQuality</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">quality</span><span class="sig-paren">)</span></pre><p>These functions set and return the codec’s quality setting (where 1.0
 means maximum quality).</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>No error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
 <td><p>The codec doesn’t support a quality setting.</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors.</p></td>
@@ -546,43 +485,38 @@ means maximum quality).</p>
 <section id="_CPPv4N11BMediaTrack3WebEv">
 </section>
 <h3>
-Web()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BParameterWeb</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">Web</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code>
-that can be used for configuring the track and
-codec. Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the codec doesn’t support user configuration.</p>
+Web()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><span class="n">BParameterWeb</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">Web</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns a <a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code></a> that can be used for configuring the
+track and codec. Returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the codec doesn’t support user
+configuration.</p>
 <section id="_CPPv4N11BMediaTrack10WriteChunkEPv6size_t5int32">
 </section>
 <h3>
-WriteChunk()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">WriteChunk</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>Writes the data pointed to by <span class="hparameter">data</span>,
-which contains <span class="hparameter">size</span> bytes of data,
-into the track. Specify <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_KEY_FRAME</span></code>
-for <span class="hparameter">flags</span> if the frame is a key
-frame. It’s assumed that the data is already encoded.</p>
+WriteChunk()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">WriteChunk</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>Writes the data pointed to by <span class="hparameter">data</span>, which contains
+<span class="hparameter">size</span> bytes of data, into the track. Specify
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_KEY_FRAME</span></code> for <span class="hparameter">flags</span> if the frame is a
+key frame. It’s assumed that the data is already encoded.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>The <span class="hclass">BMediaTrack</span> class doesn’t automatically perform any locking to
-prevent multiple writes to the track from occurring at the same time. If
-you have multiple threads writing into the same <span class="hclass">BMediaTrack</span>, you must use
-a locking mechanism (such as a semaphore) to keep writes from overlapping.</p>
+<p>The <span class="hclass">BMediaTrack</span> class doesn’t automatically perform any locking
+to prevent multiple writes to the track from occurring at the same time. If
+you have multiple threads writing into the same <span class="hclass">BMediaTrack</span>, you
+must use a locking mechanism (such as a semaphore) to keep writes from
+overlapping.</p>
 </div>
-<p>In general, you should only use <span class="hmethod">WriteChunk()</span> if you’re reading compressed
-data from one file and copying it into another, without trying to
-interpret the data.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<p>In general, you should only use <span class="hmethod">WriteChunk()</span> if you’re reading
+compressed data from one file and copying it into another, without trying
+to interpret the data.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The data has been written.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">EPERM</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">EPERM</span></code></p></td>
 <td><p>The file wasn’t opened for writing.</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors.</p></td>
@@ -593,37 +527,35 @@ interpret the data.</p>
 <section id="_CPPv4N11BMediaTrack11WriteFramesEPv5int325int32">
 </section>
 <h3>
-WriteFrames()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTrack</span><span class="p">::</span></span><span class="n">WriteFrames</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numFrames</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>Writes the data pointed to by <span class="hparameter">data</span>,
-which contains <span class="hparameter">numFrame</span> frames, into
-the track. Specify <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_KEY_FRAME</span></code> for
-<span class="hparameter">flags</span> if the frame is a key frame.</p>
+WriteFrames()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="p">::</span></span><span class="n">WriteFrames</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numFrames</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>Writes the data pointed to by <span class="hparameter">data</span>, which contains
+<span class="hparameter">numFrame</span> frames, into the track. Specify
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_KEY_FRAME</span></code> for <span class="hparameter">flags</span> if the frame is a
+key frame.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>The <span class="hclass">BMediaTrack</span> class doesn’t automatically perform any locking to
-prevent multiple writes to the track from occurring at the same time. If
-you have multiple threads writing into the same <span class="hclass">BMediaTrack</span>, you must use
-a locking mechanism (such as a semaphore) to keep writes from overlapping.</p>
+<p>The <span class="hclass">BMediaTrack</span> class doesn’t automatically perform any locking
+to prevent multiple writes to the track from occurring at the same time. If
+you have multiple threads writing into the same <span class="hclass">BMediaTrack</span>, you
+must use a locking mechanism (such as a semaphore) to keep writes from
+overlapping.</p>
 </div>
 <p>You always have to select an encoder before writing frames into a media
 track, even if the data is raw audio or video. When writing raw audio or
-video data into a <span class="hclass">BMediaTrack</span>, you need to use the raw encoder. Even
-though this doesn’t transform the data, it sets up internal data that’s
-necessary for the file to be played back properly after it’s created.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+video data into a <span class="hclass">BMediaTrack</span>, you need to use the raw encoder.
+Even though this doesn’t transform the data, it sets up internal data
+that’s necessary for the file to be played back properly after it’s
+created.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The frames have been written.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">EPERM</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">EPERM</span></code></p></td>
 <td><p>The file wasn’t opened for writing.</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors.</p></td>
@@ -634,37 +566,31 @@ necessary for the file to be played back properly after it’s created.</p>
 </section>
 <section id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>Declared in: media/MediaTrack.h</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<section id="media-seek-type">
+<h3>media_seek_type<a class="headerlink" href="#media-seek-type" title="Permalink to this heading">¶</a></h3>
+<p>Declared in: media/MediaTrack.h</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_SEEK_CLOSEST_FORWARD</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_SEEK_CLOSEST_FORWARD</span></code></p></td>
 <td><p>Seek to the nearest key frame after the current position in the track.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_SEEK_CLOSEST_BACKWARD</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_SEEK_CLOSEST_BACKWARD</span></code></p></td>
 <td><p>Seek to the nearest key frame before the current position in the track.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_SEEK_DIRECTION_MASK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_SEEK_DIRECTION_MASK</span></code></p></td>
 <td><p>Mask the seek flags with this value to obtain the seek direction.</p></td>
 </tr>
 </tbody>
 </table>
-<p>These flags, used when calling
-<a class="reference internal" href="#_CPPv4N11BMediaTrack10SeekToTimeEP9bigtime_t5int32" title="BMediaTrack::SeekToTime"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SeekToTime()</span></code></a> and
-<a class="reference internal" href="#_CPPv4N11BMediaTrack11SeekToFrameEP5int645int32" title="BMediaTrack::SeekToFrame"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SeekToFrame()</span></code></a>,
-let you
-look for the nearest key frame after or before the current position in
-the file, without having to guess the time or frame number at which it’s
-located.</p>
+<p>These flags, used when calling <a class="reference internal" href="#_CPPv4N11BMediaTrack10SeekToTimeEP9bigtime_t5int32" title="BMediaTrack::SeekToTime"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SeekToTime()</span></code></a> and <a class="reference internal" href="#_CPPv4N11BMediaTrack11SeekToFrameEP5int645int32" title="BMediaTrack::SeekToFrame"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SeekToFrame()</span></code></a>, let you look for the nearest key frame after
+or before the current position in the file, without having to guess the
+time or frame number at which it’s located.</p>
+</section>
 </section>
 </section>
 

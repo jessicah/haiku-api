@@ -20,7 +20,7 @@
     <link rel="search" title="Search" href="../../search.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
-          <span>The Haiku Book  documentation</span></a></h1>
+          <span>API Documentation</span></a></h1>
         <h2 class="heading"><span>Haiku Package File Format</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -30,8 +30,56 @@
         </p>
 
       </div>
-      <div class="content" role="main">
         
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Haiku Package File Format</a><ul>
+<li><a class="reference internal" href="#the-data-container-format">The Data Container Format</a><ul>
+<li><a class="reference internal" href="#header">Header</a></li>
+<li><a class="reference internal" href="#heap">Heap</a></li>
+<li><a class="reference internal" href="#abbr-title-table-of-contents-toc-abbr"><abbr title='Table of Contents'>TOC</abbr></a><ul>
+<li><a class="reference internal" href="#attribute-data-types">Attribute Data Types</a></li>
+<li><a class="reference internal" href="#strings">Strings</a></li>
+<li><a class="reference internal" href="#main-abbr-title-table-of-contents-toc-abbr">Main <abbr title='Table of Contents'>TOC</abbr></a></li>
+<li><a class="reference internal" href="#attribute-values">Attribute Values</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#package-attributes">Package Attributes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-archive-format">The Archive Format</a><ul>
+<li><a class="reference internal" href="#attribute-ids">Attribute IDs</a></li>
+<li><a class="reference internal" href="#abbr-title-table-of-contents-toc-abbr-attributes"><abbr title='Table of Contents'>TOC</abbr> Attributes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-package-format">The Package Format</a><ul>
+<li><a class="reference internal" href="#id1">Attribute IDs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#haiku-package-repository-format">Haiku Package Repository Format</a><ul>
+<li><a class="reference internal" href="#id2">The Data Container Format</a><ul>
+<li><a class="reference internal" href="#id3">Header</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">Attribute IDs</a><ul>
+<li><a class="reference internal" href="#b-hpkg-attribute-id-package-package">B_HPKG_ATTRIBUTE_ID_PACKAGE (“package”)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
         
   <section id="haiku-package-file-format">
 <h1>Haiku Package File Format<a class="headerlink" href="#haiku-package-file-format" title="Permalink to this heading">¶</a></h1>
@@ -447,7 +495,7 @@ packages contained in the repository. However, this format does not contain any 
 </dd>
 <dt>Heap</dt><dd><p>Contains the next two sections.</p>
 </dd>
-<dt>Repository Info</dt><dd><p>A section containing an archived <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> of a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRepositoryInfo</span></code> object.</p>
+<dt>Repository Info</dt><dd><p>A section containing an archived <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> of a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRepositoryInfo</span></code> object.</p>
 </dd>
 <dt>Package Attributes</dt><dd><p>A section just like the package attributes section of the HPKG, only that this section contains
 the package attributes of all the packages contained in the repository (not just one).</p>
@@ -544,7 +592,9 @@ Attribute IDs section.</p></li>
 </section>
 
 
+        <div class="clearer"></div>
       </div>
+          </div>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
@@ -554,7 +604,7 @@ Attribute IDs section.</p></li>
       </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Haiku.
+        &#169; Copyright 2023, Haiku, Inc..
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>

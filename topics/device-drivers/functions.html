@@ -1,0 +1,526 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Kernel Functions &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Introduction" href="introduction.html" />
+    <link rel="prev" title="Driver Settings API" href="driver-settings-api.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Kernel Functions</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="driver-settings-api.html">Driver Settings API</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="introduction.html">Introduction</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Kernel Functions</a><ul>
+<li><a class="reference internal" href="#acquire-spinlock-release-spinlock-spinlock">acquire_spinlock(), release_spinlock(), spinlock</a></li>
+<li><a class="reference internal" href="#add-timer-cancel-timer-timer-hook-qent-timer">add_timer(), cancel_timer(), timer_hook, qent, timer</a></li>
+<li><a class="reference internal" href="#call-all-cpus">call_all_cpus()</a></li>
+<li><a class="reference internal" href="#disable-interrupts-restore-interrupts-cpu-status">disable_interrupts(), restore_interrupts(), cpu_status</a></li>
+<li><a class="reference internal" href="#dprintf-set-dprintf-enabled-panic">dprintf(), set_dprintf_enabled(), panic()</a></li>
+<li><a class="reference internal" href="#get-memory-map-physical-entry">get_memory_map(), physical_entry</a></li>
+<li><a class="reference internal" href="#has-signals-pending">has_signals_pending()</a></li>
+<li><a class="reference internal" href="#install-io-interrupt-handler-remove-io-interrupt-handler">install_io_interrupt_handler(), remove_io_interrupt_handler()</a></li>
+<li><a class="reference internal" href="#kernel-debugger-add-debugger-command-remove-debugger-command-load-driver-symbols-kprintf-parse-expression">kernel_debugger(), add_debugger_command(), remove_debugger_command(), load_driver_symbols(), kprintf(), parse_expression()</a></li>
+<li><a class="reference internal" href="#lock-memory-unlock-memory">lock_memory(), unlock_memory()</a></li>
+<li><a class="reference internal" href="#map-physical-memory">map_physical_memory()</a></li>
+<li><a class="reference internal" href="#motherboard-version-io-card-version">motherboard_version(), io_card_version()</a></li>
+<li><a class="reference internal" href="#platform">platform()</a></li>
+<li><a class="reference internal" href="#register-kernel-daemon-unregister-kernel-daemon">register_kernel_daemon(), unregister_kernel_daemon()</a></li>
+<li><a class="reference internal" href="#send-signal-etc">send_signal_etc()</a></li>
+<li><a class="reference internal" href="#spawn-kernel-thread">spawn_kernel_thread()</a></li>
+<li><a class="reference internal" href="#spin">spin()</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="kernel-functions">
+<h1 id="CPPv416Kernel Functions">Kernel Functions<a class="headerlink" href="#kernel-functions" title="Permalink to this heading">¶</a></h1>
+<p>The kernel exports a number of functions that device drivers can call. The
+device driver accesses these functions directly in the kernel, not through
+a library.</p>
+<p>Remember, when writing a driver that calls one of these functions, to link
+against <em>KERNEL</em>. This will instruct the loader to dynamically locate the
+symbols in the current kernel when the driver is loaded.</p>
+<section id="acquire-spinlock-release-spinlock-spinlock">
+<h2>acquire_spinlock(), release_spinlock(), spinlock<a class="headerlink" href="#acquire-spinlock-release-spinlock-spinlock" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="n">vlong</span><span class="w"> </span><span class="n">spinlock</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Declared in: drivers/KernelExport.h</p>
+<p>Spinlocks are mutually exclusive locks that are used to protect sections
+of code that must execute atomically. Unlike semaphores, spinlocks can be
+safely used when interrupts are disabled (in fact, you must have interrupts
+disabled).</p>
+<p>To create a spinlock, simply declare a spinlock variable and initialize it
+0:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">spinlock</span><span class="w"> </span><span class="n">lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The functions acquire and release the lock spinlock. When you acquire and
+release a spinlock, you must have interrupts disabled; the structure of
+your code will look like this:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">cpu_status</span><span class="w"> </span><span class="n">former</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">disable_interrupts</span><span class="p">();</span><span class="w"></span>
+<span class="n">acquire_spinlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/* critical section goes here*/</span><span class="w"></span>
+
+<span class="n">release_spinlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span><span class="w"></span>
+<span class="n">restore_interrupts</span><span class="p">(</span><span class="n">former</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The spinlock should be held as briefly as possible, and acquisition must
+not be nested within the critical section.</p>
+<p>Spinlocks are designed for use in a multi-processor system (on a single
+processor system simply turning off interrupts is enough to guarantee that
+the critical section will be atomic). Nonetheless, you can use spinlocks on
+a single processor—you don’t have to predicate your code based on the
+number of CPUs in the system.</p>
+</section>
+<section id="add-timer-cancel-timer-timer-hook-qent-timer">
+<h2>add_timer(), cancel_timer(), timer_hook, qent, timer<a class="headerlink" href="#add-timer-cancel-timer-timer-hook-qent-timer" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">timer_hook</span><span class="p">)(</span><span class="n">timer</span><span class="o">*</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">quent</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">int64</span><span class="w"> </span><span class="n">key</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">qent</span><span class="o">*</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">qent</span><span class="o">*</span><span class="w"> </span><span class="n">prev</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">timer</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">qent</span><span class="w">   </span><span class="n">entry</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">uint16</span><span class="w">   </span><span class="n">flags</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">uint16</span><span class="w">   </span><span class="n">cpu</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">timer_hook</span><span class="w"> </span><span class="n">hook</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">bigtime_t</span><span class="w">   </span><span class="n">period</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Declared in: drivers/KernelExport.h</p>
+<p>add_timer() installs a new timer interrupt. A timer interrupt causes the
+specified <span class="hparameter">hookFunction</span> to be called when the desired amount of
+time has passed. On entry, you should pass a pointer to a <span class="htype">timer</span>
+structure in <span class="hparameter">theTimer</span>; this will be filled out with data
+describing the new timer interrupt you’ve installed. The <span class="hparameter">flags</span>
+argument provides control over how the timer functions, which affects the
+meaning of the <span class="hparameter">period</span> argument as follows:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ONE_SHOT_ABSOLUTE_TIMER</span></code></p></td>
+<td><p>The timer will fire once at the system time specified by <span class="hparameter">period</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ONE_SHOT_RELATIVE_TIMER</span></code></p></td>
+<td><p>The timer will fire once in approximately <span class="hparameter">period</span> microseconds.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PERIODIC_TIMER</span></code></p></td>
+<td><p>The timer will fire every <span class="hparameter">period</span> microseconds, starting in
+<span class="hparameter">period</span> microseconds.</p></td>
+</tr>
+</tbody>
+</table>
+<p>cancel_timer() cancels the specified timer. If it’s already fired, it
+returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>; otherwise <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> is returned. It’s
+guaranteed that once cancel_timer() returns, if the timer was in the
+process of running when cancel_timer() was called, the timer function will
+be finished executing. The only exception to this is if cancel_timer() was
+called from inside a timer handler (in which case trying to wait for the
+handler to finish running would result in deadlock).</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The timer was installed (add_timer() only).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>The timer couldn’t be installed because the period was invalid (probably
+because a relative time or period was negative; unfortunately, Be hasn’t
+mastered the intricacies of installing timers to fire in the past).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="call-all-cpus">
+<h2>call_all_cpus()<a class="headerlink" href="#call-all-cpus" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: drivers/KernelExport.h</p>
+<p>Calls the function specified by <span class="hparameter">func</span> on all CPUs. The
+<span class="hparameter">cookie</span> can be anything your needs require.</p>
+</section>
+<section id="disable-interrupts-restore-interrupts-cpu-status">
+<h2>disable_interrupts(), restore_interrupts(), cpu_status<a class="headerlink" href="#disable-interrupts-restore-interrupts-cpu-status" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="n">ulong</span><span class="w"> </span><span class="n">cpu_status</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Declared in:  drivers/KernelExport.h</p>
+<p>These functions disable and restore interrupts on the CPU that the caller
+is currently running on. disable_interrupts() returns its previous state
+(i.e. whether or not interrupts were already disabled).
+restore_interrupts() restores the previous status of the CPU, which should
+be the value that disable_interrupts() returned:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">cpu_status</span><span class="w"> </span><span class="n">former</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">disable_interrupts</span><span class="p">();</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+<span class="n">restore_interrupts</span><span class="p">(</span><span class="n">former</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>As long as the CPU state is properly restored (as shown here), the
+disable/restore functions can be nested.</p>
+<p>See also: <span class="xref std std-ref">install_io_interrupt_handler()</span></p>
+</section>
+<section id="dprintf-set-dprintf-enabled-panic">
+<h2>dprintf(), set_dprintf_enabled(), panic()<a class="headerlink" href="#dprintf-set-dprintf-enabled-panic" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: drivers/KernelExport.h</p>
+<p>dprintf() is a debugging function that has the same syntax and behavior as
+standard C printf(), except that it writes its output to the serial port at
+a data rate of 19,200 bits per second. The output is sent to
+/dev/ports/serial4 on BeBoxes, /dev/modem on Macs, and /dev/ports/serial1
+on Intel machines. By default, dprintf() is disabled.</p>
+<p>set_dprintf_enabled() enables dprintf() if the <span class="hparameter">enabled</span> flag is
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, and disables it if the flag is <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>. It
+returns the previous enabled state, thus permitting intelligent nesting:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Turn on dprintf */</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">former</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">set_dprintf_enabled</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+<span class="cm">/* Now restore it to its previous state. */</span><span class="w"></span>
+<span class="n">set_dprintf_enabled</span><span class="p">(</span><span class="n">former</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>panic() is similar to dprintf(), except it hangs the computer after
+printing the message.</p>
+</section>
+<section id="get-memory-map-physical-entry">
+<h2>get_memory_map(), physical_entry<a class="headerlink" href="#get-memory-map-physical-entry" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="n">address</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">ulong</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">physical_entry</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Declared in: drivers/KernelExport.h</p>
+<p>Returns the physical memory chunks that map to the virtual memory that
+starts at address and extends for <span class="hparameter">numBytes</span>. Each chunk of
+physical memory is returned as a <span class="htype">physical_entry</span> structure; the
+series of structures is returned in the table array. (which you have to
+allocate yourself). <span class="hparameter">numEntries</span> is the number of elements in the
+array that you’re passing in. As shown in the example, you should lock the
+memory that you’re about to inspect:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">physical_entry</span><span class="w"> </span><span class="n">table</span><span class="p">[</span><span class="n">count</span><span class="p">];</span><span class="w"></span>
+<span class="n">lock_memory</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="n">extent</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="n">get_memory_map</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="n">extent</span><span class="p">,</span><span class="w"> </span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">unlock_memory</span><span class="p">(</span><span class="n">someAddress</span><span class="p">,</span><span class="w"> </span><span class="n">someNumberOfBytes</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The end of the table array is indicated by (<span class="hparameter">size</span> == 0):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">long</span><span class="w"> </span><span class="n">k</span><span class="p">;</span><span class="w"></span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">size</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* A legitimate entry */</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">++</span><span class="n">k</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="cm">/* Not enough entries */</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If all of the entries have non-zero sizes, then table wasn’t big enough;
+call get_memory_map() again with more table entries.</p>
+<p>The function always returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+<p>See also: <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">lock_memory()</span></code>, start_isa_dma()</p>
+</section>
+<section id="has-signals-pending">
+<h2>has_signals_pending()<a class="headerlink" href="#has-signals-pending" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: drivers/KernelExport.h</p>
+<p>Returns a bitmask of the currently pending signals for the current thread.
+<span class="hparameter">thr</span> should always be <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>; passing other values will
+yield meaningless results. has_signals_pending() returns 0 if no signals
+are pending.</p>
+</section>
+<section id="install-io-interrupt-handler-remove-io-interrupt-handler">
+<h2>install_io_interrupt_handler(), remove_io_interrupt_handler()<a class="headerlink" href="#install-io-interrupt-handler-remove-io-interrupt-handler" title="Permalink to this heading">¶</a></h2>
+<p>Declared in:  drivers/KernelExport.h</p>
+<p>install_io_interrupt_handler() adds the handler function to the chain of
+functions that will be called each time the specified interrupt occurs.
+This function should have the following syntax:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">int32</span><span class="w"> </span><span class="n">handler</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="n">data</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The data passed to install_io_interrupt_handler() will be passed to the
+handler function each time it’s called. It can be anything that might be of
+use to the <span class="hparameter">handler</span>, or <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>. If the interrupt handler
+must return one of the following values:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_UNHANDLED_INTERRUPT</span></code></p></td>
+<td><p>The interrupt handler didn’t handle the interrupt; the kernel will keep
+looking for someone to handle it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HANDLED_INTERRUPT</span></code></p></td>
+<td><p>The interrupt handler handled the interrupt. The kernel won’t keep looking
+for a handler to handle it.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INVOKE_SCHEDULER</span></code></p></td>
+<td><p>The interrupt handler handled the interrupt. This tells the kernel to
+invoke the scheduler immediately after the handler returns.</p></td>
+</tr>
+</tbody>
+</table>
+<p>If <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INVOKE_SCHEDULER</span></code> is returned by the interrupt
+handler, the kernel will immediately invoke the scheduler, to dispatch
+processor time to tasks that need handling. This is especially useful if
+your interrupt handler has released a semaphore (see
+<span class="xref std std-ref">release_sem_etc()</span> in the Kernel Kit).</p>
+<p>The <span class="hparameter">flags</span> parameter is a bitmask of options. The only option
+currently defined is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_ENABLE_COUNTER</span></code>. By default, the
+OS keeps track of the number of functions handling a given interrupt. If
+this counter changes from 0 to 1, then the system enables the irq for that
+interrupt. Conversely, if the counter changes from 1 to 0, the system
+disables the irq. Setting the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_ENABLE_COUNTER</span></code> flag
+instructs the OS to ignore the handler for the purpose of enabling and
+disabling the irq.</p>
+<p>install_io_interrupt_handler() returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> if
+successful in installing the handler, and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code> if not.
+An error occurs when either the <span class="hparameter">interrupt_number</span> is out of range
+or there is not enough room left in the interrupt chain to add the handler.</p>
+<p>remove_io_interrupt() removes the named interrupt from the interrupt
+chain. It returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> if successful in removing the
+handler, and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code> if not.</p>
+</section>
+<section id="kernel-debugger-add-debugger-command-remove-debugger-command-load-driver-symbols-kprintf-parse-expression">
+<h2>kernel_debugger(), add_debugger_command(), remove_debugger_command(), load_driver_symbols(), kprintf(), parse_expression()<a class="headerlink" href="#kernel-debugger-add-debugger-command-remove-debugger-command-load-driver-symbols-kprintf-parse-expression" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: drivers/KernelExport.h</p>
+<p>kernel_debugger() drops the calling thread into a debugger that writes its
+output to the serial port at 19,200 bits per second, just as
+<span class="xref std std-ref">dprintf()</span> does. This debugger produces string as its first message;
+it’s not affected by <span class="xref std std-ref">set_dprintf_enabled()</span>.</p>
+<p>kernel_debugger() is identical to the <span class="xref std std-ref">debugger()</span> function
+documented in the Kernel Kit, except that it works in the kernel and
+engages a different debugger. Drivers should use it instead of
+<span class="xref std std-ref">debugger()</span>.</p>
+<p>add_debugger_command() registers a new command with the kernel debugger.
+When the user types in the command name, the kernel debugger calls
+<span class="hparameter">func</span> with the remainder of the command line as
+<span class="hparameter">argc</span>/<span class="hparameter">argv</span>-style arguments. The <span class="hparameter">help</span> string
+for the command is set to help.</p>
+<p>remove_debugger_command() removes the specified kernel debugger command.</p>
+<p>load_driver_symbols() loads symbols from the specified kernel driver into
+the kernel debugger. <span class="hparameter">driver_name</span> is the path-less name of the
+driver which must be located in one of the standard kernel driver
+directories. The function returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> on success and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code> on failure.</p>
+<p>kprintf() outputs messages to the serial port. It should be used instead
+of <span class="xref std std-ref">dprintf()</span> from new debugger commands because <span class="xref std std-ref">dprintf()</span>
+depends too much upon the state of the kernel to be reliable from within
+the debugger.</p>
+<p>parse_expression() takes a C expression and returns the result. It only
+handles integer arithmetic. The logical and relational operations are
+accepted. It can also supports variables and assignments. This is useful
+for strings with multiple expressions, which should be separated with
+semicolons. Finally, the special variable “.” refers to the value from the
+previous expression. This function is designed to help implement new
+debugger commands.</p>
+</section>
+<section id="lock-memory-unlock-memory">
+<h2>lock_memory(), unlock_memory()<a class="headerlink" href="#lock-memory-unlock-memory" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: drivers/KernelExport.h</p>
+<p>lock_memory() makes sure that all the memory beginning at the specified
+virtual <span class="hparameter">address</span> and extending for <span class="hparameter">numBytes</span> is resident
+in RAM, and locks it so that it won’t be paged out until unlock_memory() is
+called. It pages in any of the memory that isn’t resident at the time it’s
+called. It is typically used in preparation for a DMA transaction.</p>
+<p>The <span class="hparameter">flags</span> field contains a bitmask of options. Currently, two
+options, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DMA_IO</span></code> and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_READ_DEVICE</span></code>,
+are defined. <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DMA_IO</span></code> should be set if any part of the
+memory range will be modified by something other than the CPU while it’s
+locked, since that change won’t otherwise be noticed by the system and the
+modified pages may not be written to disk by the virtual memory system.
+Typically, this sort of change is performed through DMA.
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_READ_DEVICE</span></code>, if set, indicates that the caller intends
+to fill the memory (read from the device). If cleared, it indicates the
+memory will be written to the device and will not be altered.</p>
+<p>unlock_memory() releases locked memory and should be called with the same
+flags as passed into the corresponding lock_memory() call.</p>
+<p>Each of these functions returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> if successful and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code> if not. The main reason that lock_memory() would
+fail is that you’re attempting to lock more memory than can be paged in.</p>
+</section>
+<section id="map-physical-memory">
+<h2>map_physical_memory()<a class="headerlink" href="#map-physical-memory" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: drivers/KernelExport.h</p>
+<p>This function allows you to map the memory in physical memory starting at
+<span class="hparameter">physicalAddress</span> and extending for <span class="hparameter">numBytes</span> bytes into
+your team’s address space. The kernel creates an area named
+<span class="hparameter">areaName</span> mapped into the memory address <span class="hparameter">virtualAddress</span>
+and returns its <span class="htype">area_id</span> to the caller. <span class="hparameter">numBytes</span> must be
+a multiple of <a class="reference internal" href="../../kits/kernel/miscellaneous.html#_CPPv411B_PAGE_SIZE" title="B_PAGE_SIZE"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PAGE_SIZE</span></code></a> (4096).</p>
+<p><span class="hparameter">spec</span> must be either <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ANY_KERNEL_ADDRESS</span></code> or
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ANY_KERNEL_BLOCK_ADDRESS</span></code>. If <span class="hparameter">spec</span> is
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ANY_KERNEL_ADDRESS</span></code>, the memory will begin at an
+arbitrary location in the kernel address space. If spec is
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ANY_KERNEL_BLOCK_ADDRESS</span></code>, then the memory will be
+mapped into a memory location aligned on a multiple of
+<a class="reference internal" href="../../kits/kernel/miscellaneous.html#_CPPv411B_PAGE_SIZE" title="B_PAGE_SIZE"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PAGE_SIZE</span></code></a>.</p>
+<p><span class="hparameter">protection</span> is a bitmask consisting of the fields
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_READ_AREA</span></code> and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WRITE_AREA</span></code>, as
+discussed in <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">create_area()</span></code>.</p>
+<p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">create_area()</span></code> returns an <span class="htype">area_id</span> for
+the newly-created memory if successful or an error code on failure. The
+error codes are the same as those for <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">create_area()</span></code>.</p>
+</section>
+<section id="motherboard-version-io-card-version">
+<h2>motherboard_version(), io_card_version()<a class="headerlink" href="#motherboard-version-io-card-version" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: drivers/KernelExport.h</p>
+<p>These functions return the current versions of the motherboard and of the
+I/O card. These functions are only available on PowerPC-based systems
+(they’re intended for use on the BeBox).</p>
+</section>
+<section id="platform">
+<h2>platform()<a class="headerlink" href="#platform" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: drivers/KernelExport.h</p>
+<p>Returns the current platform, as defined in kernel/OS.h.</p>
+</section>
+<section id="register-kernel-daemon-unregister-kernel-daemon">
+<h2>register_kernel_daemon(), unregister_kernel_daemon()<a class="headerlink" href="#register-kernel-daemon-unregister-kernel-daemon" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: drivers/KernelExport.h</p>
+<p>Adds or removes daemons from the kernel. A kernel daemon function is
+executed approximately once every <span class="hparameter">freq</span>/10 seconds. The kernel
+calls <span class="hparameter">func</span> with the arguments <span class="hparameter">arg</span> and an iteration
+value that increases by <span class="hparameter">freq</span> on successive calls to the daemon
+function.</p>
+</section>
+<section id="send-signal-etc">
+<h2>send_signal_etc()<a class="headerlink" href="#send-signal-etc" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: drivers/KernelExport.h</p>
+<p>This function is a counterpart to send_signal() in the Posix layer, which
+is not exported for drivers.</p>
+<p><span class="hparameter">thid</span> is the <span class="htype">thread_id</span> of the thread the signal should
+be sent to, and <span class="hparameter">sig</span> is the signal type to send, just like in
+send_signal(). The <span class="hparameter">flags</span> argument can be used to specify flags to
+control the function:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CHECK_PERMISSION</span></code></p></td>
+<td><p>The signal will only be sent if the destination thread’s uid and euid are
+the same as the caller’s.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DO_NOT_RESCHEDULE</span></code></p></td>
+<td><p>The kernel won’t call the scheduler after sending the signal. You should
+specify this flag when calling send_signal_etc() from an interrupt handler.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The signal was sent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>The signal type is invalid.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_THREAD_ID</span></code>.</p></td>
+<td><p>The thread ID is invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
+<td><p>The permission check failed (if <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CHECK_PERMISSION</span></code> was
+specified).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="spawn-kernel-thread">
+<h2>spawn_kernel_thread()<a class="headerlink" href="#spawn-kernel-thread" title="Permalink to this heading">¶</a></h2>
+<p>Declared in:  drivers/KernelExport.h</p>
+<p>This function is a counterpart to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">spawn_thread()</span></code> in the Kernel Kit, which is not exported for drivers. It
+has the same syntax as the Kernel Kit function, but is able to spawn
+threads in the kernel’s memory space.</p>
+</section>
+<section id="spin">
+<h2>spin()<a class="headerlink" href="#spin" title="Permalink to this heading">¶</a></h2>
+<p>Declared in:  drivers/KernelExport.h</p>
+<p>Executes a delay loop lasting at least the specified number of
+microseconds. It could last longer, due to rounding errors, interrupts, and
+context switches.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="driver-settings-api.html">Driver Settings API</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="introduction.html">Introduction</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

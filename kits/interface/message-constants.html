@@ -1,0 +1,1317 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Message Constants &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BOutlineListView" href="outline-list-view.html" />
+    <link rel="prev" title="BMenuItem" href="menu-item.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Message Constants</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="menu-item.html">BMenuItem</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="outline-list-view.html">BOutlineListView</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Message Constants</a><ul>
+<li><a class="reference internal" href="#container-messages">Container Messages</a><ul>
+<li><a class="reference internal" href="#_CPPv411B_MIME_DATA">B_MIME_DATA</a></li>
+<li><a class="reference internal" href="#_CPPv413B_SIMPLE_DATA">B_SIMPLE_DATA</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#selection-messages">Selection Messages</a><ul>
+<li><a class="reference internal" href="#_CPPv45B_CUT">B_CUT</a></li>
+<li><a class="reference internal" href="#_CPPv46B_COPY">B_COPY</a></li>
+<li><a class="reference internal" href="#_CPPv47B_PASTE">B_PASTE</a></li>
+<li><a class="reference internal" href="#_CPPv412B_SELECT_ALL">B_SELECT_ALL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#status-bar-messages">Status Bar Messages</a><ul>
+<li><a class="reference internal" href="#_CPPv419B_UPDATE_STATUS_BAR">B_UPDATE_STATUS_BAR</a></li>
+<li><a class="reference internal" href="#_CPPv418B_RESET_STATUS_BAR">B_RESET_STATUS_BAR</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#general-constants">General Constants</a><ul>
+<li><a class="reference internal" href="#_CPPv417B_CONTROL_INVOKED">B_CONTROL_INVOKED</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#keyboard-messages">Keyboard Messages</a><ul>
+<li><a class="reference internal" href="#_CPPv410B_KEY_DOWN">B_KEY_DOWN</a></li>
+<li><a class="reference internal" href="#_CPPv419B_MODIFIERS_CHANGED">B_MODIFIERS_CHANGED</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mouse-messages">Mouse Messages</a><ul>
+<li><a class="reference internal" href="#_CPPv412B_MOUSE_DOWN">B_MOUSE_DOWN</a></li>
+<li><a class="reference internal" href="#_CPPv413B_MOUSE_MOVED">B_MOUSE_MOVED</a></li>
+<li><a class="reference internal" href="#_CPPv410B_MOUSE_UP">B_MOUSE_UP</a></li>
+<li><a class="reference internal" href="#_CPPv421B_MOUSE_WHEEL_CHANGED">B_MOUSE_WHEEL_CHANGED</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#b-printer-changed">B_PRINTER_CHANGED</a></li>
+<li><a class="reference internal" href="#b-screen-changed">B_SCREEN_CHANGED</a></li>
+<li><a class="reference internal" href="#b-value-changed">B_VALUE_CHANGED</a></li>
+<li><a class="reference internal" href="#view-messages">View Messages</a><ul>
+<li><a class="reference internal" href="#_CPPv412B_VIEW_MOVED">B_VIEW_MOVED</a></li>
+<li><a class="reference internal" href="#_CPPv414B_VIEW_RESIZED">B_VIEW_RESIZED</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#window-messages">Window Messages</a><ul>
+<li><a class="reference internal" href="#_CPPv418B_WINDOW_ACTIVATED">B_WINDOW_ACTIVATED</a></li>
+<li><a class="reference internal" href="#_CPPv416B_WINDOW_MOVE_BY">B_WINDOW_MOVE_BY</a></li>
+<li><a class="reference internal" href="#_CPPv416B_WINDOW_MOVE_TO">B_WINDOW_MOVE_TO</a></li>
+<li><a class="reference internal" href="#_CPPv414B_WINDOW_MOVED">B_WINDOW_MOVED</a></li>
+<li><a class="reference internal" href="#_CPPv416B_WINDOW_RESIZED">B_WINDOW_RESIZED</a></li>
+<li><a class="reference internal" href="#_CPPv421B_WORKSPACE_ACTIVATED">B_WORKSPACE_ACTIVATED</a></li>
+<li><a class="reference internal" href="#_CPPv420B_WORKSPACES_CHANGED">B_WORKSPACES_CHANGED</a></li>
+<li><a class="reference internal" href="#_CPPv46B_ZOOM">B_ZOOM</a></li>
+<li><a class="reference internal" href="#_CPPv419B_OPEN_IN_WORKSPACE">B_OPEN_IN_WORKSPACE</a></li>
+<li><a class="reference internal" href="#_CPPv410B_MINIMIZE">B_MINIMIZE</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bshelf-messages">BShelf Messages</a><ul>
+<li><a class="reference internal" href="#_CPPv417B_ARCHIVED_OBJECT">B_ARCHIVED_OBJECT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="message-constants">
+<h1 id="CPPv417Message Constants">Message Constants<a class="headerlink" href="#message-constants" title="Permalink to this heading">¶</a></h1>
+<section id="container-messages">
+<h2>Container Messages<a class="headerlink" href="#container-messages" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#_CPPv411B_MIME_DATA" title="B_MIME_DATA"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MIME_DATA</span></code></a></p></li>
+<li><p><a class="reference internal" href="#_CPPv413B_SIMPLE_DATA" title="B_SIMPLE_DATA"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SIMPLE_DATA</span></code></a></p></li>
+</ul>
+<p>A few constants identify messages as data containers. The system currently
+uses the <a class="reference internal" href="#_CPPv411B_MIME_DATA" title="B_MIME_DATA"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MIME_DATA</span></code></a> and <a class="reference internal" href="#_CPPv413B_SIMPLE_DATA" title="B_SIMPLE_DATA"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SIMPLE_DATA</span></code></a>
+constants to mark the containers it constructs for drag-and-drop
+operations.</p>
+<section id="_CPPv411B_MIME_DATA">
+</section>
+<h3>
+B_MIME_DATA</h3></pre><p>This message constant indicates that all the data in the message is
+identified by MIME type names. The type code of every data field is
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MIME_TYPE</span></code> and the name of each field is the MIME type
+string.</p>
+<p>As an example, a <a class="reference internal" href="text-view.html#_CPPv49BTextView" title="BTextView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTextView</span></code></a> object puts together a
+<a class="reference internal" href="#_CPPv411B_MIME_DATA" title="B_MIME_DATA"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MIME_DATA</span></code></a> message for drag-and-drop operations. The
+message has the text itself in a field named “text/plain”; the
+<span class="xref std std-ref">text_run_array</span> structure that describes the character formats of the
+text is in a field named “application/x-vnd.Be-text_run_array”.</p>
+<section id="_CPPv413B_SIMPLE_DATA">
+</section>
+<h3>
+B_SIMPLE_DATA</h3></pre><p>This message is a package for a single data element. If there are multiple
+data fields in the message, they present the same data in various formats.</p>
+<p>For example, when the user drags selected files and directories from a
+Tracker window, the Tracker packages <span class="htype">entry_ref</span> references to them
+in a <a class="reference internal" href="#_CPPv413B_SIMPLE_DATA" title="B_SIMPLE_DATA"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SIMPLE_DATA</span></code></a> message. The references are in a
+<span class="hparameter">refs</span> array with a type code of <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REF_TYPE</span></code>. In
+other words, the message has the same structure as a
+<a class="reference internal" href="../../constants.html#_CPPv415B_REFS_RECEIVED" title="B_REFS_RECEIVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REFS_RECEIVED</span></code></a> message, but a different what constant.</p>
+</section>
+<section id="selection-messages">
+<h2>Selection Messages<a class="headerlink" href="#selection-messages" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#_CPPv45B_CUT" title="B_CUT"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CUT</span></code></a></p></li>
+<li><p><a class="reference internal" href="#_CPPv46B_COPY" title="B_COPY"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_COPY</span></code></a></p></li>
+<li><p><a class="reference internal" href="#_CPPv47B_PASTE" title="B_PASTE"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PASTE</span></code></a></p></li>
+<li><p><a class="reference internal" href="#_CPPv412B_SELECT_ALL" title="B_SELECT_ALL"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SELECT_ALL</span></code></a></p></li>
+</ul>
+<p>Declared in: app/AppDefs.h</p>
+<p>These messages are sent to <a class="reference internal" href="text-view.html#_CPPv49BTextView" title="BTextView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTextView</span></code></a> and <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>
+classes (which normally passes the message to a <a class="reference internal" href="text-view.html#_CPPv49BTextView" title="BTextView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTextView</span></code></a>
+instance) to cut, copy, paste and select all items respectively.</p>
+<section id="_CPPv45B_CUT">
+</section>
+<h3>
+B_CUT</h3></pre><p>Removes the selected items and moves it to the clipboard.</p>
+<p>The <span class="hkey">Command</span>+<span class="hkey">X</span> key combination is normally mapped to
+<span class="hclass">B_CUT</span></p>
+<section id="_CPPv46B_COPY">
+</section>
+<h3>
+B_COPY</h3></pre><p>Copies the selected items to the clipboard.</p>
+<p>The <span class="hkey">Command</span>+<span class="hkey">C</span> key combination is normally mapped to
+<span class="hclass">B_COPY</span></p>
+<section id="_CPPv47B_PASTE">
+</section>
+<h3>
+B_PASTE</h3></pre><p>Pastes items stored in the clipboard into the view.</p>
+<p>The <span class="hkey">Command</span>+<span class="hkey">V</span> key combination is normally mapped to
+<span class="hclass">B_PASTE</span></p>
+<section id="_CPPv412B_SELECT_ALL">
+</section>
+<h3>
+B_SELECT_ALL</h3></pre><p>Selects all the items in the clipboard into the view.</p>
+<p>The <span class="hkey">Command</span>+<span class="hkey">A</span> key combination is normally mapped to
+<span class="hclass">B_SELECT_ALL</span></p>
+</section>
+<section id="status-bar-messages">
+<h2>Status Bar Messages<a class="headerlink" href="#status-bar-messages" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv419B_UPDATE_STATUS_BAR">
+</section>
+<h3>
+B_UPDATE_STATUS_BAR</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>Your app.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>The <a class="reference internal" href="status-bar.html#_CPPv410BStatusBar" title="BStatusBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStatusBar</span></code></a> you’re updating.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="status-bar.html#_CPPv4N10BStatusBar6UpdateEfPKcPKc" title="BStatusBar::Update"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BStatusBar::Update()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>You construct and send this message to a <a class="reference internal" href="status-bar.html#_CPPv410BStatusBar" title="BStatusBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStatusBar</span></code></a> object to
+tell it to (asynchronously) update its progress. To send the message,
+invoke <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>’s <a class="reference internal" href="../application/looper.html#_CPPv4N7BLooper11PostMessageEP8BMessage" title="BLooper::PostMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PostMessage()</span></code></a> naming the target <a class="reference internal" href="status-bar.html#_CPPv410BStatusBar" title="BStatusBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStatusBar</span></code></a> as the
+handler:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">statusBar</span><span class="o">-&gt;</span><span class="n">Window</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">PostMessage</span><span class="p">(</span><span class="n">theMessage</span><span class="p">,</span><span class="w"> </span><span class="n">statusBar</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">delta</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FLOAT_TYPE</span></code></p></td>
+<td><p>An increment to the object’s current value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">text</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>The object’s new text (<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>-terminated).</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">trailing_text</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>The object’s new trailing text (<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>-terminated)..</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv418B_RESET_STATUS_BAR">
+</section>
+<h3>
+B_RESET_STATUS_BAR</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>Your app.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p><a class="reference internal" href="status-bar.html#_CPPv4N10BStatusBar5ResetEPKcPKc" title="BStatusBar::Reset"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Reset()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p>The <a class="reference internal" href="status-bar.html#_CPPv410BStatusBar" title="BStatusBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStatusBar</span></code></a> you’re resetting.</p></td>
+</tr>
+</tbody>
+</table>
+<p>You construct and send this message to a <a class="reference internal" href="status-bar.html#_CPPv410BStatusBar" title="BStatusBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStatusBar</span></code></a> object to
+tell it to (asynchronously) reset itself. The message also lets you reset
+the object’s labels. To send the message, invoke <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>’s
+<a class="reference internal" href="../application/looper.html#_CPPv4N7BLooper11PostMessageEP8BMessage" title="BLooper::PostMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PostMessage()</span></code></a> naming the target
+<a class="reference internal" href="status-bar.html#_CPPv410BStatusBar" title="BStatusBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStatusBar</span></code></a> as the handler:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">statusBar</span><span class="o">-&gt;</span><span class="n">Window</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">PostMessage</span><span class="p">(</span><span class="n">theMessage</span><span class="p">,</span><span class="w"> </span><span class="n">statusBar</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">label</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>The object’s new label (NULL-terminated).</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">trailing_label</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>The object’s new trailing label (<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>-terminated)..</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="general-constants">
+<h2>General Constants<a class="headerlink" href="#general-constants" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv417B_CONTROL_INVOKED">
+</section>
+<h3>
+B_CONTROL_INVOKED</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>A <a class="reference internal" href="control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>Selected <a class="reference internal" href="../application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>This message is sent to the targeted messenger when a
+<a class="reference internal" href="control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a>-derived object is invoked.</p>
+</section>
+<section id="keyboard-messages">
+<h2>Keyboard Messages<a class="headerlink" href="#keyboard-messages" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv410B_KEY_DOWN">
+</section>
+<h3>
+B_KEY_DOWN</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>The focus view’s <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="view.html#_CPPv4N5BView7KeyDownEPKc5int32" title="BView::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::KeyDown()</span></code></a> (<a class="reference internal" href="#_CPPv410B_KEY_DOWN" title="B_KEY_DOWN"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_DOWN</span></code></a>)
+<a class="reference internal" href="view.html#_CPPv4N5BView5KeyUpEPKc5int32" title="BView::KeyUp"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::KeyUp()</span></code></a> (<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_UP</span></code>)   (The
+…<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">UNMAPPED</span></code>… messages don’t map to hook functions.)</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="#_CPPv410B_KEY_DOWN" title="B_KEY_DOWN"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_DOWN</span></code></a> is sent when the user presses (or holds down)
+a key that’s mapped to a character; <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_UP</span></code> is sent when
+the user releases the key. <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_UNMAPPED_KEY_DOWN</span></code> and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_UNMAPPED_KEY_UP</span></code> are sent if the key isn’t mapped to a
+character. This doesn’t include modifier keys, which are reported in the
+<a class="reference internal" href="#_CPPv419B_MODIFIERS_CHANGED" title="B_MODIFIERS_CHANGED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MODIFIERS_CHANGED</span></code></a> message.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">key</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The code for the physical key that was pressed. See <x> for the key map.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">be:key_repeat</span> (<a class="reference internal" href="#_CPPv410B_KEY_DOWN" title="B_KEY_DOWN"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_DOWN</span></code></a> only)</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The “iteration number” of this key down. When the user holds the key down,
+successive messages are sent with increasing key repeat values. This field
+isn’t present in the initial event; the first repeat message (i.e., the
+second key down message) has a key repeat value of 1.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">modifiers</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The modifier keys that were in effect at the time of the event. See <x>
+for a list of values.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">states</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_UINT8_TYPE</span></code></p></td>
+<td><p>The state of all keys at the time of the event. See <x>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">byte</span> [3] (<a class="reference internal" href="#_CPPv410B_KEY_DOWN" title="B_KEY_DOWN"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_DOWN</span></code></a> and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_UP</span></code> only)</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT8_TYPE</span></code></p></td>
+<td><p>The UTF8 data that’s generated</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">bytes</span> (<a class="reference internal" href="#_CPPv410B_KEY_DOWN" title="B_KEY_DOWN"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_DOWN</span></code></a> and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_UP</span></code> only)</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>The string that’s generated. (The string usually contains a single
+character.)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">raw_char</span> (<a class="reference internal" href="#_CPPv410B_KEY_DOWN" title="B_KEY_DOWN"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_DOWN</span></code></a> and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_UP</span></code> only)</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>Modifier-independent ASCII code for the character.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv419B_MODIFIERS_CHANGED">
+</section>
+<h3>
+B_MODIFIERS_CHANGED</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>The focus view’s window.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Sent when the user presses or releases a modifier key.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">modifiers</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The current modifier keys.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">be:old_modifiers</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The previous modifier keys.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">states</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_UINT8_TYPE</span></code></p></td>
+<td><p>The state of all keys at the time of the event. See <x>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mouse-messages">
+<h2>Mouse Messages<a class="headerlink" href="#mouse-messages" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv412B_MOUSE_DOWN">
+</section>
+<h3>
+B_MOUSE_DOWN</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>The <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> of the view the mouse is pointing to.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="view.html#_CPPv4N5BView9MouseDownE6BPoint" title="BView::MouseDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::MouseDown()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Sent when the user presses a mouse button. This message is only sent if no
+other mouse button is already down.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">where</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_POINT_TYPE</span></code></p></td>
+<td><p>Mouse location in the view’s coordinate system.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">modifiers</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The modifier keys that were in effect at the time of the event.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">buttons</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The mouse button that was pressed, one of:
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PRIMARY_MOUSE_BUTTON</span></code>,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SECONDARY_MOUSE_BUTTON</span></code>,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TERTIARY_MOUSE_BUTTON</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">clicks</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>1 for a single-click, 2 for double-click, 3 for triple-click, and so on.
+The counter is reset if the time between clicks exceeds the “Double-click
+speed” set by the user in the Mouse preferences. Note that the counter is
+not reset if the mouse moves between clicks.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv413B_MOUSE_MOVED">
+</section>
+<h3>
+B_MOUSE_MOVED</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>The <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> of the view the mouse is pointing to.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="view.html#_CPPv4N5BView10MouseMovedE6BPoint6uint32PK8BMessage" title="BView::MouseMoved"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::MouseMoved()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Sent when the user moves the mouse.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">where</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_POINT_TYPE</span></code></p></td>
+<td><p>The mouse’s new location in window coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">buttons</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The mouse buttons that are down. Zero or more of:
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PRIMARY_MOUSE_BUTTON</span></code>,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SECONDARY_MOUSE_BUTTON</span></code>,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TERTIARY_MOUSE_BUTTON</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv410B_MOUSE_UP">
+</section>
+<h3>
+B_MOUSE_UP</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p><a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> of the view the mouse is pointing to.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="view.html#_CPPv4N5BView7MouseUpE6BPoint" title="BView::MouseUp"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::MouseUp()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Sent when the user releases a mouse button. It’s only sent if no other
+mouse button remains down.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">where</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_POINT_TYPE</span></code></p></td>
+<td><p>Mouse location in the view’s coordinate system.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">modifiers</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The modifier keys that were in effect at the time of the event.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv421B_MOUSE_WHEEL_CHANGED">
+</section>
+<h3>
+B_MOUSE_WHEEL_CHANGED</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>The <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> of the view the mouse is pointing to.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Sent when the user moves the mouse wheel (on mice that have them).</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">be:wheel_delta_x</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FLOAT_TYPE</span></code></p></td>
+<td><p>How much the Y value of the wheel has changed.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">be:wheel_delta_y</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FLOAT_TYPE</span></code></p></td>
+<td><p>How much the Y value of the wheel has changed.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The standard mouse driver that comes with BeOS only supports a Y-oriented
+wheel.</p>
+</section>
+<section id="b-printer-changed">
+<h2>B_PRINTER_CHANGED<a class="headerlink" href="#b-printer-changed" title="Permalink to this heading">¶</a></h2>
+<table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The Print Server.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>Everyone.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Sent whenever the user changes printers. Applications that support
+printing should watch for this message, and if they receive it, they should
+suggest that the user check their page setup the next time they choose to
+print.</p>
+</section>
+<section id="b-screen-changed">
+<h2>B_SCREEN_CHANGED<a class="headerlink" href="#b-screen-changed" title="Permalink to this heading">¶</a></h2>
+<table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>Every <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> in the screen that changed (even hidden
+windows).</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="window.html#_CPPv4N7BWindow13ScreenChangedE5BRect11color_space" title="BWindow::ScreenChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::ScreenChanged()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Sent when the screen’s dimensions or color space changes—because the user
+played with the Screen preferences app, for example.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">frame</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RECT_TYPE</span></code></p></td>
+<td><p>The screen’s dimensions.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">mode</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The screen’s color space: <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CMAP8</span></code>,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RGB15</span></code>, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RGB15</span></code>, or
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">BRGB32</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="b-value-changed">
+<h2>B_VALUE_CHANGED<a class="headerlink" href="#b-value-changed" title="Permalink to this heading">¶</a></h2>
+<table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>The manipulated scrollbar’s <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="scroll-bar.html#_CPPv4N10BScrollBar12ValueChangedEf" title="BScrollBar::ValueChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BScrollBar::ValueChanged()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Sent when the user plays with a scrollbar.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">value</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The scrollbar’s new value.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="view-messages">
+<h2>View Messages<a class="headerlink" href="#view-messages" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv412B_VIEW_MOVED">
+</section>
+<h3>
+B_VIEW_MOVED</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>The moved view’s <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="view.html#_CPPv4N5BView10FrameMovedE6BPoint" title="BView::FrameMoved"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::FrameMoved()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Sent when a view’s origin (left top corner) changes relative to the origin
+of its parent. The message isn’t sent if the view doesn’t have the
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FRAME_EVENTS</span></code> flag set.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">where</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_POINT_TYPE</span></code></p></td>
+<td><p>The view’s new origin in the coordinate system of its parent.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv414B_VIEW_RESIZED">
+</section>
+<h3>
+B_VIEW_RESIZED</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>The resized view’s <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="view.html#_CPPv4N5BView12FrameResizedEff" title="BView::FrameResized"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::FrameResized()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Sent when the size of the view’s frame changes. The message isn’t sent if
+the view doesn’t have the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FRAME_EVENTS</span></code> flag set.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">width</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The view’s new width.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">height</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The view’s new height.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">where</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_POINT_TYPE</span></code></p></td>
+<td><p>The view’s new origin expressed in the coordinate system of its parent.
+This field is only included if the view actually moved while being resized,
+and can always be ignored: If the view did move, you’ll hear about it in a
+separate <a class="reference internal" href="#_CPPv412B_VIEW_MOVED" title="B_VIEW_MOVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_VIEW_MOVED</span></code></a> <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="window-messages">
+<h2>Window Messages<a class="headerlink" href="#window-messages" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv418B_WINDOW_ACTIVATED">
+</section>
+<h3>
+B_WINDOW_ACTIVATED</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>The activated/deactivated <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="window.html#_CPPv4N7BWindow15WindowActivatedEb" title="BWindow::WindowActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::WindowActivated()</span></code></a> and
+<a class="reference internal" href="view.html#_CPPv4N5BView15WindowActivatedEb" title="BView::WindowActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::WindowActivated()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Sent just after a window is activated or deactivated. Note that the
+<a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> invokes <a class="reference internal" href="view.html#_CPPv4N5BView15WindowActivatedEb" title="BView::WindowActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">WindowActivated()</span></code></a> on each of its views.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">active</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BOOL_TYPE</span></code></p></td>
+<td><p><span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the window is now active; <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv416B_WINDOW_MOVE_BY">
+</section>
+<h3>
+B_WINDOW_MOVE_BY</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable.</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>Your application.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>The <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> to be moved.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>You can send this message to a window to resize it by the specified
+deltas.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">data</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_POINT_TYPE</span></code></p></td>
+<td><p>The amount by which to move the window’s X and Y coordinates.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv416B_WINDOW_MOVE_TO">
+</section>
+<h3>
+B_WINDOW_MOVE_TO</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable.</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>Your application.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>The <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> to be moved.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>You can send this message to a window to resize it to the specified size.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">data</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_POINT_TYPE</span></code></p></td>
+<td><p>The width and height (in X and Y) to resize the window to.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv414B_WINDOW_MOVED">
+</section>
+<h3>
+B_WINDOW_MOVED</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p><a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> that moved.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="window.html#_CPPv4N7BWindow10FrameMovedEP6BPoint" title="BWindow::FrameMoved"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::FrameMoved()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Sent when a window’s origin (left top corner) changes within the screen
+coordinate system.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">where</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_POINT_TYPE</span></code></p></td>
+<td><p>The window’s new origin in screen coordinates.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv416B_WINDOW_RESIZED">
+</section>
+<h3>
+B_WINDOW_RESIZED</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>The resized <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="window.html#_CPPv4N7BWindow12FrameResizedEff" title="BWindow::FrameResized"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::FrameResized()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Sent when the size of the window’s frame changes. Note that the
+<span class="hparameter">width</span> and <span class="hparameter">height</span> fields measure the window’s content
+area—they don’t include the window border or window tab.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">width</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The width of the window’s content area.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">height</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The height of the window’s content area.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv421B_WORKSPACE_ACTIVATED">
+</section>
+<h3>
+B_WORKSPACE_ACTIVATED</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>Every <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> in the activated and deactivated workspaces.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="window.html#_CPPv4N7BWindow18WorkspaceActivatedE5int32b" title="BWindow::WorkspaceActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::WorkspaceActivated()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Sent when the active workspace changes.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">workspace</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The index of the window’s workspace.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">active</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BOOL_TYPE</span></code></p></td>
+<td><p><span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the workspace is now active; <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv420B_WORKSPACES_CHANGED">
+</section>
+<h3>
+B_WORKSPACES_CHANGED</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>The <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> whose set of workspaces changed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="window.html#_CPPv4N7BWindow17WorkspacesChangedE6uint326uint32" title="BWindow::WorkspacesChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::WorkspacesChanged()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Sent when there’s a change to the set of workspaces in which a window can
+appear.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">old</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The window’s old workspace set, given as a vector of workspace indices.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">new</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The window’s new workspace set, given as a vector of workspace indices.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv46B_ZOOM">
+</section>
+<h3>
+B_ZOOM</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>The <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> that was zoomed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="window.html#_CPPv4N7BWindow4ZoomEv" title="BWindow::Zoom"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::Zoom()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Sent when the user clicks a window’s zoom button.</p>
+<p>The message has just one data field:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv419B_OPEN_IN_WORKSPACE">
+</section>
+<h3>
+B_OPEN_IN_WORKSPACE</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p><a class="reference internal" href="../application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Sent to an application when it’s first launched to tell it to open in a
+specific workspace. The message will be handled during the construction of
+the <a class="reference internal" href="../application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> object.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">be:workspace</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>Workspace number into which the application should open.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv410B_MINIMIZE">
+</section>
+<h3>
+B_MINIMIZE</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>The system or your app.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>The <a class="reference internal" href="window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> that’s hidden/unhidden.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="window.html#_CPPv4N7BWindow8MinimizeEb" title="BWindow::Minimize"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::Minimize()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Sent when the user double-clicks a window’s title bar (to hide the
+window), or selects a window from the DeskBar’s window list (to unhide the
+window).</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">minimize</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BOOL_TYPE</span></code></p></td>
+<td><p><span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the window is being hidden; <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if it’s
+being unhidden.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bshelf-messages">
+<h2>BShelf Messages<a class="headerlink" href="#bshelf-messages" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv417B_ARCHIVED_OBJECT">
+</section>
+<h3>
+B_ARCHIVED_OBJECT</h3></pre><table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Purpose:</p></td>
+<td><p>Deliverable and format</p></td>
+</tr>
+<tr class="row-even"><td><p>Source:</p></td>
+<td><p>A dragged replicant, or your app.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target:</p></td>
+<td><p>A (remote) application.</p></td>
+</tr>
+<tr class="row-even"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="shelf.html#_CPPv4NK6BShelf25CanAcceptReplicantMessageEP8BMessage" title="BShelf::CanAcceptReplicantMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BShelf::CanAcceptReplicantMessage()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">As a deliverable:</p>
+<p>The replicant system uses this message as a deliverable. If you’re using
+<a class="reference internal" href="dragger.html#_CPPv48BDragger" title="BDragger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDragger</span></code></a> and <a class="reference internal" href="shelf.html#_CPPv46BShelf" title="BShelf"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BShelf</span></code></a> objects, the message is
+created and delivered for you. You can also simulate a dragged replicant by
+archiving a view, setting the archive message’s command to
+<a class="reference internal" href="#_CPPv417B_ARCHIVED_OBJECT" title="B_ARCHIVED_OBJECT"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ARCHIVED_OBJECT</span></code></a>, and sending the message to a remote
+application. If the remote application has a <a class="reference internal" href="shelf.html#_CPPv46BShelf" title="BShelf"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BShelf</span></code></a> object,
+the <a class="reference internal" href="shelf.html#_CPPv46BShelf" title="BShelf"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BShelf</span></code></a> will pick up the message (through a
+<a class="reference internal" href="../application/message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code></a>) and pass it to the hook function.</p>
+<p>To create a simulated replicant message, you call <a class="reference internal" href="view.html#_CPPv4NK5BView7ArchiveEP8BMessageb" title="BView::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a> on the view that you want to replicate, and add (at
+least) the <span class="hparameter">add_on</span> field to the archive message.</p>
+<p>See <a class="reference internal" href="shelf.html#_CPPv46BShelf" title="BShelf"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BShelf</span></code></a> and <a class="reference internal" href="dragger.html#_CPPv48BDragger" title="BDragger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDragger</span></code></a> for more information
+about replicants.</p>
+<p class="rubric">As a format:</p>
+<p><a class="reference internal" href="#_CPPv417B_ARCHIVED_OBJECT" title="B_ARCHIVED_OBJECT"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ARCHIVED_OBJECT</span></code></a> should be used as the command constant
+for all archive messages. When you archive an object, the <span class="hparameter">class</span>
+field is automatically added to the archive message. All other fields must
+be added by your archiving code. See the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BArchivable</span></code> class for
+more information about archiving.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">class</span> [ ]</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>An array of class names that gives the class hierarchy of the archived
+object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">add_on</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>The signature of the library or application that knows how to create the
+archived object.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">be:add_on_version</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The version of the add_on.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">be:load_each_time</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BOOL_TYPE</span></code></p></td>
+<td><p><span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>: The add_on is loaded each time the object is unarchived.
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>: The add_on is loaded only if it isn’t already loaded.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">be:unload_on_delete</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BOOL_TYPE</span></code></p></td>
+<td><p>Is the add_on unloaded when the unarchived object is deleted?</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">shelf_type</span> (replicants only; optional)</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>The <span class="hparameter">type</span> of shelf that you want to have display the replicant. A
+shelf’s type is its name, as assigned when it’s created.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="menu-item.html">BMenuItem</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="outline-list-view.html">BOutlineListView</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMediaTrack &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BNullParameter" href="null-parameter.html" />
+    <link rel="prev" title="BMediaTheme" href="media-theme.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMediaTrack</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-theme.html">BMediaTheme</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="null-parameter.html">BNullParameter</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmediatrack">
+<h1 id="CPPv411BMediaTrack">BMediaTrack<a class="headerlink" href="#bmediatrack" title="Permalink to this heading">¶</a></h1>
+<p>The <a class="reference internal" href="../../kits/media/media-track.html#_CPPv411BMediaTrack" title="BMediaTrack"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaTrack</span></code></a> class provides access to a particular track
+in a media file. It’s always instantiated using the
+<a class="reference internal" href="../../kits/media/media-file.html#_CPPv4N10BMediaFile7TrackAtE5int32" title="BMediaFile::TrackAt"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaFile::TrackAt()</span></code></a> or <a class="reference internal" href="../../kits/media/media-file.html#_CPPv4N10BMediaFile11CreateTrackEP12media_formatPK16media_codec_info" title="BMediaFile::CreateTrack"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaFile::CreateTrack()</span></code></a>
+function.</p>
+<p>The <a class="reference internal" href="../../kits/media/media-track.html#_CPPv411BMediaTrack" title="BMediaTrack"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaTrack</span></code></a> constructor searches for a codec that can
+handle the encoded data in the track; once that’s been done, the track is
+ready to be used.</p>
+<p>If you opened the file for writing, you can write data into the track. If
+you specified the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_FILE_REPLACE_MODE</span></code> flag when
+constructing the <a class="reference internal" href="../../kits/media/media-file.html#_CPPv410BMediaFile" title="BMediaFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaFile</span></code></a>, you can both read and write from
+the file. If no decoder is available for the track, you can still use
+<a class="reference internal" href="../../kits/media/media-track.html#_CPPv4N11BMediaTrack9ReadChunkEPPcP5int32P12media_header" title="BMediaTrack::ReadChunk"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadChunk()</span></code></a> to access the encoded data
+directly.</p>
+<p>After instantiating the <a class="reference internal" href="../../kits/media/media-track.html#_CPPv411BMediaTrack" title="BMediaTrack"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaTrack</span></code></a>, using the
+<a class="reference internal" href="../../kits/media/media-file.html#_CPPv410BMediaFile" title="BMediaFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaFile</span></code></a> functions for doing so, you should call
+<a class="reference internal" href="../../kits/media/media-track.html#_CPPv4NK11BMediaTrack9InitCheckEv" title="BMediaTrack::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> to be sure the track is
+valid. You can then use <a class="reference internal" href="../../kits/media/media-track.html#_CPPv4N11BMediaTrack10ReadFramesEPvP5int64P12media_header" title="BMediaTrack::ReadFrames"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadFrames()</span></code></a>
+and <a class="reference internal" href="../../kits/media/media-track.html#_CPPv4N11BMediaTrack11WriteFramesEPv5int325int32" title="BMediaTrack::WriteFrames"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">WriteFrames()</span></code></a> to read and write
+data to the file, as appropriate. For video data, you should work one frame
+at a time.</p>
+<p>You can also seek particular times or frames using <a class="reference internal" href="../../kits/media/media-track.html#_CPPv4N11BMediaTrack10SeekToTimeEP9bigtime_t5int32" title="BMediaTrack::SeekToTime"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SeekToTime()</span></code></a> or <a class="reference internal" href="../../kits/media/media-track.html#_CPPv4N11BMediaTrack11SeekToFrameEP5int645int32" title="BMediaTrack::SeekToFrame"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SeekToFrame()</span></code></a>.</p>
+<p>For an example of how to use <a class="reference internal" href="../../kits/media/media-track.html#_CPPv411BMediaTrack" title="BMediaTrack"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaTrack</span></code></a> to read and write
+tracks in media files, see “<span class="xref std std-ref">Reading and Writing Media Files</span>”</p>
+<div class="note admonition">
+<p class="admonition-title" id="CPPv44Note">Note</p>
+<p>As a general rule, you can’t use wildcards in any structures used by
+<a class="reference internal" href="../../kits/media/media-track.html#_CPPv411BMediaTrack" title="BMediaTrack"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaTrack</span></code></a> functions. You tell <a class="reference internal" href="../../kits/media/media-track.html#_CPPv411BMediaTrack" title="BMediaTrack"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaTrack</span></code></a> what
+format you have, and <a class="reference internal" href="../../kits/media/media-track.html#_CPPv411BMediaTrack" title="BMediaTrack"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaTrack</span></code></a> will simply tell you whether
+or not that format is supported.</p>
+</div>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-theme.html">BMediaTheme</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="null-parameter.html">BNullParameter</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

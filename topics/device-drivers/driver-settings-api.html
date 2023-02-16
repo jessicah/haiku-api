@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Driver Settings API &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Kernel Functions" href="functions.html" />
+    <link rel="prev" title="Constants And Defined Types" href="constants-defined-types.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Driver Settings API</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="constants-defined-types.html">Constants And Defined Types</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="functions.html">Kernel Functions</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Driver Settings API</a><ul>
+<li><a class="reference internal" href="#using-the-driver-settings-api">Using the Driver Settings API</a><ul>
+<li><a class="reference internal" href="#the-settings-file">The Settings File</a></li>
+<li><a class="reference internal" href="#loading-the-settings">Loading the Settings</a></li>
+<li><a class="reference internal" href="#reading-the-settings">Reading the Settings</a><ul>
+<li><a class="reference internal" href="#reading-a-boolean-parameter">Reading a Boolean Parameter</a></li>
+<li><a class="reference internal" href="#reading-a-string-parameter">Reading a String Parameter</a></li>
+<li><a class="reference internal" href="#reading-all-parameters">Reading All Parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#c-functions">C Functions</a><ul>
+<li><a class="reference internal" href="#get-driver-boolean-parameter">get_driver_boolean_parameter()</a></li>
+<li><a class="reference internal" href="#get-driver-parameter">get_driver_parameter()</a></li>
+<li><a class="reference internal" href="#get-driver-settings">get_driver_settings()</a></li>
+<li><a class="reference internal" href="#load-driver-settings-unload-driver-settings">load_driver_settings(), unload_driver_settings()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#defined-types">Defined Types</a><ul>
+<li><a class="reference internal" href="#driver-parameter">driver_parameter</a></li>
+<li><a class="reference internal" href="#driver-settings">driver_settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="driver-settings-api">
+<h1 id="CPPv419Driver Settings API">Driver Settings API<a class="headerlink" href="#driver-settings-api" title="Permalink to this heading">¶</a></h1>
+<p>Declared in: drivers/driver_settings.h</p>
+<p>If your driver is loaded before the file system for the disk on which your
+settings file resides, your driver might not be able to load its settings
+using Posix calls. Also, a robust method for reading settings files—even if
+they might have become corrupted—can help the system be more stable; if
+your driver crashes trying to read its settings, the entire system is in
+jeopardy.</p>
+<p>The driver settings API provides easy, safe access to boolean and string
+settings, and is available to all drivers and modules. If your driver has
+more complex settings, the <span class="xref std std-ref">get_driver_settings()</span> function is
+available to retrieve all your settings in a hierarchical tree.</p>
+<p>The boot loader reads the settings files from the boot volume and passes
+them to the kernel for distribution to the drivers upon request. The boot
+loader also lets the user add to these settings at boot time; a line of the
+form “filename:parameters” in the advanced safe mode menu will add
+“parameters” to the end of the specified settings file. This can be used to
+change debugging information and to test different options while developing
+your driver.</p>
+<section id="using-the-driver-settings-api">
+<h2>Using the Driver Settings API<a class="headerlink" href="#using-the-driver-settings-api" title="Permalink to this heading">¶</a></h2>
+<p>Using the API is very simple. Just follow these basic steps:</p>
+<ul class="simple">
+<li><p>Call <span class="xref std std-ref">load_driver_settings()</span> to load the settings data.</p></li>
+<li><p>Use <span class="xref std std-ref">get_driver_settings()</span> or <span class="xref std std-ref">get_driver_parameter()</span> and
+<span class="xref std std-ref">get_driver_boolean_parameter()</span> to read the settings.</p></li>
+<li><p>Call <span class="xref std std-ref">unload_driver_settings()</span> when you’re done.</p></li>
+</ul>
+<section id="the-settings-file">
+<h3>The Settings File<a class="headerlink" href="#the-settings-file" title="Permalink to this heading">¶</a></h3>
+<p>Driver settings files are kept in ~/config/settings/kernel/drivers.</p>
+<p>The settings file is formatted like this:</p>
+<ul class="simple">
+<li><p>Words beginning with “#” indicate that the rest of the line should be
+treated as a comment.</p></li>
+<li><p>Parameters can have values and subparameters. A parameter has the
+following form in the settings file:</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>name <span class="o">[</span>value<span class="o">]</span>* <span class="o">[{</span>
+<span class="o">[</span>parameter<span class="o">]</span>*
+<span class="o">}]</span> <span class="o">[</span><span class="s1">&#39;n&#39;</span>,<span class="s1">&#39;,&#39;</span><span class="o">]</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Where [ … ] indicates an optional part, and [ … ]* indicates an optional
+</pre></div>
+</div>
+<p>repeated part.</p>
+<ul class="simple">
+<li><p>Names and values may not contain spaces unless the spaces are preceded by
+a backslash (‘’) or the words are enclosed in quotes.</p></li>
+</ul>
+<p>Here’s an example settings file:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>device <span class="m">0</span> <span class="o">{</span>
+   attribute1 value
+   attribute2 value
+<span class="o">}</span>
+device <span class="m">1</span> <span class="o">{</span>
+   attribute1 value
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>For this settings file, <span class="xref std std-ref">get_driver_settings()</span> will return a pointer
+to the following tree:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">driver_settings</span> <span class="o">=</span> <span class="o">{</span>
+   <span class="nv">parameter_count</span> <span class="o">=</span> <span class="m">2</span>
+   <span class="nv">parameters</span> <span class="o">=</span> <span class="o">{</span>
+      <span class="nv">name</span> <span class="o">=</span> <span class="s2">&quot;device&quot;</span>
+      <span class="nv">value_count</span> <span class="o">=</span> <span class="m">1</span>
+      <span class="nv">values</span> <span class="o">=</span> <span class="o">{</span> <span class="s2">&quot;0&quot;</span> <span class="o">}</span>
+      <span class="nv">parameter_count</span> <span class="o">=</span> <span class="m">2</span>
+      <span class="nv">parameters</span> <span class="o">=</span> <span class="o">{</span>
+         <span class="nv">name</span> <span class="o">=</span> <span class="s2">&quot;attributes1&quot;</span>
+         <span class="nv">value_count</span> <span class="o">=</span> <span class="m">1</span>
+         <span class="nv">values</span> <span class="o">=</span> <span class="s2">&quot;value&quot;</span>
+         <span class="nv">parameter_count</span> <span class="o">=</span> <span class="m">0</span>
+         <span class="nv">parameters</span> <span class="o">=</span> NULL
+      <span class="o">}</span>,
+      <span class="o">{</span>
+         <span class="nv">name</span> <span class="o">=</span> <span class="s2">&quot;attribute2&quot;</span>
+         <span class="nv">value_count</span> <span class="o">=</span> <span class="m">1</span>
+         <span class="nv">values</span> <span class="o">=</span> <span class="s2">&quot;value&quot;</span>
+         <span class="nv">parameter_count</span> <span class="o">=</span> <span class="m">0</span>
+         <span class="nv">parameters</span> <span class="o">=</span> NULL
+      <span class="o">}</span>
+   <span class="o">}</span>,
+   <span class="o">{</span>
+      <span class="nv">name</span> <span class="o">=</span> <span class="s2">&quot;device&quot;</span>
+      <span class="nv">value_count</span> <span class="o">=</span> <span class="m">1</span>
+      <span class="nv">values</span> <span class="o">=</span> <span class="o">{</span> <span class="s2">&quot;1&quot;</span> <span class="o">}</span>
+      <span class="nv">parameter_count</span> <span class="o">=</span> <span class="m">1</span>
+      <span class="nv">parameters</span> <span class="o">=</span> <span class="o">{</span>
+         <span class="nv">name</span> <span class="o">=</span> <span class="s2">&quot;attribute1&quot;</span>
+         <span class="nv">value_count</span> <span class="o">=</span> <span class="m">1</span>
+         <span class="nv">values</span> <span class="o">=</span> <span class="s2">&quot;value&quot;</span>
+         <span class="nv">parameter_count</span> <span class="o">=</span> <span class="m">0</span>
+         <span class="nv">parameters</span> <span class="o">=</span> NULL
+      <span class="o">}</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</section>
+<section id="loading-the-settings">
+<h3>Loading the Settings<a class="headerlink" href="#loading-the-settings" title="Permalink to this heading">¶</a></h3>
+<p>To load the driver’s settings, you need to call
+<span class="xref std std-ref">load_driver_settings()</span>. For example, if your driver’s name is
+“xr_joystick”, you might do this:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="o">*</span><span class="n">handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">load_driver_settings</span><span class="p">(</span><span class="s">&quot;xr_joystick&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The <span class="hparameter">handle</span> is then used when calling the other driver settings
+functions, to indicate which driver’s settings you want to reference. This
+opaque reference protects you against any future changes in the kernel.</p>
+</section>
+<section id="reading-the-settings">
+<h3>Reading the Settings<a class="headerlink" href="#reading-the-settings" title="Permalink to this heading">¶</a></h3>
+<p>There are three functions you can use to read driver settings:</p>
+<ul class="simple">
+<li><p><span class="xref std std-ref">get_driver_boolean_parameter()</span> returns a boolean parameter’s value.</p></li>
+<li><p><span class="xref std std-ref">get_driver_parameter()</span> returns a string parameter’s value.</p></li>
+<li><p><span class="xref std std-ref">get_driver_settings()</span> returns all the settings at once,
+encapsulated in a hierarchical format.</p></li>
+</ul>
+<section id="reading-a-boolean-parameter">
+<h4>Reading a Boolean Parameter<a class="headerlink" href="#reading-a-boolean-parameter" title="Permalink to this heading">¶</a></h4>
+<p>Let’s look at a simple driver that has one boolean parameter, “debug”,
+that enables a special debug mode. The value of this parameter is
+represented in the settings file by a line “debug value”, where value is
+either “true” or “false”. By default, if there’s no setting for the debug
+parameter, false should be assumed. If the parameter is specified but no
+value is included, we want to assume that the user means true.</p>
+<p>Our code to read this setting looks like this:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="o">*</span><span class="n">handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">load_driver_settings</span><span class="p">(</span><span class="s">&quot;xr_joystick&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">debug</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_driver_boolean_parameter</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;debug&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                          </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="n">unload_driver_settings</span><span class="p">(</span><span class="n">handle</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If there’s no settings file, <span class="xref std std-ref">load_driver_settings()</span> will return
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>. In this case, <span class="xref std std-ref">get_driver_boolean_parameter()</span> will
+return <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> (the value we’re passing as the
+<span class="hparameter">unknownValue</span> argument).</p>
+<p>If there’s a settings file, but the debug entry isn’t found, the
+<span class="hparameter">unknownValue</span> argument is returned. Even though the handle is
+valid, the function can’t find a value for that argument, so it uses this
+as the default.</p>
+<p>If the file contains a line starting with “debug”, the second word on the
+line is used as the value. If no value is specified, <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> is
+returned (the value of the <span class="hparameter">noArgValue</span> argument to
+<span class="xref std std-ref">get_driver_boolean_parameter()</span>). Otherwise the following is done:</p>
+<ul class="simple">
+<li><p>If the value is “1”, “true”, “yes”, “on”, “enable”, or “enabled”,
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> is returned.</p></li>
+<li><p>If the value is “0”, “false”, “no”, “off”, “disable”, or “disabled”,
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> is returned.</p></li>
+<li><p>If the value matches none of these strings, it’s treated as if no entry
+were found, and <span class="hparameter">unknownValue</span> is returned.</p></li>
+</ul>
+<p>If more than one line containing the word “debug” is found, the last one
+in the file is used. This lets the user override, at boot time, the value
+previously specified in the settings file.</p>
+</section>
+<section id="reading-a-string-parameter">
+<h4>Reading a String Parameter<a class="headerlink" href="#reading-a-string-parameter" title="Permalink to this heading">¶</a></h4>
+<p>Reading string parameters works in much the same way, using the
+<span class="xref std std-ref">get_driver_parameter()</span> function. The only difference is that the
+string returned will be <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the parameter is missing, or
+the file doesn’t exist.</p>
+</section>
+<section id="reading-all-parameters">
+<h4>Reading All Parameters<a class="headerlink" href="#reading-all-parameters" title="Permalink to this heading">¶</a></h4>
+<p>If your driver has more complex parameters (such as parameters with
+multiple values, or with subparameters), you can read the entire settings
+tree using the <span class="xref std std-ref">get_driver_settings()</span> function.</p>
+<p>The <span class="htype">driver_settings</span> structure contains the root of the settings
+tree:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">driver_settings</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">parameter_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">driver_parameter</span><span class="o">*</span><span class="n">parameters</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Each parameter is described by the <span class="htype">driver_parameter</span> structure:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">driver_parameter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="o">*</span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="o">**</span><span class="n">values</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">parameter_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">driver_parameter</span><span class="o">*</span><span class="n">parameters</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="c-functions">
+<h2>C Functions<a class="headerlink" href="#c-functions" title="Permalink to this heading">¶</a></h2>
+<section id="get-driver-boolean-parameter">
+<h3>get_driver_boolean_parameter()<a class="headerlink" href="#get-driver-boolean-parameter" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="n">get_driver_boolean_parameter</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="n">keyName</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">unknownValue</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">noArgValue</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Returns the value of a given boolean parameter. The driver settings file
+is specified by the handle, as returned by <span class="xref std std-ref">load_driver_settings()</span>.
+The parameter’s name is given by <span class="hparameter">keyName</span>. If the parameter isn’t
+found, <span class="hparameter">unknownValue</span> is returned. If the parameter exists but has
+no value, <span class="hparameter">noArgValue</span> is returned. This lets you easily deal with
+these two conditions, providing appropriate default values without
+additional code to check for error conditions.</p>
+<p>If the <span class="hparameter">handle</span> is <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>, <span class="hparameter">unknownValue</span> is
+returned.</p>
+</section>
+<section id="get-driver-parameter">
+<h3>get_driver_parameter()<a class="headerlink" href="#get-driver-parameter" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="n">get_driver_parameter</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="n">keyName</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="n">unknownValue</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="n">noArgValue</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Returns the value of a given string parameter. The driver settings file is
+specified by the <span class="hparameter">handle</span>, as returned by
+<span class="xref std std-ref">load_driver_settings()</span>. The parameter’s name is given by
+<span class="hparameter">keyName</span>. If the parameter isn’t found, <span class="hparameter">unknownValue</span> is
+returned. If the parameter exists but has no value, <span class="hparameter">noArgValue</span> is
+returned. This lets you easily deal with these two conditions, providing
+appropriate default values without additional code to check for error
+conditions.</p>
+<p>The special <span class="hparameter">keyName</span> value <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SAFEMODE_SAFE_MODE</span></code>
+can be used if you want to find out whether or not BeOS was booted in safe
+mode; the value will be <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if BeOS is running in safe mode,
+or false if a normal boot was performed.</p>
+<p>If the <span class="hparameter">handle</span> is <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>, <span class="hparameter">unknownValue</span> is
+returned.</p>
+</section>
+<section id="get-driver-settings">
+<h3>get_driver_settings()<a class="headerlink" href="#get-driver-settings" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="n">driver_settings</span><span class="o">*</span><span class="n">get_driver_settings</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="n">handle</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Returns the values of all parameters in encapsulated form.</p>
+</section>
+<section id="load-driver-settings-unload-driver-settings">
+<h3>load_driver_settings(), unload_driver_settings()<a class="headerlink" href="#load-driver-settings-unload-driver-settings" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="o">*</span><span class="n">load_driver_settings</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="n">driverName</span><span class="p">)</span><span class="w"></span>
+<span class="n">status_t</span><span class="w"> </span><span class="n">unload_driver_settings</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="n">handle</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>load_driver_settings() loads the settings for the driver specified by
+<span class="hparameter">driverName</span>, and returns a handle that should be used for calls to
+other driver settings functions. If you want to access the safe mode
+settings, pass <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SAFEMODE_DRIVER_SETTINGS</span></code> Returns
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if no settings are available for the driver.</p>
+<p>unload_driver_settings() unloads the settings for the driver whose
+settings file is specified by <span class="hparameter">handle</span>. You should always call this
+function when you’re done reading the settings.</p>
+</section>
+</section>
+<section id="defined-types">
+<h2>Defined Types<a class="headerlink" href="#defined-types" title="Permalink to this heading">¶</a></h2>
+<section id="driver-parameter">
+<h3>driver_parameter<a class="headerlink" href="#driver-parameter" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">driver_parameter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="o">*</span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="o">**</span><span class="n">values</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">parameter_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">driver_parameter</span><span class="o">*</span><span class="n">parameters</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Describes a subtree of parameters.</p>
+</section>
+<section id="driver-settings">
+<h3>driver_settings<a class="headerlink" href="#driver-settings" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">driver_settings</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">parameter_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">driver_parameter</span><span class="o">*</span><span class="n">parameters</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Encapsulates all the settings for a driver.</p>
+</section>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="constants-defined-types.html">Constants And Defined Types</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="functions.html">Kernel Functions</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

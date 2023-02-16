@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="BQuery" href="query.html" />
-    <link rel="prev" title="The Application Kit" href="overview.html" /> 
+    <link rel="prev" title="BNodeInfo" href="node-info.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
           <span>API Documentation</span></a></h1>
@@ -28,7 +28,7 @@
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="overview.html">The Application Kit</a>
+        «&#160;&#160;<a href="node-info.html">BNodeInfo</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -56,12 +56,15 @@
 <li><a class="reference internal" href="#_CPPv4NK5BPath4LeafEv">Leaf</a></li>
 <li><a class="reference internal" href="#_CPPv4N5BPath5SetToEPK6BEntry">SetTo</a></li>
 <li><a class="reference internal" href="#_CPPv4N5BPath5UnsetEv">Unset</a></li>
+<li><a class="reference internal" href="#bflattenable-functions">BFlattenable Functions</a><ul>
 <li><a class="reference internal" href="#_CPPv4NK5BPath14AllowsTypeCodeE9type_code">AllowsTypeCode</a></li>
 <li><a class="reference internal" href="#_CPPv4NK5BPath7FlattenEPv7ssize_t">Flatten</a></li>
 <li><a class="reference internal" href="#_CPPv4NK5BPath13FlattenedSizeEv">FlattenedSize</a></li>
 <li><a class="reference internal" href="#_CPPv4NK5BPath11IsFixedSizeEv">IsFixedSize</a></li>
 <li><a class="reference internal" href="#_CPPv4NK5BPath8TypeCodeEv">TypeCode</a></li>
 <li><a class="reference internal" href="#_CPPv4N5BPath9UnflattenE9type_codePKv7ssize_t">Unflatten</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#operators">Operators</a></li>
@@ -77,18 +80,17 @@
       <div class="content" role="main">
         
   <section id="bpath">
-<h1>BPath<a class="headerlink" href="#bpath" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv45BPath">BPath<a class="headerlink" href="#bpath" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N5BPath5BPathEv">
 </section>
 <h3>
-BPath()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BPath5BPathEv" title="BPath::BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">BPath</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BPath5BPathEPK6BEntry" title="BPath::BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">BPath</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BEntry</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">entry</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BPath5BPathEPK9entry_ref" title="BPath::BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">BPath</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BPath5BPathEPKcPKcb" title="BPath::BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">BPath</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">leaf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">normalize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BPath5BPathEPK10BDirectoryPKcb" title="BPath::BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">BPath</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BDirectory</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">dir</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">leaf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">normalize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BPath5BPathERK5BPath" title="BPath::BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">BPath</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5BPath5BPathERK5BPath" title="BPath::BPath"><span class="n">BPath</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">path</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BPath</span> object that represents the path that’s created from
-the arguments. See the analogous
-<a class="reference internal" href="#_CPPv4N5BPath5SetToEPK6BEntry" title="BPath::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> functions for descriptions of
-the flavorful constructors.</p>
+BPath()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BPath5BPathEv" title="BPath::BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">BPath</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BPath5BPathEPK6BEntry" title="BPath::BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">BPath</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="entry.html#_CPPv46BEntry" title="BEntry"><span class="n">BEntry</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">entry</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BPath5BPathEPK9entry_ref" title="BPath::BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">BPath</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BPath5BPathEPKcPKcb" title="BPath::BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">BPath</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">leaf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">normalize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BPath5BPathEPK10BDirectoryPKcb" title="BPath::BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">BPath</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="directory.html#_CPPv410BDirectory" title="BDirectory"><span class="n">BDirectory</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">dir</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">leaf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">normalize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BPath5BPathERK5BPath" title="BPath::BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">BPath</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5BPath5BPathERK5BPath" title="BPath::BPath"><span class="n">BPath</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">path</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BPath</span> object that represents the path that’s
+created from the arguments. See the analogous <a class="reference internal" href="#_CPPv4N5BPath5SetToEPK6BEntry" title="BPath::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> functions for descriptions of the flavorful constructors.</p>
 <ul class="simple">
-<li><p>The default constructor does nothing; it should be followed by a call to <a class="reference internal" href="#_CPPv4N5BPath5SetToEPK6BEntry" title="BPath::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>.</p></li>
+<li><p>The default constructor does nothing; it should be followed by a call to
+<a class="reference internal" href="#_CPPv4N5BPath5SetToEPK6BEntry" title="BPath::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>.</p></li>
 <li><p>The copy constructor makes a copy of the argument’s pathname.</p></li>
 </ul>
 <p>The constructor automatically allocates memory for the object’s stored
@@ -98,109 +100,100 @@ pathname. The memory is freed when the object is deleted.</p>
 <section id="_CPPv4N5BPathD0Ev">
 </section>
 <h3>
-~BPath()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="n">~BPath</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the object’s pathname storage and extinguishes the object.</p>
+~BPath()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">~BPath</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the object’s pathname storage and extinguishes the object.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N5BPath6AppendEPKcb">
 </section>
 <h3>
-Append()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="n">Append</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">normalize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>Appends the pathname given by <span class="hparameter">path</span> to the object’s current pathname. <span class="hparameter">path</span>
-must be relative. If <span class="hparameter">normalize</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the new pathname is normalized;
-otherwise, it’s normalized only if necessary.</p>
+Append()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">Append</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">normalize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>Appends the pathname given by <span class="hparameter">path</span> to the object’s current
+pathname. <span class="hparameter">path</span> must be relative. If <span class="hparameter">normalize</span> is
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, the new pathname is normalized; otherwise, it’s
+normalized only if necessary.</p>
 <p>Note that this…</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Append</span><span class="p">(</span><span class="s2">&quot;subdir/file&quot;</span><span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Append</span><span class="p">(</span><span class="s">&quot;subdir/file&quot;</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>…is the same as (and is implemented as):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path</span><span class="o">.</span><span class="n">SetTo</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">Path</span><span class="p">(),</span> <span class="s2">&quot;subdir/file&quot;</span><span class="p">);</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">path</span><span class="p">.</span><span class="n">SetTo</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;subdir/file&quot;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The <span class="hmethod">Append()</span> return value is picked up from the
 <a class="reference internal" href="#_CPPv4N5BPath5SetToEPK6BEntry" title="BPath::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> call.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>Success.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
-<td><p><span class="hparameter">path</span> contained a leading “/”, or this is uninitialized.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p><span class="hparameter">path</span> contained a leading “/”, or <span class="hparameter">this</span> is
+uninitialized.</p></td>
 </tr>
 </tbody>
 </table>
-<p>See <a class="reference internal" href="#_CPPv4N5BPath5SetToEPK6BEntry" title="BPath::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>
-for other return values.</p>
+<p>See <a class="reference internal" href="#_CPPv4N5BPath5SetToEPK6BEntry" title="BPath::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> for other return values.</p>
 <section id="_CPPv4NK5BPath9GetParentEP5BPath">
 </section>
 <h3>
-GetParent()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="n">GetParent</span><span class="sig-paren">(</span><span class="n">BPath</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Initializes the argument with the pathname to the parent directory of
-this. Destructive parenting is acceptable (sociologically, it’s a given):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BPath</span> <span class="n">path</span><span class="p">(</span><span class="s2">&quot;/boot/lbj/fido&quot;</span><span class="p">);</span>
-<span class="n">path</span><span class="o">.</span><span class="n">GetParent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">);</span>
+GetParent()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">GetParent</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Initializes the argument with the pathname to the parent directory of
+<span class="hparameter">this</span>. Destructive parenting is acceptable (sociologically, it’s a
+given):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BPath</span><span class="w"> </span><span class="n">path</span><span class="p">(</span><span class="s">&quot;/boot/lbj/fido&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">path</span><span class="p">.</span><span class="n">GetParent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Other details…</p>
 <ul class="simple">
-<li><p><span class="hmethod">GetParent()</span> makes a call to <a class="reference internal" href="#_CPPv4N5BPath5SetToEPK6BEntry" title="BPath::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>, but it’s guaranteed not to tickle the normalization machine.</p></li>
+<li><p><span class="hmethod">GetParent()</span> makes a call to <a class="reference internal" href="#_CPPv4N5BPath5SetToEPK6BEntry" title="BPath::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>,
+but it’s guaranteed not to tickle the normalization machine.</p></li>
 <li><p>You can’t get the parent of “/”.</p></li>
 </ul>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>Hello, mother.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></td>
 <td><p>You tried to get the parent of “/”.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
-<td><p><span class="hparameter">path</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p><span class="hparameter">path</span> is <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
 <td><p>Couldn’t allocate storage for the pathname.</p></td>
 </tr>
 </tbody>
 </table>
 <p>If the initialization isn’t successful, the argument’s
-<a class="reference internal" href="#_CPPv4NK5BPath9InitCheckEv" title="BPath::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> is set
-to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p>
+<a class="reference internal" href="#_CPPv4NK5BPath9InitCheckEv" title="BPath::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> is set to
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p>
 <section id="_CPPv4NK5BPath9InitCheckEv">
 </section>
 <h3>
-InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the status of the most recent construction or
-<a class="reference internal" href="#_CPPv4N5BPath5SetToEPK6BEntry" title="BPath::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> call.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the status of the most recent construction or <a class="reference internal" href="#_CPPv4N5BPath5SetToEPK6BEntry" title="BPath::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> call.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The initialization was successful.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
 <td><p>The object is uninitialized (this includes <a class="reference internal" href="#_CPPv4N5BPath5UnsetEv" title="BPath::Unset"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Unset()</span></code></a>).</p></td>
 </tr>
 <tr class="row-even"><td><p>For other errors.</p></td>
@@ -213,187 +206,194 @@ InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="
 <section id="_CPPv4NK5BPath4LeafEv">
 </section>
 <h3>
-Path(), Leaf()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="n">Path</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="n">Leaf</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions return the object’s full path and leaf name,
-respectively. For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BPath</span> <span class="n">path</span><span class="p">(</span><span class="s2">&quot;/boot/lbj/fido&quot;</span><span class="p">);</span>
-<span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Path: </span><span class="si">%s</span><span class="s2">n&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">.</span><span class="n">Path</span><span class="p">());</span>
-<span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Leaf: </span><span class="si">%s</span><span class="s2">n&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">.</span><span class="n">Leaf</span><span class="p">());</span>
+Path(), Leaf()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">Path</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">Leaf</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions return the object’s full path and leaf name, respectively.
+For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BPath</span><span class="w"> </span><span class="n">path</span><span class="p">(</span><span class="s">&quot;/boot/lbj/fido&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Path: %sn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">());</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Leaf: %sn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">Leaf</span><span class="p">());</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Produces…</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ Path: /boot/lbj/fido
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ Path: /boot/lbj/fido
 $ Leaf: fido
 </pre></div>
 </div>
-<p>In both cases, the returned pointers belong to the <span class="hclass">BPath</span> object. When the
-<span class="hclass">BPath</span> is deleted, the pointers go with it.</p>
-<p>If the <span class="hclass">BPath</span> isn’t initialized, the functions
-return pointers to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p>In both cases, the returned pointers belong to the <span class="hclass">BPath</span> object.
+When the <span class="hclass">BPath</span> is deleted, the pointers go with it.</p>
+<p>If the <span class="hclass">BPath</span> isn’t initialized, the functions return pointers to
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
 <section id="_CPPv4N5BPath5SetToEPK6BEntry">
 </section>
 <section id="_CPPv4N5BPath5UnsetEv">
 </section>
 <h3>
-SetTo(), Unset()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BEntry</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">entry</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">leaf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">normalize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BDirectory</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">dir</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">leaf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">normalize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="n">Unset</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The <span class="hmethod">SetTo()</span> function frees the pathname that the object currently holds,
-and re-initializes the object according to the arguments:</p>
+SetTo(), Unset()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="entry.html#_CPPv46BEntry" title="BEntry"><span class="n">BEntry</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">entry</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">leaf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">normalize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="directory.html#_CPPv410BDirectory" title="BDirectory"><span class="n">BDirectory</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">dir</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">leaf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">normalize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">Unset</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The <span class="hmethod">SetTo()</span> function frees the pathname that the object
+currently holds, and re-initializes the object according to the arguments:</p>
 <ul class="simple">
-<li><p>The first version concatenates the <span class="hparameter">path</span> and <span class="hparameter">leaf</span> strings (interposing a “/” if necessary). If <span class="hparameter">path</span> is relative, the concatenated pathname is appended to the current working directory. Note that you don’t have to split your pathname into two parts to call this constructor; the optional <span class="hparameter">leaf</span> argument is provided simply as a convenience.</p></li>
-<li><p>The second version performs a similar operation using the path of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code> as the initial part of the pathname.</p></li>
-<li><p>The third version initilizes the object with the <span class="hparameter">path</span> and name of the <span class="hparameter">entry</span>.</p></li>
+<li><p>The first version concatenates the <span class="hparameter">path</span> and <span class="hparameter">leaf</span>
+strings (interposing a “/” if necessary). If <span class="hparameter">path</span> is relative,
+the concatenated pathname is appended to the current working directory.
+Note that you don’t have to split your pathname into two parts to call this
+constructor; the optional <span class="hparameter">leaf</span> argument is provided simply as a
+convenience.</p></li>
+<li><p>The second version performs a similar operation using the path of the
+<a class="reference internal" href="directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a> as the initial part of the pathname.</p></li>
+<li><p>The third version initilizes the object with the <span class="hparameter">path</span> and name
+of the <span class="hparameter">entry</span>.</p></li>
 </ul>
 <p>Regarding the <span class="hparameter">leaf</span> argument:</p>
 <ul class="simple">
-<li><p>The <span class="hparameter">leaf</span> string can contain directories—it needn’t be just a leaf name.</p></li>
-<li><p>However, <span class="hparameter">leaf</span> must be a relative pathname (it can’t start with “/”).</p></li>
+<li><p>The <span class="hparameter">leaf</span> string can contain directories—it needn’t be just a
+leaf name.</p></li>
+<li><p>However, <span class="hparameter">leaf</span> must be a relative pathname (it can’t start with
+“/”).</p></li>
 </ul>
-<p>If set to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the <span class="hparameter">normalize</span> argument tells the object to normalize the
-new pathname. By default (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>), the pathname is normalized only if
-necessary. Note that the default doesn’t mean that the object absolutely
-won’t normalize, it just won’t do it if it doesn’t think it’s necessary.
-See  “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Initializing()</span></code>” for the full story on
-normalizing a pathname, including the conditions that trigger default
-normalization. Normalizing has no meaning with the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code> version of
-<span class="hmethod">SetTo()</span>.</p>
-<p>Storage for the pathname is allocated by the <span class="hclass">BPath</span> object and is freed
-when the object is deleted (or when you re-initialize through <span class="hmethod">SetTo()</span>).
-The path and leaf arguments are copied into the allocated storage.</p>
+<p>If set to <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, the <span class="hparameter">normalize</span> argument tells the
+object to normalize the new pathname. By default (<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>), the
+pathname is normalized only if necessary. Note that the default doesn’t
+mean that the object absolutely won’t normalize, it just won’t do it if it
+doesn’t think it’s necessary. See  “<span class="xref std std-ref">Initializing and Normalizing</span>”
+for the full story on normalizing a pathname, including the conditions that
+trigger default normalization. Normalizing has no meaning with the
+<a class="reference internal" href="entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> version of <span class="hmethod">SetTo()</span>.</p>
+<p>Storage for the pathname is allocated by the <span class="hclass">BPath</span> object and is
+freed when the object is deleted (or when you re-initialize through
+<span class="hmethod">SetTo()</span>). The path and leaf arguments are copied into the
+allocated storage.</p>
 <p>Other details…</p>
 <ul class="simple">
-<li><p>Destructive setting is safe:/* This works… */ path.SetTo(path.Path(), …);</p></li>
-<li><p>Currently, <span class="hmethod">SetTo()</span> only checks pathname and filename length if it has to normalize.</p></li>
+<li><p>Destructive setting is safe:</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* This works... */</span><span class="w"></span>
+<span class="n">path</span><span class="p">.</span><span class="n">SetTo</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">(),</span><span class="w"> </span><span class="p">...);</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Currently, <span class="hmethod">SetTo()</span> only checks pathname and filename length if
+it has to normalize.</p></li>
 </ul>
 <p><span class="hmethod">Unset()</span> frees the object’s pathname storage and sets the
-<a class="reference internal" href="#_CPPv4NK5BPath9InitCheckEv" title="BPath::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>
-value to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<a class="reference internal" href="#_CPPv4NK5BPath9InitCheckEv" title="BPath::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> value to
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>Successful initialization.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
-<td><p><span class="hparameter">path</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, <span class="hparameter">leaf</span> isn’t relative (it starts with a “/”), or <span class="hparameter">dir</span> is uninitialized.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p><span class="hparameter">path</span> is <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>, <span class="hparameter">leaf</span> isn’t relative (it
+starts with a “/”), or <span class="hparameter">dir</span> is uninitialized.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
 <td><p>A directory in the path doesn’t exist (normalization only).</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_TOO_LONG</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NAME_TOO_LONG</span></code>.</p></td>
 <td><p>A pathname element is too long (normalization only).</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
 <td><p>Couldn’t allocate storage for the pathname.</p></td>
 </tr>
 </tbody>
 </table>
-<p>The return value is also recorded in
-<a class="reference internal" href="#_CPPv4NK5BPath9InitCheckEv" title="BPath::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>.</p>
-<h3>
-</h3><p>The following functions are implemented in accordance with the rules set
-down by the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFlattenable</span></code> class. You never need to invoke these functions
-directly; they’re implemented so a <span class="hclass">BPath</span> can added to a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> (see
-“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Passing()</span></code>”). But in case you’re
-interested…</p>
+<p>The return value is also recorded in <a class="reference internal" href="#_CPPv4NK5BPath9InitCheckEv" title="BPath::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>.</p>
+<section id="bflattenable-functions">
+<h3>BFlattenable Functions<a class="headerlink" href="#bflattenable-functions" title="Permalink to this heading">¶</a></h3>
+<p>The following functions are implemented in accordance with the rules set
+down by the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFlattenable</span></code> class. You never need to invoke these
+functions directly; they’re implemented so a <span class="hclass">BPath</span> can added to a
+<a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> (see “<span class="xref std std-ref">Passing a BPath in a BMessage</span>”). But in
+case you’re interested…</p>
 <section id="_CPPv4NK5BPath14AllowsTypeCodeE9type_code">
 </section>
-<h3>
-AllowsTypeCode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="n">AllowsTypeCode</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">code</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if <span class="hparameter">code</span> is
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_REF_TYPE</span></code>, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
+<h4>
+AllowsTypeCode()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">AllowsTypeCode</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">code</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if <span class="hparameter">code</span> is
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REF_TYPE</span></code>, and <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> otherwise.</p>
 <section id="_CPPv4NK5BPath7FlattenEPv7ssize_t">
 </section>
-<h3>
-Flatten()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="n">Flatten</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">ssize_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Converts the object’s pathname to an entry_ref and writes it into <span class="hparameter">buffer</span>.
-Currently, <span class="hparameter">size</span> is ignored.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<h4>
+Flatten()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">Flatten</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">ssize_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Converts the object’s pathname to an <span class="htype">entry_ref</span> and writes it into
+<span class="hparameter">buffer</span>. Currently, <span class="hparameter">size</span> is ignored.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>Peachy.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NAME_TOO_LONG</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NAME_TOO_LONG</span></code>.</p></td>
 <td><p>The pathname is too long (&gt; 1024 characters).</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></td>
 <td><p>A directory in the path doesn’t exist.</p></td>
 </tr>
 </tbody>
 </table>
 <section id="_CPPv4NK5BPath13FlattenedSizeEv">
 </section>
-<h3>
-FlattenedSize()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="n">FlattenedSize</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the size of the entry_ref that represents the flattened pathname.</p>
+<h4>
+FlattenedSize()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">FlattenedSize</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the size of the <span class="htype">entry_ref</span> that represents the flattened
+pathname.</p>
 <section id="_CPPv4NK5BPath11IsFixedSizeEv">
 </section>
-<h3>
-IsFixedSize()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="n">IsFixedSize</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<h4>
+IsFixedSize()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">IsFixedSize</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>.</p>
 <section id="_CPPv4NK5BPath8TypeCodeEv">
 </section>
-<h3>
-TypeCode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">type_code</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="n">TypeCode</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_REF_TYPE</span></code>.</p>
+<h4>
+TypeCode()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">type_code</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">TypeCode</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REF_TYPE</span></code>.</p>
 <section id="_CPPv4N5BPath9UnflattenE9type_codePKv7ssize_t">
 </section>
-<h3>
-Unflatten()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="n">Unflatten</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">code</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">ssize_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BPath</span> with the flattened entry_ref data that’s found in
-<span class="hparameter">buffer</span>. The type code must be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_REF_TYPE</span></code>.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<h4>
+Unflatten()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="n">Unflatten</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">code</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">ssize_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BPath</span> with the flattened <span class="htype">entry_ref</span> data
+that’s found in <span class="hparameter">buffer</span>. The type code must be
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REF_TYPE</span></code>.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>Success.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
-<td><p>Wrong type code (not <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_REF_TYPE</span></code>).</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>Wrong type code (not <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REF_TYPE</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></td>
-<td><p>A directory in the entry_ref data doesn’t exist.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></td>
+<td><p>A directory in the <span class="htype">entry_ref</span> data doesn’t exist.</p></td>
 </tr>
 </tbody>
 </table>
 <p>The <span class="hmethod">Unflatten()</span> return value is recorded in
 <a class="reference internal" href="#_CPPv4NK5BPath9InitCheckEv" title="BPath::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>.</p>
 </section>
+</section>
 <section id="operators">
 <h2>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">¶</a></h2>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BPath</span><span class="w"> </span><span class="p">&amp;</span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPath</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">path</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BPath</span><span class="w"> </span><span class="p">&amp;</span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span></pre><p>Initializes this with a copy of the pathname that’s gotten from the
-argument. Also sets
-<a class="reference internal" href="#_CPPv4NK5BPath9InitCheckEv" title="BPath::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>.</p>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="w"> </span><span class="p">&amp;</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">path</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="w"> </span><span class="p">&amp;</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span></pre><p>Initializes this with a copy of the pathname that’s gotten from the
+argument. Also sets <a class="reference internal" href="#_CPPv4NK5BPath9InitCheckEv" title="BPath::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>.</p>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="k">operator</span><span class="o">==</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPath</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">path</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="k">operator</span><span class="o">==</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="k">operator</span><span class="o">!=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPath</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">path</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPath</span><span class="p">::</span></span><span class="k">operator</span><span class="o">!=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Compares this’s pathname with the pathname taken from the argument. The
-comparison is a simple strcmp(); neither path is normalized or otherwise
-altered before the comparison is made. For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BPath</span> <span class="n">path</span><span class="p">(</span><span class="s2">&quot;/boot/lbj/fido&quot;</span><span class="p">);</span>
-<span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/boot&quot;</span><span class="p">);</span>
-<span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Are they equal? </span><span class="si">%d</span><span class="s2">n&quot;</span><span class="p">,</span> <span class="n">path</span> <span class="o">==</span> <span class="s2">&quot;lbj/fido&quot;</span><span class="p">);</span>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="k">operator</span><span class="o">==</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">path</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="k">operator</span><span class="o">==</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="k">operator</span><span class="o">!=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">path</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BPath" title="BPath"><span class="n">BPath</span></a><span class="p">::</span></span><span class="k">operator</span><span class="o">!=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Compares <span class="hparameter">this</span>’s pathname with the pathname taken from the
+argument. The comparison is a simple strcmp(); neither path is normalized
+or otherwise altered before the comparison is made. For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BPath</span><span class="w"> </span><span class="n">path</span><span class="p">(</span><span class="s">&quot;/boot/lbj/fido&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">chdir</span><span class="p">(</span><span class="s">&quot;/boot&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Are they equal? %dn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;lbj/fido&quot;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Displays:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ Are they equal? 0
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ Are they equal? <span class="m">0</span>
 </pre></div>
 </div>
 </section>
@@ -406,7 +406,7 @@ altered before the comparison is made. For example:</p>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="overview.html">The Application Kit</a>
+        «&#160;&#160;<a href="node-info.html">BNodeInfo</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;

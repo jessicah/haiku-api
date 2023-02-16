@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BNodeInfo &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BPath" href="path.html" />
+    <link rel="prev" title="BNode" href="node.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BNodeInfo</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="node.html">BNode</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="path.html">BPath</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BNodeInfo</a><ul>
+<li><a class="reference internal" href="#initialization">Initialization</a></li>
+<li><a class="reference internal" href="#node-info-equals-attributes">Node Info Equals Attributes</a></li>
+<li><a class="reference internal" href="#bappfileinfo">BAppFileInfo</a></li>
+<li><a class="reference internal" href="#errors">Errors</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bnodeinfo">
+<h1 id="CPPv49BNodeInfo">BNodeInfo<a class="headerlink" href="#bnodeinfo" title="Permalink to this heading">¶</a></h1>
+<p><span class="hclass">BNodeInfo</span> provides file type information about a particular
+node; specifically:</p>
+<ul class="simple">
+<li><p>The (MIME) file type.</p></li>
+<li><p>The node’s icons, including the node-specific icon that the Tracker
+displays.</p></li>
+<li><p>The “preferred app”; this is the application that’s used to access the
+node’s contents.</p></li>
+</ul>
+<p>Except for the Tracker icon, all this information can also be set through
+the <span class="hclass">BNodeInfo</span> class. None of the information is passed on to the
+File Type database; if you want to record a node’s file type information
+with the database, you have to create a <a class="reference internal" href="../../kits/storage/mime-type.html#_CPPv49BMimeType" title="BMimeType"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMimeType</span></code></a> object
+(based on the node’s file type) and go from there.</p>
+<section id="initialization">
+<h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this heading">¶</a></h2>
+<p>You initialize a <span class="hclass">BNodeInfo</span> object by passing it a
+<a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a> object. Although you can pass any flavor of node, you
+typically only care about files; passing a <a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a> object (or
+any subclass of <a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a>) is, of course, acceptable. The
+<span class="hclass">BNodeInfo</span> object maintains its own pointer to the BNode you pass
+in. You don’t have to avoid touching the <a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a> while a
+<span class="hclass">BNodeInfo</span> is looking at it (or changing it); the only thing you
+shouldn’t do is delete the <a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a>.</p>
+<p><span class="hclass">BNodeInfo</span> doesn’t care if the <a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a> is
+locked—there’s no particular reason to lock the <a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a> before
+passing it in, but the <span class="hclass">BNodeInfo</span> won’t balk if you do. If you
+pass in a <a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a> object, <span class="hclass">BNodeInfo</span> does not obey the
+<a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a>’s read/write flags. For example, you can set the node
+info for a <a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a> even if you’ve opened it in read-only mode.</p>
+</section>
+<section id="node-info-equals-attributes">
+<h2>Node Info Equals Attributes<a class="headerlink" href="#node-info-equals-attributes" title="Permalink to this heading">¶</a></h2>
+<p>The <span class="hclass">BNodeInfo</span> class does nothing more than look in a node’s
+attributes for the information it sets or gets. The attribute names for the
+various information particles are given in the function descriptions,
+below. If you want, you can bypass <span class="hclass">BNodeInfo</span> and get the node
+information directly by passing the attribute names to <a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a>’s
+<a class="reference internal" href="../../kits/storage/node.html#_CPPv4N5BNode8ReadAttrEPKc9type_code5off_tPv6size_t" title="BNode::ReadAttr"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadAttr()</span></code></a> and <a class="reference internal" href="../../kits/storage/node.html#_CPPv4N5BNode9WriteAttrEPKc9type_code5off_tPKv6size_t" title="BNode::WriteAttr"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">WriteAttr()</span></code></a> functions.</p>
+<p>The one exception to this is <a class="reference internal" href="../../kits/storage/node-info.html#_CPPv4N9BNodeInfo14GetTrackerIconEP7BBitmap9icon_size" title="BNodeInfo::GetTrackerIcon"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetTrackerIcon()</span></code></a>: This function starts by looking in the node’s
+attributes, but then it goes out hunting if it has to (if the icon isn’t
+found in the attributes).</p>
+</section>
+<section id="bappfileinfo">
+<h2>BAppFileInfo<a class="headerlink" href="#bappfileinfo" title="Permalink to this heading">¶</a></h2>
+<p><span class="hclass">BNodeInfo</span> has a single subclass: <a class="reference internal" href="../../kits/storage/app-file-info.html#_CPPv412BAppFileInfo" title="BAppFileInfo"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BAppFileInfo</span></code></a>. You
+use a <a class="reference internal" href="../../kits/storage/app-file-info.html#_CPPv412BAppFileInfo" title="BAppFileInfo"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BAppFileInfo</span></code></a> object to get more information about a
+specific executable image (file).</p>
+</section>
+<section id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this heading">¶</a></h2>
+<p>Unlike most of the other Storage Kit classes, when you ask a
+<span class="hclass">BNodeInfo</span> to retrieve some information by reference, the object
+doesn’t clear the reference argument if it fails. Because of this, you
+should always check the error code that’s returned by the <span class="hmethod">Get…()</span>
+functions.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="node.html">BNode</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="path.html">BPath</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

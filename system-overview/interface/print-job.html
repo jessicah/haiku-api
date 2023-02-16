@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BPrintJob &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BRadioButton" href="radio-button.html" />
+    <link rel="prev" title="BPopUpMenu" href="pop-up-menu.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BPrintJob</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="pop-up-menu.html">BPopUpMenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="radio-button.html">BRadioButton</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BPrintJob</a><ul>
+<li><a class="reference internal" href="#setting-up-the-page-layout">Setting Up the Page Layout</a></li>
+<li><a class="reference internal" href="#printing">Printing</a><ul>
+<li><a class="reference internal" href="#setting-up-a-print-job">Setting Up a Print Job</a></li>
+<li><a class="reference internal" href="#the-spool-file">The Spool File</a></li>
+<li><a class="reference internal" href="#cancellation">Cancellation</a></li>
+<li><a class="reference internal" href="#drawing-on-the-page">Drawing on the Page</a></li>
+<li><a class="reference internal" href="#a-complete-printing-function">A Complete Printing Function</a></li>
+<li><a class="reference internal" href="#drawing-coordinates">Drawing Coordinates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bprintjob">
+<h1 id="CPPv49BPrintJob">BPrintJob<a class="headerlink" href="#bprintjob" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv49BPrintJob" title="BPrintJob"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPrintJob</span></code></a> object runs a printing session. It negotiates
+everything after the user’s initial request to print—from engaging the
+Print Server to calling upon <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s to draw and spooling the
+results to the printer. It also handles a secondary and somewhat separate
+matter related to printing—configuring the page layout.</p>
+<section id="setting-up-the-page-layout">
+<h2>Setting Up the Page Layout<a class="headerlink" href="#setting-up-the-page-layout" title="Permalink to this heading">¶</a></h2>
+<p>Users typically don’t decide how a document fits on a page—the size of the
+paper, the width of the margins, the orientation of the image, and so
+on—each time they print. These decisions are usually made when setting up
+the document, perhaps from a Page Layout menu item, rather than Print.</p>
+<p>To set up the page parameters for a document, an application should create
+a <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv49BPrintJob" title="BPrintJob"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPrintJob</span></code></a> object, assign it a name, and call
+<a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob10ConfigPageEv" title="BPrintJob::ConfigPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ConfigPage()</span></code></a>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span><span class="w"> </span><span class="nf">MyDocumentManager::SetUpPage</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">BPrintJob</span><span class="w"> </span><span class="n">job</span><span class="p">(</span><span class="s">&quot;document&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">ConfigPage</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob10ConfigPageEv" title="BPrintJob::ConfigPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ConfigPage()</span></code></a> has the Print Server
+interact with the user to set up the page configuration. Configuration
+settings are stored in a <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> object that will be handed
+to the server when the document is printed. The <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> is
+important to the server, but the application doesn’t need to look at it
+directly; functions are provided to access the useful data it contains.
+However, you may want to get the object and store it with the document so
+that the configuration can be reused whenever the document is printed—and
+so that the user’s previous choices can be the default settings when
+<a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob10ConfigPageEv" title="BPrintJob::ConfigPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ConfigPage()</span></code></a> is called again. This is
+good behavior for an application to follow, and is highly recommended.</p>
+<p><a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob8SettingsEv" title="BPrintJob::Settings"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Settings()</span></code></a> returns the page
+configuration the user set up; <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob11SetSettingsEP8BMessage" title="BPrintJob::SetSettings"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetSettings()</span></code></a> initializes the configuration that’s presented to
+the user. For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BMessage</span><span class="w"> </span><span class="o">*</span><span class="n">setup</span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">status_t</span><span class="w"> </span><span class="n">MyDocumentManager</span><span class="o">::</span><span class="n">SetUpPage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">status_t</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">BPrintJob</span><span class="w"> </span><span class="n">job</span><span class="p">(</span><span class="s">&quot;document&#39;s name&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">setup</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">job</span><span class="p">.</span><span class="n">SetSettings</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">BMessage</span><span class="p">(</span><span class="o">*</span><span class="n">setup</span><span class="p">));</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">ConfigPage</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">setup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">Settings</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">      </span><span class="cm">/* record the settings for your own use */</span><span class="w"></span>
+<span class="w">      </span><span class="n">paper_rect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">PaperRect</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">printable_rect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">PrintableRect</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In this example, the setup <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> presumably is flattened
+and saved with the document whenever the document is saved, and unflattened
+whenever the document is open and the page settings are needed.</p>
+</section>
+<section id="printing">
+<h2>Printing<a class="headerlink" href="#printing" title="Permalink to this heading">¶</a></h2>
+<p>To print a document, an application must go through several ordered steps:</p>
+<ul class="simple">
+<li><p>Engaging the Print Server and setting parameters for the job.</p></li>
+<li><p>Setting up a spool file to hold image data.</p></li>
+<li><p>Asking <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s to draw each page.</p></li>
+<li><p>After each page is drawn, putting the data for the page in the spool file.</p></li>
+<li><p>Committing the spool file to the Print Server.</p></li>
+</ul>
+<p>A <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv49BPrintJob" title="BPrintJob"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPrintJob</span></code></a> object has member functions that assist with each
+step.</p>
+<section id="setting-up-a-print-job">
+<h3>Setting Up a Print Job<a class="headerlink" href="#setting-up-a-print-job" title="Permalink to this heading">¶</a></h3>
+<p>A print job begins when the user requests the application to print
+something. In response, the application should create a
+<a class="reference internal" href="../../kits/interface/print-job.html#_CPPv49BPrintJob" title="BPrintJob"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPrintJob</span></code></a> object, assign the job a name, and call
+<a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob9ConfigJobEv" title="BPrintJob::ConfigJob"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ConfigJob()</span></code></a> to initialize the printing
+environment. For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BMessage</span><span class="w"> </span><span class="o">*</span><span class="n">setup</span><span class="p">;</span><span class="w"></span>
+<span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="n">status_t</span><span class="w"> </span><span class="n">MyDocumentManager</span><span class="o">::</span><span class="n">Print</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">BPrintJob</span><span class="w"> </span><span class="n">job</span><span class="p">(</span><span class="s">&quot;document&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">status_t</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">setup</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="n">job</span><span class="p">.</span><span class="n">SetSettings</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">BMessage</span><span class="p">(</span><span class="o">*</span><span class="n">setup</span><span class="p">));</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">ConfigJob</span><span class="p">())</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">delete</span><span class="w"> </span><span class="n">setup</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">setup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">Settings</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>So far, this looks much like the code for configuring the page presented
+in the previous “<span class="xref std std-ref">Setting Up the Page Layout</span>” section. The idea is
+the same. <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob9ConfigJobEv" title="BPrintJob::ConfigJob"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ConfigJob()</span></code></a> gets the Print
+Server ready for a new printing session and has it interact with the user
+to set up the parameters for the job—which pages, how many copies, and so
+on. It uses the same settings <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> to record the user’s
+choices as <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob10ConfigPageEv" title="BPrintJob::ConfigPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ConfigPage()</span></code></a> did, though it
+records information that’s more immediate to the particular printing
+session.</p>
+<p>Again, you may want to store the user’s choices with the document so that
+they can be used to set the initial configuration for the job when the
+document is next printed. By calling <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob8SettingsEv" title="BPrintJob::Settings"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Settings()</span></code></a>, you can get the job configuration the user set up;
+<a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob11SetSettingsEP8BMessage" title="BPrintJob::SetSettings"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetSettings()</span></code></a> initializes the
+configuration that’s presented to the user.</p>
+<p>Information about the page layout will be required while printing. If that
+information isn’t available in the <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob8SettingsEv" title="BPrintJob::Settings"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Settings()</span></code></a> <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>, <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob9ConfigJobEv" title="BPrintJob::ConfigJob"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ConfigJob()</span></code></a> will begin, in essence, by calling
+<a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob10ConfigPageEv" title="BPrintJob::ConfigPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ConfigPage()</span></code></a> so that the server can ask
+the user to supply it.</p>
+<p>To discover which pages the user wants to print, you can call the
+<a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob9FirstPageEv" title="BPrintJob::FirstPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FirstPage()</span></code></a> and <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob8LastPageEv" title="BPrintJob::LastPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LastPage()</span></code></a> functions after <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob9ConfigJobEv" title="BPrintJob::ConfigJob"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ConfigJob()</span></code></a> returns:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">int32</span><span class="w"> </span><span class="n">pageCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">LastPage</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">FirstPage</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="the-spool-file">
+<h3>The Spool File<a class="headerlink" href="#the-spool-file" title="Permalink to this heading">¶</a></h3>
+<p>The next step after configuring the job is to call <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob8BeginJobEv" title="BPrintJob::BeginJob"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BeginJob()</span></code></a> to set up a spool file and begin the production of
+pages. After all the pages are produced, <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob9CommitJobEv" title="BPrintJob::CommitJob"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CommitJob()</span></code></a> is called to commit them to the printer.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="p">.</span><span class="n">BeginJob</span><span class="p">();</span><span class="w"></span>
+<span class="cm">/* draw pages here*/</span><span class="w"></span>
+<span class="n">job</span><span class="p">.</span><span class="n">CommitJob</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob8BeginJobEv" title="BPrintJob::BeginJob"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BeginJob()</span></code></a> and <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob9CommitJobEv" title="BPrintJob::CommitJob"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CommitJob()</span></code></a> bracket all the drawing that’s done during the job.</p>
+</section>
+<section id="cancellation">
+<h3>Cancellation<a class="headerlink" href="#cancellation" title="Permalink to this heading">¶</a></h3>
+<p>A number of things can happen to derail a print job after it has
+started—most significantly, the user can cancel it at any time. To be sure
+that the job hasn’t been canceled or something else hasn’t happened to
+defeat it, you can call <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob11CanContinueEv" title="BPrintJob::CanContinue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CanContinue()</span></code></a>
+at critical junctures in your code. This function will tell you whether
+it’s sensible to continue with the job. In the following example, a while
+loop is used to loop through all the pages in the document, or until
+<a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob11CanContinueEv" title="BPrintJob::CanContinue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CanContinue()</span></code></a> returns false,
+indicating that the job has been canceled:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">job</span><span class="p">.</span><span class="n">BeginJob</span><span class="p">();</span><span class="w"></span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">job</span><span class="p">.</span><span class="n">CanContinue</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">pageCount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* draw each page here*/</span><span class="w"></span>
+<span class="w">   </span><span class="n">page</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="n">job</span><span class="p">.</span><span class="n">CommitJob</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="drawing-on-the-page">
+<h3>Drawing on the Page<a class="headerlink" href="#drawing-on-the-page" title="Permalink to this heading">¶</a></h3>
+<p>A page is produced by asking one or more <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s to draw
+within a rectangle that can be mapped to a sheet of paper (excluding the
+margins at the edge of the paper). <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob8DrawViewEP5BView5BRect6BPoint" title="BPrintJob::DrawView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawView()</span></code></a> requests one <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> to draw some portion
+of its data and specifies where the data should appear on the page. You can
+call <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob8DrawViewEP5BView5BRect6BPoint" title="BPrintJob::DrawView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawView()</span></code></a> any number of times for a
+single page to ask any number of <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s to contribute to the
+page. After all views have drawn, <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob9SpoolPageEv" title="BPrintJob::SpoolPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SpoolPage()</span></code></a> spools the data to the file that will eventually be
+committed to the printer. <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob9SpoolPageEv" title="BPrintJob::SpoolPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SpoolPage()</span></code></a> is
+called just once for each page. For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">FirstPage</span><span class="p">();</span><span class="w"></span>
+<span class="n">job</span><span class="p">.</span><span class="n">CanContinue</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">LastPage</span><span class="p">();</span><span class="w"></span>
+<span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="w">   </span><span class="n">job</span><span class="p">.</span><span class="n">DrawView</span><span class="p">(</span><span class="n">someView</span><span class="p">,</span><span class="w"> </span><span class="n">viewRect</span><span class="p">,</span><span class="w"> </span><span class="n">pointOnPage</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">job</span><span class="p">.</span><span class="n">DrawView</span><span class="p">(</span><span class="n">anotherView</span><span class="p">,</span><span class="w"> </span><span class="n">anotherRect</span><span class="p">,</span><span class="w"> </span><span class="n">differentPoint</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="w">   </span><span class="n">job</span><span class="p">.</span><span class="n">SpoolPage</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob8DrawViewEP5BView5BRect6BPoint" title="BPrintJob::DrawView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawView()</span></code></a> calls the
+<a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>’s <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a> function. That
+function must be prepared to draw either for the screen or on the printed
+page. It can test the destination of its output by calling the
+<a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a> <a class="reference internal" href="../../kits/interface/view.html#_CPPv4NK5BView10IsPrintingEv" title="BView::IsPrinting"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">IsPrinting()</span></code></a> function.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>Don’t use the <a class="reference internal" href="../../kits/interface/view.html#_CPPv4NK5BView6BoundsEv" title="BView::Bounds"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Bounds()</span></code></a> function to determine the area to
+render. Instead, use the update rectangle passed to the
+<a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Draw()</span></code></a> function.</p>
+</div>
+</section>
+<section id="a-complete-printing-function">
+<h3>A Complete Printing Function<a class="headerlink" href="#a-complete-printing-function" title="Permalink to this heading">¶</a></h3>
+<p>This function puts together all the above code snippets and handles the
+printing of a document (minus the actual drawing and visual status
+information presented to the user as printing goes on).</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span><span class="w"> </span><span class="nf">MyDocumentManager::Print</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">status_t</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B_OK</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">BPrintJob</span><span class="w"> </span><span class="n">job</span><span class="p">(</span><span class="s">&quot;document&#39;s name&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="c1">// If we have no setup message, we should call ConfigPage()</span>
+<span class="w">   </span><span class="c1">// You must use the same instance of the BPrintJob object</span>
+<span class="w">   </span><span class="c1">// (you can&#39;t call the previous &quot;PageSetup()&quot; function, since it</span>
+<span class="w">   </span><span class="c1">// creates its own BPrintJob object).</span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">setup</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">ConfigPage</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="c1">// Get the user Settings</span>
+<span class="w">         </span><span class="n">setup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">Settings</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">         </span><span class="c1">// Use the new settings for your internal use</span>
+<span class="w">         </span><span class="n">paper_rect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">PaperRect</span><span class="p">();</span><span class="w"></span>
+<span class="w">         </span><span class="n">printable_rect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">PrintableRect</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Setup the driver with user settings</span>
+<span class="w">      </span><span class="n">job</span><span class="p">.</span><span class="n">SetSettings</span><span class="p">(</span><span class="n">setup</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">ConfigJob</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="c1">// WARNING: here, setup CANNOT be NULL.</span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">setup</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// something&#39;s wrong, handle the error and bail out</span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">         </span><span class="k">delete</span><span class="w"> </span><span class="n">setup</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">         </span><span class="c1">// Get the user Settings</span>
+<span class="w">         </span><span class="n">setup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">Settings</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">         </span><span class="c1">// Use the new settings for your internal use</span>
+<span class="w">         </span><span class="c1">// They may have changed since the last time you read it</span>
+<span class="w">         </span><span class="n">paper_rect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">PaperRect</span><span class="p">();</span><span class="w"></span>
+<span class="w">         </span><span class="n">printable_rect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">PrintableRect</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">         </span><span class="c1">// Now you have to calculate the number of pages</span>
+<span class="w">         </span><span class="c1">// (note: page are zero-based)</span>
+<span class="w">         </span><span class="n">int32</span><span class="w"> </span><span class="n">firstPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">FirstPage</span><span class="p">();</span><span class="w"></span>
+<span class="w">         </span><span class="n">int32</span><span class="w"> </span><span class="n">lastPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">LastPage</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">         </span><span class="c1">// Verify the range is correct</span>
+<span class="w">         </span><span class="c1">// 0 ... LONG_MAX -&gt; Print all the document</span>
+<span class="w">         </span><span class="c1">// n ... LONG_MAX -&gt; Print from page n to the end</span>
+<span class="w">         </span><span class="c1">// n ... m -&gt; Print from page n to page m</span>
+
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lastPage</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">your_document_last_page</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">last_page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">your_document_last_page</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">         </span><span class="n">int32</span><span class="w"> </span><span class="n">nbPages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lastPage</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">firstPage</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">         </span><span class="c1">// Verify the range is correct</span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nbPages</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">B_ERROR</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">         </span><span class="c1">// Now you can print the page</span>
+<span class="w">         </span><span class="n">job</span><span class="p">.</span><span class="n">BeginJob</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">         </span><span class="c1">// Print all pages</span>
+<span class="w">         </span><span class="kt">bool</span><span class="w"> </span><span class="n">can_continue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">CanContinue</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">         </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">firstPage</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">can_continue</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;=</span><span class="n">lastPage</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// Draw all the needed views</span>
+<span class="w">            </span><span class="n">job</span><span class="p">.</span><span class="n">DrawView</span><span class="p">(</span><span class="n">someView</span><span class="p">,</span><span class="w"> </span><span class="n">viewRect</span><span class="p">,</span><span class="w"> </span><span class="n">pointOnPage</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">job</span><span class="p">.</span><span class="n">DrawView</span><span class="p">(</span><span class="n">anotherView</span><span class="p">,</span><span class="w"> </span><span class="n">anotherRect</span><span class="p">,</span><span class="w"> </span><span class="n">differentPoint</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1">// If the document have a lot of pages, you can update</span>
+<span class="w">               </span><span class="n">a</span><span class="w"> </span><span class="n">BStatusBar</span><span class="p">,</span><span class="w"> </span><span class="n">here</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// or else what you want...</span>
+<span class="w">            </span><span class="n">update_status_bar</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">firstPage</span><span class="p">,</span><span class="w"> </span><span class="n">nbPages</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1">// Spool the page</span>
+<span class="w">            </span><span class="n">job</span><span class="p">.</span><span class="n">SpoolPage</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1">// Cancel the job if needed.</span>
+<span class="w">            </span><span class="c1">// You can for exemple verify if the user pressed the</span>
+<span class="w">            </span><span class="c1">// ESC key or (SHIFT + &#39;.&#39;)...</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">user_has_canceled</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">               </span><span class="c1">// tell the print_server to cancel the printjob</span>
+<span class="w">               </span><span class="n">job</span><span class="p">.</span><span class="n">CancelJob</span><span class="p">();</span><span class="w"></span>
+<span class="w">               </span><span class="n">can_continue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">               </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1">// Verify that there was no error (disk full for example)</span>
+<span class="w">            </span><span class="n">can_continue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">CanContinue</span><span class="p">();</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">         </span><span class="c1">// Now, you just have to commit the job!</span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">can_continue</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">job</span><span class="p">.</span><span class="n">CommitJob</span><span class="p">();</span><span class="w"></span>
+<span class="w">         </span><span class="k">else</span><span class="w"></span>
+<span class="w">            </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B_ERROR</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="drawing-coordinates">
+<h3>Drawing Coordinates<a class="headerlink" href="#drawing-coordinates" title="Permalink to this heading">¶</a></h3>
+<p>When a <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> draws for the printer, it draws within the
+printable rectangle of a page—a rectangle that matches the size of a sheet
+of paper minus the unprinted margin around the paper’s edge. The
+<a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob9PaperRectEv" title="BPrintJob::PaperRect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PaperRect()</span></code></a> function returns a rectangle
+that measures a sheet of paper and <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob13PrintableRectEv" title="BPrintJob::PrintableRect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PrintableRect()</span></code></a> returns the printable rectangle, as illustrated
+in this diagram.</p>
+<p><img alt="Paper And Print Rectangles" src="system-overview/interface/images/TheInterfaceKit/printjob1.png" /></p>
+<p>Both rectangles are stated in a coordinate system that has its origin at
+the left top corner of the page. Thus, the left and top sides of the
+rectangle returned by <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob9PaperRectEv" title="BPrintJob::PaperRect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PaperRect()</span></code></a> are
+always 0.0. <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob13PrintableRectEv" title="BPrintJob::PrintableRect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PrintableRect()</span></code></a> locates
+the printable rectangle on the paper rectangle. However,
+<a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob8DrawViewEP5BView5BRect6BPoint" title="BPrintJob::DrawView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawView()</span></code></a> assumes coordinates that are
+local to the printable rectangle—that is, an origin at the left top corner
+of the printable rectangle rather than the paper rectangle.</p>
+<p>The diagram below shows the left top coordinates of the printable
+rectangle as <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob13PrintableRectEv" title="BPrintJob::PrintableRect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PrintableRect()</span></code></a> would
+report them and as <a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob8DrawViewEP5BView5BRect6BPoint" title="BPrintJob::DrawView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawView()</span></code></a> would
+assume them, given a half-inch margin.</p>
+<p><img alt="Views In Page Layout With Margin" src="system-overview/interface/images/TheInterfaceKit/printjob2.png" /></p>
+<p><a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a> always draws in the <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>’s
+own coordinate system. Those coordinates are mapped to locations in the
+printable rectangle as specified by the arguments passed to
+<a class="reference internal" href="../../kits/interface/print-job.html#_CPPv4N9BPrintJob8DrawViewEP5BView5BRect6BPoint" title="BPrintJob::DrawView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawView()</span></code></a>.</p>
+<p>See also: <a class="reference internal" href="../../kits/interface/view.html#_CPPv4NK5BView10IsPrintingEv" title="BView::IsPrinting"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::IsPrinting()</span></code></a></p>
+</section>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="pop-up-menu.html">BPopUpMenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="radio-button.html">BRadioButton</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BRegion &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BScreen" href="screen.html" />
+    <link rel="prev" title="BRect" href="rect.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BRegion</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="rect.html">BRect</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="screen.html">BScreen</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bregion">
+<h1 id="CPPv47BRegion">BRegion<a class="headerlink" href="#bregion" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../kits/interface/region.html#_CPPv47BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a> object comprises a set of rectangles in a
+two-dimensional coordinate system. The rectangles needn’t overlap; a single
+<a class="reference internal" href="../../kits/interface/region.html#_CPPv47BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a> can contain a little rectangle way down there, a big
+one over yonder, and another that lives somewhere to the left of Baden
+Baden.</p>
+<p>You define and modify the contents of a region through to <a class="reference internal" href="../../kits/interface/region.html#_CPPv4N7BRegion3SetE5BRect" title="BRegion::Set"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Set()</span></code></a>, <a class="reference internal" href="../../kits/interface/region.html#_CPPv4N7BRegion7IncludeE5BRect" title="BRegion::Include"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Include()</span></code></a>,
+<a class="reference internal" href="../../kits/interface/region.html#_CPPv4N7BRegion7ExcludeE5BRect" title="BRegion::Exclude"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Exclude()</span></code></a>, and <a class="reference internal" href="../../kits/interface/region.html#_CPPv4N7BRegion13IntersectWithEPK7BRegion" title="BRegion::IntersectWith"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">IntersectWith()</span></code></a>. You can examine a region’s rectangle’s through
+<a class="reference internal" href="../../kits/interface/region.html#_CPPv4N7BRegion6RectAtE5int32" title="BRegion::RectAt"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RectAt()</span></code></a>, but note that the object coalesces
+rectangles when it can, so the rectangles that you retrieve may not match
+the ones that you passed in.</p>
+<div class="warning admonition">
+<p class="admonition-title" id="CPPv47Warning">Warning</p>
+<p>The <a class="reference internal" href="../../kits/interface/region.html#_CPPv47BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a> class is designed to be used with coordinates
+with integral values only; if any non-integral values are used in the
+<a class="reference internal" href="../../kits/interface/region.html#_CPPv47BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a>, functions in the class may behave unpredictably.</p>
+</div>
+<p><a class="reference internal" href="../../kits/interface/region.html#_CPPv47BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a> objects can be allocated on the stack.</p>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="rect.html">BRect</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="screen.html">BScreen</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

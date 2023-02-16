@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Message Constants" href="message-constants.html" />
+    <link rel="prev" title="Kernel Functions" href="functions.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Introduction</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="functions.html">Kernel Functions</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="message-constants.html">Message Constants</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#the-kernel-and-the-driver-author">The Kernel and the Driver Author</a><ul>
+<li><a class="reference internal" href="#types-of-kernel-add-on">Types of Kernel Add-on</a><ul>
+<li><a class="reference internal" href="#device-drivers">Device Drivers</a></li>
+<li><a class="reference internal" href="#modules">Modules</a></li>
+<li><a class="reference internal" href="#file-systems">File Systems</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#interactions-with-the-kernel">Interactions with the Kernel</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#devfs">devfs</a></li>
+<li><a class="reference internal" href="#driver-implementation-principles">Driver Implementation Principles</a><ul>
+<li><a class="reference internal" href="#kernel-space-vs-user-space">Kernel Space vs. User Space</a></li>
+<li><a class="reference internal" href="#code-synchronization">Code Synchronization</a><ul>
+<li><a class="reference internal" href="#functions-available-during-spinlocks">Functions Available During Spinlocks</a></li>
+<li><a class="reference internal" href="#using-spinlocks">Using Spinlocks</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#disabling-interrupts">Disabling Interrupts</a><ul>
+<li><a class="reference internal" href="#functions-available-while-interrupts-are-disabled">Functions Available While Interrupts Are Disabled</a></li>
+<li><a class="reference internal" href="#don-t-block">Don’t Block</a></li>
+<li><a class="reference internal" href="#don-t-preempt">Don’t Preempt</a></li>
+<li><a class="reference internal" href="#file-i-o">File I/O</a></li>
+<li><a class="reference internal" href="#using-posix-calls">Using Posix Calls</a></li>
+<li><a class="reference internal" href="#the-driver-settings-api">The Driver Settings API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="introduction">
+<h1 id="CPPv412Introduction">Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
+<p>Writing device drivers requires additional knowledge of the inner workings
+of the BeOS. To write a driver you must follow the rules laid out in this
+chapter very carefully. These rules are not the same as those for writing a
+normal application—if your driver tries to do things it’s not allowed to
+do, it could bring down the system.</p>
+<p>This introduction covers how drivers interact with the kernel.</p>
+<section id="the-kernel-and-the-driver-author">
+<h2>The Kernel and the Driver Author<a class="headerlink" href="#the-kernel-and-the-driver-author" title="Permalink to this heading">¶</a></h2>
+<p>The BeOS kernel comprises the basic functionality of the operating system:
+It knows how to start the boot process and to manage memory and threads,
+and it contains the PCI bus manager, the ISA bus manager, the device file
+system (devfs, which manages /dev), the root file system (rootfs, which
+manages /), and a few other things.</p>
+<p>But this isn’t enough to satisfy the needs of most applications, so the
+kernel uses add-ons to provide additional functionality. During the boot
+process, add-ons are loaded to handle “real” file systems, devices, busses,
+and the like.</p>
+<p>Although Be’s kernel add-ons provide support for a wide range of
+hardware—from disk devices to joysticks—this support isn’t all-inclusive.
+Hardware developers may need to create their own drivers for their
+products.</p>
+<section id="types-of-kernel-add-on">
+<h3>Types of Kernel Add-on<a class="headerlink" href="#types-of-kernel-add-on" title="Permalink to this heading">¶</a></h3>
+<p>There are three types of kernel add-on:</p>
+<ol class="arabic simple">
+<li><p>Device drivers are add-ons that communicate directly with devices.</p></li>
+<li><p>Modules are kernel space add-ons that export an API for use by drivers (or
+by other modules).</p></li>
+<li><p>File systems are add-ons that support specific file systems, such as BFS,
+DOSFS, HFS, and so forth.</p></li>
+</ol>
+<p>Device drivers and file systems, while extending the functionality of the
+kernel, are still accessible from user space: Applications can open and
+address them using file descriptors. Modules, on the other hand, are
+kernel-only units. Applications have no access to them; they’re provided
+strictly for use by the kernel and other kernel add-ons.</p>
+<section id="device-drivers">
+<h4>Device Drivers<a class="headerlink" href="#device-drivers" title="Permalink to this heading">¶</a></h4>
+<p>A device driver is an add-on that recognizes a specific device (or class
+of devices) and provides a means for the rest of the system to communicate
+with it. Usually this communication involves some form of device-specific
+protocol. For example, if the system wants to use an Ethernet card or
+graphics card, it needs to load a device driver add-on that knows how to
+communicate with that card. Similarly, code that knows how to talk to a
+class of devices (SCSI disks, ATA devices, ATAPI disks, or USB input
+devices, etc.) must be implemented as a device driver add-on.</p>
+</section>
+<section id="modules">
+<h4>Modules<a class="headerlink" href="#modules" title="Permalink to this heading">¶</a></h4>
+<p>Modules provide a uniform API for use by other modules and drivers. A
+module is like a library in that it acts as a repository for common code
+that’s shared among several drivers.</p>
+<p>For example: Let’s say you have a device driver that talks to a SCSI
+device connected to a SCSI bus. A computer can have multiple SCSI busses.
+Because all SCSI devices use the same command set independent of the
+particular controller used to send the commands, the command set can be
+(and is) implemented as a module. The SCSI module knows how to handle all
+SCSI cards the BeOS supports; the API that the SCSI module defines is
+adopted by and augmented by the modules for specific SCSI device types
+(hard disks, scanners, CD drives, etc). The SCSI device modules are managed
+by a SCSI bus manager module, which knows how to cope with multiple busses
+and presents them in encapulated form to the drivers. The drivers then only
+need to deal with the bus manager’s API, which makes the life of a driver
+author much simpler.</p>
+<p>Be provides bus managers for SCSI, USB, IDE, and PCMCIA.</p>
+</section>
+<section id="file-systems">
+<h4>File Systems<a class="headerlink" href="#file-systems" title="Permalink to this heading">¶</a></h4>
+<p>File system add-ons provide support for disk and network file systems,
+such as BFS, HFS, FAT, ISO 9660, CIFS, and so forth. By creating new file
+system add-ons, developers can provide access to disks that are formatted
+using other file system.</p>
+</section>
+</section>
+<section id="interactions-with-the-kernel">
+<h3>Interactions with the Kernel<a class="headerlink" href="#interactions-with-the-kernel" title="Permalink to this heading">¶</a></h3>
+<p>The kernel provides a number of services that drivers and modules can use.
+These include:</p>
+<ul class="simple">
+<li><p>Enabling and disabling interrupts.</p></li>
+<li><p>Setting up memory for DMA transactions.</p></li>
+<li><p>Access to other devices and modules.</p></li>
+</ul>
+<p>The kernel also provides, at the user level, a Posix-like API for
+accessing devices. An application can open a device through open(), and use
+read(), write(), and ioctl() to access the device.</p>
+<p>The Posix functions are converted into system calls into the kernel, which
+then passes them, via devfs, to the appropriate device driver.</p>
+</section>
+</section>
+<section id="devfs">
+<h2>devfs<a class="headerlink" href="#devfs" title="Permalink to this heading">¶</a></h2>
+<p>The kernel manages device drivers through devfs, the device file system
+that’s mounted at /dev during the boot process. In order to be accessed, a
+driver must “publish” itself by adding an entry in the /dev hierarchy. The
+basic Posix I/O functions (open(), read(), write(), readv(), writev(),
+ioctl(), and close()) can then be used.</p>
+<p>Devfs makes the drivers available as needed in /dev; this usually happens
+the first time a program iterates through the directory entries for a
+subdirectory in /dev. The kernel knows where in the /dev hierarchy to
+publish drivers based on their location in
+/boot/beos/system/add-ons/kernel/drivers/dev. For example, the ATAPI driver
+publishes drivers in /dev/disk/ide/atapi, the driver is located in
+/boot/beos/system/add-ons/kernel/drivers/dev/disk/ide/atapi. Whew.</p>
+<p>You can see this device hierarchy by using the “ls” command from a
+Terminal window. ls /dev will show you the root of the device hierarchy, ls
+/dev/disk will show you disk device busses, ls /dev/disk/ide will show you
+the IDE devices, and so forth.</p>
+<p>In reality, drivers tend to publish themselves in multiple locations in
+the /dev hierarchy, so instead of putting duplicate copies of the driver in
+the …/drivers/dev tree, the driver binaries are put at
+/boot/beos/system/add-ons/kernel/drivers/bin, and symlinks are created in
+the …/drivers/dev tree at the appropriate place. (The same is also done for
+drivers in /boot/home/config/add-ons/kernel/drivers/…)</p>
+</section>
+<section id="driver-implementation-principles">
+<h2>Driver Implementation Principles<a class="headerlink" href="#driver-implementation-principles" title="Permalink to this heading">¶</a></h2>
+<p>Much of the stability of the BeOS is achieved by constructing a nearly
+impenetrable wall between the kernel and user applications. Drivers are
+chinks in that wall. If a driver misbehaves or fails, there’s a strong
+possibility that it will cause unexpected behavior or kill the entire
+system. It’s absolutely critical that drivers not only be very carefully
+tested before being released to the public, but that they follow the rules
+to the letter.</p>
+<section id="kernel-space-vs-user-space">
+<h3>Kernel Space vs. User Space<a class="headerlink" href="#kernel-space-vs-user-space" title="Permalink to this heading">¶</a></h3>
+<p>One way you can reduce the risk of your driver causing a general system
+failure is by putting as much code as possible in user space. Create a
+driver that loads into kernel space just enough code to handle the
+low-level interactions that absolutely have to be done in kernel space,
+then load code into user space to handle the rest of the work. If the
+add-on fails, the system will keep running—only your driver will fail.</p>
+<p>Another plus to placing as much of your code as possible into user space
+is that it’s much easier to debug code running in user space. Conventional
+debugging techniques that don’t work for kernel code can be applied, and
+there’s much less chance of taking down the system in the process.</p>
+</section>
+<section id="code-synchronization">
+<h3>Code Synchronization<a class="headerlink" href="#code-synchronization" title="Permalink to this heading">¶</a></h3>
+<p>Normally, spinlocks are a bad thing. A spinlock is a tight loop that
+watches for a condition to occur, looping endlessly until that condition is
+met (this is called “busy waiting”). This wastes valuable processor time,
+and is normally discouraged.</p>
+<p>In general, you’re encouraged to use semaphores instead of spinlocks;
+however, you can’t acquire a semaphore while handling an interrupt. So if
+you need to synchronize code while handling an interrupt, you must use a
+spinlock. Put simply:</p>
+<ul class="simple">
+<li><p>Use spinlocks to protect critical sections in interrupt-handling code.</p></li>
+<li><p>Use semaphores in any other situation that calls for code synchronization.</p></li>
+</ul>
+<p>Anywhere you use a spinlock to protect a critical section, you should
+disable interrupts. Of course, in an interrupt handler, you know that
+interrupts are already disabled, so you don’t need to explicitly disable
+interrupts yourself. Interrupt handlers include I/O interrupts installed
+using install_io_interrupt() and timer interrupts installed by calling
+add_timer().</p>
+<section id="functions-available-during-spinlocks">
+<h4>Functions Available During Spinlocks<a class="headerlink" href="#functions-available-during-spinlocks" title="Permalink to this heading">¶</a></h4>
+<p>While your spinlock is running, you can perform the following actions. If
+it’s not on this list, you can’t do it.</p>
+<ul class="simple">
+<li><p>You can examine and alter hardware registers by using the appropriate bus
+manager hooks.</p></li>
+<li><p>You can examine and alter any locked-down memory.</p></li>
+<li><p>You can call the following kernel functions: system_time(), atomic_add(),
+atomic_or(), atomic_and().</p></li>
+<li><p>You can call the following bus manager functions: read_io_<em>() and
+write_io</em>().</p></li>
+</ul>
+<p>If you do anything else inside your spinlock, you’re breaking the rules,
+so don’t do it.</p>
+</section>
+<section id="using-spinlocks">
+<h4>Using Spinlocks<a class="headerlink" href="#using-spinlocks" title="Permalink to this heading">¶</a></h4>
+<p>You need to be sure that your calls to acquire_spinlock() and
+release_spinlock() are balanced. In addition, if you nest spinlocks, they
+must be released in logical order—that is, in the opposite order in which
+they’re acquired.</p>
+<p>The kernel keeps track of which spinlocks are being held and which are
+being waited upon. The kernel assumes that spinlocks are initialized to 0,
+and then acquired and released in logical order.</p>
+<p>By keeping track of spinlocks, the kernel can detect and break deadlocks
+on multiprocessor systems.</p>
+</section>
+</section>
+<section id="disabling-interrupts">
+<h3>Disabling Interrupts<a class="headerlink" href="#disabling-interrupts" title="Permalink to this heading">¶</a></h3>
+<p>The only time you should ever disable interrupts in a device driver is
+just before entering a spinlock-protected critical section. There is
+absolutely no other reason to do it, so don’t.</p>
+<p>After disabling interrupts, you should reenable them as quickly as
+possible. You must never, under any circumstances, leave interrupts
+disabled for more than 50 microseconds. This means that your interrupt
+handler code (which runs with interrupts implicitly disabled) must execute
+in 50 microseconds or less.</p>
+<section id="functions-available-while-interrupts-are-disabled">
+<h4>Functions Available While Interrupts Are Disabled<a class="headerlink" href="#functions-available-while-interrupts-are-disabled" title="Permalink to this heading">¶</a></h4>
+<p>If you have interrupts disabled and aren’t in a spinlock, you can do the
+following things in addition to those listed above in “Functions Available
+During Spinlocks”:</p>
+<ul class="simple">
+<li><p>You can call release_sem_etc() with the
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DO_NOT_RESCHEDULE</span></code> flag set.</p></li>
+<li><p>You can call get_sem_count(), add_timer(), cancel_timer(), and dprintf().</p></li>
+</ul>
+<p>If you feel that you need to call a function not explicitly listed as
+permitted here, please contact Be Developer Support at devsupport&#64;be.com
+and explain your needs; we’d be happy to discuss the situation with you.</p>
+</section>
+<section id="don-t-block">
+<h4>Don’t Block<a class="headerlink" href="#don-t-block" title="Permalink to this heading">¶</a></h4>
+<p>It’s crucial that your interrupt handler never block, whether directly (by
+acquiring a semaphore, for example) or indirectly (by calling a function
+that might block).</p>
+<p>Blocking can happen in a surprisingly large number of BeOS functions. It’s
+obvious that acquire_sem() can block, but you might not be aware that
+functions such as malloc() or read_port() can block. Even touching unlocked
+memory areas can block because of virtual memory hits.</p>
+<p>The point is this: If the BeOS function you want to call isn’t explicitly
+listed in this section as one you can use, don’t call it.</p>
+</section>
+<section id="don-t-preempt">
+<h4>Don’t Preempt<a class="headerlink" href="#don-t-preempt" title="Permalink to this heading">¶</a></h4>
+<p>Your interrupt handler or spinlock section can’t be preempted. Preemption
+could occur if you call release_sem() or release_sem_etc() without
+specifying the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DO_NOT_RESCHEDULE</span></code> flag. Normally,
+release_sem() lets the scheduler preempt your thread to allow other threads
+to acquire the semaphore as fast as possible. By specifying
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DO_NOT_RESCHEDULE</span></code>, you tell the scheduler to allow your
+thread to continue running after it releases the semaphore.</p>
+<p>If your interrupt handler wants to ensure that any preemption is handled
+immediately, it should specify <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DO_NOT_RESCHEDULE</span></code> when
+calling release_sem(), then return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INVOKE_SCHEDULER</span></code>.
+This causes the scheduler to immediately handle preemption after your
+interrupt handler returns, instead of resuming the interrupted task. This
+is especially useful if your code called release_sem_etc() to release a
+semaphore that will allow other code to run elsewhere (such as in your
+driver’s corresponding user-space code).</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>Again, when you call release_sem_etc(), be sure to specify the
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DO_NOT_RESCHEDULE</span></code> flag to avoid any chance of
+preemption.</p>
+</div>
+<p>In summary, the order in which you should do things is this:</p>
+<ul class="simple">
+<li><p>Disable interrupts.</p></li>
+<li><p>Acquire the spinlock.</p></li>
+<li><p>Perform your tasks.</p></li>
+<li><p>Release the spinlock.</p></li>
+<li><p>Restore the original interrupt state.</p></li>
+</ul>
+</section>
+<section id="file-i-o">
+<h4>File I/O<a class="headerlink" href="#file-i-o" title="Permalink to this heading">¶</a></h4>
+<p>Sometimes a driver needs to be able to access disk files. Perhaps the
+driver has a preference file it needs to read. There are two ways to do
+this. You can use Posix I/O calls, or you can use the driver settings API
+provided by BeOS. The latter is preferred.</p>
+</section>
+<section id="using-posix-calls">
+<h4>Using Posix Calls<a class="headerlink" href="#using-posix-calls" title="Permalink to this heading">¶</a></h4>
+<p>Under BeOS, device drivers can access disk files using the standard
+low-level Posix I/O functions: open(), close(), read(), write(), and so
+forth. There aren’t any special chores to attend to beforehand. Just open()
+the file and do your thing.</p>
+<p>Two Posix extensions that might be helpful when you’re writing code to
+perform file I/O from a device driver: readv() and writev().</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">readv</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">iovec</span><span class="o">*</span><span class="n">vector</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">writev</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">iovec</span><span class="o">*</span><span class="n">vector</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="w"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">iovec</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">__ptr_t</span><span class="w"> </span><span class="n">iov_base</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">size_t</span><span class="w"> </span><span class="n">iov_len</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>These functions provide a means to read and write contiguous portions of a
+file from multiple buffers. vector is a pointer to an array containing
+count vector records, each of which contains a pointer to a buffer, and the
+size of the buffer. readv() fills these buffers with data from the file,
+and writev() writes them to the file, in order.</p>
+<p>When successful, readv() returns the number of bytes read.</p>
+<p>For example, if your code needs to write two separate 1k buffers into a
+file, one after the other, you might do something like this:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">iovec</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">iov_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">buffer1</span><span class="p">;</span><span class="w"></span>
+<span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">iov_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span><span class="w"></span>
+<span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">iov_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">buffer2</span><span class="p">;</span><span class="w"></span>
+<span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">iov_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">writev</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* error */</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Performing vectored I/O like this is often faster than doing multiple
+calls to read() and write().</p>
+</section>
+<section id="the-driver-settings-api">
+<h4>The Driver Settings API<a class="headerlink" href="#the-driver-settings-api" title="Permalink to this heading">¶</a></h4>
+<p>If your driver is loaded before the file system for the disk on which your
+settings file resides, your driver might not be able to load its settings
+using Posix calls. The driver settings API lets you work around this
+circumstance. See “<span class="xref std std-ref">Driver Settings API</span>” for details.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="functions.html">Kernel Functions</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="message-constants.html">Message Constants</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

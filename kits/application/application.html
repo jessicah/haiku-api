@@ -59,9 +59,16 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#initcheck">InitCheck()</a></li>
+<li><a class="reference internal" href="#archive">Archive()</a></li>
+<li><a class="reference internal" href="#dispatchmessage">DispatchMessage()</a><ul>
 <li><a class="reference internal" href="#_CPPv4NK12BApplication10GetAppInfoEP8app_info">GetAppInfo</a></li>
 <li><a class="reference internal" href="#_CPPv4N12BApplication18GetSupportedSuitesEP8BMessage">GetSupportedSuites</a></li>
 <li><a class="reference internal" href="#_CPPv4NK12BApplication11IsLaunchingEv">IsLaunching</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#messagereceived">MessageReceived()</a></li>
+<li><a class="reference internal" href="#resolvespecifier">ResolveSpecifier()</a><ul>
 <li><a class="reference internal" href="#_CPPv4N12BApplication3RunEv">Run</a></li>
 <li><a class="reference internal" href="#_CPPv4N12BApplication4QuitEv">Quit</a></li>
 <li><a class="reference internal" href="#_CPPv4N12BApplication9SetCursorEPKv">SetCursor</a></li>
@@ -74,13 +81,27 @@
 <li><a class="reference internal" href="#_CPPv4NK12BApplication12CountWindowsEv">CountWindows</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#static-functions">Static Functions</a><ul>
-<li><a class="reference internal" href="#_CPPv4N12BApplication12AppResourcesEv">AppResources</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#global-variables">Global Variables</a></li>
+<li><a class="reference internal" href="#static-functions">Static Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N12BApplication12AppResourcesEv">AppResources</a></li>
+<li><a class="reference internal" href="#instantiate">Instantiate()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#global-variables">Global Variables</a><ul>
+<li><a class="reference internal" href="#be-app">be_app</a></li>
+<li><a class="reference internal" href="#be-app-messenger">be_app_messenger</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#archived-fields">Archived Fields</a></li>
-<li><a class="reference internal" href="#scripting-suites-and-properties">Scripting Suites and Properties</a></li>
+<li><a class="reference internal" href="#scripting-suites-and-properties">Scripting Suites and Properties</a><ul>
+<li><a class="reference internal" href="#suite-suite-vnd-be-application">Suite: “suite/vnd.Be-application”</a><ul>
+<li><a class="reference internal" href="#name">“Name”</a></li>
+<li><a class="reference internal" href="#window">“Window”</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -93,54 +114,43 @@
       <div class="content" role="main">
         
   <section id="bapplication">
-<h1>BApplication<a class="headerlink" href="#bapplication" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv412BApplication">BApplication<a class="headerlink" href="#bapplication" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N12BApplication12BApplicationEPKc">
 </section>
 <h3>
-BApplication()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BApplication12BApplicationEPKc" title="BApplication::BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">BApplication</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BApplication12BApplicationEPKcP8status_t" title="BApplication::BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">BApplication</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span>, <span class="n">status_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">error</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BApplication12BApplicationEP8BMessage" title="BApplication::BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">BApplication</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>The constructor creates a new object, locks it, sets the global variable
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">be()</span></code> to point to it,
-and establishes a connection to the Application Server. From this point on,
-your application can receive messages, although it won’t start processing them until you call
-<a class="reference internal" href="#_CPPv4N12BApplication3RunEv" title="BApplication::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a>.
-You can also begin creating and displaying
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> objects even
-before you call
-<a class="reference internal" href="#_CPPv4N12BApplication3RunEv" title="BApplication::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a>.
-The <span class="hparameter">signature</span> constructors assign the argument as the app’s
-application signature. The argument is ignored if a signature is already specified
-in a resource or attribute of the application’s executable (serious apps should
-always set the signature as both an attribute and a resource). The signature is
-a MIME type string
-that must have the supertype “application”. For more information on
-application signatures and how to set them, see
-TODO.
-If you specify <span class="hparameter">error</span>, a pointer to a status_t, any error that occurs
-while constructing the <span class="hclass">BApplication</span> will be returned in
-that variable. Alternately, you can call
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code>
-to check the results. If an error is returned by the constructor, you shouldn’t call
-<a class="reference internal" href="#_CPPv4N12BApplication3RunEv" title="BApplication::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a>.
-The <span class="hparameter">archive</span> constructor is an implementation detail; see the
+BApplication()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BApplication12BApplicationEPKc" title="BApplication::BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">BApplication</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BApplication12BApplicationEPKcP8status_t" title="BApplication::BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">BApplication</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span>, <a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">error</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BApplication12BApplicationEP8BMessage" title="BApplication::BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">BApplication</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>The constructor creates a new object, locks it, sets the global variable
+<code class="xref cpp cpp-var docutils literal notranslate"><span class="pre">be_app</span></code> to point to it, and establishes a connection to the
+Application Server. From this point on, your application can receive
+messages, although it won’t start processing them until you call
+<a class="reference internal" href="#_CPPv4N12BApplication3RunEv" title="BApplication::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a>. You can also begin creating and
+displaying <a class="reference internal" href="../interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> objects even before you call
+<a class="reference internal" href="#_CPPv4N12BApplication3RunEv" title="BApplication::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a>.</p>
+<p>The <span class="hparameter">signature</span> constructors assign the argument as the app’s
+application signature. The argument is ignored if a signature is already
+specified in a resource or attribute of the application’s executable
+(serious apps should always set the signature as both an attribute and a
+resource). The signature is a MIME type string that must have the supertype
+“application”. For more information on application signatures and how to
+set them, see TODO.</p>
+<p>If you specify <span class="hparameter">error</span>, a pointer to a <span class="htype">status_t</span>, any
+error that occurs while constructing the <span class="hclass">BApplication</span> will be
+returned in that variable. Alternately, you can call <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code> to check the results. If an error is returned by
+the constructor, you shouldn’t call <a class="reference internal" href="#_CPPv4N12BApplication3RunEv" title="BApplication::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a>.</p>
+<p>The <span class="hparameter">archive</span> constructor is an implementation detail; see the
 <span class="xref std std-ref">BArchivable</span> class.</p>
 <section id="_CPPv4N12BApplicationD0Ev">
 </section>
 <h3>
-~BApplication()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">~BApplication</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Closes and deletes the application’s
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>s (and the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s they contain),
-and severs the application’s connection to the
-Application Server.
-Never delete a <span class="hclass">BApplication</span> object while it’s
-running; wait until
-<a class="reference internal" href="#_CPPv4N12BApplication3RunEv" title="BApplication::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a>
-returns. To stop a <span class="hclass">BApplication</span> (and so cause
-<a class="reference internal" href="#_CPPv4N12BApplication3RunEv" title="BApplication::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a>
-to return), send it a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">QUIT()</span></code>
-message:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">be_app</span><span class="o">-&gt;</span><span class="n">PostMessage</span><span class="p">(</span><span class="n">B_QUIT_REQUESTED</span><span class="p">);</span>
+~BApplication()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">~BApplication</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Closes and deletes the application’s <a class="reference internal" href="../interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>s (and the
+<a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s they contain), and severs the application’s connection
+to the Application Server.</p>
+<p>Never delete a <span class="hclass">BApplication</span> object while it’s running; wait
+until <a class="reference internal" href="#_CPPv4N12BApplication3RunEv" title="BApplication::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a> returns. To stop a
+<span class="hclass">BApplication</span> (and so cause <a class="reference internal" href="#_CPPv4N12BApplication3RunEv" title="BApplication::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a>
+to return), send it a <a class="reference internal" href="../../constants.html#_CPPv416B_QUIT_REQUESTED" title="B_QUIT_REQUESTED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_QUIT_REQUESTED</span></code></a> message:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">be_app</span><span class="o">-&gt;</span><span class="n">PostMessage</span><span class="p">(</span><span class="n">B_QUIT_REQUESTED</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -149,216 +159,187 @@ message:</p>
 <section id="_CPPv4N12BApplication14AboutRequestedEv">
 </section>
 <h3>
-AboutRequested()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">AboutRequested</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Hook function that’s invoked when the <span class="hclass">BApplication</span>
-receives a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ABOUT()</span></code> message, undoubtedly
-because the user clicked an “About…”
-menu item. You should implement the function to put a window on-screen that
-provides the user with information about the application (version number,
-license restrictions, authors’ names, etc).</p>
+AboutRequested()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">AboutRequested</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Hook function that’s invoked when the <span class="hclass">BApplication</span> receives a
+<a class="reference internal" href="../../constants.html#_CPPv417B_ABOUT_REQUESTED" title="B_ABOUT_REQUESTED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ABOUT_REQUESTED</span></code></a> message, undoubtedly because the user
+clicked an “About…” menu item. You should implement the function to put a
+window on-screen that provides the user with information about the
+application (version number, license restrictions, authors’ names, etc).</p>
 <section id="_CPPv4N12BApplication12AppActivatedEb">
 </section>
 <h3>
-AppActivated()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">AppActivated</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">active</span><span class="sig-paren">)</span></pre><p>Hook function that’s invoked when the application receives a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">APP()</span></code>
-message. The message is sent when the
+AppActivated()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">AppActivated</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">active</span><span class="sig-paren">)</span></pre><p>Hook function that’s invoked when the application receives a
+<a class="reference internal" href="../../constants.html#_CPPv415B_APP_ACTIVATED" title="B_APP_ACTIVATED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_APP_ACTIVATED</span></code></a> message. The message is sent when the
 application gains or loses active application status. The <span class="hparameter">active</span>
-flag tells you which way the wind blows: <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> means
-your application is now active; <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> means it isn’t.
-The user can activate an application by clicking on or unhiding one of its windows;
-you can activate an application programmatically by calling <a class="reference internal" href="../interface/window.html#_CPPv4N7BWindow8ActivateEb" title="BWindow::Activate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::Activate()</span></code></a> or
-<a class="reference internal" href="roster.html#_CPPv4NK7BRoster11ActivateAppE7team_id" title="BRoster::ActivateApp"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BRoster::ActivateApp()</span></code></a>. (With regard to the latter: This function is called only if the
-application has an “activatable” window i.e. a non-modal, non-floating
-window).
-During launch, this function is called after
-<a class="reference internal" href="#_CPPv4N12BApplication10ReadyToRunEv" title="BApplication::ReadyToRun"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadyToRun()</span></code></a>
-(provided the application is displaying an activatable window).</p>
+flag tells you which way the wind blows: <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> means your
+application is now active; <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> means it isn’t.</p>
+<p>The user can activate an application by clicking on or unhiding one of its
+windows; you can activate an application programmatically by calling
+<a class="reference internal" href="../interface/window.html#_CPPv4N7BWindow8ActivateEb" title="BWindow::Activate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::Activate()</span></code></a> or <a class="reference internal" href="roster.html#_CPPv4NK7BRoster11ActivateAppE7team_id" title="BRoster::ActivateApp"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BRoster::ActivateApp()</span></code></a>. (With
+regard to the latter: This function is called only if the application has
+an “activatable” window i.e. a non-modal, non-floating window).</p>
+<p>During launch, this function is called after <a class="reference internal" href="#_CPPv4N12BApplication10ReadyToRunEv" title="BApplication::ReadyToRun"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadyToRun()</span></code></a> (provided the application is displaying an
+activatable window).</p>
 <section id="_CPPv4N12BApplication12ArgvReceivedE5int32PPc">
 </section>
 <h3>
-ArgvReceived()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">ArgvReceived</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">argc</span>, <span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">argv</span><span class="sig-paren">)</span></pre><p>Hook function that’s invoked when the application receives a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ARGV()</span></code>
-message. The message is sent if command
+ArgvReceived()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">ArgvReceived</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">argc</span>, <span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">argv</span><span class="sig-paren">)</span></pre><p>Hook function that’s invoked when the application receives a
+<a class="reference internal" href="../../constants.html#_CPPv415B_ARGV_RECEIVED" title="B_ARGV_RECEIVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ARGV_RECEIVED</span></code></a> message. The message is sent if command
 line arguments are used in launching the application from the shell, or if
 <span class="hparameter">argv</span>/<span class="hparameter">argc</span> values are passed to
 <a class="reference internal" href="roster.html#_CPPv4NK7BRoster6LaunchEPKcP8BMessageP7team_id" title="BRoster::Launch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BRoster::Launch()</span></code></a>.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
 <p>This function isn’t called if there were no command line arguments, or if
-<a class="reference internal" href="roster.html#_CPPv4NK7BRoster6LaunchEPKcP8BMessageP7team_id" title="BRoster::Launch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BRoster::Launch()</span></code></a>
-was called without <span class="hparameter">argv</span>/<span class="hparameter">argc</span> values.</p>
+<a class="reference internal" href="roster.html#_CPPv4NK7BRoster6LaunchEPKcP8BMessageP7team_id" title="BRoster::Launch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BRoster::Launch()</span></code></a> was called without
+<span class="hparameter">argv</span>/<span class="hparameter">argc</span> values.</p>
 </div>
-<p>When the application is launched from the shell, <span class="hmethod">ArgvReceived()</span>’s
-arguments are identical to the traditional main()
-arguments: The number of command line arguments is passed as
-<span class="hparameter">argc</span>; the arguments themselves are passed as an array of
-strings in <span class="hparameter">argv</span>. The first <span class="hparameter">argv</span>
-string identifes the executable file; the other strings are the command line
-arguments proper. For example, this…</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ MyApp file1 file2
+<p>When the application is launched from the shell,
+<span class="hmethod">ArgvReceived()</span>’s arguments are identical to the traditional
+main() arguments: The number of command line arguments is passed as
+<span class="hparameter">argc</span>; the arguments themselves are passed as an array of strings
+in <span class="hparameter">argv</span>. The first <span class="hparameter">argv</span> string identifes the executable
+file; the other strings are the command line arguments proper. For example,
+this…</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ MyApp file1 file2
 </pre></div>
 </div>
-<p>…produces the <span class="hparameter">argv</span> array
-{ “./MyApp”, “file1”, “file2” }.</p>
-<p><a class="reference internal" href="roster.html#_CPPv4NK7BRoster6LaunchEPKcP8BMessageP7team_id" title="BRoster::Launch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BRoster::Launch()</span></code></a>
-forwards its <span class="hparameter">argv</span> and <span class="hparameter">argc</span>
-arguments, but adds the executable name to the front of the
-<span class="hparameter">argv</span> array and increments the
-<span class="hparameter">argc</span> value.
-Normally, the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ARGV()</span></code>
-message (if sent at all) is sent once, just before
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">READY()</span></code>
-is sent. However, if the user tries to re-launch (from the command line and with
+<p>…produces the <span class="hparameter">argv</span> array { “./MyApp”, “file1”, “file2” }.</p>
+<p><a class="reference internal" href="roster.html#_CPPv4NK7BRoster6LaunchEPKcP8BMessageP7team_id" title="BRoster::Launch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BRoster::Launch()</span></code></a> forwards its <span class="hparameter">argv</span> and <span class="hparameter">argc</span>
+arguments, but adds the executable name to the front of the <span class="hparameter">argv</span>
+array and increments the <span class="hparameter">argc</span> value.</p>
+<p>Normally, the <a class="reference internal" href="../../constants.html#_CPPv415B_ARGV_RECEIVED" title="B_ARGV_RECEIVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ARGV_RECEIVED</span></code></a> message (if sent at all)
+is sent once, just before <a class="reference internal" href="../../constants.html#_CPPv414B_READY_TO_RUN" title="B_READY_TO_RUN"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_READY_TO_RUN</span></code></a> is sent.
+However, if the user tries to re-launch (from the command line and with
 arguments) an already-running application that’s set to
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">EXCLUSIVE()</span></code> or
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SINGLE()</span></code>,
-the re-launch will generate a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ARGV()</span></code>
-message that’s sent to the already-running image. Thus, for such apps, the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ARGV()</span></code>
-message can show up at any time.</p>
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EXCLUSIVE_LAUNCH</span></code> or <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SINGLE_LAUNCH</span></code>,
+the re-launch will generate a <a class="reference internal" href="../../constants.html#_CPPv415B_ARGV_RECEIVED" title="B_ARGV_RECEIVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ARGV_RECEIVED</span></code></a> message
+that’s sent to the already-running image. Thus, for such apps, the
+<a class="reference internal" href="../../constants.html#_CPPv415B_ARGV_RECEIVED" title="B_ARGV_RECEIVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ARGV_RECEIVED</span></code></a> message can show up at any time.</p>
 <section id="_CPPv4N12BApplication5PulseEv">
 </section>
 <h3>
-Pulse()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">Pulse</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Pulse()</span> is a hook function that’s called when
-the application receives a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PULSE()</span></code>
-message. The message is sent at the rate set in
-<a class="reference internal" href="#_CPPv4N12BApplication12SetPulseRateE9bigtime_t" title="BApplication::SetPulseRate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetPulseRate()</span></code></a>.
-The first <span class="hmethod">Pulse()</span> message is sent after
-<a class="reference internal" href="#_CPPv4N12BApplication10ReadyToRunEv" title="BApplication::ReadyToRun"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadyToRun()</span></code></a> returns.
-You can implement <span class="hmethod">Pulse()</span> to do whatever you want (the
-default version does nothing), but don’t try to use it for precision timing: The
-pulse granularity is no better than 100,000 microseconds.
-Keep in mind that <span class="hmethod">Pulse()</span> executes in the app’s message loop
-thread along with all other message handling functions. Your application won’t receive any
-<span class="hmethod">Pulse()</span> invocations while it’s waiting for some other handler
-function (including
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MessageReceived()</span></code>)
-to finish. In the meantime,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PULSE()</span></code>
-messages will be stacking up
-in the message queue; when the loop becomes “unblocked”, you’ll see a burst
-of <span class="hmethod">Pulse()</span> invocations.</p>
+Pulse()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">Pulse</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Pulse()</span> is a hook function that’s called when the application
+receives a <a class="reference internal" href="../../constants.html#_CPPv47B_PULSE" title="B_PULSE"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PULSE</span></code></a> message. The message is sent at the
+rate set in <a class="reference internal" href="#_CPPv4N12BApplication12SetPulseRateE9bigtime_t" title="BApplication::SetPulseRate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetPulseRate()</span></code></a>. The
+first <span class="hmethod">Pulse()</span> message is sent after <a class="reference internal" href="#_CPPv4N12BApplication10ReadyToRunEv" title="BApplication::ReadyToRun"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadyToRun()</span></code></a> returns.</p>
+<p>You can implement <span class="hmethod">Pulse()</span> to do whatever you want (the default
+version does nothing), but don’t try to use it for precision timing: The
+pulse granularity is no better than 100,000 microseconds.</p>
+<p>Keep in mind that <span class="hmethod">Pulse()</span> executes in the app’s message loop
+thread along with all other message handling functions. Your application
+won’t receive any <span class="hmethod">Pulse()</span> invocations while it’s waiting for
+some other handler function (including <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MessageReceived()</span></code>) to finish. In the meantime,
+<a class="reference internal" href="../../constants.html#_CPPv47B_PULSE" title="B_PULSE"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PULSE</span></code></a> messages will be stacking up in the message
+queue; when the loop becomes “unblocked”, you’ll see a burst of
+<span class="hmethod">Pulse()</span> invocations.</p>
 <section id="_CPPv4N12BApplication13QuitRequestedEv">
 </section>
 <h3>
-QuitRequested()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">QuitRequested</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Hook function that’s invoked when the application receives a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">QUIT()</span></code>
-message. As described in the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code> class (which declares
-this function), the request to quit is confirmed if
-<span class="hmethod">QuitRequested()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, and
-denied if it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.
-In its implementation, <span class="hclass">BApplication</span> sends
-<a class="reference internal" href="looper.html#_CPPv4N7BLooper13QuitRequestedEv" title="BLooper::QuitRequested"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::QuitRequested()</span></code></a>
-to each of its <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>
+QuitRequested()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">QuitRequested</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Hook function that’s invoked when the application receives a
+<a class="reference internal" href="../../constants.html#_CPPv416B_QUIT_REQUESTED" title="B_QUIT_REQUESTED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_QUIT_REQUESTED</span></code></a> message. As described in the
+<a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> class (which declares this function), the request to
+quit is confirmed if <span class="hmethod">QuitRequested()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>,
+and denied if it returns <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>.</p>
+<p>In its implementation, <span class="hclass">BApplication</span> sends
+<a class="reference internal" href="looper.html#_CPPv4N7BLooper13QuitRequestedEv" title="BLooper::QuitRequested"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::QuitRequested()</span></code></a> to each of its <a class="reference internal" href="../interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>
 objects. If they all agree to quit, the windows are all destroyed (through
-<a class="reference internal" href="../interface/window.html#_CPPv4N7BWindow4QuitEv" title="BWindow::Quit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::Quit()</span></code></a>)
-and this <span class="hmethod">QuitRequested()</span> returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>. But if any
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> refuses to quit,
-that window and all surviving windows are saved, and this
-<span class="hmethod">QuitRequested()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.
-Augment this function as you will, but be sure to call the
+<a class="reference internal" href="../interface/window.html#_CPPv4N7BWindow4QuitEv" title="BWindow::Quit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::Quit()</span></code></a>) and this <span class="hmethod">QuitRequested()</span> returns
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>. But if any <a class="reference internal" href="../interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> refuses to quit, that
+window and all surviving windows are saved, and this
+<span class="hmethod">QuitRequested()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>.</p>
+<p>Augment this function as you will, but be sure to call the
 <span class="hclass">BApplication</span> version in your implementation.</p>
 <section id="_CPPv4N12BApplication10ReadyToRunEv">
 </section>
 <h3>
-ReadyToRun()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">ReadyToRun</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Hook function that’s called when the application receives a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">READY()</span></code>
-message. The message is sent automatically during the
-<a class="reference internal" href="#_CPPv4N12BApplication3RunEv" title="BApplication::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a>
-function, and is sent after the initial
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">REFS()</span></code> and
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ARGV()</span></code>
-messages (if any) have been handled. This is the only application message
-that every running application is guaranteed to receive.
-What you do with <span class="hmethod">ReadyToRun()</span> is up to you,
-if your application hasn’t put up a window by the time this function is
-called, you’ll probably want to do it here. The default version of
-<span class="hmethod">ReadyToRun()</span> is empty.</p>
+ReadyToRun()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">ReadyToRun</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Hook function that’s called when the application receives a
+<a class="reference internal" href="../../constants.html#_CPPv414B_READY_TO_RUN" title="B_READY_TO_RUN"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_READY_TO_RUN</span></code></a> message. The message is sent automatically
+during the <a class="reference internal" href="#_CPPv4N12BApplication3RunEv" title="BApplication::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a> function, and is sent
+after the initial <a class="reference internal" href="../../constants.html#_CPPv415B_REFS_RECEIVED" title="B_REFS_RECEIVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REFS_RECEIVED</span></code></a> and
+<a class="reference internal" href="../../constants.html#_CPPv415B_ARGV_RECEIVED" title="B_ARGV_RECEIVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ARGV_RECEIVED</span></code></a> messages (if any) have been handled. This
+is the only application message that every running application is
+guaranteed to receive.</p>
+<p>What you do with <span class="hmethod">ReadyToRun()</span> is up to you, if your application
+hasn’t put up a window by the time this function is called, you’ll probably
+want to do it here. The default version of <span class="hmethod">ReadyToRun()</span> is
+empty.</p>
 <section id="_CPPv4N12BApplication12RefsReceivedEP8BMessage">
 </section>
 <h3>
-RefsReceived()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">RefsReceived</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Hook function that’s called when the application receives a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">REFS()</span></code>
-message. The message is sent when the user drops a file (or files) on your
-app’s icon, or double clicks a file that’s handled by your app. The message
-can arrive either at launch time, or while your application is already
-running use
-<a class="reference internal" href="#_CPPv4NK12BApplication11IsLaunchingEv" title="BApplication::IsLaunching"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">IsLaunching()</span></code></a>
-to tell which.
-<span class="hparameter">message</span> contains a single field named
-be:refs that contains one or more entry_ref
-(<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_REF_TYPE</span></code>) items one for each file that was dropped
-or double-clicked. Do with them what you will; the default implementation
-is empty. Typically, you would use the refs to create
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code> or
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code> objects.</p>
+RefsReceived()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">RefsReceived</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Hook function that’s called when the application receives a
+<a class="reference internal" href="../../constants.html#_CPPv415B_REFS_RECEIVED" title="B_REFS_RECEIVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REFS_RECEIVED</span></code></a> message. The message is sent when the
+user drops a file (or files) on your app’s icon, or double clicks a file
+that’s handled by your app. The message can arrive either at launch time,
+or while your application is already running use <a class="reference internal" href="#_CPPv4NK12BApplication11IsLaunchingEv" title="BApplication::IsLaunching"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">IsLaunching()</span></code></a> to tell which.</p>
+<p><span class="hparameter">message</span> contains a single field named <span class="hparameter">be:refs</span> that
+contains one or more <span class="htype">entry_ref</span> (<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REF_TYPE</span></code>)
+items one for each file that was dropped or double-clicked. Do with them
+what you will; the default implementation is empty. Typically, you would
+use the refs to create <a class="reference internal" href="../storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> or <a class="reference internal" href="../storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a> objects.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>????</p>
-<h3>
-</h3><p>See <a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a></p>
-<h3>
-</h3><p>See <a class="reference internal" href="looper.html#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::DispatchMessage()</span></code></a></p>
+<section id="initcheck">
+<h3>InitCheck()<a class="headerlink" href="#initcheck" title="Permalink to this heading">¶</a></h3>
+<p>????</p>
+</section>
+<section id="archive">
+<h3>Archive()<a class="headerlink" href="#archive" title="Permalink to this heading">¶</a></h3>
+<p>See <a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a></p>
+</section>
+<section id="dispatchmessage">
+<h3>DispatchMessage()<a class="headerlink" href="#dispatchmessage" title="Permalink to this heading">¶</a></h3>
+<p>See <a class="reference internal" href="looper.html#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::DispatchMessage()</span></code></a></p>
 <section id="_CPPv4NK12BApplication10GetAppInfoEP8app_info">
 </section>
-<h3>
-GetAppInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">GetAppInfo</span><span class="sig-paren">(</span><span class="n">app_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">theInfo</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns information about the application. This is a cover for</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">be_roster</span><span class="o">-&gt;</span><span class="n">GetRunningAppInfo</span><span class="p">(</span><span class="n">be_app</span><span class="o">-&gt;</span><span class="n">Team</span><span class="p">(),</span> <span class="n">theInfo</span><span class="p">);</span>
+<h4>
+GetAppInfo()</h4><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">GetAppInfo</span><span class="sig-paren">(</span><span class="n">app_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">theInfo</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns information about the application. This is a cover for</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">be_roster</span><span class="o">-&gt;</span><span class="n">GetRunningAppInfo</span><span class="p">(</span><span class="n">be_app</span><span class="o">-&gt;</span><span class="n">Team</span><span class="p">(),</span><span class="w"> </span><span class="n">theInfo</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>See <a class="reference internal" href="roster.html#_CPPv4NK7BRoster10GetAppInfoEPKcP8app_info" title="BRoster::GetAppInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BRoster::GetAppInfo()</span></code></a>
-for more information.</p>
+<p>See <a class="reference internal" href="roster.html#_CPPv4NK7BRoster10GetAppInfoEPKcP8app_info" title="BRoster::GetAppInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BRoster::GetAppInfo()</span></code></a> for more information.</p>
 <section id="_CPPv4N12BApplication18GetSupportedSuitesEP8BMessage">
 </section>
-<h3>
-GetSupportedSuites()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">GetSupportedSuites</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Adds the scripting suite “suite/vnd.Be-application” to message. See
-“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScriptingSuites()</span></code>”
-for the suite’s properties. Also see
-<a class="reference internal" href="handler.html#_CPPv4N8BHandler18GetSupportedSuitesEP8BMessage" title="BHandler::GetSupportedSuites"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::GetSupportedSuites()</span></code></a>
-for more information on how this function works.</p>
+<h4>
+GetSupportedSuites()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">GetSupportedSuites</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Adds the scripting suite “suite/vnd.Be-application” to message. See
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Scripting</span> <span class="pre">Suites</span> <span class="pre">and</span> <span class="pre">Properties</span></code>” for the suite’s properties. Also see
+<a class="reference internal" href="handler.html#_CPPv4N8BHandler18GetSupportedSuitesEP8BMessage" title="BHandler::GetSupportedSuites"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::GetSupportedSuites()</span></code></a> for more information on how this
+function works.</p>
 <section id="_CPPv4NK12BApplication11IsLaunchingEv">
 </section>
-<h3>
-IsLaunching()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">IsLaunching</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the application is still
-launching. An application is considered to be in its launching phase until
-<a class="reference internal" href="#_CPPv4N12BApplication10ReadyToRunEv" title="BApplication::ReadyToRun"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadyToRun()</span></code></a>
-returns. Invoked from within
-<a class="reference internal" href="#_CPPv4N12BApplication10ReadyToRunEv" title="BApplication::ReadyToRun"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadyToRun()</span></code></a>,
-<span class="hmethod">IsLaunching()</span> returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>.</p>
-<h3>
-</h3><p>See
-<a class="reference internal" href="handler.html#_CPPv4N8BHandler15MessageReceivedEP8BMessage" title="BHandler::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::MessageReceived()</span></code></a></p>
-<h3>
-</h3><p>See
-<a class="reference internal" href="handler.html#_CPPv4N8BHandler16ResolveSpecifierEP8BMessage5int32P8BMessage5int32PKc" title="BHandler::ResolveSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::ResolveSpecifier()</span></code></a></p>
+<h4>
+IsLaunching()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">IsLaunching</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the application is still launching. An
+application is considered to be in its launching phase until
+<a class="reference internal" href="#_CPPv4N12BApplication10ReadyToRunEv" title="BApplication::ReadyToRun"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadyToRun()</span></code></a> returns. Invoked from
+within <a class="reference internal" href="#_CPPv4N12BApplication10ReadyToRunEv" title="BApplication::ReadyToRun"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadyToRun()</span></code></a>,
+<span class="hmethod">IsLaunching()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>.</p>
+</section>
+<section id="messagereceived">
+<h3>MessageReceived()<a class="headerlink" href="#messagereceived" title="Permalink to this heading">¶</a></h3>
+<p>See <a class="reference internal" href="handler.html#_CPPv4N8BHandler15MessageReceivedEP8BMessage" title="BHandler::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::MessageReceived()</span></code></a></p>
+</section>
+<section id="resolvespecifier">
+<h3>ResolveSpecifier()<a class="headerlink" href="#resolvespecifier" title="Permalink to this heading">¶</a></h3>
+<p>See <a class="reference internal" href="handler.html#_CPPv4N8BHandler16ResolveSpecifierEP8BMessage5int32P8BMessage5int32PKc" title="BHandler::ResolveSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::ResolveSpecifier()</span></code></a></p>
 <section id="_CPPv4N12BApplication3RunEv">
 </section>
 <section id="_CPPv4N12BApplication4QuitEv">
 </section>
-<h3>
-Run(), Quit()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">thread_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">Run</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">Quit</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions, inherited from
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>, are different
-enough from their parent versions to warrant description.
-<span class="hmethod">Run()</span> doesn’t spawn a new thread—it runs
-the message loop in the thread that it’s called from, and doesn’t return
-until the message loop stops.
-<span class="hmethod">Quit()</span> doesn’t kill the looper thread it tells the
-thread to finish processing the message queue (disallowing new messages) at
-which point <span class="hmethod">Run()</span> will be able to return. After so
-instructing the thread, <span class="hmethod">Quit()</span> returns, it doesn’t
-wait for the message queue to empty.
-Also, <span class="hmethod">Quit()</span> doesn’t delete the
-<span class="hclass">BApplication</span> object. It’s up to you to delete it
-after <span class="hmethod">Run()</span> returns. (However,
-<span class="hmethod">Quit()</span> does delete the object
-if it’s called before the message loop starts i.e. before
-<span class="hmethod">Run()</span> is called.)</p>
+<h4>
+Run(), Quit()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">thread_id</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">Run</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">Quit</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions, inherited from <a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>, are different enough
+from their parent versions to warrant description.</p>
+<p><span class="hmethod">Run()</span> doesn’t spawn a new thread—it runs the message loop in
+the thread that it’s called from, and doesn’t return until the message loop
+stops.</p>
+<p><span class="hmethod">Quit()</span> doesn’t kill the looper thread it tells the thread to
+finish processing the message queue (disallowing new messages) at which
+point <span class="hmethod">Run()</span> will be able to return. After so instructing the
+thread, <span class="hmethod">Quit()</span> returns, it doesn’t wait for the message queue to
+empty.</p>
+<p>Also, <span class="hmethod">Quit()</span> doesn’t delete the <span class="hclass">BApplication</span> object.
+It’s up to you to delete it after <span class="hmethod">Run()</span> returns. (However,
+<span class="hmethod">Quit()</span> <strong>does</strong> delete the object if it’s called before the
+message loop starts i.e. before <span class="hmethod">Run()</span> is called.)</p>
 <section id="_CPPv4N12BApplication9SetCursorEPKv">
 </section>
 <section id="_CPPv4N12BApplication10HideCursorEv">
@@ -369,111 +350,158 @@ if it’s called before the message loop starts i.e. before
 </section>
 <section id="_CPPv4NK12BApplication14IsCursorHiddenEv">
 </section>
-<h3>
-SetCursor(), HideCursor(), ShowCursor(), ObscureCursor(), IsCursorHidden()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">SetCursor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cursor</span><span class="sig-paren">)</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">SetCursor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BCursor</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cursor</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">sync</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">HideCursor</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">ShowCursor</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">ObscureCursor</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">IsCursorHidden</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetCursor()</span> sets the cursor image that’s used when
-this is the active application.
-You can pass one of the Be-defined cursor
-constants (<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">HAND()</span></code> and
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">I()</span></code>)
-or create your own cursor image. The cursor data format is described
-in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCursor</span></code>
-<span class="xref std std-ref">class overview</span>.
-You can also call <span class="hmethod">SetCursor()</span> passing a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCursor</span></code> object;
-specifying <span class="hparameter">sync</span> as <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>
-forces the Application Server to immediately
-resynchronize, thereby ensuring that the cursor change takes place
-immediately. The default <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCursor</span></code>s are
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CURSOR()</span></code>
-for the hand cursor and
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CURSOR()</span></code>
-for the I-beam text editing cursor.
-<span class="hmethod">HideCursor()</span> removes the cursor from the screen.
-<span class="hmethod">ShowCursor()</span> restores it.
-<span class="hmethod">ObscureCursor()</span> hides the cursor until the user moves the mouse.
-<span class="hmethod">IsCursorHidden()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>
-if the cursor is hidden (but not obscured), and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>
-if not.
-The cursor data format is described in the
-“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>” section
-in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCursor</span> <span class="pre">overview</span></code>.</p>
+<h4>
+SetCursor(), HideCursor(), ShowCursor(), ObscureCursor(), IsCursorHidden()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">SetCursor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cursor</span><span class="sig-paren">)</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">SetCursor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="cursor.html#_CPPv47BCursor" title="BCursor"><span class="n">BCursor</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">cursor</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">sync</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">HideCursor</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">ShowCursor</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">ObscureCursor</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">IsCursorHidden</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetCursor()</span> sets the cursor image that’s used when this is the
+active application.</p>
+<p>You can pass one of the Be-defined cursor constants
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HAND_CURSOR</span></code> and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_I_BEAM_CURSOR</span></code>) or
+create your own cursor image. The cursor data format is described in the
+<a class="reference internal" href="cursor.html#_CPPv47BCursor" title="BCursor"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCursor</span></code></a> <span class="xref std std-ref">class overview</span>.</p>
+<p>You can also call <span class="hmethod">SetCursor()</span> passing a <a class="reference internal" href="cursor.html#_CPPv47BCursor" title="BCursor"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCursor</span></code></a>
+object; specifying <span class="hparameter">sync</span> as <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> forces the
+Application Server to immediately resynchronize, thereby ensuring that the
+cursor change takes place immediately. The default <a class="reference internal" href="cursor.html#_CPPv47BCursor" title="BCursor"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCursor</span></code></a>s
+are <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CURSOR_SYSTEM_DEFAULT</span></code> for the hand cursor and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CURSOR_I_BEAM</span></code> for the I-beam text editing cursor.</p>
+<p><span class="hmethod">HideCursor()</span> removes the cursor from the screen.</p>
+<p><span class="hmethod">ShowCursor()</span> restores it.</p>
+<p><span class="hmethod">ObscureCursor()</span> hides the cursor until the user moves the
+mouse.</p>
+<p><span class="hmethod">IsCursorHidden()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the cursor is
+hidden (but not obscured), and <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not.</p>
+<p>The cursor data format is described in the “<span class="xref std std-ref">Cursor Data Format</span>”
+section in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCursor</span> <span class="pre">overview</span></code>.</p>
 <section id="_CPPv4N12BApplication12SetPulseRateE9bigtime_t">
 </section>
-<h3>
-SetPulseRate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">SetPulseRate</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">rate</span><span class="sig-paren">)</span></pre><p>Sets the period between
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PULSE()</span></code>
-messages being sent and the
-<a class="reference internal" href="#_CPPv4N12BApplication5PulseEv" title="BApplication::Pulse"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Pulse()</span></code></a>
-method being called. If the pulse rate is 0 (the default), the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PULSE()</span></code>
-messages aren’t sent.</p>
+<h4>
+SetPulseRate()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">SetPulseRate</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">rate</span><span class="sig-paren">)</span></pre><p>Sets the period between <a class="reference internal" href="../../constants.html#_CPPv47B_PULSE" title="B_PULSE"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PULSE</span></code></a> messages being sent and
+the <a class="reference internal" href="#_CPPv4N12BApplication5PulseEv" title="BApplication::Pulse"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Pulse()</span></code></a> method being called. If the
+pulse rate is 0 (the default), the <a class="reference internal" href="../../constants.html#_CPPv47B_PULSE" title="B_PULSE"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PULSE</span></code></a> messages
+aren’t sent.</p>
 <section id="_CPPv4NK12BApplication8WindowAtE5int32">
 </section>
 <section id="_CPPv4NK12BApplication12CountWindowsEv">
 </section>
-<h3>
-WindowAt(), CountWindows()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BWindow</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">WindowAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">CountWindows</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">WindowAt()</span> returns the <span class="hparameter">index</span>’th
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> object in the
-application’s window list. If <span class="hparameter">index</span> is out of range, the
-function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.
-<span class="hmethod">CountWindows()</span> returns the number of windows in the
-window list.
-The windows list includes all windows explicitly created by the app—whether
-they’re normal, floating, or modal, and whether or not they’re actually
-displayed—but excludes private windows created by Be classes.
-The order of windows in the list has no signficance.
-Locking the <span class="hclass">BApplication</span> object doesn’t lock the window
-list. If you need coordinated access to the list, you’ll have to provide your
-own locking mechanism that protects these functions and all
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> construction
-and deletion.</p>
+<h4>
+WindowAt(), CountWindows()</h4><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../interface/window.html#_CPPv47BWindow" title="BWindow"><span class="n">BWindow</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">WindowAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">CountWindows</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">WindowAt()</span> returns the <span class="hparameter">index</span>’th <a class="reference internal" href="../interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>
+object in the application’s window list. If <span class="hparameter">index</span> is out of
+range, the function returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<p><span class="hmethod">CountWindows()</span> returns the number of windows in the window
+list.</p>
+<p>The windows list includes all windows explicitly created by the
+app—whether they’re normal, floating, or modal, and whether or not they’re
+actually displayed—but excludes private windows created by Be classes.</p>
+<p>The order of windows in the list has no signficance.</p>
+<p>Locking the <span class="hclass">BApplication</span> object doesn’t lock the window list. If
+you need coordinated access to the list, you’ll have to provide your own
+locking mechanism that protects these functions and all
+<a class="reference internal" href="../interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> construction and deletion.</p>
+</section>
 </section>
 <section id="static-functions">
 <h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N12BApplication12AppResourcesEv">
 </section>
 <h3>
-AppResources()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BResources</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BApplication</span><span class="p">::</span></span><span class="n">AppResources</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BResources</span></code> object that’s
-configured from your application’s executable file. You may read the data
-in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BResources</span></code>
-object, but you’re not allowed to write it; see the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BResources</span></code> class for
-details. The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BResources</span></code> object
-belongs to the <span class="hclass">BApplication</span> class and mustn’t be
-freed.
-You needn’t have a be_app object to
-invoke this function.</p>
-<h3>
-</h3><p>See <a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a></p>
+AppResources()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><a class="reference internal" href="../storage/resources.html#_CPPv410BResources" title="BResources"><span class="n">BResources</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BApplication" title="BApplication"><span class="n">BApplication</span></a><span class="p">::</span></span><span class="n">AppResources</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns a <a class="reference internal" href="../storage/resources.html#_CPPv410BResources" title="BResources"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BResources</span></code></a> object that’s configured from your
+application’s executable file. You may read the data in the
+<a class="reference internal" href="../storage/resources.html#_CPPv410BResources" title="BResources"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BResources</span></code></a> object, but you’re not allowed to write it; see the
+<a class="reference internal" href="../storage/resources.html#_CPPv410BResources" title="BResources"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BResources</span></code></a> class for details. The <a class="reference internal" href="../storage/resources.html#_CPPv410BResources" title="BResources"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BResources</span></code></a>
+object belongs to the <span class="hclass">BApplication</span> class and mustn’t be freed.</p>
+<p>You needn’t have a <span class="hparameter">be_app</span> object to invoke this function.</p>
+<section id="instantiate">
+<h3>Instantiate()<a class="headerlink" href="#instantiate" title="Permalink to this heading">¶</a></h3>
+<p>See <a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a></p>
+</section>
 </section>
 <section id="global-variables">
 <h2>Global Variables<a class="headerlink" href="#global-variables" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BApplication</span><span class="o">*</span> <span class="n">be_app</span><span class="p">;</span>
+<section id="be-app">
+<h3>be_app<a class="headerlink" href="#be-app" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BApplication</span><span class="o">*</span><span class="w"> </span><span class="n">be_app</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>be_app is the global variable that
-represents your <span class="hclass">BApplication</span> object. You can refer
-to be_app anywhere you need a reference to the <span class="hclass">BApplication</span> object that you created. If you want to call a function that’s declared by your <span class="hclass">BApplication</span> subclass, you have to cast be_app to your subclass:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="n">MyApp</span> <span class="o">*</span><span class="p">)</span><span class="n">be_app</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">MyAppFunction</span><span class="p">();</span>
+<p><span class="hparameter">be_app</span> is the global variable that represents your
+<span class="hclass">BApplication</span> object. You can refer to <span class="hparameter">be_app</span> anywhere
+you need a reference to the <span class="hclass">BApplication</span> object that you created.
+If you want to call a function that’s declared by your
+<span class="hclass">BApplication</span> subclass, you have to cast <span class="hparameter">be_app</span> to your
+subclass:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="n">MyApp</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">be_app</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">MyAppFunction</span><span class="p">();</span><span class="w"></span>
 </pre></div>
 </div>
-<h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BMessenger</span><span class="o">*</span> <span class="n">be_app_messenger</span><span class="p">;</span>
+</section>
+<section id="be-app-messenger">
+<h3>be_app_messenger<a class="headerlink" href="#be-app-messenger" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BMessenger</span><span class="o">*</span><span class="w"> </span><span class="n">be_app_messenger</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>be_app_messenger is a global
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> that
-targets your be_app object. It’s created in the
-<span class="hclass">BApplication</span> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>.</p>
+<p><span class="hparameter">be_app_messenger</span> is a global <a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> that
+targets your <span class="hparameter">be_app</span> object. It’s created in the
+<span class="hclass">BApplication</span> <a class="reference internal" href="#_CPPv4N12BApplication12BApplicationEPKc" title="BApplication::BApplication"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a>.</p>
+</section>
 </section>
 <section id="archived-fields">
 <h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">mime_sig</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>Application signature.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="scripting-suites-and-properties">
 <h2>Scripting Suites and Properties<a class="headerlink" href="#scripting-suites-and-properties" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>“Name”CommandSpecifierDescriptionB_GET_PROPERTYB_DIRECT_SPECIFIERGets the name of the application’s main thread.
-“Window”CommandSpecifierDescriptionB_COUNT_PROPERTIESB_DIRECT_SPECIFIERReturns CountWindows().Not applicable.B_NAME_SPECIFIER, B_INDEX_SPECIFIER, B_REVERSE_INDEX_SPECIFIERThe message is forwarded to the specified BWindow.</p>
+<section id="suite-suite-vnd-be-application">
+<h3>Suite: “suite/vnd.Be-application”<a class="headerlink" href="#suite-suite-vnd-be-application" title="Permalink to this heading">¶</a></h3>
+<section id="name">
+<h4>“Name”<a class="headerlink" href="#name" title="Permalink to this heading">¶</a></h4>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Specifier</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_PROPERTY</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_SPECIFIER</span></code></p></td>
+<td><p>Gets the name of the application’s main thread.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="window">
+<h4>“Window”<a class="headerlink" href="#window" title="Permalink to this heading">¶</a></h4>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Specifier</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../constants.html#_CPPv418B_COUNT_PROPERTIES" title="B_COUNT_PROPERTIES"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_COUNT_PROPERTIES</span></code></a></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_SPECIFIER</span></code></p></td>
+<td><p>Returns <a class="reference internal" href="#_CPPv4NK12BApplication12CountWindowsEv" title="BApplication::CountWindows"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountWindows()</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Not applicable.</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NAME_SPECIFIER</span></code>, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INDEX_SPECIFIER</span></code>,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REVERSE_INDEX_SPECIFIER</span></code></p></td>
+<td><p>The message is forwarded to the specified <span class="xref std std-ref">BWindow</span>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 </section>
 </section>
 

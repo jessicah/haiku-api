@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Background Images &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Scripting" href="scripting.html" />
+    <link rel="prev" title="Add-on Protocol" href="add-on-protocol.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Background Images</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="add-on-protocol.html">Add-on Protocol</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="scripting.html">Scripting</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Background Images</a><ul>
+<li><a class="reference internal" href="#background-attributes">Background Attributes</a></li>
+<li><a class="reference internal" href="#special-folders">Special Folders</a></li>
+<li><a class="reference internal" href="#notifying-tracker">Notifying Tracker</a></li>
+<li><a class="reference internal" href="#refreshing-all-windows">Refreshing All Windows</a></li>
+<li><a class="reference internal" href="#refreshing-one-window">Refreshing One Window</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="background-images">
+<h1 id="CPPv417Background Images">Background Images<a class="headerlink" href="#background-images" title="Permalink to this heading">¶</a></h1>
+<p>Declared in: be_apps/Tracker/Background.h</p>
+<p>Tracker lets you put background images on each workspace on your desktop
+and in the background of individual Tracker folder windows.</p>
+<div class="warning admonition">
+<p class="admonition-title" id="CPPv47Warning">Warning</p>
+<p>Currently, Tracker only paints the background of a folder window when the
+window is in icon (or mini-icon) view mode.</p>
+</div>
+<section id="background-attributes">
+<h2>Background Attributes<a class="headerlink" href="#background-attributes" title="Permalink to this heading">¶</a></h2>
+<p>Information about the background image for a folder is stored as a
+flattened <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> in the folder’s
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_INFO</span></code> file attribute. The
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DESKTOP_FOLDER</span></code> directory holds the background info for
+the workspaces (one flattened message per workspace).</p>
+<p>The <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_INFO</span></code> attribute’s data is a flattened
+<a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> with these fields:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_IMAGE</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>The full path to the image. The image needs to be in a format understood
+by one of the translators (see the Translation Kit) installed on the
+system.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_MODE</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>Specifies how the background is placed (tiled, centered, etc). See the
+list of mode constants after this table.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_ORIGIN</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_POINT_TYPE</span></code></p></td>
+<td><p>If <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_MODE</span></code> is
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_MODE_USE_ORIGIN</span></code>, the image will be drawn
+with the upper left corner at this point (which can be anything, even
+negative).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_ERASE_TEXT</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BOOL_TYPE</span></code></p></td>
+<td><p>If <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> the icon label will have its background erased to the
+window’s background color, otherwise the label will be drawn on top of the
+image (which could make it difficult to read).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_WORKSPACES</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_UINT32_TYPE</span></code></p></td>
+<td><p>A bitmask indicating which workspaces the image should be drawn on. This
+only applies to Desktop images.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_MODE</span></code> values are:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_MODE_USE_ORIGIN</span></code>.</p></td>
+<td><p>Draw the image once at the location specified by
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_ORIGIN</span></code>, relative to the upper-left corner of
+the window or Desktop.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_MODE_CENTERED</span></code></p></td>
+<td><p>Center the image (only works on Desktop.)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_MODE_SCALED</span></code></p></td>
+<td><p>Scale the image to fit (only works on Desktop.)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_MODE_TILED</span></code></p></td>
+<td><p>Tile the image to cover the entire window/Desktop.</p></td>
+</tr>
+</tbody>
+</table>
+<p>You can write multiple sets of these message fields into the Desktop’s
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_INFO</span></code> attribute message in order to put
+different images on different workspaces. The fields are correlated by
+index. Don’t put different <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_IMAGE</span></code> paths onto
+the same workspace though, the behavior is undefined.</p>
+<p>For example, this is OK:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">...</span><span class="w"></span>
+<span class="cm">/* ALMOST_ALL_WORKSPACES is every workspace except the first */</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">ALMOST_ALL_WORKSPACES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xffffffff</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0x00000001</span><span class="p">;</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">OTHER_WORKSPACE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00000001</span><span class="p">;</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+<span class="n">BMessage</span><span class="w"> </span><span class="n">backgrounds</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/* Add the first image to ALMOST_ALL_WORKSPACES */</span><span class="w"></span>
+<span class="n">backgrounds</span><span class="p">.</span><span class="n">AddString</span><span class="p">(</span><span class="w"> </span><span class="n">B_BACKGROUND_IMAGE</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/boot/home/nice.jpg&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">backgrounds</span><span class="p">.</span><span class="n">AddInt32</span><span class="p">(</span><span class="w"> </span><span class="n">B_BACKGROUND_WORKSPACES</span><span class="p">,</span><span class="w"> </span><span class="n">ALMOST_ALL_WORKSPACES</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">backgrounds</span><span class="p">.</span><span class="n">AddInt32</span><span class="p">(</span><span class="w"> </span><span class="n">B_BACKGROUND_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">B_BACKGROUND_MODE_TILED</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">backgrounds</span><span class="p">.</span><span class="n">AddPoint</span><span class="p">(</span><span class="w"> </span><span class="n">B_BACKGROUND_ORIGIN</span><span class="p">,</span><span class="w"> </span><span class="n">BPoint</span><span class="p">(</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">backgrounds</span><span class="p">.</span><span class="n">AddBool</span><span class="p">(</span><span class="w"> </span><span class="n">B_BACKGROUND_ERASE_TEXT</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/* Add the second image to the OTHER_WORKSPACE */</span><span class="w"></span>
+<span class="n">backgrounds</span><span class="p">.</span><span class="n">AddString</span><span class="p">(</span><span class="w"> </span><span class="n">B_BACKGROUND_IMAGE</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/boot/home/nicer.jpg&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">backgrounds</span><span class="p">.</span><span class="n">AddInt32</span><span class="p">(</span><span class="w"> </span><span class="n">B_BACKGROUND_WORKSPACES</span><span class="p">,</span><span class="w"> </span><span class="n">OTHER_WORKSPACE</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">backgrounds</span><span class="p">.</span><span class="n">AddInt32</span><span class="p">(</span><span class="w"> </span><span class="n">B_BACKGROUND_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">B_BACKGROUND_MODE_SCALED</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">backgrounds</span><span class="p">.</span><span class="n">AddPoint</span><span class="p">(</span><span class="w"> </span><span class="n">B_BACKGROUND_ORIGIN</span><span class="p">,</span><span class="w"> </span><span class="n">BPoint</span><span class="p">(</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">backgrounds</span><span class="p">.</span><span class="n">AddBool</span><span class="p">(</span><span class="w"> </span><span class="n">B_BACKGROUND_ERASE_TEXT</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This is <strong>not</strong> OK, and results in undefined behaviour:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">...</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">ALL_WORKSPACES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xffffffff</span><span class="p">;</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+<span class="n">BMessage</span><span class="w"> </span><span class="n">backgrounds</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">backgrounds</span><span class="p">.</span><span class="n">AddString</span><span class="p">(</span><span class="w"> </span><span class="n">B_BACKGROUND_IMAGE</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/boot/home/nice.jpg&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">backgrounds</span><span class="p">.</span><span class="n">AddInt32</span><span class="p">(</span><span class="w"> </span><span class="n">B_BACKGROUND_WORKSPACES</span><span class="p">,</span><span class="w"> </span><span class="n">ALL_WORKSPACES</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="cm">/* ... other B_BACKGROUND_* data here ... */</span><span class="w"></span>
+
+<span class="n">backgrounds</span><span class="p">.</span><span class="n">AddString</span><span class="p">(</span><span class="w"> </span><span class="n">B_BACKGROUND_IMAGE</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/boot/home/nicer.jpg&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">backgrounds</span><span class="p">.</span><span class="n">AddInt32</span><span class="p">(</span><span class="w"> </span><span class="n">B_BACKGROUND_WORKSPACES</span><span class="p">,</span><span class="w"> </span><span class="n">ALL_WORKSPACES</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="cm">/* ... other B_BACKGROUND_* data here ... */</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_INFO</span></code> attribute’s contents might be
+extended in the future (but will remain compatible with the existing
+attribute data). Be prepared to preserve any data you don’t recognize by
+reading in the existing <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_INFO</span></code> attribute (if
+one exists).</p>
+</div>
+</section>
+<section id="special-folders">
+<h2>Special Folders<a class="headerlink" href="#special-folders" title="Permalink to this heading">¶</a></h2>
+<p>There are two special folders you can apply attributes to:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DESKTOP_DIRECTORY</span></code></p></td>
+<td><p>Applying the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_INFO</span></code> attribute to
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DESKTOP_DIRECTORY</span></code> (see <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">find_directory()</span></code> in the Storage Kit) will change the Desktop’s background
+image (but see below to find out how to tell the Tracker to update the
+image).</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tracker/DefaultFolderTemplate
+inside<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_USER_SETTINGS_DIRECTORY</span></code></p></td>
+<td><p>Applying the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_INFO</span></code> attribute to this
+directory sets the default folder background. Any folder that doesn’t have
+its own <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_INFO</span></code> will display this image.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notifying-tracker">
+<h2>Notifying Tracker<a class="headerlink" href="#notifying-tracker" title="Permalink to this heading">¶</a></h2>
+<p>Once you’ve written an appropriate <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_INFO</span></code>
+attribute, you’ll want to tell the Tracker to pick up the new background
+image.</p>
+<p>Send the Tracker’s main looper (remember, the Tracker’s signature is
+“application/x-vnd.Be-TRAK”) a <span class="hclass">BMessage</span> with a <span class="hparameter">what</span> of
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RESTORE_BACKGROUND_IMAGE</span></code> to tell it to reload the
+desktop background image.</p>
+<p>Sending the same message to the looper for a specific Tracker window will
+tell that window to reload its background image. This is a little trickier
+because you need to find the right window.</p>
+</section>
+<section id="refreshing-all-windows">
+<h2>Refreshing All Windows<a class="headerlink" href="#refreshing-all-windows" title="Permalink to this heading">¶</a></h2>
+<p>Taking the shotgun approach, you can tell all of the open Tracker windows
+to repaint their backgrounds by using Tracker scripting (see
+<span class="xref std std-ref">Scripting</span> in the Application Kit). You’ll need to do this if you
+change the default folder background image.</p>
+<p>This code asks the Tracker for windows that have a “Poses” property and
+sends them a <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RESTORE_BACKGROUND_IMAGE</span></code>. This updates
+every Tracker window that’s displaying a folder’s contents.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BMessenger</span><span class="w"> </span><span class="n">tracker</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;application/x-vnd.Be-TRAK&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="n">int32</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">BMessage</span><span class="w"> </span><span class="n">reply</span><span class="p">;</span><span class="w"></span>
+<span class="n">int32</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* scripting message */</span><span class="w"></span>
+<span class="w">   </span><span class="n">BMessage</span><span class="w"> </span><span class="nf">msg</span><span class="p">(</span><span class="w"> </span><span class="n">B_GET_PROPERTY</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* look at the &quot;Poses&quot; in every Tracker window */</span><span class="w"></span>
+<span class="w">   </span><span class="n">msg</span><span class="p">.</span><span class="n">AddSpecifier</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Poses&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">msg</span><span class="p">.</span><span class="n">AddSpecifier</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Window&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">reply</span><span class="p">.</span><span class="n">MakeEmpty</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">tracker</span><span class="p">.</span><span class="n">SendMessage</span><span class="p">(</span><span class="w"> </span><span class="o">&amp;</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">reply</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* break out of the loop when we&#39;re at the end of</span>
+<span class="cm">   * the windows</span>
+<span class="cm">   */</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">reply</span><span class="p">.</span><span class="n">what</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_MESSAGE_NOT_UNDERSTOOD</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">      </span><span class="n">reply</span><span class="p">.</span><span class="n">FindInt32</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">err</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">      </span><span class="n">err</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_BAD_INDEX</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* don&#39;t stop for windows that don&#39;t understand</span>
+<span class="cm">   * a request for &quot;Poses&quot;; they&#39;re not displaying</span>
+<span class="cm">   * folders</span>
+<span class="cm">   */</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">reply</span><span class="p">.</span><span class="n">what</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_MESSAGE_NOT_UNDERSTOOD</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">      </span><span class="n">reply</span><span class="p">.</span><span class="n">FindInt32</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">err</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">      </span><span class="n">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">B_BAD_SCRIPT_SYNTAX</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">BMessenger</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">reply</span><span class="p">.</span><span class="n">FindMessenger</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;result&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="cm">/* m is the messenger of a Tracker window with</span>
+<span class="cm">         * a folder inside</span>
+<span class="cm">         */</span><span class="w"></span>
+
+<span class="w">      </span><span class="n">m</span><span class="p">.</span><span class="n">SendMessage</span><span class="p">(</span><span class="w"> </span><span class="n">B_RESTORE_BACKGROUND_IMAGE</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="refreshing-one-window">
+<h2>Refreshing One Window<a class="headerlink" href="#refreshing-one-window" title="Permalink to this heading">¶</a></h2>
+<p>If want to refresh the background of the folder you’ve changed, you scan
+through the open folders using code similar to the above, until you find
+the folder with the “Path” you’re interested in. Once you’ve got the right
+window, you send it a <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RESTORE_BACKGROUND_IMAGE</span></code> message.
+Using this technique is nicer (from the user’s point of view) because only
+one Tracker window gets updated.</p>
+<p>Here’s the same code, modified to target a specific path. Assume you’ve
+still got the path in question in the_path (you just used it as a
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_IMAGE</span></code>):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BMessenger</span><span class="w"> </span><span class="n">tracker</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;application/x-vnd.Be-TRAK&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/* CHANGE: we&#39;ll increment &quot;i&quot; at the start of the loop</span>
+<span class="cm">* now; this lets us use it later when we find</span>
+<span class="cm">* a Window with a Poses</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="n">int32</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="n">BMessage</span><span class="w"> </span><span class="n">reply</span><span class="p">;</span><span class="w"></span>
+<span class="n">int32</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* CHANGE: */</span><span class="w"></span>
+<span class="w">   </span><span class="n">i</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* scripting message */</span><span class="w"></span>
+<span class="w">   </span><span class="n">BMessage</span><span class="w"> </span><span class="nf">msg</span><span class="p">(</span><span class="w"> </span><span class="n">B_GET_PROPERTY</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* look at the &quot;Poses&quot; in every Tracker window */</span><span class="w"></span>
+<span class="w">   </span><span class="n">msg</span><span class="p">.</span><span class="n">AddSpecifier</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Poses&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">msg</span><span class="p">.</span><span class="n">AddSpecifier</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Window&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="cm">/* CHANGE */</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">reply</span><span class="p">.</span><span class="n">MakeEmpty</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">tracker</span><span class="p">.</span><span class="n">SendMessage</span><span class="p">(</span><span class="w"> </span><span class="o">&amp;</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">reply</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* break out of the loop when we&#39;re at the end of</span>
+<span class="cm">   * the windows</span>
+<span class="cm">   */</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">reply</span><span class="p">.</span><span class="n">what</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_MESSAGE_NOT_UNDERSTOOD</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">      </span><span class="n">reply</span><span class="p">.</span><span class="n">FindInt32</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">err</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">      </span><span class="n">err</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_BAD_INDEX</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* don&#39;t stop for windows that don&#39;t understand</span>
+<span class="cm">   * a request for &quot;Poses&quot;; they&#39;re not displaying</span>
+<span class="cm">   * folders</span>
+<span class="cm">   */</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">reply</span><span class="p">.</span><span class="n">what</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_MESSAGE_NOT_UNDERSTOOD</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">      </span><span class="n">reply</span><span class="p">.</span><span class="n">FindInt32</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">err</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">      </span><span class="n">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">B_BAD_SCRIPT_SYNTAX</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* CHANGE: everything from here down is new */</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* make a messenger to this window */</span><span class="w"></span>
+<span class="w">   </span><span class="n">BMessenger</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">reply</span><span class="p">.</span><span class="n">FindMessenger</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;result&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* found a Window with a Poses, ask for its Path */</span><span class="w"></span>
+<span class="w">   </span><span class="n">msg</span><span class="p">.</span><span class="n">MakeEmpty</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">msg</span><span class="p">.</span><span class="n">what</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B_GET_PROPERTY</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">msg</span><span class="p">.</span><span class="n">AddSpecifier</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Path&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">msg</span><span class="p">.</span><span class="n">AddSpecifier</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Poses&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">msg</span><span class="p">.</span><span class="n">AddSpecifier</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Window&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">reply</span><span class="p">.</span><span class="n">MakeEmpty</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">tracker</span><span class="p">.</span><span class="n">SendMessage</span><span class="p">(</span><span class="w"> </span><span class="o">&amp;</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">reply</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* go on with the next if this din&#39;t have a Path */</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">reply</span><span class="p">.</span><span class="n">what</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_MESSAGE_NOT_UNDERSTOOD</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* dig out the Path */</span><span class="w"></span>
+<span class="w">   </span><span class="n">entry_ref</span><span class="w"> </span><span class="n">ref</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">reply</span><span class="p">.</span><span class="n">FindRef</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;result&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ref</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">BEntry</span><span class="w"> </span><span class="nf">ent</span><span class="p">(</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ref</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">BPath</span><span class="w"> </span><span class="nf">path</span><span class="p">(</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ent</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="cm">/* these are not the Paths you&#39;re looking for */</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">strcmp</span><span class="p">(</span><span class="w"> </span><span class="n">the_path</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">()</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* if you got this far, you have a messenger to a valid Tracker</span>
+<span class="cm">   * window displaying a folder with the path you were after,</span>
+<span class="cm">   * so tell it to refresh its background</span>
+<span class="cm">   */</span><span class="w"></span>
+<span class="w">   </span><span class="n">m</span><span class="p">.</span><span class="n">SendMessage</span><span class="p">(</span><span class="w"> </span><span class="n">B_RESTORE_BACKGROUND_IMAGE</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="add-on-protocol.html">Add-on Protocol</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="scripting.html">Scripting</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

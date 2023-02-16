@@ -83,38 +83,39 @@
       <div class="content" role="main">
         
   <section id="bdragger">
-<h1>BDragger<a class="headerlink" href="#bdragger" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv48BDragger">BDragger<a class="headerlink" href="#bdragger" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N8BDragger8BDraggerE5BRectP5BView6uint326uint32">
 </section>
 <h3>
-BDragger()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BDragger8BDraggerE5BRectP5BView6uint326uint32" title="BDragger::BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">BDragger</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">target</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_NONE</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BDragger8BDraggerEP8BMessage" title="BDragger::BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">BDragger</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BDragger</span> and sets its target view.
-The <span class="hclass">BDragger</span> and the
-target <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> must be
-directly related in the view hierarchy (as
-parent-child or as siblings); but, note well, the constructor doesn’t
-establish this relationship for you. After you construct you <span class="hclass">BDragger</span>,
-you have to do one of three things:</p>
-<p>add the target as a child of the dragger, add the dragger as a child of the target, or add the dragger as a sibling of the target.</p>
-<p>If you add the target as a child of <span class="hclass">BDragger</span>, it should be the only child
-that the <span class="hclass">BDragger</span> has.</p>
-<p>A <span class="hclass">BDragger</span> draws in the right bottom corner of its frame rectangle. If
-the <span class="hparameter">target</span> view is a parent or a sibling of the <span class="hclass">BDragger</span>, that rectangle
-needs to be no larger than the image the <span class="hclass">BDragger</span> draws (the handle).
-However, if the target is the <span class="hclass">BDragger</span>’s child, the dragger’s frame
-rectangle must enclose the target’s frame (so that the dragger doesn’t
-clip the target).</p>
-<p>A <span class="hclass">BDragger</span> is fully functional once it has been constructed and attached
-to the view hierarchy of its target. You don’t need to call any other
-functions. However, the whole endeavor fails if the target
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> can’t be
-archived.</p>
+BDragger()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BDragger8BDraggerE5BRectP5BView6uint326uint32" title="BDragger::BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">BDragger</span><span class="sig-paren">(</span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">frame</span>, <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">target</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_NONE</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BDragger8BDraggerEP8BMessage" title="BDragger::BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">BDragger</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BDragger</span> and sets its target view. The
+<span class="hclass">BDragger</span> and the target <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> must be directly
+related in the view hierarchy (as parent-child or as siblings); but, note
+well, the constructor doesn’t establish this relationship for you. After
+you construct you <span class="hclass">BDragger</span>, you have to do one of three things:</p>
+<ol class="arabic simple">
+<li><p>add the target as a child of the dragger,</p></li>
+<li><p>add the dragger as a child of the target,</p></li>
+<li><p>or add the dragger as a sibling of the target.</p></li>
+</ol>
+<p>If you add the target as a child of <span class="hclass">BDragger</span>, it should be the
+only child that the <span class="hclass">BDragger</span> has.</p>
+<p>A <span class="hclass">BDragger</span> draws in the right bottom corner of its frame
+rectangle. If the <span class="hparameter">target</span> view is a parent or a sibling of the
+<span class="hclass">BDragger</span>, that rectangle needs to be no larger than the image the
+<span class="hclass">BDragger</span> draws (the handle). However, if the target is the
+<span class="hclass">BDragger</span>’s child, the dragger’s frame rectangle must enclose the
+target’s frame (so that the dragger doesn’t clip the target).</p>
+<p>A <span class="hclass">BDragger</span> is fully functional once it has been constructed and
+attached to the view hierarchy of its target. You don’t need to call any
+other functions. However, the whole endeavor fails if the target
+<a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> can’t be archived.</p>
 <section id="_CPPv4N8BDraggerD0Ev">
 </section>
 <h3>
-~BDragger()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDragger</span><span class="p">::</span></span><span class="n">~BDragger</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees all memory the <span class="hclass">BDragger</span> allocated (principally for the bitmap image
-it draws).</p>
+~BDragger()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDragger" title="BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">~BDragger</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees all memory the <span class="hclass">BDragger</span> allocated (principally for the
+bitmap image it draws).</p>
 </section>
 <section id="hook-functions">
 <h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
@@ -123,74 +124,66 @@ it draws).</p>
 <section id="_CPPv4N8BDragger18DetachedFromWindowEv">
 </section>
 <h3>
-AttachedToWindow(), DetachedFromWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDragger</span><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDragger</span><span class="p">::</span></span><span class="n">DetachedFromWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">AttachedToWindow()</span> makes sure that the
-<span class="hclass">BDragger</span> is under the control of
-the <a class="reference internal" href="#_CPPv4N8BDragger15HideAllDraggersEv" title="BDragger::HideAllDraggers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">HideAllDraggers()</span></code></a>
-and <a class="reference internal" href="#_CPPv4N8BDragger15ShowAllDraggersEv" title="BDragger::ShowAllDraggers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ShowAllDraggers()</span></code></a>
-functions, makes its low and
-background view colors match the view color of its parent, and determines
-the <span class="hclass">BDragger</span>’s precise relationship to its target view. To make this
-determination, the target must be in the view hierarchy; it can’t be
-added to the window after the <span class="hclass">BDragger</span> is. For example, if the target is
-the <span class="hclass">BDragger</span>’s child, it should be added to the
-<span class="hclass">BDragger</span> and then the
-<span class="hclass">BDragger</span> added to the window.</p>
-<p><span class="hmethod">DetachedFromWindow()</span> removes the <span class="hclass">BDragger</span>
-from the control of the
-<a class="reference internal" href="#_CPPv4N8BDragger15HideAllDraggersEv" title="BDragger::HideAllDraggers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">HideAllDraggers()</span></code></a>
+AttachedToWindow(), DetachedFromWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDragger" title="BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDragger" title="BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">DetachedFromWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">AttachedToWindow()</span> makes sure that the <span class="hclass">BDragger</span> is
+under the control of the <a class="reference internal" href="#_CPPv4N8BDragger15HideAllDraggersEv" title="BDragger::HideAllDraggers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">HideAllDraggers()</span></code></a> and <a class="reference internal" href="#_CPPv4N8BDragger15ShowAllDraggersEv" title="BDragger::ShowAllDraggers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ShowAllDraggers()</span></code></a> functions, makes its low and background view
+colors match the view color of its parent, and determines the
+<span class="hclass">BDragger</span>’s precise relationship to its target view. To make this
+determination, the target must be in the view hierarchy; it can’t be added
+to the window after the <span class="hclass">BDragger</span> is. For example, if the target
+is the <span class="hclass">BDragger</span>’s child, it should be added to the
+<span class="hclass">BDragger</span> and then the <span class="hclass">BDragger</span> added to the window.</p>
+<p><span class="hmethod">DetachedFromWindow()</span> removes the <span class="hclass">BDragger</span> from the
+control of the <a class="reference internal" href="#_CPPv4N8BDragger15HideAllDraggersEv" title="BDragger::HideAllDraggers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">HideAllDraggers()</span></code></a>
 and <a class="reference internal" href="#_CPPv4N8BDragger15ShowAllDraggersEv" title="BDragger::ShowAllDraggers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ShowAllDraggers()</span></code></a> functions.</p>
 <section id="_CPPv4N8BDragger4DrawE5BRect">
 </section>
 <h3>
-Draw()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDragger</span><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">updateRect</span><span class="sig-paren">)</span></pre><p>Draws the handle—or fails to draw it and has the parent view draw
-in that area instead, if all <span class="hclass">BDragger</span>s are hidden.</p>
+Draw()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDragger" title="BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">updateRect</span><span class="sig-paren">)</span></pre><p>Draws the handle—or fails to draw it and has the parent view draw in that
+area instead, if all <span class="hclass">BDragger</span>s are hidden.</p>
 <section id="_CPPv4N8BDragger15MessageReceivedEP8BMessage">
 </section>
 <h3>
-MessageReceived()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDragger</span><span class="p">::</span></span><span class="n">MessageReceived</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Responds to messages that regulate the visibility of the <span class="hclass">BDragger</span> handle.</p>
+MessageReceived()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDragger" title="BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">MessageReceived</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Responds to messages that regulate the visibility of the
+<span class="hclass">BDragger</span> handle.</p>
 <section id="_CPPv4N8BDragger9MouseDownE6BPoint">
 </section>
 <h3>
-MouseDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDragger</span><span class="p">::</span></span><span class="n">MouseDown</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">where</span><span class="sig-paren">)</span></pre><p>Responds to a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MOUSE_DOWN</span></code> message by archiving the target view (and the
-<span class="hclass">BDragger</span>) and initiating a drag-and-drop operation, or by taking other
-appropriate action.</p>
+MouseDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDragger" title="BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">MouseDown</span><span class="sig-paren">(</span><a class="reference internal" href="point.html#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="n sig-param">where</span><span class="sig-paren">)</span></pre><p>Responds to a <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MOUSE_DOWN</span></code> message by archiving the
+target view (and the <span class="hclass">BDragger</span>) and initiating a drag-and-drop
+operation, or by taking other appropriate action.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4NK8BDragger7ArchiveEP8BMessageb">
 </section>
 <h3>
-Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDragger</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Records the <span class="hclass">BDragger</span>’s hierarchical relationship to the target view and
-then calls
-<a class="reference internal" href="view.html#_CPPv4NK5BView7ArchiveEP8BMessageb" title="BView::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Archive()</span></code></a>
-. The <span class="hparameter">deep</span> flag has no significance for
-<span class="hclass">BDragger</span> itself, but note that the flag is passed on to the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> version.</p>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDragger" title="BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Records the <span class="hclass">BDragger</span>’s hierarchical relationship to the target
+view and then calls <a class="reference internal" href="view.html#_CPPv4NK5BView7ArchiveEP8BMessageb" title="BView::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Archive()</span></code></a> . The <span class="hparameter">deep</span> flag
+has no significance for <span class="hclass">BDragger</span> itself, but note that the flag
+is passed on to the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> version.</p>
 <section id="_CPPv4NK8BDragger20IsVisibilityChangingEv">
 </section>
 <h3>
-IsVisibilityChanging()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDragger</span><span class="p">::</span></span><span class="n">IsVisibilityChanging</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if two things are true:</p>
-<p>The BDragger is the parent of its target. The BDragger handle was visible but now should not be, or it wasn’t visible and now should be.</p>
-<p>Otherwise, this function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.</p>
-<p>What’s this function for? It’s in the API so derived classes can
-implement their own versions of
-<a class="reference internal" href="#_CPPv4N8BDragger4DrawE5BRect" title="BDragger::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a>.
-If the <span class="hclass">BDragger</span> isn’t the parent
-of its target, the visibility of the <span class="hclass">BDragger</span> view can be controlled by
-the
-<a class="reference internal" href="view.html#_CPPv4N5BView4HideEv" title="BView::Hide"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Hide()</span></code></a> and
-<a class="reference internal" href="view.html#_CPPv4N5BView4ShowEv" title="BView::Show"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Show()</span></code></a>
-functions rather than
+IsVisibilityChanging()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDragger" title="BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">IsVisibilityChanging</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if two things are true:</p>
+<ol class="arabic simple">
+<li><p>The <span class="hclass">BDragger</span> is the parent of its target.</p></li>
+<li><p>The <span class="hclass">BDragger</span> handle was visible but now should not be, or it
+wasn’t visible and now should be.</p></li>
+</ol>
+<p>Otherwise, this function returns <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>.</p>
+<p>What’s this function for? It’s in the API so derived classes can implement
+their own versions of <a class="reference internal" href="#_CPPv4N8BDragger4DrawE5BRect" title="BDragger::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a>. If the
+<span class="hclass">BDragger</span> isn’t the parent of its target, the visibility of the
+<span class="hclass">BDragger</span> view can be controlled by the <a class="reference internal" href="view.html#_CPPv4N5BView4HideEv" title="BView::Hide"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Hide()</span></code></a> and <a class="reference internal" href="view.html#_CPPv4N5BView4ShowEv" title="BView::Show"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Show()</span></code></a> functions rather than
 <a class="reference internal" href="#_CPPv4N8BDragger4DrawE5BRect" title="BDragger::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a>.</p>
 <section id="_CPPv4NK8BDragger5PopUpEv">
 </section>
 <section id="_CPPv4N8BDragger8SetPopUpEP10BPopUpMenu">
 </section>
 <h3>
-PopUp(), SetPopUp()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BPopUpMenu</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BDragger</span><span class="p">::</span></span><span class="n">PopUp</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDragger</span><span class="p">::</span></span><span class="n">SetPopUp</span><span class="sig-paren">(</span><span class="n">BPopUpMenu</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">context_menu</span><span class="sig-paren">)</span></pre><p>Returns and sets the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPopUpMenu</span></code>
-displayed when the user right clicks on
-the <span class="hclass">BDragger</span> view after it has been attached to a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BShelf</span></code>.</p>
+PopUp(), SetPopUp()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="pop-up-menu.html#_CPPv410BPopUpMenu" title="BPopUpMenu"><span class="n">BPopUpMenu</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDragger" title="BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">PopUp</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDragger" title="BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">SetPopUp</span><span class="sig-paren">(</span><a class="reference internal" href="pop-up-menu.html#_CPPv410BPopUpMenu" title="BPopUpMenu"><span class="n">BPopUpMenu</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">context_menu</span><span class="sig-paren">)</span></pre><p>Returns and sets the <a class="reference internal" href="pop-up-menu.html#_CPPv410BPopUpMenu" title="BPopUpMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPopUpMenu</span></code></a> displayed when the user right
+clicks on the <span class="hclass">BDragger</span> view after it has been attached to a
+<a class="reference internal" href="shelf.html#_CPPv46BShelf" title="BShelf"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BShelf</span></code></a>.</p>
 </section>
 <section id="static-functions">
 <h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
@@ -201,34 +194,55 @@ the <span class="hclass">BDragger</span> view after it has been attached to a
 <section id="_CPPv4N8BDragger16AreDraggersDrawnEv">
 </section>
 <h3>
-HideAllDraggers(), ShowAllDraggers(), AreDraggersDrawn()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDragger</span><span class="p">::</span></span><span class="n">HideAllDraggers</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDragger</span><span class="p">::</span></span><span class="n">ShowAllDraggers</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDragger</span><span class="p">::</span></span><span class="n">AreDraggersDrawn</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions communicate with all <span class="hclass">BDragger</span> objects in all applications
-(provided they’re attached to windows). <span class="hmethod">HideAllDraggers()</span> hides the
-<span class="hclass">BDragger</span> objects so that they’re not visible on-screen. <span class="hmethod">ShowAllDraggers()</span>
-undoes the effect of <span class="hmethod">HideAllDraggers()</span> and causes all <span class="hclass">BDragger</span> objects to
-draw their handles. The Show Replicants / Hide Replicants menu item does
-its work through these functions.</p>
-<p><span class="hmethod">HideAllDraggers()</span> may or may not hide the <span class="hclass">BDragger</span> view in the way that
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView's</span></code>
-<a class="reference internal" href="view.html#_CPPv4N5BView4HideEv" title="BView::Hide"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Hide()</span></code></a>
-function does. The <span class="hclass">BDragger</span> may still be visible, although
-it won’t draw anything until <span class="hmethod">ShowAllDraggers()</span> is called. Therefore, if
-the target <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> is the
-<span class="hclass">BDragger</span>’s child, it will not be hidden when
-<span class="hmethod">HideAllDraggers()</span> erases its parent.</p>
-<p><span class="hmethod">AreDraggersDrawn()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>
-when the <span class="hclass">BDragger</span>s are shown and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>
-when they’re hidden.</p>
+HideAllDraggers(), ShowAllDraggers(), AreDraggersDrawn()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDragger" title="BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">HideAllDraggers</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDragger" title="BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">ShowAllDraggers</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDragger" title="BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">AreDraggersDrawn</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions communicate with all <span class="hclass">BDragger</span> objects in all
+applications (provided they’re attached to windows).
+<span class="hmethod">HideAllDraggers()</span> hides the <span class="hclass">BDragger</span> objects so that
+they’re not visible on-screen. <span class="hmethod">ShowAllDraggers()</span> undoes the
+effect of <span class="hmethod">HideAllDraggers()</span> and causes all <span class="hclass">BDragger</span>
+objects to draw their handles. The Show Replicants / Hide Replicants menu
+item does its work through these functions.</p>
+<p><span class="hmethod">HideAllDraggers()</span> may or may not hide the <span class="hclass">BDragger</span>
+view in the way that <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView's</span></code> <a class="reference internal" href="view.html#_CPPv4N5BView4HideEv" title="BView::Hide"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Hide()</span></code></a>
+function does. The <span class="hclass">BDragger</span> may still be visible, although it
+won’t draw anything until <span class="hmethod">ShowAllDraggers()</span> is called.
+Therefore, if the target <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> is the <span class="hclass">BDragger</span>’s
+child, it will not be hidden when <span class="hmethod">HideAllDraggers()</span> erases its
+parent.</p>
+<p><span class="hmethod">AreDraggersDrawn()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> when the
+<span class="hclass">BDragger</span>s are shown and <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> when they’re hidden.</p>
 <section id="_CPPv4N8BDragger11InstantiateEP8BMessage">
 </section>
 <h3>
-Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BDragger</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BDragger</span> object, allocated by new and created with the
-version of the constructor that takes a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive. If the archive
-message doesn’t contain an archived <span class="hclass">BDragger</span>,
-<span class="hmethod">Instantiate()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDragger" title="BDragger"><span class="n">BDragger</span></a><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BDragger</span> object, allocated by new and created with
+the version of the constructor that takes a <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> archive.
+If the archive message doesn’t contain an archived <span class="hclass">BDragger</span>,
+<span class="hmethod">Instantiate()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
 </section>
 <section id="archived-fields">
 <h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+<p>The <span class="hmethod">Archive()</span> function adds the following fields to its
+<a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> argument:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">_popup</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MESSAGE_TYPE</span></code></p></td>
+<td><p>Archive of the pop-up menu. Field present only if this menu was set with
+<a class="reference internal" href="#_CPPv4N8BDragger8SetPopUpEP10BPopUpMenu" title="BDragger::SetPopUp"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetPopUp()</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_rel</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>Relationship to the target view; one of:
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">TARGET_IS_PARENT</span></code>, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">TARGET_IS_CHILD</span></code>, or
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">TARGET_IS_SIBLING</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 

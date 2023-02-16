@@ -73,93 +73,76 @@
       <div class="content" role="main">
         
   <section id="bmediadecoder">
-<h1>BMediaDecoder<a class="headerlink" href="#bmediadecoder" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv413BMediaDecoder">BMediaDecoder<a class="headerlink" href="#bmediadecoder" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N13BMediaDecoder13BMediaDecoderEv">
 </section>
 <h3>
-BMediaDecoder()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BMediaDecoder13BMediaDecoderEv" title="BMediaDecoder::BMediaDecoder"><span class="n">BMediaDecoder</span></a><span class="p">::</span></span><span class="n">BMediaDecoder</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BMediaDecoder13BMediaDecoderEPK12media_formatPKv6size_t" title="BMediaDecoder::BMediaDecoder"><span class="n">BMediaDecoder</span></a><span class="p">::</span></span><span class="n">BMediaDecoder</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inFormat</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">infoSize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BMediaDecoder13BMediaDecoderEPK16media_codec_info" title="BMediaDecoder::BMediaDecoder"><span class="n">BMediaDecoder</span></a><span class="p">::</span></span><span class="n">BMediaDecoder</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_codec_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mci</span><span class="sig-paren">)</span></pre><p>The constructor sets up the <span class="hclass">BMediaDecoder</span>. If you use the empty form of
-the constructor, you’ll have to call
-<a class="reference internal" href="#_CPPv4N13BMediaDecoder5SetToEPK12media_formatPKv6size_t" title="BMediaDecoder::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>
-to establish the format to be decoded before calling
-<a class="reference internal" href="#_CPPv4N13BMediaDecoder6DecodeEPvP5int64P12media_headerP17media_decode_info" title="BMediaDecoder::Decode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Decode()</span></code></a>.
-The second form accepts a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
-structure, <span class="hparameter">inFormat</span>, that
-indicates the type of media data that will be input into the decoder.
-<span class="hparameter">info</span>, if specified, will be filled out with text information about the
-node; you must specify a buffer <span class="hparameter">infoSize</span> bytes long.
-The third form of the constructor accepts a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">codec()</span></code>
-structure,
-<span class="hparameter">mci</span>, that determines which codec should be used.</p>
+BMediaDecoder()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BMediaDecoder13BMediaDecoderEv" title="BMediaDecoder::BMediaDecoder"><span class="n">BMediaDecoder</span></a><span class="p">::</span></span><span class="n">BMediaDecoder</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BMediaDecoder13BMediaDecoderEPK12media_formatPKv6size_t" title="BMediaDecoder::BMediaDecoder"><span class="n">BMediaDecoder</span></a><span class="p">::</span></span><span class="n">BMediaDecoder</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inFormat</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">infoSize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BMediaDecoder13BMediaDecoderEPK16media_codec_info" title="BMediaDecoder::BMediaDecoder"><span class="n">BMediaDecoder</span></a><span class="p">::</span></span><span class="n">BMediaDecoder</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_codec_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mci</span><span class="sig-paren">)</span></pre><p>The constructor sets up the <span class="hclass">BMediaDecoder</span>. If you use the empty
+form of the constructor, you’ll have to call <a class="reference internal" href="#_CPPv4N13BMediaDecoder5SetToEPK12media_formatPKv6size_t" title="BMediaDecoder::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> to establish the format to be decoded before
+calling <a class="reference internal" href="#_CPPv4N13BMediaDecoder6DecodeEPvP5int64P12media_headerP17media_decode_info" title="BMediaDecoder::Decode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Decode()</span></code></a>.</p>
+<p>The second form accepts a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_format</span></code>
+structure, <span class="hparameter">inFormat</span>, that indicates the type of media data that
+will be input into the decoder. <span class="hparameter">info</span>, if specified, will be
+filled out with text information about the node; you must specify a buffer
+<span class="hparameter">infoSize</span> bytes long.</p>
+<p>The third form of the constructor accepts a <span class="xref std std-ref">media_codec_info</span>
+structure, <span class="hparameter">mci</span>, that determines which codec should be used.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>If you use either the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
-or <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">codec()</span></code>
-form of the constructor, you must call
-<a class="reference internal" href="#_CPPv4NK13BMediaDecoder9InitCheckEv" title="BMediaDecoder::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>
-to ensure that construction was
-successful before using any other functions in this class.</p>
+<p>If you use either the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_format</span></code> or
+<span class="xref std std-ref">media_codec_info</span> form of the constructor, you must call
+<a class="reference internal" href="#_CPPv4NK13BMediaDecoder9InitCheckEv" title="BMediaDecoder::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> to ensure that
+construction was successful before using any other functions in this class.</p>
 </div>
 <section id="_CPPv4N13BMediaDecoderD0Ev">
 </section>
 <h3>
-~BMediaDecoder()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaDecoder</span><span class="p">::</span></span><span class="n">~BMediaDecoder</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Releases the decoder add-on being used by the <span class="hclass">BMediaDecoder</span>.</p>
+~BMediaDecoder()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BMediaDecoder" title="BMediaDecoder"><span class="n">BMediaDecoder</span></a><span class="p">::</span></span><span class="n">~BMediaDecoder</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Releases the decoder add-on being used by the <span class="hclass">BMediaDecoder</span>.</p>
 </section>
 <section id="hook-functions">
 <h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N13BMediaDecoder12GetNextChunkEPPKvP6size_tP12media_header">
 </section>
 <h3>
-GetNextChunk()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaDecoder</span><span class="p">::</span></span><span class="n">GetNextChunk</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">chunkData</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">chunkLen</span>, <span class="n">media_header</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mh</span><span class="sig-paren">)</span></pre><p>In derived classes, you should implement this function to fetch the media
-data from the source. Set <span class="hparameter">chunkData</span> to be a pointer to the next chunk of
-media data, and <span class="hparameter">chunkLen</span> to the size of that buffer. The
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">header()</span></code>
-structure <span class="hparameter">mh</span> provides information you can use
-while fetching the chunk.
-This hook is called by the decoder add-on in order to fetch the data from
-the source.
-Return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if the chunk is fetched safely, or
-an appropriate error code otherwise.</p>
+GetNextChunk()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BMediaDecoder" title="BMediaDecoder"><span class="n">BMediaDecoder</span></a><span class="p">::</span></span><span class="n">GetNextChunk</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">chunkData</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">chunkLen</span>, <span class="n">media_header</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mh</span><span class="sig-paren">)</span></pre><p>In derived classes, you should implement this function to fetch the media
+data from the source. Set <span class="hparameter">chunkData</span> to be a pointer to the next
+chunk of media data, and <span class="hparameter">chunkLen</span> to the size of that buffer. The
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_header</span></code> structure <span class="hparameter">mh</span> provides
+information you can use while fetching the chunk.</p>
+<p>This hook is called by the decoder add-on in order to fetch the data from
+the source.</p>
+<p>Return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> if the chunk is fetched safely, or an
+appropriate error code otherwise.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N13BMediaDecoder6DecodeEPvP5int64P12media_headerP17media_decode_info">
 </section>
 <h3>
-Decode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaDecoder</span><span class="p">::</span></span><span class="n">Decode</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outBuffer</span>, <span class="n">int64</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">frameCount</span>, <span class="n">media_header</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outMH</span>, <span class="n">media_decode_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><p>Decodes a chunk of media data into the output buffer specified by
-<span class="hparameter">outBuffer</span>. On return, <span class="hparameter">outFrameCount</span>
-is set to indicate how many frames of
-data were decoded, and <span class="hparameter">outMH</span> is the header for the decoded buffer.
-The
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">decode()</span></code>
-structure info is used on input to specify decoding parameters.
-The amount of data decoded is part of the format determined by
-<a class="reference internal" href="#_CPPv4N13BMediaDecoder5SetToEPK12media_formatPKv6size_t" title="BMediaDecoder::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> or
-<a class="reference internal" href="#_CPPv4N13BMediaDecoder14SetInputFormatEPK12media_formatPKv6size_t" title="BMediaDecoder::SetInputFormat"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetInputFormat()</span></code></a>.
-For audio, it’s the buffer size. For video, it’s one
-frame, which is height*row_bytes. The data to be decoded will be fetched
-from the source by the decoder add-on calling the derived class’
-<a class="reference internal" href="#_CPPv4N13BMediaDecoder12GetNextChunkEPPKvP6size_tP12media_header" title="BMediaDecoder::GetNextChunk"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextChunk()</span></code></a>
-function.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+Decode()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BMediaDecoder" title="BMediaDecoder"><span class="n">BMediaDecoder</span></a><span class="p">::</span></span><span class="n">Decode</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outBuffer</span>, <span class="n">int64</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">frameCount</span>, <span class="n">media_header</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outMH</span>, <span class="n">media_decode_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><p>Decodes a chunk of media data into the output buffer specified by
+<span class="hparameter">outBuffer</span>. On return, <span class="hparameter">outFrameCount</span> is set to indicate
+how many frames of data were decoded, and <span class="hparameter">outMH</span> is the header for
+the decoded buffer.</p>
+<p>The <span class="xref std std-ref">media_decode_info</span> structure info is used on input to specify
+decoding parameters.</p>
+<p>The amount of data decoded is part of the format determined by
+<a class="reference internal" href="#_CPPv4N13BMediaDecoder5SetToEPK12media_formatPKv6size_t" title="BMediaDecoder::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> or <a class="reference internal" href="#_CPPv4N13BMediaDecoder14SetInputFormatEPK12media_formatPKv6size_t" title="BMediaDecoder::SetInputFormat"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetInputFormat()</span></code></a>. For audio, it’s the buffer size. For
+video, it’s one frame, which is height*row_bytes. The data to be decoded
+will be fetched from the source by the decoder add-on calling the derived
+class’ <a class="reference internal" href="#_CPPv4N13BMediaDecoder12GetNextChunkEPPKvP6size_tP12media_header" title="BMediaDecoder::GetNextChunk"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextChunk()</span></code></a> function.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>No error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code></p></td>
 <td><p>The <span class="hclass">BMediaDecoder</span> hasn’t been initialized.</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors.</p></td>
@@ -170,25 +153,19 @@ function.</p>
 <section id="_CPPv4NK13BMediaDecoder14GetDecoderInfoEP16media_codec_info">
 </section>
 <h3>
-GetDecoderInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaDecoder</span><span class="p">::</span></span><span class="n">GetDecoderInfo</span><span class="sig-paren">(</span><span class="n">media_codec_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outInfo</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Fills out the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">codec()</span></code>
-structure <span class="hparameter">outInfo</span> with information about
-the decoder being used by the <span class="hclass">BMediaDecoder</span>.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+GetDecoderInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BMediaDecoder" title="BMediaDecoder"><span class="n">BMediaDecoder</span></a><span class="p">::</span></span><span class="n">GetDecoderInfo</span><span class="sig-paren">(</span><span class="n">media_codec_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outInfo</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Fills out the <span class="xref std std-ref">media_codec_info</span> structure <span class="hparameter">outInfo</span> with
+information about the decoder being used by the <span class="hclass">BMediaDecoder</span>.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>No error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code></p></td>
 <td><p>The <span class="hclass">BMediaDecoder</span> hasn’t been initialized.</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors.</p></td>
@@ -199,21 +176,17 @@ the decoder being used by the <span class="hclass">BMediaDecoder</span>.</p>
 <section id="_CPPv4NK13BMediaDecoder9InitCheckEv">
 </section>
 <h3>
-InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaDecoder</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a status_t value indicating whether or not construction was
-successful. You must call this function after construction before calling
-any other <span class="hclass">BMediaDecoder</span> functions.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BMediaDecoder" title="BMediaDecoder"><span class="n">BMediaDecoder</span></a><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a <span class="htype">status_t</span> value indicating whether or not construction
+was successful. You must call this function after construction before
+calling any other <span class="hclass">BMediaDecoder</span> functions.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The constructor was successful.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Other errors.</p></td>
@@ -226,80 +199,69 @@ any other <span class="hclass">BMediaDecoder</span> functions.</p>
 <section id="_CPPv4N13BMediaDecoder15SetOutputFormatEP12media_format">
 </section>
 <h3>
-SetInputFormat(), SetOutputFormat()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaDecoder</span><span class="p">::</span></span><span class="n">SetInputFormat</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inFormat</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">infoSize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaDecoder</span><span class="p">::</span></span><span class="n">SetOutputFormat</span><span class="sig-paren">(</span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outputFormat</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetInputFormat()</span> sets the input
-data format to <span class="hparameter">inFormat</span>. On return, <span class="hparameter">info</span>
-(if you don’t specify <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>) is filled out by the decoder to contain
-whatever textual information the decoder wants to provide. <span class="hparameter">infoSize</span> must
-indicate the size of the buffer pointed to by <span class="hparameter">info</span>.
-Unlike
-<a class="reference internal" href="#_CPPv4N13BMediaDecoder5SetToEPK12media_formatPKv6size_t" title="BMediaDecoder::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>,
+SetInputFormat(), SetOutputFormat()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BMediaDecoder" title="BMediaDecoder"><span class="n">BMediaDecoder</span></a><span class="p">::</span></span><span class="n">SetInputFormat</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inFormat</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">infoSize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BMediaDecoder" title="BMediaDecoder"><span class="n">BMediaDecoder</span></a><span class="p">::</span></span><span class="n">SetOutputFormat</span><span class="sig-paren">(</span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outputFormat</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetInputFormat()</span> sets the input data format to
+<span class="hparameter">inFormat</span>. On return, <span class="hparameter">info</span> (if you don’t specify
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>) is filled out by the decoder to contain whatever textual
+information the decoder wants to provide. <span class="hparameter">infoSize</span> must indicate
+the size of the buffer pointed to by <span class="hparameter">info</span>.</p>
+<p>Unlike <a class="reference internal" href="#_CPPv4N13BMediaDecoder5SetToEPK12media_formatPKv6size_t" title="BMediaDecoder::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>,
 <span class="hmethod">SetInputFormat()</span> function does not select a codec, so the
 currently-selected codec will continue to be used. You should only use
-<span class="hmethod">SetInputFormat()</span> to refine the format settings if it will not require the
-use of a different decoder.
-<span class="hmethod">SetOutputFormat()</span> sets the format the decoder should output. On return,
-the <span class="hparameter">outputFormat</span> is changed to match the actual format that will be
-output; this can be different if you specified any wildcards.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<span class="hmethod">SetInputFormat()</span> to refine the format settings if it will not
+require the use of a different decoder.</p>
+<p><span class="hmethod">SetOutputFormat()</span> sets the format the decoder should output. On
+return, the <span class="hparameter">outputFormat</span> is changed to match the actual format
+that will be output; this can be different if you specified any wildcards.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>No error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code></p></td>
 <td><p>The <span class="hclass">BMediaDecoder</span> hasn’t been initialized yet.</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors.</p></td>
-<td><p>The decoder’s <span class="hmethod">Sniff()</span>, <span class="hmethod">Format()</span>,and <span class="hmethod">Reset()</span> functions can return errors through <span class="hmethod">SetInputFormat()</span>.</p></td>
+<td><p>The decoder’s <span class="hmethod">Sniff()</span>, <span class="hmethod">Format()</span>,and
+<span class="hmethod">Reset()</span> functions can return errors through
+<span class="hmethod">SetInputFormat()</span>.</p></td>
 </tr>
 </tbody>
 </table>
 <section id="_CPPv4N13BMediaDecoder5SetToEPK12media_formatPKv6size_t">
 </section>
 <h3>
-SetTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaDecoder</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inFormat</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">infoSize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaDecoder</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_codec_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mci</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetTo()</span> sets the format of media data that will be decoded by the
-<span class="hclass">BMediaDecoder</span> object. This also causes the
-<span class="hclass">BMediaDecoder</span> to locate an
-appropriate codec to use.
-The first form accepts a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code>
-structure, <span class="hparameter">inFormat</span>, that indicates
-the type of media data that will be input into the decoder. <span class="hparameter">info</span>, if
-specified, will be filled out with text information about the node; you
-must specify a buffer <span class="hparameter">infoSize</span> bytes long.
-The second form of <span class="hmethod">SetTo()</span> accepts a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">codec()</span></code>
-structure, <span class="hparameter">mci</span>,
-that determines which codec should be used.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+SetTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BMediaDecoder" title="BMediaDecoder"><span class="n">BMediaDecoder</span></a><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inFormat</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">infoSize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BMediaDecoder" title="BMediaDecoder"><span class="n">BMediaDecoder</span></a><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">media_codec_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mci</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetTo()</span> sets the format of media data that will be decoded by
+the <span class="hclass">BMediaDecoder</span> object. This also causes the
+<span class="hclass">BMediaDecoder</span> to locate an appropriate codec to use.</p>
+<p>The first form accepts a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_format</span></code>
+structure, <span class="hparameter">inFormat</span>, that indicates the type of media data that
+will be input into the decoder. <span class="hparameter">info</span>, if specified, will be
+filled out with text information about the node; you must specify a buffer
+<span class="hparameter">infoSize</span> bytes long.</p>
+<p>The second form of <span class="hmethod">SetTo()</span> accepts a <span class="xref std std-ref">media_codec_info</span>
+structure, <span class="hparameter">mci</span>, that determines which codec should be used.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>No error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BAD_FORMAT</span></code></p></td>
-<td><p>The specified <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">format()</span></code> isn’t valid.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_BAD_FORMAT</span></code></p></td>
+<td><p>The specified <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_format</span></code> isn’t valid.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
 <td><p>Something else went wrong.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
 <td><p>Unable to instantiate the decoder.</p></td>
 </tr>
 </tbody>

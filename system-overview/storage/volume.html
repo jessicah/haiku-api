@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BVolume &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BVolumeRoster" href="volume-roster.html" />
+    <link rel="prev" title="BSymLink" href="sym-link.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BVolume</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="sym-link.html">BSymLink</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="volume-roster.html">BVolumeRoster</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BVolume</a><ul>
+<li><a class="reference internal" href="#initializing-a-bvolume">Initializing a BVolume</a></li>
+<li><a class="reference internal" href="#mount-and-unmount">Mount and Unmount</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bvolume">
+<h1 id="CPPv47BVolume">BVolume<a class="headerlink" href="#bvolume" title="Permalink to this heading">¶</a></h1>
+<p>The <span class="hclass">BVolume</span> class lets you ask questions about specific
+“volumes,” where a volume is any independent file system. Most applications
+are usually only interested in “persistent” volumes, such as hard disks,
+floppies, or CD-ROMs, but you can also create <span class="hclass">BVolume</span>s to virtual
+file systems, such as /pipe.</p>
+<p>Here’s what a <span class="hclass">BVolume</span> knows:</p>
+<ul class="simple">
+<li><p>The volume’s name, device ID, and “root directory.”</p></li>
+<li><p>Its storage capacity, and the currently available storage.</p></li>
+<li><p>If the volume is on a media that’s removable.</p></li>
+<li><p>If the volume’s storage is persistent (as opposed to the ephemeral storage
+you get with virtual file systems).</p></li>
+<li><p>If the volume is accessed through the network.</p></li>
+<li><p>If the file system uses MIME as file types, if it responds to queries, and
+if it knows about attributes.</p></li>
+</ul>
+<section id="initializing-a-bvolume">
+<h2>Initializing a BVolume<a class="headerlink" href="#initializing-a-bvolume" title="Permalink to this heading">¶</a></h2>
+<p>There are two ways to initialize a <span class="hclass">BVolume</span>:</p>
+<ol class="arabic simple">
+<li><p>You can initialize it directly using a device ID (<span class="htype">dev_t</span>) that you
+pass to the <span class="hclass">BVolume</span> constructor or <a class="reference internal" href="../../kits/storage/volume.html#_CPPv4N7BVolume5SetToE5dev_t" title="BVolume::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> function. You can get a device ID from the device field
+of an <span class="htype">entry_ref</span> or <span class="htype">node_ref</span> structure. This method is
+useful if you have a file and you want to know which volume it lives on.</p></li>
+<li><p>If you want to iterate over all the mounted volumes, you can ask a
+<a class="reference internal" href="../../kits/storage/volume-roster.html#_CPPv413BVolumeRoster" title="BVolumeRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BVolumeRoster</span></code></a> object to get you the “next” volume
+(<a class="reference internal" href="../../kits/storage/volume-roster.html#_CPPv4N13BVolumeRoster13GetNextVolumeEP7BVolume" title="BVolumeRoster::GetNextVolume"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BVolumeRoster::GetNextVolume()</span></code></a>). You can also ask the
+<a class="reference internal" href="../../kits/storage/volume-roster.html#_CPPv413BVolumeRoster" title="BVolumeRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BVolumeRoster</span></code></a> for the “boot” volume. This is the volume that
+was used to boot the computer.</p></li>
+</ol>
+</section>
+<section id="mount-and-unmount">
+<h2>Mount and Unmount<a class="headerlink" href="#mount-and-unmount" title="Permalink to this heading">¶</a></h2>
+<p>A <span class="hclass">BVolume</span> object can’t tell you directly whether the device that
+it represents is still mounted. If you want to ask, you can call a
+<span class="htype">status_t</span>-returning <span class="hclass">BVolume</span> function; if the function
+returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>, the device is no longer mounted.</p>
+<p>Furthermore, you can’t ask a <span class="hclass">BVolume</span> to unmount itself. If you
+want to be told when devices are mounted and unmounted, you have to ask the
+Node Monitor to help you. Call <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">watch_node()</span></code> thus:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">watch_node</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">B_WATCH_MOUNT</span><span class="p">,</span><span class="w"> </span><span class="n">messenger</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><span class="hparameter">messenger</span> is a <a class="reference internal" href="../../kits/application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> object that acts as the
+target of subsequent mount and unmount notifications. See “<span class="xref std std-ref">The Node Monitor</span>” section of this chapter for details.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="sym-link.html">BSymLink</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="volume-roster.html">BVolumeRoster</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

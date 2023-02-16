@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Key States &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="More On Keyboard Mapping" href="mapping.html" />
+    <link rel="prev" title="Key Codes" href="key-codes.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Key States</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="key-codes.html">Key Codes</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="mapping.html">More On Keyboard Mapping</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="key-states">
+<h1 id="CPPv410Key States">Key States<a class="headerlink" href="#key-states" title="Permalink to this heading">¶</a></h1>
+<p>You can look at the state of all the keys on the keyboard at a given
+moment in time. This information is captured and reported in two ways:</p>
+<ol class="arabic simple">
+<li><p>As the <span class="hparameter">states</span> field in every <a class="reference internal" href="../../kits/interface/message-constants.html#_CPPv410B_KEY_DOWN" title="B_KEY_DOWN"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_DOWN</span></code></a>
+message, and</p></li>
+<li><p>As the <span class="hparameter">key_states</span> bitfield reported by <span class="xref std std-ref">get_key_info()</span>.</p></li>
+</ol>
+<p>In both cases, the bitfield is an array of 16 bytes,</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">uint8</span><span class="w"> </span><span class="n">states</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>with one bit standing for each key on the keyboard. Bits are numbered from
+left to right, beginning with the first byte in the array, as illustrated
+below:</p>
+<p><img alt="Info Icon" src="topics/keyboard/images/TheKeyboard/KeyboardKeyStates-2.png" /></p>
+<p>Bit numbers start with 0 and match key codes. For example, bit 0x3c
+corresponds to the <span class="hkey">a</span> key, 0x3d to the <span class="hkey">s</span> key, 0x3e to the
+<span class="hkey">d</span> key, and so on. The first bit is 0x00, which doesn’t correspond
+to any key. The first meaningful bit is 0x01, which corresponds to the
+<span class="hkey">Escape</span> key.</p>
+<p>When a key is down, the bit corresponding to its key code is set to 1.
+Otherwise, the bit is 0. However, for the three keys that toggle keyboard
+locks—<span class="hkey">Caps Lock</span> (key 0x3b), <span class="hkey">Num Lock</span> (key 0x22), and
+<span class="hkey">Scroll Lock</span> (key 0x0f)—the bit is set to 1 if the lock is on and
+set to 0 if the lock is off, regardless of the state of the key itself.</p>
+<p>To test the bitfield against a particular key,</p>
+<ul class="simple">
+<li><p>Select the byte in the <span class="hparameter">states</span> array that contains the bit for
+that key,</p></li>
+<li><p>Form a mask for the key that can be compared to that byte, and</p></li>
+<li><p>Compare the byte to the mask.</p></li>
+</ul>
+<p>For example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="n">keyCode</span><span class="o">&gt;&gt;</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="mi">7</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">keyCode</span><span class="o">%</span><span class="mi">8</span><span class="p">))))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* the key is down */</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="key-codes.html">Key Codes</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="mapping.html">More On Keyboard Mapping</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

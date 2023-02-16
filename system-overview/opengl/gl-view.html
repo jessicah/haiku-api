@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BGLView &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BAppFileInfo" href="../storage/app-file-info.html" />
+    <link rel="prev" title="BNetEndpoint" href="../network/net-endpoint.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BGLView</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../network/net-endpoint.html">BNetEndpoint</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../storage/app-file-info.html">BAppFileInfo</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BGLView</a><ul>
+<li><a class="reference internal" href="#the-graphics-buffers">The Graphics Buffers</a><ul>
+<li><a class="reference internal" href="#bglview-bdirectwindow">BGLView &amp; BDirectWindow</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-opengl">Using OpenGL</a></li>
+<li><a class="reference internal" href="#adapting-opengl-sample-code">Adapting OpenGL Sample Code</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bglview">
+<h1 id="CPPv47BGLView">BGLView<a class="headerlink" href="#bglview" title="Permalink to this heading">¶</a></h1>
+<p>The <a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv47BGLView" title="BGLView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BGLView</span></code></a> class provides a means for rendering graphics
+using OpenGL calls in a view.</p>
+<section id="the-graphics-buffers">
+<h2>The Graphics Buffers<a class="headerlink" href="#the-graphics-buffers" title="Permalink to this heading">¶</a></h2>
+<p>A <a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv47BGLView" title="BGLView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BGLView</span></code></a> automatically manages video buffers and interfaces
+to supported hardware acceleration chipsets; all you have to do is call the
+appropriate OpenGL calls to render your graphics.</p>
+<p>The frontbuffer is the graphics buffer that is currently visible on the
+screen. A backbuffer is a graphics buffer that is located offscreen.</p>
+<p>In a single-buffered context, drawing commands are performed in the
+frontbuffer. Drawing performed in single-buffered mode immediately appears
+on the screen.</p>
+<p>In double-buffered contexts, drawing is performed in the backbuffer and is
+not visible onscreen until the <a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv4N7BGLView11SwapBuffersEv" title="BGLView::SwapBuffers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SwapBuffers()</span></code></a> function is called to swap the two buffers and
+refresh the screen image.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The BGLView class currently only supports double-buffered OpenGL contexts.</p>
+</div>
+<section id="bglview-bdirectwindow">
+<h3>BGLView &amp; BDirectWindow<a class="headerlink" href="#bglview-bdirectwindow" title="Permalink to this heading">¶</a></h3>
+<p>The <a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv47BGLView" title="BGLView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BGLView</span></code></a> class provides a function,
+<a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv4N7BGLView15DirectConnectedEP18direct_buffer_info" title="BGLView::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a>, that your
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BDirectWindow::DirectConnected()</span></code></a> function can call to handle the
+work of refreshing the OpenGL display.</p>
+</section>
+</section>
+<section id="using-opengl">
+<h2>Using OpenGL<a class="headerlink" href="#using-opengl" title="Permalink to this heading">¶</a></h2>
+<p>Long-winded discussion of how to use OpenGL is well beyond the realm of
+what this book is intended to cover; for complete information on OpenGL,
+see the OpenGL web site at http://www.opengl.org, where you’ll find
+complete documentation and sample code.</p>
+<p>However, it’s important to understand how OpenGL fits into the framework
+of a BeOS application. The example that follows will draw a pattern of
+lines around a central point, as seen in the picture below.</p>
+<p><img alt="Info Icon" src="system-overview/opengl/images/TheOpenGLKit/gltest.png" /></p>
+<p>This code has been structured to make it relatively easy to port sample
+programs from the OpenGL web site; however, most of those samples use GLUT
+features, which aren’t available yet in the BeOS implementation of OpenGL.
+In particular, most of the samples on the OpenGL web site use GLUT
+functions to handle user interface of some form. You’ll have to add code
+for this yourself.</p>
+<p>The complete source code and project file can be found on the Be web site
+at &lt;&lt;<insert URL here>&gt;&gt;.</p>
+<p>The first thing that’s needed, as always, is an application object, which
+we establish as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SampleGLApp</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">BApplication</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">                     </span><span class="n">SampleGLApp</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">         </span><span class="n">SampleGLWindow</span><span class="w">      </span><span class="n">theWindow</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The <span class="hclass">SampleGLApp</span> class has a constructor and a private pointer to
+the application’s window. The constructor looks like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SampleGLApp</span><span class="o">::</span><span class="n">SampleGLApp</span><span class="p">()</span><span class="w"></span>
+<span class="w">         </span><span class="o">:</span><span class="w"> </span><span class="n">BApplication</span><span class="p">(</span><span class="s">&quot;application/x-vnd.Be-GLSample&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">BRect</span><span class="w"> </span><span class="n">windowRect</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">uint32</span><span class="w"> </span><span class="n">type</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="c1">// Set type to the appropriate value for the</span>
+<span class="w">   </span><span class="c1">// sample program you&#39;re working with.</span>
+
+<span class="w">   </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BGL_RGB</span><span class="o">|</span><span class="n">BGL_DOUBLE</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">windowRect</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">350</span><span class="p">,</span><span class="mi">350</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">theWindow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SampleGLWindow</span><span class="p">(</span><span class="n">windowRect</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The first thing the constructor here does is set the variable
+<span class="hparameter">type</span> to describe the context we need. In this example, we want an
+RGB context with double-buffering on, so we specify
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">BGL_RGB</span></code> and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">BGL_DOUBLE</span></code>. Then we create
+the window using the new function.</p>
+<p>The <span class="hclass">SampleGLWindow</span> class is almost as simple:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SampleGLWindow</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">BWindow</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">                  </span><span class="n">SampleGLWindow</span><span class="p">(</span><span class="n">BRect</span><span class="w"> </span><span class="n">frame</span><span class="p">,</span><span class="w"> </span><span class="n">uint32</span><span class="w"> </span><span class="n">type</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w">   </span><span class="nf">QuitRequested</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">SampleGLView</span><span class="o">*</span><span class="w"> </span><span class="n">theView</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The constructor accepts a <span class="hparameter">frame</span> rectangle for the window and the
+OpenGL context type parameter that will be passed to
+<span class="hclass">SampleGLView</span>’s constructor. As always, <a class="reference internal" href="../../kits/application/application.html#_CPPv4N12BApplication13QuitRequestedEv" title="BApplication::QuitRequested"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">QuitRequested()</span></code></a> is overridden to post a
+<a class="reference internal" href="../../constants.html#_CPPv416B_QUIT_REQUESTED" title="B_QUIT_REQUESTED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_QUIT_REQUESTED</span></code></a> message to the application and return
+true. A pointer to the <span class="hclass">SampleGLView</span> object is maintained as well.</p>
+<p>The constructor is fairly trivial:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SampleGLWindow</span><span class="o">::</span><span class="n">SampleGLWindow</span><span class="p">(</span><span class="n">BRect</span><span class="w"> </span><span class="n">frame</span><span class="p">,</span><span class="w"> </span><span class="n">uint32</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="o">:</span><span class="w"> </span><span class="n">BWindow</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;OpenGL Test&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">B_TITLED_WINDOW</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">AddChild</span><span class="p">(</span><span class="n">theView</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">SampleGLView</span><span class="p">(</span><span class="n">Bounds</span><span class="p">(),</span><span class="w"> </span><span class="n">type</span><span class="p">));</span><span class="w"></span>
+<span class="w">   </span><span class="n">Show</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">theView</span><span class="o">-&gt;</span><span class="n">Render</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This code establishes the window, then creates the <span class="hclass">SampleGLView</span>
+and adds it as a child of the window. Once that’s done, the window is made
+visible by calling <span class="hmethod">Show()</span>. Finally, the <span class="hclass">SampleGLView</span>’s
+contents are drawn by calling the <span class="hclass">SampleGLView</span>’s
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Render()</span></code> function.</p>
+<p>The meat of this program is in the <span class="hclass">SampleGLView</span> class, which
+follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SampleGLView</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">BGLView</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">                   </span><span class="n">SampleGLView</span><span class="p">(</span><span class="n">BRect</span><span class="w"> </span><span class="n">frame</span><span class="p">,</span><span class="w"> </span><span class="n">uint32</span><span class="w"> </span><span class="n">type</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">AttachedToWindow</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">FrameResized</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newWidth</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">newHeight</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ErrorCallback</span><span class="p">(</span><span class="n">GLenum</span><span class="w"> </span><span class="n">which</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="kt">void</span><span class="w">         </span><span class="nf">Render</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="kt">void</span><span class="w">         </span><span class="n">gInit</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="kt">void</span><span class="w">         </span><span class="nf">gDraw</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="kt">void</span><span class="w">         </span><span class="nf">gReshape</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="kt">float</span><span class="w">        </span><span class="n">width</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="kt">float</span><span class="w">        </span><span class="n">height</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The <span class="hclass">SampleGLView</span> class implements the constructor and
+reimplements three of the functions of the <a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv47BGLView" title="BGLView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BGLView</span></code></a> class:
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AttachedToWindow()</span></code>,
+<a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv4N7BGLView12FrameResizedEff" title="BGLView::FrameResized"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FrameResized()</span></code></a>, and
+<a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv4N7BGLView13ErrorCallbackE6GLenum" title="BGLView::ErrorCallback"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ErrorCallback()</span></code></a>. An additional public
+method, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Render()</span></code>, will contain the
+actual code for drawing the contents of the view.</p>
+<p>In addition, there are three private methods that will contain the actual
+OpenGL calls for initializing, drawing, and resizing the
+<a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv47BGLView" title="BGLView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BGLView</span></code></a>’s contents and a pair of values to represent the width
+and height of the <a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv47BGLView" title="BGLView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BGLView</span></code></a>.</p>
+<p>The constructor is very simple:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SampleGLView</span><span class="o">::</span><span class="n">SampleGLView</span><span class="p">(</span><span class="n">BRect</span><span class="w"> </span><span class="n">frame</span><span class="p">,</span><span class="w"> </span><span class="n">uint32</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="o">:</span><span class="w"> </span><span class="n">BGLView</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SampleGLView&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">B_FOLLOW_ALL_SIDES</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frame</span><span class="p">.</span><span class="n">right</span><span class="o">-</span><span class="n">frame</span><span class="p">.</span><span class="n">left</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frame</span><span class="p">.</span><span class="n">bottom</span><span class="o">-</span><span class="n">frame</span><span class="p">.</span><span class="n">top</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>For the most part, the constructor defers to the <a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv47BGLView" title="BGLView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BGLView</span></code></a>
+constructor, setting the <span class="hparameter">resizingMode</span> to
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FOLLOW_ALL_SIDES</span></code> and the OpenGL context type to the
+value specified.</p>
+<p>The only addition is that the width and height of the view are cached,
+based upon the frame rectangle specified. This is done because we’ll need
+that information when the view is attached to the window, and the
+<a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv47BGLView" title="BGLView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BGLView</span></code></a> class doesn’t include <span class="hmethod">Width()</span> and
+<span class="hmethod">Height()</span> functions.</p>
+<p>The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AttachedToWindow()</span></code> function,
+which is called when the <span class="hclass">SampleGLView</span> is attached to its parent
+window, looks like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">SampleGLView::AttachedToWindow</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">LockGL</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">BGLView</span><span class="o">::</span><span class="n">AttachedToWindow</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">gInit</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">gReshape</span><span class="p">(</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">UnlockGL</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This performs the initialization of the OpenGL context. First,
+<a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv4N7BGLView6LockGLEv" title="BGLView::LockGL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LockGL()</span></code></a> is called to lock the context and
+let the OpenGL Kit know which view should be targeted by future OpenGL
+calls. Then the inherited version of <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AttachedToWindow()</span></code></a> is called to let <a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv47BGLView" title="BGLView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BGLView</span></code></a> set up the
+view normally.</p>
+<p>Once that’s done, the <span class="hmethod">gInit()</span> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">gReshape()</span></code> functions are called. <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">gInit()</span></code>, as we’ll see shortly, is responsible for
+initializing the context. <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">gReshape()</span></code>
+is called to configure the OpenGL coordinate system for the
+<a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv47BGLView" title="BGLView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BGLView</span></code></a> given the current width and height of the view.</p>
+<p>Finally, <a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv4N7BGLView8UnlockGLEv" title="BGLView::UnlockGL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">UnlockGL()</span></code></a> is called to release
+the OpenGL context for the <span class="hclass">SampleGLView</span> and to indicate that
+we’re done using the context for the time being.</p>
+<p>The <a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv4N7BGLView12FrameResizedEff" title="BGLView::FrameResized"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FrameResized()</span></code></a> function is called
+automatically whenever the <span class="hclass">SampleGLView</span> is resized:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">SampleGLView::FrameResized</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">newWidth</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">newHeight</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">LockGL</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">BGLView</span><span class="o">::</span><span class="n">FrameResized</span><span class="p">(</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newWidth</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newHeight</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">gReshape</span><span class="p">(</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">UnlockGL</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">Render</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>As always, this function begins by locking the OpenGL context. It then
+calls the inherited version of <span class="hmethod">FrameResized()</span> to let
+<a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv47BGLView" title="BGLView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BGLView</span></code></a> perform whatever tasks it may need to do.</p>
+<p>The new width and height of the view are saved in the <span class="hparameter">width</span> and
+<span class="hparameter">height</span> variables, then the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">gReshape()</span></code> function is called to adjust the OpenGL context
+given the new size of the view.</p>
+<p>Finally, the context is unlocked, and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Render()</span></code> is called to redraw the view’s contents at the new
+size.</p>
+<p>Although the default <a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv4N7BGLView13ErrorCallbackE6GLenum" title="BGLView::ErrorCallback"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ErrorCallback()</span></code></a>
+function provided by <a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv47BGLView" title="BGLView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BGLView</span></code></a> would be acceptable, we include
+one of our own anyway:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">SampleGLView::ErrorCallback</span><span class="p">(</span><span class="n">GLenum</span><span class="w"> </span><span class="n">whichError</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Unexpected error occured (%d):</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">whichError</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">gluErrorString</span><span class="p">(</span><span class="n">whichError</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Note the use of the gluErrorString() OpenGL function to obtain an
+appropriate error message for the error code. You can use this function to
+avoid displaying error messages for errors that are acceptable or expected.</p>
+<p>The gInit() function sets up the OpenGL context and initializes variables
+that will be used later:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">SampleGLView::gInit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">glClearColor</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">glLineStipple</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mh">0xF0E0</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">glBlendFunc</span><span class="p">(</span><span class="n">GL_SRC_ALPHA</span><span class="p">,</span><span class="w"> </span><span class="n">GL_ONE</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">use_stipple_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GL_FALSE</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">use_smooth_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GL_TRUE</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">linesize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">pointsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Briefly, this sets the clear color (the background color) of the view to
+black, configures the pattern for stippled lines and the blending function
+to be used when blending is enabled. It also selects not to use stippled
+lines (you can change this by setting <span class="hparameter">use_stipple_mode</span> to
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">GL_TRUE</span></code>) and to use anti-aliasing when drawing the lines
+(you can change this by setting <span class="hparameter">use_smooth_mode</span> to
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">GL_FALSE</span></code>). It also chooses to use 2 pixel wide lines, and
+4 pixel wide points.</p>
+<p>This function doesn’t call <a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv4N7BGLView6LockGLEv" title="BGLView::LockGL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LockGL()</span></code></a> and
+<a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv4N7BGLView8UnlockGLEv" title="BGLView::UnlockGL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">UnlockGL()</span></code></a>, so they must be called by the
+calling function (and if you look at the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AttachedToWindow()</span></code> code above, you’ll see that this is the case).</p>
+<p>There are some global variables used by this program (some of them
+accessed in the above code), so lets’ take a quick look at those:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">GLenum</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">use_stipple_mode</span><span class="p">;</span><span class="w">      </span><span class="c1">// GL_TRUE to use dashed lines</span>
+<span class="n">GLenum</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">use_smooth_mode</span><span class="p">;</span><span class="w">     </span><span class="c1">// GL_TRUE to use anti-aliased lines</span>
+<span class="n">GLint</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">linesize</span><span class="p">;</span><span class="w">             </span><span class="c1">// Line width</span>
+<span class="n">GLint</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">pointsize</span><span class="p">;</span><span class="w">            </span><span class="c1">// Point diameter</span>
+
+<span class="kt">float</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">pntA</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="mf">-160.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="kt">float</span><span class="w"> </span><span class="n">pntB</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="mf">-130.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The varaibles <span class="hparameter">use_stipple_mode</span>, <span class="hparameter">use_smooth_mode</span>,
+<span class="hparameter">linesize</span>, and <span class="hparameter">pointsize</span> are discussed in the
+<span class="hmethod">gInit()</span> function above. The two <span class="htype">float</span> arrays define
+points in three-dimensional space. These points will be used as the
+endpoints of the lines drawn by the <span class="hmethod">gDraw()</span> function.</p>
+<p>The <span class="hmethod">gDraw()</span> function does the actual drawing into the OpenGL
+context:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">SampleGLView::gDraw</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">GLint</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">glClear</span><span class="p">(</span><span class="n">GL_COLOR_BUFFER_BIT</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">glLineWidth</span><span class="p">(</span><span class="n">linesize</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">use_stipple_mode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">glEnable</span><span class="p">(</span><span class="n">GL_LINE_STIPPLE</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">glDisable</span><span class="p">(</span><span class="n">GL_LINE_STIPPLE</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">use_smooth_mode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">glEnable</span><span class="p">(</span><span class="n">GL_LINE_SMOOTH</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">glEnable</span><span class="p">(</span><span class="n">GL_BLEND</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">glDisable</span><span class="p">(</span><span class="n">GL_LINE_SMOOTH</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">glDisable</span><span class="p">(</span><span class="n">GL_BLEND</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">glPushMatrix</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">360</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">glRotatef</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w">     </span><span class="c1">// Rotate right 5 degrees</span>
+<span class="w">      </span><span class="n">glColor3f</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span><span class="w">  </span><span class="c1">// Set color for line</span>
+<span class="w">      </span><span class="n">glBegin</span><span class="p">(</span><span class="n">GL_LINE_STRIP</span><span class="p">);</span><span class="w">    </span><span class="c1">// And create the line</span>
+<span class="w">      </span><span class="n">glVertex3fv</span><span class="p">(</span><span class="n">pntA</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">glVertex3fv</span><span class="p">(</span><span class="n">pntB</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">glEnd</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">      </span><span class="n">glPointSize</span><span class="p">(</span><span class="n">pointsize</span><span class="p">);</span><span class="w">    </span><span class="c1">// Set size for point</span>
+<span class="w">      </span><span class="n">glColor3f</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span><span class="w">  </span><span class="c1">// Set color for point</span>
+<span class="w">      </span><span class="n">glBegin</span><span class="p">(</span><span class="n">GL_POINTS</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">glVertex3fv</span><span class="p">(</span><span class="n">pntA</span><span class="p">);</span><span class="w">         </span><span class="c1">// Draw point at one end</span>
+<span class="w">      </span><span class="n">glVertex3fv</span><span class="p">(</span><span class="n">pntB</span><span class="p">);</span><span class="w">         </span><span class="c1">// Draw point at other end</span>
+<span class="w">      </span><span class="n">glEnd</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">glPopMatrix</span><span class="p">();</span><span class="w">                </span><span class="c1">// Done with matrix</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Without getting too deeply-involved in OpenGL specifics, this code begins
+by clearing the context’s buffer and setting the line width. It then
+enables the features selected by the <span class="hparameter">use_stipple_mode</span> and
+<span class="hparameter">use_line_mode</span> variables.</p>
+<p>Once that’s done, it establishes a matrix to be used for rotating the
+lines and draws the lines with points at each end, drawing one every five
+degrees in a 360-degree circle around the center of the window. After
+drawing all the lines, the matrix is destroyed and the function returns.</p>
+<p>The <span class="hmethod">gReshape()</span> function handles adjusting the OpenGL context’s
+coordinate system and viewport when the <span class="hclass">SampleGLView</span> is first
+created, and whenever the view is resized:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">SampleGLView::gReshape</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">glViewport</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_PROJECTION</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">glLoadIdentity</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">gluOrtho2D</span><span class="p">(</span><span class="mi">-175</span><span class="p">,</span><span class="w"> </span><span class="mi">175</span><span class="p">,</span><span class="w"> </span><span class="mi">-175</span><span class="p">,</span><span class="w"> </span><span class="mi">175</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">glMatrixMode</span><span class="p">(</span><span class="n">GL_MODELVIEW</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This code simply sets the viewport’s coordinate system to reflect the new
+width and height of the view, and establishes a projection matrix such that
+no matter what the size and shape of the window, the center of the window
+is considered to be (0,0) and the window is 300 units wide and 300 units
+tall. This lets the rendering code draw without having to worry about
+scaling; OpenGL handles it for us.</p>
+<p>The details of how this works are, again, beyond the scope of this
+chapter.</p>
+<p>Finally, the <span class="hmethod">Render()</span> function is the high-level function used
+to actually update the contents of the <span class="hclass">SampleGLView</span> whenever we
+wish to redraw it:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">SampleGLView::Render</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">LockGL</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">gDraw</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">SwapBuffers</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">UnlockGL</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv4N7BGLView6LockGLEv" title="BGLView::LockGL"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LockGL()</span></code></a> is called to lock the context
+before calling <span class="hmethod">gDraw()</span> to do the actual OpenGL calls to draw the
+view. Then the <a class="reference internal" href="../../kits/opengl/gl-view.html#_CPPv4N7BGLView11SwapBuffersEv" title="BGLView::SwapBuffers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SwapBuffers()</span></code></a> function is
+called to swap the backbuffer that was just drawn to the screen, and the
+context is unlocked.</p>
+</section>
+<section id="adapting-opengl-sample-code">
+<h2>Adapting OpenGL Sample Code<a class="headerlink" href="#adapting-opengl-sample-code" title="Permalink to this heading">¶</a></h2>
+<p>The program described above can easily be adapted to be used with other
+sample code from the OpenGL web site. First, replace the code in the
+<span class="hmethod">gInit()</span>, <span class="hmethod">gDraw()</span>, and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">gReshape()</span></code> functions with the code from the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">gInit()</span></code>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">gDraw()</span></code>, and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">gReshape()</span></code>
+functions in the sample code (some of the sample programs give these
+functions slightly different names).</p>
+<p>Keep in mind that the current implementation of OpenGL under BeOS doesn’t
+support single-buffered graphics, so you’ll need to make whatever
+adjustments are necessary to use double-buffering.</p>
+<p>Once these functions have been implemented, copy any global variables from
+the sample program into your project. Finally, in the <span class="hclass">SampleGLApp</span>
+constructor, fix the OpenGL context type and window size information to
+match that used by the sample program.</p>
+<p>You may also wish to implement code to handle user interface to let you
+configure the sample program; that’s beyond the scope of this chapter—see
+the Interface Kit chapter of the Be Developer’s Guide for further
+information on handling user input.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../network/net-endpoint.html">BNetEndpoint</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../storage/app-file-info.html">BAppFileInfo</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

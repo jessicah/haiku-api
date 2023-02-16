@@ -70,16 +70,16 @@
       <div class="content" role="main">
         
   <section id="bbitmapstream">
-<h1>BBitmapStream<a class="headerlink" href="#bbitmapstream" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv413BBitmapStream">BBitmapStream<a class="headerlink" href="#bbitmapstream" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N13BBitmapStream13BBitmapStreamEP7BBitmap">
 </section>
 <h3>
-BBitmapStream()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BBitmapStream13BBitmapStreamEP7BBitmap" title="BBitmapStream::BBitmapStream"><span class="n">BBitmapStream</span></a><span class="p">::</span></span><span class="n">BBitmapStream</span><span class="sig-paren">(</span><span class="n">BBitmap</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">map</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Creates a new instance of <span class="hclass">BBitmapStream</span>. If <span class="hparameter">map</span> is <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>, the stream
-is initialized to be empty. Otherwise, the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> is converted to a translator bitmap
-and placed in the stream. The application shares the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> with the
-<span class="hclass">BBitmapStream</span> object. It therefore shouldn’t delete the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> without first
+BBitmapStream()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BBitmapStream13BBitmapStreamEP7BBitmap" title="BBitmapStream::BBitmapStream"><span class="n">BBitmapStream</span></a><span class="p">::</span></span><span class="n">BBitmapStream</span><span class="sig-paren">(</span><a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">map</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Creates a new instance of <span class="hclass">BBitmapStream</span>. If <span class="hparameter">map</span> is <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>, the stream
+is initialized to be empty. Otherwise, the <a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> is converted to a translator bitmap
+and placed in the stream. The application shares the <a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> with the
+<span class="hclass">BBitmapStream</span> object. It therefore shouldn’t delete the <a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> without first
 calling <a class="reference internal" href="#_CPPv4N13BBitmapStream12DetachBitmapEPP7BBitmap" title="BBitmapStream::DetachBitmap"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DetachBitmap()</span></code></a>.</p>
 <section id="_CPPv4ND013BBitmapStreamEv">
 </section>
@@ -92,7 +92,7 @@ BBitmapStream()</h3><pre style="background: #f3f3f3; line-height: 2em"><span cla
 <section id="_CPPv4N13BBitmapStream12DetachBitmapEPP7BBitmap">
 </section>
 <h3>
-DetachBitmap()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBitmapStream</span><span class="p">::</span></span><span class="n">DetachBitmap</span><span class="sig-paren">(</span><span class="n">BBitmap</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">outMap</span><span class="sig-paren">)</span></pre><p>Returns, in <span class="hparameter">outMap</span>, a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> representing the image contained in the
+DetachBitmap()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBitmapStream</span><span class="p">::</span></span><span class="n">DetachBitmap</span><span class="sig-paren">(</span><a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">outMap</span><span class="sig-paren">)</span></pre><p>Returns, in <span class="hparameter">outMap</span>, a <a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> representing the image contained in the
 <span class="hclass">BBitmapStream</span>. Once <span class="hmethod">DetachBitmap()</span> has been called, no further operations
 should be performed on the <span class="hclass">BBitmapStream</span>.</p>
 <table class="docutils align-default">
@@ -113,7 +113,7 @@ should be performed on the <span class="hclass">BBitmapStream</span>.</p>
 <td><p><span class="hparameter">outMap</span> is <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
-<td><p>There is no <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> available.</p></td>
+<td><p>There is no <a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> available.</p></td>
 </tr>
 </tbody>
 </table>

@@ -1,0 +1,669 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BDirectWindow &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BFileGameSound" href="file-game-sound.html" />
+    <link rel="prev" title="BSerialPort" href="../device/serial-port.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BDirectWindow</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../device/serial-port.html">BSerialPort</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="file-game-sound.html">BFileGameSound</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BDirectWindow</a><ul>
+<li><a class="reference internal" href="#getting-connected-and-staying-that-way">Getting Connected (and Staying That Way)</a></li>
+<li><a class="reference internal" href="#window-mode-vs-full-screen-mode">Window Mode vs. Full Screen Mode</a></li>
+<li><a class="reference internal" href="#using-a-direct-window">Using a Direct Window</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bdirectwindow">
+<h1 id="CPPv413BDirectWindow">BDirectWindow<a class="headerlink" href="#bdirectwindow" title="Permalink to this heading">¶</a></h1>
+<p>The <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a> class gives your code direct access to the
+graphics frame buffer on the video card. Unlike <a class="reference internal" href="../../kits/game/window-screen.html#_CPPv413BWindowScreen" title="BWindowScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code></a>,
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a> can be used in both full-screen and window
+modes—you can create a <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a> that looks just like a
+normal window, but lets your code draw into it by directly accessing the
+frame buffer.</p>
+<p>In addition,  <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a> lets you switch between
+full-screen exclusive mode and windowed modes without breaking down and
+rebuilding the object. A simple call to the <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow13SetFullScreenEb" title="BDirectWindow::SetFullScreen"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFullScreen()</span></code></a> function does the job.</p>
+<div class="note admonition">
+<p class="admonition-title" id="CPPv44Note">Note</p>
+<p>if you want your direct window to be full-screen but don’t want exclusive
+mode, just resize the window to fill the entire screen; since full-screen
+exclusive mode (as set by calling <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow13SetFullScreenEb" title="BDirectWindow::SetFullScreen"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFullScreen()</span></code></a>) won’t let other windows draw in front of
+your direct window, you can’t have menus in a full-screen exclusive mode
+direct window.</p>
+</div>
+<p>Another difference between  <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a> and
+<a class="reference internal" href="../../kits/game/window-screen.html#_CPPv413BWindowScreen" title="BWindowScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code></a> is that  <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a> lets you
+access all the <a class="reference internal" href="../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> functions; you can literally treat your
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a> just like another window. There are two
+caveats:</p>
+<div class="warning admonition">
+<p class="admonition-title" id="CPPv47Warning">Warning</p>
+<p>Don’t draw into the direct window from its own thread; you should spawn
+another thread for drawing into the direct window.</p>
+<p>And use the <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a>
+function to synchronize the interaction between  <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a>
+and your drawing thread. Also, if you choose to use <a class="reference internal" href="../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> or
+<a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> API inside a  <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a>, be sure you
+don’t block the <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> function.</p>
+</div>
+<p>Not all video cards support window mode; use the
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow18SupportsWindowModeE9screen_id" title="BDirectWindow::SupportsWindowMode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SupportsWindowMode()</span></code></a>
+function if you need to know whether or not window mode is available.</p>
+<section id="getting-connected-and-staying-that-way">
+<h2>Getting Connected (and Staying That Way)<a class="headerlink" href="#getting-connected-and-staying-that-way" title="Permalink to this heading">¶</a></h2>
+<p>The key to the  <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a> class is the
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> function,
+which your code must implement. This function is called whenever a change
+that your drawing code may need to be aware of occurs.</p>
+<p>When your <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a>
+function is called, it’s passed a pointer to a <span class="htype">direct_buffer_info</span>
+structure, as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">direct_buffer_state</span><span class="w">   </span><span class="n">buffer_state</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">direct_driver_state</span><span class="w">   </span><span class="n">driver_state</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">void</span><span class="o">*</span><span class="w">                 </span><span class="n">bits</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">void</span><span class="o">*</span><span class="w">                 </span><span class="n">pci_bits</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">                 </span><span class="n">bytes_per_row</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">uint32</span><span class="w">                </span><span class="n">bits_per_pixel</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">color_space</span><span class="w">           </span><span class="n">pixel_format</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">buffer_layout</span><span class="w">         </span><span class="n">layout</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">buffer_orientation</span><span class="w">    </span><span class="n">orientation</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">uint32</span><span class="w">                </span><span class="n">_reserved</span><span class="p">[</span><span class="mi">9</span><span class="p">];</span><span class="w"></span>
+<span class="w">   </span><span class="n">uint32</span><span class="w">                </span><span class="n">_dd_type_</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">uint32</span><span class="w">                </span><span class="n">_dd_token_</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">uint32</span><span class="w">                </span><span class="n">clip_list_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">clipping_rect</span><span class="w">         </span><span class="n">window_bounds</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">clipping_rect</span><span class="w">         </span><span class="n">clip_bounds</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">clipping_rect</span><span class="w">         </span><span class="n">clip_list</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">direct_buffer_info</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>buffer_state</p></td>
+<td><p>Indicates what change is occurring in the direct buffer access privileges.
+It can have one of the following values:</p>
+<dl class="simple myst">
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_START</span></code></dt><dd><p>You will always receive a <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_START</span></code> notification
+when your <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a> is first connected to the screen</p>
+</dd>
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_MODIFY</span></code></dt><dd><p>Any number of <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_MODIFY</span></code> notifications follow (it’s
+possible you won’t receive any at all). When you return from
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> after
+handling <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_START</span></code> or
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_MODIFY</span></code>, your application guarantees to the
+application server that your code will abide by the frame buffer
+configuration specified by the <span class="htype">direct_buffer_info</span> structure until
+another <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_MODIFY</span></code> notification is received (or
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_STOP</span></code> occurs).</p>
+</dd>
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_STOP</span></code></dt><dd><p>You’ll receive a <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_STOP</span></code> notification when the
+window is closed, hidden, or if moved, or if a resolution or color depth
+change occurs. Once your <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> function returns from handling this
+notification, you guarantee to the application server that your code won’t
+touch the frame buffer anymore.</p>
+</dd>
+</dl>
+<p>For any of these notifications, your <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> function shouldn’t return until you can
+guarantee to the application server that your code will abide by the frame
+buffer configuration it received.</p>
+<p>You can get further information about what changed by testing against
+other flags in the <span class="hparameter">buffer_state</span> field:</p>
+<dl class="simple myst">
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BUFFER_MOVED</span></code></dt><dd><p>The content of your window has been moved, either by a call to
+<a class="reference internal" href="../../kits/interface/window.html#_CPPv4N7BWindow6MoveToE6BPoint" title="BWindow::MoveTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MoveTo()</span></code></a> or <a class="reference internal" href="../../kits/interface/window.html#_CPPv4N7BWindow6MoveByEff" title="BWindow::MoveBy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MoveBy()</span></code></a> or by the user manually dragging the window. The
+contents of the window are always moved relative to the top-left corner of
+the window.</p>
+</dd>
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BUFFER_RESET</span></code></dt><dd><p>The entire direct access buffer has been reset. This can happen if the
+user changes the depth or resolution of the screen, or if the window had
+previously been hidden and has been made visible again.</p>
+</dd>
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BUFFER_RESIZED</span></code></dt><dd><p>The content area of your window has been resized.</p>
+</dd>
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CLIPPING_MODIFIED</span></code></dt><dd><p>The visible region of the content area of your window changed. This
+doesn’t imply anything about the position of the window or the size of the
+content area of the window—it simply means that the part of the window
+that’s visible has changed shape.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p>driver_state</p></td>
+<td><p>Indicates changes in the state of the graphics card on which your direct
+window is displayed. There are two possible values:</p>
+<dl class="simple myst">
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MODE_CHANGED</span></code></dt><dd><p>The resolution or depth of the graphics card has changed.</p>
+</dd>
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DRIVER_CHANGED</span></code></dt><dd><p>The window was moved onto another monitor.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p>bits</p></td>
+<td><p>Is a pointer to the frame buffer in your own team’s memory space.</p></td>
+</tr>
+<tr class="row-odd"><td><p>pci_bits</p></td>
+<td><p>Is a pointer to the frame buffer in the PCI memory space; this value is
+typically needed to control DMA.</p></td>
+</tr>
+<tr class="row-even"><td><p>bytes_per_row</p></td>
+<td><p>Is the number of bytes used to represent a single row of pixels in the
+frame buffer.</p></td>
+</tr>
+<tr class="row-odd"><td><p>bits_per_pixel</p></td>
+<td><p>Is the number of bits actually used to store a single pixel, including
+reserved, unused, or alpha channel bits. This value is usually a multiple
+of eight.</p></td>
+</tr>
+<tr class="row-even"><td><p>pixel_format</p></td>
+<td><p>Is the format used to encode a pixel, as defined in the
+<span class="htype">color_space</span> type in GraphicsDefs.h.</p></td>
+</tr>
+<tr class="row-odd"><td><p>layout,orientation,<em>reserved,<em>dd_type</em>, and_dd_token</em></p></td>
+<td><p>Are all reserved for future use and must not be used.</p></td>
+</tr>
+<tr class="row-even"><td><p>window_bounds</p></td>
+<td><p>Is a rectangle that defines the full content area of the window, in screen
+coordinates. You can convert these coordinates into frame buffer addresses
+using the values in the <span class="hparameter">bits</span> , <span class="hparameter">bytes_per_row</span> , and
+<span class="hparameter">bits_per_pixel</span> fields.</p></td>
+</tr>
+<tr class="row-odd"><td><p>clip_bounds</p></td>
+<td><p>Is the bounding rectangle of the visible part of the content area of the
+window, in screen coordinates. This rectangle is the smallest rectangle
+that contains all the rectangles in the <span class="hparameter">clip_list</span>, described
+below.</p></td>
+</tr>
+<tr class="row-even"><td><p>clip_list_count</p></td>
+<td><p>Is the number of rectangles in the <span class="hparameter">clip_list</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>clip_list</p></td>
+<td><p>Is a list of rectangles that together define the visible region of the
+content area of the window, in screen coordinates</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <span class="htype">clipping_rect</span> structure is:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">      </span><span class="n">left</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">      </span><span class="n">top</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">      </span><span class="n">right</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">      </span><span class="n">bottom</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">clipping_rect</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Note that, as always, these edges are inclusive; for example, if left is 5
+and top is 3, the pixel at (5,3) is included in the rectangle’s contents.</p>
+<p>The data in the <span class="htype">direct_buffer_info</span> structure is only valid until
+<span class="hmethod">DirectConnected()</span> returns, so if you need to reference any of
+the information later, you should make a copy of the fields you need.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>If your <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a>
+implementation doesn’t handle a request within three seconds, the
+Application Server will intentionally crash your application under the
+assumption that it’s deadlocked. Be sure to handle requests as quickly as
+possible.</p>
+</div>
+</section>
+<section id="window-mode-vs-full-screen-mode">
+<h2>Window Mode vs. Full Screen Mode<a class="headerlink" href="#window-mode-vs-full-screen-mode" title="Permalink to this heading">¶</a></h2>
+<p>There are some differences in how <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a> behaves
+depending on whether it’s in window mode or full-screen exclusive mode.</p>
+<p>In window mode, the <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a> behaves almost exactly like
+a <a class="reference internal" href="../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>—so much so that you can use a
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a> in any situation you’d normally use a
+<a class="reference internal" href="../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>. The <span class="hparameter">window_bounds</span> rectangles are the same
+size and shape as the window itself, as you’d expect. If exclusive window
+mode is available ( <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow18SupportsWindowModeE9screen_id" title="BDirectWindow::SupportsWindowMode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SupportsWindowMode()</span></code></a> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>),
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> will be
+called as described above, thereby providing the means to directly access
+the frame buffer. If the graphics card doesn’t support exclusive access to
+the frame buffer while in window mode, <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> will never be called, and you can only
+use <a class="reference internal" href="../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> and <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> APIs to work in the window.</p>
+<p>In full-screen exclusive mode, the <span class="hparameter">window_bounds</span> are actually
+the size and shape of the entire screen, even if the screen isn’t the same
+size as the direct window you created. You have to handle the difference
+yourself.</p>
+<p>Full-screen exclusive mode also guarantees that your window will always be
+the focus, always be in front, and will always stay full-screen (the
+application server will resize the window for you if the screen resolution
+changes). Since no other windows can come in front of a full-screen
+exclusive direct window, any Interface Kit objects that use a window to
+display their contents won’t work; this includes any type of menu.</p>
+<p>If you want your <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a> to be full-screen, but still
+compatible with menus or other windows, create it as a non-exclusive
+window, then use the following code:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BScreen</span><span class="w"> </span><span class="nf">screen</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="n">MoveTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="n">ResizeTo</span><span class="p">(</span><span class="n">screen</span><span class="p">.</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">height</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This will make the non-exclusive direct window fill the entire screen.
+Keep in mind that in this case, other windows may appear in front of yours,
+and if the screen resolution changes, you will have to resize the window
+yourself if you want to continue to fill the entire screen.</p>
+</section>
+<section id="using-a-direct-window">
+<h2>Using a Direct Window<a class="headerlink" href="#using-a-direct-window" title="Permalink to this heading">¶</a></h2>
+<p>Let’s put together a simple class, derived from
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a>, that demonstrates the basics of drawing into a
+direct window.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">DirectSample</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">BDirectWindow</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">                   </span><span class="n">DirectSample</span><span class="p">(</span><span class="n">BRect</span><span class="w"> </span><span class="n">frame</span><span class="p">);</span><span class="w"></span>
+<span class="w">                   </span><span class="o">~</span><span class="n">DirectSample</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w">   </span><span class="nf">QuitRequested</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w">   </span><span class="nf">DirectConnected</span><span class="p">(</span><span class="n">direct_buffer_info</span><span class="w"> </span><span class="o">*</span><span class="n">info</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">uint8</span><span class="o">*</span><span class="w">         </span><span class="n">fBits</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">int32</span><span class="w">          </span><span class="n">fRowBytes</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">color_space</span><span class="w">    </span><span class="n">fFormat</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">clipping_rect</span><span class="w">  </span><span class="n">fBounds</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">uint32</span><span class="w">         </span><span class="n">fNumClipRects</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">clipping_rect</span><span class="o">*</span><span class="w"> </span><span class="n">fClipList</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">bool</span><span class="w">           </span><span class="n">fDirty</span><span class="p">;</span><span class="w">      </span><span class="c1">// needs refresh?</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">           </span><span class="n">fConnected</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">           </span><span class="n">fConnectionDisabled</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">BLocker</span><span class="o">*</span><span class="w">       </span><span class="n">locker</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">thread_id</span><span class="w">      </span><span class="n">fDrawThreadID</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The <span class="hclass">DirectSample</span> class implements a constructor as well as the
+<a class="reference internal" href="../../kits/application/application.html#_CPPv4N12BApplication13QuitRequestedEv" title="BApplication::QuitRequested"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">QuitRequested()</span></code></a> and
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> functions.</p>
+<p>Some variables are added to the class for cacheing information about the
+frame buffer.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>fBits</p></td>
+<td><p>Will contain a pointer to the frame buffer’s bitmap.</p></td>
+</tr>
+<tr class="row-odd"><td><p>fRowBytes</p></td>
+<td><p>Will contain the number of bytes per row of screen data.</p></td>
+</tr>
+<tr class="row-even"><td><p>fFormat</p></td>
+<td><p>Will contain the pixel format (such as <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CMAP8</span></code> for 8-bit
+indexed color graphics mode). Our sample program will only work in this
+mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p>fBounds</p></td>
+<td><p>will contain the bounds rectangle for the window.</p></td>
+</tr>
+<tr class="row-even"><td><p>fNumClipRects</p></td>
+<td><p>Will contain the number of rectangles in the clip rectangle list.</p></td>
+</tr>
+<tr class="row-odd"><td><p>fClipList</p></td>
+<td><p>Is the actual list of clip rectangles, and will be allocated on-the-fly as
+needed.</p></td>
+</tr>
+<tr class="row-even"><td><p>fDirty</p></td>
+<td><p>Will be <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the window needs to be redrawn.</p></td>
+</tr>
+<tr class="row-odd"><td><p>fConnected</p></td>
+<td><p>Is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the window is connected to the frame buffer.</p></td>
+</tr>
+<tr class="row-even"><td><p>fConnectionDisabled</p></td>
+<td><p>Is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the window is in the process of being closed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>locker</p></td>
+<td><p>Is a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLocker</span></code> that will be used to ensure mutual exclusion
+when the frame buffer or buffer information data we’ve cached is being
+manipulated.</p></td>
+</tr>
+<tr class="row-even"><td><p>fDrawThreadID</p></td>
+<td><p>Contains the <span class="htype">thread_id</span> of the drawing thread, which is
+responsible for drawing the contents of the window.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The specifics of what these variables are and why the information
+contained in them is maintained will be discussed when we get to the
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> and
+<span class="hmethod">DrawingThread()</span> functions.</p>
+<p>The constructor for the <span class="hclass">DirectSample</span> class looks like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">DirectSample</span><span class="o">::</span><span class="n">DirectSample</span><span class="p">(</span><span class="n">BRect</span><span class="w"> </span><span class="n">frame</span><span class="p">)</span><span class="w"></span>
+<span class="w">             </span><span class="o">:</span><span class="w"> </span><span class="n">BDirectWindow</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DirectWindow Sample&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                             </span><span class="n">B_TITLED_WINDOW</span><span class="p">,</span><span class="w"></span>
+<span class="w">                             </span><span class="n">B_NOT_RESIZABLE</span><span class="o">|</span><span class="n">B_NOT_ZOOMABLE</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">fConnected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">fConnectionDisabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">locker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BLocker</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">fClipList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">fNumClipRects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">AddChild</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SampleView</span><span class="p">(</span><span class="n">Bounds</span><span class="p">()));</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">SupportsWindowMode</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">SetFullScreen</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">fDirty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">fDrawThreadID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawn_thread</span><span class="p">(</span><span class="n">DrawingThread</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;drawing_thread&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                  </span><span class="n">B_NORMAL_PRIORITY</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">resume_thread</span><span class="p">(</span><span class="n">fDrawThreadID</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">Show</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This code establishes the direct window by deferring to
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a>. Then the <span class="hparameter">fConnected</span> and
+<span class="hparameter">fConnectionDisabled</span> flags are initialized to indicate that the
+window isn’t connected yet, but the connection isn’t in the process of
+being torn down by the <span class="hclass">DirectSample</span> destructor. The locker is
+created, and the clip rectangle list is initialized to a <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>
+pointer, with a count of 0.</p>
+<p>Then it adds a child view that occupies the entire window. The primary
+purpose of this view in this sample is to set the view color to
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TRANSPARENT_32_BIT</span></code>, to prevent the application server
+from erasing the window with a default color.</p>
+<p>If the video card doesn’t support window mode, we call
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow13SetFullScreenEb" title="BDirectWindow::SetFullScreen"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFullScreen()</span></code></a> to switch the
+direct window into full-screen exclusive mode. This guarantees that you’ll
+get connected with direct screen access (in a window if possible, otherwise
+in full-screen exclusive mode). If you don’t use <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow13SetFullScreenEb" title="BDirectWindow::SetFullScreen"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFullScreen()</span></code></a>, and window mode isn’t supported,
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> will never
+be called, and you won’t have direct screen access.</p>
+<p>Then the <span class="hparameter">fDirty</span> flag is set to <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, which indicates
+that the window needs to be updated, and the drawing thread is started; the
+drawing thread will handle all actual drawing into the window. The argument
+passed to the drawing thread is a pointer to the <span class="hclass">DirectSample</span>
+window itself. You should always use a separate thread for drawing into a
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a>.</p>
+<p>Finally, <a class="reference internal" href="../../kits/interface/window.html#_CPPv4N7BWindow4ShowEv" title="BWindow::Show"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Show()</span></code></a> is called to make the direct
+window visible.</p>
+<p>The destructor needs to make sure there’s no chance someone will try to
+draw while the window is being destructed:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">DirectSample</span><span class="o">::~</span><span class="n">DirectSample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">fConnectionDisabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w">      </span><span class="c1">// Connection is dying</span>
+<span class="w">   </span><span class="n">Hide</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">Sync</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">wait_for_thread</span><span class="p">(</span><span class="n">fDrawThreadID</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">result</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">free</span><span class="p">(</span><span class="n">fClipList</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="k">delete</span><span class="w"> </span><span class="n">locker</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The first thing the destructor does is set the
+<span class="hparameter">fConnectionDisabled</span> flag to <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, which indicates
+that the window is in the process of being destroyed, and that future calls
+to <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> or the
+drawing thread should be ignored. The window is then hidden by calling
+<a class="reference internal" href="../../kits/interface/window.html#_CPPv4N7BWindow4HideEv" title="BWindow::Hide"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Hide()</span></code></a>. Finally, <a class="reference internal" href="../../kits/interface/window.html#_CPPv4NK7BWindow4SyncEv" title="BWindow::Sync"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Sync()</span></code></a> is called to block until the window is actually hidden.</p>
+<p><span class="xref std std-ref">wait_for_thread()</span> waits until the drawing thread terminates. The
+drawing thread (as we’ll see shortly) is designed to terminate when the
+<span class="hparameter">fConnectionDisabled</span> flag is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>.</p>
+<p>Then the clip rectangle list is freed and the locker deleted.</p>
+<p>The <a class="reference internal" href="../../kits/application/application.html#_CPPv4N12BApplication13QuitRequestedEv" title="BApplication::QuitRequested"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">QuitRequested()</span></code></a> function is
+implemented as usual.</p>
+<p>The <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a>
+function is called whenever a change occurs that affects how your code
+should access the frame buffer:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">DirectSample::DirectConnected</span><span class="p">(</span><span class="n">direct_buffer_info</span><span class="w"> </span><span class="o">*</span><span class="n">info</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">fConnected</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">fConnectionDisabled</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="n">locker</span><span class="o">-&gt;</span><span class="n">Lock</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">switch</span><span class="p">(</span><span class="n">info</span><span class="o">-&gt;</span><span class="n">buffer_state</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">B_DIRECT_MODE_MASK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">B_DIRECT_START</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="n">fConnected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">B_DIRECT_MODIFY</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="c1">// Get clipping information</span>
+
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fClipList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">free</span><span class="p">(</span><span class="n">fClipList</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">fClipList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">         </span><span class="n">fNumClipRects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">info</span><span class="o">-&gt;</span><span class="n">clip_list_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="n">fClipList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">clipping_rect</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"></span>
+<span class="w">               </span><span class="n">malloc</span><span class="p">(</span><span class="n">fNumClipRects</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="n">clipping_rect</span><span class="p">));</span><span class="w"></span>
+
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fClipList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">memcpy</span><span class="p">(</span><span class="n">fClipList</span><span class="p">,</span><span class="w"> </span><span class="n">info</span><span class="o">-&gt;</span><span class="n">clip_list</span><span class="p">,</span><span class="w"></span>
+<span class="w">                  </span><span class="n">fNumClipRects</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="n">clipping_rect</span><span class="p">));</span><span class="w"></span>
+<span class="w">            </span><span class="n">fBits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">uint8</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">info</span><span class="o">-&gt;</span><span class="n">bits</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">fRowBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">info</span><span class="o">-&gt;</span><span class="n">bytes_per_row</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">fFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">info</span><span class="o">-&gt;</span><span class="n">pixel_format</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">fBounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">info</span><span class="o">-&gt;</span><span class="n">window_bounds</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">fDirty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">         </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">B_DIRECT_STOP</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="n">fConnected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="n">locker</span><span class="o">-&gt;</span><span class="n">Unlock</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> begins by
+checking the <span class="hparameter">fConnected</span> and <span class="hparameter">fConnectionDisabled</span> flags;
+the code in <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a>
+is only run if the connection is opened (<span class="hparameter">fConnected</span> is
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>) or if we want to start it again
+(<span class="hparameter">fConnectionDisabled</span> is <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>). This arrangement
+prevents the <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a>
+function from trying to reconnect if the destructor has started running.
+Otherwise, the locker is locked, to prevent <a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> and the drawing thread from colliding.</p>
+<p>If the buffer state is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_START</span></code>, the
+<span class="hparameter">fConnected</span> flag is set to <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>. This keeps track of
+the fact that the application server has given permission to draw directly
+into the region of the frame buffer controlled by the direct window.</p>
+<p>If the buffer state is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_START</span></code> or
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_MODIFY</span></code> (in which case the
+<span class="htype">direct_buffer_info</span> structure describes changes to the frame
+buffer), any previously-existing clip rectangle list is deleted, then we
+cache the information that interests us and set the <span class="hparameter">fDirty</span> flag
+to <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> (to indicate that the display needs to be redrawn to
+reflect the changed graphics settings).</p>
+<p>The clip list is also cached by saving the number of rectangles in the
+list in the <span class="hparameter">fNumClipRects</span> field and by making a copy of the clip
+list into a newly malloc()d block of memory.</p>
+<p>If the state is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_STOP</span></code>, the <span class="hparameter">fConnected</span>
+flag is set to <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>, to indicate that we shouldn’t draw into
+the frame buffer anymore.</p>
+<p>Finally, the locker is unlocked, which lets the drawing thread start
+running again.</p>
+<p>Now let’s have a look at <span class="hmethod">DrawingThread()</span>; this function serves
+as the drawing thread, and is a global function:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">int32</span><span class="w"> </span><span class="nf">DrawingThread</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">DirectSample</span><span class="o">*</span><span class="w"> </span><span class="n">w</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DirectSample</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">w</span><span class="o">-&gt;</span><span class="n">fConnectionDisabled</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">w</span><span class="o">-&gt;</span><span class="n">locker</span><span class="o">-&gt;</span><span class="n">Lock</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">w</span><span class="o">-&gt;</span><span class="n">fConnected</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">w</span><span class="o">-&gt;</span><span class="n">fFormat</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_CMAP8</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">w</span><span class="o">-&gt;</span><span class="n">fDirty</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">int32</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">int32</span><span class="w"> </span><span class="n">width</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">int32</span><span class="w"> </span><span class="n">height</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">int32</span><span class="w"> </span><span class="n">adder</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">uint8</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">clipping_rect</span><span class="w"> </span><span class="o">*</span><span class="n">clip</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">int32</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">adder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="o">-&gt;</span><span class="n">fRowBytes</span><span class="p">;</span><span class="w">   </span><span class="c1">// Stash locally for this pass</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">w</span><span class="o">-&gt;</span><span class="n">fNumClipRects</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">               </span><span class="n">clip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="p">(</span><span class="n">w</span><span class="o">-&gt;</span><span class="n">fClipList</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w"></span>
+<span class="w">               </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">clip</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">clip</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">               </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">clip</span><span class="o">-&gt;</span><span class="n">bottom</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">clip</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">               </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="o">-&gt;</span><span class="n">fBits</span><span class="o">+</span><span class="p">(</span><span class="n">clip</span><span class="o">-&gt;</span><span class="n">top</span><span class="o">*</span><span class="n">w</span><span class="o">-&gt;</span><span class="n">fRowBytes</span><span class="p">)</span><span class="o">+</span><span class="n">clip</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span><span class="w"></span>
+<span class="w">               </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">               </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">height</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                  </span><span class="n">memset</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="p">);</span><span class="w"></span>
+<span class="w">                  </span><span class="n">y</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">                  </span><span class="n">p</span><span class="o">+=</span><span class="n">adder</span><span class="p">;</span><span class="w"></span>
+<span class="w">               </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">         </span><span class="n">w</span><span class="o">-&gt;</span><span class="n">fDirty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="n">w</span><span class="o">-&gt;</span><span class="n">locker</span><span class="o">-&gt;</span><span class="n">Unlock</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Use BWindow or BView APIs here if you want</span>
+<span class="w">      </span><span class="n">snooze</span><span class="p">(</span><span class="mi">16000</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">B_OK</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><span class="hmethod">DrawingThread()</span> starts by casting the argument, <span class="hparameter">data</span>,
+into a pointer to the <span class="hclass">DirectSample</span> window into which it will be
+drawing.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">while</span></code> loop that follows will continue to run as long as the
+<span class="hparameter">fConnectionDisabled</span> flag is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>—in other words, it
+will keep looping as long as the connection is enabled.</p>
+<p>The drawing loop itself begins by locking the locker to ensure that
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> doesn’t
+change anything while we’re working, then checking to be sure the
+connection is opened (<span class="hparameter">fConnected</span> is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>). If the
+connection is open, we verify that format of the window is still 8-bit
+color and that the display needs to be updated. If the display needs
+updating and the pixel format is still <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CMAP8</span></code>, the
+drawing code begins.</p>
+<p>The <span class="hparameter">fRowBytes</span> field of the <span class="hclass">DirectSample</span> window is
+cached in a local variable called <span class="hparameter">adder</span>. Then each rectangle in
+the clip list is drawn, one at a time, using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
+<p>A pointer to the clip rectangle to be drawn is stored in <span class="hparameter">clip</span>,
+and the width and height of the rectangle are computed. Then <span class="hparameter">p</span> is
+set to be a pointer to the first pixel in the frame buffer that’s contained
+by the clip rectangle. Since 8-bit color pixels each occupy exactly one
+byte of video memory, this pixel’s address can be computed by taking the
+base <span class="hparameter">fBits</span> pointer, adding the number of bytes per row times the
+number of rows between the top of the screen and the first row in the clip
+rectangle, then adding the number of bytes between the left edge of the
+screen and the left edge of the clip rectangle, as seen in the line:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="o">-&gt;</span><span class="n">fBits</span><span class="o">+</span><span class="p">(</span><span class="n">clip</span><span class="o">-&gt;</span><span class="n">top</span><span class="o">*</span><span class="n">w</span><span class="o">-&gt;</span><span class="n">fRowBytes</span><span class="p">)</span><span class="o">+</span><span class="n">clip</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Then a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop is used to iterate over each line in the clip
+rectangle, by ranging the variable <span class="hparameter">y</span> from 0 to the height of the
+clip rectangle. memset() is used to clear the row to black, which is
+represented by the byte value 0x00. <span class="hparameter">y</span> is incremented by one for
+each pass through the loop, to count the rows being drawn for each
+iteration, and the pointer <span class="hparameter">p</span> is incremented by adder to move down
+to the beginning of the next row in the clip rectangle.</p>
+<p>Once each clip rectangle has been drawn, the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop exits, and the
+<span class="hparameter">fDirty</span> flag is set to <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> to indicate that the
+screen is up-to-date. Once that’s done, the locker is unlocked, which lets
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> do its thing
+if it’s called. To avoid using an unreasonable amount of processing time,
+<span class="xref std std-ref">snooze()</span> is called to give up CPU time to other threads.</p>
+<p>If you want to use calls to <a class="reference internal" href="../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> or <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> API
+in your drawing thread, you should do so just after unlocking the window.</p>
+<p>When the thread terminates (which will only happen when the connection is
+disabled), the drawing thread returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+<p>This drawing function is designed to draw nothing unless it’s necessary;
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> will set the
+<span class="hparameter">fDirty</span> flag when something happens to cause the screen to need a
+refresh, and other code elsewhere in the application could also set the
+<span class="hparameter">fDirty</span> flag to indicate that the screen should be redrawn.</p>
+<p>Since we’re taking over drawing the contents of the window, we need to
+tell the application server not to draw anything. This is done by adding
+the following line to the constructor for the SampleView:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SetViewColor</span><span class="p">(</span><span class="n">B_TRANSPARENT_32_BIT</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This is very important: if you don’t remember to do this, you’ll have all
+kinds of synchronization problems when the application server and your
+drawing code try to draw into the window at the same time.</p>
+<p>Note that this sample code doesn’t really do anything useful (if all you
+want to do is have a black window moving around, don’t use
+<a class="reference internal" href="../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a>—use a regular <a class="reference internal" href="../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>, throw a
+<a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> into it, and use <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView12SetViewColorE9rgb_color" title="BView::SetViewColor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetViewColor()</span></code></a> to make the view black; it’ll be faster and more
+efficient because it will use hardware graphics acceleration if it’s
+available). However, it serves as a simple example of how to establish a
+connection to let your own drawing code directly access the screen. Just
+replace the code inside the drawing loop with something more useful (like a
+nifty real-time animation).</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../device/serial-port.html">BSerialPort</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="file-game-sound.html">BFileGameSound</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

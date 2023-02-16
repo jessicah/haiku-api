@@ -18,7 +18,7 @@
     <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Introduction" href="../device/introduction.html" />
+    <link rel="next" title="BJoystick" href="../device/joystick.html" />
     <link rel="prev" title="BPropertyInfo" href="property-info.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
@@ -32,7 +32,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../device/introduction.html">Introduction</a>&#160;&#160;»
+        <a href="../device/joystick.html">BJoystick</a>&#160;&#160;»
         </p>
 
       </div>
@@ -68,9 +68,19 @@
 <li><a class="reference internal" href="#_CPPv4NK7BRoster9IsRunningEPKc">IsRunning</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#global-variables">Global Variables</a></li>
-<li><a class="reference internal" href="#constants">Constants</a></li>
-<li><a class="reference internal" href="#defined-types">Defined Types</a></li>
+<li><a class="reference internal" href="#global-variables">Global Variables</a><ul>
+<li><a class="reference internal" href="#be-roster">be_roster</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constants">Constants</a><ul>
+<li><a class="reference internal" href="#application-flags">Application Flags</a></li>
+<li><a class="reference internal" href="#launch-constants">Launch Constants</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#defined-types">Defined Types</a><ul>
+<li><a class="reference internal" href="#app-info">app_info</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -83,115 +93,114 @@
       <div class="content" role="main">
         
   <section id="broster">
-<h1>BRoster<a class="headerlink" href="#broster" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv47BRoster">BRoster<a class="headerlink" href="#broster" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N7BRoster7BRosterEv">
 </section>
 <h3>
-BRoster()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BRoster7BRosterEv" title="BRoster::BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">BRoster</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Sets up the object’s connection to the roster service.
-When an application constructs its
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code> object, the system
-constructs a <span class="hclass">BRoster</span> object and assigns it to the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">be()</span></code> global variable. A <span class="hclass">BRoster</span> is
-therefore readily available from the time the
-application is initialized until the time it quits; you don’t have to
-construct one. The constructor is public only to give programs that don’t
-have <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code>
-objects access to the roster.</p>
+BRoster()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BRoster7BRosterEv" title="BRoster::BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">BRoster</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Sets up the object’s connection to the roster service.</p>
+<p>When an application constructs its <a class="reference internal" href="application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> object, the
+system constructs a <span class="hclass">BRoster</span> object and assigns it to the
+<code class="xref cpp cpp-var docutils literal notranslate"><span class="pre">be_roster</span></code> global variable. A <span class="hclass">BRoster</span> is therefore
+readily available from the time the application is initialized until the
+time it quits; you don’t have to construct one. The constructor is public
+only to give programs that don’t have <a class="reference internal" href="application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> objects
+access to the roster.</p>
 <section id="_CPPv4N7BRosterD0Ev">
 </section>
 <h3>
-~BRoster()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">~BRoster</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Does nothing.</p>
+~BRoster()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">~BRoster</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Does nothing.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4NK7BRoster11ActivateAppE7team_id">
 </section>
 <h3>
-ActivateApp()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">ActivateApp</span><span class="sig-paren">(</span><span class="n">team_id</span><span class="w"> </span><span class="n sig-param">team</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Activates the <span class="hparameter">team</span> application (by bringing one of its windows to the
-front and making it the active window). This function works only if the
-target application has a window on-screen. The newly activated
-application is notified with a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_APP_ACTIVATED</span></code> message.</p>
-<p>See also:
-<a class="reference internal" href="application.html#_CPPv4N12BApplication12AppActivatedEb" title="BApplication::AppActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BApplication::AppActivated()</span></code></a></p>
+ActivateApp()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">ActivateApp</span><span class="sig-paren">(</span><span class="n">team_id</span><span class="w"> </span><span class="n sig-param">team</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Activates the <span class="hparameter">team</span> application (by bringing one of its windows
+to the front and making it the active window). This function works only if
+the target application has a window on-screen. The newly activated
+application is notified with a <a class="reference internal" href="../../constants.html#_CPPv415B_APP_ACTIVATED" title="B_APP_ACTIVATED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_APP_ACTIVATED</span></code></a> message.</p>
+<p>See also: <a class="reference internal" href="application.html#_CPPv4N12BApplication12AppActivatedEb" title="BApplication::AppActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BApplication::AppActivated()</span></code></a></p>
 <section id="_CPPv4NK7BRoster20AddToRecentDocumentsEPK9entry_refPKc">
 </section>
 <section id="_CPPv4NK7BRoster18GetRecentDocumentsEP8BMessage5int32PKcPKc">
 </section>
 <h3>
-AddToRecentDocuments(), GetRecentDocuments()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">AddToRecentDocuments</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">document</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">appSig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">GetRecentDocuments</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">refList</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">maxCount</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ofType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">openedByAppSig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">GetRecentDocuments</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">refList</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">maxCount</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ofTypeList</span><span class="p">[</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">ofTypeListCount</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">openedByAppSig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">AddToRecentDocuments()</span> adds the document file
-specified by <span class="hparameter">document</span> to
-the list of recent documents. If you wish to record that a specific
-application used the document, you can specify the signature of that
-application using the <span class="hparameter">appSig</span> argument; otherwise
-you can specify <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<p><span class="hmethod">GetRecentDocuments()</span> returns a list of the most recent documents. The
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
-<span class="hparameter">refList</span> will be filled out with information about the
-<span class="hparameter">maxCount</span> most recently used documents. If you want to
-obtain a list of documents
-of a specific type, you can specify a pointer to that MIME type string in
-the <span class="hparameter">ofType</span> argument. Likewise, if you’re only interested in files that
-want to be opened by a specific application, specify that application’s
-signature in <span class="hparameter">openedByAppSig</span>; if you don’t care, pass
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+AddToRecentDocuments(), GetRecentDocuments()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">AddToRecentDocuments</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">document</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">appSig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">GetRecentDocuments</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">refList</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">maxCount</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ofType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">openedByAppSig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">GetRecentDocuments</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">refList</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">maxCount</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ofTypeList</span><span class="p">[</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">ofTypeListCount</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">openedByAppSig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">AddToRecentDocuments()</span> adds the document file specified by
+<span class="hparameter">document</span> to the list of recent documents. If you wish to record
+that a specific application used the document, you can specify the
+signature of that application using the <span class="hparameter">appSig</span> argument;
+otherwise you can specify <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<p><span class="hmethod">GetRecentDocuments()</span> returns a list of the most recent
+documents. The <a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> <span class="hparameter">refList</span> will be filled out
+with information about the <span class="hparameter">maxCount</span> most recently used documents.
+If you want to obtain a list of documents of a specific type, you can
+specify a pointer to that MIME type string in the <span class="hparameter">ofType</span>
+argument. Likewise, if you’re only interested in files that want to be
+opened by a specific application, specify that application’s signature in
+<span class="hparameter">openedByAppSig</span>; if you don’t care, pass <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
 <p>If you want to get a list of files of multiple types, you can specify a
-pointer to an array of strings in <span class="hparameter">ofTypeList</span>, and the number of types in
-the list in <span class="hparameter">ofTypeListCount</span>.</p>
-<p>Specifying <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> for <span class="hparameter">ofType</span> will fetch all files of all types.</p>
-<p>The resulting <span class="hparameter">refList</span> will have a field,
-refs, containing the
-entry_refs to the resulting list of files.</p>
+pointer to an array of strings in <span class="hparameter">ofTypeList</span>, and the number of
+types in the list in <span class="hparameter">ofTypeListCount</span>.</p>
+<p>Specifying <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> for <span class="hparameter">ofType</span> will fetch all files of
+all types.</p>
+<p>The resulting <span class="hparameter">refList</span> will have a field, <span class="hparameter">refs</span>,
+containing the <span class="htype">entry_ref</span>s to the resulting list of files.</p>
 <section id="_CPPv4NK7BRoster18AddToRecentFoldersEPK9entry_refPKc">
 </section>
 <section id="_CPPv4NK7BRoster16GetRecentFoldersEP8BMessage5int32PKc">
 </section>
 <h3>
-AddToRecentFolders(), GetRecentFolders()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">AddToRecentFolders</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">folder</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">appSig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">GetRecentFolders</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">refList</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">maxCount</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">openedByAppSig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">AddToRecentFolders()</span> adds the folder specified by <span class="hparameter">folder</span> to the list of
-recent folders. If you wish to record that a specific application used
-the folder, you can specify the signature of that application using the
-<span class="hparameter">appSig</span> argument; otherwise you can use <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<p><span class="hmethod">GetRecentFolders()</span> returns a list of the most recently-accessed folders.
-The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> <span class="hparameter">refList</span> will be filled out with information about the
-<span class="hparameter">maxCount</span> most recently used folders. If you’re only interested in folders
-that were used by a specific application, specify that application’s
-signature in <span class="hparameter">openedByAppSig</span>; if you don’t care, pass <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<p>The resulting <span class="hparameter">refList</span> will have a field,
-refs, containing the
-entry_refs to the resulting list of folders.</p>
+AddToRecentFolders(), GetRecentFolders()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">AddToRecentFolders</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">folder</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">appSig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">GetRecentFolders</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">refList</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">maxCount</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">openedByAppSig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">AddToRecentFolders()</span> adds the folder specified by
+<span class="hparameter">folder</span> to the list of recent folders. If you wish to record that
+a specific application used the folder, you can specify the signature of
+that application using the <span class="hparameter">appSig</span> argument; otherwise you can use
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<p><span class="hmethod">GetRecentFolders()</span> returns a list of the most recently-accessed
+folders. The <a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> <span class="hparameter">refList</span> will be filled out
+with information about the <span class="hparameter">maxCount</span> most recently used folders.
+If you’re only interested in folders that were used by a specific
+application, specify that application’s signature in
+<span class="hparameter">openedByAppSig</span>; if you don’t care, pass <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<p>The resulting <span class="hparameter">refList</span> will have a field, <span class="hparameter">refs</span>,
+containing the <span class="htype">entry_ref</span>s to the resulting list of folders.</p>
 <section id="_CPPv4NK7BRoster9BroadcastEP8BMessage">
 </section>
 <h3>
-Broadcast()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">Broadcast</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">Broadcast</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="n">BMessenger</span><span class="w"> </span><span class="n sig-param">reply_to</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Sends the <span class="hparameter">message</span> to every running application, except to those
-applications (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ARGV_ONLY</span></code>) that don’t accept messages. The <span class="hparameter">message</span> is
-sent asynchronously with a timeout of 0. As is the case for other
-message-sending functions, the caller retains ownership of the message.</p>
+Broadcast()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">Broadcast</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">Broadcast</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><span class="n">BMessenger</span></a><span class="w"> </span><span class="n sig-param">reply_to</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Sends the <span class="hparameter">message</span> to every running application, except to those
+applications (<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ARGV_ONLY</span></code>) that don’t accept messages.
+The <span class="hparameter">message</span> is sent asynchronously with a timeout of 0. As is the
+case for other message-sending functions, the caller retains ownership of
+the message.</p>
 <p>This function returns immediately after setting up the broadcast
 operation. It doesn’t wait for the messages to be sent and doesn’t report
-any errors encountered when they are. It returns an error only if it
-can’t start the broadcast operation. If successful in getting the
-operation started, it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
-<p>Replies to the broadcasted <span class="hparameter">message</span> will be sent via the <span class="hparameter">reply_to</span>
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code>, if specified. If <span class="hparameter">reply_to</span> is absent, the replies will be lost.</p>
+any errors encountered when they are. It returns an error only if it can’t
+start the broadcast operation. If successful in getting the operation
+started, it returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+<p>Replies to the broadcasted <span class="hparameter">message</span> will be sent via the
+<span class="hparameter">reply_to</span> <a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a>, if specified. If
+<span class="hparameter">reply_to</span> is absent, the replies will be lost.</p>
 <p>See also: <a class="reference internal" href="messenger.html#_CPPv4NK10BMessenger11SendMessageEP8BMessageP8BMessage9bigtime_t9bigtime_t" title="BMessenger::SendMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessenger::SendMessage()</span></code></a></p>
 <section id="_CPPv4NK7BRoster7FindAppEPKcP9entry_ref">
 </section>
 <h3>
-FindApp()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">FindApp</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">type</span>, <span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">app</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">FindApp</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file</span>, <span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">app</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Finds the application associated with the MIME data <span class="hparameter">type</span> or with the
-specified <span class="hparameter">file</span>, and modifies the <span class="hparameter">app</span> entry_ref structure so that it
-refers to the executable file for that application. If the <span class="hparameter">type</span> is an
-application signature, this function finds the application that has that
-signature. Otherwise, it finds the preferred application for the <span class="hparameter">type</span>. If
-the <span class="hparameter">file</span> is an application executable, <span class="hmethod">FindApp()</span> merely copies the file
+FindApp()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">FindApp</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">type</span>, <span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">app</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">FindApp</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file</span>, <span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">app</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Finds the application associated with the MIME data <span class="hparameter">type</span> or with
+the specified <span class="hparameter">file</span>, and modifies the <span class="hparameter">app</span>
+<span class="htype">entry_ref</span> structure so that it refers to the executable file for
+that application. If the <span class="hparameter">type</span> is an application signature, this
+function finds the application that has that signature. Otherwise, it finds
+the preferred application for the <span class="hparameter">type</span>. If the <span class="hparameter">file</span> is
+an application executable, <span class="hmethod">FindApp()</span> merely copies the file
 reference to the <span class="hparameter">app</span> argument. Otherwise, it finds the preferred
 application for the filetype.</p>
 <p>In other words, this function goes about finding an application in the
-same way that <a class="reference internal" href="#_CPPv4NK7BRoster6LaunchEPKcP8BMessageP7team_id" title="BRoster::Launch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Launch()</span></code></a>
-finds the application it will launch.</p>
-<p>If it can translate the <span class="hparameter">type</span> or <span class="hparameter">file</span> into a reference to an application
-executable, <span class="hmethod">FindApp()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>. If not, it returns an error code,
-typically one describing a file system error.</p>
+same way that <a class="reference internal" href="#_CPPv4NK7BRoster6LaunchEPKcP8BMessageP7team_id" title="BRoster::Launch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Launch()</span></code></a> finds the application
+it will launch.</p>
+<p>If it can translate the <span class="hparameter">type</span> or <span class="hparameter">file</span> into a reference
+to an application executable, <span class="hmethod">FindApp()</span> returns
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>. If not, it returns an error code, typically one
+describing a file system error.</p>
 <p>See also: <a class="reference internal" href="#_CPPv4NK7BRoster6LaunchEPKcP8BMessageP7team_id" title="BRoster::Launch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Launch()</span></code></a></p>
 <section id="_CPPv4NK7BRoster10GetAppInfoEPKcP8app_info">
 </section>
@@ -200,34 +209,24 @@ typically one describing a file system error.</p>
 <section id="_CPPv4NK7BRoster16GetActiveAppInfoEP8app_info">
 </section>
 <h3>
-GetAppInfo(), GetRunningAppInfo(), GetActiveAppInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">GetAppInfo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span>, <span class="n">app_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">appInfo</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">GetAppInfo</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">executable</span>, <span class="n">app_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">appInfo</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">GetRunningAppInfo</span><span class="sig-paren">(</span><span class="n">team_id</span><span class="w"> </span><span class="n sig-param">team</span>, <span class="n">app_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">appInfo</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">GetActiveAppInfo</span><span class="sig-paren">(</span><span class="n">app_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">appInfo</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions return (in <span class="hparameter">appInfo</span>) information about a specific
+GetAppInfo(), GetRunningAppInfo(), GetActiveAppInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">GetAppInfo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span>, <span class="n">app_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">appInfo</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">GetAppInfo</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">executable</span>, <span class="n">app_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">appInfo</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">GetRunningAppInfo</span><span class="sig-paren">(</span><span class="n">team_id</span><span class="w"> </span><span class="n sig-param">team</span>, <span class="n">app_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">appInfo</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">GetActiveAppInfo</span><span class="sig-paren">(</span><span class="n">app_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">appInfo</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions return (in <span class="hparameter">appInfo</span>) information about a specific
 application. In all cases, the application must be running.</p>
-<p><span class="hmethod">GetAppInfo()</span> finds an app that has the
-given <span class="hparameter">signature</span>, or that was launched from the
-<span class="hparameter">executable</span> file. If there’s more than one such
-app, the function chooses one at random.
-<span class="hmethod">GetRunningAppInfo()</span> reports on the app
-that corresponds to the given <span class="hparameter">team</span>
-identifier.
-<span class="hmethod">GetActiveAppInfo()</span> reports on the
-currently active app.
-If they’re able to fill in the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">info()</span></code>
-structure with meaningful values, these functions return
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.
-<span class="hmethod">GetActiveAppInfo()</span> returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code> if there’s no active application.
-<span class="hmethod">GetRunningAppInfo()</span> returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_TEAM_ID</span></code> if <span class="hparameter">team</span>
-isn’t a valid team identifier for a running application.
-<span class="hmethod">GetAppInfo()</span> returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code> if the application isn’t running.</p>
-<p>The app_info structure contains the following fields:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<p><span class="hmethod">GetAppInfo()</span> finds an app that has the given
+<span class="hparameter">signature</span>, or that was launched from the <span class="hparameter">executable</span>
+file. If there’s more than one such app, the function chooses one at
+random.</p>
+<p><span class="hmethod">GetRunningAppInfo()</span> reports on the app that corresponds to the
+given <span class="hparameter">team</span> identifier.</p>
+<p><span class="hmethod">GetActiveAppInfo()</span> reports on the currently active app.</p>
+<p>If they’re able to fill in the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">app_info</span></code> structure
+with meaningful values, these functions return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.
+<span class="hmethod">GetActiveAppInfo()</span> returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code> if there’s
+no active application. <span class="hmethod">GetRunningAppInfo()</span> returns
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_TEAM_ID</span></code> if <span class="hparameter">team</span> isn’t a valid team
+identifier for a running application. <span class="hmethod">GetAppInfo()</span> returns
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code> if the application isn’t running.</p>
+<p>The <span class="htype">app_info</span> structure contains the following fields:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Description</p></th>
@@ -235,235 +234,322 @@ isn’t a valid team identifier for a running application.
 </thead>
 <tbody>
 <tr class="row-even"><td><p>thread_idthread</p></td>
-<td><p>The identifier for the application’s main thread of execution, or -1 if the application isn’t running. (The main thread is the thread in which the application is launched and in which its main() function runs.)</p></td>
+<td><p>The identifier for the application’s main thread of execution, or -1 if
+the application isn’t running. (The main thread is the thread in which the
+application is launched and in which its main() function runs.)</p></td>
 </tr>
 <tr class="row-odd"><td><p>thread_idteam</p></td>
-<td><p>The identifier for the application’s team, or -1 if the application isn’t running. (This will be the same as the team passed to <span class="hmethod">GetRunningAppInfo()</span>.)</p></td>
+<td><p>The identifier for the application’s team, or -1 if the application isn’t
+running. (This will be the same as the team passed to
+<span class="hmethod">GetRunningAppInfo()</span>.)</p></td>
 </tr>
 <tr class="row-even"><td><p>port_idport</p></td>
-<td><p>The port where the application’s main thread receives messages, or -1 if the application isn’t running.</p></td>
+<td><p>The port where the application’s main thread receives messages, or -1 if
+the application isn’t running.</p></td>
 </tr>
 <tr class="row-odd"><td><p>uint32flags</p></td>
-<td><p>A bitfield that contains information about the behavior of the application.The flags bitfield can be tested (with the bitwise &amp; operator) against these two constants:B_BACKGROUND_APP.The application won’t appear in the Deskbar’s application list.B_ARGV_ONLY.The application can’t receive messages. Information can be passed to it at launch only, in an array of argument strings (as on the command line).flags also contains a value that explains the application’s launch behavior. This value is retrieved by masking flags with the <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_LAUNCH_MASK</span></code> constant. For example:unit32 behavior = theInfo.flags &amp; B_LAUNCH_MASK;The result will match one of these three modes:B_EXCLUSIVE_LAUNCH.The application can be launched only if an application with the same signature isn’t already running.B_SINGLE_LAUNCH.The application can be launched only once from the same executable file. However, an application with the same signature might be launched from a different executable. For example, if the user copies an executable file to another directory, a separate instance of the application can be launched from each copy.B_MULTIPLE_LAUNCH.There are no restrictions. The application can be launched any number of times from the same executable file.These modes affect <span class="hclass">BRoster</span>’s <span class="hmethod">Launch()</span> function. <span class="hmethod">Launch()</span> can always start up a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MULTIPLE_LAUNCH</span></code> application. However, it can’t launch a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SINGLE_LAUNCH</span></code> application if a running application was already launched from the same executable file. It can’t launch a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_EXCLUSIVE_LAUNCH</span></code> application if an application with the same signature is already running.</p></td>
+<td><p>A bitfield that contains information about the behavior of the
+application.</p>
+<p>The <span class="hparameter">flags</span> bitfield can be tested (with the bitwise &amp; operator)
+against these two constants:</p>
+<dl class="simple myst">
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BACKGROUND_APP</span></code>.</dt><dd><p>The application won’t appear in the Deskbar’s application list.</p>
+</dd>
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ARGV_ONLY</span></code>.</dt><dd><p>The application can’t receive messages. Information can be passed to it at
+launch only, in an array of argument strings (as on the command line).</p>
+</dd>
+</dl>
+<p><span class="hparameter">flags</span> also contains a value that explains the application’s
+launch behavior. This value is retrieved by masking flags with the
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LAUNCH_MASK</span></code> constant. For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">unit32</span><span class="w"> </span><span class="n">behavior</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">theInfo</span><span class="p">.</span><span class="n">flags</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">B_LAUNCH_MASK</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The result will match one of these three modes:</p>
+<dl class="simple myst">
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EXCLUSIVE_LAUNCH</span></code>.</dt><dd><p>The application can be launched only if an application with the same
+signature isn’t already running.</p>
+</dd>
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SINGLE_LAUNCH</span></code>.</dt><dd><p>The application can be launched only once from the same executable file.
+However, an application with the same signature might be launched from a
+different executable. For example, if the user copies an executable file to
+another directory, a separate instance of the application can be launched
+from each copy.</p>
+</dd>
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MULTIPLE_LAUNCH</span></code>.</dt><dd><p>There are no restrictions. The application can be launched any number of
+times from the same executable file.</p>
+</dd>
+</dl>
+<p>These modes affect <span class="hclass">BRoster</span>’s <span class="hmethod">Launch()</span> function.
+<span class="hmethod">Launch()</span> can always start up a
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MULTIPLE_LAUNCH</span></code> application. However, it can’t launch a
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SINGLE_LAUNCH</span></code> application if a running application was
+already launched from the same executable file. It can’t launch a
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EXCLUSIVE_LAUNCH</span></code> application if an application with the
+same signature is already running.</p>
+</td>
 </tr>
 <tr class="row-even"><td><p>entry_refref</p></td>
-<td><p>A reference to the file that was, or could be, executed to run the application. (This will be the same as the executable passed to <span class="hmethod">GetAppInfo()</span>.)</p></td>
+<td><p>A reference to the file that was, or could be, executed to run the
+application. (This will be the same as the executable passed to
+<span class="hmethod">GetAppInfo()</span>.)</p></td>
 </tr>
 <tr class="row-odd"><td><p>char[]signature</p></td>
-<td><p>The signature of the application. (This will be the same as the signature passed to <span class="hmethod">GetAppInfo()</span>.)</p></td>
+<td><p>The signature of the application. (This will be the same as the signature
+passed to <span class="hmethod">GetAppInfo()</span>.)</p></td>
 </tr>
 </tbody>
 </table>
-<p>See also:
-<a class="reference internal" href="#_CPPv4NK7BRoster6LaunchEPKcP8BMessageP7team_id" title="BRoster::Launch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Launch()</span></code></a>,
+<p>See also: <a class="reference internal" href="#_CPPv4NK7BRoster6LaunchEPKcP8BMessageP7team_id" title="BRoster::Launch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Launch()</span></code></a>,
 <a class="reference internal" href="application.html#_CPPv4NK12BApplication10GetAppInfoEP8app_info" title="BApplication::GetAppInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BApplication::GetAppInfo()</span></code></a></p>
 <section id="_CPPv4NK7BRoster10GetAppListEP5BList">
 </section>
 <h3>
-GetAppList()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">GetAppList</span><span class="sig-paren">(</span><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">teams</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">GetAppList</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span>, <span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">teams</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Fills in the <span class="hparameter">teams</span> <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BList</span></code>
-with team identifiers for applications in the
-roster. Each item in the list will be of type team_id. It must be cast to
-that type when retrieving it from the list, as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BList</span><span class="o">*</span> <span class="n">teams</span> <span class="o">=</span> <span class="n">new</span> <span class="n">BList</span><span class="p">;</span>
-<span class="n">be_roster</span><span class="o">-&gt;</span><span class="n">GetAppList</span><span class="p">(</span><span class="n">teams</span><span class="p">);</span>
-<span class="n">team_id</span> <span class="n">who</span> <span class="o">=</span> <span class="p">(</span><span class="n">team_id</span><span class="p">)</span><span class="n">teams</span><span class="o">-&gt;</span><span class="n">ItemAt</span><span class="p">(</span><span class="n">someIndex</span><span class="p">);</span>
+GetAppList()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">GetAppList</span><span class="sig-paren">(</span><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">teams</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">GetAppList</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span>, <span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">teams</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Fills in the <span class="hparameter">teams</span> <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BList</span></code> with team identifiers for
+applications in the roster. Each item in the list will be of type
+<span class="htype">team_id</span>. It must be cast to that type when retrieving it from the
+list, as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BList</span><span class="o">*</span><span class="w"> </span><span class="n">teams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BList</span><span class="p">;</span><span class="w"></span>
+<span class="n">be_roster</span><span class="o">-&gt;</span><span class="n">GetAppList</span><span class="p">(</span><span class="n">teams</span><span class="p">);</span><span class="w"></span>
+<span class="n">team_id</span><span class="w"> </span><span class="n">who</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">team_id</span><span class="p">)</span><span class="n">teams</span><span class="o">-&gt;</span><span class="n">ItemAt</span><span class="p">(</span><span class="n">someIndex</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The list will contain one item for each instance of an application that’s
 running. For example, if the same application has been launched three
-times, the list will include the team_ids for all three running instances
-of that application.</p>
-<p>If a <span class="hparameter">signature</span> is passed, the list identifies only applications running
-under that signature. If a <span class="hparameter">signature</span> isn’t specified, the list identifies
-all running applications.</p>
-<p>See also:
-<a class="reference internal" href="#_CPPv4NK7BRoster7TeamForEPKc" title="BRoster::TeamFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">TeamFor()</span></code></a>, the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code></p>
+times, the list will include the <span class="htype">team_id</span>s for all three running
+instances of that application.</p>
+<p>If a <span class="hparameter">signature</span> is passed, the list identifies only applications
+running under that signature. If a <span class="hparameter">signature</span> isn’t specified, the
+list identifies all running applications.</p>
+<p>See also: <a class="reference internal" href="#_CPPv4NK7BRoster7TeamForEPKc" title="BRoster::TeamFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">TeamFor()</span></code></a>, the
+<a class="reference internal" href="messenger.html#_CPPv4N10BMessenger10BMessengerEPK8BHandlerPK7BLooperP8status_t" title="BMessenger::BMessenger"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessenger</span> <span class="pre">constructor</span></code></a></p>
 <section id="_CPPv4NK7BRoster13GetRecentAppsEP8BMessage5int32">
 </section>
 <h3>
-GetRecentApps()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">GetRecentApps</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">refList</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">maxCount</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">GetRecentApps()</span> returns a list of the most recently-launched
-applications. The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
-<span class="hparameter">refList</span> will be filled out with information
-about the <span class="hparameter">maxCount</span> most recently-launched applications.</p>
+GetRecentApps()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">GetRecentApps</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">refList</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">maxCount</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">GetRecentApps()</span> returns a list of the most recently-launched
+applications. The <a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> <span class="hparameter">refList</span> will be filled
+out with information about the <span class="hparameter">maxCount</span> most recently-launched
+applications.</p>
 <p>The resulting <span class="hparameter">refList</span> will have a field, “refs”, containing the
-entry_refs to the resulting applications.</p>
+<span class="htype">entry_ref</span>s to the resulting applications.</p>
 <section id="_CPPv4NK7BRoster6LaunchEPKcP8BMessageP7team_id">
 </section>
 <h3>
-Launch()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">Launch</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">type</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">team_id</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">team</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">Launch</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">type</span>, <span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">messages</span>, <span class="n">team_id</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">team</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">Launch</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">type</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">argc</span>, <span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">argv</span>, <span class="n">team_id</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">team</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">Launch</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file</span>, <span class="k">const</span><span class="w"> </span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">team_id</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">team</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">Launch</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file</span>, <span class="k">const</span><span class="w"> </span><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">messages</span>, <span class="n">team_id</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">team</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">Launch</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">argc</span>, <span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">argv</span>, <span class="n">team_id</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">team</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Launches the application associated with a MIME <span class="hparameter">type</span> or with a particular
-<span class="hparameter">file</span>. If the MIME <span class="hparameter">type</span> is an application signature, this function
-launches the application with that signature. Otherwise, it launches the
-preferred application for the type. If the <span class="hparameter">file</span> is an application
-executable, it launches that application. Otherwise, it launches the
-preferred application for the file type and passes the <span class="hparameter">file</span> reference to
-the application in a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_REFS_RECEIVED</span></code> message. In other words, <span class="hmethod">Launch()</span>
-finds the application to launch just as <a class="reference internal" href="#_CPPv4NK7BRoster7FindAppEPKcP9entry_ref" title="BRoster::FindApp"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindApp()</span></code></a> finds the application
-for a particular <span class="hparameter">type</span> or <span class="hparameter">file</span>.</p>
-<p>If a <span class="hparameter">message</span> is specified, it will be sent to the application on-launch
-where it will be received and responded to before the application is
-notified that it’s ready to run. Similarly, if a list of <span class="hparameter">messages</span> is
-specified, each one will be delivered on-launch. The caller retains
-ownership of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
-objects (and the container <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BList</span></code>); they won’t
-be deleted for you.</p>
+Launch()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">Launch</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">type</span>, <a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">team_id</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">team</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">Launch</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">type</span>, <span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">messages</span>, <span class="n">team_id</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">team</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">Launch</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">type</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">argc</span>, <span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">argv</span>, <span class="n">team_id</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">team</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">Launch</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file</span>, <span class="k">const</span><span class="w"> </span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">team_id</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">team</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">Launch</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file</span>, <span class="k">const</span><span class="w"> </span><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">messages</span>, <span class="n">team_id</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">team</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">Launch</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">argc</span>, <span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">argv</span>, <span class="n">team_id</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">team</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Launches the application associated with a MIME <span class="hparameter">type</span> or with a
+particular <span class="hparameter">file</span>. If the MIME <span class="hparameter">type</span> is an application
+signature, this function launches the application with that signature.
+Otherwise, it launches the preferred application for the type. If the
+<span class="hparameter">file</span> is an application executable, it launches that application.
+Otherwise, it launches the preferred application for the file type and
+passes the <span class="hparameter">file</span> reference to the application in a
+<a class="reference internal" href="../../constants.html#_CPPv415B_REFS_RECEIVED" title="B_REFS_RECEIVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REFS_RECEIVED</span></code></a> message. In other words,
+<span class="hmethod">Launch()</span> finds the application to launch just as
+<a class="reference internal" href="#_CPPv4NK7BRoster7FindAppEPKcP9entry_ref" title="BRoster::FindApp"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindApp()</span></code></a> finds the application for a
+particular <span class="hparameter">type</span> or <span class="hparameter">file</span>.</p>
+<p>If a <span class="hparameter">message</span> is specified, it will be sent to the application
+on-launch where it will be received and responded to before the application
+is notified that it’s ready to run. Similarly, if a list of
+<span class="hparameter">messages</span> is specified, each one will be delivered on-launch. The
+caller retains ownership of the <a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> objects (and the
+container <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BList</span></code>); they won’t be deleted for you.</p>
 <p>Sending an on-launch message is appropriate if it helps the launched
 application configure itself before it starts getting other messages. To
-launch an application and send it an ordinary message, call <span class="hmethod">Launch()</span> to
-get it running, then set up a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> object for the application and
-call <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code>’s
-<a class="reference internal" href="messenger.html#_CPPv4NK10BMessenger11SendMessageEP8BMessageP8BMessage9bigtime_t9bigtime_t" title="BMessenger::SendMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SendMessage()</span></code></a> function.</p>
-<p>If the target application is already running, <span class="hmethod">Launch()</span> won’t launch it
-again, unless it permits multiple instances to run concurrently (it
-doesn’t wait for the messages to be sent or report errors encountered
-when they are). It fails for <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SINGLE_LAUNCH</span></code> and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_EXCLUSIVE_LAUNCH</span></code>
-applications that have already been launched. Nevertheless, it assumes
-that you want the messages to get to the application and so delivers them
-to the currently running instance.</p>
+launch an application and send it an ordinary message, call
+<span class="hmethod">Launch()</span> to get it running, then set up a
+<a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> object for the application and call
+<a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a>’s <a class="reference internal" href="messenger.html#_CPPv4NK10BMessenger11SendMessageEP8BMessageP8BMessage9bigtime_t9bigtime_t" title="BMessenger::SendMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SendMessage()</span></code></a> function.</p>
+<p>If the target application is already running, <span class="hmethod">Launch()</span> won’t
+launch it again, unless it permits multiple instances to run concurrently
+(it doesn’t wait for the messages to be sent or report errors encountered
+when they are). It fails for <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SINGLE_LAUNCH</span></code> and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EXCLUSIVE_LAUNCH</span></code> applications that have already been
+launched. Nevertheless, it assumes that you want the messages to get to the
+application and so delivers them to the currently running instance.</p>
 <p>Instead of messages, you can launch an application with an array of
 argument strings that will be passed to its main() function. <span class="hparameter">argv</span>
 contains the array and <span class="hparameter">argc</span> counts the number of strings. If the
 application accepts messages, this information will also be packaged in a
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ARGV_RECEIVED</span></code> message that the application will receive on-launch.</p>
-<p>If successful, <span class="hmethod">Launch()</span> places the identifier for the newly launched
-application in the variable referred to by <span class="hparameter">team</span> and returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>. If
-unsuccessful, it sets the <span class="hparameter">team</span> variable to -1 and returns an error
-code, typically one of the following:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<a class="reference internal" href="../../constants.html#_CPPv415B_ARGV_RECEIVED" title="B_ARGV_RECEIVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ARGV_RECEIVED</span></code></a> message that the application will receive
+on-launch.</p>
+<p>If successful, <span class="hmethod">Launch()</span> places the identifier for the newly
+launched application in the variable referred to by <span class="hparameter">team</span> and
+returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>. If unsuccessful, it sets the <span class="hparameter">team</span>
+variable to -1 and returns an error code, typically one of the following:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
-<td><p>The <span class="hparameter">type</span> or <span class="hparameter">file</span> is not valid, or an attempt is being made to send an on-launch message to an application that doesn’t accept messages (that is, to a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ARGV_ONLY</span></code> application).</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>The <span class="hparameter">type</span> or <span class="hparameter">file</span> is not valid, or an attempt is being
+made to send an on-launch message to an application that doesn’t accept
+messages (that is, to a <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ARGV_ONLY</span></code> application).</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ALREADY_RUNNING</span></code>.</p></td>
-<td><p>The application is already running and can’t be launched again (it’s a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SINGLE_LAUNCH</span></code> or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_EXCLUSIVE_LAUNCH</span></code> application).</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ALREADY_RUNNING</span></code>.</p></td>
+<td><p>The application is already running and can’t be launched again (it’s a
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SINGLE_LAUNCH</span></code> or <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EXCLUSIVE_LAUNCH</span></code>
+application).</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_LAUNCH_FAILED</span></code>.</p></td>
-<td><p>The attempt to launch the application failed for some other reason, such as insufficient memory.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LAUNCH_FAILED</span></code>.</p></td>
+<td><p>The attempt to launch the application failed for some other reason, such
+as insufficient memory.</p></td>
 </tr>
 <tr class="row-odd"><td><p>A file system error.</p></td>
 <td><p>The <span class="hparameter">file</span> or <span class="hparameter">type</span> can’t be matched to an application.</p></td>
 </tr>
 </tbody>
 </table>
-<p>See also: the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> class,
-<a class="reference internal" href="#_CPPv4NK7BRoster10GetAppInfoEPKcP8app_info" title="BRoster::GetAppInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetAppInfo()</span></code></a>,
-<a class="reference internal" href="#_CPPv4NK7BRoster7FindAppEPKcP9entry_ref" title="BRoster::FindApp"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindApp()</span></code></a></p>
+<p>See also: the <a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> class, <a class="reference internal" href="#_CPPv4NK7BRoster10GetAppInfoEPKcP8app_info" title="BRoster::GetAppInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetAppInfo()</span></code></a>, <a class="reference internal" href="#_CPPv4NK7BRoster7FindAppEPKcP9entry_ref" title="BRoster::FindApp"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindApp()</span></code></a></p>
 <section id="_CPPv4NK7BRoster13StartWatchingE10BMessenger6uint32">
 </section>
 <section id="_CPPv4NK7BRoster12StopWatchingE10BMessenger">
 </section>
 <h3>
-StartWatching(), StopWatching()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">StartWatching</span><span class="sig-paren">(</span><span class="n">BMessenger</span><span class="w"> </span><span class="n sig-param">target</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">events</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_REQUEST_LAUNCHED</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_REQUEST_QUIT</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">StopWatching</span><span class="sig-paren">(</span><span class="n">BMessenger</span><span class="w"> </span><span class="n sig-param">target</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">StartWatching()</span> initiates the application event monitor, which is used
-for keeping track of events such as application launches. The caller
-specifies the events to monitor through the <span class="hparameter">events</span> argument; <span class="hparameter">target</span> is
-the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> to which the corresponding notification messages are sent.
-The <span class="hparameter">events</span> flags and the corresponding messages are listed below:</p>
-<p>FlagMessageB_REQUEST_LAUNCHEDB_SOME_APP_LAUNCHEDB_REQUEST_QUITB_SOME_APP_QUITB_REQUEST_ACTIVATEDB_SOME_APP_ACTIVATED</p>
+StartWatching(), StopWatching()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">StartWatching</span><span class="sig-paren">(</span><a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><span class="n">BMessenger</span></a><span class="w"> </span><span class="n sig-param">target</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">events</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_REQUEST_LAUNCHED</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_REQUEST_QUIT</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">StopWatching</span><span class="sig-paren">(</span><a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><span class="n">BMessenger</span></a><span class="w"> </span><span class="n sig-param">target</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">StartWatching()</span> initiates the application event monitor, which
+is used for keeping track of events such as application launches. The
+caller specifies the events to monitor through the <span class="hparameter">events</span>
+argument; <span class="hparameter">target</span> is the <a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> to which the
+corresponding notification messages are sent. The <span class="hparameter">events</span> flags
+and the corresponding messages are listed below:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Flag</p></th>
+<th class="head"><p>Message</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REQUEST_LAUNCHED</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SOME_APP_LAUNCHED</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REQUEST_QUIT</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SOME_APP_QUIT</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REQUEST_ACTIVATED</span></code></p></td>
+<td><p><a class="reference internal" href="../../constants.html#_CPPv420B_SOME_APP_ACTIVATED" title="B_SOME_APP_ACTIVATED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SOME_APP_ACTIVATED</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
 <p>The fields in a notification message describe the application that was
 launched, quit, or activated:</p>
-<p>FieldTypeDescriptionmime_sigB_STRING_TYPEMIME signatureteamB_INT32_TYPEteam_idthreadB_INT32_TYPEthread_idflagsB_INT32_TYPEapplication flagsrefB_REF_TYPEexecutable’s entry_ref</p>
-<p><span class="hmethod">StopWatching()</span> terminates the application monitor previously initiated
-for a given <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code>.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">mime_sig</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>MIME signature</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">team</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p><span class="htype">team_id</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">thread</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p><span class="htype">thread_id</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">flags</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>application flags</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">ref</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REF_TYPE</span></code></p></td>
+<td><p>executable’s <span class="htype">entry_ref</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><span class="hmethod">StopWatching()</span> terminates the application monitor previously
+initiated for a given <a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a>.</p>
 <section id="_CPPv4NK7BRoster7TeamForEPKc">
 </section>
 <section id="_CPPv4NK7BRoster9IsRunningEPKc">
 </section>
 <h3>
-TeamFor(), IsRunning()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">team_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">TeamFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">team_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">TeamFor</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">executable</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">IsRunning</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRoster</span><span class="p">::</span></span><span class="n">IsRunning</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">executable</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Both these functions query whether the application identified by its
-<span class="hparameter">signature</span> or by a reference to its <span class="hparameter">executable</span> file is running.
-<span class="hmethod">TeamFor()</span> returns its team identifier if it is, and
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code> if it’s not. <span class="hmethod">IsRunning()</span> returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if it is, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if it’s
-not.</p>
+TeamFor(), IsRunning()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">team_id</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">TeamFor</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">team_id</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">TeamFor</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">executable</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">IsRunning</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><span class="n">BRoster</span></a><span class="p">::</span></span><span class="n">IsRunning</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">executable</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Both these functions query whether the application identified by its
+<span class="hparameter">signature</span> or by a reference to its <span class="hparameter">executable</span> file is
+running. <span class="hmethod">TeamFor()</span> returns its team identifier if it is, and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code> if it’s not. <span class="hmethod">IsRunning()</span> returns
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if it is, and <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if it’s not.</p>
 <p>If the application is running, you probably will want its team identifier
-(to set up a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code>
-, for example). Therefore, it’s most economical to
-simply call <span class="hmethod">TeamFor()</span> and forego <span class="hmethod">IsRunning()</span>.</p>
-<p>If more than one instance of the <span class="hparameter">signature</span> application is running, or if
-more than one instance was launched from the same <span class="hparameter">executable</span> file,
-<span class="hmethod">TeamFor()</span> arbitrarily picks one of the instances and returns its
-team_id.</p>
+(to set up a <a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> , for example). Therefore, it’s most
+economical to simply call <span class="hmethod">TeamFor()</span> and forego
+<span class="hmethod">IsRunning()</span>.</p>
+<p>If more than one instance of the <span class="hparameter">signature</span> application is
+running, or if more than one instance was launched from the same
+<span class="hparameter">executable</span> file, <span class="hmethod">TeamFor()</span> arbitrarily picks one of
+the instances and returns its <span class="htype">team_id</span>.</p>
 <p>See also: <a class="reference internal" href="#_CPPv4NK7BRoster10GetAppListEP5BList" title="BRoster::GetAppList"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetAppList()</span></code></a></p>
 </section>
 <section id="global-variables">
 <h2>Global Variables<a class="headerlink" href="#global-variables" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BRoster</span><span class="o">*</span> <span class="n">be_roster</span>
+<section id="be-roster">
+<h3>be_roster<a class="headerlink" href="#be-roster" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">BRoster</span><span class="o">*</span><span class="w"> </span><span class="n">be_roster</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This variable points to the application’s global <span class="hclass">BRoster</span> object. The
-<span class="hclass">BRoster</span> keeps a roster of all running applications and can add
-applications to the roster by launching them. It’s initialized when the
+<p>This variable points to the application’s global <span class="hclass">BRoster</span> object.
+The <span class="hclass">BRoster</span> keeps a roster of all running applications and can
+add applications to the roster by launching them. It’s initialized when the
 application starts up.</p>
+</section>
 </section>
 <section id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">B_BACKGROUND_APP</span>
-<span class="n">B_ARGV_ONLY</span>
-<span class="n">B_LAUNCH_MASK</span>
+<section id="application-flags">
+<h3>Application Flags<a class="headerlink" href="#application-flags" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">B_BACKGROUND_APP</span><span class="w"></span>
+<span class="n">B_ARGV_ONLY</span><span class="w"></span>
+<span class="n">B_LAUNCH_MASK</span><span class="w"></span>
 </pre></div>
 </div>
 <p>These constants are used to get information from the flags field of an
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">info()</span></code>
-structure.
-See also:
-<a class="reference internal" href="#_CPPv4NK7BRoster10GetAppInfoEPKcP8app_info" title="BRoster::GetAppInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BRoster::GetAppInfo()</span></code></a>,
-“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Launch()</span></code>” below</p>
-<h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">B_MULTIPLE_LAUNCH</span>
-<span class="n">B_SINGLE_LAUNCH</span>
-<span class="n">B_EXCLUSIVE_LAUNCH</span>
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">app_info</span></code> structure.</p>
+<p>See also: <a class="reference internal" href="#_CPPv4NK7BRoster10GetAppInfoEPKcP8app_info" title="BRoster::GetAppInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BRoster::GetAppInfo()</span></code></a>, “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Launch</span> <span class="pre">Constants</span></code>” below</p>
+</section>
+<section id="launch-constants">
+<h3>Launch Constants<a class="headerlink" href="#launch-constants" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">B_MULTIPLE_LAUNCH</span><span class="w"></span>
+<span class="n">B_SINGLE_LAUNCH</span><span class="w"></span>
+<span class="n">B_EXCLUSIVE_LAUNCH</span><span class="w"></span>
 </pre></div>
 </div>
 <p>These constants explain whether an application can be launched any number
 of times, only once from a particular executable file, or only once for a
 particular application signature. This information is part of the flags
-field of an
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">info()</span></code>
-structure and can be extracted using the
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_LAUNCH_MASK</span></code> constant.
-See also:
-<a class="reference internal" href="#_CPPv4NK7BRoster10GetAppInfoEPKcP8app_info" title="BRoster::GetAppInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BRoster::GetAppInfo()</span></code></a>,
-“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Application()</span></code>” above</p>
+field of an <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">app_info</span></code> structure and can be extracted
+using the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LAUNCH_MASK</span></code> constant.</p>
+<p>See also: <a class="reference internal" href="#_CPPv4NK7BRoster10GetAppInfoEPKcP8app_info" title="BRoster::GetAppInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BRoster::GetAppInfo()</span></code></a>, “<span class="xref std std-ref">Application Flags</span>”
+above</p>
+</section>
 </section>
 <section id="defined-types">
 <h2>Defined Types<a class="headerlink" href="#defined-types" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
-    <span class="n">thread_id</span> <span class="n">thread</span><span class="p">;</span>
-    <span class="n">team_id</span>   <span class="n">team</span><span class="p">;</span>
-    <span class="n">port_id</span>   <span class="n">port</span><span class="p">;</span>
-    <span class="n">uint32</span>    <span class="n">flags</span><span class="p">;</span>
-    <span class="n">entry_ref</span> <span class="n">ref</span><span class="p">;</span>
-    <span class="n">char</span>      <span class="n">signature</span><span class="p">[</span><span class="n">B_MIME_TYPE_LENGTH</span><span class="p">];</span>
-    <span class="n">app_info</span><span class="p">(</span><span class="n">void</span><span class="p">);</span>
-    <span class="o">~</span><span class="n">app_info</span><span class="p">(</span><span class="n">void</span><span class="p">);</span>
-<span class="p">}</span> <span class="n">app_info</span>
+<section id="app-info">
+<h3>app_info<a class="headerlink" href="#app-info" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">thread_id</span><span class="w"> </span><span class="kr">thread</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">team_id</span><span class="w">   </span><span class="n">team</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">port_id</span><span class="w">   </span><span class="n">port</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">uint32</span><span class="w">    </span><span class="n">flags</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">entry_ref</span><span class="w"> </span><span class="n">ref</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w">      </span><span class="n">signature</span><span class="p">[</span><span class="n">B_MIME_TYPE_LENGTH</span><span class="p">];</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">app_info</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="o">~</span><span class="n">app_info</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">app_info</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This structure is used by
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRoster</span></code>’s
-<a class="reference internal" href="#_CPPv4NK7BRoster10GetAppInfoEPKcP8app_info" title="BRoster::GetAppInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetAppInfo()</span></code></a>,
-<a class="reference internal" href="#_CPPv4NK7BRoster17GetRunningAppInfoE7team_idP8app_info" title="BRoster::GetRunningAppInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetRunningAppInfo()</span></code></a>,
-and
-<a class="reference internal" href="#_CPPv4NK7BRoster16GetActiveAppInfoEP8app_info" title="BRoster::GetActiveAppInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetActiveAppInfo()</span></code></a>
-functions to report information about an
+<p>This structure is used by <a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRoster</span></code></a>’s <a class="reference internal" href="#_CPPv4NK7BRoster10GetAppInfoEPKcP8app_info" title="BRoster::GetAppInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetAppInfo()</span></code></a>, <a class="reference internal" href="#_CPPv4NK7BRoster17GetRunningAppInfoE7team_idP8app_info" title="BRoster::GetRunningAppInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetRunningAppInfo()</span></code></a>, and <a class="reference internal" href="#_CPPv4NK7BRoster16GetActiveAppInfoEP8app_info" title="BRoster::GetActiveAppInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetActiveAppInfo()</span></code></a> functions to report information about an
 application. Its constructor ensures that its fields are initialized to
 invalid values. To get meaningful values for an actual application, you
-must pass the structure to one of the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRoster</span></code>
-functions. See those functions for a description of the various fields.</p>
+must pass the structure to one of the <a class="reference internal" href="#_CPPv47BRoster" title="BRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRoster</span></code></a> functions. See
+those functions for a description of the various fields.</p>
+</section>
 </section>
 </section>
 
@@ -478,7 +564,7 @@ functions. See those functions for a description of the various fields.</p>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../device/introduction.html">Introduction</a>&#160;&#160;»
+        <a href="../device/joystick.html">BJoystick</a>&#160;&#160;»
         </p>
 
       </div>

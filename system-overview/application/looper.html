@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BLooper &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMessage" href="message.html" />
+    <link rel="prev" title="BInvoker" href="invoker.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BLooper</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="invoker.html">BInvoker</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="message.html">BMessage</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BLooper</a><ul>
+<li><a class="reference internal" href="#messages-and-handlers">Messages and Handlers</a></li>
+<li><a class="reference internal" href="#locking">Locking</a></li>
+<li><a class="reference internal" href="#allocation">Allocation</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="blooper">
+<h1 id="CPPv47BLooper">BLooper<a class="headerlink" href="#blooper" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> object creates a “message loop” that receives
+messages that are sent or posted to the <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>. The message
+loop runs in a separate thread that’s spawned (and told to run) when the
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> receives a <a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper3RunEv" title="BLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a> call. If
+you’re creating your own <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>, you can invoke
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper3RunEv" title="BLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a> from within the <a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper7BLooperEPKc5int325int32" title="BLooper::BLooper"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a>.</p>
+<p>You tell the loop to stop by sending the <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> a
+<a class="reference internal" href="../../constants.html#_CPPv416B_QUIT_REQUESTED" title="B_QUIT_REQUESTED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_QUIT_REQUESTED</span></code></a> message, which invokes the object’s
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper4QuitEv" title="BLooper::Quit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Quit()</span></code></a> function. You can also call
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper4QuitEv" title="BLooper::Quit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Quit()</span></code></a> directly, but you have to
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a> the object first (<a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>
+locking is explained later). <a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper4QuitEv" title="BLooper::Quit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Quit()</span></code></a> deletes the
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> for you.</p>
+<div class="note admonition">
+<p class="admonition-title" id="CPPv44Note">Note</p>
+<p>The <a class="reference internal" href="../../kits/application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> class, the most important
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> subclass, bends the above description in one of two
+ways:</p>
+<p>A <a class="reference internal" href="../../kits/application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> takes over the main thread, it doesn’t spawn a
+new one.</p>
+<p>You do have to delete <span class="hparameter">be_app</span>; you can’t just <a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper4QuitEv" title="BLooper::Quit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Quit()</span></code></a> it.</p>
+</div>
+<section id="messages-and-handlers">
+<h2>Messages and Handlers<a class="headerlink" href="#messages-and-handlers" title="Permalink to this heading">¶</a></h2>
+<p>You can deliver messages to a <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>’s thread by…</p>
+<ul class="simple">
+<li><p>Posting them directly by calling <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>’s
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper11PostMessageEP8BMessage" title="BLooper::PostMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PostMessage()</span></code></a> function.</p></li>
+<li><p>Sending them through <a class="reference internal" href="../../kits/application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a>’s <a class="reference internal" href="../../kits/application/messenger.html#_CPPv4NK10BMessenger11SendMessageEP8BMessageP8BMessage9bigtime_t9bigtime_t" title="BMessenger::SendMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SendMessage()</span></code></a> or <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>’s
+<a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage9SendReplyEP8BMessageP8BMessage9bigtime_t9bigtime_t" title="BMessage::SendReply"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SendReply()</span></code></a> function.</p></li>
+</ul>
+<p>As messages arrive, they’re added to the <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>’s
+<a class="reference internal" href="../../kits/application/message-queue.html#_CPPv413BMessageQueue" title="BMessageQueue"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageQueue</span></code></a> object. The <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> takes messages
+from the queue in the order that they arrived, and calls
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchMessage()</span></code></a> for each one.
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchMessage()</span></code></a> locks the
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> and then hands the message to a <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>
+object by invoking the handler’s <a class="reference internal" href="../../kits/application/handler.html#_CPPv4N8BHandler15MessageReceivedEP8BMessage" title="BHandler::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MessageReceived()</span></code></a> function. But which <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> does
+the <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> hand the message to? Here’s the path:</p>
+<ul class="simple">
+<li><p>If an incoming message targets a specific <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>, and if
+that <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> is one of the <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>’s eligible
+handlers (as set through the <a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper10AddHandlerEP8BHandler" title="BLooper::AddHandler"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddHandler()</span></code></a>
+function), the <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> uses that <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>. (See
+the <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> and <a class="reference internal" href="../../kits/application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> classes for
+instructions on how to target a <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>.)</p></li>
+<li><p>Otherwise it hands the message to its <em>preferred handler</em>, as set through
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv4NK7BLooper19SetPreferredHandlerEP8BHandler" title="BLooper::SetPreferredHandler"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetPreferredHandler()</span></code></a>.</p></li>
+<li><p>If no preferred handler is set, the <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> itself handles
+the message (its own implementation of <a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper15MessageReceivedEP8BMessage" title="BLooper::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MessageReceived()</span></code></a> is invoked).</p></li>
+</ul>
+<p>After the handler is finished (when its <a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper15MessageReceivedEP8BMessage" title="BLooper::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MessageReceived()</span></code></a> returns), the <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> is
+automatically deleted and the <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> is unlocked.</p>
+</section>
+<section id="locking">
+<h2>Locking<a class="headerlink" href="#locking" title="Permalink to this heading">¶</a></h2>
+<p>Access to many <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> functions (and some
+<a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> functions) is proteced by a lock. To invoke a
+lock-protected functions (or groups of functions), you must first call
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a>, and then call <a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Unlock()</span></code></a> when you’re done. The lock is scoped to the calling
+thread: <a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a>/<a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Unlock()</span></code></a> calls can be nested within the thread. Keep in mind that
+each <a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a> must balanced by an
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Unlock()</span></code></a>.</p>
+<p>The <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> <a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper7BLooperEPKc5int325int32" title="BLooper::BLooper"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a>
+automatically locks the object. It’s unlocked when <a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper3RunEv" title="BLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a> is invoked. This means that the <a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper3RunEv" title="BLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a> function and any other lock-protected functions that you
+call before you call <a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper3RunEv" title="BLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a> must be called from
+the thread that constructed the <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>.</p>
+</section>
+<section id="allocation">
+<h2>Allocation<a class="headerlink" href="#allocation" title="Permalink to this heading">¶</a></h2>
+<p>Because they delete themselves when told to quit, <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>s
+can’t be allocated on the stack; you have to construct them with
+<span class="hmethod">new</span>.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="invoker.html">BInvoker</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="message.html">BMessage</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

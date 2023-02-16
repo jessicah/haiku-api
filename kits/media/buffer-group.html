@@ -72,52 +72,44 @@
       <div class="content" role="main">
         
   <section id="bbuffergroup">
-<h1>BBufferGroup<a class="headerlink" href="#bbuffergroup" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv412BBufferGroup">BBufferGroup<a class="headerlink" href="#bbuffergroup" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N12BBufferGroup12BBufferGroupE6size_t5int326uint326uint32">
 </section>
 <h3>
-BBufferGroup()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BBufferGroup12BBufferGroupE6size_t5int326uint326uint32" title="BBufferGroup::BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">BBufferGroup</span><span class="sig-paren">(</span><span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numBuffers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">3</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">placement</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_ANY_ADDRESS</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">lock</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FULL_LOCK</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BBufferGroup12BBufferGroupEv" title="BBufferGroup::BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">BBufferGroup</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BBufferGroup12BBufferGroupE5int32PK9buffer_id" title="BBufferGroup::BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">BBufferGroup</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">numBuffers</span>, <span class="k">const</span><span class="w"> </span><span class="n">buffer_id</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bufferList</span><span class="sig-paren">)</span></pre><p>The first form of the constructor creates a
-<span class="hclass">BBufferGroup</span> with some number
-of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBuffer</span></code>s
-already allocated by the group. These buffers will all live
-within a single Kernel Kit area, allocated by the group. The group tries
-to allocate an area with properties specified by the <span class="hparameter">placement</span>
-and <span class="hparameter">lock</span>
-arguments, large enough to hold <span class="hparameter">numBuffers</span>
-buffers of the specified <span class="hparameter">size</span>
-(there may be some padding added).
-The second form of the constructor creates a <span class="hclass">BBufferGroup</span> but doesn’t
-create any buffers for it. You should add
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBuffer</span></code>s
-to the group before trying to use it.
-The third form of the constructor creates a <span class="hclass">BBufferGroup</span> that contains
-the specified list of buffers. <span class="hparameter">bufferList</span> points to an array of buffer
-IDs for the buffers to be controlled by the group, and <span class="hparameter">numBuffers</span> is the
-number of buffers in the list. This version of the constructor isn’t one
-you’ll use very often.
-Before using any buffers from a new <span class="hclass">BBufferGroup</span>,
-call <a class="reference internal" href="#_CPPv4N12BBufferGroup9InitCheckEv" title="BBufferGroup::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> to
-determine if any errors occurred while creating the group.</p>
+BBufferGroup()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BBufferGroup12BBufferGroupE6size_t5int326uint326uint32" title="BBufferGroup::BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">BBufferGroup</span><span class="sig-paren">(</span><span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numBuffers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">3</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">placement</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_ANY_ADDRESS</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">lock</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FULL_LOCK</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BBufferGroup12BBufferGroupEv" title="BBufferGroup::BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">BBufferGroup</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BBufferGroup12BBufferGroupE5int32PK9buffer_id" title="BBufferGroup::BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">BBufferGroup</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">numBuffers</span>, <span class="k">const</span><span class="w"> </span><span class="n">buffer_id</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bufferList</span><span class="sig-paren">)</span></pre><p>The first form of the constructor creates a <span class="hclass">BBufferGroup</span> with
+some number of <a class="reference internal" href="buffer.html#_CPPv47BBuffer" title="BBuffer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBuffer</span></code></a>s already allocated by the group. These
+buffers will all live within a single Kernel Kit area, allocated by the
+group. The group tries to allocate an area with properties specified by the
+<span class="hparameter">placement</span> and <span class="hparameter">lock</span> arguments, large enough to hold
+<span class="hparameter">numBuffers</span> buffers of the specified <span class="hparameter">size</span> (there may be
+some padding added).</p>
+<p>The second form of the constructor creates a <span class="hclass">BBufferGroup</span> but
+doesn’t create any buffers for it. You should add <a class="reference internal" href="buffer.html#_CPPv47BBuffer" title="BBuffer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBuffer</span></code></a>s to
+the group before trying to use it.</p>
+<p>The third form of the constructor creates a <span class="hclass">BBufferGroup</span> that
+contains the specified list of buffers. <span class="hparameter">bufferList</span> points to an
+array of buffer IDs for the buffers to be controlled by the group, and
+<span class="hparameter">numBuffers</span> is the number of buffers in the list. This version of
+the constructor isn’t one you’ll use very often.</p>
+<p>Before using any buffers from a new <span class="hclass">BBufferGroup</span>, call
+<a class="reference internal" href="#_CPPv4N12BBufferGroup9InitCheckEv" title="BBufferGroup::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> to determine if any
+errors occurred while creating the group.</p>
 <section id="_CPPv4N12BBufferGroupD0Ev">
 </section>
 <h3>
-~BBufferGroup()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BBufferGroup</span><span class="p">::</span></span><span class="n">~BBufferGroup</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Releases all memory used by the <span class="hclass">BBufferGroup</span>,
-including the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBuffer</span></code>s it
-controls.
-Keep in mind that
-<a class="reference internal" href="#_CPPv4N12BBufferGroup9AddBufferERK17buffer_clone_info" title="BBufferGroup::AddBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddBuffer()</span></code></a>
-clones the buffer area. This destructor
-releases the clones, but it’s your application’s job to release the
-original area you added.</p>
+~BBufferGroup()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BBufferGroup" title="BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">~BBufferGroup</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Releases all memory used by the <span class="hclass">BBufferGroup</span>, including the
+<a class="reference internal" href="buffer.html#_CPPv47BBuffer" title="BBuffer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBuffer</span></code></a>s it controls.</p>
+<p>Keep in mind that <a class="reference internal" href="#_CPPv4N12BBufferGroup9AddBufferERK17buffer_clone_info" title="BBufferGroup::AddBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddBuffer()</span></code></a> clones
+the buffer area. This destructor releases the clones, but it’s your
+application’s job to release the original area you added.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>Your node needs to delete the buffer group corresponding to any
-connection that is disconnected or whenever the node is deleted. Until
-your node does so, the other end of the connection will be blocked
-waiting for the buffer group to be deleted.</p>
+<p>Your node needs to delete the buffer group corresponding to any connection
+that is disconnected or whenever the node is deleted. Until your node does
+so, the other end of the connection will be blocked waiting for the buffer
+group to be deleted.</p>
 </div>
 </section>
 <section id="member-functions">
@@ -125,36 +117,29 @@ waiting for the buffer group to be deleted.</p>
 <section id="_CPPv4N12BBufferGroup9AddBufferERK17buffer_clone_info">
 </section>
 <h3>
-AddBuffer()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferGroup</span><span class="p">::</span></span><span class="n">AddBuffer</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">buffer_clone_info</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><p>Given the buffer_clone_info, this function clones the buffer and adds the
-clone to the <span class="hclass">BBufferGroup</span>. Normally you’ll
-fill out the buffer_clone_info
-structure yourself.
-Since the buffer is cloned, you’ll need to delete the original memory
-area specified by the buffer_clone_info structure yourself when you’re no
-longer using it; the <span class="hclass">BBufferGroup</span> won’t do it for you.</p>
+AddBuffer()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BBufferGroup" title="BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">AddBuffer</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">buffer_clone_info</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><p>Given the <span class="htype">buffer_clone_info</span>, this function clones the buffer and
+adds the clone to the <span class="hclass">BBufferGroup</span>. Normally you’ll fill out the
+<span class="htype">buffer_clone_info</span> structure yourself.</p>
+<p>Since the buffer is cloned, you’ll need to delete the original memory area
+specified by the <span class="htype">buffer_clone_info</span> structure yourself when you’re
+no longer using it; the <span class="hclass">BBufferGroup</span> won’t do it for you.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>You shouldn’t pass the result of a
-<a class="reference internal" href="buffer.html#_CPPv4NK7BBuffer9CloneInfoEv" title="BBuffer::CloneInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBuffer::CloneInfo()</span></code></a>
-call to this
-function, as doing so would create an “alias” buffer for the same memory
-area. This is probably not the effect you want.</p>
+<p>You shouldn’t pass the result of a <a class="reference internal" href="buffer.html#_CPPv4NK7BBuffer9CloneInfoEv" title="BBuffer::CloneInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBuffer::CloneInfo()</span></code></a> call to
+this function, as doing so would create an “alias” buffer for the same
+memory area. This is probably not the effect you want.</p>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>No error adding the buffer to the group.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
 <td><p>Couldn’t clone the buffer into the <span class="hclass">BBufferGroup</span>’s address space.</p></td>
 </tr>
 </tbody>
@@ -162,53 +147,41 @@ area. This is probably not the effect you want.</p>
 <section id="_CPPv4N12BBufferGroup12AddBuffersToEP8BMessagePKcb">
 </section>
 <h3>
-AddBuffersTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferGroup</span><span class="p">::</span></span><span class="n">AddBuffersTo</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">needLock</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span></pre><p>Adds the group’s buffers to the specified
-<span class="hparameter">message</span>, storing them in an array with the
-specified <span class="hparameter">name</span>. If
-<span class="hparameter">needLock</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the
-<span class="hclass">BBufferGroup</span> is locked before performing the
-operation, then unlocked when finished; otherwise, you guarantee that the
-buffers won’t go anywhere during the
-<span class="hmethod">AddBuffersTo()</span> call.
-The buffers are added by ID number, and are therefore in int32 format.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+AddBuffersTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BBufferGroup" title="BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">AddBuffersTo</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">needLock</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span></pre><p>Adds the group’s buffers to the specified <span class="hparameter">message</span>, storing them
+in an array with the specified <span class="hparameter">name</span>. If <span class="hparameter">needLock</span> is
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, the <span class="hclass">BBufferGroup</span> is locked before performing
+the operation, then unlocked when finished; otherwise, you guarantee that
+the buffers won’t go anywhere during the <span class="hmethod">AddBuffersTo()</span> call.</p>
+<p>The buffers are added by ID number, and are therefore in <span class="htype">int32</span>
+format.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>No error adding the buffers to the message.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Errors from
-<a class="reference internal" href="../application/message.html#_CPPv4N8BMessage8AddInt32EPKc5int32" title="BMessage::AddInt32"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddInt32()</span></code></a>.</p>
+<p>Errors from <a class="reference internal" href="../application/message.html#_CPPv4N8BMessage8AddInt32EPKc5int32" title="BMessage::AddInt32"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddInt32()</span></code></a>.</p>
 <section id="_CPPv4N12BBufferGroup12CountBuffersEP5int32">
 </section>
 <h3>
-CountBuffers()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferGroup</span><span class="p">::</span></span><span class="n">CountBuffers</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outBufferCount</span><span class="sig-paren">)</span></pre><p>Returns, in <span class="hparameter">outBufferCount</span>, the
-number of buffers in the group.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+CountBuffers()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BBufferGroup" title="BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">CountBuffers</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outBufferCount</span><span class="sig-paren">)</span></pre><p>Returns, in <span class="hparameter">outBufferCount</span>, the number of buffers in the group.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The number of buffers was returned successfully.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
 <td><p>Invalid <span class="hparameter">outBufferCount</span> pointer</p></td>
 </tr>
 </tbody>
@@ -216,51 +189,43 @@ number of buffers in the group.</p>
 <section id="_CPPv4N12BBufferGroup13GetBufferListE5int32PP7BBuffer">
 </section>
 <h3>
-GetBufferList()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferGroup</span><span class="p">::</span></span><span class="n">GetBufferList</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">listCount</span>, <span class="n">BBuffer</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">outBuffers</span><span class="sig-paren">)</span></pre><p>Returns a list of all the buffers in the group. When calling
-<span class="hmethod">GetBufferList()</span>, pass in
-<span class="hparameter">outBuffers</span> a pointer to an array of
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBuffer</span></code>
-pointers that you want to be filled with pointers to the group’s buffers,
-and specify the number of elements in the array in <span class="hparameter">listCount</span>.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+GetBufferList()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BBufferGroup" title="BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">GetBufferList</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">listCount</span>, <a class="reference internal" href="buffer.html#_CPPv47BBuffer" title="BBuffer"><span class="n">BBuffer</span></a><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">outBuffers</span><span class="sig-paren">)</span></pre><p>Returns a list of all the buffers in the group. When calling
+<span class="hmethod">GetBufferList()</span>, pass in <span class="hparameter">outBuffers</span> a pointer to an
+array of <a class="reference internal" href="buffer.html#_CPPv47BBuffer" title="BBuffer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBuffer</span></code></a> pointers that you want to be filled with
+pointers to the group’s buffers, and specify the number of elements in the
+array in <span class="hparameter">listCount</span>.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>No errors.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
-<td><p><span class="hparameter">listCount</span> is less than 1, or <span class="hparameter">outBuffers</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p><span class="hparameter">listCount</span> is less than 1, or <span class="hparameter">outBuffers</span> is
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span></p></td>
 </tr>
 </tbody>
 </table>
 <section id="_CPPv4N12BBufferGroup9InitCheckEv">
 </section>
 <h3>
-InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferGroup</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the error code resulting from the construction of the
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BBufferGroup" title="BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the error code resulting from the construction of the
 <span class="hclass">BBufferGroup</span>.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The new group was created successfully.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
 <td><p>Couldn’t allocate the buffers for the group.</p></td>
 </tr>
 <tr class="row-even"><td><p>Area errors.</p></td>
@@ -271,45 +236,37 @@ InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="
 <section id="_CPPv4N12BBufferGroup17ReclaimAllBuffersEv">
 </section>
 <h3>
-ReclaimAllBuffers()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferGroup</span><span class="p">::</span></span><span class="n">ReclaimAllBuffers</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>If you pass a buffer group to some other
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferProducer</span></code>
-but pass <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> for <span class="hparameter">willReclaim</span>
-in the
-<a class="reference internal" href="buffer-consumer.html#_CPPv4N15BBufferConsumer19SetOutputBuffersForERK12media_sourceRK17media_destinationP12BBufferGroupPvP5int32bPv" title="BBufferConsumer::SetOutputBuffersFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBufferConsumer::SetOutputBuffersFor()</span></code></a>
-call, you can later reclaim the buffers into the
-<span class="hclass">BBufferGroup</span> by calling
-<span class="hmethod">ReclaimAllBuffers()</span>.
-<span class="hmethod">ReclaimAllBuffers()</span> will return
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> when all buffers are accounted for,
-or return an error if buffers can’t be reclaimed.
-If you have buffers that reference some object that might go away (such
-as a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code>),
-you should call <span class="hmethod">ReclaimAllBuffers()</span> on the group and
-delete the <span class="hclass">BBufferGroup</span> before that object goes away.</p>
+ReclaimAllBuffers()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BBufferGroup" title="BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">ReclaimAllBuffers</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>If you pass a buffer group to some other <a class="reference internal" href="buffer-producer.html#_CPPv415BBufferProducer" title="BBufferProducer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferProducer</span></code></a> but
+pass <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> for <span class="hparameter">willReclaim</span> in the
+<a class="reference internal" href="buffer-consumer.html#_CPPv4N15BBufferConsumer19SetOutputBuffersForERK12media_sourceRK17media_destinationP12BBufferGroupPvP5int32bPv" title="BBufferConsumer::SetOutputBuffersFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBufferConsumer::SetOutputBuffersFor()</span></code></a> call, you can later
+reclaim the buffers into the <span class="hclass">BBufferGroup</span> by calling
+<span class="hmethod">ReclaimAllBuffers()</span>.</p>
+<p><span class="hmethod">ReclaimAllBuffers()</span> will return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> when all
+buffers are accounted for, or return an error if buffers can’t be
+reclaimed.</p>
+<p>If you have buffers that reference some object that might go away (such as
+a <a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a>), you should call <span class="hmethod">ReclaimAllBuffers()</span> on
+the group and delete the <span class="hclass">BBufferGroup</span> before that object goes
+away.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
 <p>Before reclaiming your buffers, be sure to call
-<code class="docutils literal notranslate"><span class="pre">BBufferConsumer::SetOutputBuffersFor(output,</span> <span class="pre">NULL)</span></code>
-to let the Media Kit know
-your producer no longer has permission to use them. If you forget this
-step, the producer will hang onto the buffers until it’s deleted, and
-your <span class="hmethod">ReclaimAllBuffers()</span> call will hang, possibly forever.</p>
+<code class="docutils literal notranslate"><span class="pre">BBufferConsumer::SetOutputBuffersFor(output,</span> <span class="pre">NULL)</span></code> to let the Media Kit
+know your producer no longer has permission to use them. If you forget this
+step, the producer will hang onto the buffers until it’s deleted, and your
+<span class="hmethod">ReclaimAllBuffers()</span> call will hang, possibly forever.</p>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>All buffers reclaimed successfully.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_CANNOT_RECLAIM_BUFFERS</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_CANNOT_RECLAIM_BUFFERS</span></code>.</p></td>
 <td><p>Some buffers couldn’t be reclaimed.</p></td>
 </tr>
 </tbody>
@@ -317,65 +274,54 @@ your <span class="hmethod">ReclaimAllBuffers()</span> call will hang, possibly f
 <section id="_CPPv4N12BBufferGroup13RequestBufferE6size_t9bigtime_t">
 </section>
 <h3>
-RequestBuffer()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BBuffer</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BBufferGroup</span><span class="p">::</span></span><span class="n">RequestBuffer</span><span class="sig-paren">(</span><span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">timeout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_INFINITE_TIMEOUT</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferGroup</span><span class="p">::</span></span><span class="n">RequestBuffer</span><span class="sig-paren">(</span><span class="n">BBuffer</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outBuffer</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">timeout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_INFINITE_TIMEOUT</span><span class="sig-paren">)</span></pre><p>Returns a pointer to a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBuffer</span></code>
-of at least the specified size that your
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferProducer</span></code>
-subclass can put data into, then pass on to a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">destination()</span></code>.
-If there isn’t a suitable buffer available, the call
-will block until either a buffer becomes available (in which case the
-buffer is returned) or the specified <span class="hparameter">timeout</span> is reached.
-If you pass a <span class="hparameter">timeout</span> value that’s less
-than zero, <span class="hmethod">RequestBuffer()</span> will
-return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> immediately if there’s no buffer available, otherwise it will
-return a pointer to a buffer you can use.</p>
+RequestBuffer()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="buffer.html#_CPPv47BBuffer" title="BBuffer"><span class="n">BBuffer</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BBufferGroup" title="BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">RequestBuffer</span><span class="sig-paren">(</span><span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">timeout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><a class="reference internal" href="../kernel/miscellaneous.html#_CPPv418B_INFINITE_TIMEOUT" title="B_INFINITE_TIMEOUT"><span class="n">B_INFINITE_TIMEOUT</span></a><span class="sig-paren">)</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BBufferGroup" title="BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">RequestBuffer</span><span class="sig-paren">(</span><a class="reference internal" href="buffer.html#_CPPv47BBuffer" title="BBuffer"><span class="n">BBuffer</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">outBuffer</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">timeout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><a class="reference internal" href="../kernel/miscellaneous.html#_CPPv418B_INFINITE_TIMEOUT" title="B_INFINITE_TIMEOUT"><span class="n">B_INFINITE_TIMEOUT</span></a><span class="sig-paren">)</span></pre><p>Returns a pointer to a <a class="reference internal" href="buffer.html#_CPPv47BBuffer" title="BBuffer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBuffer</span></code></a> of at least the specified size
+that your <a class="reference internal" href="buffer-producer.html#_CPPv415BBufferProducer" title="BBufferProducer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferProducer</span></code></a> subclass can put data into, then
+pass on to a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_destination</span></code>. If there
+isn’t a suitable buffer available, the call will block until either a
+buffer becomes available (in which case the buffer is returned) or the
+specified <span class="hparameter">timeout</span> is reached.</p>
+<p>If you pass a <span class="hparameter">timeout</span> value that’s less than zero,
+<span class="hmethod">RequestBuffer()</span> will return <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> immediately if
+there’s no buffer available, otherwise it will return a pointer to a buffer
+you can use.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>In BeOS Release 4.5, the timeout is ignored (unless you specify a
-negative value); <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INFINITE_TIMEOUT</span></code> is always used, regardless of the
-value you specify.</p>
+<p>In BeOS Release 4.5, the timeout is ignored (unless you specify a negative
+value); <a class="reference internal" href="../kernel/miscellaneous.html#_CPPv418B_INFINITE_TIMEOUT" title="B_INFINITE_TIMEOUT"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INFINITE_TIMEOUT</span></code></a> is always used, regardless of
+the value you specify.</p>
 </div>
-<p><span class="hmethod">RequestBuffer()</span> doesn’t use the buffer flags; instead, you can look at
-the buffers within a <span class="hclass">BBufferGroup</span> to find a specific buffer to request
-yourself, based on the value returned by
-<a class="reference internal" href="buffer.html#_CPPv4N7BBuffer5FlagsEv" title="BBuffer::Flags"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBuffer::Flags()</span></code></a>
-or
-<a class="reference internal" href="buffer.html#_CPPv4N7BBuffer8SizeUsedEv" title="BBuffer::SizeUsed"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBuffer::SizeUsed()</span></code></a>,
-for example. Use the second form of <span class="hmethod">RequestBuffer()</span> to
-obtain a specific buffer.
-The first version of <span class="hmethod">RequestBuffer()</span>
-returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if no buffer can be
-obtained, and sets errno
-to the appropriate error code. The second
-version returns an appropriate error code.</p>
+<p><span class="hmethod">RequestBuffer()</span> doesn’t use the buffer flags; instead, you can
+look at the buffers within a <span class="hclass">BBufferGroup</span> to find a specific
+buffer to request yourself, based on the value returned by
+<a class="reference internal" href="buffer.html#_CPPv4N7BBuffer5FlagsEv" title="BBuffer::Flags"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBuffer::Flags()</span></code></a> or <a class="reference internal" href="buffer.html#_CPPv4N7BBuffer8SizeUsedEv" title="BBuffer::SizeUsed"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBuffer::SizeUsed()</span></code></a>, for example.
+Use the second form of <span class="hmethod">RequestBuffer()</span> to obtain a specific
+buffer.</p>
+<p>The first version of <span class="hmethod">RequestBuffer()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>
+if no buffer can be obtained, and sets <span class="hparameter">errno</span> to the appropriate
+error code. The second version returns an appropriate error code.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
 <p>Don’t call <span class="hmethod">RequestBuffer()</span> while an outstanding
-<a class="reference internal" href="#_CPPv4N12BBufferGroup17ReclaimAllBuffersEv" title="BBufferGroup::ReclaimAllBuffers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReclaimAllBuffers()</span></code></a>
-request is pending. To make sure that doesn’t happen, a buffer producer
-should be designed to not know about the old group anymore once
-<a class="reference internal" href="buffer-producer.html#_CPPv4N15BBufferProducer14SetBufferGroupERK12media_sourceP12BBufferGroup" title="BBufferProducer::SetBufferGroup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetBufferGroup()</span></code></a>
-is called to change its buffer group.</p>
+<a class="reference internal" href="#_CPPv4N12BBufferGroup17ReclaimAllBuffersEv" title="BBufferGroup::ReclaimAllBuffers"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReclaimAllBuffers()</span></code></a> request
+is pending. To make sure that doesn’t happen, a buffer producer should be
+designed to not know about the old group anymore once
+<a class="reference internal" href="buffer-producer.html#_CPPv4N15BBufferProducer14SetBufferGroupERK12media_sourceP12BBufferGroup" title="BBufferProducer::SetBufferGroup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetBufferGroup()</span></code></a> is called to
+change its buffer group.</p>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>No errors.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_BUFFERS_NOT_RECLAIMED</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_BUFFERS_NOT_RECLAIMED</span></code>.</p></td>
 <td><p>Buffers are in the process of being reclaimed.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
 <td><p>A miscellaneous error occurred.</p></td>
 </tr>
 </tbody>
@@ -383,33 +329,27 @@ is called to change its buffer group.</p>
 <section id="_CPPv4N12BBufferGroup12RequestErrorEv">
 </section>
 <h3>
-RequestError()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferGroup</span><span class="p">::</span></span><span class="n">RequestError</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the last
-<a class="reference internal" href="#_CPPv4N12BBufferGroup13RequestBufferE6size_t9bigtime_t" title="BBufferGroup::RequestBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RequestBuffer()</span></code></a>
-error. This is useful if
-<a class="reference internal" href="#_CPPv4N12BBufferGroup13RequestBufferE6size_t9bigtime_t" title="BBufferGroup::RequestBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RequestBuffer()</span></code></a>
-returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+RequestError()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BBufferGroup" title="BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">RequestError</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the last <a class="reference internal" href="#_CPPv4N12BBufferGroup13RequestBufferE6size_t9bigtime_t" title="BBufferGroup::RequestBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RequestBuffer()</span></code></a>
+error. This is useful if <a class="reference internal" href="#_CPPv4N12BBufferGroup13RequestBufferE6size_t9bigtime_t" title="BBufferGroup::RequestBuffer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RequestBuffer()</span></code></a> returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
 <section id="_CPPv4N12BBufferGroup14WaitForBuffersEv">
 </section>
 <h3>
-WaitForBuffers()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBufferGroup</span><span class="p">::</span></span><span class="n">WaitForBuffers</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Waits until the currently pending buffer reclamation is finished, then
+WaitForBuffers()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BBufferGroup" title="BBufferGroup"><span class="n">BBufferGroup</span></a><span class="p">::</span></span><span class="n">WaitForBuffers</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Waits until the currently pending buffer reclamation is finished, then
 returns. If there isn’t a buffer reclamation in progress, returns
 immediately.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>No errors.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Semaphore errors.</p></td>
-<td><p>Unable to acquire the semaphore used to detect that buffer reclamation is done.</p></td>
+<td><p>Unable to acquire the semaphore used to detect that buffer reclamation is
+done.</p></td>
 </tr>
 </tbody>
 </table>

@@ -1,0 +1,383 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Writing Drivers &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Writing Modules" href="writing-modules.html" />
+    <link rel="prev" title="Using Modules" href="using-modules.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Writing Drivers</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="using-modules.html">Using Modules</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="writing-modules.html">Writing Modules</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Writing Drivers</a><ul>
+<li><a class="reference internal" href="#symbols-drivers-export">Symbols Drivers Export</a></li>
+<li><a class="reference internal" href="#constants">Constants</a><ul>
+<li><a class="reference internal" href="#api-version">api_version</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#functions">Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv413init_hardwarev">init_hardware</a></li>
+<li><a class="reference internal" href="#_CPPv411init_driverv">init_driver</a></li>
+<li><a class="reference internal" href="#_CPPv413uninit_driverv">uninit_driver</a></li>
+<li><a class="reference internal" href="#_CPPv415publish_devicesv">publish_devices</a></li>
+<li><a class="reference internal" href="#_CPPv411find_devicePKc">find_device</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#device-hooks">Device Hooks</a><ul>
+<li><a class="reference internal" href="#_CPPv49open_hookPKc6uint32PPv">open_hook</a></li>
+<li><a class="reference internal" href="#_CPPv410close_hookPPv">close_hook</a></li>
+<li><a class="reference internal" href="#_CPPv49free_hookPPv">free_hook</a></li>
+<li><a class="reference internal" href="#_CPPv49read_hookPv5off_tPvP6size_t">read_hook</a></li>
+<li><a class="reference internal" href="#_CPPv410readv_hookPv5off_tPK5iovec6size_tP6size_t">readv_hook</a></li>
+<li><a class="reference internal" href="#_CPPv410write_hookPv5off_tPvP6size_t">write_hook</a></li>
+<li><a class="reference internal" href="#_CPPv411writev_hookPv5off_tPK5iovec6size_tP6size_t">writev_hook</a></li>
+<li><a class="reference internal" href="#_CPPv412control_hookPv6uint32PvP6size_t">control_hook</a></li>
+<li><a class="reference internal" href="#_CPPv411select_hook5uint86uint32P10selectsync">select_hook</a></li>
+<li><a class="reference internal" href="#_CPPv413deselect_hook5uint86uint32P10selectsync">deselect_hook</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#driver-rules">Driver Rules</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="writing-drivers">
+<h1 id="CPPv415Writing Drivers">Writing Drivers<a class="headerlink" href="#writing-drivers" title="Permalink to this heading">¶</a></h1>
+<p>A device driver is an add-on that communicates with a specific device or
+type of device. Usually this communication involves some form of
+device-specific protocol. For example, an add-on that specifically
+addresses an Ethernet card or graphics card is a device driver. Likewise,
+add-ons that know how to talk to a class such as SCSI disks, ATA devices,
+ATAPI disks, or USB input devices is also a device driver.</p>
+<p>A driver’s job is to recognize the device and provide a means for
+applications to talk to it.</p>
+<div class="warning admonition">
+<p class="admonition-title" id="CPPv47Warning">Warning</p>
+<p>We can’t stress this enough: a bug in a device driver can bring down the
+entire system. Be very careful, and be sure to test your work well.</p>
+</div>
+<p>To reduce the risk of the system being adversely affected by a bug in your
+code, you should put as much of your code into user space as possible.</p>
+<p>This section covers the structure of device drivers, and provides some
+examples of how to write them.</p>
+<section id="symbols-drivers-export">
+<h2>Symbols Drivers Export<a class="headerlink" href="#symbols-drivers-export" title="Permalink to this heading">¶</a></h2>
+<p>The kernel communicates with drivers by calling certain known entry
+points, which the driver must implement and export. These entry points are:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>api_version</p></td>
+<td><p>This exported value tells the kernel what version of the driver API it was
+written to, and should always be set to
+<a class="reference internal" href="constants-defined-types.html#_CPPv424B_CUR_DRIVER_API_VERSION" title="B_CUR_DRIVER_API_VERSION"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CUR_DRIVER_API_VERSION</span></code></a> in your source code.</p></td>
+</tr>
+<tr class="row-odd"><td><p>init_hardware()</p></td>
+<td><p>Called when the system is booted, to let the driver detect and reset the
+hardware.</p></td>
+</tr>
+<tr class="row-even"><td><p>init_driver()</p></td>
+<td><p>Called when the driver is loaded, so it can allocate needed system
+resources.</p></td>
+</tr>
+<tr class="row-odd"><td><p>uninit_driver()</p></td>
+<td><p>Called just before the driver is unloaded, so it can free allocated
+resources.</p></td>
+</tr>
+<tr class="row-even"><td><p>publish_devices()</p></td>
+<td><p>Called to obtain a list of device names supported by the driver.</p></td>
+</tr>
+<tr class="row-odd"><td><p>find_device()</p></td>
+<td><p>Called to obtain a list of pointers to the hook functions for a specified
+device.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
+<section id="api-version">
+<h3>api_version<a class="headerlink" href="#api-version" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">int32</span><span class="w"> </span><span class="n">api_version</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This variable defines the API version to which the driver was written, and
+should be set to <a class="reference internal" href="constants-defined-types.html#_CPPv424B_CUR_DRIVER_API_VERSION" title="B_CUR_DRIVER_API_VERSION"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CUR_DRIVER_API_VERSION</span></code></a> at compile
+time. The value of this variable will be changed with every revision to the
+driver API; the value with which your driver was compiled will tell devfs
+how it can communicate with the driver.</p>
+</section>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv413init_hardwarev">
+</section>
+<h3>
+init_hardware()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">init_hardware</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>This function is called when the system is booted, which lets the driver
+detect and reset the hardware it controls. The function should return
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> if the initialization is successful; otherwise, an
+appropriate error code should be returned. If this function returns an
+error, the driver won’t be used.</p>
+<section id="_CPPv411init_driverv">
+</section>
+<h3>
+init_driver()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">init_driver</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Drivers are loaded and unloaded on an as-needed basis. When a driver is
+loaded by devfs, this function is called to let the driver allocate memory
+and other needed system resources. Return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> if
+initialization succeeds, otherwise return an appropriate error code.</p>
+<div class="note admonition">
+<p class="admonition-title">TODO</p>
+<p>what happens if this returns an error?</p>
+</div>
+<section id="_CPPv413uninit_driverv">
+</section>
+<h3>
+uninit_driver()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="n">uninit_driver</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>This function is called by devfs just before the driver is unloaded from
+memory. This lets the driver clean up after itself, freeing any resources
+it allocated.</p>
+<section id="_CPPv415publish_devicesv">
+</section>
+<h3>
+publish_devices()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n">publish_devices</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Devfs calls publish_devices() to learn the names, relative to /dev, of the
+devices the driver supports. The driver should return a
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>-terminated array of strings indicating all the installed
+devices the driver supports. For example, an ethernet device driver might
+return:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="n">devices</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;net/ether&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nb">NULL</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In this case, devfs will then create the pseudo-file /dev/net/ether,
+through which all user applications can access the driver.</p>
+<p>Since only one instance of the driver will be loaded, if support for
+multiple devices of the same type is desired, the driver must be capable of
+supporting them. If the driver senses (and supports) two ethernet cards, it
+might return:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="n">devices</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;net/ether1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;net/ether2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nb">NULL</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="_CPPv411find_devicePKc">
+</section>
+<h3>
+find_device()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">device_hooks</span><span class="w"> </span><span class="p">*</span><span class="n">find_device</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><p>When a device published by the driver is accessed, devfs communicates with
+it through a series of hook functions that handle the requests.The
+find_device() function is called to obtain a list of these hook functions,
+so that devfs can call them. The <span class="htype">device_hooks</span> structure returned
+lists out the hook functions.</p>
+<p>The device_hooks structure, and what each hook does, is described in the
+next section.</p>
+</section>
+<section id="device-hooks">
+<h2>Device Hooks<a class="headerlink" href="#device-hooks" title="Permalink to this heading">¶</a></h2>
+<p>The hook functions specified in the device_hooks function returned by the
+driver’s <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">find_device()</span></code> function handle requests
+made by devfs (and through devfs, from user applications). These are
+described in this section.</p>
+<p>The structure itself looks like this:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">device_open_hook</span><span class="w"> </span><span class="n">open</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">device_close_hook</span><span class="w"> </span><span class="n">close</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">device_free_hook</span><span class="w"> </span><span class="n">free</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">device_control_hook</span><span class="w"> </span><span class="n">control</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">device_read_hook</span><span class="w"> </span><span class="n">read</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">device_write_hook</span><span class="w"> </span><span class="n">write</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">device_select_hook</span><span class="w"> </span><span class="n">select</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">device_deselect_hook</span><span class="w"> </span><span class="n">deselect</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">device_readv_hook</span><span class="w"> </span><span class="n">readv</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">device_writev_hook</span><span class="w"> </span><span class="n">writev</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">device_hooks</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In all cases, return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> if the operation is
+successfully completed, or an appropriate error code if not.</p>
+<section id="_CPPv49open_hookPKc6uint32PPv">
+</section>
+<h3>
+open_hook()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">open_hook</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">cookie</span><span class="sig-paren">)</span></pre><p>This hook function is called when a program opens one of the devices
+supported by the driver. The name of the device (as returned by
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">publish_devices()</span></code>) is passed in name, along
+with the flags passed to the Posix open() function. <span class="hparameter">cookie</span> points
+to space large enough for you to store a single pointer. You can use this
+to store state information specific to the open() instance. If you need to
+track information on a per-open() basis, allocate the memory you need and
+store a pointer to it in *<span class="hparameter">cookie</span>.</p>
+<section id="_CPPv410close_hookPPv">
+</section>
+<h3>
+close_hook()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">close_hook</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">cookie</span><span class="sig-paren">)</span></pre><p>This hook is called when an open instance of the driver is closed using
+the close() Posix function. Note that because of the multithreaded nature
+of the BeOS, it’s possible there may still be transactions pending, and you
+may receive more calls on the device. For that reason, you shouldn’t free
+instance-wide system resources here. Instead, you should do this in
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">free_hook()</span></code>. However, if there are any blocked
+transactions pending, you should unblock them here.</p>
+<section id="_CPPv49free_hookPPv">
+</section>
+<h3>
+free_hook()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">free_hook</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">cookie</span><span class="sig-paren">)</span></pre><p>This hook is called once all pending transactions on an open (but closing)
+instance of your driver are completed. This is where your driver should
+release instance-wide system resources. free_hook() doesn’t correspond to
+any Posix function.</p>
+<section id="_CPPv49read_hookPv5off_tPvP6size_t">
+</section>
+<h3>
+read_hook()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">read_hook</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span>, <span class="n">off_t</span><span class="w"> </span><span class="n sig-param">position</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">len</span><span class="sig-paren">)</span></pre><p>This hook handles the Posix read() function for an open instance of your
+driver. Implement it to read <span class="hparameter">len</span> bytes of data starting at the
+specified byte <span class="hparameter">position</span> on the device, storing the read bytes at
+<span class="hparameter">data</span>. Exactly what this does is device-specific (disk devices
+would read from the specified offset on the disk, but a graphics driver
+might have some other interpretation of this request).</p>
+<p>Before returning, you should set <span class="hparameter">len</span> to the actual number of
+bytes read into the buffer. Return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> if data was read
+(even if the number of returned bytes is less than requested), otherwise
+return an appropriate error.</p>
+<section id="_CPPv410readv_hookPv5off_tPK5iovec6size_tP6size_t">
+</section>
+<h3>
+readv_hook()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">readv_hook</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span>, <span class="n">off_t</span><span class="w"> </span><span class="n sig-param">position</span>, <span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="n">iovec</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">vec</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">count</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">len</span><span class="sig-paren">)</span></pre><p>This hook handles the Posix readv() function for an open instance of your
+driver. This is a scatter/gather read function; given an array of
+<span class="htype">iovec</span> structures describing address/length pairs for a group of
+destination buffers, your implementation should fill each successive buffer
+with bytes, up to a total of <span class="hparameter">len</span> bytes. The <span class="hparameter">vec</span> array
+has <span class="hparameter">count</span> items in it.</p>
+<p>As with <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">read_hook()</span></code>, set <span class="hparameter">len</span> to the
+actual number of bytes read, and return an appropriate result code.</p>
+<section id="_CPPv410write_hookPv5off_tPvP6size_t">
+</section>
+<h3>
+write_hook()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">write_hook</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span>, <span class="n">off_t</span><span class="w"> </span><span class="n sig-param">position</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">len</span><span class="sig-paren">)</span></pre><p>This hook handles the Posix write() function for an open instance of your
+driver. Implement it to write <span class="hparameter">len</span> bytes of data starting at the
+specified byte <span class="hparameter">position</span> on the device, from the buffer pointed to
+by <span class="hparameter">data</span>. Exactly what this does is device-specific (disk devices
+would write to the specified offset on the disk, but a graphics driver
+might have some other interpretation of this request).</p>
+<p>Return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> if data was read (even if the number of
+returned bytes is less than requested), otherwise return an appropriate
+error.</p>
+<section id="_CPPv411writev_hookPv5off_tPK5iovec6size_tP6size_t">
+</section>
+<h3>
+writev_hook()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">writev_hook</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span>, <span class="n">off_t</span><span class="w"> </span><span class="n sig-param">position</span>, <span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="n">iovec</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">vec</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">count</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">len</span><span class="sig-paren">)</span></pre><p>This hook handles the Posix writev() function for an open instance of your
+driver. This is a scatter/gather write function; given an array of
+<span class="htype">iovec</span> structures describing address/length pairs for a group of
+source buffers, your implementation should write each successive buffer to
+disk, up to a total of <span class="hparameter">len</span> bytes. The <span class="hparameter">vec</span> array has
+<span class="hparameter">count</span> items in it.</p>
+<p>Before returning, set <span class="hparameter">len</span> to the actual number of bytes written,
+and return an appropriate result code.</p>
+<section id="_CPPv412control_hookPv6uint32PvP6size_t">
+</section>
+<h3>
+control_hook()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">control_hook</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">op</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">len</span><span class="sig-paren">)</span></pre><p>This hook handles the ioctl() function for an open instance of your
+driver. The control hook provides a means to perform operations that don’t
+map directly to either read() or write(). It receives the <span class="hparameter">cookie</span>
+for the open instance, plus the command code <span class="hparameter">op</span> and the
+<span class="hparameter">data</span> and <span class="hparameter">len</span> arguments specified by ioctl()’s caller.
+These arguments have no inherent relationship; they’re simply arguments to
+ioctl() that are forwarded to your hook function. Their definitions are
+defined by the driver. Common command codes can be found in
+drivers/Drivers.h.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The <span class="hparameter">len</span> argument is only valid when ioctl() is called from user
+space; the kernel always sets it to 0.</p>
+</div>
+<section id="_CPPv411select_hook5uint86uint32P10selectsync">
+</section>
+<section id="_CPPv413deselect_hook5uint86uint32P10selectsync">
+</section>
+<h3>
+select_hook(), deselect_hook()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">select_hook</span><span class="sig-paren">(</span><span class="n">uint8</span><span class="w"> </span><span class="n sig-param">event</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">ref</span>, <span class="n">selectsync</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">sync</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">deselect_hook</span><span class="sig-paren">(</span><span class="n">uint8</span><span class="w"> </span><span class="n sig-param">event</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">ref</span>, <span class="n">selectsync</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">sync</span><span class="sig-paren">)</span></pre><p>These hooks are reserved for future use. Set the corresponding entries in
+your <span class="htype">device_hooks</span> structure to <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+</section>
+<section id="driver-rules">
+<h2>Driver Rules<a class="headerlink" href="#driver-rules" title="Permalink to this heading">¶</a></h2>
+<p>Keep the following rules in mind for each instance of your driver:</p>
+<ul class="simple">
+<li><p>open() will be called first, and no other hooks will be called until
+open() returns.</p></li>
+<li><p>close() may be called while other requests are pending. As previously
+mentioned, if you have blocked transactions, you must unblock them when
+close() is called. Further calls to other driver hooks my continue to occur
+after close() is called; however, you should return an error to any such
+requests.</p></li>
+<li><p>free() isn’t called until all pending transactions for the open instance
+are completed.</p></li>
+<li><p>Multiple threads may be accessing the driver’s hooks simultaneously, so be
+sure to lock and unlock where appropriate.</p></li>
+</ul>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="using-modules.html">Using Modules</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="writing-modules.html">Writing Modules</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

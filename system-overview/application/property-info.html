@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BPropertyInfo &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BRoster" href="roster.html" />
+    <link rel="prev" title="BMessenger" href="messenger.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BPropertyInfo</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="messenger.html">BMessenger</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="roster.html">BRoster</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bpropertyinfo">
+<h1 id="CPPv413BPropertyInfo">BPropertyInfo<a class="headerlink" href="#bpropertyinfo" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference internal" href="../../kits/application/property-info.html#_CPPv413BPropertyInfo" title="BPropertyInfo"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPropertyInfo</span></code></a> is a simple class that manages scripting. A
+program describes its scripting interface to a <a class="reference internal" href="../../kits/application/property-info.html#_CPPv413BPropertyInfo" title="BPropertyInfo"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPropertyInfo</span></code></a>
+object through an array of <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">property_info</span></code>
+structures, with each entry describing a piece of the scripting suite.</p>
+<p>A <a class="reference internal" href="../../kits/application/property-info.html#_CPPv413BPropertyInfo" title="BPropertyInfo"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPropertyInfo</span></code></a> is instantiated by passing a zero-terminated
+array of <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">property_info</span></code> to its constructor. A
+typical initialization looks like:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">property_info</span><span class="w"> </span><span class="n">prop_list</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;duck&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="n">B_GET_PROPERTY</span><span class="p">,</span><span class="w"> </span><span class="n">B_SET_PROPERTY</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="n">B_DIRECT_SPECIFIER</span><span class="p">,</span><span class="w"> </span><span class="n">B_INDEX_SPECIFIER</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;get or set duck&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;head&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="n">B_GET_PROPERTY</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="n">B_DIRECT_SPECIFIER</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;get head&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;head&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="n">B_SET_PROPERTY</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="n">B_DIRECT_SPECIFIER</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;set head&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;feet&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="s">&quot;can do anything with his orange feet&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="mi">0</span><span class="w"> </span><span class="c1">// terminate list};</span>
+
+<span class="n">BPropertyInfo</span><span class="w"> </span><span class="n">prop_info</span><span class="p">(</span><span class="n">prop_list</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Since <a class="reference internal" href="../../kits/application/property-info.html#_CPPv413BPropertyInfo" title="BPropertyInfo"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPropertyInfo</span></code></a> only stores a pointer to the array, it is
+important that the life span of the array is at least as long as that of
+the <a class="reference internal" href="../../kits/application/property-info.html#_CPPv413BPropertyInfo" title="BPropertyInfo"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPropertyInfo</span></code></a> object.</p>
+<p>Notice that <a class="reference internal" href="../../kits/application/property-info.html#_CPPv413BPropertyInfo" title="BPropertyInfo"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPropertyInfo</span></code></a> doesn’t impose any particular
+structure upon the array; in particular, not all commands and specifiers
+for a given property need be placed in a single entry in the array. You are
+free to organize your scripting suite in whatever manner is most convenient
+for your particular object.</p>
+<p><a class="reference internal" href="../../kits/application/property-info.html#_CPPv413BPropertyInfo" title="BPropertyInfo"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPropertyInfo</span></code></a> is a descendant of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFlattenable</span></code>,
+and can therefore be used to store a description of an object’s supported
+scripting suite. This is particularly useful when overriding
+<a class="reference internal" href="../../kits/application/application.html#_CPPv4N12BApplication18GetSupportedSuitesEP8BMessage" title="BApplication::GetSupportedSuites"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetSupportedSuites()</span></code></a>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span><span class="w"> </span><span class="nf">MyHandler::GetSupportedSuites</span><span class="p">(</span><span class="n">BMessage</span><span class="w"> </span><span class="o">*</span><span class="n">msg</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">AddString</span><span class="p">(</span><span class="s">&quot;suites&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;suite/vnd.Me-my_handler&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">BPropertyInfo</span><span class="w"> </span><span class="n">prop_info</span><span class="p">(</span><span class="n">prop_list</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">AddFlat</span><span class="p">(</span><span class="s">&quot;messages&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">prop_info</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">baseClass</span><span class="o">::</span><span class="n">GetSupportedSuites</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Naturally, <a class="reference internal" href="../../kits/application/property-info.html#_CPPv413BPropertyInfo" title="BPropertyInfo"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPropertyInfo</span></code></a> is equally as useful in interpreting
+the results obtained from querying an object for its supported suites.</p>
+<p><a class="reference internal" href="../../kits/application/property-info.html#_CPPv413BPropertyInfo" title="BPropertyInfo"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPropertyInfo</span></code></a> defines the <a class="reference internal" href="../../kits/application/property-info.html#_CPPv4NK13BPropertyInfo9FindMatchEP8BMessage5int32P8BMessage5int32PKcPv" title="BPropertyInfo::FindMatch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindMatch()</span></code></a> method designed to simplify the implementation
+of <a class="reference internal" href="../../kits/application/handler.html#_CPPv4N8BHandler16ResolveSpecifierEP8BMessage5int32P8BMessage5int32PKc" title="BHandler::ResolveSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ResolveSpecifier()</span></code></a>. It returns
+the index of the property info matching the description given to it, or -1
+if none match. This reduces <a class="reference internal" href="../../kits/application/handler.html#_CPPv4N8BHandler16ResolveSpecifierEP8BMessage5int32P8BMessage5int32PKc" title="BHandler::ResolveSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ResolveSpecifier()</span></code></a> in the simplest cases to:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BHandler</span><span class="o">*</span><span class="w"></span>
+<span class="nf">MyHandler::ResolveSpecifier</span><span class="p">(</span><span class="n">BMessage</span><span class="o">*</span><span class="w"> </span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"></span>
+<span class="w">                            </span><span class="n">BMessage</span><span class="o">*</span><span class="w"> </span><span class="n">spec</span><span class="p">,</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">form</span><span class="p">,</span><span class="w"></span>
+<span class="w">                            </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">prop</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">BPropertyInfo</span><span class="w"> </span><span class="n">prop_info</span><span class="p">(</span><span class="n">prop_list</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">prop_info</span><span class="p">.</span><span class="n">FindMatch</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">spec</span><span class="p">,</span><span class="w"> </span><span class="n">form</span><span class="p">,</span><span class="w"> </span><span class="n">prop</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">baseClass</span><span class="o">::</span><span class="n">ResolveSpecifier</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">spec</span><span class="p">,</span><span class="w"> </span><span class="n">form</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                       </span><span class="n">prop</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Of course, for more complicated objects, <a class="reference internal" href="../../kits/application/handler.html#_CPPv4N8BHandler16ResolveSpecifierEP8BMessage5int32P8BMessage5int32PKc" title="BHandler::ResolveSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ResolveSpecifier()</span></code></a> may need to set the target handler to an
+object other than itself, so more processing may be required. In those
+cases, the object can use the index returned by <a class="reference internal" href="../../kits/application/property-info.html#_CPPv4NK13BPropertyInfo9FindMatchEP8BMessage5int32P8BMessage5int32PKcPv" title="BPropertyInfo::FindMatch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindMatch()</span></code></a> to help it determine the target of the
+scripting message.</p>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="messenger.html">BMessenger</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="roster.html">BRoster</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

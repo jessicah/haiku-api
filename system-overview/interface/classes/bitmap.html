@@ -17,70 +17,94 @@
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="BBox" href="box.html" />
+    <link rel="prev" title="BAlert" href="alert.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../../index.html">
-          <span>The Haiku Book  documentation</span></a></h1>
+          <span>API Documentation</span></a></h1>
         <h2 class="heading"><span>BBitmap</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
+        «&#160;&#160;<a href="alert.html">BAlert</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="box.html">BBox</a>&#160;&#160;»
         </p>
 
       </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BBitmap</a><ul>
+<li><a class="reference internal" href="#bitmap-data">Bitmap Data</a></li>
+<li><a class="reference internal" href="#using-a-view-to-draw-into-a-bitmap">Using a View to Draw into a Bitmap</a></li>
+<li><a class="reference internal" href="#transparency">Transparency</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
       <div class="content" role="main">
         
-        
   <section id="bbitmap">
-<h1>BBitmap<a class="headerlink" href="#bbitmap" title="Permalink to this heading">¶</a></h1>
-<p>A <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> describes a rectangular image as a two-dimensional array of pixel data (or
-bitmap). The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> class lets you create a bitmap by specifying raw pixel data
-(through the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Bits()</span></code> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetBits()</span></code> functions), or you can add a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> to your <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> and use the view’s drawing operations (
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FillRect()</span></code>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StrokeLine()</span></code>, etc) to draw into the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> object (see “Using a View to Draw into a Bitmap”, below).</p>
-<p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> class doesn’t provide a way to actually display bitmap data. Displaying a
-bitmap is the task of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> functions such as <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawBitmap()</span></code>.</p>
+<h1 id="CPPv47BBitmap">BBitmap<a class="headerlink" href="#bbitmap" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../../kits/interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> describes a rectangular image as a two-dimensional array of pixel data (or
+bitmap). The <a class="reference internal" href="../../../kits/interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> class lets you create a bitmap by specifying raw pixel data
+(through the <a class="reference internal" href="../../../kits/interface/bitmap.html#_CPPv4NK7BBitmap4BitsEv" title="BBitmap::Bits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Bits()</span></code></a> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetBits()</span></code> functions), or you can add a
+<a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> to your <a class="reference internal" href="../../../kits/interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> and use the view’s drawing operations (
+<a class="reference internal" href="../../../kits/interface/view.html#_CPPv4N5BView8FillRectE5BRect7pattern" title="BView::FillRect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FillRect()</span></code></a>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StrokeLine()</span></code>, etc) to draw into the
+<a class="reference internal" href="../../../kits/interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> object (see “Using a View to Draw into a Bitmap”, below).</p>
+<p>The <a class="reference internal" href="../../../kits/interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> class doesn’t provide a way to actually display bitmap data. Displaying a
+bitmap is the task of <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> functions such as <a class="reference internal" href="../../../kits/interface/view.html#_CPPv4N5BView10DrawBitmapEPK7BBitmap" title="BView::DrawBitmap"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawBitmap()</span></code></a>.</p>
 <section id="bitmap-data">
 <h2>Bitmap Data<a class="headerlink" href="#bitmap-data" title="Permalink to this heading">¶</a></h2>
 <p>A bitmap records the color values of every pixel within a rectangular area. The data is
 specified in rows, beginning with the top row of pixels in the image and working downward to the
 bottom row. Each row is aligned on a long word boundary.</p>
-<p>When you construct a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> object, you give it a bounds rectangle (integer
+<p>When you construct a <a class="reference internal" href="../../../kits/interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> object, you give it a bounds rectangle (integer
 coordinates only!) and a color space. For example, this code</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BBitmap</span><span class="o">*</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BBitmap</span><span class="p">(</span><span class="n">BRect</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">79.0</span><span class="p">,</span><span class="w"> </span><span class="mf">39.0</span><span class="p">),</span><span class="w"> </span><span class="n">B_CMAP8</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>constructs a 40 x 80 bitmap of 8-bit color data.</p>
-<p>The data in a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> object isn’t initialized—a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> has no default
+<p>The data in a <a class="reference internal" href="../../../kits/interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> object isn’t initialized—a <a class="reference internal" href="../../../kits/interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> has no default
 background color. When you set the bitmap’s data (however you set it) you must “paint” every pixel
 within the bitmap’s bounds rectangle.</p>
 </section>
 <section id="using-a-view-to-draw-into-a-bitmap">
 <h2>Using a View to Draw into a Bitmap<a class="headerlink" href="#using-a-view-to-draw-into-a-bitmap" title="Permalink to this heading">¶</a></h2>
 <p>If you’re going to use a view to draw into your bitmap, you must
-tell the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> constructor by setting the third argument to true:</p>
+tell the <a class="reference internal" href="../../../kits/interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> constructor by setting the third argument to true:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BBitmap</span><span class="w"> </span><span class="o">*</span><span class="n">image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BBitmap</span><span class="p">(</span><span class="n">BRect</span><span class="p">(...),</span><span class="w"> </span><span class="n">B_CMAP8</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>You then add the view to the bitmap (you
-don’t have to do anything special when constructing the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>):</p>
+don’t have to do anything special when constructing the <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>):</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">bitmap</span><span class="o">-&gt;</span><span class="n">AddChild</span><span class="p">(</span><span class="n">view</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>When the view draws, the drawing operations are rendered into the bitmap. Note that you must
-explicitly tell the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>): to draw—the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s that you use to draw into a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> aren’t part of the user interface, so they won’t receive user event messages.
-When you’re done drawing, you should call <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>’s <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Sync()</span></code> function
+explicitly tell the <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>): to draw—the <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s that you use to draw into a
+<a class="reference internal" href="../../../kits/interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> aren’t part of the user interface, so they won’t receive user event messages.
+When you’re done drawing, you should call <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>’s <a class="reference internal" href="../../../kits/interface/view.html#_CPPv4NK5BView4SyncEv" title="BView::Sync"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Sync()</span></code></a> function
 to make sure the drawing has all been performed. If the bitmap that you’ve created is static—if it
-doesn’t need to change after you’ve drawn into it—you can throw away the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> that you
+doesn’t need to change after you’ve drawn into it—you can throw away the <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> that you
 used create the bitmap data.</p>
-<p>A <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> can contain more than one <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>—it can act as the root of an
-entire view hierarchy. The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> class defines a number of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>-like
-functions—<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddChild()</span></code>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindView()</span></code>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ChildAt()</span></code>, and so on—to help you create and manage the hierarchy.</p>
+<p>A <a class="reference internal" href="../../../kits/interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> can contain more than one <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>—it can act as the root of an
+entire view hierarchy. The <a class="reference internal" href="../../../kits/interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> class defines a number of <a class="reference internal" href="../../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>-like
+functions—<a class="reference internal" href="../../../kits/interface/bitmap.html#_CPPv4N7BBitmap8AddChildEP5BView" title="BBitmap::AddChild"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddChild()</span></code></a>, <a class="reference internal" href="../../../kits/interface/bitmap.html#_CPPv4NK7BBitmap8FindViewE6BPoint" title="BBitmap::FindView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindView()</span></code></a>,
+<a class="reference internal" href="../../../kits/interface/bitmap.html#_CPPv4NK7BBitmap7ChildAtE5int32" title="BBitmap::ChildAt"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ChildAt()</span></code></a>, and so on—to help you create and manage the hierarchy.</p>
 </section>
 <section id="transparency">
 <h2>Transparency<a class="headerlink" href="#transparency" title="Permalink to this heading">¶</a></h2>
@@ -126,17 +150,23 @@ represent varying degrees of transparency.</p>
 </section>
 
 
+        <div class="clearer"></div>
       </div>
+          </div>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
+        «&#160;&#160;<a href="alert.html">BAlert</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="box.html">BBox</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Haiku.
+        &#169; Copyright 2023, Haiku, Inc..
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>

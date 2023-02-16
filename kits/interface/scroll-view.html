@@ -79,172 +79,147 @@
       <div class="content" role="main">
         
   <section id="bscrollview">
-<h1>BScrollView<a class="headerlink" href="#bscrollview" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv411BScrollView">BScrollView<a class="headerlink" href="#bscrollview" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N11BScrollView11BScrollViewEPKcP5BView6uint326uint32bb12border_style">
 </section>
 <h3>
-BScrollView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BScrollView11BScrollViewEPKcP5BView6uint326uint32bb12border_style" title="BScrollView::BScrollView"><span class="n">BScrollView</span></a><span class="p">::</span></span><span class="n">BScrollView</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">target</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_LEFT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FOLLOW_TOP</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">horizontal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">vertical</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span>, <span class="n">border_style</span><span class="w"> </span><span class="n sig-param">border</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FANCY_BORDER</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BScrollView11BScrollViewEP8BMessage" title="BScrollView::BScrollView"><span class="n">BScrollView</span></a><span class="p">::</span></span><span class="n">BScrollView</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Creates a <span class="hclass">BScrollView</span> that has
-<span class="hparameter">target</span> as its target view. If
-<span class="hparameter">horizontal</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, a
-horizontal scroll bar is added to the bottom of the target view. If
-<span class="hparameter">vertical</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, a vertical
-scroll bar is added to the target’s right side. The
-<span class="hclass">BScrollView</span>’s frame is manufactured for you to
-contain the target view, the scroll bars, and the optional border; the
-location of the target view doesn’t change. The scroll bar
-“thickness” constants, defined in
-ScrollBar.h, will help you compute the size of the
-frame:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+BScrollView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BScrollView11BScrollViewEPKcP5BView6uint326uint32bb12border_style" title="BScrollView::BScrollView"><span class="n">BScrollView</span></a><span class="p">::</span></span><span class="n">BScrollView</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">target</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_LEFT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FOLLOW_TOP</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">horizontal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">vertical</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span>, <span class="n">border_style</span><span class="w"> </span><span class="n sig-param">border</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FANCY_BORDER</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BScrollView11BScrollViewEP8BMessage" title="BScrollView::BScrollView"><span class="n">BScrollView</span></a><span class="p">::</span></span><span class="n">BScrollView</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Creates a <span class="hclass">BScrollView</span> that has <span class="hparameter">target</span> as its target
+view. If <span class="hparameter">horizontal</span> is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, a horizontal scroll bar
+is added to the bottom of the target view. If <span class="hparameter">vertical</span> is
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, a vertical scroll bar is added to the target’s right
+side. The <span class="hclass">BScrollView</span>’s frame is manufactured for you to contain
+the target view, the scroll bars, and the optional border; the location of
+the target view doesn’t change. The scroll bar “thickness” constants,
+defined in ScrollBar.h, will help you compute the size of the frame:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_V_SCROLL_BAR_WIDTH</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_V_SCROLL_BAR_WIDTH</span></code></p></td>
 <td><p>The width of a vertical scroll bar.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_H_SCROLL_BAR_HEIGHT</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_H_SCROLL_BAR_HEIGHT</span></code></p></td>
 <td><p>The height of a horizontal scroll bar.</p></td>
 </tr>
 </tbody>
 </table>
 <p>The target and the scroll bars are added as (sibling) children of the
-scroll view, and the target’s
-<a class="reference internal" href="view.html#_CPPv4N5BView20TargetedByScrollViewEP11BScrollView" title="BView::TargetedByScrollView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">TargetedByScrollView()</span></code></a>
-function is called. The target must not already be the child of some other view.</p>
+scroll view, and the target’s <a class="reference internal" href="view.html#_CPPv4N5BView20TargetedByScrollViewEP11BScrollView" title="BView::TargetedByScrollView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">TargetedByScrollView()</span></code></a> function is called. The target must not
+already be the child of some other view.</p>
 <p>The border argument can be one of three values:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PLAIN_BORDER</span></code></p></td>
-<td><p>Draw a border consisting of just a simple line around the target view and scroll bars.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PLAIN_BORDER</span></code></p></td>
+<td><p>Draw a border consisting of just a simple line around the target view and
+scroll bars.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FANCY_BORDER</span></code></p></td>
-<td><p>Draw a fancier border that looks like a 3D groove inset into the surface of the view.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FANCY_BORDER</span></code></p></td>
+<td><p>Draw a fancier border that looks like a 3D groove inset into the surface
+of the view.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_BORDER</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_BORDER</span></code></p></td>
 <td><p>Don’t draw a border.</p></td>
 </tr>
 </tbody>
 </table>
-<p>If the resize mode of the target view is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FOLLOW_ALL_SIDES</span></code>, it and the
-scroll bars will be automatically resized to fill the scroll view
-whenever the scroll view is resized.</p>
-<p>The scroll bars created by the <span class="hclass">BScrollView</span> have an
-initial range of 0 to 1000. Use the <a class="reference internal" href="#_CPPv4NK11BScrollView9ScrollBarE11orientation" title="BScrollView::ScrollBar"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScrollBar()</span></code></a>
+<p>If the resize mode of the target view is
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FOLLOW_ALL_SIDES</span></code>, it and the scroll bars will be
+automatically resized to fill the scroll view whenever the scroll view is
+resized.</p>
+<p>The scroll bars created by the <span class="hclass">BScrollView</span> have an initial range
+of 0 to 1000. Use the <a class="reference internal" href="#_CPPv4NK11BScrollView9ScrollBarE11orientation" title="BScrollView::ScrollBar"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScrollBar()</span></code></a>
 function to retrieve the scroll bars and reset their ranges.</p>
-<p>The <span class="hparameter">name</span>, <span class="hparameter">resizingMode</span>, and
-<span class="hparameter">flags</span> arguments are identical to those declared in
-the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> class and are
-passed to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-constructor. If a border is requested, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WILL_DRAW</span></code> is
-automatically added to the flags mask. The other two arguments are passed
-to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> class
-unchanged.</p>
-<p>See also:
-The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>,
+<p>The <span class="hparameter">name</span>, <span class="hparameter">resizingMode</span>, and <span class="hparameter">flags</span> arguments
+are identical to those declared in the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> class and are
+passed to the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> constructor. If a border is requested,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WILL_DRAW</span></code> is automatically added to the flags mask. The
+other two arguments are passed to the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> class unchanged.</p>
+<p>See also: The <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> <a class="reference internal" href="view.html#_CPPv4N5BView5BViewE5BRectPKc6uint326uint32" title="BView::BView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a>,
 <a class="reference internal" href="view.html#_CPPv4N5BView20TargetedByScrollViewEP11BScrollView" title="BView::TargetedByScrollView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">TargetedByScrollView()</span></code></a></p>
 <section id="_CPPv4N11BScrollViewD0Ev">
 </section>
 <h3>
-~BScrollView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollView</span><span class="p">::</span></span><span class="n">~BScrollView</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Does nothing.</p>
+~BScrollView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BScrollView" title="BScrollView"><span class="n">BScrollView</span></a><span class="p">::</span></span><span class="n">~BScrollView</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Does nothing.</p>
 </section>
 <section id="hook-functions">
 <h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N11BScrollView16AttachedToWindowEv">
 </section>
 <h3>
-AttachedToWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollView</span><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Resizes scroll bars belonging to <span class="hclass">BScrollView</span>s that occupy the right
-bottom corner of a document window (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DOCUMENT_WINDOW</span></code>) so that room is
-left for the resize knob. This function assumes that vertical scroll bars
-are <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_V_SCOLL_BAR_WIDTH</span></code> units wide and horizontal scroll bars are
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_H_SCROLL_BAR_HEIGHT</span></code> units high. It doesn’t check to make sure the
-window is actually resizable.</p>
+AttachedToWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BScrollView" title="BScrollView"><span class="n">BScrollView</span></a><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Resizes scroll bars belonging to <span class="hclass">BScrollView</span>s that occupy the
+right bottom corner of a document window
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DOCUMENT_WINDOW</span></code>) so that room is left for the resize
+knob. This function assumes that vertical scroll bars are
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_V_SCOLL_BAR_WIDTH</span></code> units wide and horizontal scroll bars
+are <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_H_SCROLL_BAR_HEIGHT</span></code> units high. It doesn’t check to
+make sure the window is actually resizable.</p>
 <p>This function also sets the default high color to a medium shade of gray.</p>
-<p>See also:
-<a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::AttachedToWindow()</span></code></a></p>
+<p>See also: <a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::AttachedToWindow()</span></code></a></p>
 <section id="_CPPv4N11BScrollView4DrawE5BRect">
 </section>
 <h3>
-Draw()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollView</span><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">updateRect</span><span class="sig-paren">)</span></pre><p>Draws the border around the target view and scroll views, provided a
+Draw()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BScrollView" title="BScrollView"><span class="n">BScrollView</span></a><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">updateRect</span><span class="sig-paren">)</span></pre><p>Draws the border around the target view and scroll views, provided a
 border was requested when the <span class="hclass">BScrollView</span> was constructed.</p>
-<p>See also:
-The <span class="hclass">BScrollView</span> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>,
-<a class="reference internal" href="view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Draw()</span></code></a></p>
+<p>See also: The <span class="hclass">BScrollView</span> <a class="reference internal" href="#_CPPv4N11BScrollView11BScrollViewEPKcP5BView6uint326uint32bb12border_style" title="BScrollView::BScrollView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a>, <a class="reference internal" href="view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Draw()</span></code></a></p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4NK11BScrollView7ArchiveEP8BMessageb">
 </section>
 <h3>
-Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollView</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of <a class="reference internal" href="view.html#_CPPv4NK5BView7ArchiveEP8BMessageb" title="BView::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a>, which
-will archive the target view and scroll bars if the
-<span class="hparameter">deep</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>. This
-function then adds the <span class="hclass">BScrollView</span>’s border style to
-the archive message.</p>
-<p>See also:
-<a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N11BScrollView11InstantiateEP8BMessage" title="BScrollView::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BScrollView" title="BScrollView"><span class="n">BScrollView</span></a><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of <a class="reference internal" href="view.html#_CPPv4NK5BView7ArchiveEP8BMessageb" title="BView::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a>,
+which will archive the target view and scroll bars if the <span class="hparameter">deep</span>
+flag is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>. This function then adds the
+<span class="hclass">BScrollView</span>’s border style to the archive message.</p>
+<p>See also: <a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>, <a class="reference internal" href="#_CPPv4N11BScrollView11InstantiateEP8BMessage" title="BScrollView::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
 <section id="_CPPv4NK11BScrollView9ScrollBarE11orientation">
 </section>
 <h3>
-ScrollBar()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BScrollBar</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BScrollView</span><span class="p">::</span></span><span class="n">ScrollBar</span><span class="sig-paren">(</span><span class="n">orientation</span><span class="w"> </span><span class="n sig-param">posture</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the horizontal scroll bar if posture is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HORIZONTAL</span></code> and the
-vertical scroll bar if posture is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_VERTICAL</span></code>. If the <span class="hclass">BScrollView</span> doesn’t
-contain a scroll bar with the requested orientation, this function
-returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<p>See also:
-The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BScrollBar</span></code> class</p>
+ScrollBar()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="scroll-bar.html#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BScrollView" title="BScrollView"><span class="n">BScrollView</span></a><span class="p">::</span></span><span class="n">ScrollBar</span><span class="sig-paren">(</span><span class="n">orientation</span><span class="w"> </span><span class="n sig-param">posture</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the horizontal scroll bar if posture is
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HORIZONTAL</span></code> and the vertical scroll bar if posture is
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_VERTICAL</span></code>. If the <span class="hclass">BScrollView</span> doesn’t contain
+a scroll bar with the requested orientation, this function returns
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<p>See also: The <a class="reference internal" href="scroll-bar.html#_CPPv410BScrollBar" title="BScrollBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BScrollBar</span></code></a> class</p>
 <section id="_CPPv4N11BScrollView9SetBorderE12border_style">
 </section>
 <section id="_CPPv4NK11BScrollView6BorderEv">
 </section>
 <h3>
-SetBorder(), Border()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollView</span><span class="p">::</span></span><span class="n">SetBorder</span><span class="sig-paren">(</span><span class="n">border_style</span><span class="w"> </span><span class="n sig-param">border</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">border_style</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollView</span><span class="p">::</span></span><span class="n">Border</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the style of the
-<span class="hclass">BScrollView</span>’s border, which may be
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PLAIN_BORDER</span></code>, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FANCY_BORDER</span></code>,
-or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_BORDER</span></code>. The border is originally set by the
-constructor. The three constants and the border’s effect on the
-<span class="hclass">BScrollView</span> are discussed there.</p>
-<p>See also:
-The <span class="hclass">BScrollView</span> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code></p>
+SetBorder(), Border()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BScrollView" title="BScrollView"><span class="n">BScrollView</span></a><span class="p">::</span></span><span class="n">SetBorder</span><span class="sig-paren">(</span><span class="n">border_style</span><span class="w"> </span><span class="n sig-param">border</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">border_style</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BScrollView" title="BScrollView"><span class="n">BScrollView</span></a><span class="p">::</span></span><span class="n">Border</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the style of the <span class="hclass">BScrollView</span>’s
+border, which may be <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PLAIN_BORDER</span></code>,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FANCY_BORDER</span></code>, or <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_BORDER</span></code>. The
+border is originally set by the constructor. The three constants and the
+border’s effect on the <span class="hclass">BScrollView</span> are discussed there.</p>
+<p>See also: The <span class="hclass">BScrollView</span> <a class="reference internal" href="#_CPPv4N11BScrollView11BScrollViewEPKcP5BView6uint326uint32bb12border_style" title="BScrollView::BScrollView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a></p>
 <section id="_CPPv4N11BScrollView20SetBorderHighlightedEb">
 </section>
 <section id="_CPPv4NK11BScrollView19IsBorderHighlightedEv">
 </section>
 <h3>
-SetBorderHighlighted(), IsBorderHighlighted()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollView</span><span class="p">::</span></span><span class="n">SetBorderHighlighted</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">highlighted</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollView</span><span class="p">::</span></span><span class="n">IsBorderHighlighted</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetBorderHighlighted()</span> highlights the border of
-the <span class="hclass">BScrollView</span> when the
-<span class="hparameter">highlighted</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, and
-removes the highlighting when the flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>. This
-function works by calling
-<a class="reference internal" href="#_CPPv4N11BScrollView4DrawE5BRect" title="BScrollView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a>. However,
-it works only for a border in the <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FANCY_BORDER</span></code>
-style. If successful, it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>. Otherwise, it
-returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p>
+SetBorderHighlighted(), IsBorderHighlighted()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BScrollView" title="BScrollView"><span class="n">BScrollView</span></a><span class="p">::</span></span><span class="n">SetBorderHighlighted</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">highlighted</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BScrollView" title="BScrollView"><span class="n">BScrollView</span></a><span class="p">::</span></span><span class="n">IsBorderHighlighted</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetBorderHighlighted()</span> highlights the border of the
+<span class="hclass">BScrollView</span> when the <span class="hparameter">highlighted</span> flag is
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, and removes the highlighting when the flag is
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>. This function works by calling <a class="reference internal" href="#_CPPv4N11BScrollView4DrawE5BRect" title="BScrollView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a>. However, it works only for a border in the
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FANCY_BORDER</span></code> style. If successful, it returns
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>. Otherwise, it returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p>
 <p><span class="hmethod">IsBorderHighlighted()</span> returns whether the border is currently
-highlighted. The return value is always <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> for a <span class="hclass">BScrollView</span> that
-doesn’t have a border or has only a “plain” one.</p>
-<p>Highlighting a <span class="hclass">BScrollView</span>’s border shows that the target view is the
-current focus view for the window. Typically, the target view calls
-<span class="hmethod">SetBorderHighlighted()</span> from its
-<a class="reference internal" href="view.html#_CPPv4N5BView9MakeFocusEb" title="BView::MakeFocus"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeFocus()</span></code></a> function when the focus
-changes. (The target knows that it’s inside a <span class="hclass">BScrollView</span> because of the
+highlighted. The return value is always <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> for a
+<span class="hclass">BScrollView</span> that doesn’t have a border or has only a “plain” one.</p>
+<p>Highlighting a <span class="hclass">BScrollView</span>’s border shows that the target view
+is the current focus view for the window. Typically, the target view calls
+<span class="hmethod">SetBorderHighlighted()</span> from its <a class="reference internal" href="view.html#_CPPv4N5BView9MakeFocusEb" title="BView::MakeFocus"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeFocus()</span></code></a> function when the focus changes. (The target knows that
+it’s inside a <span class="hclass">BScrollView</span> because of the
 <a class="reference internal" href="view.html#_CPPv4N5BView20TargetedByScrollViewEP11BScrollView" title="BView::TargetedByScrollView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">TargetedByScrollView()</span></code></a>
 notification it received.)</p>
 </section>
@@ -253,17 +228,59 @@ notification it received.)</p>
 <section id="_CPPv4N11BScrollView11InstantiateEP8BMessage">
 </section>
 <h3>
-Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BScrollView</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BScrollView</span> object, allocated by new
-and created with the version of the constructor that takes a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive. However,
-if the message doesn’t contain data for an archived
-<span class="hclass">BScrollView</span> object,
-<span class="hmethod">Instantiate()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<p><a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">object()</span></code>,
-<a class="reference internal" href="scroll-bar.html#_CPPv4NK10BScrollBar7ArchiveEP8BMessageb" title="BScrollBar::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BScrollView" title="BScrollView"><span class="n">BScrollView</span></a><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BScrollView</span> object, allocated by new and created
+with the version of the constructor that takes a <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>
+archive. However, if the message doesn’t contain data for an archived
+<span class="hclass">BScrollView</span> object, <span class="hmethod">Instantiate()</span> returns
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<p><a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">instantiate_object()</span></code>, <a class="reference internal" href="scroll-bar.html#_CPPv4NK10BScrollBar7ArchiveEP8BMessageb" title="BScrollBar::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
 </section>
 <section id="archived-fields">
 <h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="#_CPPv4NK11BScrollView7ArchiveEP8BMessageb" title="BScrollView::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a> function adds the
+following fields to its <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> argument:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">_style</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>Border type.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following views are added to the <span class="hparameter">_views</span> field (deep copy
+only):</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">target</span></p></td>
+<td><p>0</p></td>
+<td><p>Target view for the object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_VSB_</span></p></td>
+<td><p>0</p></td>
+<td><p>Vertical <a class="reference internal" href="scroll-bar.html#_CPPv410BScrollBar" title="BScrollBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BScrollBar</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_HSB_</span></p></td>
+<td><p>0</p></td>
+<td><p>Horizontal <a class="reference internal" href="scroll-bar.html#_CPPv410BScrollBar" title="BScrollBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BScrollBar</span></code></a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Some of these fields may not be present if the setting they represent
+isn’t used, or is the default value. For example, if the border type is
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FANCY_BORDER</span></code>, the <span class="hparameter">_style</span> field won’t be found
+in the archive.</p>
 </section>
 </section>
 

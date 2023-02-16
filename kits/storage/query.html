@@ -50,12 +50,13 @@
 </li>
 <li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
 <li><a class="reference internal" href="#_CPPv4N6BQuery5ClearEv">Clear</a></li>
+<li><a class="reference internal" href="#countentries-rewind">CountEntries(), Rewind()</a><ul>
 <li><a class="reference internal" href="#_CPPv4N6BQuery5FetchEv">Fetch</a></li>
 <li><a class="reference internal" href="#_CPPv4N6BQuery12GetNextEntryEP6BEntryb">GetNextEntry</a></li>
 <li><a class="reference internal" href="#_CPPv4N6BQuery10GetNextRefEP9entry_ref">GetNextRef</a></li>
 <li><a class="reference internal" href="#_CPPv4N6BQuery14GetNextDirentsEP6dirent6size_t5int32">GetNextDirents</a></li>
 <li><a class="reference internal" href="#_CPPv4N6BQuery8PushAttrEPKc">PushAttr</a></li>
-<li><a class="reference internal" href="#_CPPv4N6BQuery6PushOpE8query_op">PushOp</a></li>
+<li><a class="reference internal" href="#_CPPv46PushOp8query_op">PushOp</a></li>
 <li><a class="reference internal" href="#_CPPv4N6BQuery10PushUInt32E6uint32">PushUInt32</a></li>
 <li><a class="reference internal" href="#_CPPv4N6BQuery9PushInt32E5int32">PushInt32</a></li>
 <li><a class="reference internal" href="#_CPPv4N6BQuery10PushUInt64E6uint64">PushUInt64</a></li>
@@ -71,7 +72,12 @@
 <li><a class="reference internal" href="#_CPPv4N6BQuery9SetVolumeEPK7BVolume">SetVolume</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#constants">Constants</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constants">Constants</a><ul>
+<li><a class="reference internal" href="#query-operation-codes">Query Operation Codes</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -84,87 +90,81 @@
       <div class="content" role="main">
         
   <section id="bquery">
-<h1>BQuery<a class="headerlink" href="#bquery" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv46BQuery">BQuery<a class="headerlink" href="#bquery" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N6BQuery6BQueryEv">
 </section>
 <h3>
-BQuery()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BQuery6BQueryEv" title="BQuery::BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">BQuery</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BQuery</span> object. To use the object, you have to set its
-predicate and volume, and then tell it to
-<a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a>.
-If you want to fetch again, you have to call
-<a class="reference internal" href="#_CPPv4N6BQuery5ClearEv" title="BQuery::Clear"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Clear()</span></code></a>
-first (and re-set the predicate and volume.)</p>
+BQuery()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BQuery6BQueryEv" title="BQuery::BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">BQuery</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BQuery</span> object. To use the object, you have to set
+its predicate and volume, and then tell it to <a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a>. If you want to fetch again, you have to call
+<a class="reference internal" href="#_CPPv4N6BQuery5ClearEv" title="BQuery::Clear"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Clear()</span></code></a> first (and re-set the predicate and
+volume.)</p>
 <section id="_CPPv4N6BQueryD0Ev">
 </section>
 <h3>
-~BQuery()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">~BQuery</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Destroys the <span class="hclass">BQuery</span>. If the query is live, the query is shot dead. You
-stop receiving live query updates when you delete the <span class="hclass">BQuery</span> object.</p>
+~BQuery()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">~BQuery</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Destroys the <span class="hclass">BQuery</span>. If the query is live, the query is shot
+dead. You stop receiving live query updates when you delete the
+<span class="hclass">BQuery</span> object.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N6BQuery5ClearEv">
 </section>
 <h3>
-Clear()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">Clear</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Erases the <span class="hclass">BQuery</span>’s predicate, sets the volume and target to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, and
-turns off live query updates (if the query is live). You call <span class="hmethod">Clear()</span> if
-you want to <a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a>
-more than once: You have to <span class="hmethod">Clear()</span> before each
-<a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a> (except the first).
-<span class="hmethod">Clear()</span> always return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
-<h3>
-</h3><div class="warning admonition">
+Clear()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">Clear</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Erases the <span class="hclass">BQuery</span>’s predicate, sets the volume and target to
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>, and turns off live query updates (if the query is live).
+You call <span class="hmethod">Clear()</span> if you want to <a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a> more than once: You have to <span class="hmethod">Clear()</span> before each
+<a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a> (except the first).</p>
+<p><span class="hmethod">Clear()</span> always return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+<section id="countentries-rewind">
+<h3>CountEntries(), Rewind()<a class="headerlink" href="#countentries-rewind" title="Permalink to this heading">¶</a></h3>
+<div class="warning admonition">
 <p class="admonition-title">Warning</p>
 <p>Don’t use these functions. They’re no-ops for the <span class="hclass">BQuery</span> class.</p>
 </div>
 <section id="_CPPv4N6BQuery5FetchEv">
 </section>
-<h3>
-Fetch()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">Fetch</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Tells the <span class="hclass">BQuery</span> to go fetch the entries that satisfy the predicate.
-After you’ve fetched, you can retrieve the set of “static” entries
-through calls to
-<a class="reference internal" href="#_CPPv4N6BQuery12GetNextEntryEP6BEntryb" title="BQuery::GetNextEntry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextEntry()</span></code></a>,
+<h4>
+Fetch()</h4><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">Fetch</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Tells the <span class="hclass">BQuery</span> to go fetch the entries that satisfy the
+predicate. After you’ve fetched, you can retrieve the set of “static”
+entries through calls to <a class="reference internal" href="#_CPPv4N6BQuery12GetNextEntryEP6BEntryb" title="BQuery::GetNextEntry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextEntry()</span></code></a>,
 <a class="reference internal" href="#_CPPv4N6BQuery10GetNextRefEP9entry_ref" title="BQuery::GetNextRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextRef()</span></code></a>, or
-<a class="reference internal" href="#_CPPv4N6BQuery14GetNextDirentsEP6dirent6size_t5int32" title="BQuery::GetNextDirents"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextDirents()</span></code></a>.
-If you’ve set the <span class="hclass">BQuery</span>’s target, then this query is live. The live
-query update messages start rolling in when you tell the object to
-<span class="hmethod">Fetch()</span>. They stop when you
-<a class="reference internal" href="#_CPPv4N6BQuery5ClearEv" title="BQuery::Clear"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Clear()</span></code></a>
-or destroy the object.
-The fetch fails if the object’s predicate or volume isn’t set, or if
-you’ve already fetched but haven’
-<a class="reference internal" href="#_CPPv4N6BQuery5ClearEv" title="BQuery::Clear"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Clear()</span></code></a>’d since then.</p>
+<a class="reference internal" href="#_CPPv4N6BQuery14GetNextDirentsEP6dirent6size_t5int32" title="BQuery::GetNextDirents"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextDirents()</span></code></a>.</p>
+<p>If you’ve set the <span class="hclass">BQuery</span>’s target, then this query is live. The
+live query update messages start rolling in when you tell the object to
+<span class="hmethod">Fetch()</span>. They stop when you <a class="reference internal" href="#_CPPv4N6BQuery5ClearEv" title="BQuery::Clear"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Clear()</span></code></a>
+or destroy the object.</p>
+<p>The fetch fails if the object’s predicate or volume isn’t set, or if
+you’ve already fetched but haven’ <a class="reference internal" href="#_CPPv4N6BQuery5ClearEv" title="BQuery::Clear"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Clear()</span></code></a>’d
+since then.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>Every query must include at least one indexed attribute. If your
-predicate includes no indexed attributes, <span class="hmethod">Fetch()</span> will not balk—it
-returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> (given that it doesn’t otherwise fail). However, no entries
-will have been retrieved, and your subsequent <span class="hmethod">GetNext…()</span> call will fail
-(<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>).</p>
+<p>Every query must include at least one indexed attribute. If your predicate
+includes no indexed attributes, <span class="hmethod">Fetch()</span> will not balk—it returns
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> (given that it doesn’t otherwise fail). However, no
+entries will have been retrieved, and your subsequent <span class="hmethod">GetNext…()</span>
+call will fail (<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>).</p>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The fetch is running.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
 <td><p>The volume or predicate isn’t set.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
 <td><p>The predicate is improper.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
-<td><p>You’ve already fetched; <a class="reference internal" href="#_CPPv4N6BQuery5ClearEv" title="BQuery::Clear"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Clear()</span></code></a> the object and start again.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
+<td><p>You’ve already fetched; <a class="reference internal" href="#_CPPv4N6BQuery5ClearEv" title="BQuery::Clear"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Clear()</span></code></a> the object and
+start again.</p></td>
 </tr>
 </tbody>
 </table>
@@ -174,57 +174,50 @@ will have been retrieved, and your subsequent <span class="hmethod">GetNext…()
 </section>
 <section id="_CPPv4N6BQuery14GetNextDirentsEP6dirent6size_t5int32">
 </section>
-<h3>
-GetNextEntry(), GetNextRef(), GetNextDirents()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">GetNextEntry</span><span class="sig-paren">(</span><span class="n">BEntry</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">entry</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">traverse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">GetNextRef</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">GetNextDirents</span><span class="sig-paren">(</span><span class="n">dirent</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buf</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">bufsize</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">count</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">INT_MAX</span><span class="sig-paren">)</span></pre><p>These functions return the next entry in the “static” entry list; the
-list is created when you tell your (well-formed) <span class="hclass">BQuery</span> to
-<a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a>. You
-can retrieve the entry as a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code>, entry_ref, or dirent structure. The
+<h4>
+GetNextEntry(), GetNextRef(), GetNextDirents()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">GetNextEntry</span><span class="sig-paren">(</span><a class="reference internal" href="entry.html#_CPPv46BEntry" title="BEntry"><span class="n">BEntry</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">entry</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">traverse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">GetNextRef</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">GetNextDirents</span><span class="sig-paren">(</span><span class="n">dirent</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buf</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">bufsize</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">count</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">INT_MAX</span><span class="sig-paren">)</span></pre><p>These functions return the next entry in the “static” entry list; the list
+is created when you tell your (well-formed) <span class="hclass">BQuery</span> to
+<a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a>. You can retrieve the entry as a
+<a class="reference internal" href="entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a>, <span class="htype">entry_ref</span>, or <span class="htype">dirent</span> structure. The
 static entry list is the set of entries that initially satisfy the
 predicate; entries found by the live query mechanism are not included in
-this list.
-When you reach the end of the entry list, the <span class="hmethod">Get…()</span> function returns
-an indicative value:</p>
+this list.</p>
+<p>When you reach the end of the entry list, the <span class="hmethod">Get…()</span> function
+returns an indicative value:</p>
 <ul class="simple">
-<li><p><span class="hmethod">GetNextRef()</span> and <span class="hmethod">GetNextEntry()</span> return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></li>
+<li><p><span class="hmethod">GetNextRef()</span> and <span class="hmethod">GetNextEntry()</span> return
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></li>
 <li><p><span class="hmethod">GetNextDirents()</span> returns 0.</p></li>
 </ul>
-<p>You can only cycle over the list once; the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Rewind()</span></code> function is not
-defined for <span class="hclass">BQuery</span>. See the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntryList</span></code>
-class for more information on these functions.
-<span class="hmethod">GetNextDirents()</span> returns the number of dirents it retrieved (currently,
-it can only retrieve one at a time. The other two functions return these
-codes:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<p>You can only cycle over the list once; the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Rewind()</span></code> function is not defined for <span class="hclass">BQuery</span>. See the
+<a class="reference internal" href="entry-list.html#_CPPv410BEntryList" title="BEntryList"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntryList</span></code></a> class for more information on these functions.</p>
+<p><span class="hmethod">GetNextDirents()</span> returns the number of dirents it retrieved
+(currently, it can only retrieve one at a time. The other two functions
+return these codes:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The entry was retrieved.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></td>
 <td><p>You’re at the end of the list.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
 <td><p>The predicate includes unindexed attributes.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FILE_ERROR</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FILE_ERROR</span></code>.</p></td>
 <td><p>The <span class="hclass">BQuery</span> hasn’t fetched.</p></td>
 </tr>
 </tbody>
 </table>
 <section id="_CPPv4N6BQuery8PushAttrEPKc">
 </section>
-<section id="_CPPv4N6BQuery6PushOpE8query_op">
+<section id="_CPPv46PushOp8query_op">
 </section>
 <section id="_CPPv4N6BQuery10PushUInt32E6uint32">
 </section>
@@ -240,67 +233,56 @@ codes:</p>
 </section>
 <section id="_CPPv4N6BQuery10PushStringEPKcb">
 </section>
-<h3>
-PushAttr(), PushOp(), PushUInt32(), PushInt32(), PushUInt64(), PushInt64(), PushFloat(), PushDouble(), PushString()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">PushAttr</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">attr_name</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">PushOp</span><span class="sig-paren">(</span><span class="n">query_op</span><span class="w"> </span><span class="n sig-param">operator</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">PushUInt32</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">PushInt32</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">PushUInt64</span><span class="sig-paren">(</span><span class="n">uint64</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">PushInt64</span><span class="sig-paren">(</span><span class="n">int64</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">PushFloat</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">PushDouble</span><span class="sig-paren">(</span><span class="kt">double</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">PushString</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">attr_name</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">case_insensitive</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>You use these functions to construct the <span class="hclass">BQuery</span>’s predicate. They create
-a predicate expression by pushing attribute names, operators, and values
-in Reverse Polish Notation (post-fix) order.</p>
+<h4>
+PushAttr(), PushOp(), PushUInt32(), PushInt32(), PushUInt64(), PushInt64(), PushFloat(), PushDouble(), PushString()</h4><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">PushAttr</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">attr_name</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="n">PushOp</span><span class="sig-paren">(</span><span class="n">query_op</span><span class="w"> </span><span class="n sig-param">operator</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">PushUInt32</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">PushInt32</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">PushUInt64</span><span class="sig-paren">(</span><span class="n">uint64</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">PushInt64</span><span class="sig-paren">(</span><span class="n">int64</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">PushFloat</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">PushDouble</span><span class="sig-paren">(</span><span class="kt">double</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">PushString</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">attr_name</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">case_insensitive</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>You use these functions to construct the <span class="hclass">BQuery</span>’s predicate.
+They create a predicate expression by pushing attribute names, operators,
+and values in Reverse Polish Notation (post-fix) order.</p>
 <ul class="simple">
 <li><p><span class="hmethod">PushAttr()</span> pushes an attribute name.</p></li>
-<li><p><span class="hmethod">PushOp()</span> pushes one of the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">op()</span></code> operators.</p></li>
+<li><p><span class="hmethod">PushOp()</span> pushes one of the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">query_op</span></code>
+operators.</p></li>
 <li><p>The rest of the functions push values of the designated types.</p></li>
 </ul>
-<p>For details on how the push method works, see
-“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructing()</span></code>.”
-The predicate that you construct through these functions can be returned
-as a string through the
-<a class="reference internal" href="#_CPPv4N6BQuery12GetPredicateEPc6size_t" title="BQuery::GetPredicate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetPredicate()</span></code></a> function.</p>
+<p>For details on how the push method works, see “<span class="xref std std-ref">Constructing a Predicate</span>.”</p>
+<p>The predicate that you construct through these functions can be returned
+as a string through the <a class="reference internal" href="#_CPPv4N6BQuery12GetPredicateEPc6size_t" title="BQuery::GetPredicate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetPredicate()</span></code></a>
+function.</p>
 <section id="_CPPv4N6BQuery9SetTargetE10BMessenger">
 </section>
 <section id="_CPPv4NK6BQuery6IsLiveEv">
 </section>
-<h3>
-SetTarget(), IsLive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">SetTarget</span><span class="sig-paren">(</span><span class="n">BMessenger</span><span class="w"> </span><span class="n sig-param">target</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">IsLive</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Sets the <span class="hclass">BQuery</span>’s target. The target identifies the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>/<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code> pair
-(a la the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInvoker</span></code>
-target protocol) that will receive subsequent live
-query update messages. Calling this function declares the query to be
-live.
-If <span class="hparameter">target</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, the
-<span class="hclass">BQuery</span> is told to be “not live”. However, you can
-only turn off liveness (in this way) before you
-<a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a>. In other words,
-if you set the target, and then call
-<a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a> and then call
-<code class="docutils literal notranslate"><span class="pre">SetTarget(NULL)</span></code>, the
-<span class="hclass">BQuery</span> will think that it (itself) is not live, but
-it really is.
-<span class="hmethod">IsLive()</span> tells you if the <span class="hclass">BQuery</span>
-is live. The “liveness” needn’t be
-actuated yet—live queries don’t start operating until you tell the
-<span class="hclass">BQuery</span> to
-<a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a>.
-The live query is killed when you delete or
-<a class="reference internal" href="#_CPPv4N6BQuery5ClearEv" title="BQuery::Clear"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Clear()</span></code></a>
+<h4>
+SetTarget(), IsLive()</h4><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">SetTarget</span><span class="sig-paren">(</span><a class="reference internal" href="../application/messenger.html#_CPPv410BMessenger" title="BMessenger"><span class="n">BMessenger</span></a><span class="w"> </span><span class="n sig-param">target</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">IsLive</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Sets the <span class="hclass">BQuery</span>’s target. The target identifies the
+<a class="reference internal" href="../application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>/<a class="reference internal" href="../application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> pair (a la the
+<a class="reference internal" href="../application/invoker.html#_CPPv48BInvoker" title="BInvoker"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInvoker</span></code></a> target protocol) that will receive subsequent live
+query update messages. Calling this function declares the query to be live.</p>
+<p>If <span class="hparameter">target</span> is <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>, the <span class="hclass">BQuery</span> is told to
+be “not live”. However, you can only turn off liveness (in this way) before
+you <a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a>. In other words, if you set the
+target, and then call <a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a> and then call
+<code class="docutils literal notranslate"><span class="pre">SetTarget(NULL)</span></code>, the <span class="hclass">BQuery</span> will think that it (itself) is not
+live, but it really is.</p>
+<p><span class="hmethod">IsLive()</span> tells you if the <span class="hclass">BQuery</span> is live. The
+“liveness” needn’t be actuated yet—live queries don’t start operating until
+you tell the <span class="hclass">BQuery</span> to <a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a>. The
+live query is killed when you delete or <a class="reference internal" href="#_CPPv4N6BQuery5ClearEv" title="BQuery::Clear"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Clear()</span></code></a>
 the <span class="hclass">BQuery</span> object.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
-<td><p>The <span class="hparameter">target</span> was set (including set to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>).</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The <span class="hparameter">target</span> was set (including set to <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
 <td><p><span class="hparameter">target</span> doesn’t identify a proper looper/handler pair.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
-<td><p>You’ve already <a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a>’d; you need to <a class="reference internal" href="#_CPPv4N6BQuery5ClearEv" title="BQuery::Clear"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Clear()</span></code></a>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
+<td><p>You’ve already <a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a>’d; you need to
+<a class="reference internal" href="#_CPPv4N6BQuery5ClearEv" title="BQuery::Clear"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Clear()</span></code></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -310,107 +292,150 @@ the <span class="hclass">BQuery</span> object.</p>
 </section>
 <section id="_CPPv4N6BQuery15PredicateLengthEv">
 </section>
-<h3>
-SetPredicate(), GetPredicate(), PredicateLength()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">SetPredicate</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">expr</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">GetPredicate</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buf</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">length</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">size_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">PredicateLength</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetPredicate()</span> sets the <span class="hclass">BQuery</span>’s
-predicate as a string. Predicate strings can be simple, single comparison expressions:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;name = fido&quot;</span>
+<h4>
+SetPredicate(), GetPredicate(), PredicateLength()</h4><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">SetPredicate</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">expr</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">GetPredicate</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buf</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">length</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">size_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">PredicateLength</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetPredicate()</span> sets the <span class="hclass">BQuery</span>’s predicate as a
+string. Predicate strings can be simple, single comparison expressions:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;name = fido&quot;</span>
 </pre></div>
 </div>
 <p>Or they can be more complex:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;((name = fid*) || (size &gt; 500)) &amp;&amp; (last_modified &lt; 243567)&quot;</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;((name = fid*) || (size &gt; 500)) &amp;&amp; (last_modified &lt; 243567)&quot;</span>
 </pre></div>
 </div>
 <p>For the complete rules on setting the predicate as a string, see
-“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructing()</span></code>.”
-You can also set the predicate through the <span class="hmethod">Push…()</span> functions. You can’t
-combine the methods: Pushing the predicate always takes precedence over
-<span class="hmethod">SetPredicate()</span>, regardless of the order in which the methods are deployed.
-<span class="hmethod">GetPredicate()</span> copies the predicate into
-<span class="hparameter">buf</span>; <span class="hparameter">length</span> gives the length of
-<span class="hparameter">buf</span>, in bytes. If you want to find out how much storage you need to
-allocate to accommodate the predicate, call <span class="hmethod">PredicateLength()</span> first.
-If you set the predicate through the <span class="hmethod">Push…()</span> functions,
-<span class="hmethod">GetPredicate()</span>
-converts the pushed construction into a string, and returns a copy of the
-string to you.
-<span class="hmethod">PredicateLength()</span> returns the length of the predicate string, regardless
-of how it’s created.</p>
+“<span class="xref std std-ref">Constructing a Predicate</span>.”</p>
+<p>You can also set the predicate through the <span class="hmethod">Push…()</span> functions.
+You can’t combine the methods: Pushing the predicate always takes
+precedence over <span class="hmethod">SetPredicate()</span>, regardless of the order in which
+the methods are deployed.</p>
+<p><span class="hmethod">GetPredicate()</span> copies the predicate into <span class="hparameter">buf</span>;
+<span class="hparameter">length</span> gives the length of <span class="hparameter">buf</span>, in bytes. If you want
+to find out how much storage you need to allocate to accommodate the
+predicate, call <span class="hmethod">PredicateLength()</span> first.</p>
+<p>If you set the predicate through the <span class="hmethod">Push…()</span> functions,
+<span class="hmethod">GetPredicate()</span> converts the pushed construction into a string,
+and returns a copy of the string to you.</p>
+<p><span class="hmethod">PredicateLength()</span> returns the length of the predicate string,
+regardless of how it’s created.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p><span class="hmethod">GetPredicate()</span> and <span class="hmethod">PredicateLength()</span> both clear the push stack. This is
-important, because it means that you can’t build up a portion of your
-predicate, then call <span class="hmethod">GetPredicate()</span>, build a little more, look again,
-build some more, etc. When you call <span class="hmethod">GetPredicate()</span>, you’re done. Your
-next step should be a
+<p><span class="hmethod">GetPredicate()</span> and <span class="hmethod">PredicateLength()</span> both clear the
+push stack. This is important, because it means that you can’t build up a
+portion of your predicate, then call <span class="hmethod">GetPredicate()</span>, build a
+little more, look again, build some more, etc. When you call
+<span class="hmethod">GetPredicate()</span>, you’re done. Your next step should be a
 <a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a></p>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The predicate was successfully set or gotten.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
 <td><p>(<span class="hmethod">Get</span>) The predicate isn’t set.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
 <td><p>(<span class="hmethod">Get</span>) length is shorter than the predicate’s length.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
-<td><p>(<span class="hmethod">Set</span>) You’ve already <a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a>’d; you have to <a class="reference internal" href="#_CPPv4N6BQuery5ClearEv" title="BQuery::Clear"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Clear()</span></code></a>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
+<td><p>(<span class="hmethod">Set</span>) You’ve already <a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a>’d; you
+have to <a class="reference internal" href="#_CPPv4N6BQuery5ClearEv" title="BQuery::Clear"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Clear()</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
 <td><p>(<span class="hmethod">Set</span>) Not enough memory to store the predicate string.</p></td>
 </tr>
 </tbody>
 </table>
 <section id="_CPPv4N6BQuery9SetVolumeEPK7BVolume">
 </section>
-<h3>
-SetVolume()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BQuery</span><span class="p">::</span></span><span class="n">SetVolume</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BVolume</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">volume</span><span class="sig-paren">)</span></pre><p>A query can only look in one volume at a time. This is where you set the
+<h4>
+SetVolume()</h4><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BQuery" title="BQuery"><span class="n">BQuery</span></a><span class="p">::</span></span><span class="n">SetVolume</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="volume.html#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">volume</span><span class="sig-paren">)</span></pre><p>A query can only look in one volume at a time. This is where you set the
 volume that you want to look at.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>Currently, <span class="hmethod">SetVolume()</span> doesn’t complain if volume is invalid. However,
-the subsequent
-<a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a>
-will fail (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>).</p>
+<p>Currently, <span class="hmethod">SetVolume()</span> doesn’t complain if volume is invalid.
+However, the subsequent <a class="reference internal" href="#_CPPv4N6BQuery5FetchEv" title="BQuery::Fetch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Fetch()</span></code></a> will fail
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>).</p>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The volume was set.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
-<td><p>You’ve already fetched, you need to <a class="reference internal" href="#_CPPv4N6BQuery5ClearEv" title="BQuery::Clear"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Clear()</span></code></a> before you can reset the volume.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
+<td><p>You’ve already fetched, you need to <a class="reference internal" href="#_CPPv4N6BQuery5ClearEv" title="BQuery::Clear"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Clear()</span></code></a>
+before you can reset the volume.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
+</section>
 <section id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>These constants define the operations that can be used to specify a
-query. They are used in conjunction with the push functions for
-constructing a query.
-ConstantOperationB_EQ=B_NE!=B_GT&gt;B_LT&lt;B_GE&gt;=B_LE&lt;=B_CONTAINSstring contains value (”<em>value</em>”)B_BEGINS_WITHstring begins with value (“value*”)B_ENDS_WITHstring ends with value (“*value”)B_AND&amp;&amp;B_OR||B_NOT!</p>
+<section id="query-operation-codes">
+<h3>Query Operation Codes<a class="headerlink" href="#query-operation-codes" title="Permalink to this heading">¶</a></h3>
+<p>These constants define the operations that can be used to specify a query.
+They are used in conjunction with the push functions for constructing a
+query.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Operation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EQ</span></code></p></td>
+<td><p>=</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NE</span></code></p></td>
+<td><p>!=</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GT</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LT</span></code></p></td>
+<td><p>&lt;</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GE</span></code></p></td>
+<td><blockquote>
+<div><p>=</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LE</span></code></p></td>
+<td><p>&lt;=</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CONTAINS</span></code></p></td>
+<td><p>string contains value (”<em>value</em>”)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BEGINS_WITH</span></code></p></td>
+<td><p>string begins with value (“value*”)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENDS_WITH</span></code></p></td>
+<td><p>string ends with value (“*value”)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_AND</span></code></p></td>
+<td><p>&amp;&amp;</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OR</span></code></p></td>
+<td><p>||</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NOT</span></code></p></td>
+<td><p>!</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 </section>
 

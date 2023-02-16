@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BShelf &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BSlider" href="slider.html" />
+    <link rel="prev" title="BShapeIterator" href="shape-iterator.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BShelf</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="shape-iterator.html">BShapeIterator</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="slider.html">BSlider</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BShelf</a><ul>
+<li><a class="reference internal" href="#dropping-into-the-view-hierarchy">Dropping into the View Hierarchy</a></li>
+<li><a class="reference internal" href="#other-bshelf-features">Other BShelf Features</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bshelf">
+<h1 id="CPPv46BShelf">BShelf<a class="headerlink" href="#bshelf" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../kits/interface/shelf.html#_CPPv46BShelf" title="BShelf"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BShelf</span></code></a> is an object that you “attach” to a view in order to
+make the view accept dropped <a class="reference internal" href="../../kits/interface/dragger.html#_CPPv48BDragger" title="BDragger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDragger</span></code></a> objects. In user-talk, a
+shelf receives and displays replicants. Attaching a <a class="reference internal" href="../../kits/interface/shelf.html#_CPPv46BShelf" title="BShelf"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BShelf</span></code></a> to
+a view (called the “container” view) is remarkably simple:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BShelf</span><span class="w"> </span><span class="o">*</span><span class="n">shelf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BShelf</span><span class="p">(</span><span class="n">container_view</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>That’s all there is to it: With this single line of code,
+<span class="hparameter">container_view</span> is primed to accept and (automatically) display
+dropped replicants. A dropped replicant becomes a child of the container
+view. The container view itself can be any <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> object—you
+don’t alter the view in any way, or even tell it that it’s going to be a
+container.</p>
+<div class="note admonition">
+<p class="admonition-title" id="CPPv44Note">Note</p>
+<p>Attaching a shelf to a view is performed by the <a class="reference internal" href="../../kits/interface/shelf.html#_CPPv46BShelf" title="BShelf"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BShelf</span></code></a>
+constructor only. You can’t create a <a class="reference internal" href="../../kits/interface/shelf.html#_CPPv46BShelf" title="BShelf"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BShelf</span></code></a> and then decide
+which view you want it to serve.</p>
+</div>
+<section id="dropping-into-the-view-hierarchy">
+<h2>Dropping into the View Hierarchy<a class="headerlink" href="#dropping-into-the-view-hierarchy" title="Permalink to this heading">¶</a></h2>
+<p>When the user drops a replicant on a container view, the view receives a
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ARCHIVED_OBJECT</span></code> message that contains a
+<a class="reference internal" href="../../kits/interface/dragger.html#_CPPv48BDragger" title="BDragger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDragger</span></code></a> and the dragger’s target (a <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>).
+These two views (the <a class="reference internal" href="../../kits/interface/dragger.html#_CPPv48BDragger" title="BDragger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDragger</span></code></a> and its target) are related as
+parent-child, child-parent, or as siblings (as explained in the
+<a class="reference internal" href="../../kits/interface/dragger.html#_CPPv48BDragger" title="BDragger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDragger</span></code></a> class). The “more elderly” of the two objects is
+added as a child of the container view; if they’re siblings, the two
+objects are both added as children.</p>
+<p>You can also send or post <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ARCHIVED_OBJECT</span></code> messages to
+a <a class="reference internal" href="../../kits/interface/shelf.html#_CPPv46BShelf" title="BShelf"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BShelf</span></code></a> to simulate a drag and drop.</p>
+</section>
+<section id="other-bshelf-features">
+<h2>Other BShelf Features<a class="headerlink" href="#other-bshelf-features" title="Permalink to this heading">¶</a></h2>
+<dl class="simple myst">
+<dt>Settings.</dt><dd><p>A <a class="reference internal" href="../../kits/interface/shelf.html#_CPPv46BShelf" title="BShelf"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BShelf</span></code></a> can configure itself from a “settings” file, and can
+write its contents to that file. Your only chance to associate a
+<a class="reference internal" href="../../kits/interface/shelf.html#_CPPv46BShelf" title="BShelf"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BShelf</span></code></a> with a settings file is during construction. You can
+save the contents at any time through the <a class="reference internal" href="../../kits/interface/shelf.html#_CPPv4N6BShelf4SaveEv" title="BShelf::Save"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Save()</span></code></a>
+function.</p>
+</dd>
+<dt>Replicant rejection.</dt><dd><p>A <a class="reference internal" href="../../kits/interface/shelf.html#_CPPv46BShelf" title="BShelf"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BShelf</span></code></a> can reject replicants, and can adjust the position
+of the replicants that it accepts. These features are provided through the
+hook functions <a class="reference internal" href="../../kits/interface/shelf.html#_CPPv4NK6BShelf25CanAcceptReplicantMessageEP8BMessage" title="BShelf::CanAcceptReplicantMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CanAcceptReplicantMessage()</span></code></a>, <a class="reference internal" href="../../kits/interface/shelf.html#_CPPv4NK6BShelf22CanAcceptReplicantViewE5BRectP5BViewP8BMessage" title="BShelf::CanAcceptReplicantView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CanAcceptReplicantView()</span></code></a>, and <a class="reference internal" href="../../kits/interface/shelf.html#_CPPv4NK6BShelf17AdjustReplicantByE5BRectP8BMessage" title="BShelf::AdjustReplicantBy"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AdjustReplicantBy()</span></code></a>. A named shelf can also reject replicants, as
+explained next.</p>
+</dd>
+<dt>BShelfnames.</dt><dd><p>When a replicant message is dropped on the shelf, the shelf’s name (set in
+the constructor) is compared to the dropped message’s “shelf_type” field
+(if it has one). If the two don’t match, the replicant rejects the shelf.
+In this way, individual replicants can be picky about the shelves that they
+want to be displayed on. By default, a shelf accepts replicants that don’t
+have a “shelf_type” field. However, if a <a class="reference internal" href="../../kits/interface/shelf.html#_CPPv46BShelf" title="BShelf"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BShelf</span></code></a> is set to
+“enforce type” (set through <a class="reference internal" href="../../kits/interface/shelf.html#_CPPv4N6BShelf15SetTypeEnforcedEb" title="BShelf::SetTypeEnforced"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTypeEnforced()</span></code></a>), then it will only accept replicants that name
+the shelf (in their “shelf_type” fields).</p>
+</dd>
+<dt>Persistent IDs</dt><dd><p>A <a class="reference internal" href="../../kits/interface/shelf.html#_CPPv46BShelf" title="BShelf"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BShelf</span></code></a> assigns each replicant a unique id that’s valid for
+as long as the replicant is attached to the shelf. Replicant ids don’t
+change, even if the shelf is <a class="reference internal" href="../../kits/interface/shelf.html#_CPPv4N6BShelf4SaveEv" title="BShelf::Save"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Save()</span></code></a>’d and then
+later restored (through the constructor).</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="shape-iterator.html">BShapeIterator</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="slider.html">BSlider</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

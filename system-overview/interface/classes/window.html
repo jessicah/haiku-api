@@ -17,49 +17,71 @@
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="BColorControl" href="../color-control.html" />
+    <link rel="prev" title="BView" href="view.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../../index.html">
-          <span>The Haiku Book  documentation</span></a></h1>
+          <span>API Documentation</span></a></h1>
         <h2 class="heading"><span>BWindow</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
+        «&#160;&#160;<a href="view.html">BView</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../color-control.html">BColorControl</a>&#160;&#160;»
         </p>
 
       </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BWindow</a><ul>
+<li><a class="reference internal" href="#creating-and-using-a-bwindow">Creating and Using a BWindow</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
       <div class="content" role="main">
         
-        
   <section id="bwindow">
-<h1>BWindow<a class="headerlink" href="#bwindow" title="Permalink to this heading">¶</a></h1>
-<p>A <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> object represents a window that can be displayed on the screen, and that can
-be the target of user events. You almost always create your own <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> subclass(es)
-rather than use direct instances of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>.</p>
-<p><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> objects draw windows by talking to the App Server. If you want to take over the
+<h1 id="CPPv47BWindow">BWindow<a class="headerlink" href="#bwindow" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> object represents a window that can be displayed on the screen, and that can
+be the target of user events. You almost always create your own <a class="reference internal" href="../../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> subclass(es)
+rather than use direct instances of <a class="reference internal" href="../../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>.</p>
+<p><a class="reference internal" href="../../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> objects draw windows by talking to the App Server. If you want to take over the
 entire screen or draw directly into the graphics card’s frame buffer (bypassing the App Server), you
-should use a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code> or <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code> object (both classes are
+should use a <a class="reference internal" href="../../../kits/game/direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a> or <a class="reference internal" href="../../../kits/game/window-screen.html#_CPPv413BWindowScreen" title="BWindowScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code></a> object (both classes are
 defined in the Game Kit).</p>
 <section id="creating-and-using-a-bwindow">
 <h2>Creating and Using a BWindow<a class="headerlink" href="#creating-and-using-a-bwindow" title="Permalink to this heading">¶</a></h2>
-<p>You must create your <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code> object (<code class="docutils literal notranslate"><span class="pre">be_app</span></code>) before you create any windows.
+<p>You must create your <a class="reference internal" href="../../../kits/application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> object (<code class="docutils literal notranslate"><span class="pre">be_app</span></code>) before you create any windows.
 <code class="docutils literal notranslate"><span class="pre">be_app</span></code> needn’t be running to construct—or even show—a window, but it must be running for the
 window to receive notifications of user events (mouse clicks, key presses, etc.).</p>
-<p>Typically, the first thing you do with your <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> is to add <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s to
-it, through the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddChild()</span></code> function. Again, <code class="docutils literal notranslate"><span class="pre">be_app</span></code> needn’t be running at
+<p>Typically, the first thing you do with your <a class="reference internal" href="../../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> is to add <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s to
+it, through the <a class="reference internal" href="../../../kits/interface/window.html#_CPPv4N7BWindow8AddChildEP5BViewP5BView" title="BWindow::AddChild"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddChild()</span></code></a> function. Again, <code class="docutils literal notranslate"><span class="pre">be_app</span></code> needn’t be running at
 this point, nor must the window be showing.</p>
-<p>Even though it inherits from <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>, you never invoke <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code> on a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>. Instead, you call <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Show()</span></code>. In addition to putting the
-window on-screen, the first (and only the first) <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Show()</span></code> invocation starts the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>’s message loop. To remove a window from the screen without interrupting the
-object’s message loop, use <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Hide()</span></code>. Other message loop details (locking and
-quitting in particular) are handled as described in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code> class.</p>
+<p>Even though it inherits from <a class="reference internal" href="../../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>, you never invoke <a class="reference internal" href="../../../kits/application/looper.html#_CPPv4N7BLooper3RunEv" title="BLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a> on a
+<a class="reference internal" href="../../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>. Instead, you call <a class="reference internal" href="../../../kits/interface/window.html#_CPPv4N7BWindow4ShowEv" title="BWindow::Show"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Show()</span></code></a>. In addition to putting the
+window on-screen, the first (and only the first) <a class="reference internal" href="../../../kits/interface/window.html#_CPPv4N7BWindow4ShowEv" title="BWindow::Show"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Show()</span></code></a> invocation starts the
+<a class="reference internal" href="../../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>’s message loop. To remove a window from the screen without interrupting the
+object’s message loop, use <a class="reference internal" href="../../../kits/interface/window.html#_CPPv4N7BWindow4HideEv" title="BWindow::Hide"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Hide()</span></code></a>. Other message loop details (locking and
+quitting in particular) are handled as described in the <a class="reference internal" href="../../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> class.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>If you create a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>-derived class that uses multiple inheritance, make sure the
-first class your mixin class inherits from is <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>; otherwise, you’ll crash when you
+<p>If you create a <a class="reference internal" href="../../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>-derived class that uses multiple inheritance, make sure the
+first class your mixin class inherits from is <a class="reference internal" href="../../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>; otherwise, you’ll crash when you
 try to close the window. This happens because of an interaction between how the window thread and
 C++ deletes objects of a multiply-inherited class. In other words:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">myClass</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">BWindow</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">OtherClass</span><span class="w"></span>
@@ -75,17 +97,23 @@ C++ deletes objects of a multiply-inherited class. In other words:</p>
 </section>
 
 
+        <div class="clearer"></div>
       </div>
+          </div>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
+        «&#160;&#160;<a href="view.html">BView</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../color-control.html">BColorControl</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Haiku.
+        &#169; Copyright 2023, Haiku, Inc..
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>

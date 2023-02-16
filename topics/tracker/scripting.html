@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Scripting &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BApplication" href="../../system-overview/application/application.html" />
+    <link rel="prev" title="Background Images" href="background-images.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Scripting</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="background-images.html">Background Images</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../system-overview/application/application.html">BApplication</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Scripting</a><ul>
+<li><a class="reference internal" href="#the-entry-property">The Entry Property</a></li>
+<li><a class="reference internal" href="#the-selection-property">The Selection Property</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="scripting">
+<h1 id="CPPv49Scripting">Scripting<a class="headerlink" href="#scripting" title="Permalink to this heading">¶</a></h1>
+<p>Each Tracker window defines a “Poses” property representing the contents
+of the window. Each poses, in turn, defines the two properties “Entry” and
+“Selection”. An “Entry” is an item in the window, e.g. either a file or a
+directory, while a “Selection” represents a selected “Entry”.</p>
+<p>When a Tracker window receives a scripting message with a “Poses”
+property, it pops the current specifier off the specifier stack and then
+forwards the scripting message to the view handling the “Poses” property.
+From there, the “Entry” and “Selection” properties are processed. For
+example, the following function returns the number of entries present in a
+given Tracker window:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">int32</span><span class="w"> </span><span class="nf">CountEntries</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">int32</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">BMessage</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">reply</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// form scripting request</span>
+<span class="w">    </span><span class="n">message</span><span class="p">.</span><span class="n">what</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B_COUNT_PROPERTIES</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">message</span><span class="p">.</span><span class="n">AddSpecifier</span><span class="p">(</span><span class="s">&quot;Entry&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">message</span><span class="p">.</span><span class="n">AddSpecifier</span><span class="p">(</span><span class="s">&quot;Poses&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">message</span><span class="p">.</span><span class="n">AddSpecifier</span><span class="p">(</span><span class="s">&quot;Window&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// deliver request and fetch response</span>
+<span class="w">    </span><span class="n">BMessenger</span><span class="p">(</span><span class="s">&quot;application/x-vnd.Be-TRAK&quot;</span><span class="p">).</span><span class="n">SendMessage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">message</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="o">&amp;</span><span class="n">reply</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// return result</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reply</span><span class="p">.</span><span class="n">FindInt32</span><span class="p">(</span><span class="s">&quot;result&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The Tracker scripting API defines a number of ways of specifying entries
+in a Poses. These methods are summarized below:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Specifier</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_SPECIFIER</span></code></p></td>
+<td><p>Used for specifying the entire Poses or selection as appropriate.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INDEX_SPECIFIER</span></code></p></td>
+<td><p>“index” contains <span class="htype">int32</span> index of file in the Poses. Ranges are
+specified with a pair of indices.</p></td>
+</tr>
+<tr class="row-even"><td><p>‘sref’</p></td>
+<td><p>“refs” contains <span class="htype">entry_ref</span>s of specified files.</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘sprv’</p></td>
+<td><p>Refers to item immediately following file whose <span class="htype">entry_ref</span> is
+found in “data.”</p></td>
+</tr>
+<tr class="row-even"><td><p>‘snxt’</p></td>
+<td><p>Refers to item immediately preceeding file whose <span class="htype">entry_ref</span> is
+found in “data.”</p></td>
+</tr>
+</tbody>
+</table>
+<p>Always remember that other programs (or the user) may also be adding or
+removing entries to the view and selection, so do not rely upon indices as
+a safe method of referring to a specific file. Instead, use
+<span class="htype">entry_refs</span>.</p>
+<section id="the-entry-property">
+<h2>The Entry Property<a class="headerlink" href="#the-entry-property" title="Permalink to this heading">¶</a></h2>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Message</p></th>
+<th class="head"><p>Specifiers</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../constants.html#_CPPv418B_COUNT_PROPERTIES" title="B_COUNT_PROPERTIES"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_COUNT_PROPERTIES</span></code></a></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_SPECIFIER</span></code></p></td>
+<td><p>Counts entries in a Poses.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DELETE_PROPERTY</span></code></p></td>
+<td><p>‘sref’, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INDEX_SPECIFIER</span></code></p></td>
+<td><p>Moves the specified entry to the Trash.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EXECUTE_PROPERTY</span></code></p></td>
+<td><p>‘sref’, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INDEX_SPECIFIER</span></code></p></td>
+<td><p>Perform the equivalent action of opening the specified items in the
+Tracker.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_PROPERTY</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_SPECIFIER</span></code></p></td>
+<td><p>Returns <span class="htype">entry_ref</span>s of all entries in current Poses.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_PROPERTY</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INDEX_SPECIFIER</span></code></p></td>
+<td><p>Returns specified <span class="htype">entry_ref</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_PROPERTY</span></code></p></td>
+<td><p>‘sprv’, ‘snxt’</p></td>
+<td><p>Returns <span class="htype">entry_ref</span> of entry prior to or following specified
+<span class="htype">entry_ref</span>. Also returns index of file in “index.”</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-selection-property">
+<h2>The Selection Property<a class="headerlink" href="#the-selection-property" title="Permalink to this heading">¶</a></h2>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Message</p></th>
+<th class="head"><p>Specifiers</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../constants.html#_CPPv418B_COUNT_PROPERTIES" title="B_COUNT_PROPERTIES"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_COUNT_PROPERTIES</span></code></a></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_SPECIFIER</span></code></p></td>
+<td><p>Counts the number of selected items in the Poses.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CREATE_PROPERTY</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_SPECIFIER</span></code></p></td>
+<td><p>Adds items to the current selection. These can be specified as either
+<span class="htype">entry_ref</span>s or <span class="htype">int32</span>s in the “data” array.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DELETE_PROPERTY</span></code></p></td>
+<td><p>‘sref’, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INDEX_SPECIFIER</span></code></p></td>
+<td><p>Removes items from the current selection.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_PROPERTY</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_SPECIFIER</span></code></p></td>
+<td><p>Returns <span class="htype">entry_ref</span>s of items in selection.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GET_PROPERTY</span></code></p></td>
+<td><p>‘sprv’, ‘snxt’</p></td>
+<td><p>Returns <span class="htype">entry_ref</span> of file prior to or following given item.
+Returns the index of the file in “index.”</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../constants.html#_CPPv414B_SET_PROPERTY" title="B_SET_PROPERTY"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SET_PROPERTY</span></code></a></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DIRECT_SPECIFIER</span></code></p></td>
+<td><p>Clears the current selection and set it to the range given in “data.” Also
+accepts <span class="htype">entry_ref</span>s in “data” to determined the new selection.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../constants.html#_CPPv414B_SET_PROPERTY" title="B_SET_PROPERTY"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SET_PROPERTY</span></code></a></p></td>
+<td><p>‘sprv’, ‘snxt’</p></td>
+<td><p>Clears the current selection and sets it to the <span class="htype">entry_ref</span>s prior
+to or following those specified in “data.”</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="background-images.html">Background Images</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../system-overview/application/application.html">BApplication</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

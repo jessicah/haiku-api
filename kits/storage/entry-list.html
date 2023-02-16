@@ -63,20 +63,19 @@
       <div class="content" role="main">
         
   <section id="bentrylist">
-<h1>BEntryList<a class="headerlink" href="#bentrylist" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv410BEntryList">BEntryList<a class="headerlink" href="#bentrylist" title="Permalink to this heading">¶</a></h1>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N10BEntryList12CountEntriesEv">
 </section>
 <h3>
-CountEntries()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BEntryList</span><span class="p">::</span></span><span class="n">CountEntries</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Returns the number of entries that are in the entry list.</p>
+CountEntries()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BEntryList" title="BEntryList"><span class="n">BEntryList</span></a><span class="p">::</span></span><span class="n">CountEntries</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Returns the number of entries that are in the entry list.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>For <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BQuery</span></code>
-this is a no-op. Also,
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code>’s implementation
-manipulates the entry list pointer; thus, you shouldn’t call
-<span class="hmethod">CountEntries()</span> while you’re iterating through the directory’s entries.</p>
+<p>For <a class="reference internal" href="query.html#_CPPv46BQuery" title="BQuery"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BQuery</span></code></a> this is a no-op. Also, <a class="reference internal" href="directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a>’s
+implementation manipulates the entry list pointer; thus, you shouldn’t call
+<span class="hmethod">CountEntries()</span> while you’re iterating through the directory’s
+entries.</p>
 </div>
 <section id="_CPPv4N10BEntryList12GetNextEntryEP6BEntryb">
 </section>
@@ -85,23 +84,25 @@ manipulates the entry list pointer; thus, you shouldn’t call
 <section id="_CPPv4N10BEntryList14GetNextDirentsEP6dirent6size_t5int32">
 </section>
 <h3>
-GetNextEntry(), GetNextRef(), GetNextDirents()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BEntryList</span><span class="p">::</span></span><span class="n">GetNextEntry</span><span class="sig-paren">(</span><span class="n">BEntry</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">entry</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">traverse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BEntryList</span><span class="p">::</span></span><span class="n">GetNextRef</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BEntryList</span><span class="p">::</span></span><span class="n">GetNextDirents</span><span class="sig-paren">(</span><span class="n">dirent</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buf</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">bufsize</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">count</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">INT_MAX</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>These functions return the “next” entry in the entry list as a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code>,
-entry_ref, or dirent structure. The end of the list is signalled by…</p>
+GetNextEntry(), GetNextRef(), GetNextDirents()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BEntryList" title="BEntryList"><span class="n">BEntryList</span></a><span class="p">::</span></span><span class="n">GetNextEntry</span><span class="sig-paren">(</span><a class="reference internal" href="entry.html#_CPPv46BEntry" title="BEntry"><span class="n">BEntry</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">entry</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">traverse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BEntryList" title="BEntryList"><span class="n">BEntryList</span></a><span class="p">::</span></span><span class="n">GetNextRef</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BEntryList" title="BEntryList"><span class="n">BEntryList</span></a><span class="p">::</span></span><span class="n">GetNextDirents</span><span class="sig-paren">(</span><span class="n">dirent</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buf</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">bufsize</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">count</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">INT_MAX</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>These functions return the “next” entry in the entry list as a
+<a class="reference internal" href="entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a>, <span class="htype">entry_ref</span>, or <span class="htype">dirent</span> structure. The
+end of the list is signalled by…</p>
 <ul class="simple">
-<li><p><span class="hmethod">GetNextEntry()</span> and <span class="hmethod">GetNextRef()</span> return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></li>
+<li><p><span class="hmethod">GetNextEntry()</span> and <span class="hmethod">GetNextRef()</span> return
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></li>
 <li><p><span class="hmethod">GetNextDirents()</span> returns 0.</p></li>
 </ul>
-<p>If the <span class="hparameter">traverse</span> argument is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, symlinks are traversed.</p>
+<p>If the <span class="hparameter">traverse</span> argument is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, symlinks are
+traversed.</p>
 <p>See the <span class="xref std std-ref">class overview</span> for more information.</p>
 <section id="_CPPv4N10BEntryList6RewindEv">
 </section>
 <h3>
-Rewind()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BEntryList</span><span class="p">::</span></span><span class="n">Rewind</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Rewinds the entry list pointer so it points to the first element in the
+Rewind()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BEntryList" title="BEntryList"><span class="n">BEntryList</span></a><span class="p">::</span></span><span class="n">Rewind</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Rewinds the entry list pointer so it points to the first element in the
 list.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>For <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BQuery</span></code> this is a no-op.</p>
+<p>For <a class="reference internal" href="query.html#_CPPv46BQuery" title="BQuery"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BQuery</span></code></a> this is a no-op.</p>
 </div>
 </section>
 </section>

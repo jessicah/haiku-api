@@ -1,0 +1,789 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>The Node Monitor &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BVolume" href="volume.html" />
+    <link rel="prev" title="BSymLink" href="sym-link.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>The Node Monitor</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="sym-link.html">BSymLink</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="volume.html">BVolume</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">The Node Monitor</a><ul>
+<li><a class="reference internal" href="#node-monitor-functions">Node Monitor Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv48status_t10BMessenger">status_t</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#opcode-constants">Opcode Constants</a><ul>
+<li><a class="reference internal" href="#_CPPv415B_ENTRY_CREATED">B_ENTRY_CREATED</a></li>
+<li><a class="reference internal" href="#_CPPv415B_ENTRY_REMOVED">B_ENTRY_REMOVED</a></li>
+<li><a class="reference internal" href="#_CPPv413B_ENTRY_MOVED">B_ENTRY_MOVED</a></li>
+<li><a class="reference internal" href="#_CPPv414B_STAT_CHANGED">B_STAT_CHANGED</a></li>
+<li><a class="reference internal" href="#_CPPv414B_ATTR_CHANGED">B_ATTR_CHANGED</a></li>
+<li><a class="reference internal" href="#_CPPv416B_DEVICE_MOUNTED">B_DEVICE_MOUNTED</a></li>
+<li><a class="reference internal" href="#_CPPv418B_DEVICE_UNMOUNTED">B_DEVICE_UNMOUNTED</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="the-node-monitor">
+<h1 id="CPPv416The Node Monitor">The Node Monitor<a class="headerlink" href="#the-node-monitor" title="Permalink to this heading">¶</a></h1>
+<p>Declared in: storage/NodeMonitor.h</p>
+<p>The Node Monitor is a service that lets you ask to be notified of certain
+file system changes. You can ask to be told when a change is made to…</p>
+<ul class="simple">
+<li><p>The contents of a specific directory.</p></li>
+<li><p>The name of a specific entry.</p></li>
+<li><p>Any stat field of a specific entry.</p></li>
+<li><p>Any attribute of a specific entry.</p></li>
+</ul>
+<p>You can also ask to be notified when…</p>
+<ul class="simple">
+<li><p>Volumes are mounted and unmounted.</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title" id="CPPv44Note">Note</p>
+<p>Volume monitoring is also provided by the <a class="reference internal" href="volume-roster.html#_CPPv413BVolumeRoster" title="BVolumeRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BVolumeRoster</span></code></a>
+class: <a class="reference internal" href="volume-roster.html#_CPPv413BVolumeRoster" title="BVolumeRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BVolumeRoster</span></code></a> can talk to the Node Monitor for you. The
+<a class="reference internal" href="volume-roster.html#_CPPv413BVolumeRoster" title="BVolumeRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BVolumeRoster</span></code></a> volume-watching API is more humane than that
+which you’ll find here.</p>
+</div>
+<p>When something interesting happens, the Node Monitor lets you know by
+sending a <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> to the target of your choice.</p>
+<section id="node-monitor-functions">
+<h2>Node Monitor Functions<a class="headerlink" href="#node-monitor-functions" title="Permalink to this heading">¶</a></h2>
+<p>There are two Node Monitor functions, watch_node() and stop_watching().
+The names are a wee bit misleading, so before we go on to the full
+technical descriptions, let’s nip some buds:</p>
+<ul class="simple">
+<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">watch_node()</span></code> tells the Node Monitor to start
+<strong>or stop</strong> watching a <strong>specific</strong> node, or to watch for volumes being
+mounted and unmounted. Memorize the emphasized words.</p></li>
+<li><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">stop_watching()</span></code> tells the Node Monitor to
+stop sending notifications to a particular target.</p></li>
+</ul>
+<h3>
+</h3><pre style="background: #f3f3f3; line-height: 2em">status_t The Node Monitor::watch_node(const node_ref* nref, uint32 flags, BMessenger messenger)</pre><pre style="background: #f3f3f3; line-height: 2em">status_t The Node Monitor::watch_node(const node_ref* nref, uint32 flags, const BHandler* handler, const BLooper* looper = NULL)</pre><p>watch_node() tells the Node Monitor to…</p>
+<ul class="simple">
+<li><p>…start paying attention to the node specified by the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">node_ref</span></code> argument. If you’re watching for volumes (only),
+<span class="hparameter">nref</span> can be <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>. The easiest way to get a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">node_ref</span></code> is to invoke
+<a class="reference internal" href="statable.html#_CPPv4NK9BStatable10GetNodeRefEP8node_ref" title="BStatable::GetNodeRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BStatable::GetNodeRef()</span></code></a> on any <a class="reference internal" href="entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> or
+<a class="reference internal" href="node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a> object.</p></li>
+<li><p>The <span class="hparameter">flags</span> argument lists the changes that you want the Monitor
+to pay attention to. See below for details.</p></li>
+<li><p>The target of the change notification messages is specified either as a
+<a class="reference internal" href="../application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a>, or as a <a class="reference internal" href="../application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> /
+<a class="reference internal" href="../application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> pair. (The target specification follows the
+<a class="reference internal" href="../application/invoker.html#_CPPv4N8BInvoker9SetTargetE10BMessenger" title="BInvoker::SetTarget"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BInvoker::SetTarget()</span></code></a> protocol; see the <a class="reference internal" href="../application/invoker.html#_CPPv48BInvoker" title="BInvoker"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInvoker</span></code></a>
+class for details.) The notification shows up as a <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> in
+the target’s <a class="reference internal" href="../application/handler.html#_CPPv4N8BHandler15MessageReceivedEP8BMessage" title="BHandler::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MessageReceived()</span></code></a>
+function.</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>You can’t tell the Node Monitor to send its notifications to another
+application. Currently, the <a class="reference internal" href="../application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> that you specify must
+identify a target in the caller’s team.</p>
+</div>
+<p>Jumping ahead a bit, here’s a sample function that tells the Node Monitor
+to watch for name and attribute changes to a given entry. The Monitor’s
+notifications will be sent to the application’s main loop:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span><span class="w"> </span><span class="nf">WatchThis</span><span class="p">(</span><span class="n">BEntry</span><span class="w"> </span><span class="o">*</span><span class="n">entry</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">node_ref</span><span class="w"> </span><span class="n">nref</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">entry</span><span class="o">-&gt;</span><span class="n">GetNodeRef</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nref</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">watch_node</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nref</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">B_WATCH_NAME</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_WATCH_ATTR</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">be_app_messenger</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p class="rubric">Monitor Flags</p>
+<p>watch_node()’s <span class="hparameter">flags</span> argument is a combination of the following</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_NAME</span></code></p></td>
+<td><p>Watches for name changes. This includes moving the node to a different
+directory, or removing the node altogether.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_STAT</span></code></p></td>
+<td><p>Watches for any change to the node’s <span class="htype">stat</span> structure. This
+includes changes to the size, modification date, owner, and so on. See
+“The stat Structure” in the <a class="reference internal" href="statable.html#_CPPv49BStatable" title="BStatable"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStatable</span></code></a> class for a description
+of what’s in the <span class="htype">stat</span> structure.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_ATTR</span></code></p></td>
+<td><p>Watches for changes to any of the node’s attributes. This includes adding
+and removing attributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_DIRECTORY</span></code></p></td>
+<td><p>Only applies to nodes that are directories. The flag tells the Monitor to
+watch for changes (new entries, entry deletions, entries being renamed) to
+the directory. (You can apply the other flags to a directory, as well).
+It’s not an error to set <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_DIRECTORY</span></code> on a node that
+isn’t a directory—but it doesn’t do anything for you.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_ALL</span></code>.</p></td>
+<td><p>This is a convenience that combines all the above.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_MOUNT</span></code></p></td>
+<td><p>Watches for volumes being mounted and unmounted. As mentioned above, the
+<span class="hparameter">nref</span> argument isn’t needed (it can be <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>) if all
+you’re doing is watching volumes. <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_MOUNT</span></code> isn’t
+included in <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_ALL</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>There’s one other constant, which lives in a class by itself:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STOP_WATCHING</span></code></p></td>
+<td><p>Tells the Node Monitor to stop watching the <span class="hparameter">nref</span> argument.</p></td>
+</tr>
+</tbody>
+</table>
+<p>You can’t combine <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STOP_WATCHING</span></code> with any of the others
+in an attempt to stop watching a specific category of changes. For example,
+if you call…</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">watch_node</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nref</span><span class="p">,</span><span class="w"> </span><span class="n">B_WATCH_STAT</span><span class="p">,</span><span class="w"> </span><span class="n">be_app_messenger</span><span class="p">);</span><span class="w"></span>
+<span class="n">watch_node</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nref</span><span class="p">,</span><span class="w"> </span><span class="n">B_WATCH_ATTR</span><span class="p">,</span><span class="w"> </span><span class="n">be_app_messenger</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>…and then call…</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">watch_node</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nref</span><span class="p">,</span><span class="w"> </span><span class="n">B_STOP_WATCHING</span><span class="p">,</span><span class="w"> </span><span class="n">be_app_messenger</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>…both of the previous Monitor calls are stopped.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STOP_WATCHING</span></code> does not apply to volume watching. The
+only way to stop monitoring volume un/mounts is to call stop_watching().</p>
+</div>
+<p class="rubric">Combining Flags and the 4096 Limit</p>
+<p>If you can, you should combine as many flags as you’re going to need in
+single calls to watch_node(). Recall the example used above:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">watch_node</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nref</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_WATCH_NAME</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_WATCH_ATTR</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">be_app_messenger</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This is better than making separate watch_node() calls (one to pass
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_NAME</span></code> and another to pass
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_ATTR</span></code>)—not only because the single call is
+naturally more efficient than two, but also because the Node Monitor can
+only monitor 4096 nodes per team at a time. Every call to watch_node()
+consumes a Node Monitor slot, even if you’re already monitoring the
+requested node.</p>
+<p>If you want to watch all aspects of a node, just pass
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_ALL</span></code> to every watch_node() call. This will consume
+only a single Node Monitor slot.</p>
+<p class="rubric">Notification Messages</p>
+<p>A <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> notification sent by the Node Monitor looks like
+this:</p>
+<ul class="simple">
+<li><p>The <span class="hparameter">what</span> value is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NODE_MONITOR</span></code>.</p></li>
+<li><p>The field named <span class="hparameter">opcode</span> is an <span class="htype">int32</span> constant that tells
+you what happened.</p></li>
+<li><p>Additional fields give you information (device, node, name, and so on)
+about the node (or volume) that it happened to.</p></li>
+</ul>
+<p>The <span class="hparameter">opcode</span> constants and additional fields are described in
+“<span class="xref std std-ref">Opcode Constants</span>.” In general, the opcodes correspond to the flags
+that you passed to watch_node(); however, this correspondence isn’t always
+one-to-one.</p>
+<p>There are seven opcode constants:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#_CPPv415B_ENTRY_CREATED" title="B_ENTRY_CREATED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_CREATED</span></code></a></p></li>
+<li><p><a class="reference internal" href="#_CPPv415B_ENTRY_REMOVED" title="B_ENTRY_REMOVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_REMOVED</span></code></a></p></li>
+<li><p><a class="reference internal" href="#_CPPv413B_ENTRY_MOVED" title="B_ENTRY_MOVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_MOVED</span></code></a></p></li>
+<li><p><a class="reference internal" href="#_CPPv414B_STAT_CHANGED" title="B_STAT_CHANGED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STAT_CHANGED</span></code></a></p></li>
+<li><p><a class="reference internal" href="#_CPPv414B_ATTR_CHANGED" title="B_ATTR_CHANGED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ATTR_CHANGED</span></code></a></p></li>
+<li><p><a class="reference internal" href="#_CPPv416B_DEVICE_MOUNTED" title="B_DEVICE_MOUNTED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DEVICE_MOUNTED</span></code></a></p></li>
+<li><p><a class="reference internal" href="#_CPPv418B_DEVICE_UNMOUNTED" title="B_DEVICE_UNMOUNTED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DEVICE_UNMOUNTED</span></code></a></p></li>
+</ul>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The Node Monitor is off and running.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>Bad <span class="hparameter">nref</span> argument (not applicable to mount-only watches), or
+poorly formed target.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<td><p>Couldn’t allocate resources, or out of Node Monitor slots.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<td><p>Some cases of bad <span class="hparameter">nref</span> arguments erroneously return
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>. This will be fixed.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv48status_t10BMessenger">
+</section>
+<h3>
+status_t()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="sig-paren">(</span><a class="reference internal" href="../application/messenger.html#_CPPv410BMessenger" title="BMessenger"><span class="n">BMessenger</span></a><span class="w"> </span><span class="n sig-param">messenger</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="../application/handler.html#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span>, <span class="k">const</span><span class="w"> </span><a class="reference internal" href="../application/looper.html#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">looper</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Tells the Node Monitor to stop sending notifications to the target
+described by the arguments. All the Node Monitor “slots” that were
+allocated to the target are freed. Keep in mind that are only 4096 slots
+for the entire system.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The target is now out of the Node Monitor loop.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>Badly formed target description.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="opcode-constants">
+<h2>Opcode Constants<a class="headerlink" href="#opcode-constants" title="Permalink to this heading">¶</a></h2>
+<p>The following sections describe the “opcode” constants; these are the
+values that appear in the <span class="hparameter">opcode</span> field of the
+<a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>s that are generated by the Node Monitor. Note that in
+these descriptions, the use of the terms “entry” and “node” is sometimes
+blurred.</p>
+<p>Declared in: storage/NodeMonitor.h</p>
+<section id="_CPPv415B_ENTRY_CREATED">
+</section>
+<h3>
+B_ENTRY_CREATED</h3></pre><p>A completely new entry was created in a monitored directory. (This doesn’t
+include entries that are moved into this directory from some other
+directory—see <a class="reference internal" href="#_CPPv413B_ENTRY_MOVED" title="B_ENTRY_MOVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_MOVED</span></code></a>.)</p>
+<p>You get this notification if you applied
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_DIRECTORY</span></code> to the directory in which the entry was
+created. The message’s fields are:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">opcode</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p><a class="reference internal" href="#_CPPv415B_ENTRY_CREATED" title="B_ENTRY_CREATED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_CREATED</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">name</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>The name of the new entry.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">directory</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>The <span class="htype">ino_t</span> (node) number for the directory in which the entry was
+created.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">device</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The <span class="htype">dev_t</span> number of the device on which the new entry resides.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">node</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>The <span class="htype">ino_t</span> number of the new entry itself. (More accurately, it
+identifies the node that corresponds to the entry.)</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Parsing and Tricks</p>
+<p>In your code, you would parse a <a class="reference internal" href="#_CPPv415B_ENTRY_CREATED" title="B_ENTRY_CREATED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_CREATED</span></code></a> message
+like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">MyTarget::MessageReceived</span><span class="p">(</span><span class="n">BMessage</span><span class="w"> </span><span class="o">*</span><span class="n">msg</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w"> </span><span class="n">opcode</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">dev_t</span><span class="w"> </span><span class="n">device</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">ino_t</span><span class="w"> </span><span class="n">directory</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">ino_t</span><span class="w"> </span><span class="n">node</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">what</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_NODE_MONITOR</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindInt32</span><span class="p">(</span><span class="s">&quot;opcode&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">opcode</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">opcode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">B_ENTRY_CREATED</span><span class="p">:</span><span class="w"></span>
+<span class="w">               </span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindInt32</span><span class="p">(</span><span class="s">&quot;device&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">device</span><span class="p">);</span><span class="w"></span>
+<span class="w">               </span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindInt64</span><span class="p">(</span><span class="s">&quot;directory&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">directory</span><span class="p">);</span><span class="w"></span>
+<span class="w">               </span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindInt64</span><span class="p">(</span><span class="s">&quot;node&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
+<span class="w">               </span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindString</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+<span class="w">               </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">...</span><span class="w"></span>
+</pre></div>
+</div>
+<p>So, what do you do with these fields?</p>
+<p class="rubric">Create an entry_ref to the entry.</p>
+<p>The <span class="hparameter">device</span>, <span class="hparameter">directory</span>, and <span class="hparameter">name</span> fields can
+be used to create an <span class="htype">entry_ref</span> to the new entry:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">entry_ref</span><span class="w"> </span><span class="n">ref</span><span class="p">;</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+<span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindInt32</span><span class="p">(</span><span class="s">&quot;device&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ref</span><span class="p">.</span><span class="n">device</span><span class="p">);</span><span class="w"></span>
+<span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindInt64</span><span class="p">(</span><span class="s">&quot;directory&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ref</span><span class="p">.</span><span class="n">directory</span><span class="p">);</span><span class="w"></span>
+<span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindString</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+<span class="n">ref</span><span class="p">.</span><span class="n">set_name</span><span class="p">(</span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p class="rubric">Create a node_ref to the entry.</p>
+<p>If you want to start Node Monitoring the new entry (or, more accurately,
+the node of the new entry), you stuff <span class="hparameter">device</span> and
+<span class="hparameter">directory</span> into a <span class="htype">node_ref</span>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">node_ref</span><span class="w"> </span><span class="n">nref</span><span class="p">;</span><span class="w"></span>
+<span class="n">status_t</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">...</span><span class="w"></span>
+<span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindInt32</span><span class="p">(</span><span class="s">&quot;device&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nref</span><span class="p">.</span><span class="n">device</span><span class="p">);</span><span class="w"></span>
+<span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindInt64</span><span class="p">(</span><span class="s">&quot;node&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nref</span><span class="p">.</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">watch_node</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nref</span><span class="p">,</span><span class="w"> </span><span class="n">B_WATCH_ALL</span><span class="p">,</span><span class="w"> </span><span class="n">be_app_messenger</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p class="rubric">Create a node_ref to the entry’s parent.</p>
+<p>Note that the <span class="hparameter">directory</span> field is a node number. By combining
+this number with the <span class="hparameter">device</span> field, you can create a
+<span class="htype">node_ref</span> that points to the entry’s parent. From there, you’re a
+<a class="reference internal" href="directory.html#_CPPv4N10BDirectory5SetToEPK9entry_ref" title="BDirectory::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> away from a <a class="reference internal" href="directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a>
+object:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">node_ref</span><span class="w"> </span><span class="n">nref</span><span class="p">;</span><span class="w"></span>
+<span class="n">BDirectory</span><span class="w"> </span><span class="n">dir</span><span class="p">;</span><span class="w"></span>
+<span class="n">status_t</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">...</span><span class="w"></span>
+<span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindInt32</span><span class="p">(</span><span class="s">&quot;device&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nref</span><span class="p">.</span><span class="n">device</span><span class="p">);</span><span class="w"></span>
+<span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindInt64</span><span class="p">(</span><span class="s">&quot;directory&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nref</span><span class="p">.</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
+<span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dir</span><span class="p">.</span><span class="n">SetTo</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nref</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="_CPPv415B_ENTRY_REMOVED">
+</section>
+<h3>
+B_ENTRY_REMOVED</h3></pre><p>A node was removed (deleted) from a directory.</p>
+<p>You get this if you applied <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_NAME</span></code> on the node
+itself, or <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_DIRECTORY</span></code> on the directory that the
+node lived in. The message’s fields are:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">opcode</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_REMOVED</span> <span class="pre">indicates</span> <span class="pre">that</span> <span class="pre">an</span> <span class="pre">entry</span> <span class="pre">was</span> <span class="pre">removed.</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">directory</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>The <span class="htype">ino_t</span> (node) number of the directory from which the entry was
+removed.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">device</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The <span class="htype">dev_t</span> number of the device that the removed node used to live
+on.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">node</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>The <span class="htype">ino_t</span> number of the node that was removed.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>Since this message is telling you that the node was removed, the “node”
+value will be invalid. The node number can be useful (and sometimes
+necessary) for comparison with cached node numbers (as demonstrated below).</p>
+</div>
+<p>Parsing the message is the same as for <a class="reference internal" href="#_CPPv415B_ENTRY_CREATED" title="B_ENTRY_CREATED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_CREATED</span></code></a>,
+but without the <span class="hparameter">name</span> field. See “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Parsing</span> <span class="pre">and</span> <span class="pre">Tricks</span></code>,” above.</p>
+<p>Note that the <a class="reference internal" href="#_CPPv415B_ENTRY_REMOVED" title="B_ENTRY_REMOVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_REMOVED</span></code></a> message is sent as soon as
+the node’s entry is “unlinked” from its directory. The node itself may
+linger for while after that. Follow this logic:</p>
+<ul class="simple">
+<li><p>When a file (regardless of flavor) is removed, the entry for that file is
+immediately removed (“unlinked”) from the file hierarchy, and the Node
+Monitor message is immediately sent—even if you have an object that has
+opened the file’s node.</p></li>
+<li><p>The node isn’t actually destroyed until the last open object (to that
+node) is destroyed. (In POSIX speak, the node is destroyed when the last
+file descriptor to the node is closed.)</p></li>
+<li><p>Until the node is destroyed, the open objects (file descriptors) can still
+access the node’s data.</p></li>
+</ul>
+<p>You can take advantage of this to warn a user that a file is going to go
+away, or to make a backup, or whatever. For example, let’s say you have an
+application that lets the user open files; each time a file is opened, your
+OpenFile() function creates a <a class="reference internal" href="file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a> object and starts the Node
+Monitor running:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span><span class="w"> </span><span class="nf">YourApp::OpenFile</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pathname</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">BFile</span><span class="w"> </span><span class="o">*</span><span class="n">file</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">node_ref</span><span class="w"> </span><span class="n">nref</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">status_t</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BFile</span><span class="p">(</span><span class="n">pathname</span><span class="p">,</span><span class="w"> </span><span class="n">B_READ_WRITE</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">err</span><span class="o">=</span><span class="n">file</span><span class="o">-&gt;</span><span class="n">InitCheck</span><span class="p">())</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">file</span><span class="o">-&gt;</span><span class="n">GetNodeRef</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nref</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">watch_node</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nref</span><span class="p">,</span><span class="w"> </span><span class="n">B_WATCH_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">be_app_messenger</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">delete</span><span class="w"> </span><span class="n">file</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* We&#39;ve got the file and we&#39;re monitoring it; now we cache</span>
+<span class="cm">   * the BFile by adding it to a BList (data member).</span>
+<span class="cm">   * function. There&#39;s a race condition between the</span>
+<span class="cm">   * watch_node() call above and the following AddItem().</span>
+<span class="cm">   */</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="p">((</span><span class="n">FileList</span><span class="o">-&gt;</span><span class="n">AddItem</span><span class="p">((</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">file</span><span class="p">))</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">B_OK</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">B_ERROR</span><span class="p">);</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Now we receive a Node Monitor message telling us the node has been
+removed. We stuff the <span class="hparameter">device</span> and <span class="hparameter">node</span> fields into a
+<span class="htype">node_ref</span> and pass them to a (fictitious) <span class="hmethod">AlertUser()</span>
+function:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">YourApp::MessageReceived</span><span class="p">(</span><span class="n">BMessage</span><span class="w"> </span><span class="o">*</span><span class="n">msg</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w"> </span><span class="n">opcode</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">node_ref</span><span class="w"> </span><span class="n">nref</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">what</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_NODE_MONITOR</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindInt32</span><span class="p">(</span><span class="s">&quot;opcode&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">opcode</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">opcode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">B_ENTRY_REMOVED</span><span class="p">:</span><span class="w"></span>
+<span class="w">               </span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindInt32</span><span class="p">(</span><span class="s">&quot;device&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nref</span><span class="p">.</span><span class="n">device</span><span class="p">);</span><span class="w"></span>
+<span class="w">               </span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindInt64</span><span class="p">(</span><span class="s">&quot;node&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nref</span><span class="p">.</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
+<span class="w">               </span><span class="n">GoodbyeFile</span><span class="p">(</span><span class="n">nref</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The implementation of <span class="hmethod">GoodbyeFile()</span> (which we won’t show here)
+would walk down the <a class="reference internal" href="file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a> list looking for a <span class="htype">node_ref</span>
+that matches the argument:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">YourApp::GoodbyeFile</span><span class="p">(</span><span class="n">node_ref</span><span class="w"> </span><span class="n">nref</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">BFile</span><span class="w"> </span><span class="o">*</span><span class="n">filePtr</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w"> </span><span class="n">ktr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">node_ref</span><span class="w"> </span><span class="n">cref</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="o">*</span><span class="n">filePtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BFile</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">FileList</span><span class="o">-&gt;</span><span class="n">ItemAt</span><span class="p">(</span><span class="n">ktr</span><span class="o">++</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">filePtr</span><span class="o">-&gt;</span><span class="n">GetNodeRef</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cref</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nref</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">cref</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="cm">/* We found it. Now we do whatever</span>
+<span class="cm">         * we need to do.</span>
+<span class="cm">         */</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If a match is found, your app could then do whatever it needs to do.
+Remember—the node’s data is still valid until your <a class="reference internal" href="file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a> is
+destroyed or re-initialized.</p>
+<section id="_CPPv413B_ENTRY_MOVED">
+</section>
+<h3>
+B_ENTRY_MOVED</h3></pre><p>A node was moved from one directory to a different directory.</p>
+<p>You get this if you applied <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_NAME</span></code> on the node
+itself, or <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_DIRECTORY</span></code> on either of the
+directories. The message’s fields are:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">opcode</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_MOVED</span> <span class="pre">indicates</span> <span class="pre">that</span> <span class="pre">an</span> <span class="pre">existing</span> <span class="pre">entry</span> <span class="pre">moved</span> <span class="pre">from</span> <span class="pre">one</span> <span class="pre">directory</span> <span class="pre">to</span> <span class="pre">another.</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">name</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>The name of the entry that moved.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">from directory</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>The <span class="htype">ino_t</span> (node) number of the directory from that the node was
+removed from.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">to directory</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>The <span class="htype">ino_t</span> (node) number of the directory that the node was added
+to.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">device</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The <span class="htype">dev_t</span> number of the device that the moved node entry lives
+on. (You can’t move a file between devices, so this value will be apply to
+the file’s old and new locations.)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">node</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>The <span class="htype">ino_t</span> number of the node that moved.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>Moving a node <strong>does not</strong> change its <span class="htype">ino_t</span> number.</p>
+</div>
+<p>Parsing the message is much the same as for
+<a class="reference internal" href="#_CPPv415B_ENTRY_CREATED" title="B_ENTRY_CREATED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_CREATED</span></code></a>, modulo the <span class="hparameter">directory</span> field
+changes. See “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Parsing</span> <span class="pre">and</span> <span class="pre">Tricks</span></code>”</p>
+<p>Moving a node doesn’t affect the objects that hold the node open. They
+(the objects) can continue to read and write data from the node.</p>
+<section id="_CPPv414B_STAT_CHANGED">
+</section>
+<h3>
+B_STAT_CHANGED</h3></pre><p>A field in the node’s <span class="htype">stat</span> structure changed (this doesn’t
+include the <span class="htype">stat</span> structure disappearing because the node was
+deleted).</p>
+<p>You get this if you applied <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_STAT</span></code> on the node
+itself. The message’s fields are:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">opcode</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STAT_CHANGED</span> <span class="pre">indicates</span> <span class="pre">that</span> <span class="pre">some</span> <span class="pre">statistic</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">node</span> <span class="pre">(as</span> <span class="pre">recorded</span> <span class="pre">in</span> <span class="pre">its</span> <span class="pre">stat</span> <span class="pre">structure)</span> <span class="pre">changed.</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">node</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>The <span class="htype">ino_t</span> number of the node.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">device</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The <span class="htype">dev_t</span> number of the node’s device.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The stat structure is described in “The stat Structure” in the
+<a class="reference internal" href="statable.html#_CPPv49BStatable" title="BStatable"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStatable</span></code></a> class. The fields that you can change are:</p>
+<ul class="simple">
+<li><p>Owner (<span class="hparameter">st_uid</span>), group (<span class="hparameter">st_gid</span>), and permissions (low
+four bytes of <span class="hparameter">st_mode</span>).</p></li>
+<li><p>Creation (<span class="hparameter">st_ctime</span>), modification (<span class="hparameter">st_mtime</span>), and
+access times (<span class="hparameter">st_atime</span>; currently unused).</p></li>
+<li><p>The size of the node’s data (<span class="hparameter">st_size</span>). The measurement doesn’t
+include attributes.</p></li>
+</ul>
+<p>A couple of important points:</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="#_CPPv414B_STAT_CHANGED" title="B_STAT_CHANGED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STAT_CHANGED</span></code></a> message doesn’t give you enough
+information to construct an object from which you can get a <span class="htype">stat</span>
+structure. In other words, you can’t play the same games that were
+described in “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Parsing</span> <span class="pre">and</span> <span class="pre">Tricks</span></code>.”</p></li>
+<li><p>The message also doesn’t tell you which stat field changed.</p></li>
+</ul>
+<p>In most uses of the <a class="reference internal" href="#_CPPv414B_STAT_CHANGED" title="B_STAT_CHANGED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STAT_CHANGED</span></code></a> message, you have to
+cache the objects that you’re monitoring so you can compare their
+<span class="htype">node_ref</span>s to the message fields (an example of this is given in
+<a class="reference internal" href="#_CPPv415B_ENTRY_REMOVED" title="B_ENTRY_REMOVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_REMOVED</span></code></a>). Furthermore, you may want to cache the
+objects’ <span class="htype">stat</span> structures so you can figure out which field
+changed.</p>
+<section id="_CPPv414B_ATTR_CHANGED">
+</section>
+<h3>
+B_ATTR_CHANGED</h3></pre><p>An attribute of the node changed.</p>
+<p>You get this if you applied <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_ATTR</span></code> on the node
+itself. The message’s fields are:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>“opcode”</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ATTR_CHANGED</span> <span class="pre">indicates</span> <span class="pre">that</span> <span class="pre">some</span> <span class="pre">attribute</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">node</span> <span class="pre">changed.</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>“node”</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>The ino_t number of the node.</p></td>
+</tr>
+<tr class="row-even"><td><p>“device”</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The dev_t number of the node’s device.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Attributes are key/value pairs that can be “attached” to any file
+(regardless of flavor). They’re described in the <a class="reference internal" href="node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a> class.</p>
+<p>As with <a class="reference internal" href="#_CPPv414B_STAT_CHANGED" title="B_STAT_CHANGED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STAT_CHANGED</span></code></a> messages, you may not be able to
+use the <a class="reference internal" href="#_CPPv414B_ATTR_CHANGED" title="B_ATTR_CHANGED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ATTR_CHANGED</span></code></a> information directly. Instead, you
+have to cache references to the (<a class="reference internal" href="node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a>) objects that you’re
+monitoring so you can compare their <span class="htype">node_ref</span>s to the message
+fields (an example of this is given in <a class="reference internal" href="#_CPPv415B_ENTRY_REMOVED" title="B_ENTRY_REMOVED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_REMOVED</span></code></a>).</p>
+<section id="_CPPv416B_DEVICE_MOUNTED">
+</section>
+<h3>
+B_DEVICE_MOUNTED</h3></pre><p>A file system device (in other words, a volume) was mounted.</p>
+<p>You get this if you passed <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_MOUNT</span></code> to
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">watch_node()</span></code>. The message’s fields are:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>“opcode”</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DEVICE_MOUNTED</span> <span class="pre">indicates</span> <span class="pre">that</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">device</span> <span class="pre">(or</span> <span class="pre">file</span> <span class="pre">system</span> <span class="pre">volume)</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">mounted.</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>“new device”</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The <span class="htype">dev_t</span> number of the newly-mounted device.</p></td>
+</tr>
+<tr class="row-even"><td><p>“device”</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The <span class="htype">dev_t</span> number of the device that holds the directory of the
+new device’s mount point.</p></td>
+</tr>
+<tr class="row-odd"><td><p>“directory”</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>The <span class="htype">ino_t</span> (node) number of the directory that acts as the new
+device’s mount point.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Obviously, there’s no node involved, here, so the first argument to the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">watch_node()</span></code> call can be <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">watch_node</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">B_WATCH_MOUNT</span><span class="p">,</span><span class="w"> </span><span class="n">be_app_messenger</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Unlike with the other “watch flags,” the only way to stop the
+mount-watching is to call <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">stop_watching()</span></code>.</p>
+<section id="_CPPv418B_DEVICE_UNMOUNTED">
+</section>
+<h3>
+B_DEVICE_UNMOUNTED</h3></pre><p>A file system device (in other words, a volume) was unmounted.</p>
+<p>You get this if you passed <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WATCH_MOUNT</span></code> to
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">watch_node()</span></code>. The message’s fields are:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>“opcode”</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DEVICE_UNMOUNTED</span> <span class="pre">indicates</span> <span class="pre">that</span> <span class="pre">a</span> <span class="pre">device</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">unmounted.</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>“device”</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The <span class="htype">dev_t</span> number of the unmounted device.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Be careful with the device number: <span class="htype">dev_t</span>s are quickly recycled.
+You should only need this number if you’re keeping a list of the
+<span class="htype">dev_t</span>s of all mounted disks and you want to remove the
+<span class="htype">dev_t</span> for this recently-unmounted volume (keeping in mind that a
+device mounted message bearing this <span class="htype">dev_t</span> may arrive in the
+meantime).</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="sym-link.html">BSymLink</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="volume.html">BVolume</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

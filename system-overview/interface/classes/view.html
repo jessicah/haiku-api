@@ -17,58 +17,83 @@
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="BWindow" href="window.html" />
+    <link rel="prev" title="BTextView" href="text_view.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../../index.html">
-          <span>The Haiku Book  documentation</span></a></h1>
+          <span>API Documentation</span></a></h1>
         <h2 class="heading"><span>BView</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
+        «&#160;&#160;<a href="text_view.html">BTextView</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="window.html">BWindow</a>&#160;&#160;»
         </p>
 
       </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BView</a><ul>
+<li><a class="reference internal" href="#developing-a-bview-subclass">Developing a BView Subclass</a></li>
+<li><a class="reference internal" href="#the-view-structure">The View Structure</a></li>
+<li><a class="reference internal" href="#locking-the-window">Locking the Window</a></li>
+<li><a class="reference internal" href="#focus">Focus</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
       <div class="content" role="main">
         
-        
   <section id="bview">
-<h1>BView<a class="headerlink" href="#bview" title="Permalink to this heading">¶</a></h1>
-<p>A <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> object represents a rectangular area within a window. The object draws within
+<h1 id="CPPv45BView">BView<a class="headerlink" href="#bview" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> object represents a rectangular area within a window. The object draws within
 this rectangle and responds to user events (mouse clicks, key presses) that are directed to the
 window.</p>
-<p>Most of the other classes in the Interface Kit inherit from <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>. You can use these
-objects off-the-shelf, but for most applications, you’ll also need to create some <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
+<p>Most of the other classes in the Interface Kit inherit from <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>. You can use these
+objects off-the-shelf, but for most applications, you’ll also need to create some <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>
 subclasses, and create instances of these subclasses.</p>
-<p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> class is one of the largest in the Haiku class library. Because of this, the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> documentation is split across a number of files:</p>
+<p>The <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> class is one of the largest in the Haiku class library. Because of this, the
+<a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> documentation is split across a number of files:</p>
 <ul class="simple">
 <li><p>“BView General Functions” describes those functions that you use no matter what you’re doing with
-your <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> object.</p></li>
+your <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> object.</p></li>
 <li><p>“BView Drawing-Related Functions”: Anything related to drawing subdivided into Primitive Drawing
 Functions (to draw lines, circles, polygons, etc.) and Other Drawing Functions (such as picture
 recording, and bitmap functions).</p></li>
 <li><p>“BView Graphics State Functions” modify or report on the “graphics state,” a set of variables
 (colors, pen position, scaling, etc.) that control how drawing takes place in the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>.</p></li>
-<li><p>“BView Hook Functions” gives a list of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> functions that can be implemented in
+<a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>.</p></li>
+<li><p>“BView Hook Functions” gives a list of the <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> functions that can be implemented in
 a subclass.</p></li>
 <li><p>“BView View Hierachy Functions” relate to the nested tree of views associated with a window.</p></li>
 <li><p>“BView Input-Related Functions” monitor and process input activity.</p></li>
 <li><p>“Sciprint and Archival” describes the scripting suites and properties, and archived fields
-supported by <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>.</p></li>
+supported by <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>.</p></li>
 </ul>
 <section id="developing-a-bview-subclass">
 <h2>Developing a BView Subclass<a class="headerlink" href="#developing-a-bview-subclass" title="Permalink to this heading">¶</a></h2>
-<p>To define special behavior for a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>—such as the type of behavior that might be
+<p>To define special behavior for a <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>—such as the type of behavior that might be
 needed for the canvas area of a painting program—you define your own subclass of
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>, and in that subclass implement the appropriate hook functions of the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> class. A hook function is a function that is called by the Haiku internals in
+<a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>, and in that subclass implement the appropriate hook functions of the
+<a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> class. A hook function is a function that is called by the Haiku internals in
 response to certain events, and that is intended specifically for definition in a user-defined
-subclass. For example, the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::MouseDown()</span></code> hook function is called on a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> instance every time a mouse button is clicked while the mouse is inside the view.
-The default <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::MouseDown()</span></code> function does nothing, but you can override this with
+subclass. For example, the <a class="reference internal" href="../../../kits/interface/view.html#_CPPv4N5BView9MouseDownE6BPoint" title="BView::MouseDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::MouseDown()</span></code></a> hook function is called on a
+<a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> instance every time a mouse button is clicked while the mouse is inside the view.
+The default <a class="reference internal" href="../../../kits/interface/view.html#_CPPv4N5BView9MouseDownE6BPoint" title="BView::MouseDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::MouseDown()</span></code></a> function does nothing, but you can override this with
 your own implementation, to respond to mouse-down events as you wish.</p>
 <p>The following are the most commonly used hook functions. Other hook functions provide for changes in
 the size or structure of views and windows, changes in the input focus, and so forth. For a complete
@@ -79,19 +104,19 @@ list and reference of hook functions, see “BView Hook Functions”.</p>
 <col style="width: 50%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../kits/interface/view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a></p></td>
 <td><p>Called whenever the contents of the view need to be drawn or redrawn.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">KeyDown()</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../kits/interface/view.html#_CPPv4N5BView7KeyDownEPKc5int32" title="BView::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">KeyDown()</span></code></a></p></td>
 <td><p>Called when a keyboard key is pressed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">KeyUp()</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../kits/interface/view.html#_CPPv4N5BView5KeyUpEPKc5int32" title="BView::KeyUp"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">KeyUp()</span></code></a></p></td>
 <td><p>Called when a keyboard key is released.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MouseDown()</span></code></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../kits/interface/view.html#_CPPv4N5BView9MouseDownE6BPoint" title="BView::MouseDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MouseDown()</span></code></a></p></td>
 <td><p>Called when a mouse button is clicked while the mouse cursor is in the view.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MouseMoved()</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../kits/interface/view.html#_CPPv4N5BView10MouseMovedE6BPoint6uint32PK8BMessage" title="BView::MouseMoved"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MouseMoved()</span></code></a></p></td>
 <td><p>Called when the mouse cursor enters, exits, or moves within the view.</p></td>
 </tr>
 </tbody>
@@ -101,38 +126,38 @@ list and reference of hook functions, see “BView Hook Functions”.</p>
 <h2>The View Structure<a class="headerlink" href="#the-view-structure" title="Permalink to this heading">¶</a></h2>
 <p>A newly created view is an “orphan”—it won’t appear onscreen, and can’t be used for much, because
 it isn’t associated with an oscreen “parent”. To rectify this situation, and give your new view a
-warm and loving home, invoke the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddChild()</span></code> method of an existing
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> or <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> object to add the new view as a child, i.e.</p>
+warm and loving home, invoke the <a class="reference internal" href="../../../kits/interface/view.html#_CPPv4N5BView8AddChildEP5BViewP5BView" title="BView::AddChild"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddChild()</span></code></a> method of an existing
+<a class="reference internal" href="../../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> or <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> object to add the new view as a child, i.e.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">existingWindowOrView</span><span class="p">.</span><span class="n">AddChild</span><span class="p">(</span><span class="n">yourNewView</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Ultimately, all views displayed in a window end up as a tree of views, with the window as the root
 of the tree.</p>
-<p>See the “BView View Hierarchy Functions” section for <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> functions related to this
+<p>See the “BView View Hierarchy Functions” section for <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> functions related to this
 view structuring.</p>
 </section>
 <section id="locking-the-window">
 <h2>Locking the Window<a class="headerlink" href="#locking-the-window" title="Permalink to this heading">¶</a></h2>
-<p>Most <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> functions expect the view’s <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> to be locked. To find a
-view’s <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> and lock/unlock it, you first call <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Window()</span></code> and then
-call the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LockLooper()</span></code> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">UnlockLooper()</span></code> functions
-(defined by <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code>, inherited by <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>):</p>
+<p>Most <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> functions expect the view’s <a class="reference internal" href="../../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> to be locked. To find a
+view’s <a class="reference internal" href="../../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> and lock/unlock it, you first call <a class="reference internal" href="../../../kits/interface/view.html#_CPPv4NK5BView6WindowEv" title="BView::Window"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Window()</span></code></a> and then
+call the <a class="reference internal" href="../../../kits/application/handler.html#_CPPv4N8BHandler10LockLooperEv" title="BHandler::LockLooper"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LockLooper()</span></code></a> and <a class="reference internal" href="../../../kits/application/handler.html#_CPPv4N8BHandler12UnlockLooperEv" title="BHandler::UnlockLooper"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">UnlockLooper()</span></code></a> functions
+(defined by <a class="reference internal" href="../../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>, inherited by <a class="reference internal" href="../../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>):</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">window</span><span class="p">.</span><span class="n">LockLooper</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">	</span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
 <span class="w">	</span><span class="n">window</span><span class="p">.</span><span class="n">UnlockLooper</span><span class="p">();</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> functions check to ensure the caller has the window locked. If the window isn’t
+<p><a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> functions check to ensure the caller has the window locked. If the window isn’t
 properly locked, they print warning messages and fail.</p>
-<p>Whenever the system calls a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> hook function, it automatically locks the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> for you—you never have to lock the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> in the implementation
-of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> hook functions.</p>
+<p>Whenever the system calls a <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> hook function, it automatically locks the
+<a class="reference internal" href="../../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> for you—you never have to lock the <a class="reference internal" href="../../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> in the implementation
+of <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> hook functions.</p>
 </section>
 <section id="focus">
 <h2>Focus<a class="headerlink" href="#focus" title="Permalink to this heading">¶</a></h2>
-<p>To facilitate keyboard navigation of views, <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> provides integral support for the
-concept of focus. The view that has the focus is the one whose <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">KeyDown()</span></code>
+<p>To facilitate keyboard navigation of views, <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> provides integral support for the
+concept of focus. The view that has the focus is the one whose <a class="reference internal" href="../../../kits/interface/view.html#_CPPv4N5BView7KeyDownEPKc5int32" title="BView::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">KeyDown()</span></code></a>
 function is called to process keyboard events. Only one view in a window can have the focus at any
 given time.</p>
 <p>From the user’s point-of-view, the <span class="key">Tab</span> key rotates the focus from one view to the next
@@ -144,28 +169,34 @@ navigation group to the next.</p>
 is the focus. Typically, this involves drawing a line under a label in the view, or possibly drawing
 a box around the view or some portion of it. The global <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">keyboard_navigation_color()</span></code>
 function should be used to obtain the color used to draw the focus indicator.</p>
-<p>The view’s <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeFocus()</span></code> function is called to specify whether or not the control
+<p>The view’s <a class="reference internal" href="../../../kits/interface/view.html#_CPPv4N5BView9MakeFocusEb" title="BView::MakeFocus"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeFocus()</span></code></a> function is called to specify whether or not the control
 has the focus; it’s called with an argument of <code class="docutils literal notranslate"><span class="pre">true</span></code> if the control has the focus, and <code class="docutils literal notranslate"><span class="pre">false</span></code> if
-it’s not the focus; <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeFocus()</span></code> calls the previously-focused view’s
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeFocus()</span></code> function to inform that view that it’s not the focus anymore. You
-can augment <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeFocus()</span></code> in a subclass if you need to take notice when the view
+it’s not the focus; <a class="reference internal" href="../../../kits/interface/view.html#_CPPv4N5BView9MakeFocusEb" title="BView::MakeFocus"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeFocus()</span></code></a> calls the previously-focused view’s
+<a class="reference internal" href="../../../kits/interface/view.html#_CPPv4N5BView9MakeFocusEb" title="BView::MakeFocus"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeFocus()</span></code></a> function to inform that view that it’s not the focus anymore. You
+can augment <a class="reference internal" href="../../../kits/interface/view.html#_CPPv4N5BView9MakeFocusEb" title="BView::MakeFocus"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeFocus()</span></code></a> in a subclass if you need to take notice when the view
 becomes the focus (or loses the focus). For example, you may need to draw or erase the keyboard
 navigation indicator.</p>
 </section>
 </section>
 
 
+        <div class="clearer"></div>
       </div>
+          </div>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
+        «&#160;&#160;<a href="text_view.html">BTextView</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="window.html">BWindow</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Haiku.
+        &#169; Copyright 2023, Haiku, Inc..
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>

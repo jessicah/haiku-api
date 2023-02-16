@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BParameterWeb &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BSmallBuffer" href="small-buffer.html" />
+    <link rel="prev" title="BParameterGroup" href="parameter-group.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BParameterWeb</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="parameter-group.html">BParameterGroup</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="small-buffer.html">BSmallBuffer</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bparameterweb">
+<h1 id="CPPv413BParameterWeb">BParameterWeb<a class="headerlink" href="#bparameterweb" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference internal" href="../../kits/media/parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code></a> serves as a container for information
+describing the relationships among the configurable parameters of a
+<a class="reference internal" href="../../kits/media/controllable.html#_CPPv413BControllable" title="BControllable"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControllable</span></code></a> node. A <a class="reference internal" href="../../kits/media/controllable.html#_CPPv413BControllable" title="BControllable"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControllable</span></code></a> subclass
+should, when constructed, create a <a class="reference internal" href="../../kits/media/parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code></a> and populate
+it with controls through one or more <a class="reference internal" href="../../kits/media/parameter-group.html#_CPPv415BParameterGroup" title="BParameterGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterGroup</span></code></a>s. This
+web of parameters describes the signal path within the node, and the points
+at which the node’s manipulation of the data can be controlled.</p>
+<p>The Audio control panel is actually derived from the
+<a class="reference internal" href="../../kits/media/parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code></a> of the node currently selected as the default
+audio input node.</p>
+<p>The <a class="reference internal" href="../../kits/media/parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code></a> lets client applications query a node to
+determine how it can be configured, so the application can then create and
+display a user interface permitting the user to configure the node using
+standard user interface objects (like sliders, checkboxes, lines and arrows
+indicating the data path, and so forth).</p>
+<p>By using the parameter web, device-independence is maintained without
+sacrificing the ability to create generic code to configure devices.</p>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="parameter-group.html">BParameterGroup</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="small-buffer.html">BSmallBuffer</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

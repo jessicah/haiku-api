@@ -97,107 +97,127 @@
       <div class="content" role="main">
         
   <section id="bmimetype">
-<h1>BMimeType<a class="headerlink" href="#bmimetype" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv49BMimeType">BMimeType<a class="headerlink" href="#bmimetype" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N9BMimeType9BMimeTypeEv">
 </section>
 <h3>
-BMimeType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BMimeType9BMimeTypeEv" title="BMimeType::BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">BMimeType</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BMimeType9BMimeTypeEPKc" title="BMimeType::BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">BMimeType</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">MIME_string</span><span class="sig-paren">)</span></pre><p>Constructs a new <span class="hclass">BMimeType</span> object and initializes its MIME type to a copy
-of <span class="hparameter">MIME_string</span> (if the argument is given). The rules of validity apply
-(see “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Valid()</span></code>”). To see if the initialization was
-successful, call
-<a class="reference internal" href="#_CPPv4NK9BMimeType9InitCheckEv" title="BMimeType::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>
-after you construct a new <span class="hclass">BMimeType</span> object.</p>
-<p>You can also set the MIME type through the
-<a class="reference internal" href="#_CPPv4N9BMimeType5SetToEPKc" title="BMimeType::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> function.</p>
+BMimeType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BMimeType9BMimeTypeEv" title="BMimeType::BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">BMimeType</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BMimeType9BMimeTypeEPKc" title="BMimeType::BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">BMimeType</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">MIME_string</span><span class="sig-paren">)</span></pre><p>Constructs a new <span class="hclass">BMimeType</span> object and initializes its MIME type
+to a copy of <span class="hparameter">MIME_string</span> (if the argument is given). The rules of
+validity apply (see “<span class="xref std std-ref">Valid MIME Strings</span>”). To see if the
+initialization was successful, call <a class="reference internal" href="#_CPPv4NK9BMimeType9InitCheckEv" title="BMimeType::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> after you construct a new <span class="hclass">BMimeType</span>
+object.</p>
+<p>You can also set the MIME type through the <a class="reference internal" href="#_CPPv4N9BMimeType5SetToEPKc" title="BMimeType::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> function.</p>
 <section id="_CPPv4N9BMimeTypeD0Ev">
 </section>
 <h3>
-~BMimeType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">~BMimeType</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the object’s MIME string and destroys the object.</p>
+~BMimeType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">~BMimeType</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the object’s MIME string and destroys the object.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4NK9BMimeType8ContainsEPK9BMimeType">
 </section>
 <h3>
-Contains()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">Contains</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BMimeType</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">other</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Compares the MIME string with <span class="hparameter">other</span>, returning <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if they are
-identical. If the object is a supertype and it’s the supertype of <span class="hparameter">other</span>,
-then the method returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>. Otherwise, it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.</p>
+Contains()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">Contains</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">other</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Compares the MIME string with <span class="hparameter">other</span>, returning <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>
+if they are identical. If the object is a supertype and it’s the supertype
+of <span class="hparameter">other</span>, then the method returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>. Otherwise, it
+returns <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>.</p>
 <section id="_CPPv4NK9BMimeType10GetAppHintEP9entry_ref">
 </section>
 <section id="_CPPv4N9BMimeType10SetAppHintEPK9entry_ref">
 </section>
 <h3>
-GetAppHint(), SetAppHint()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">GetAppHint</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">app_ref</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">SetAppHint</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">app_ref</span><span class="sig-paren">)</span></pre><p>These functions get and set the “app hint” for the object’s application
+GetAppHint(), SetAppHint()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">GetAppHint</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">app_ref</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">SetAppHint</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">app_ref</span><span class="sig-paren">)</span></pre><p>These functions get and set the “app hint” for the object’s application
 signature. The app hint is a path that identifies the executable that
 should be used when launching an application that has this signature. For
 example, when the Tracker needs to launch an app of type
 “application/YourAppHere”, it asks the database for the application hint.
-This hint is converted to an entry_ref before it is passed to the caller.
-Of course, the path may not point to an application, or it might point to
-an application with the wrong signature (and so on)—that’s why this
-is merely a hint.</p>
-<p><span class="hmethod">GetAppHint()</span> function initializes the entry_ref to the hint recorded in
-the database; the argument must be allocated before it’s passed in.</p>
-<p><span class="hmethod">SetAppHint()</span> copies the path corresponding to the entry_ref into the
-database. <span class="hparameter">app_ref</span> should point to an executable file that has the same
-signature as this object’s MIME type.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+This hint is converted to an <span class="htype">entry_ref</span> before it is passed to the
+caller. Of course, the path may not point to an application, or it might
+point to an application with the wrong signature (and so on)—that’s why
+this is merely a hint.</p>
+<p><span class="hmethod">GetAppHint()</span> function initializes the <span class="htype">entry_ref</span> to the
+hint recorded in the database; the argument must be allocated before it’s
+passed in.</p>
+<p><span class="hmethod">SetAppHint()</span> copies the path corresponding to the
+<span class="htype">entry_ref</span> into the database. <span class="hparameter">app_ref</span> should point to an
+executable file that has the same signature as this object’s MIME type.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The ref was successfully retrieved or set.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
 <td><p>The <span class="hclass">BMimeType</span> is uninitialized.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
 <td><p>(Set) The ref is uninitialized.</p></td>
 </tr>
 </tbody>
 </table>
-<p>See Also:
-<a class="reference internal" href="node-info.html#_CPPv4NK9BNodeInfo10GetAppHintEP9entry_ref" title="BNodeInfo::GetAppHint"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BNodeInfo::GetAppHint()</span></code></a></p>
+<p>See Also: <a class="reference internal" href="node-info.html#_CPPv4NK9BNodeInfo10GetAppHintEP9entry_ref" title="BNodeInfo::GetAppHint"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BNodeInfo::GetAppHint()</span></code></a></p>
 <section id="_CPPv4NK9BMimeType11GetAttrInfoEP8BMessage">
 </section>
 <section id="_CPPv4N9BMimeType11SetAttrInfoEP8BMessage">
 </section>
 <h3>
-GetAttrInfo(), SetAttrInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">GetAttrInfo</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">SetAttrInfo</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><p>These functions use a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
-to get and set the list of attributes that
-are typically associated with files of the MIME type. The
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> must
-have the following fields:</p>
-<p>Field NameTypeelement[0..n]attr:nameB_STRING_TYPEEach element is the name of one attribute.attr:public_nameB_STRING_TYPEEach element is the human-readable name of one attribute.attr:typeB_INT32_TYPEEach element is the type code for the corresponding attribute.attr:publicB_BOOL_TYPEtrue if the attribute is public, false if it’s private.attr:editableB_BOOL_TYPEtrue if the attribute should be user-editable, false if not.</p>
+GetAttrInfo(), SetAttrInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">GetAttrInfo</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">SetAttrInfo</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><p>These functions use a <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> to get and set the list of
+attributes that are typically associated with files of the MIME type. The
+<a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> must have the following fields:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>element[0..n]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">attr:name</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>Each element is the name of one attribute.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">attr:public_name</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>Each element is the human-readable name of one attribute.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">attr:type</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>Each element is the type code for the corresponding attribute.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">attr:public</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BOOL_TYPE</span></code></p></td>
+<td><p><span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the attribute is public, <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if it’s
+private.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">attr:editable</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BOOL_TYPE</span></code></p></td>
+<td><p><span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the attribute should be user-editable,
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not.</p></td>
+</tr>
+</tbody>
+</table>
 <p>You can actually have any fields you want; it’s up to applications to
 determine which attributes they recognize and which they don’t.</p>
 <p>Each element in each field describes the next attribute. If a file has
 three attributes, there should be three elements in each field, one per
 attribute.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>No error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
 <td><p>Invalid file.</p></td>
 </tr>
 </tbody>
@@ -207,62 +227,63 @@ attribute.</p>
 <section id="_CPPv4N9BMimeType17SetFileExtensionsEPK8BMessage">
 </section>
 <h3>
-GetFileExtensions(), SetFileExtensions()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">GetFileExtensions</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">msg</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">SetFileExtensions</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">msg</span><span class="sig-paren">)</span></pre><p>The database associates a list of file extensions (.xxx filename
-appendages) with each file type. If a file is otherwise untyped, clients
-of the database can figure out its type by matching the file’s extension
-to the lists in the database.</p>
+GetFileExtensions(), SetFileExtensions()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">GetFileExtensions</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">msg</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">SetFileExtensions</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">msg</span><span class="sig-paren">)</span></pre><p>The database associates a list of file extensions (.xxx filename
+appendages) with each file type. If a file is otherwise untyped, clients of
+the database can figure out its type by matching the file’s extension to
+the lists in the database.</p>
 <p>These functions get and set the file extensions that are associated with
 the object’s MIME type.</p>
 <ul class="simple">
-<li><p>If you’re getting the extensions, you’ll find them copied into your <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>’s extensions field (the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> must be allocated). They’re given as an indexed array of strings (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code>).</p></li>
-<li><p>Similarly, you pass in the extensions by adding strings to the message’s extensions field.</p></li>
-<li><p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>’s what field is unimportant.</p></li>
+<li><p>If you’re getting the extensions, you’ll find them copied into your
+<a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>’s <span class="hparameter">extensions</span> field (the
+<a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> must be allocated). They’re given as an indexed array
+of strings (<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code>).</p></li>
+<li><p>Similarly, you pass in the extensions by adding strings to the message’s
+<span class="hparameter">extensions</span> field.</p></li>
+<li><p>The <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>’s <span class="hparameter">what</span> field is unimportant.</p></li>
 </ul>
 <p>For example, to retrieve all the extensions that correspond to this
 object’s MIME type, you would do the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BMessage</span> <span class="n">msg</span><span class="p">();</span>
-<span class="n">uint32</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-<span class="n">char</span> <span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">mime</span><span class="o">.</span><span class="n">GetFileExtensions</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="o">!=</span> <span class="n">B_OK</span><span class="p">)</span>
-   <span class="o">/*</span> <span class="n">Handle</span> <span class="n">the</span> <span class="n">error</span><span class="o">.</span> <span class="o">*/</span>
-<span class="k">while</span> <span class="p">(</span><span class="n">true</span><span class="p">)</span> <span class="p">{</span>
-   <span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">FindString</span><span class="p">(</span><span class="s2">&quot;extensions&quot;</span><span class="p">,</span> <span class="n">i</span><span class="o">++</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ptr</span><span class="p">)</span> <span class="o">!=</span> <span class="n">B_OK</span><span class="p">)</span>
-      <span class="k">break</span><span class="p">;</span>
-   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;&gt; Extension: </span><span class="si">%s</span><span class="s2">n&quot;</span><span class="p">,</span> <span class="n">ptr</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BMessage</span><span class="w"> </span><span class="nf">msg</span><span class="p">();</span><span class="w"></span>
+<span class="n">uint32</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mime</span><span class="p">.</span><span class="n">GetFileExtensions</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* Handle the error. */</span><span class="w"></span>
+
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">FindString</span><span class="p">(</span><span class="s">&quot;extensions&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;&gt; Extension: %sn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ptr</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>A given extension can be associated with more than one MIME type.</p>
-<p>A <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> msg to <span class="hmethod">SetFileExtensions()</span> clears the type’s extension list.</p>
+<p>A <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> msg to <span class="hmethod">SetFileExtensions()</span> clears the type’s
+extension list.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p><span class="hmethod">SetFileExtensions()</span> clobbers the existing set of extensions. If you
-want to augment a type’s extensions, you should retrieve the existing
-set, add the new ones, and then call <span class="hmethod">SetFileExtensions()</span>.
-Also, there’s no way to ask the database to give you a set of file types
-that map to a given extension. To find a type for an extension, you have
-to get all the installed types with
-<a class="reference internal" href="#_CPPv4N9BMimeType17GetInstalledTypesEP8BMessage" title="BMimeType::GetInstalledTypes"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetInstalledTypes()</span></code></a>
-and ask each one for its set of extensions.</p>
+<p><span class="hmethod">SetFileExtensions()</span> clobbers the existing set of extensions. If
+you want to augment a type’s extensions, you should retrieve the existing
+set, add the new ones, and then call <span class="hmethod">SetFileExtensions()</span>.</p>
+<p>Also, there’s no way to ask the database to give you a set of file types
+that map to a given extension. To find a type for an extension, you have to
+get all the installed types with <a class="reference internal" href="#_CPPv4N9BMimeType17GetInstalledTypesEP8BMessage" title="BMimeType::GetInstalledTypes"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetInstalledTypes()</span></code></a> and ask each one for its set of extensions.</p>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The extensions were found or set.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
 <td><p>The <span class="hclass">BMimeType</span> is uninitialized.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
 <td><p>Insufficient memory to copy the extensions.</p></td>
 </tr>
 </tbody>
@@ -272,38 +293,34 @@ and ask each one for its set of extensions.</p>
 <section id="_CPPv4N9BMimeType7SetIconEP7BBitmap9icon_size">
 </section>
 <h3>
-GetIcon(), SetIcon()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">GetIcon</span><span class="sig-paren">(</span><span class="n">BBitmap</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">icon</span>, <span class="n">icon_size</span><span class="w"> </span><span class="n sig-param">which</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">SetIcon</span><span class="sig-paren">(</span><span class="n">BBitmap</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">icon</span>, <span class="n">icon_size</span><span class="w"> </span><span class="n sig-param">which</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetIcon()</span> and <span class="hmethod">SetIcon()</span>
-get and set the icons that are associated (in the
-database) with this object’s MIME type. You specify which icon you want
-(large or small) by passing <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_LARGE_ICON</span></code> or
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MINI_ICON</span></code> as the <span class="hparameter">which</span>
-argument. The icon is passed in or returned through the <span class="hparameter">icon</span> argument.
-The icon data is copied out of or into the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> object.</p>
-<p>The bitmap (if you’re calling <span class="hmethod">SetIcon()</span>) or icon (if you’re calling
-<span class="hmethod">GetIcon()</span>) must be the proper size: 32x32 for the large icon, 16x16 for
-the small one. Additionally, the bitmap must be in the <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CMAP8</span></code> color
-space (8-bit color), or the application will crash.</p>
-<p>If you want to erase the node’s icon, pass <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> as the <span class="hparameter">icon</span> argument to
-<span class="hmethod">SetIcon()</span>.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+GetIcon(), SetIcon()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">GetIcon</span><span class="sig-paren">(</span><a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">icon</span>, <span class="n">icon_size</span><span class="w"> </span><span class="n sig-param">which</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">SetIcon</span><span class="sig-paren">(</span><a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">icon</span>, <span class="n">icon_size</span><span class="w"> </span><span class="n sig-param">which</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetIcon()</span> and <span class="hmethod">SetIcon()</span> get and set the icons that
+are associated (in the database) with this object’s MIME type. You specify
+which icon you want (large or small) by passing
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LARGE_ICON</span></code> or <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MINI_ICON</span></code> as the
+<span class="hparameter">which</span> argument. The icon is passed in or returned through the
+<span class="hparameter">icon</span> argument. The icon data is copied out of or into the
+<a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> object.</p>
+<p>The bitmap (if you’re calling <span class="hmethod">SetIcon()</span>) or icon (if you’re
+calling <span class="hmethod">GetIcon()</span>) must be the proper size: 32x32 for the large
+icon, 16x16 for the small one. Additionally, the bitmap must be in the
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CMAP8</span></code> color space (8-bit color), or the application
+will crash.</p>
+<p>If you want to erase the node’s icon, pass <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> as the
+<span class="hparameter">icon</span> argument to <span class="hmethod">SetIcon()</span>.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The icon was found or set.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
 <td><p>The <span class="hclass">BMimeType</span> is uninitialized.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
 <td><p>The bitmap or icon wasn’t the proper size.</p></td>
 </tr>
 </tbody>
@@ -313,38 +330,42 @@ space (8-bit color), or the application will crash.</p>
 <section id="_CPPv4N9BMimeType14SetIconForTypeEPKcP7BBitmap9icon_size">
 </section>
 <h3>
-GetIconForType(), SetIconForType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">GetIconForType</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file_type</span>, <span class="n">BBitmap</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">icon</span>, <span class="n">icon_size</span><span class="w"> </span><span class="n sig-param">which</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">SetIconForType</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file_type</span>, <span class="n">BBitmap</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">icon</span>, <span class="n">icon_size</span><span class="w"> </span><span class="n sig-param">which</span><span class="sig-paren">)</span></pre><p>These functions get and set the icons that an application that has this
+GetIconForType(), SetIconForType()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">GetIconForType</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file_type</span>, <a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">icon</span>, <span class="n">icon_size</span><span class="w"> </span><span class="n sig-param">which</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">SetIconForType</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">file_type</span>, <a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">icon</span>, <span class="n">icon_size</span><span class="w"> </span><span class="n sig-param">which</span><span class="sig-paren">)</span></pre><p>These functions get and set the icons that an application that has this
 object’s MIME type as a signature uses to display the given file type.
 <span class="hparameter">file_type</span> must be a valid MIME string.</p>
 <p>The icon is passed in or returned through the <span class="hparameter">icon</span> argument:</p>
 <ul class="simple">
-<li><p>If you’re getting the icon, the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> must be allocated; the icon data is copied into your <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> object.</p></li>
-<li><p>If you’re setting the icon, the bitmap must be the proper size: 32x32 for the large icon, 16x16 for the small one. In <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code> lingo, that’s <code class="docutils literal notranslate"><span class="pre">BRect(0,</span> <span class="pre">0,</span> <span class="pre">31,</span> <span class="pre">31)</span></code> and <code class="docutils literal notranslate"><span class="pre">BRect(0,</span> <span class="pre">0,</span> <span class="pre">15,</span> <span class="pre">15)</span></code>.</p></li>
-<li><p>If you’re setting the icon, the bitmap must be in the <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CMAP8</span></code> color space (8-bit color), or the application will crash.</p></li>
-<li><p>You can remove an icon by passing <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> as the icon argument to <span class="hmethod">SetIconForType()</span>.</p></li>
+<li><p>If you’re getting the icon, the <a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> must be allocated;
+the icon data is copied into your <a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> object.</p></li>
+<li><p>If you’re setting the icon, the bitmap must be the proper size: 32x32 for
+the large icon, 16x16 for the small one. In <a class="reference internal" href="../interface/rect.html#_CPPv45BRect" title="BRect"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code></a> lingo,
+that’s <code class="docutils literal notranslate"><span class="pre">BRect(0,</span> <span class="pre">0,</span> <span class="pre">31,</span> <span class="pre">31)</span></code> and <code class="docutils literal notranslate"><span class="pre">BRect(0,</span> <span class="pre">0,</span> <span class="pre">15,</span> <span class="pre">15)</span></code>.</p></li>
+<li><p>If you’re setting the icon, the bitmap must be in the
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CMAP8</span></code> color space (8-bit color), or the application
+will crash.</p></li>
+<li><p>You can remove an icon by passing <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> as the icon argument to
+<span class="hmethod">SetIconForType()</span>.</p></li>
 </ul>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The icon was found or set.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
 <td><p>The <span class="hclass">BMimeType</span> is uninitialized.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
-<td><p>(<span class="hmethod">Get</span>) <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code> pointer, or <span class="hparameter">file_type</span> is invalid.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>(<span class="hmethod">Get</span>) <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> <a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> pointer, or
+<span class="hparameter">file_type</span> is invalid.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
-<td><p>(<span class="hmethod">Set</span>) The bitmap data isn’t the proper size, or <span class="hparameter">file_type</span> is invalid.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>(<span class="hmethod">Set</span>) The bitmap data isn’t the proper size, or
+<span class="hparameter">file_type</span> is invalid.</p></td>
 </tr>
 </tbody>
 </table>
@@ -353,29 +374,25 @@ object’s MIME type as a signature uses to display the given file type.
 <section id="_CPPv4N9BMimeType22GetInstalledSupertypesEP8BMessage">
 </section>
 <h3>
-GetInstalledTypes(), GetInstalledSupertypes()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">GetInstalledTypes</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">types</span><span class="sig-paren">)</span><br /><span class="k">static</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">GetInstalledTypes</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">supertype</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">subtypes</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">GetInstalledSupertypes</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">supertypes</span><span class="sig-paren">)</span></pre><p>These <code class="docutils literal notranslate"><span class="pre">static</span></code> functions retrieve all the file types that are currently
+GetInstalledTypes(), GetInstalledSupertypes()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">GetInstalledTypes</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">types</span><span class="sig-paren">)</span><br /><span class="k">static</span><span class="w"> </span><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">GetInstalledTypes</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">supertype</span>, <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">subtypes</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">GetInstalledSupertypes</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">supertypes</span><span class="sig-paren">)</span></pre><p>These <code class="docutils literal notranslate"><span class="pre">static</span></code> functions retrieve all the file types that are currently
 installed in the database, all the installed subtypes for a given
-supertype, and all the installed supertypes. The types are copied into
-the types field of the passed-in
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> (which must be allocated).</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+supertype, and all the installed supertypes. The types are copied into the
+<span class="hparameter">types</span> field of the passed-in <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> (which must be
+allocated).</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The types were found.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
 <td><p>The <span class="hparameter">supertype</span> string isn’t valid.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
 <td><p>Insufficient memory to copy the types.</p></td>
 </tr>
 </tbody>
@@ -389,33 +406,30 @@ the types field of the passed-in
 <section id="_CPPv4N9BMimeType19SetShortDescriptionEPKc">
 </section>
 <h3>
-GetLongDescription(), SetLongDescription(), GetShortDescription(), SetShortDescription()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">GetLongDescription</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">description</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">SetLongDescription</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">description</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">GetShortDescription</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">description</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">SetShortDescription</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">description</span><span class="sig-paren">)</span></pre><p>Each file type has a couple of human-readable description strings
+GetLongDescription(), SetLongDescription(), GetShortDescription(), SetShortDescription()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">GetLongDescription</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">description</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">SetLongDescription</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">description</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">GetShortDescription</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">description</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">SetShortDescription</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">description</span><span class="sig-paren">)</span></pre><p>Each file type has a couple of human-readable description strings
 associated with it. Neither description string may be longer than
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MIME_TYPE_LENGTH</span></code> characters.</p>
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MIME_TYPE_LENGTH</span></code> characters.</p>
 <p>These functions get and set the long and short description strings. The
 <span class="hmethod">Get</span> functions copy the string into the argument (which must be
-allocated). The <span class="hmethod">Set</span> functions copy the string that the argument points to.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+allocated). The <span class="hmethod">Set</span> functions copy the string that the argument
+points to.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The description was found or set.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
 <td><p>The <span class="hclass">BMimeType</span> is uninitialized.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
 <td><p>(<span class="hmethod">Set</span>) <span class="hparameter">description</span> is too long.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
 <td><p>Insufficient memory to copy the description.</p></td>
 </tr>
 </tbody>
@@ -425,35 +439,35 @@ allocated). The <span class="hmethod">Set</span> functions copy the string that 
 <section id="_CPPv4N9BMimeType15SetPreferredAppEPKc8app_verb">
 </section>
 <h3>
-GetPreferredApp(), SetPreferredApp()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">GetPreferredApp</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span>, <span class="n">app_verb</span><span class="w"> </span><span class="n sig-param">verb</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_OPEN</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">SetPreferredApp</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span>, <span class="n">app_verb</span><span class="w"> </span><span class="n sig-param">verb</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_OPEN</span><span class="sig-paren">)</span></pre><p>These functions get and set the “preferred app” for this object’s MIME
+GetPreferredApp(), SetPreferredApp()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">GetPreferredApp</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span>, <span class="n">app_verb</span><span class="w"> </span><span class="n sig-param">verb</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_OPEN</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">SetPreferredApp</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">signature</span>, <span class="n">app_verb</span><span class="w"> </span><span class="n sig-param">verb</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_OPEN</span><span class="sig-paren">)</span></pre><p>These functions get and set the “preferred app” for this object’s MIME
 type. The preferred app is the application that’s used to access a file
 when, for example, the user double-clicks the file in a Tracker window:
 Unless the file identifies (in its attributes) a “custom” preferred app,
 the Tracker will ask the File Type database for the preferred app that’s
 associated with the file’s type.</p>
 <ul class="simple">
-<li><p>The preferred app is identified by <span class="hparameter">signature</span>, a MIME string. A value of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> indicates that there is no preferred app for the MIME type.</p></li>
-<li><p>The app_verb argument specifies the type of access; currently, the only app_verb is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OPEN</span></code>.</p></li>
+<li><p>The preferred app is identified by <span class="hparameter">signature</span>, a MIME string. A
+value of <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> indicates that there is no preferred app for the
+MIME type.</p></li>
+<li><p>The <span class="htype">app_verb</span> argument specifies the type of access; currently,
+the only <span class="htype">app_verb</span> is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OPEN</span></code>.</p></li>
 </ul>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The preferred app was found or set.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
 <td><p>The <span class="hclass">BMimeType</span> is uninitialized.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
-<td><p>(<span class="hmethod">Set…()</span> only). The <span class="hparameter">signature</span> argument is too long (greater than <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MIME_TYPE_LENGTH</span></code>).</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
+<td><p>(<span class="hmethod">Set…()</span> only). The <span class="hparameter">signature</span> argument is too long
+(greater than <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MIME_TYPE_LENGTH</span></code>).</p></td>
 </tr>
 </tbody>
 </table>
@@ -462,58 +476,87 @@ associated with the file’s type.</p>
 <section id="_CPPv4N9BMimeType15GetWildcardAppsEP8BMessage">
 </section>
 <h3>
-GetSupportingApps(), GetWildcardApps()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">GetSupportingApps</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">msg</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">GetWildcardApps</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">msg</span><span class="sig-paren">)</span></pre><p>These functions retrieve a list of applications (identified by signature)
-that know how to handle the object’s MIME type (for <span class="hmethod">GetSupportingApps()</span>)
-or all MIME types (<span class="hmethod">GetWildCardApps()</span>). The information is returned in
-<span class="hparameter">msg</span>, which must be allocated by the caller. The <span class="hparameter">msg</span> format is:</p>
-<p>Field nameTypeDescriptionapplicationsB_STRING_TYPE (array)The signatures of the application that know how to handle the MIME type. The first n applications (where n is defined by be:sub, below) can handle the full type (supertype and subtype). The rest of the applications in the array handle the supertype only.be:subB_INT32_TYPEThe number of applications in the “applications” array that can handle the object’s full MIME type. These applications are listed first in the array. This field is omitted if the object represents a supertype only.be:superB_INT32_TYPEThe number of applications in the applications array that can handle the object’s supertype (not counting those that can handle the full type). These applications are listed after the full-MIME type supporters. By definition, the GetWildcardApps() function never returns supertype-only apps.</p>
+GetSupportingApps(), GetWildcardApps()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">GetSupportingApps</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">msg</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">GetWildcardApps</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">msg</span><span class="sig-paren">)</span></pre><p>These functions retrieve a list of applications (identified by signature)
+that know how to handle the object’s MIME type (for
+<span class="hmethod">GetSupportingApps()</span>) or all MIME types
+(<span class="hmethod">GetWildCardApps()</span>). The information is returned in
+<span class="hparameter">msg</span>, which must be allocated by the caller. The <span class="hparameter">msg</span>
+format is:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">applications</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code> (array)</p></td>
+<td><p>The signatures of the application that know how to handle the MIME type.
+The first <strong>n</strong> applications (where <strong>n</strong> is defined by <span class="hparameter">be:sub</span>,
+below) can handle the full type (supertype <strong>and</strong> subtype). The rest of
+the applications in the array handle the supertype only.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">be:sub</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The number of applications in the “applications” array that can handle the
+object’s full MIME type. These applications are listed first in the array.
+This field is omitted if the object represents a supertype only.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">be:super</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The number of applications in the <span class="hparameter">applications</span> array that can
+handle the object’s supertype (not counting those that can handle the full
+type). These applications are listed after the full-MIME type supporters.
+By definition, the <span class="hmethod">GetWildcardApps()</span> function never returns
+supertype-only apps.</p></td>
+</tr>
+</tbody>
+</table>
 <p>For example, here we print the signatures of the apps that can handle
 “text/plain” and “text” (without checking for errors):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BMessage</span> <span class="n">msg</span><span class="p">();</span>
-<span class="n">BMimeType</span> <span class="n">mime</span><span class="p">(</span><span class="s2">&quot;text/plain&quot;</span><span class="p">);</span>
-<span class="n">int32</span> <span class="n">subs</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">supers</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">hold</span><span class="p">;</span>
-<span class="n">char</span> <span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
-<span class="n">mime</span><span class="o">.</span><span class="n">GetSupportingApps</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">);</span>
-<span class="n">msg</span><span class="o">.</span><span class="n">FindInt32</span><span class="p">(</span><span class="s2">&quot;be:subs&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">subs</span><span class="p">);</span>
-<span class="n">msg</span><span class="o">.</span><span class="n">FindInt32</span><span class="p">(</span><span class="s2">&quot;be:supers&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">supers</span><span class="p">);</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">subs</span><span class="p">;</span> <span class="n">n</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-   <span class="n">msg</span><span class="o">.</span><span class="n">FindString</span><span class="p">(</span><span class="s2">&quot;applications&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ptr</span><span class="p">);</span>
-   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Full support: </span><span class="si">%s</span><span class="s2">n&quot;</span><span class="p">,</span> <span class="n">ptr</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="n">hold</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">supers</span><span class="p">;</span> <span class="n">n</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-   <span class="n">msg</span><span class="o">.</span><span class="n">FindString</span><span class="p">(</span><span class="s2">&quot;applications&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="n">hold</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ptr</span><span class="p">);</span>
-   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Supertype support: </span><span class="si">%s</span><span class="s2">n&quot;</span><span class="p">,</span> <span class="n">ptr</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BMessage</span><span class="w"> </span><span class="nf">msg</span><span class="p">();</span><span class="w"></span>
+<span class="n">BMimeType</span><span class="w"> </span><span class="n">mime</span><span class="p">(</span><span class="s">&quot;text/plain&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">int32</span><span class="w"> </span><span class="n">subs</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">supers</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">hold</span><span class="p">;</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">mime</span><span class="p">.</span><span class="n">GetSupportingApps</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">);</span><span class="w"></span>
+<span class="n">msg</span><span class="p">.</span><span class="n">FindInt32</span><span class="p">(</span><span class="s">&quot;be:subs&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">subs</span><span class="p">);</span><span class="w"></span>
+<span class="n">msg</span><span class="p">.</span><span class="n">FindInt32</span><span class="p">(</span><span class="s">&quot;be:supers&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">supers</span><span class="p">);</span><span class="w"></span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">subs</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">msg</span><span class="p">.</span><span class="n">FindString</span><span class="p">(</span><span class="s">&quot;applications&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ptr</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Full support: %sn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ptr</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">supers</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">msg</span><span class="p">.</span><span class="n">FindString</span><span class="p">(</span><span class="s">&quot;applications&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">+</span><span class="n">hold</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ptr</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Supertype support: %sn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ptr</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>If an application supports both the full type and the supertype, it will
 be listed only once in the “applications” array (as a full supporter).</p>
 <p>To set the types that an application supports, use
-<a class="reference internal" href="app-file-info.html#_CPPv4N12BAppFileInfo17SetSupportedTypesEPK8BMessage" title="BAppFileInfo::SetSupportedTypes"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BAppFileInfo::SetSupportedTypes()</span></code></a>.
-To tell an app to support all types,
-add “application/octet-stream” to its supported-types list.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<a class="reference internal" href="app-file-info.html#_CPPv4N12BAppFileInfo17SetSupportedTypesEPK8BMessage" title="BAppFileInfo::SetSupportedTypes"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BAppFileInfo::SetSupportedTypes()</span></code></a>. To tell an app to support all
+types, add “application/octet-stream” to its supported-types list.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The signatures were found.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_PORT</span></code>.</p></td>
-<td><p>No <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">be()</span></code> found.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_PORT</span></code>.</p></td>
+<td><p>No <code class="xref cpp cpp-var docutils literal notranslate"><span class="pre">be_app</span></code> found.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
 <td><p>The <span class="hclass">BMimeType</span> is uninitialized.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
 <td><p>Insufficient memory to copy the signatures.</p></td>
 </tr>
 </tbody>
@@ -521,8 +564,7 @@ add “application/octet-stream” to its supported-types list.</p>
 <section id="_CPPv4NK9BMimeType9InitCheckEv">
 </section>
 <h3>
-InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the status of the most recent construction or
-<a class="reference internal" href="#_CPPv4N9BMimeType5SetToEPKc" title="BMimeType::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> call.</p>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the status of the most recent construction or <a class="reference internal" href="#_CPPv4N9BMimeType5SetToEPKc" title="BMimeType::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> call.</p>
 <p>See <a class="reference internal" href="#_CPPv4N9BMimeType5SetToEPKc" title="BMimeType::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>.</p>
 <section id="_CPPv4N9BMimeType7InstallEv">
 </section>
@@ -531,33 +573,29 @@ InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="
 <section id="_CPPv4NK9BMimeType11IsInstalledEv">
 </section>
 <h3>
-Install(), Delete(), IsInstalled()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">Install</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">Delete</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">IsInstalled</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Install()</span> adds the object’s MIME type to the
-File Type database. <span class="hmethod">Delete()</span>
-removes the type from the database. <span class="hmethod">IsInstalled()</span> tells you if the type
-is currently installed.</p>
+Install(), Delete(), IsInstalled()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">Install</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">Delete</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">IsInstalled</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Install()</span> adds the object’s MIME type to the File Type
+database. <span class="hmethod">Delete()</span> removes the type from the database.
+<span class="hmethod">IsInstalled()</span> tells you if the type is currently installed.</p>
 <p>None of these functions affect the object’s copy of the MIME type; for
 instance, deleting a MIME type from the database doesn’t uninitialize the
 object.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>Currently, <span class="hmethod">Install()</span> may return a random value if the object is already
-installed. To avoid confusion, you should call <span class="hmethod">IsInstalled()</span> first:</p>
+<p>Currently, <span class="hmethod">Install()</span> may return a random value if the object is
+already installed. To avoid confusion, you should call
+<span class="hmethod">IsInstalled()</span> first:</p>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The type was successfully added or deleted.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
 <td><p>The object is uninitialized.</p></td>
 </tr>
 </tbody>
@@ -567,46 +605,38 @@ installed. To avoid confusion, you should call <span class="hmethod">IsInstalled
 <section id="_CPPv4NK9BMimeType15IsSupertypeOnlyEv">
 </section>
 <h3>
-IsValid(), IsSupertypeOnly()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">IsValid</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">MIME_string</span><span class="sig-paren">)</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">IsValid</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">IsSupertypeOnly</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>The <code class="docutils literal notranslate"><span class="pre">static</span></code> <span class="hmethod">IsValid()</span> tests its argument
-for MIME validity. See
-“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Valid()</span></code>”
-for the rules. The non-static version checks the validity
-of the object’s MIME string.</p>
-<p><span class="hmethod">IsSupertypeOnly()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>
-if the object’s MIME string doesn’t include a subtype.</p>
+IsValid(), IsSupertypeOnly()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">IsValid</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">MIME_string</span><span class="sig-paren">)</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">IsValid</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">IsSupertypeOnly</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>The <code class="docutils literal notranslate"><span class="pre">static</span></code> <span class="hmethod">IsValid()</span> tests its argument for MIME validity.
+See “<span class="xref std std-ref">Valid MIME Strings</span>” for the rules. The non-static version
+checks the validity of the object’s MIME string.</p>
+<p><span class="hmethod">IsSupertypeOnly()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the object’s MIME
+string doesn’t include a subtype.</p>
 <section id="_CPPv4N9BMimeType5SetToEPKc">
 </section>
 <section id="_CPPv4N9BMimeType5UnsetEv">
 </section>
 <h3>
-SetTo(), Unset()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">MIME_string</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">Unset</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetTo()</span> initializes this <span class="hclass">BMimeType</span>
-object to represent <span class="hparameter">MIME_string</span>. The
-object’s previous MIME string is freed; the argument is then copied. The
-argument can be a full supertype/subtype string, or simply a supertype.
-In any case, it must pass the validity test described in
-“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Valid()</span></code>”.</p>
-<p><span class="hmethod">Unset()</span> frees the object’s current MIME string, and sets the object’s
-status to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p>
-<p>These return codes are also returned by the
-<a class="reference internal" href="#_CPPv4NK9BMimeType9InitCheckEv" title="BMimeType::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> function.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+SetTo(), Unset()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">MIME_string</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">Unset</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetTo()</span> initializes this <span class="hclass">BMimeType</span> object to
+represent <span class="hparameter">MIME_string</span>. The object’s previous MIME string is
+freed; the argument is then copied. The argument can be a full
+supertype/subtype string, or simply a supertype. In any case, it must pass
+the validity test described in “<span class="xref std std-ref">Valid MIME Strings</span>”.</p>
+<p><span class="hmethod">Unset()</span> frees the object’s current MIME string, and sets the
+object’s status to <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p>
+<p>These return codes are also returned by the <a class="reference internal" href="#_CPPv4NK9BMimeType9InitCheckEv" title="BMimeType::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> function.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The initialization was successful.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
-<td><p><span class="hparameter">MIME_string</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> or invalid.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
+<td><p><span class="hparameter">MIME_string</span> is <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> or invalid.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
 <td><p>Not enough memory to allocate a copy of the argument.</p></td>
 </tr>
 </tbody>
@@ -616,53 +646,106 @@ status to <code class="xref cpp cpp-enum docutils literal notranslate"><span cla
 <section id="_CPPv4N9BMimeType12StopWatchingE10BMessenger">
 </section>
 <h3>
-StartWatching(), StopWatching()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">StartWatching</span><span class="sig-paren">(</span><span class="n">BMessenger</span><span class="w"> </span><span class="n sig-param">target</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">StopWatching</span><span class="sig-paren">(</span><span class="n">BMessenger</span><span class="w"> </span><span class="n sig-param">target</span><span class="sig-paren">)</span></pre><p><span class="hmethod">StartWatching()</span> initiates the MIME monitor, which is used for keeping
-track of changes to the File Types database. Change notifications will be
-sent via the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code>
-<span class="hparameter">target</span> in a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> with the
-what field set to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_META_MIME_CHANGED</span></code>.</p>
+StartWatching(), StopWatching()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">StartWatching</span><span class="sig-paren">(</span><a class="reference internal" href="../application/messenger.html#_CPPv410BMessenger" title="BMessenger"><span class="n">BMessenger</span></a><span class="w"> </span><span class="n sig-param">target</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">StopWatching</span><span class="sig-paren">(</span><a class="reference internal" href="../application/messenger.html#_CPPv410BMessenger" title="BMessenger"><span class="n">BMessenger</span></a><span class="w"> </span><span class="n sig-param">target</span><span class="sig-paren">)</span></pre><p><span class="hmethod">StartWatching()</span> initiates the MIME monitor, which is used for
+keeping track of changes to the File Types database. Change notifications
+will be sent via the <a class="reference internal" href="../application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> <span class="hparameter">target</span> in a
+<a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> with the <span class="hparameter">what</span> field set to
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_META_MIME_CHANGED</span></code>.</p>
 <p>Notification messages have the following fields:</p>
-<p>Field nameTypeDescriptionbe:whichint32Change bitmap (see below for a list)be:typestringMIME type whose database information was changedbe:extra_typestringExtra MIME field used for some notificationsbe:large_iconboolFor notifications involving icon changes, true if the large icon was changed; false otherwise</p>
-<p>be:which is a bitmask describing the changes made to the database for
-MIME type be:type. The following masks are defined along with the
-<span class="hclass">BMimeType</span> methods used to effect the changes they signal:</p>
-<p>ConstantMethodB_ICON_CHANGEDSetIcon()B_PREFERRED_APP_CHANGEDSetPreferredApp()B_ATTR_INFO_CHANGEDSetAttrInfo()B_FILE_EXTENSIONS_CHANGEDSetFileExtensions()B_SHORT_DESCRIPTION_CHANGEDSetShortDescription()B_LONG_DESCRIPTION_CHANGEDSetLongDescription()B_ICON_FOR_TYPE_CHANGEDSetIconForType()B_APP_HINT_CHANGEDSetAppHint()</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">be:which</span></p></td>
+<td><p><span class="htype">int32</span></p></td>
+<td><p>Change bitmap (see below for a list)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">be:type</span></p></td>
+<td><p>string</p></td>
+<td><p>MIME type whose database information was changed</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">be:extra_type</span></p></td>
+<td><p>string</p></td>
+<td><p>Extra MIME field used for some notifications</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">be:large_icon</span></p></td>
+<td><p><span class="htype">bool</span></p></td>
+<td><p>For notifications involving icon changes, <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the large
+icon was changed; <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> otherwise</p></td>
+</tr>
+</tbody>
+</table>
+<p><span class="hparameter">be:which</span> is a bitmask describing the changes made to the
+database for MIME type <span class="hparameter">be:type</span>. The following masks are defined
+along with the <span class="hclass">BMimeType</span> methods used to effect the changes they
+signal:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Method</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ICON_CHANGED</span></code></p></td>
+<td><p><a class="reference internal" href="#_CPPv4N9BMimeType7SetIconEP7BBitmap9icon_size" title="BMimeType::SetIcon"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetIcon()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PREFERRED_APP_CHANGED</span></code></p></td>
+<td><p><a class="reference internal" href="#_CPPv4N9BMimeType15SetPreferredAppEPKc8app_verb" title="BMimeType::SetPreferredApp"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetPreferredApp()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ATTR_INFO_CHANGED</span></code></p></td>
+<td><p><a class="reference internal" href="#_CPPv4N9BMimeType11SetAttrInfoEP8BMessage" title="BMimeType::SetAttrInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetAttrInfo()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FILE_EXTENSIONS_CHANGED</span></code></p></td>
+<td><p><a class="reference internal" href="#_CPPv4N9BMimeType17SetFileExtensionsEPK8BMessage" title="BMimeType::SetFileExtensions"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFileExtensions()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SHORT_DESCRIPTION_CHANGED</span></code></p></td>
+<td><p><a class="reference internal" href="#_CPPv4N9BMimeType19SetShortDescriptionEPKc" title="BMimeType::SetShortDescription"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetShortDescription()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LONG_DESCRIPTION_CHANGED</span></code></p></td>
+<td><p><a class="reference internal" href="#_CPPv4N9BMimeType18SetLongDescriptionEPKc" title="BMimeType::SetLongDescription"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetLongDescription()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ICON_FOR_TYPE_CHANGED</span></code></p></td>
+<td><p><a class="reference internal" href="#_CPPv4N9BMimeType14SetIconForTypeEPKcP7BBitmap9icon_size" title="BMimeType::SetIconForType"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetIconForType()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_APP_HINT_CHANGED</span></code></p></td>
+<td><p><a class="reference internal" href="#_CPPv4N9BMimeType10SetAppHintEPK9entry_ref" title="BMimeType::SetAppHint"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetAppHint()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
 <p>The <span class="hclass">BMimeType</span> methods are given for illustrative purposes only
-—anything that alters the database for a MIME type will
-also trigger a notification message. The be:extra_type field is used
-only in the <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ICON_FOR_TYPE_CHANGED</span></code> message and indicates the application
-signature for which the change is valid.</p>
-<p><span class="hmethod">StopWatching()</span> terminates the MIME monitor previously initiated for the
-given <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code>.</p>
+—anything that alters the database for a MIME type will also trigger a
+notification message. The <span class="hparameter">be:extra_type</span> field is used only in the
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ICON_FOR_TYPE_CHANGED</span></code> message and indicates the
+application signature for which the change is valid.</p>
+<p><span class="hmethod">StopWatching()</span> terminates the MIME monitor previously initiated
+for the given <a class="reference internal" href="../application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a>.</p>
 <section id="_CPPv4NK9BMimeType4TypeEv">
 </section>
 <section id="_CPPv4NK9BMimeType12GetSupertypeEP9BMimeType">
 </section>
 <h3>
-Type(), GetSupertype()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">Type</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="n">GetSupertype</span><span class="sig-paren">(</span><span class="n">BMimeType</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">super</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Type()</span> returns a pointer to the object’s
-MIME string. If the object isn’t
-initialized, this returns a pointer to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+Type(), GetSupertype()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">Type</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="n">GetSupertype</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">super</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Type()</span> returns a pointer to the object’s MIME string. If the
+object isn’t initialized, this returns a pointer to <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
 <p><span class="hmethod">GetSupertype()</span> initializes the argument with this object’s
 supertype. (You can then call <span class="hmethod">Type()</span> on the argument to see the
-supertype.) <span class="hparameter">super</span> must be allocated before it’s passed in. If this object
-isn’t initialized, <span class="hparameter">super</span> is uninitialized.</p>
+supertype.) <span class="hparameter">super</span> must be allocated before it’s passed in. If
+this object isn’t initialized, <span class="hparameter">super</span> is uninitialized.</p>
 <p>The errors apply to <span class="hmethod">GetSupertype()</span> only.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>Everything’s fine.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
 <td><p>This object isn’t initialized.</p></td>
 </tr>
 </tbody>
@@ -671,7 +754,7 @@ isn’t initialized, <span class="hparameter">super</span> is uninitialized.</p>
 <section id="operators">
 <h2>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">¶</a></h2>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="k">operator</span><span class="o">==</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BMimeType</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">type</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMimeType</span><span class="p">::</span></span><span class="k">operator</span><span class="o">==</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">type</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Two MIME types are equal if they are both initialized to the same string
+</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="k">operator</span><span class="o">==</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">type</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMimeType" title="BMimeType"><span class="n">BMimeType</span></a><span class="p">::</span></span><span class="k">operator</span><span class="o">==</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">type</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Two MIME types are equal if they are both initialized to the same string
 (without regard to case).</p>
 </section>
 </section>

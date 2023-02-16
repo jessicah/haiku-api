@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMenuItem &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BOutlineListView" href="outline-list-view.html" />
+    <link rel="prev" title="BMenuField" href="menu-field.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMenuItem</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="menu-field.html">BMenuField</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="outline-list-view.html">BOutlineListView</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BMenuItem</a><ul>
+<li><a class="reference internal" href="#kinds-of-items">Kinds of Items</a></li>
+<li><a class="reference internal" href="#shortcuts-and-triggers">Shortcuts and Triggers</a></li>
+<li><a class="reference internal" href="#marked-items">Marked Items</a></li>
+<li><a class="reference internal" href="#disabled-items">Disabled Items</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmenuitem">
+<h1 id="CPPv49BMenuItem">BMenuItem<a class="headerlink" href="#bmenuitem" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../kits/interface/menu-item.html#_CPPv49BMenuItem" title="BMenuItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code></a> object displays one item within a menu and
+contains the state associated with that item. By default, menu items
+display text; a derived class can reimplement the <a class="reference internal" href="../../kits/interface/menu-item.html#_CPPv4N9BMenuItem4DrawEv" title="BMenuItem::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a> and <a class="reference internal" href="../../kits/interface/menu-item.html#_CPPv4N9BMenuItem11DrawContentEv" title="BMenuItem::DrawContent"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawContent()</span></code></a>
+hook functions to draw something else.</p>
+<p>Each <a class="reference internal" href="../../kits/interface/menu-item.html#_CPPv49BMenuItem" title="BMenuItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code></a> object can have its own invocation message and
+target. A menu item needn’t send any message—it can be used simply for its
+visual presence (see <a class="reference internal" href="../../kits/interface/separator-item.html#_CPPv414BSeparatorItem" title="BSeparatorItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSeparatorItem</span></code></a> for an example).</p>
+<p>Menu items can’t be used outside of a menu; to add a
+<a class="reference internal" href="../../kits/interface/menu-item.html#_CPPv49BMenuItem" title="BMenuItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code></a> to a <a class="reference internal" href="../../kits/interface/menu.html#_CPPv45BMenu" title="BMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code></a>, call
+<a class="reference internal" href="../../kits/interface/menu.html#_CPPv4N5BMenu7AddItemEP9BMenuItem" title="BMenu::AddItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::AddItem()</span></code></a>.</p>
+<section id="kinds-of-items">
+<h2>Kinds of Items<a class="headerlink" href="#kinds-of-items" title="Permalink to this heading">¶</a></h2>
+<p>Some menu items set up the menu hierarchy by giving users access to
+submenus. A submenu remains hidden until the user operates the item that
+controls it.</p>
+<p>Other items accomplish specific actions. When the user invokes the item,
+it sends a message to a target <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> and
+<a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>, usually the window where the menu at the root of the
+hierarchy (a <a class="reference internal" href="../../kits/interface/menu-bar.html#_CPPv48BMenuBar" title="BMenuBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code></a> object) is displayed. The action that
+the item initiates, or the state that it sets, depends entirely on the
+message and the target’s response to it.</p>
+</section>
+<section id="shortcuts-and-triggers">
+<h2>Shortcuts and Triggers<a class="headerlink" href="#shortcuts-and-triggers" title="Permalink to this heading">¶</a></h2>
+<p>Any menu item (except for those that control submenus) can be associated
+with a keyboard shortcut, a character the user can type in combination with
+a <span class="hkey">Command</span> key (and possibly other modifiers) to invoke the item.
+The shortcut character is displayed in the item to the right of the label.</p>
+<p>A shortcut works even when the item it invokes isn’t visible on-screen.
+It, therefore, has to be unique within the window (within the entire menu
+hierarchy).</p>
+<p>Every menu item is also associated with a trigger, a character that the
+user can type (without the <span class="hkey">Command</span> key) to invoke the item. The
+trigger works only while the menu is both open on-screen and can be
+operated using the keyboard. It therefore must be unique only within a
+particular branch of the menu hierarchy (within the menu).</p>
+<p>The trigger is one of the characters that’s displayed within the
+item—either the keyboard shortcut or a character in the label. When it’s
+possible for the trigger to invoke the item, the character is underlined.
+Like shortcuts, triggers are case-insensitive.</p>
+<p>For an item to have a keyboard shortcut, the application must explicitly
+assign one. However, by default, the Interface Kit chooses and assigns
+triggers for all items. The default choice can be altered by the
+<a class="reference internal" href="../../kits/interface/menu-item.html#_CPPv4N9BMenuItem10SetTriggerEc" title="BMenuItem::SetTrigger"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTrigger()</span></code></a> function.</p>
+</section>
+<section id="marked-items">
+<h2>Marked Items<a class="headerlink" href="#marked-items" title="Permalink to this heading">¶</a></h2>
+<p>An item can also be marked (with a check mark drawn to the left of the
+label) in order to indicate that the state it sets is currently in effect.
+Items are marked by the <a class="reference internal" href="../../kits/interface/menu-item.html#_CPPv4N9BMenuItem9SetMarkedEb" title="BMenuItem::SetMarked"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetMarked()</span></code></a>
+function. A menu can be set up so that items are automatically marked when
+they’re selected and exactly one item is marked at all times. (See
+<a class="reference internal" href="../../kits/interface/menu.html#_CPPv4N5BMenu12SetRadioModeEb" title="BMenu::SetRadioMode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetRadioMode()</span></code></a> in the <a class="reference internal" href="../../kits/interface/menu.html#_CPPv45BMenu" title="BMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code></a>
+class.)</p>
+</section>
+<section id="disabled-items">
+<h2>Disabled Items<a class="headerlink" href="#disabled-items" title="Permalink to this heading">¶</a></h2>
+<p>Items can also be enabled or disabled (by the <a class="reference internal" href="../../kits/interface/menu-item.html#_CPPv4N9BMenuItem10SetEnabledEb" title="BMenuItem::SetEnabled"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetEnabled()</span></code></a> function). A disabled item is drawn in muted tones
+to indicate that it doesn’t work. It can’t be selected or invoked. If the
+item controls a specific action, it won’t post the message that initiates
+the action. If it controls a submenu, it will still bring the submenu to
+the screen, but all the items in submenu will be disabled. If an item in
+the submenu brings its own submenu to the screen, items in that submenu
+will also be disabled. Disabling the superitem for a submenu in effect
+disables a whole branch of the menu hierarchy.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="menu-field.html">BMenuField</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="outline-list-view.html">BOutlineListView</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

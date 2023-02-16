@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="BSimpleGameSound" href="simple-game-sound.html" />
-    <link rel="prev" title="The Game Kit" href="overview.html" /> 
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
           <span>API Documentation</span></a></h1>
@@ -28,7 +28,7 @@
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="overview.html">The Game Kit</a>
+        «&#160;&#160;<a href="introduction.html">Introduction</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -57,7 +57,10 @@
 <li><a class="reference internal" href="#_CPPv4N14BPushGameSound10UnlockPageEPv">UnlockPage</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#constants">Constants</a><ul>
+<li><a class="reference internal" href="#lock-status">lock_status</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -70,38 +73,40 @@
       <div class="content" role="main">
         
   <section id="bpushgamesound">
-<h1>BPushGameSound<a class="headerlink" href="#bpushgamesound" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv414BPushGameSound">BPushGameSound<a class="headerlink" href="#bpushgamesound" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N14BPushGameSound14BPushGameSoundE6size_tPK15gs_audio_format6size_tP16BGameSoundDevice">
 </section>
 <h3>
 BPushGameSound()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N14BPushGameSound14BPushGameSoundE6size_tPK15gs_audio_format6size_tP16BGameSoundDevice" title="BPushGameSound::BPushGameSound"><span class="n">BPushGameSound</span></a><span class="p">::</span></span><span class="n">BPushGameSound</span><span class="sig-paren">(</span><span class="n">size_t</span><span class="w"> </span><span class="n sig-param">inBufferFrameCount</span>, <span class="k">const</span><span class="w"> </span><span class="n">gs_audio_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">format</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">inBufferCount</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">2</span>, <span class="n">BGameSoundDevice</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">device</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Prepares the object to play audio pushed by your application.
-<span class="hparameter">inBufferFrameCount</span> specifies the number of frames each audio buffer
-should be able to hold. <span class="hparameter">format</span> indicates the audio format that will be
-streamed. <span class="hparameter">inBufferCount</span> specifies the number of buffers to use, and, as
-always, <span class="hparameter">device</span> is the sound device to use for playback.</p>
+<span class="hparameter">inBufferFrameCount</span> specifies the number of frames each audio
+buffer should be able to hold. <span class="hparameter">format</span> indicates the audio format
+that will be streamed. <span class="hparameter">inBufferCount</span> specifies the number of
+buffers to use, and, as always, <span class="hparameter">device</span> is the sound device to use
+for playback.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>Currently, <span class="hparameter">device</span> must always be
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> to indicate that the default
-playback device should be used.</p>
+<p>Currently, <span class="hparameter">device</span> must always be <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> to indicate
+that the default playback device should be used.</p>
 </div>
 <p>By default, two audio buffers are used.</p>
-<p>Be sure to call <a class="reference internal" href="#_CPPv4NK14BPushGameSound9InitCheckEv" title="BPushGameSound::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> before using the <span class="hclass">BPushGameSound</span> object.</p>
+<p>Be sure to call <a class="reference internal" href="#_CPPv4NK14BPushGameSound9InitCheckEv" title="BPushGameSound::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> before
+using the <span class="hclass">BPushGameSound</span> object.</p>
 <section id="_CPPv4N14BPushGameSoundD0Ev">
 </section>
 <h3>
-~BPushGameSound()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPushGameSound</span><span class="p">::</span></span><span class="n">~BPushGameSound</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Deletes the semaphore used to lock the object.</p>
+~BPushGameSound()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BPushGameSound" title="BPushGameSound"><span class="n">BPushGameSound</span></a><span class="p">::</span></span><span class="n">~BPushGameSound</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Deletes the semaphore used to lock the object.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4NK14BPushGameSound9InitCheckEv">
 </section>
 <h3>
-InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPushGameSound</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a status_t indicating whether or not the object was successfully
-initialized. A return value of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> means everything’s fine; any other
-value means an error occurred in the constructor.</p>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BPushGameSound" title="BPushGameSound"><span class="n">BPushGameSound</span></a><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a <span class="htype">status_t</span> indicating whether or not the object was
+successfully initialized. A return value of <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> means
+everything’s fine; any other value means an error occurred in the
+constructor.</p>
 <section id="_CPPv4N14BPushGameSound13LockForCyclicEPPvP6size_t">
 </section>
 <section id="_CPPv4N14BPushGameSound12UnlockCyclicEv">
@@ -109,28 +114,25 @@ value means an error occurred in the constructor.</p>
 <section id="_CPPv4N14BPushGameSound15CurrentPositionEv">
 </section>
 <h3>
-LockForCyclic(), UnlockCyclic(), CurrentPosition()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">lock_status</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPushGameSound</span><span class="p">::</span></span><span class="n">LockForCyclic</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">outBasePtr</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outSize</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPushGameSound</span><span class="p">::</span></span><span class="n">UnlockCyclic</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">size_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPushGameSound</span><span class="p">::</span></span><span class="n">CurrentPosition</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">LockForCyclic()</span> gives you access to the entire sound buffer; audio
-playback continues while you have access. Use <span class="hmethod">CurrentPosition()</span> to
-determine where the playback is currently located in the buffer area, and
-be sure to stay well ahead of it. See the
-<span class="xref std std-ref">overview</span> for a more in-depth
-discussion. If <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">lock_failed</span></code> is returned, you can’t access the audio area,
-but if <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">lock_ok</span></code> is returned, you can start pushing audio.</p>
-<p>On return, <span class="hparameter">outBasePtr</span> points to the first byte of the audio buffer area,
-and <span class="hparameter">outSize</span> indicates the total size of the audio buffer area.</p>
+LockForCyclic(), UnlockCyclic(), CurrentPosition()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">lock_status</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BPushGameSound" title="BPushGameSound"><span class="n">BPushGameSound</span></a><span class="p">::</span></span><span class="n">LockForCyclic</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">outBasePtr</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outSize</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BPushGameSound" title="BPushGameSound"><span class="n">BPushGameSound</span></a><span class="p">::</span></span><span class="n">UnlockCyclic</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">size_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BPushGameSound" title="BPushGameSound"><span class="n">BPushGameSound</span></a><span class="p">::</span></span><span class="n">CurrentPosition</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">LockForCyclic()</span> gives you access to the entire sound buffer;
+audio playback continues while you have access. Use
+<span class="hmethod">CurrentPosition()</span> to determine where the playback is currently
+located in the buffer area, and be sure to stay well ahead of it. See the
+<span class="xref std std-ref">overview</span> for a more in-depth discussion. If
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">lock_failed</span></code> is returned, you can’t access the audio area,
+but if <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">lock_ok</span></code> is returned, you can start pushing audio.</p>
+<p>On return, <span class="hparameter">outBasePtr</span> points to the first byte of the audio
+buffer area, and <span class="hparameter">outSize</span> indicates the total size of the audio
+buffer area.</p>
 <p><span class="hmethod">UnlockCyclic()</span> releases the audio area.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p><span class="hmethod">UnlockCyclic()</span> succeeded.</p></td>
 </tr>
 </tbody>
@@ -140,52 +142,49 @@ and <span class="hparameter">outSize</span> indicates the total size of the audi
 <section id="_CPPv4N14BPushGameSound10UnlockPageEPv">
 </section>
 <h3>
-LockNextPage(), UnlockPage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">lock_status</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPushGameSound</span><span class="p">::</span></span><span class="n">LockNextPage</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">outPagePtr</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outPageSize</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPushGameSound</span><span class="p">::</span></span><span class="n">UnlockPage</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inPagePtr</span><span class="sig-paren">)</span></pre><p><span class="hmethod">LockNextPage()</span> requests access to the next page of the sound buffer. The
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">lock()</span></code>
-return value is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">lock_ok</span></code> or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">lock_ok_frames_dropped</span></code> if a valid page has
-been returned. If either of these values is returned, you can then write
-up to <span class="hparameter">outPageSize</span> bytes of audio data into the audio page returned in
+LockNextPage(), UnlockPage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">lock_status</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BPushGameSound" title="BPushGameSound"><span class="n">BPushGameSound</span></a><span class="p">::</span></span><span class="n">LockNextPage</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">outPagePtr</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outPageSize</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BPushGameSound" title="BPushGameSound"><span class="n">BPushGameSound</span></a><span class="p">::</span></span><span class="n">UnlockPage</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inPagePtr</span><span class="sig-paren">)</span></pre><p><span class="hmethod">LockNextPage()</span> requests access to the next page of the sound
+buffer. The <span class="xref std std-ref">lock_status</span> return value is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">lock_ok</span></code> or
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">lock_ok_frames_dropped</span></code> if a valid page has been returned.
+If either of these values is returned, you can then write up to
+<span class="hparameter">outPageSize</span> bytes of audio data into the audio page returned in
 <span class="hparameter">outPagePtr</span>.</p>
-<p>If <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">lock_failed</span></code> is returned, you can’t access an audio page.</p>
-<p><span class="hmethod">UnlockPage()</span> releases the audio page pointed
-to by <span class="hparameter">inPagePtr</span> and returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> if it succeeds in unlocking the page.</p>
+<p>If <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">lock_failed</span></code> is returned, you can’t access an audio
+page.</p>
+<p><span class="hmethod">UnlockPage()</span> releases the audio page pointed to by
+<span class="hparameter">inPagePtr</span> and returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> if it succeeds in
+unlocking the page.</p>
 </section>
 <section id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<section id="lock-status">
+<h3>lock_status<a class="headerlink" href="#lock-status" title="Permalink to this heading">¶</a></h3>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">lock_failed</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">lock_failed</span></code></p></td>
 <td><p>Couldn’t get the lock; it’s not time to update yet.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">lock_ok</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">lock_ok</span></code></p></td>
 <td><p>Locked; you can update.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">lock_ok_frames_dropped</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">lock_ok_frames_dropped</span></code></p></td>
 <td><p>Locked; you can update, but you may have missed some buffers.</p></td>
 </tr>
 </tbody>
 </table>
-<p>These values are returned by the locking functions in the <span class="hclass">BPushGameSound</span>
-class (
-<a class="reference internal" href="#_CPPv4N14BPushGameSound12LockNextPageEPPvP6size_t" title="BPushGameSound::LockNextPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LockNextPage()</span></code></a> and
-<a class="reference internal" href="#_CPPv4N14BPushGameSound13LockForCyclicEPPvP6size_t" title="BPushGameSound::LockForCyclic"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LockForCyclic()</span></code></a>). If either function returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">lock_failed</span></code>, there isn’t a buffer to be filled; your code is pushing
-buffers too fast.
-If <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">lock_ok</span></code> is returned, the next buffer is ready. The
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">lock_ok_frames_dropped</span></code> result is received if a buffer is available but
-some buffers have been lost; this can happen if you’re not pushing fast
-enough.</p>
+<p>These values are returned by the locking functions in the
+<span class="hclass">BPushGameSound</span> class ( <a class="reference internal" href="#_CPPv4N14BPushGameSound12LockNextPageEPPvP6size_t" title="BPushGameSound::LockNextPage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LockNextPage()</span></code></a> and <a class="reference internal" href="#_CPPv4N14BPushGameSound13LockForCyclicEPPvP6size_t" title="BPushGameSound::LockForCyclic"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LockForCyclic()</span></code></a>). If either function returns
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">lock_failed</span></code>, there isn’t a buffer to be filled; your code
+is pushing buffers too fast.</p>
+<p>If <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">lock_ok</span></code> is returned, the next buffer is ready. The
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">lock_ok_frames_dropped</span></code> result is received if a buffer is
+available but some buffers have been lost; this can happen if you’re not
+pushing fast enough.</p>
+</section>
 </section>
 </section>
 
@@ -196,7 +195,7 @@ enough.</p>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="overview.html">The Game Kit</a>
+        «&#160;&#160;<a href="introduction.html">Introduction</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;

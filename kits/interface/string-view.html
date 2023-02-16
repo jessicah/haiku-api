@@ -61,7 +61,10 @@
 <li><a class="reference internal" href="#_CPPv4NK11BStringView4TextEv">Text</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#static-functions">Static Functions</a></li>
+<li><a class="reference internal" href="#static-functions">Static Functions</a><ul>
+<li><a class="reference internal" href="#instantiate">Instantiate()</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#archived-fields">Archived Fields</a></li>
 </ul>
 </li>
@@ -75,97 +78,114 @@
       <div class="content" role="main">
         
   <section id="bstringview">
-<h1>BStringView<a class="headerlink" href="#bstringview" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv411BStringView">BStringView<a class="headerlink" href="#bstringview" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N11BStringView11BStringViewE5BRectPKcPKc6uint326uint32">
 </section>
 <h3>
-BStringView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BStringView11BStringViewE5BRectPKcPKc6uint326uint32" title="BStringView::BStringView"><span class="n">BStringView</span></a><span class="p">::</span></span><span class="n">BStringView</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">text</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_LEFT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FOLLOW_TOP</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BStringView11BStringViewEP8BMessage" title="BStringView::BStringView"><span class="n">BStringView</span></a><span class="p">::</span></span><span class="n">BStringView</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BStringView</span> by assigning it a
-<span class="hparameter">text</span> string and the system plain font
-(be_plain_font). The <span class="hparameter">frame</span>,
-<span class="hparameter">name</span>, <span class="hparameter">resizingMode</span>, and
-<span class="hparameter">flags</span> arguments are passed unchanged to the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> constructor.</p>
-<p>The <span class="hparameter">frame</span> rectangle needs to be large enough to display the entire string
-in the current font. The string is drawn at the bottom of the frame
-rectangle and, by default, is aligned to the left side. A different
-horizontal alignment can be set by calling
-<a class="reference internal" href="#_CPPv4N11BStringView12SetAlignmentE9alignment" title="BStringView::SetAlignment"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetAlignment()</span></code></a>.</p>
+BStringView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BStringView11BStringViewE5BRectPKcPKc6uint326uint32" title="BStringView::BStringView"><span class="n">BStringView</span></a><span class="p">::</span></span><span class="n">BStringView</span><span class="sig-paren">(</span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">text</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_LEFT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FOLLOW_TOP</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BStringView11BStringViewEP8BMessage" title="BStringView::BStringView"><span class="n">BStringView</span></a><span class="p">::</span></span><span class="n">BStringView</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BStringView</span> by assigning it a <span class="hparameter">text</span>
+string and the system plain font (<span class="hparameter">be_plain_font</span>). The
+<span class="hparameter">frame</span>, <span class="hparameter">name</span>, <span class="hparameter">resizingMode</span>, and
+<span class="hparameter">flags</span> arguments are passed unchanged to the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>
+constructor.</p>
+<p>The <span class="hparameter">frame</span> rectangle needs to be large enough to display the
+entire string in the current font. The string is drawn at the bottom of the
+frame rectangle and, by default, is aligned to the left side. A different
+horizontal alignment can be set by calling <a class="reference internal" href="#_CPPv4N11BStringView12SetAlignmentE9alignment" title="BStringView::SetAlignment"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetAlignment()</span></code></a>.</p>
 <section id="_CPPv4N11BStringViewD0Ev">
 </section>
 <h3>
-~BStringView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStringView</span><span class="p">::</span></span><span class="n">~BStringView</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the text string.</p>
+~BStringView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BStringView" title="BStringView"><span class="n">BStringView</span></a><span class="p">::</span></span><span class="n">~BStringView</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the text string.</p>
 </section>
 <section id="hook-functions">
 <h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N11BStringView16AttachedToWindowEv">
 </section>
 <h3>
-AttachedToWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStringView</span><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Sets the <span class="hclass">BStringView</span>’s low color and its background view color to match
-the background color of its new parent view.</p>
-<p>See also:
-<a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::AttachedToWindow()</span></code></a></p>
+AttachedToWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BStringView" title="BStringView"><span class="n">BStringView</span></a><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Sets the <span class="hclass">BStringView</span>’s low color and its background view color
+to match the background color of its new parent view.</p>
+<p>See also: <a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::AttachedToWindow()</span></code></a></p>
 <section id="_CPPv4N11BStringView4DrawE5BRect">
 </section>
 <h3>
-Draw()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStringView</span><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">updateRect</span><span class="sig-paren">)</span></pre><p>Draws the string along the bottom of the <span class="hclass">BStringView</span>’s frame rectangle in
-the current high color.</p>
+Draw()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BStringView" title="BStringView"><span class="n">BStringView</span></a><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">updateRect</span><span class="sig-paren">)</span></pre><p>Draws the string along the bottom of the <span class="hclass">BStringView</span>’s frame
+rectangle in the current high color.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4NK11BStringView7ArchiveEP8BMessageb">
 </section>
 <h3>
-Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStringView</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of
-<a class="reference internal" href="view.html#_CPPv4NK5BView7ArchiveEP8BMessageb" title="BView::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a>, then adds the string and its
-alignment to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive.</p>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BStringView" title="BStringView"><span class="n">BStringView</span></a><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of <a class="reference internal" href="view.html#_CPPv4NK5BView7ArchiveEP8BMessageb" title="BView::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a>,
+then adds the string and its alignment to the <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>
+archive.</p>
 <section id="_CPPv4N11BStringView12SetAlignmentE9alignment">
 </section>
 <section id="_CPPv4NK11BStringView9AlignmentEv">
 </section>
 <h3>
-SetAlignment(), Alignment()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStringView</span><span class="p">::</span></span><span class="n">SetAlignment</span><span class="sig-paren">(</span><span class="n">alignment</span><span class="w"> </span><span class="n sig-param">flag</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">alignment</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStringView</span><span class="p">::</span></span><span class="n">Alignment</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions align the string within the <span class="hclass">BStringView</span>’s frame rectangle
-and return the current alignment. The alignment flag can be:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+SetAlignment(), Alignment()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BStringView" title="BStringView"><span class="n">BStringView</span></a><span class="p">::</span></span><span class="n">SetAlignment</span><span class="sig-paren">(</span><span class="n">alignment</span><span class="w"> </span><span class="n sig-param">flag</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">alignment</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BStringView" title="BStringView"><span class="n">BStringView</span></a><span class="p">::</span></span><span class="n">Alignment</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions align the string within the <span class="hclass">BStringView</span>’s frame
+rectangle and return the current alignment. The alignment flag can be:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ALIGN_LEFT</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ALIGN_LEFT</span></code></p></td>
 <td><p>The string is aligned at the left side of the frame rectangle.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ALIGN_RIGHT</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ALIGN_RIGHT</span></code></p></td>
 <td><p>The string is aligned at the right side of the frame rectangle.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ALIGN_CENTER</span></code></p></td>
-<td><p>The string is aligned so that the center of the string falls midway between the left and right sides of the frame rectangle.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ALIGN_CENTER</span></code></p></td>
+<td><p>The string is aligned so that the center of the string falls midway
+between the left and right sides of the frame rectangle.</p></td>
 </tr>
 </tbody>
 </table>
-<p>The default is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ALIGN_LEFT</span></code>.</p>
+<p>The default is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ALIGN_LEFT</span></code>.</p>
 <section id="_CPPv4N11BStringView7SetTextEPKc">
 </section>
 <section id="_CPPv4NK11BStringView4TextEv">
 </section>
 <h3>
-SetText(), Text()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStringView</span><span class="p">::</span></span><span class="n">SetText</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BStringView</span><span class="p">::</span></span><span class="n">Text</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the text string that the <span class="hclass">BStringView</span>
-draws. <span class="hmethod">SetText()</span> frees the previous string and copies string to replace
-it. <span class="hmethod">Text()</span> returns the null-terminated string.</p>
+SetText(), Text()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BStringView" title="BStringView"><span class="n">BStringView</span></a><span class="p">::</span></span><span class="n">SetText</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BStringView" title="BStringView"><span class="n">BStringView</span></a><span class="p">::</span></span><span class="n">Text</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the text string that the
+<span class="hclass">BStringView</span> draws. <span class="hmethod">SetText()</span> frees the previous string
+and copies string to replace it. <span class="hmethod">Text()</span> returns the
+null-terminated string.</p>
 </section>
 <section id="static-functions">
 <h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>See <a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a></p>
+<section id="instantiate">
+<h3>Instantiate()<a class="headerlink" href="#instantiate" title="Permalink to this heading">¶</a></h3>
+<p>See <a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a></p>
+</section>
 </section>
 <section id="archived-fields">
 <h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="#_CPPv4NK11BStringView7ArchiveEP8BMessageb" title="BStringView::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a> function adds the
+following fields to its <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> argument:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">_text</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>Text displayed in the view (present only if it is not <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_align</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>Alignment of text in frame.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 

@@ -17,30 +17,61 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Threads and Teams" href="threads_and_teams.html" />
+    <link rel="prev" title="Ports" href="ports.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
-          <span>The Haiku Book  documentation</span></a></h1>
+          <span>API Documentation</span></a></h1>
         <h2 class="heading"><span>Semaphores</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
+        «&#160;&#160;<a href="ports.html">Ports</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="threads_and_teams.html">Threads and Teams</a>&#160;&#160;»
         </p>
 
       </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Semaphores</a><ul>
+<li><a class="reference internal" href="#the-thread-queue">The Thread Queue</a></li>
+<li><a class="reference internal" href="#the-thread-count">The Thread Count</a></li>
+<li><a class="reference internal" href="#deleting-a-semaphore">Deleting a Semaphore</a></li>
+<li><a class="reference internal" href="#inter-application-semaphores">Inter-application Semaphores</a></li>
+<li><a class="reference internal" href="#semaphore-examples">Semaphore Examples</a><ul>
+<li><a class="reference internal" href="#semaphore-example-1-locking">Semaphore Example 1: Locking</a></li>
+<li><a class="reference internal" href="#semaphore-example-2-benaphores">Semaphore Example 2: Benaphores</a></li>
+<li><a class="reference internal" href="#semaphore-example-3-imposing-an-execution-order">Semaphore Example 3: Imposing an Execution Order</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
       <div class="content" role="main">
         
-        
   <section id="semaphores">
-<h1>Semaphores<a class="headerlink" href="#semaphores" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv410Semaphores">Semaphores<a class="headerlink" href="#semaphores" title="Permalink to this heading">¶</a></h1>
 <p>A semaphore acts as a key that a thread must acquire in order to continue execution. Any thread that
 can identify a particular semaphore can attempt to acquire it by passing its <code class="docutils literal notranslate"><span class="pre">sem_id</span></code> identifier—a
 system-wide number that’s assigned when the semaphore is created—to the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">acquire_sem()</span></code>
 function. The function blocks until the semaphore is actually acquired.</p>
 <div class="information admonition">
-<p class="admonition-title">Note</p>
+<p class="admonition-title" id="CPPv44Note">Note</p>
 <p>An alternate function, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">acquire_sem_etc()</span></code> lets you specify the amount of time you’re
 willing to wait for the semaphore to be acquired, and let you acquire the semaphore more than once
 in a single go. Unless otherwise noted, characteristics ascribed to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">acquire_sem()</span></code> apply
@@ -293,17 +324,23 @@ arrives before a writer, the reader will block until the writer releases the <co
 </section>
 
 
+        <div class="clearer"></div>
       </div>
+          </div>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
+        «&#160;&#160;<a href="ports.html">Ports</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="threads_and_teams.html">Threads and Teams</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Haiku.
+        &#169; Copyright 2023, Haiku, Inc..
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>

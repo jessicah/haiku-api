@@ -85,235 +85,207 @@
       <div class="content" role="main">
         
   <section id="bscrollbar">
-<h1>BScrollBar<a class="headerlink" href="#bscrollbar" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv410BScrollBar">BScrollBar<a class="headerlink" href="#bscrollbar" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N10BScrollBar10BScrollBarE5BRectPKcP5BViewff11orientation">
 </section>
 <h3>
-BScrollBar()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BScrollBar10BScrollBarE5BRectPKcP5BViewff11orientation" title="BScrollBar::BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">BScrollBar</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">target</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">min</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">max</span>, <span class="n">orientation</span><span class="w"> </span><span class="n sig-param">posture</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BScrollBar10BScrollBarEP8BMessage" title="BScrollBar::BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">BScrollBar</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BScrollBar</span> and connects it to the target view that it
-will scroll. It will be a horizontal scroll bar if posture is
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HORIZONTAL</span></code> and a vertical scroll bar if posture is
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_VERTICAL</span></code>.</p>
-<p>The range of values that the scroll bar can represent at the outset is
-set by <span class="hparameter">min</span> and <span class="hparameter">max</span>.
-These values should be calculated from the boundaries
-of a rectangle that encloses the entire contents of the target
-view—everything that it can draw. If <span class="hparameter">min</span>
-and <span class="hparameter">max</span> are both 0, the
-scroll bar is disabled and the knob is not drawn.</p>
+BScrollBar()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BScrollBar10BScrollBarE5BRectPKcP5BViewff11orientation" title="BScrollBar::BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">BScrollBar</span><span class="sig-paren">(</span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">target</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">min</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">max</span>, <span class="n">orientation</span><span class="w"> </span><span class="n sig-param">posture</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BScrollBar10BScrollBarEP8BMessage" title="BScrollBar::BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">BScrollBar</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BScrollBar</span> and connects it to the target view
+that it will scroll. It will be a horizontal scroll bar if posture is
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HORIZONTAL</span></code> and a vertical scroll bar if posture is
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_VERTICAL</span></code>.</p>
+<p>The range of values that the scroll bar can represent at the outset is set
+by <span class="hparameter">min</span> and <span class="hparameter">max</span>. These values should be calculated from
+the boundaries of a rectangle that encloses the entire contents of the
+target view—everything that it can draw. If <span class="hparameter">min</span> and <span class="hparameter">max</span>
+are both 0, the scroll bar is disabled and the knob is not drawn.</p>
 <p>The object’s initial value is 0 even if that falls outside the range set
 for the scroll bar.</p>
-<p>The other arguments, <span class="hparameter">frame</span> and <span class="hparameter">name</span>,
-are the same as for other
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s:</p>
+<p>The other arguments, <span class="hparameter">frame</span> and <span class="hparameter">name</span>, are the same as
+for other <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s:</p>
 <ul class="simple">
-<li><p>The <span class="hparameter">frame</span> rectangle locates the scroll bar within its parent view. For consistency in the user interface, a horizontal scroll bar should be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_H_SCROLL_BAR_HEIGHT</span></code> coordinate units high, and a vertical scroll bar should be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_V_SCROLL_BAR_WIDTH</span></code> units wide.</p></li>
-<li><p>The <span class="hclass">BScrollBar</span>’s <span class="hparameter">name</span> identifies it and permits it to be located by the <a class="reference internal" href="view.html#_CPPv4NK5BView8FindViewEPKc" title="BView::FindView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindView()</span></code></a> function. It can be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p></li>
+<li><p>The <span class="hparameter">frame</span> rectangle locates the scroll bar within its parent
+view. For consistency in the user interface, a horizontal scroll bar should
+be <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_H_SCROLL_BAR_HEIGHT</span></code> coordinate units high, and a
+vertical scroll bar should be <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_V_SCROLL_BAR_WIDTH</span></code> units
+wide.</p></li>
+<li><p>The <span class="hclass">BScrollBar</span>’s <span class="hparameter">name</span> identifies it and permits it to
+be located by the <a class="reference internal" href="view.html#_CPPv4NK5BView8FindViewEPKc" title="BView::FindView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindView()</span></code></a> function. It can
+be <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p></li>
 </ul>
-<p>Unlike other <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s,
-the <span class="hclass">BScrollBar</span> constructor doesn’t set an automatic
-resizing mode. By default, scroll bars have the resizing behavior that
-befits their posture—horizontal scroll bars resize themselves
-horizontally (as if they had a resizing mode that combined
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FOLLOW_LEFT_RIGHT</span></code> with <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FOLLOW_BOTTOM</span></code>)
-and vertical scroll bars resize
+<p>Unlike other <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s, the <span class="hclass">BScrollBar</span> constructor
+doesn’t set an automatic resizing mode. By default, scroll bars have the
+resizing behavior that befits their posture—horizontal scroll bars resize
+themselves horizontally (as if they had a resizing mode that combined
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FOLLOW_LEFT_RIGHT</span></code> with
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FOLLOW_BOTTOM</span></code>) and vertical scroll bars resize
 themselves vertically (as if their resizing mode combined
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FOLLOW_TOP_BOTTOM</span></code> with <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FOLLOW_RIGHT</span></code>).</p>
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FOLLOW_TOP_BOTTOM</span></code> with
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FOLLOW_RIGHT</span></code>).</p>
 <section id="_CPPv4N10BScrollBarD0Ev">
 </section>
 <h3>
-~BScrollBar()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">~BScrollBar</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Disconnects the scroll bar from its target.</p>
+~BScrollBar()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">~BScrollBar</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Disconnects the scroll bar from its target.</p>
 </section>
 <section id="hook-functions">
 <h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N10BScrollBar16AttachedToWindowEv">
 </section>
 <h3>
-AttachedToWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Makes sure that the Application Server is
-cognizant of the <span class="hclass">BScrollBar</span>’s
-value, if a value was set before the object was attached to a window.</p>
-<p>See also:
-<a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::AttachedToWindow()</span></code></a></p>
+AttachedToWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Makes sure that the Application Server is cognizant of the
+<span class="hclass">BScrollBar</span>’s value, if a value was set before the object was
+attached to a window.</p>
+<p>See also: <a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::AttachedToWindow()</span></code></a></p>
 <section id="_CPPv4N10BScrollBar12ValueChangedEf">
 </section>
 <h3>
-ValueChanged()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">ValueChanged</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">newValue</span><span class="sig-paren">)</span></pre><p>Responds to a notification that the value of the scroll bar has changed
-to <span class="hparameter">newValue</span>. For a horizontal scroll bar, this function interprets
-<span class="hparameter">newValue</span> as the coordinate value that should be at the left side of the
-target view’s bounds rectangle. For a vertical scroll bar, it interprets
-<span class="hparameter">newValue</span> as the coordinate value that should be at the top of the
-rectangle. It calls
-<a class="reference internal" href="view.html#_CPPv4N5BView8ScrollToE6BPoint" title="BView::ScrollTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScrollTo()</span></code></a>
-to scroll the target’s contents into
-position, unless they have already been scrolled.</p>
+ValueChanged()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">ValueChanged</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">newValue</span><span class="sig-paren">)</span></pre><p>Responds to a notification that the value of the scroll bar has changed to
+<span class="hparameter">newValue</span>. For a horizontal scroll bar, this function interprets
+<span class="hparameter">newValue</span> as the coordinate value that should be at the left side
+of the target view’s bounds rectangle. For a vertical scroll bar, it
+interprets <span class="hparameter">newValue</span> as the coordinate value that should be at the
+top of the rectangle. It calls <a class="reference internal" href="view.html#_CPPv4N5BView8ScrollToE6BPoint" title="BView::ScrollTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScrollTo()</span></code></a> to
+scroll the target’s contents into position, unless they have already been
+scrolled.</p>
 <p><span class="hmethod">ValueChanged()</span> is called as the result both of user actions
-(<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_VALUE_CHANGED</span></code> messages received from the
-Application Server) and of
-programmatic ones. Programmatically, scrolling can be initiated by the
-target view (calling <a class="reference internal" href="view.html#_CPPv4N5BView8ScrollToE6BPoint" title="BView::ScrollTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScrollTo()</span></code></a>)
-or by the <span class="hclass">BScrollBar</span> (calling
-<a class="reference internal" href="#_CPPv4N10BScrollBar8SetValueEf" title="BScrollBar::SetValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetValue()</span></code></a>
-or <a class="reference internal" href="#_CPPv4N10BScrollBar8SetRangeEff" title="BScrollBar::SetRange"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetRange()</span></code></a>).</p>
-<p>In all these cases, the target view and the scroll bars need to be kept
-in synch. This is done by a chain of function calls:
-<span class="hmethod">ValueChanged()</span> calls
-<a class="reference internal" href="view.html#_CPPv4N5BView8ScrollToE6BPoint" title="BView::ScrollTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScrollTo()</span></code></a>,
-which in turn calls <a class="reference internal" href="#_CPPv4N10BScrollBar8SetValueEf" title="BScrollBar::SetValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetValue()</span></code></a>,
-which then calls
-<span class="hmethod">ValueChanged()</span> again. It’s up to <span class="hmethod">ValueChanged()</span> to get off this
-merry-go-round, which it does by checking the target view’s bounds
-rectangle. If <span class="hparameter">newValue</span> already matches the left or top side of the bounds
-rectangle, if forgoes calling
-<a class="reference internal" href="view.html#_CPPv4N5BView8ScrollToE6BPoint" title="BView::ScrollTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScrollTo()</span></code></a>.</p>
-<p><span class="hmethod">ValueChanged()</span> does nothing if a target
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> hasn’t been set—or if
-the target has been set by name, but the name doesn’t correspond to an
-actual <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> within the scroll bar’s window.</p>
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_VALUE_CHANGED</span></code> messages received from the Application
+Server) and of programmatic ones. Programmatically, scrolling can be
+initiated by the target view (calling <a class="reference internal" href="view.html#_CPPv4N5BView8ScrollToE6BPoint" title="BView::ScrollTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScrollTo()</span></code></a>) or by the <span class="hclass">BScrollBar</span> (calling
+<a class="reference internal" href="#_CPPv4N10BScrollBar8SetValueEf" title="BScrollBar::SetValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetValue()</span></code></a> or <a class="reference internal" href="#_CPPv4N10BScrollBar8SetRangeEff" title="BScrollBar::SetRange"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetRange()</span></code></a>).</p>
+<p>In all these cases, the target view and the scroll bars need to be kept in
+synch. This is done by a chain of function calls: <span class="hmethod">ValueChanged()</span>
+calls <a class="reference internal" href="view.html#_CPPv4N5BView8ScrollToE6BPoint" title="BView::ScrollTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScrollTo()</span></code></a>, which in turn calls
+<a class="reference internal" href="#_CPPv4N10BScrollBar8SetValueEf" title="BScrollBar::SetValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetValue()</span></code></a>, which then calls
+<span class="hmethod">ValueChanged()</span> again. It’s up to <span class="hmethod">ValueChanged()</span> to
+get off this merry-go-round, which it does by checking the target view’s
+bounds rectangle. If <span class="hparameter">newValue</span> already matches the left or top
+side of the bounds rectangle, if forgoes calling <a class="reference internal" href="view.html#_CPPv4N5BView8ScrollToE6BPoint" title="BView::ScrollTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ScrollTo()</span></code></a>.</p>
+<p><span class="hmethod">ValueChanged()</span> does nothing if a target <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>
+hasn’t been set—or if the target has been set by name, but the name doesn’t
+correspond to an actual <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> within the scroll bar’s window.</p>
 <p>Derived classes can override this function to interpret <span class="hparameter">newValue</span>
 differently, or to do something in addition to scrolling the target view.</p>
-<p>See also:
-<a class="reference internal" href="#_CPPv4N10BScrollBar9SetTargetEP5BView" title="BScrollBar::SetTarget"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTarget()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N10BScrollBar8SetValueEf" title="BScrollBar::SetValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetValue()</span></code></a>,
-<a class="reference internal" href="view.html#_CPPv4N5BView8ScrollToE6BPoint" title="BView::ScrollTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::ScrollTo()</span></code></a></p>
+<p>See also: <a class="reference internal" href="#_CPPv4N10BScrollBar9SetTargetEP5BView" title="BScrollBar::SetTarget"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTarget()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N10BScrollBar8SetValueEf" title="BScrollBar::SetValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetValue()</span></code></a>, <a class="reference internal" href="view.html#_CPPv4N5BView8ScrollToE6BPoint" title="BView::ScrollTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::ScrollTo()</span></code></a></p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4NK10BScrollBar7ArchiveEP8BMessageb">
 </section>
 <h3>
-Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of
-<a class="reference internal" href="view.html#_CPPv4NK5BView7ArchiveEP8BMessageb" title="BView::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a>,
-then adds the <span class="hclass">BScrollBar</span>’s
-range, orientation, current value and proportion, and the size of its big
-and little steps to the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> <span class="hparameter">archive</span>.</p>
-<p>See also:
-<a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N10BScrollBar11InstantiateEP8BMessage" title="BScrollBar::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of <a class="reference internal" href="view.html#_CPPv4NK5BView7ArchiveEP8BMessageb" title="BView::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a>,
+then adds the <span class="hclass">BScrollBar</span>’s range, orientation, current value and
+proportion, and the size of its big and little steps to the
+<a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> <span class="hparameter">archive</span>.</p>
+<p>See also: <a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>, <a class="reference internal" href="#_CPPv4N10BScrollBar11InstantiateEP8BMessage" title="BScrollBar::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
 <section id="_CPPv4NK10BScrollBar11OrientationEv">
 </section>
 <h3>
-Orientation()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">orientation</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">Orientation</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HORIZONTAL</span></code> if the object represents a horizontal scroll bar and
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_VERTICAL</span></code> if it represents a vertical scroll bar.</p>
-<p>See also:
-The <span class="hclass">BScrollBar</span>
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code></p>
+Orientation()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">orientation</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">Orientation</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HORIZONTAL</span></code> if the object represents a
+horizontal scroll bar and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_VERTICAL</span></code> if it represents a
+vertical scroll bar.</p>
+<p>See also: The <span class="hclass">BScrollBar</span> <a class="reference internal" href="#_CPPv4N10BScrollBar10BScrollBarE5BRectPKcP5BViewff11orientation" title="BScrollBar::BScrollBar"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a></p>
 <section id="_CPPv4N10BScrollBar13SetProportionEf">
 </section>
 <section id="_CPPv4NK10BScrollBar10ProportionEv">
 </section>
 <h3>
-SetProportion(), Proportion()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">SetProportion</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">ratio</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">Proportion</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return a value between 0.0 and 1.0 that
-represents the proportion of the entire document that can be displayed
-within the target view—the ratio of the width (or height) of the
-target’s bounds rectangle to the width (or height) of its data rectangle.
-This ratio determines the size of a proportional scroll knob relative to
-the whole scroll bar. It’s not adjusted to take into account the minimum
-size of the knob.</p>
+SetProportion(), Proportion()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">SetProportion</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">ratio</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">Proportion</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return a value between 0.0 and 1.0 that represents
+the proportion of the entire document that can be displayed within the
+target view—the ratio of the width (or height) of the target’s bounds
+rectangle to the width (or height) of its data rectangle. This ratio
+determines the size of a proportional scroll knob relative to the whole
+scroll bar. It’s not adjusted to take into account the minimum size of the
+knob.</p>
 <p>The proportion should be reset as the size of the data rectangle changes
-(as data is entered and removed from the document) and when the target
-view is resized.</p>
+(as data is entered and removed from the document) and when the target view
+is resized.</p>
 <section id="_CPPv4N10BScrollBar8SetRangeEff">
 </section>
 <section id="_CPPv4NK10BScrollBar8GetRangeEPfPf">
 </section>
 <h3>
-SetRange(), GetRange()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">SetRange</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">min</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">max</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">GetRange</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">min</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">max</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions modify and return the range of the scroll bar.
-<span class="hmethod">SetRange()</span>
-sets the minimum and maximum values of the scroll bar to <span class="hparameter">min</span> and <span class="hparameter">max</span>.
-<span class="hmethod">GetRange()</span> places the current minimum and maximum in the variables that
-<span class="hparameter">min</span> and <span class="hparameter">max</span> refer to.</p>
+SetRange(), GetRange()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">SetRange</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">min</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">max</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">GetRange</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">min</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">max</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions modify and return the range of the scroll bar.
+<span class="hmethod">SetRange()</span> sets the minimum and maximum values of the scroll bar
+to <span class="hparameter">min</span> and <span class="hparameter">max</span>. <span class="hmethod">GetRange()</span> places the
+current minimum and maximum in the variables that <span class="hparameter">min</span> and
+<span class="hparameter">max</span> refer to.</p>
 <p>If the scroll bar’s current value falls outside the new range, it will be
-reset to the closest value—either <span class="hparameter">min</span> or <span class="hparameter">max</span>—within range.
-<a class="reference internal" href="#_CPPv4N10BScrollBar12ValueChangedEf" title="BScrollBar::ValueChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ValueChanged()</span></code></a>
-is called to inform the <span class="hclass">BScrollBar</span> of the change whether
-or not it’s attached to a window.</p>
-<p>If the <span class="hclass">BScrollBar</span> is attached to a window, any change in its range will
-be immediately reflected on-screen. The knob will move to the appropriate
-position to reflect the current value.</p>
-<p>Setting both the minimum and maximum to 0 disables the scroll bar. It
-will be drawn without a knob.</p>
-<p>See also:
-The <span class="hclass">BScrollBar</span>
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code></p>
+reset to the closest value—either <span class="hparameter">min</span> or <span class="hparameter">max</span>—within
+range. <a class="reference internal" href="#_CPPv4N10BScrollBar12ValueChangedEf" title="BScrollBar::ValueChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ValueChanged()</span></code></a> is called to
+inform the <span class="hclass">BScrollBar</span> of the change whether or not it’s attached
+to a window.</p>
+<p>If the <span class="hclass">BScrollBar</span> is attached to a window, any change in its
+range will be immediately reflected on-screen. The knob will move to the
+appropriate position to reflect the current value.</p>
+<p>Setting both the minimum and maximum to 0 disables the scroll bar. It will
+be drawn without a knob.</p>
+<p>See also: The <span class="hclass">BScrollBar</span> <a class="reference internal" href="#_CPPv4N10BScrollBar10BScrollBarE5BRectPKcP5BViewff11orientation" title="BScrollBar::BScrollBar"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a></p>
 <section id="_CPPv4N10BScrollBar8SetStepsEff">
 </section>
 <section id="_CPPv4NK10BScrollBar8GetStepsEPfPf">
 </section>
 <h3>
-SetSteps(), GetSteps()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">SetSteps</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">smallStep</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">bigStep</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">GetSteps</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">smallStep</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bigStep</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetSteps()</span> sets how much a single user action should change the value of
-the scroll bar—and therefore how far the target view should scroll.
-<span class="hmethod">GetSteps()</span> provides the current settings.</p>
-<p>When the user presses one of the scroll arrows at either end of the
-scroll bar, its value changes by a <span class="hparameter">smallStep</span> coordinate units. When the
+SetSteps(), GetSteps()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">SetSteps</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">smallStep</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">bigStep</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">GetSteps</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">smallStep</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bigStep</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetSteps()</span> sets how much a single user action should change the
+value of the scroll bar—and therefore how far the target view should
+scroll. <span class="hmethod">GetSteps()</span> provides the current settings.</p>
+<p>When the user presses one of the scroll arrows at either end of the scroll
+bar, its value changes by a <span class="hparameter">smallStep</span> coordinate units. When the
 user clicks in the bar itself (other than on the knob), it changes by a
-<span class="hparameter">bigStep</span> units. For an application that displays text, the small step of a
-vertical scroll bar should be large enough to bring another line of text
-into view.</p>
+<span class="hparameter">bigStep</span> units. For an application that displays text, the small
+step of a vertical scroll bar should be large enough to bring another line
+of text into view.</p>
 <p>The default small step is 1.0, which should be too small for most
-purposes; the default large step is 10.0, which is also probably too
-small.</p>
+purposes; the default large step is 10.0, which is also probably too small.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>Although the step values are specified using type float, only integral
-values should be specified; otherwise, the scroll bar won’t behave as
-expected.</p>
+<p>Although the step values are specified using type <span class="htype">float</span>, only
+integral values should be specified; otherwise, the scroll bar won’t behave
+as expected.</p>
 </div>
-<p>Currently, a <span class="hclass">BScrollBar</span>’s steps can be successfully set only after it’s
-attached to a window.</p>
-<p>See also:
-<a class="reference internal" href="#_CPPv4N10BScrollBar12ValueChangedEf" title="BScrollBar::ValueChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ValueChanged()</span></code></a></p>
+<p>Currently, a <span class="hclass">BScrollBar</span>’s steps can be successfully set only
+after it’s attached to a window.</p>
+<p>See also: <a class="reference internal" href="#_CPPv4N10BScrollBar12ValueChangedEf" title="BScrollBar::ValueChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ValueChanged()</span></code></a></p>
 <section id="_CPPv4N10BScrollBar9SetTargetEP5BView">
 </section>
 <section id="_CPPv4NK10BScrollBar6TargetEv">
 </section>
 <h3>
-SetTarget(), Target()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">SetTarget</span><span class="sig-paren">(</span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">view</span><span class="sig-paren">)</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">SetTarget</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">Target</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the target of the <span class="hclass">BScrollBar</span>, the view
-that the scroll bar scrolls. <span class="hmethod">SetTarget()</span> sets the target to
-<span class="hparameter">view</span>, or to
-the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-identified by <span class="hparameter">name</span>. <span class="hmethod">Target()</span> returns the current target view.
-The target can also be set when the <span class="hclass">BScrollBar</span> is constructed.</p>
+SetTarget(), Target()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">SetTarget</span><span class="sig-paren">(</span><a class="reference internal" href="view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">view</span><span class="sig-paren">)</span><br /><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">SetTarget</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">Target</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the target of the <span class="hclass">BScrollBar</span>, the
+view that the scroll bar scrolls. <span class="hmethod">SetTarget()</span> sets the target to
+<span class="hparameter">view</span>, or to the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> identified by <span class="hparameter">name</span>.
+<span class="hmethod">Target()</span> returns the current target view. The target can also be
+set when the <span class="hclass">BScrollBar</span> is constructed.</p>
 <p><span class="hmethod">SetTarget()</span> can be called either before or after the
-<span class="hclass">BScrollBar</span> is
-attached to a window. If the target is set by <span class="hparameter">name</span>, the named view must
-eventually be found within the same window as the scroll bar. Typically,
-the target and its scroll bars are children of a container view that
-serves to bind them together as a unit.</p>
-<p>When the target is successfully set, a pointer to the <span class="hclass">BScrollBar</span> object
-is passed to the target view. This lets the target update its scroll bars
-when its contents are scrolled.</p>
-<p>See also:
-The <span class="hclass">BScrollBar</span>
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>,
-<a class="reference internal" href="#_CPPv4N10BScrollBar12ValueChangedEf" title="BScrollBar::ValueChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ValueChanged()</span></code></a>,
-<a class="reference internal" href="view.html#_CPPv4NK5BView9ScrollBarE11orientation" title="BView::ScrollBar"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::ScrollBar()</span></code></a></p>
+<span class="hclass">BScrollBar</span> is attached to a window. If the target is set by
+<span class="hparameter">name</span>, the named view must eventually be found within the same
+window as the scroll bar. Typically, the target and its scroll bars are
+children of a container view that serves to bind them together as a unit.</p>
+<p>When the target is successfully set, a pointer to the <span class="hclass">BScrollBar</span>
+object is passed to the target view. This lets the target update its scroll
+bars when its contents are scrolled.</p>
+<p>See also: The <span class="hclass">BScrollBar</span> <a class="reference internal" href="#_CPPv4N10BScrollBar10BScrollBarE5BRectPKcP5BViewff11orientation" title="BScrollBar::BScrollBar"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a>, <a class="reference internal" href="#_CPPv4N10BScrollBar12ValueChangedEf" title="BScrollBar::ValueChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ValueChanged()</span></code></a>, <a class="reference internal" href="view.html#_CPPv4NK5BView9ScrollBarE11orientation" title="BView::ScrollBar"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::ScrollBar()</span></code></a></p>
 <section id="_CPPv4N10BScrollBar8SetValueEf">
 </section>
 <section id="_CPPv4NK10BScrollBar5ValueEv">
 </section>
 <h3>
-SetValue(), Value()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">SetValue</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">Value</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions modify and return the value of the scroll bar. The value
-is usually set as the result of user actions; <span class="hmethod">SetValue()</span> provides a way
-to do it programmatically. <span class="hmethod">Value()</span> returns the current value, whether set
-by <span class="hmethod">SetValue()</span> or by the user.</p>
-<p><span class="hmethod">SetValue()</span> assigns a new <span class="hparameter">value</span> to the scroll bar and calls the
-<a class="reference internal" href="#_CPPv4N10BScrollBar12ValueChangedEf" title="BScrollBar::ValueChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ValueChanged()</span></code></a>
-hook function, whether or not the new value is really a
-change from the old. If the value passed lies outside the range of the
-scroll bar, the <span class="hclass">BScrollBar</span> is reset to the closest value within
-range—that is, to either the minimum or the maximum value
-previously specified.</p>
+SetValue(), Value()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">SetValue</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">Value</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions modify and return the value of the scroll bar. The value
+is usually set as the result of user actions; <span class="hmethod">SetValue()</span>
+provides a way to do it programmatically. <span class="hmethod">Value()</span> returns the
+current value, whether set by <span class="hmethod">SetValue()</span> or by the user.</p>
+<p><span class="hmethod">SetValue()</span> assigns a new <span class="hparameter">value</span> to the scroll bar and
+calls the <a class="reference internal" href="#_CPPv4N10BScrollBar12ValueChangedEf" title="BScrollBar::ValueChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ValueChanged()</span></code></a> hook
+function, whether or not the new value is really a change from the old. If
+the value passed lies outside the range of the scroll bar, the
+<span class="hclass">BScrollBar</span> is reset to the closest value within range—that is, to
+either the minimum or the maximum value previously specified.</p>
 <p>If the scroll bar is attached to a window, changing its value updates its
-on-screen display. The call to
-<a class="reference internal" href="#_CPPv4N10BScrollBar12ValueChangedEf" title="BScrollBar::ValueChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ValueChanged()</span></code></a>
-enables the object to
-scroll the target view so that it too is updated to conform to the new
-value.</p>
+on-screen display. The call to <a class="reference internal" href="#_CPPv4N10BScrollBar12ValueChangedEf" title="BScrollBar::ValueChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ValueChanged()</span></code></a> enables the object to scroll the target view so
+that it too is updated to conform to the new value.</p>
 <p>The initial value of a scroll bar is 0.</p>
-<p>See also:
-<a class="reference internal" href="#_CPPv4N10BScrollBar12ValueChangedEf" title="BScrollBar::ValueChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ValueChanged()</span></code></a>,
+<p>See also: <a class="reference internal" href="#_CPPv4N10BScrollBar12ValueChangedEf" title="BScrollBar::ValueChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ValueChanged()</span></code></a>,
 <a class="reference internal" href="#_CPPv4N10BScrollBar8SetRangeEff" title="BScrollBar::SetRange"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetRange()</span></code></a></p>
 </section>
 <section id="static-functions">
@@ -321,18 +293,48 @@ value.</p>
 <section id="_CPPv4N10BScrollBar11InstantiateEP8BMessage">
 </section>
 <h3>
-Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BScrollBar</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BScrollBar</span> object, allocated by new and created with the
-version of the constructor that takes a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive. However, if the
-<span class="hparameter">archive</span> message doesn’t contain data for a <span class="hclass">BScrollBar</span> object, the return
-value will be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<p>See also:
-<a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">object()</span></code>,
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BScrollBar" title="BScrollBar"><span class="n">BScrollBar</span></a><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BScrollBar</span> object, allocated by new and created
+with the version of the constructor that takes a <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>
+archive. However, if the <span class="hparameter">archive</span> message doesn’t contain data for
+a <span class="hclass">BScrollBar</span> object, the return value will be <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<p>See also: <a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">instantiate_object()</span></code>,
 <a class="reference internal" href="#_CPPv4NK10BScrollBar7ArchiveEP8BMessageb" title="BScrollBar::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
 </section>
 <section id="archived-fields">
 <h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="#_CPPv4NK10BScrollBar7ArchiveEP8BMessageb" title="BScrollBar::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a> function adds the
+following fields to its <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> argument:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">_range</span> (array)</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FLOAT_TYPE</span></code></p></td>
+<td><p>Minimum and maximum values of the scroll bar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_steps</span> (array)</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FLOAT_TYPE</span></code></p></td>
+<td><p>Small and large steps of the scroll bar.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_val</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FLOAT_TYPE</span></code></p></td>
+<td><p>Current value of the scroll bar</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_orient</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>Orientation of the scroll bar.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_prop</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FLOAT_TYPE</span></code></p></td>
+<td><p>Proportion of the document visible in the target view.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 

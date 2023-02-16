@@ -66,16 +66,22 @@
 </li>
 <li><a class="reference internal" href="#operators">Operators</a></li>
 <li><a class="reference internal" href="#global-c-functions">Global C Functions</a><ul>
-<li><a class="reference internal" href="#_CPPv4N9BTimeCode15count_timecodesEv">count_timecodes</a></li>
-<li><a class="reference internal" href="#_CPPv4N9BTimeCode18frames_to_timecodeE5int32PiPiPiPiK13timecode_info">frames_to_timecode</a></li>
-<li><a class="reference internal" href="#_CPPv4N9BTimeCode18timecode_to_framesEiiiiK13timecode_info">timecode_to_frames</a></li>
-<li><a class="reference internal" href="#_CPPv4N9BTimeCode24get_timecode_descriptionE13timecode_typeP13timecode_info">get_timecode_description</a></li>
-<li><a class="reference internal" href="#_CPPv4N9BTimeCode14us_to_timecodeE9bigtime_tPiPiPiPiK13timecode_info">us_to_timecode</a></li>
-<li><a class="reference internal" href="#_CPPv4N9BTimeCode14timecode_to_usEiiiiP9bigtime_tK13timecode_info">timecode_to_us</a></li>
+<li><a class="reference internal" href="#_CPPv415count_timecodesv">count_timecodes</a></li>
+<li><a class="reference internal" href="#_CPPv418frames_to_timecode5int32PiPiPiPiK13timecode_info">frames_to_timecode</a></li>
+<li><a class="reference internal" href="#_CPPv418timecode_to_framesiiiiK13timecode_info">timecode_to_frames</a></li>
+<li><a class="reference internal" href="#_CPPv424get_timecode_description13timecode_typeP13timecode_info">get_timecode_description</a></li>
+<li><a class="reference internal" href="#_CPPv414us_to_timecode9bigtime_tPiPiPiPiK13timecode_info">us_to_timecode</a></li>
+<li><a class="reference internal" href="#_CPPv414timecode_to_usiiiiP9bigtime_tK13timecode_info">timecode_to_us</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#constants">Constants</a></li>
-<li><a class="reference internal" href="#defined-types">Defined Types</a></li>
+<li><a class="reference internal" href="#constants">Constants</a><ul>
+<li><a class="reference internal" href="#timecode-type">timecode_type</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#defined-types">Defined Types</a><ul>
+<li><a class="reference internal" href="#timecode-info">timecode_info</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -88,31 +94,29 @@
       <div class="content" role="main">
         
   <section id="btimecode">
-<h1>BTimeCode<a class="headerlink" href="#btimecode" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv49BTimeCode">BTimeCode<a class="headerlink" href="#btimecode" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N9BTimeCode9BTimeCodeEv">
 </section>
 <h3>
-BTimeCode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BTimeCode9BTimeCodeEv" title="BTimeCode::BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">BTimeCode</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BTimeCode9BTimeCodeE9bigtime_t13timecode_type" title="BTimeCode::BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">BTimeCode</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">us</span>, <span class="n">timecode_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_TIMECODE_DEFAULT</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BTimeCode9BTimeCodeEiiii13timecode_type" title="BTimeCode::BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">BTimeCode</span><span class="sig-paren">(</span><span class="kt">int</span><span class="w"> </span><span class="n sig-param">hours</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">minutes</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">seconds</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">frames</span>, <span class="n">timecode_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_TIMECODE_DEFAULT</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BTimeCode9BTimeCodeERK9BTimeCode" title="BTimeCode::BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">BTimeCode</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N9BTimeCode9BTimeCodeERK9BTimeCode" title="BTimeCode::BTimeCode"><span class="n">BTimeCode</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">clone</span><span class="sig-paren">)</span></pre><p>The constructor prepares the <span class="hclass">BTimeCode</span> object for use. If you use the
-first form of the constructor, without arguments, you’ll have to call an
-appropriate function to set the <span class="hclass">BTimeCode</span>’s time information before using
-it for translation purposes. This can be done by calling one or more of
-<a class="reference internal" href="#_CPPv4N9BTimeCode7SetDataEiiii" title="BTimeCode::SetData"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetData()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N9BTimeCode7SetTypeE13timecode_type" title="BTimeCode::SetType"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetType()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N9BTimeCode15SetMicrosecondsE9bigtime_t" title="BTimeCode::SetMicroseconds"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetMicroseconds()</span></code></a>, or
-<a class="reference internal" href="#_CPPv4N9BTimeCode15SetLinearFramesE5int32" title="BTimeCode::SetLinearFrames"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetLinearFrames()</span></code></a>.
-The second form of the constructor accepts as input a time in
-microseconds, <span class="hparameter">us</span>, and the timecode <span class="hparameter">type</span>.
-The third form accepts as input a time in <span class="hparameter">hours</span>,
-<span class="hparameter">minutes</span>, <span class="hparameter">seconds</span>, and
-<span class="hparameter">frames</span>, as well as the timecode <span class="hparameter">type</span>.
-The fourth form of the constructor duplicates an existing
+BTimeCode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BTimeCode9BTimeCodeEv" title="BTimeCode::BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">BTimeCode</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BTimeCode9BTimeCodeE9bigtime_t13timecode_type" title="BTimeCode::BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">BTimeCode</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">us</span>, <span class="n">timecode_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_TIMECODE_DEFAULT</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BTimeCode9BTimeCodeEiiii13timecode_type" title="BTimeCode::BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">BTimeCode</span><span class="sig-paren">(</span><span class="kt">int</span><span class="w"> </span><span class="n sig-param">hours</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">minutes</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">seconds</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">frames</span>, <span class="n">timecode_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_TIMECODE_DEFAULT</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BTimeCode9BTimeCodeERK9BTimeCode" title="BTimeCode::BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">BTimeCode</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N9BTimeCode9BTimeCodeERK9BTimeCode" title="BTimeCode::BTimeCode"><span class="n">BTimeCode</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">clone</span><span class="sig-paren">)</span></pre><p>The constructor prepares the <span class="hclass">BTimeCode</span> object for use. If you
+use the first form of the constructor, without arguments, you’ll have to
+call an appropriate function to set the <span class="hclass">BTimeCode</span>’s time
+information before using it for translation purposes. This can be done by
+calling one or more of <a class="reference internal" href="#_CPPv4N9BTimeCode7SetDataEiiii" title="BTimeCode::SetData"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetData()</span></code></a>,
+<a class="reference internal" href="#_CPPv4N9BTimeCode7SetTypeE13timecode_type" title="BTimeCode::SetType"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetType()</span></code></a>, <a class="reference internal" href="#_CPPv4N9BTimeCode15SetMicrosecondsE9bigtime_t" title="BTimeCode::SetMicroseconds"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetMicroseconds()</span></code></a>, or <a class="reference internal" href="#_CPPv4N9BTimeCode15SetLinearFramesE5int32" title="BTimeCode::SetLinearFrames"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetLinearFrames()</span></code></a>.</p>
+<p>The second form of the constructor accepts as input a time in
+microseconds, <span class="hparameter">us</span>, and the timecode <span class="hparameter">type</span>.</p>
+<p>The third form accepts as input a time in <span class="hparameter">hours</span>,
+<span class="hparameter">minutes</span>, <span class="hparameter">seconds</span>, and <span class="hparameter">frames</span>, as well as the
+timecode <span class="hparameter">type</span>.</p>
+<p>The fourth form of the constructor duplicates an existing
 <span class="hclass">BTimeCode</span> object.</p>
 <section id="_CPPv4N9BTimeCodeD0Ev">
 </section>
 <h3>
-~BTimeCode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">~BTimeCode</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>A typical destructor</p>
+~BTimeCode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">~BTimeCode</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>A typical destructor</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
@@ -121,19 +125,18 @@ The fourth form of the constructor duplicates an existing
 <section id="_CPPv4N9BTimeCode7SetDataEiiii">
 </section>
 <h3>
-GetData(), SetData()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">GetData</span><span class="sig-paren">(</span><span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outHours</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outMinutes</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outSeconds</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFrames</span>, <span class="n">timecode_type</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outType</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">SetData</span><span class="sig-paren">(</span><span class="kt">int</span><span class="w"> </span><span class="n sig-param">hours</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">minutes</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">seconds</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">frames</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetData()</span> returns the timecode’s value
-in <span class="hparameter">hours</span>, <span class="hparameter">minutes</span>, <span class="hparameter">seconds</span>, and
-<span class="hparameter">frames</span>, and also returns the timecode type, if you specify a valid
-pointer for <span class="hparameter">outType</span>. <span class="hmethod">SetData()</span>
-lets you set the timecode’s value.</p>
+GetData(), SetData()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">GetData</span><span class="sig-paren">(</span><span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outHours</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outMinutes</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outSeconds</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outFrames</span>, <span class="n">timecode_type</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outType</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">SetData</span><span class="sig-paren">(</span><span class="kt">int</span><span class="w"> </span><span class="n sig-param">hours</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">minutes</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">seconds</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">frames</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetData()</span> returns the timecode’s value in <span class="hparameter">hours</span>,
+<span class="hparameter">minutes</span>, <span class="hparameter">seconds</span>, and <span class="hparameter">frames</span>, and also
+returns the timecode type, if you specify a valid pointer for
+<span class="hparameter">outType</span>. <span class="hmethod">SetData()</span> lets you set the timecode’s value.</p>
 <section id="_CPPv4NK9BTimeCode9GetStringEPc">
 </section>
 <h3>
-GetString()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">GetString</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">str</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Fills <span class="hparameter">str</span>, which must be at least 24 bytes long, with a string indicating
-the current time in hours, minutes, seconds, and frames. The string is
-formatted in a manner appropriate to the timecode type. A typical example
-would be “01:24:09.18”, which is 1 hour, 24 minutes, 9 seconds, and 18
-frames.</p>
+GetString()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">GetString</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">str</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Fills <span class="hparameter">str</span>, which must be at least 24 bytes long, with a string
+indicating the current time in hours, minutes, seconds, and frames. The
+string is formatted in a manner appropriate to the timecode type. A typical
+example would be “01:24:09.18”, which is 1 hour, 24 minutes, 9 seconds, and
+18 frames.</p>
 <section id="_CPPv4NK9BTimeCode5HoursEv">
 </section>
 <section id="_CPPv4NK9BTimeCode7MinutesEv">
@@ -143,49 +146,42 @@ frames.</p>
 <section id="_CPPv4NK9BTimeCode6FramesEv">
 </section>
 <h3>
-Hours(), Minutes(), Seconds(), Frames()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">Hours</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">Minutes</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">Seconds</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">Frames</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions return the time’s hours, minutes, seconds, and frames
+Hours(), Minutes(), Seconds(), Frames()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">Hours</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">Minutes</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">Seconds</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">Frames</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions return the time’s hours, minutes, seconds, and frames
 portions.</p>
 <section id="_CPPv4NK9BTimeCode12LinearFramesEv">
 </section>
 <section id="_CPPv4N9BTimeCode15SetLinearFramesE5int32">
 </section>
 <h3>
-LinearFrames(), SetLinearFrames()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">LinearFrames</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">SetLinearFrames</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">linearFrames</span><span class="sig-paren">)</span></pre><p><span class="hmethod">LinearFrames()</span> returns the
-<span class="hclass">BTimeCode</span> object’s time in linear frames.
-<span class="hmethod">SetLinearFrames()</span> lets you change the time, specifying the new time in
-linear frames.</p>
+LinearFrames(), SetLinearFrames()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">LinearFrames</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">SetLinearFrames</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">linearFrames</span><span class="sig-paren">)</span></pre><p><span class="hmethod">LinearFrames()</span> returns the <span class="hclass">BTimeCode</span> object’s time in
+linear frames. <span class="hmethod">SetLinearFrames()</span> lets you change the time,
+specifying the new time in linear frames.</p>
 <section id="_CPPv4NK9BTimeCode12LinearFramesEv">
 </section>
 <section id="_CPPv4N9BTimeCode15SetMicrosecondsE9bigtime_t">
 </section>
 <h3>
-LinearFrames(), SetMicroseconds()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">LinearFrames</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">SetMicroseconds</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">us</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Microseconds()</span> returns the
-<span class="hclass">BTimeCode</span> object’s time, in microseconds.
-<span class="hmethod">SetMicroseconds()</span> lets you change the time,
+LinearFrames(), SetMicroseconds()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">LinearFrames</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">SetMicroseconds</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">us</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Microseconds()</span> returns the <span class="hclass">BTimeCode</span> object’s time,
+in microseconds. <span class="hmethod">SetMicroseconds()</span> lets you change the time,
 specifying the new time in microseconds.</p>
 <section id="_CPPv4NK9BTimeCode4TypeEv">
 </section>
 <section id="_CPPv4N9BTimeCode7SetTypeE13timecode_type">
 </section>
 <h3>
-Type(), SetType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">timecode_type</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">Type</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">SetType</span><span class="sig-paren">(</span><span class="n">timecode_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Type()</span> returns the <span class="hclass">BTimeCode</span>
-object’s timecode type. <span class="hmethod">SetType()</span> lets you
-change the timecode type.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+Type(), SetType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">timecode_type</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">Type</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="p">::</span></span><span class="n">SetType</span><span class="sig-paren">(</span><span class="n">timecode_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Type()</span> returns the <span class="hclass">BTimeCode</span> object’s timecode type.
+<span class="hmethod">SetType()</span> lets you change the timecode type.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The type was returned safely.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
 <td><p>The timecode type specified is invalid.</p></td>
 </tr>
 </tbody>
@@ -194,135 +190,125 @@ change the timecode type.</p>
 <section id="operators">
 <h2>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">¶</a></h2>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BTimeCode</span><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BTimeCode</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">clone</span><span class="sig-paren">)</span></pre><p>Makes the current <span class="hclass">BTimeCode</span> identical to
-the <span class="hclass">BTimeCode</span> object specified</p>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">clone</span><span class="sig-paren">)</span></pre><p>Makes the current <span class="hclass">BTimeCode</span> identical to the <span class="hclass">BTimeCode</span>
+object specified</p>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BTimeCode</span><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">==</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BTimeCode</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">other</span><span class="sig-paren">)</span></pre><p>Determines whether or not the two <span class="hclass">BTimeCode</span> objects are equal (their
-times are the same, regardless of their timecode types).</p>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">==</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">other</span><span class="sig-paren">)</span></pre><p>Determines whether or not the two <span class="hclass">BTimeCode</span> objects are equal
+(their times are the same, regardless of their timecode types).</p>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BTimeCode</span><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">&lt;</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BTimeCode</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">other</span><span class="sig-paren">)</span></pre><p>Indicates whether or not one <span class="hclass">BTimeCode</span>’s time, in microseconds, is less
-than the other’s.</p>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">&lt;</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">other</span><span class="sig-paren">)</span></pre><p>Indicates whether or not one <span class="hclass">BTimeCode</span>’s time, in microseconds,
+is less than the other’s.</p>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BTimeCode</span><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">+=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BTimeCode</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">other</span><span class="sig-paren">)</span></pre><p>Adds the time of the <span class="hclass">BTimeCode</span> object other
-to the current <span class="hclass">BTimeCode</span>’s time.</p>
-<h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BTimeCode</span><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">-=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BTimeCode</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">other</span><span class="sig-paren">)</span></pre><p>Subtracts the time of the <span class="hclass">BTimeCode</span> object other from the current
+</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">+=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">other</span><span class="sig-paren">)</span></pre><p>Adds the time of the <span class="hclass">BTimeCode</span> object other to the current
 <span class="hclass">BTimeCode</span>’s time.</p>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BTimeCode</span><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">+</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BTimeCode</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">other</span><span class="sig-paren">)</span></pre><p>Adds two <span class="hclass">BTimeCode</span> values together, returning
-a new <span class="hclass">BTimeCode</span>.</p>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">-=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">other</span><span class="sig-paren">)</span></pre><p>Subtracts the time of the <span class="hclass">BTimeCode</span> object other from the
+current <span class="hclass">BTimeCode</span>’s time.</p>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BTimeCode</span><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">&lt;</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BTimeCode</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">other</span><span class="sig-paren">)</span></pre><p>Subtracts two <span class="hclass">BTimeCode</span> values, returning a new one.</p>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">+</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">other</span><span class="sig-paren">)</span></pre><p>Adds two <span class="hclass">BTimeCode</span> values together, returning a new
+<span class="hclass">BTimeCode</span>.</p>
+<h3>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">&lt;</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv49BTimeCode" title="BTimeCode"><span class="n">BTimeCode</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">other</span><span class="sig-paren">)</span></pre><p>Subtracts two <span class="hclass">BTimeCode</span> values, returning a new one.</p>
 </section>
 <section id="global-c-functions">
 <h2>Global C Functions<a class="headerlink" href="#global-c-functions" title="Permalink to this heading">¶</a></h2>
-<section id="_CPPv4N9BTimeCode15count_timecodesEv">
+<section id="_CPPv415count_timecodesv">
 </section>
 <h3>
-count_timecodes()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">count_timecodes</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the number of recognized time code types.</p>
-<section id="_CPPv4N9BTimeCode18frames_to_timecodeE5int32PiPiPiPiK13timecode_info">
+count_timecodes()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">count_timecodes</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the number of recognized time code types.</p>
+<section id="_CPPv418frames_to_timecode5int32PiPiPiPiK13timecode_info">
 </section>
-<section id="_CPPv4N9BTimeCode18timecode_to_framesEiiiiK13timecode_info">
+<section id="_CPPv418timecode_to_framesiiiiK13timecode_info">
 </section>
 <h3>
-frames_to_timecode(), timecode_to_frames()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">frames_to_timecode</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">linearFrames</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">hours</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">minutes</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">seconds</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">frames</span>, <span class="k">const</span><span class="w"> </span><span class="n">timecode_info</span><span class="w"> </span><span class="n sig-param">code</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">timecode_to_frames</span><span class="sig-paren">(</span><span class="kt">int</span><span class="w"> </span><span class="n sig-param">hours</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">minutes</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">seconds</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">frames</span>, <span class="k">const</span><span class="w"> </span><span class="n">timecode_info</span><span class="w"> </span><span class="n sig-param">code</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>frames_to_timecode() converts the
-frame offset <span class="hparameter">linearFrames</span> into <span class="hparameter">hours</span>,
-<span class="hparameter">minutes</span>, <span class="hparameter">seconds</span>, and
-<span class="hparameter">frames</span>.
-timecode_to_frames() converts the time from
+frames_to_timecode(), timecode_to_frames()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">frames_to_timecode</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">linearFrames</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">hours</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">minutes</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">seconds</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">frames</span>, <span class="k">const</span><span class="w"> </span><span class="n">timecode_info</span><span class="w"> </span><span class="n sig-param">code</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">timecode_to_frames</span><span class="sig-paren">(</span><span class="kt">int</span><span class="w"> </span><span class="n sig-param">hours</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">minutes</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">seconds</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">frames</span>, <span class="k">const</span><span class="w"> </span><span class="n">timecode_info</span><span class="w"> </span><span class="n sig-param">code</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>frames_to_timecode() converts the frame offset <span class="hparameter">linearFrames</span> into
 <span class="hparameter">hours</span>, <span class="hparameter">minutes</span>, <span class="hparameter">seconds</span>, and
-<span class="hparameter">frames</span> into a linear frame offset, storing the result
-in <span class="hparameter">linearFrames</span>.
-The timecode_info structure code is used to determine how the conversion
-should be made, if you specify it. Otherwise <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMECODE_DEFAULT</span></code> is
-assumed.
-Currently these functions always return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>, but you should still check
-for errors because you’d hate it if your app broke in the future,
-wouldn’t you?</p>
-<section id="_CPPv4N9BTimeCode24get_timecode_descriptionE13timecode_typeP13timecode_info">
+<span class="hparameter">frames</span>.</p>
+<p>timecode_to_frames() converts the time from <span class="hparameter">hours</span>,
+<span class="hparameter">minutes</span>, <span class="hparameter">seconds</span>, and <span class="hparameter">frames</span> into a linear
+frame offset, storing the result in <span class="hparameter">linearFrames</span>.</p>
+<p>The <span class="htype">timecode_info</span> structure code is used to determine how the
+conversion should be made, if you specify it. Otherwise
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TIMECODE_DEFAULT</span></code> is assumed.</p>
+<p>Currently these functions always return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>, but you
+should still check for errors because you’d hate it if your app broke in
+the future, wouldn’t you?</p>
+<section id="_CPPv424get_timecode_description13timecode_typeP13timecode_info">
 </section>
 <h3>
-get_timecode_description()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">get_timecode_description</span><span class="sig-paren">(</span><span class="n">timecode_type</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="n">timecode_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outTimeCode</span><span class="sig-paren">)</span></pre><p>Fills out the timecode_info structure specified
-by <span class="hparameter">outTimeCode</span> with
-information describing the specified timecode type.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+get_timecode_description()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">get_timecode_description</span><span class="sig-paren">(</span><span class="n">timecode_type</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="n">timecode_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outTimeCode</span><span class="sig-paren">)</span></pre><p>Fills out the <span class="htype">timecode_info</span> structure specified by
+<span class="hparameter">outTimeCode</span> with information describing the specified timecode
+type.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>No error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
 <td><p>The specified timecode type isn’t valid.</p></td>
 </tr>
 </tbody>
 </table>
-<section id="_CPPv4N9BTimeCode14us_to_timecodeE9bigtime_tPiPiPiPiK13timecode_info">
+<section id="_CPPv414us_to_timecode9bigtime_tPiPiPiPiK13timecode_info">
 </section>
-<section id="_CPPv4N9BTimeCode14timecode_to_usEiiiiP9bigtime_tK13timecode_info">
+<section id="_CPPv414timecode_to_usiiiiP9bigtime_tK13timecode_info">
 </section>
 <h3>
-us_to_timecode(), timecode_to_us()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">us_to_timecode</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">micros</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">hours</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">minutes</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">seconds</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">frames</span>, <span class="k">const</span><span class="w"> </span><span class="n">timecode_info</span><span class="w"> </span><span class="n sig-param">code</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTimeCode</span><span class="p">::</span></span><span class="n">timecode_to_us</span><span class="sig-paren">(</span><span class="kt">int</span><span class="w"> </span><span class="n sig-param">hours</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">minutes</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">seconds</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">frames</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">micros</span>, <span class="k">const</span><span class="w"> </span><span class="n">timecode_info</span><span class="w"> </span><span class="n sig-param">code</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>us_to_timecode() converts the time
-<span class="hparameter">micros</span>, which is specified in
-microseconds, into <span class="hparameter">hours</span>, <span class="hparameter">minutes</span>,
-<span class="hparameter">seconds</span>, and <span class="hparameter">frames</span>.
-timecode_to_us() converts the time from
-<span class="hparameter">hours</span>, <span class="hparameter">minutes</span>, <span class="hparameter">seconds</span>, and
-<span class="hparameter">frames</span> into microseconds, storing the result in <span class="hparameter">micros</span>.
-The timecode_info structure code is used to determine how the conversion
-should be made, if you specify it. Otherwise <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMECODE_DEFAULT</span></code> is
-assumed.
-Currently these functions always return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>, but you should still check
-for errors because you’d hate it if your app broke in the future,
-wouldn’t you?</p>
+us_to_timecode(), timecode_to_us()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">us_to_timecode</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">micros</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">hours</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">minutes</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">seconds</span>, <span class="kt">int</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">frames</span>, <span class="k">const</span><span class="w"> </span><span class="n">timecode_info</span><span class="w"> </span><span class="n sig-param">code</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">timecode_to_us</span><span class="sig-paren">(</span><span class="kt">int</span><span class="w"> </span><span class="n sig-param">hours</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">minutes</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">seconds</span>, <span class="kt">int</span><span class="w"> </span><span class="n sig-param">frames</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">micros</span>, <span class="k">const</span><span class="w"> </span><span class="n">timecode_info</span><span class="w"> </span><span class="n sig-param">code</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>us_to_timecode() converts the time <span class="hparameter">micros</span>, which is specified in
+microseconds, into <span class="hparameter">hours</span>, <span class="hparameter">minutes</span>, <span class="hparameter">seconds</span>,
+and <span class="hparameter">frames</span>.</p>
+<p>timecode_to_us() converts the time from <span class="hparameter">hours</span>,
+<span class="hparameter">minutes</span>, <span class="hparameter">seconds</span>, and <span class="hparameter">frames</span> into
+microseconds, storing the result in <span class="hparameter">micros</span>.</p>
+<p>The <span class="htype">timecode_info</span> structure code is used to determine how the
+conversion should be made, if you specify it. Otherwise
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TIMECODE_DEFAULT</span></code> is assumed.</p>
+<p>Currently these functions always return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>, but you
+should still check for errors because you’d hate it if your app broke in
+the future, wouldn’t you?</p>
 </section>
 <section id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>Declared in: media/TimeCode.h</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<section id="timecode-type">
+<h3>timecode_type<a class="headerlink" href="#timecode-type" title="Permalink to this heading">¶</a></h3>
+<p>Declared in: media/TimeCode.h</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMECODE_DEFAULT</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TIMECODE_DEFAULT</span></code></p></td>
 <td><p>The default time code</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMECODE_100</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TIMECODE_100</span></code></p></td>
 <td><p>100 frames per second.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMECODE_75</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TIMECODE_75</span></code></p></td>
 <td><p>CD audio</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMECODE_30</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TIMECODE_30</span></code></p></td>
 <td><p>MIDI</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMECODE_30_DROP_2</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TIMECODE_30_DROP_2</span></code></p></td>
 <td><p>NTSC</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMECODE_30_DROP_4</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TIMECODE_30_DROP_4</span></code></p></td>
 <td><p>Brazil</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMECODE_25</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TIMECODE_25</span></code></p></td>
 <td><p>PAL</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMECODE_24</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TIMECODE_24</span></code></p></td>
 <td><p>Film</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMECODE_18</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TIMECODE_18</span></code></p></td>
 <td><p>Super8</p></td>
 </tr>
 </tbody>
@@ -330,30 +316,28 @@ wouldn’t you?</p>
 <p>Constants identifying the various timecode types supported by
 <span class="hclass">BTimeCode</span>.</p>
 </section>
+</section>
 <section id="defined-types">
 <h2>Defined Types<a class="headerlink" href="#defined-types" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>Declared in: media/TimeCode.h</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">timecode_info</span> <span class="p">{</span>
-    <span class="n">timecode_type</span> <span class="nb">type</span><span class="p">;</span>
-    <span class="nb">int</span> <span class="n">drop_frames</span><span class="p">;</span>
-    <span class="nb">int</span> <span class="n">every_nth</span><span class="p">;</span>
-    <span class="nb">int</span> <span class="n">except_nth</span><span class="p">;</span>
-    <span class="nb">int</span> <span class="n">fps_div</span><span class="p">;</span>
-    <span class="n">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
-    <span class="n">char</span> <span class="nb">format</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
-    <span class="n">char</span> <span class="n">_reserved_</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
-<span class="p">};</span>
+<section id="timecode-info">
+<h3>timecode_info<a class="headerlink" href="#timecode-info" title="Permalink to this heading">¶</a></h3>
+<p>Declared in: media/TimeCode.h</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">timecode_info</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">timecode_type</span><span class="w"> </span><span class="n">type</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">drop_frames</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">every_nth</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">except_nth</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">fps_div</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">format</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">_reserved_</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The timecode_info structure describes the attributes of a timecode type.
-You probably should just use the <span class="hclass">BTimeCode</span> class, or the global C
-functions, though. It just makes your life easier.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<p>The <span class="htype">timecode_info</span> structure describes the attributes of a
+timecode type. You probably should just use the <span class="hclass">BTimeCode</span> class,
+or the global C functions, though. It just makes your life easier.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Description</p></th>
@@ -364,7 +348,8 @@ functions, though. It just makes your life easier.</p>
 <td><p>Indicates the timecode type described by the structure.</p></td>
 </tr>
 <tr class="row-odd"><td><p>drop_frames</p></td>
-<td><p>Indicates how many frames this timecode drops every every_nth minute, except_nth minute.</p></td>
+<td><p>Indicates how many frames this timecode drops every <span class="hparameter">every_nth</span>
+minute, <span class="hparameter">except_nth</span> minute.</p></td>
 </tr>
 <tr class="row-even"><td><p>fps_div</p></td>
 <td><p>Indicates the nominal frame rate of the format.</p></td>
@@ -373,10 +358,12 @@ functions, though. It just makes your life easier.</p>
 <td><p>Is a printable name that can be used in constructing user interfaces.</p></td>
 </tr>
 <tr class="row-even"><td><p>format</p></td>
-<td><p>Is a format to be used in calling sprintf(); it’s used by <a class="reference internal" href="#_CPPv4NK9BTimeCode9GetStringEPc" title="BTimeCode::GetString"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetString()</span></code></a>.</p></td>
+<td><p>Is a format to be used in calling sprintf(); it’s used by
+<a class="reference internal" href="#_CPPv4NK9BTimeCode9GetStringEPc" title="BTimeCode::GetString"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetString()</span></code></a>.</p></td>
 </tr>
 </tbody>
 </table>
+</section>
 </section>
 </section>
 

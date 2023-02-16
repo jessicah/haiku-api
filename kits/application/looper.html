@@ -88,7 +88,10 @@
 <li><a class="reference internal" href="#_CPPv4N7BLooper15LooperForThreadE9thread_id">LooperForThread</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#constants">Constants</a><ul>
+<li><a class="reference internal" href="#_CPPv430B_LOOPER_PORT_DEFAULT_CAPACITY">B_LOOPER_PORT_DEFAULT_CAPACITY</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -101,51 +104,86 @@
       <div class="content" role="main">
         
   <section id="blooper">
-<h1>BLooper<a class="headerlink" href="#blooper" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv47BLooper">BLooper<a class="headerlink" href="#blooper" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N7BLooper7BLooperEPKc5int325int32">
 </section>
 <h3>
-BLooper()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BLooper7BLooperEPKc5int325int32" title="BLooper::BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">BLooper</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">priority</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_NORMAL_PRIORITY</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">portCapacity</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_LOOPER_PORT_DEFAULT_CAPACITY</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BLooper7BLooperEP8BMessage" title="BLooper::BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">BLooper</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Assigns the <span class="hclass">BLooper</span> object a <span class="hparameter">name</span>
-and then locks it (by calling
-<a class="reference internal" href="#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a>).
-<span class="hparameter">priority</span> is a value that describes the amount of CPU
-attention the message loop will receive once it starts running, and
-<span class="hparameter">portCapacity</span> is the number of messages the
-<span class="hclass">BLooper</span> can hold in its “message port”
-(this is not the message queue, as explained below).</p>
-<p>After you construct the <span class="hclass">BLooper</span>, you have to tell it
-to <a class="reference internal" href="#_CPPv4N7BLooper3RunEv" title="BLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a>.
-Because the object is locked, <a class="reference internal" href="#_CPPv4N7BLooper3RunEv" title="BLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a> can only be
-called from the thread that constructed the object. It’s legal to invoke
-<a class="reference internal" href="#_CPPv4N7BLooper3RunEv" title="BLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a> from
-within a subclass implementation of the constructor.</p>
-<p>PriorityA set of priority values are defined in kernel/OS.h; from lowest to highest, they are:ConstantDescriptionB_LOW_PRIORITYFor threads running in the background that shouldn’t interrupt other threads.B_NORMAL_PRIORITYFor all ordinary threads, including the main thread.B_DISPLAY_PRIORITYFor threads associated with objects in the user interface, including window threads.B_URGENT_DISPLAY_PRIORITYFor interface threads that deserve more attention than ordinary windows.B_REAL_TIME_DISPLAY_PRIORITYFor threads that animate the on-screen display.B_URGENT_PRIORITYFor threads performing time-critical computations.B_REAL_TIME_PRIORITYFor threads controlling real-time processes that need unfettered access to the CPUs.
-Port CapacityMessages that are sent to a <span class="hclass">BLooper</span> first show up in a port (as the term is defined by the <span class="xref std std-ref">Kernel Kit</span>), and then are moved to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageQueue</span></code>. The capacity of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageQueue</span></code> is virtually unlimited; the capacity of the port is not. Although messages are moved from the port to the queue as quickly as possible, the port can fill up. A full port will block subsequent message senders.The default port capacity (100), should be sufficient for most apps, but you can fiddle with it through the <span class="hparameter">portCapacity</span> argument.</p>
+BLooper()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BLooper7BLooperEPKc5int325int32" title="BLooper::BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">BLooper</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">priority</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_NORMAL_PRIORITY</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">portCapacity</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><a class="reference internal" href="#_CPPv430B_LOOPER_PORT_DEFAULT_CAPACITY" title="B_LOOPER_PORT_DEFAULT_CAPACITY"><span class="n">B_LOOPER_PORT_DEFAULT_CAPACITY</span></a><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BLooper7BLooperEP8BMessage" title="BLooper::BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">BLooper</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Assigns the <span class="hclass">BLooper</span> object a <span class="hparameter">name</span> and then locks it
+(by calling <a class="reference internal" href="#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a>). <span class="hparameter">priority</span> is a
+value that describes the amount of CPU attention the message loop will
+receive once it starts running, and <span class="hparameter">portCapacity</span> is the number of
+messages the <span class="hclass">BLooper</span> can hold in its “message port” (this is
+<strong>not</strong> the message queue, as explained below).</p>
+<p>After you construct the <span class="hclass">BLooper</span>, you have to tell it to
+<a class="reference internal" href="#_CPPv4N7BLooper3RunEv" title="BLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a>. Because the object is locked,
+<a class="reference internal" href="#_CPPv4N7BLooper3RunEv" title="BLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a> can only be called from the thread that
+constructed the object. It’s legal to invoke <a class="reference internal" href="#_CPPv4N7BLooper3RunEv" title="BLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a> from within a subclass implementation of the constructor.</p>
+<p class="rubric">Priority</p>
+<p>A set of priority values are defined in kernel/OS.h; from lowest to
+highest, they are:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LOW_PRIORITY</span></code></p></td>
+<td><p>For threads running in the background that shouldn’t interrupt other
+threads.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NORMAL_PRIORITY</span></code></p></td>
+<td><p>For all ordinary threads, including the main thread.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DISPLAY_PRIORITY</span></code></p></td>
+<td><p>For threads associated with objects in the user interface, including
+window threads.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_URGENT_DISPLAY_PRIORITY</span></code></p></td>
+<td><p>For interface threads that deserve more attention than ordinary windows.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REAL_TIME_DISPLAY_PRIORITY</span></code></p></td>
+<td><p>For threads that animate the on-screen display.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_URGENT_PRIORITY</span></code></p></td>
+<td><p>For threads performing time-critical computations.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REAL_TIME_PRIORITY</span></code></p></td>
+<td><p>For threads controlling real-time processes that need unfettered access to
+the CPUs.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Port Capacity</p>
+<p>Messages that are sent to a <span class="hclass">BLooper</span> first show up in a port (as
+the term is defined by the <span class="xref std std-ref">Kernel Kit</span>), and then are moved to the
+<a class="reference internal" href="message-queue.html#_CPPv413BMessageQueue" title="BMessageQueue"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageQueue</span></code></a>. The capacity of the <a class="reference internal" href="message-queue.html#_CPPv413BMessageQueue" title="BMessageQueue"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageQueue</span></code></a>
+is virtually unlimited; the capacity of the port is not. Although messages
+are moved from the port to the queue as quickly as possible, the port can
+fill up. A full port will block subsequent message senders.</p>
+<p>The default port capacity (100), should be sufficient for most apps, but
+you can fiddle with it through the <span class="hparameter">portCapacity</span> argument.</p>
 <section id="_CPPv4N7BLooperD0Ev">
 </section>
 <h3>
-~BLooper()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">~BLooper</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the message queue and all pending messages and deletes the message loop.
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code>s that have
-been added to the <span class="hclass">BLooper</span> are not deleted, but
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code>
-objects added as common filters are.</p>
-<p>In general, you should never delete your <span class="hclass">BLooper</span> objects:
-With the exception of the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code>
-object, <span class="hclass">BLooper</span>s are destroyed by the
-<a class="reference internal" href="#_CPPv4N7BLooper4QuitEv" title="BLooper::Quit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Quit()</span></code></a> function.</p>
+~BLooper()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">~BLooper</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the message queue and all pending messages and deletes the message
+loop. <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>s that have been added to the <span class="hclass">BLooper</span>
+are not deleted, but <a class="reference internal" href="message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code></a> objects added as common
+filters are.</p>
+<p>In general, you should never delete your <span class="hclass">BLooper</span> objects: With
+the exception of the <a class="reference internal" href="application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> object, <span class="hclass">BLooper</span>s
+are destroyed by the <a class="reference internal" href="#_CPPv4N7BLooper4QuitEv" title="BLooper::Quit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Quit()</span></code></a> function.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>If you create a <span class="hclass">BLooper</span>-derived class that uses
-multiple inheritance, make sure the first class your mixin class inherits
-from is <span class="hclass">BLooper</span>; otherwise, you’ll crash when you
-try to close the window. This happens because of an interaction between the
-window thread how C++ deletes objects of a multiply-inherited class. In
-other words:
-is safe, whilst
-is not.</p>
+<p>If you create a <span class="hclass">BLooper</span>-derived class that uses multiple
+inheritance, make sure the first class your mixin class inherits from is
+<span class="hclass">BLooper</span>; otherwise, you’ll crash when you try to close the
+window. This happens because of an interaction between the window thread
+how C++ deletes objects of a multiply-inherited class. In other words:</p>
+<p>is safe, whilst</p>
+<p>is not.</p>
 </div>
 </section>
 <section id="hook-functions">
@@ -153,58 +191,55 @@ is not.</p>
 <section id="_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler">
 </section>
 <h3>
-DispatchMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">DispatchMessage</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">target</span><span class="sig-paren">)</span></pre><p><span class="hmethod">DispatchMessage()</span> is the
-<span class="hclass">BLooper</span>’s central message-processing function. It’s
-called automatically as messages arrive in the looper’s queue, one
-invocation per message. You never invoke
+DispatchMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">DispatchMessage</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">target</span><span class="sig-paren">)</span></pre><p><span class="hmethod">DispatchMessage()</span> is the <span class="hclass">BLooper</span>’s central
+message-processing function. It’s called automatically as messages arrive
+in the looper’s queue, one invocation per message. You never invoke
 <span class="hmethod">DispatchMessage()</span> yourself.</p>
-<p>The default implementation passes <span class="hparameter">message</span> to
-<span class="hparameter">handler</span> by invoking the latter’s <a class="reference internal" href="handler.html#_CPPv4N8BHandler15MessageReceivedEP8BMessage" title="BHandler::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MessageReceived()</span></code></a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">target</span><span class="o">-&gt;</span><span class="n">MessageReceived</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<p>The default implementation passes <span class="hparameter">message</span> to <span class="hparameter">handler</span>
+by invoking the latter’s <a class="reference internal" href="handler.html#_CPPv4N8BHandler15MessageReceivedEP8BMessage" title="BHandler::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MessageReceived()</span></code></a>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">target</span><span class="o">-&gt;</span><span class="n">MessageReceived</span><span class="p">(</span><span class="n">message</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The only exception is where <span class="hparameter">message</span>.what is
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">QUIT()</span></code>
-and <span class="hparameter">handler</span> is
-the looper itself; in this case, the object invokes its own <a class="reference internal" href="#_CPPv4N7BLooper13QuitRequestedEv" title="BLooper::QuitRequested"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">QuitRequested()</span></code></a>
-function.</p>
+<a class="reference internal" href="../../constants.html#_CPPv416B_QUIT_REQUESTED" title="B_QUIT_REQUESTED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_QUIT_REQUESTED</span></code></a> and <span class="hparameter">handler</span> is the looper
+itself; in this case, the object invokes its own <a class="reference internal" href="#_CPPv4N7BLooper13QuitRequestedEv" title="BLooper::QuitRequested"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">QuitRequested()</span></code></a> function.</p>
 <p>You can override this function to dispatch the messages that your own
 application defines or recognizes. All unhandled messages should be passed
 to the base class version, as demonstrated below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">MyLooper</span><span class="p">::</span><span class="n">DispatchMessage</span><span class="p">(</span><span class="n">BMessage</span> <span class="o">*</span><span class="n">msg</span><span class="p">,</span>
-                               <span class="n">BHandler</span> <span class="o">*</span><span class="n">target</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="n">switch</span> <span class="p">(</span> <span class="n">msg</span><span class="o">-&gt;</span><span class="n">what</span> <span class="p">)</span> <span class="p">{</span>
-   <span class="k">case</span> <span class="n">MY_MESSAGE1</span><span class="p">:</span>
-      <span class="o">...</span>
-      <span class="k">break</span><span class="p">;</span>
-   <span class="k">case</span> <span class="n">MY_MESSAGE2</span><span class="p">:</span>
-      <span class="o">...</span>
-      <span class="k">break</span><span class="p">;</span>
-   <span class="n">default</span><span class="p">:</span>
-      <span class="n">baseClass</span><span class="p">::</span><span class="n">DispatchMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">target</span><span class="p">);</span>
-      <span class="k">break</span><span class="p">;</span>
-   <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">MyLooper::DispatchMessage</span><span class="p">(</span><span class="n">BMessage</span><span class="w"> </span><span class="o">*</span><span class="n">msg</span><span class="p">,</span><span class="w"></span>
+<span class="w">                               </span><span class="n">BHandler</span><span class="w"> </span><span class="o">*</span><span class="n">target</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">what</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">MY_MESSAGE1</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p">...</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">MY_MESSAGE2</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p">...</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">baseClass</span><span class="o">::</span><span class="n">DispatchMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Also, note that you mustn’t delete <span class="hparameter">message</span>; it’s deleted for you..</p>
+<p>Also, note that you mustn’t delete <span class="hparameter">message</span>; it’s deleted for
+you..</p>
 <p>The system locks the <span class="hclass">BLooper</span> before calling
-<span class="hmethod">DispatchMessage()</span> and keeps it locked for the
-duration of the function.</p>
+<span class="hmethod">DispatchMessage()</span> and keeps it locked for the duration of the
+function.</p>
 <section id="_CPPv4N7BLooper13QuitRequestedEv">
 </section>
 <h3>
-QuitRequested()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">QuitRequested</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Hook function that’s invoked when the <span class="hclass">BLooper</span> receives a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">QUIT()</span></code>
-message. You never invoke this function directly. Derived classes implement
-this function to return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if it’s okay to quit
-this <span class="hclass">BLooper</span>, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>
-if not. Note that this function does not actually quit the object—the
-code that handles the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">QUIT()</span></code>
+QuitRequested()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">QuitRequested</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Hook function that’s invoked when the <span class="hclass">BLooper</span> receives a
+<a class="reference internal" href="../../constants.html#_CPPv416B_QUIT_REQUESTED" title="B_QUIT_REQUESTED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_QUIT_REQUESTED</span></code></a> message. You never invoke this function
+directly. Derived classes implement this function to return
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if it’s okay to quit this <span class="hclass">BLooper</span>, and
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not. Note that this function does not actually quit
+the object—the code that handles the <a class="reference internal" href="../../constants.html#_CPPv416B_QUIT_REQUESTED" title="B_QUIT_REQUESTED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_QUIT_REQUESTED</span></code></a>
 message does that.</p>
-<p><span class="hclass">BLooper</span>’s default implementation of <span class="hmethod">QuitRequested()</span> always returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p><span class="hclass">BLooper</span>’s default implementation of <span class="hmethod">QuitRequested()</span>
+always returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
@@ -217,34 +252,30 @@ message does that.</p>
 <section id="_CPPv4NK7BLooper16CommonFilterListEv">
 </section>
 <h3>
-AddCommonFilter(), RemoveCommonFilter(), SetCommonFilterList(), CommonFilterList()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">AddCommonFilter</span><span class="sig-paren">(</span><span class="n">BMessageFilter</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">filter</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">RemoveCommonFilter</span><span class="sig-paren">(</span><span class="n">BMessageFilter</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">filter</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">SetCommonFilterList</span><span class="sig-paren">(</span><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">filters</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">CommonFilterList</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions manage the <span class="hclass">BLooper</span>’s list of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code>s.
-Message filters are objects that screen in-coming messages. In the case of
-<span class="hclass">BLooper</span>, each message is passed through all filters
-in the list before it’s passed on to <a class="reference internal" href="#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchMessage()</span></code></a>.
-The order of the filters in the list is determinate. See the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code> class
-for details on how message filters work.</p>
+AddCommonFilter(), RemoveCommonFilter(), SetCommonFilterList(), CommonFilterList()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">AddCommonFilter</span><span class="sig-paren">(</span><a class="reference internal" href="message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><span class="n">BMessageFilter</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">filter</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">RemoveCommonFilter</span><span class="sig-paren">(</span><a class="reference internal" href="message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><span class="n">BMessageFilter</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">filter</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">SetCommonFilterList</span><span class="sig-paren">(</span><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">filters</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">CommonFilterList</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions manage the <span class="hclass">BLooper</span>’s list of
+<a class="reference internal" href="message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code></a>s. Message filters are objects that screen
+in-coming messages. In the case of <span class="hclass">BLooper</span>, each message is
+passed through all filters in the list before it’s passed on to
+<a class="reference internal" href="#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchMessage()</span></code></a>. The order of the
+filters in the list is determinate. See the <a class="reference internal" href="message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code></a>
+class for details on how message filters work.</p>
 <p><span class="hmethod">AddCommonFilter()</span> adds <span class="hparameter">filter</span> to the end of the
-filter list (creating a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BList</span></code> container if
-necessary).</p>
+filter list (creating a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BList</span></code> container if necessary).</p>
 <p><span class="hmethod">RemoveCommonFilter()</span> removes <span class="hparameter">filter</span> from the list,
-but doesn’t free the filter. It returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if
-successful, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if it can’t find the specified
-filter.</p>
-<p><span class="hmethod">SetCommonFilterList()</span> deletes the current filter
-list and its contents, and replaces it with <span class="hparameter">filters</span>.
-All elements in <span class="hparameter">filters</span> must be <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code>
-pointers. The <span class="hclass">BLooper</span> takes ownership of all objects
-in <span class="hparameter">filters</span>, as well as
-<span class="hparameter">filters</span> itself. If <span class="hparameter">filters</span> is
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, the current list is deleted without a
-replacement.</p>
-<p><span class="hmethod">CommonFilterList()</span> returns a pointer to the
-current list. You can examine the list but you shouldn’t modify or delete
-it.</p>
+but doesn’t free the filter. It returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if successful, and
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if it can’t find the specified filter.</p>
+<p><span class="hmethod">SetCommonFilterList()</span> deletes the current filter list and its
+contents, and replaces it with <span class="hparameter">filters</span>. All elements in
+<span class="hparameter">filters</span> must be <a class="reference internal" href="message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code></a> pointers. The
+<span class="hclass">BLooper</span> takes ownership of all objects in <span class="hparameter">filters</span>, as
+well as <span class="hparameter">filters</span> itself. If <span class="hparameter">filters</span> is <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>,
+the current list is deleted without a replacement.</p>
+<p><span class="hmethod">CommonFilterList()</span> returns a pointer to the current list. You
+can examine the list but you shouldn’t modify or delete it.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>For all but <span class="hmethod">CommonFilterList()</span>, the
-<span class="hclass">BLooper</span> must be locked.</p>
+<p>For all but <span class="hmethod">CommonFilterList()</span>, the <span class="hclass">BLooper</span> must be
+locked.</p>
 </div>
 <section id="_CPPv4N7BLooper10AddHandlerEP8BHandler">
 </section>
@@ -257,70 +288,54 @@ it.</p>
 <section id="_CPPv4NK7BLooper7IndexOfEP8BHandler">
 </section>
 <h3>
-AddHandler(), RemoveHandler(), HandlerAt(), CountHandlers(), IndexOf()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">AddHandler</span><span class="sig-paren">(</span><span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">RemoveHandler</span><span class="sig-paren">(</span><span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">HandlerAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">CountHandlers</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">IndexOf</span><span class="sig-paren">(</span><span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">AddHandler()</span> adds <span class="hparameter">handler</span> to the
-<span class="hclass">BLooper</span>’s list of
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code>
-objects, and <span class="hmethod">RemoveHandler()</span> removes it. Only
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code> that
-have been added to the list are eligible to respond to the messages the
-<span class="hclass">BLooper</span> dispatches.</p>
-<p><span class="hmethod">AddHandler()</span> fails if the handler already belongs
-to a <span class="hclass">BLooper</span>; a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code> can
-belong to no more than one <span class="hclass">BLooper</span> at a time. It
-can change its affiliation from time to time, but must be removed from one
-<span class="hclass">BLooper</span> before it can be added to another.
-<span class="hmethod">RemoveHandler()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>
-if it succeeds in removing the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code>
-from the <span class="hclass">BLooper</span>, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if
-not or if the handler doesn’t belong to the <span class="hclass">BLooper</span>
-in the first place.</p>
+AddHandler(), RemoveHandler(), HandlerAt(), CountHandlers(), IndexOf()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">AddHandler</span><span class="sig-paren">(</span><a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">RemoveHandler</span><span class="sig-paren">(</span><a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">HandlerAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">CountHandlers</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">IndexOf</span><span class="sig-paren">(</span><a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">AddHandler()</span> adds <span class="hparameter">handler</span> to the <span class="hclass">BLooper</span>’s
+list of <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> objects, and <span class="hmethod">RemoveHandler()</span>
+removes it. Only <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> that have been added to the list are
+eligible to respond to the messages the <span class="hclass">BLooper</span> dispatches.</p>
+<p><span class="hmethod">AddHandler()</span> fails if the handler already belongs to a
+<span class="hclass">BLooper</span>; a <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> can belong to no more than one
+<span class="hclass">BLooper</span> at a time. It can change its affiliation from time to
+time, but must be removed from one <span class="hclass">BLooper</span> before it can be added
+to another. <span class="hmethod">RemoveHandler()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if it
+succeeds in removing the <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> from the <span class="hclass">BLooper</span>,
+and <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not or if the handler doesn’t belong to the
+<span class="hclass">BLooper</span> in the first place.</p>
 <p><span class="hmethod">AddHandler()</span> also calls the handler’s
-<a class="reference internal" href="handler.html#_CPPv4N8BHandler14SetNextHandlerEP8BHandler" title="BHandler::SetNextHandler"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetNextHandler()</span></code></a>
-function to assign it the <span class="hclass">BLooper</span> as its default next
-handler. <span class="hmethod">RemoveHandler()</span> calls the same function to
-set the handler’s next handler to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<p><span class="hmethod">HandlerAt()</span> returns the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code> object
-currently located at <span class="hparameter">index</span> in the
-<span class="hclass">BLooper</span>’s list of eligible handlers, or
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the index is out of range. Indices begin at
-0 and there are no gaps in the list. <span class="hmethod">CountHandlers()</span>
-returns the number of objects currently in the list; the count should always
-be at least 1, since the list automatically includes the
-<span class="hclass">BLooper</span> itself. <span class="hmethod">IndexOf()</span>
-returns the index of the specified <span class="hparameter">handler</span>, or
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code> if that object isn’t in the list.</p>
+<a class="reference internal" href="handler.html#_CPPv4N8BHandler14SetNextHandlerEP8BHandler" title="BHandler::SetNextHandler"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetNextHandler()</span></code></a> function to assign
+it the <span class="hclass">BLooper</span> as its default next handler.
+<span class="hmethod">RemoveHandler()</span> calls the same function to set the handler’s
+next handler to <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<p><span class="hmethod">HandlerAt()</span> returns the <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> object currently
+located at <span class="hparameter">index</span> in the <span class="hclass">BLooper</span>’s list of eligible
+handlers, or <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the index is out of range. Indices begin
+at 0 and there are no gaps in the list. <span class="hmethod">CountHandlers()</span> returns
+the number of objects currently in the list; the count should always be at
+least 1, since the list automatically includes the <span class="hclass">BLooper</span>
+itself. <span class="hmethod">IndexOf()</span> returns the index of the specified
+<span class="hparameter">handler</span>, or <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code> if that object isn’t in the
+list.</p>
 <p>For any of these functions to work, the <span class="hclass">BLooper</span> must be locked.</p>
-<p>See also: <a class="reference internal" href="handler.html#_CPPv4NK8BHandler6LooperEv" title="BHandler::Looper"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::Looper()</span></code></a>,
-<a class="reference internal" href="handler.html#_CPPv4N8BHandler14SetNextHandlerEP8BHandler" title="BHandler::SetNextHandler"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetNextHandler()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N7BLooper11PostMessageEP8BMessage" title="BLooper::PostMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PostMessage()</span></code></a>, the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> class</p>
+<p>See also: <a class="reference internal" href="handler.html#_CPPv4NK8BHandler6LooperEv" title="BHandler::Looper"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::Looper()</span></code></a>, <a class="reference internal" href="handler.html#_CPPv4N8BHandler14SetNextHandlerEP8BHandler" title="BHandler::SetNextHandler"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetNextHandler()</span></code></a>, <a class="reference internal" href="#_CPPv4N7BLooper11PostMessageEP8BMessage" title="BLooper::PostMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PostMessage()</span></code></a>, the <a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> class</p>
 <section id="_CPPv4NK7BLooper14CurrentMessageEv">
 </section>
 <section id="_CPPv4N7BLooper20DetachCurrentMessageEv">
 </section>
 <h3>
-CurrentMessage(), DetachCurrentMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">CurrentMessage</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">DetachCurrentMessage</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The message that a <span class="hclass">BLooper</span> passes to its handler(s)
-is called the “current message.” These functions access the
-current message; they’re meaningless (they return
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>) when called from outside the message processing
-loop.</p>
-<p><span class="hmethod">CurrentMessage()</span> simply returns a pointer to the
-current message without affecting the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> object itself.
-This is particularly useful to functions that respond to system messages
-(such as <span class="hmethod">MouseDown()</span> and
-<span class="hmethod">ScreenChanged()</span>), but that aren’t sent the full
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> object that
-initiated the response.</p>
-<p><span class="hmethod">DetachCurrentMessage()</span> removes the current message
-from the message queue and passes ownership of it to the caller; deleting
-the message is the caller’s responsibility. This is useful if you want to
-delay the response to the message without tying up the
-<span class="hclass">BLooper</span>. But be careful—if the message
-sender is waiting for a synchronous reply, detaching the message and
-holding on to it will block the sender.</p>
+CurrentMessage(), DetachCurrentMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">CurrentMessage</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">DetachCurrentMessage</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The message that a <span class="hclass">BLooper</span> passes to its handler(s) is called
+the “current message.” These functions access the current message; they’re
+meaningless (they return <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>) when called from outside the
+message processing loop.</p>
+<p><span class="hmethod">CurrentMessage()</span> simply returns a pointer to the current
+message without affecting the <a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> object itself. This is
+particularly useful to functions that respond to system messages (such as
+<span class="hmethod">MouseDown()</span> and <span class="hmethod">ScreenChanged()</span>), but that aren’t
+sent the full <a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> object that initiated the response.</p>
+<p><span class="hmethod">DetachCurrentMessage()</span> removes the current message from the
+message queue and passes ownership of it to the caller; deleting the
+message is the caller’s responsibility. This is useful if you want to delay
+the response to the message without tying up the <span class="hclass">BLooper</span>. But be
+careful—if the message sender is waiting for a synchronous reply, detaching
+the message and holding on to it will block the sender.</p>
 <section id="_CPPv4N7BLooper4LockEv">
 </section>
 <section id="_CPPv4N7BLooper15LockWithTimeoutE9bigtime_t">
@@ -328,54 +343,44 @@ holding on to it will block the sender.</p>
 <section id="_CPPv4N7BLooper6UnlockEv">
 </section>
 <h3>
-Lock(), LockWithTimeout(), Unlock()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">Lock</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">LockWithTimeout</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">timeout</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">Unlock</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Lock()</span> locks the <span class="hclass">BLooper</span>.
-Locks are held within the context of a thread; while a
-<span class="hclass">BLooper</span> is locked, no other thread can invoke its
-most important functions (
-<a class="reference internal" href="#_CPPv4N7BLooper10AddHandlerEP8BHandler" title="BLooper::AddHandler"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddHandler()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchMessage()</span></code></a>, etc.)</p>
-<p>If the looper is already locked (by some other thread),
-<span class="hmethod">Lock()</span> blocks until the looper is unlocked. To set
-a timeout for the block, use <span class="hmethod">LockWithTimeout()</span>
-instead. <span class="hparameter">timeout</span> is measured in microseconds; if
-it’s 0, the function returns immediately (with or without the lock); if
-it’s <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INFINITE_TIMEOUT</span></code>, it blocks without limit.</p>
-<p><span class="hmethod">Unlock()</span> unlocks a locked looper. It can only be
-called by the thread that currently holds the lock.</p>
-<p>Calls to
-<span class="hmethod">Lock()</span>/<span class="hmethod">LockWithTimeout()</span>
-and <span class="hmethod">Unlock()</span> can be nested, but locking and
-unlocking must always be balanced. A single
-<span class="hmethod">Unlock()</span> will not undo a series of
+Lock(), LockWithTimeout(), Unlock()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">Lock</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">LockWithTimeout</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">timeout</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">Unlock</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Lock()</span> locks the <span class="hclass">BLooper</span>. Locks are held within the
+context of a thread; while a <span class="hclass">BLooper</span> is locked, no other thread
+can invoke its most important functions ( <a class="reference internal" href="#_CPPv4N7BLooper10AddHandlerEP8BHandler" title="BLooper::AddHandler"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddHandler()</span></code></a>, <a class="reference internal" href="#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchMessage()</span></code></a>, etc.)</p>
+<p>If the looper is already locked (by some other thread), <span class="hmethod">Lock()</span>
+blocks until the looper is unlocked. To set a timeout for the block, use
+<span class="hmethod">LockWithTimeout()</span> instead. <span class="hparameter">timeout</span> is measured in
+microseconds; if it’s 0, the function returns immediately (with or without
+the lock); if it’s <a class="reference internal" href="../kernel/miscellaneous.html#_CPPv418B_INFINITE_TIMEOUT" title="B_INFINITE_TIMEOUT"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INFINITE_TIMEOUT</span></code></a>, it blocks without
+limit.</p>
+<p><span class="hmethod">Unlock()</span> unlocks a locked looper. It can only be called by the
+thread that currently holds the lock.</p>
+<p>Calls to <span class="hmethod">Lock()</span>/<span class="hmethod">LockWithTimeout()</span> and
+<span class="hmethod">Unlock()</span> can be nested, but locking and unlocking must always be
+balanced. A single <span class="hmethod">Unlock()</span> will not undo a series of
 <span class="hmethod">Lock()</span>’s.</p>
-<p><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code> defines
-“smart” versions of these functions that find the handler’s
-looper and then locks it (or unlocks it) in a pseudo-atomic operation (see
-<a class="reference internal" href="handler.html#_CPPv4N8BHandler10LockLooperEv" title="BHandler::LockLooper"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::LockLooper()</span></code></a>). You should always use the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code> versions, if
-possible, rather than retrieving the handler’s looper and locking it
-yourself.</p>
-<p><span class="hmethod">Lock()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if it was
-able to lock the looper, or if it’s already locked by the calling thread,
-and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
+<p><a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> defines “smart” versions of these functions that
+find the handler’s looper and then locks it (or unlocks it) in a
+pseudo-atomic operation (see <a class="reference internal" href="handler.html#_CPPv4N8BHandler10LockLooperEv" title="BHandler::LockLooper"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::LockLooper()</span></code></a>). You should
+always use the <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> versions, if possible, rather than
+retrieving the handler’s looper and locking it yourself.</p>
+<p><span class="hmethod">Lock()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if it was able to lock the
+looper, or if it’s already locked by the calling thread, and
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> otherwise.</p>
 <p><span class="hmethod">LockWithTimeout()</span> returns:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The looper was successfully locked.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMED_OUT</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TIMED_OUT</span></code>.</p></td>
 <td><p>The call timed out without locking the looper.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
 <td><p>This looper was deleted while the function was blocked.</p></td>
 </tr>
 </tbody>
@@ -391,86 +396,72 @@ and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pr
 <section id="_CPPv4NK7BLooper3SemEv">
 </section>
 <h3>
-LockingThread(), IsLocked(), CountLocks(), CountLockRequests(), Sem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">thread_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">LockingThread</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">IsLocked</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">CountLocks</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">CountLockRequests</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">sem_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">Sem</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions may be useful while debugging a <span class="hclass">BLooper</span>.</p>
-<p><span class="hmethod">LockingThread()</span> returns the thread that currently
-has the <span class="hclass">BLooper</span> locked, or 1 if the
-<span class="hclass">BLooper</span> isn’t locked.</p>
-<p><span class="hmethod">IsLocked()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if
-the calling thread currently has the <span class="hclass">BLooper</span> locked
-(if it’s the locking thread) and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if not (if some
-other thread is the locking thread or the <span class="hclass">BLooper</span>
-isn’t locked).</p>
-<p><span class="hmethod">CountLocks()</span> returns the number of times the
-locking thread has locked the <span class="hclass">BLooper</span>the number of
-<a class="reference internal" href="#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a> (or
-<a class="reference internal" href="#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a>)
-calls that have not yet been balanced by matching <a class="reference internal" href="#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a> calls.</p>
-<p><span class="hmethod">CountLockRequests()</span> returns the number of threads
-currently trying to lock the <span class="hclass">BLooper</span>. The count
-includes the thread that currently has the lock plus all threads currently
-waiting to acquire it.</p>
-<p><span class="hmethod">Sem()</span> returns the sem_id for the
-semaphore that the <span class="hclass">BLooper</span> uses to implement the
-locking mechanism.</p>
+LockingThread(), IsLocked(), CountLocks(), CountLockRequests(), Sem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">thread_id</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">LockingThread</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">IsLocked</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">CountLocks</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">CountLockRequests</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">sem_id</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">Sem</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions may be useful while debugging a <span class="hclass">BLooper</span>.</p>
+<p><span class="hmethod">LockingThread()</span> returns the thread that currently has the
+<span class="hclass">BLooper</span> locked, or 1 if the <span class="hclass">BLooper</span> isn’t locked.</p>
+<p><span class="hmethod">IsLocked()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the calling thread
+currently has the <span class="hclass">BLooper</span> locked (if it’s the locking thread) and
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not (if some other thread is the locking thread or the
+<span class="hclass">BLooper</span> isn’t locked).</p>
+<p><span class="hmethod">CountLocks()</span> returns the number of times the locking thread has
+locked the <span class="hclass">BLooper</span>the number of <a class="reference internal" href="#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a> (or <a class="reference internal" href="#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LockWithTimeout()</span></code></a>) calls
+that have not yet been balanced by matching <a class="reference internal" href="#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Unlock()</span></code></a> calls.</p>
+<p><span class="hmethod">CountLockRequests()</span> returns the number of threads currently
+trying to lock the <span class="hclass">BLooper</span>. The count includes the thread that
+currently has the lock plus all threads currently waiting to acquire it.</p>
+<p><span class="hmethod">Sem()</span> returns the <span class="htype">sem_id</span> for the semaphore that the
+<span class="hclass">BLooper</span> uses to implement the locking mechanism.</p>
 <p>See also: <a class="reference internal" href="#_CPPv4N7BLooper4LockEv" title="BLooper::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a></p>
 <section id="_CPPv4N7BLooper15MessageReceivedEP8BMessage">
 </section>
 <h3>
-MessageReceived()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">MessageReceived</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Simply calls the inherited function. For the current release, the
-<span class="hclass">BLooper</span> implementation of this function does nothing
-of importance.</p>
+MessageReceived()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">MessageReceived</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Simply calls the inherited function. For the current release, the
+<span class="hclass">BLooper</span> implementation of this function does nothing of
+importance.</p>
 <p>See also: <a class="reference internal" href="handler.html#_CPPv4N8BHandler15MessageReceivedEP8BMessage" title="BHandler::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::MessageReceived()</span></code></a></p>
 <section id="_CPPv4NK7BLooper12MessageQueueEv">
 </section>
 <h3>
-MessageQueue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMessageQueue</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">MessageQueue</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the queue that holds messages delivered to the
-<span class="hclass">BLooper</span>’s thread. You rarely need to examine the
-message queue directly; it’s made available so you can cheat fate by
-looking ahead.</p>
-<p>See also: the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageQueue</span></code> class</p>
+MessageQueue()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="message-queue.html#_CPPv413BMessageQueue" title="BMessageQueue"><span class="n">BMessageQueue</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">MessageQueue</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the queue that holds messages delivered to the <span class="hclass">BLooper</span>’s
+thread. You rarely need to examine the message queue directly; it’s made
+available so you can cheat fate by looking ahead.</p>
+<p>See also: the <a class="reference internal" href="message-queue.html#_CPPv413BMessageQueue" title="BMessageQueue"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageQueue</span></code></a> class</p>
 <section id="_CPPv4N7BLooper11PostMessageEP8BMessage">
 </section>
 <h3>
-PostMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">PostMessage</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">PostMessage</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">command</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">PostMessage</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span>, <span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">replyHandler</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">PostMessage</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">command</span>, <span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span>, <span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">replyHandler</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p><span class="hmethod">PostMessage()</span> is similar to <a class="reference internal" href="messenger.html#_CPPv4NK10BMessenger11SendMessageEP8BMessageP8BMessage9bigtime_t9bigtime_t" title="BMessenger::SendMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessenger::SendMessage()</span></code></a>.
-The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessenger()</span></code> version is
+PostMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">PostMessage</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">PostMessage</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">command</span><span class="sig-paren">)</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">PostMessage</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span>, <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">replyHandler</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">PostMessage</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">command</span>, <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span>, <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">replyHandler</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p><span class="hmethod">PostMessage()</span> is similar to
+<a class="reference internal" href="messenger.html#_CPPv4NK10BMessenger11SendMessageEP8BMessageP8BMessage9bigtime_t9bigtime_t" title="BMessenger::SendMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessenger::SendMessage()</span></code></a>. The <a class="reference internal" href="messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessenger()</span></code></a> version is
 preferred (it’s a bit safer than <span class="hmethod">PostMessage()</span>).</p>
-<p>Places a message at the far end of the <span class="hclass">BLooper</span>’s
-message queue. The message will be processed by <a class="reference internal" href="#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchMessage()</span></code></a> when it comes to the head of the queue.</p>
-<p>The message can be a full <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> object
-(<span class="hparameter">message</span>), or just a command constant
-(<span class="hparameter">command</span>). In the former case, the message is copied
-and the caller retains ownership of the argument, which can be deleted as
-soon as <span class="hmethod">PostMessage()</span> returns. In the latter case,
-a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> is
-created (and deleted) for you.</p>
-<p><span class="hparameter">handler</span> is the designated handler for the message,
-and must be part of this <span class="hclass">BLooper</span>’s handler chain. If
-handler is (literally) <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, the designated handler is
-the <span class="hclass">BLooper</span>’s preferred handler at the time <a class="reference internal" href="#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchMessage()</span></code></a> is called. In the versions of
-<span class="hmethod">PostMessage()</span> that don’t have a handler argument,
-the designated handler is the <span class="hclass">BLooper</span> object itself.</p>
-<p>Replies to the message are delivered to
-<span class="hparameter">replyHandler</span>. If a
+<p>Places a message at the far end of the <span class="hclass">BLooper</span>’s message queue.
+The message will be processed by <a class="reference internal" href="#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchMessage()</span></code></a> when it comes to the head of the queue.</p>
+<p>The message can be a full <a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> object
+(<span class="hparameter">message</span>), or just a command constant (<span class="hparameter">command</span>). In the
+former case, the message is copied and the caller retains ownership of the
+argument, which can be deleted as soon as <span class="hmethod">PostMessage()</span> returns.
+In the latter case, a <a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> is created (and deleted) for
+you.</p>
+<p><span class="hparameter">handler</span> is the designated handler for the message, and must be
+part of this <span class="hclass">BLooper</span>’s handler chain. If handler is (literally)
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>, the designated handler is the <span class="hclass">BLooper</span>’s
+preferred handler at the time <a class="reference internal" href="#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchMessage()</span></code></a> is called. In the versions of
+<span class="hmethod">PostMessage()</span> that don’t have a handler argument, the designated
+handler is the <span class="hclass">BLooper</span> object itself.</p>
+<p>Replies to the message are delivered to <span class="hparameter">replyHandler</span>. If a
 <span class="hparameter">replyHandler</span> isn’t specified, replies are sent to
-be_app_messenger.</p>
-<p>A <span class="hclass">BLooper</span> should never post a message to itself from
-within its own message loop thread.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<span class="hparameter">be_app_messenger</span>.</p>
+<p>A <span class="hclass">BLooper</span> should never post a message to itself from within its
+own message loop thread.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The message was successfully posted.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MISMATCHED_VALUES</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MISMATCHED_VALUES</span></code>.</p></td>
 <td><p><span class="hparameter">handler</span> doesn’t belong to this <span class="hclass">BLooper</span>.</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors.</p></td>
@@ -481,39 +472,31 @@ within its own message loop thread.</p>
 <section id="_CPPv4N7BLooper4QuitEv">
 </section>
 <h3>
-Quit()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">Quit</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Shuts down the message loop (if it’s running), and deletes the
+Quit()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">Quit</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Shuts down the message loop (if it’s running), and deletes the
 <span class="hclass">BLooper</span>. The object must be locked.</p>
-<p>When <span class="hmethod">Quit()</span> is called from the
-<span class="hclass">BLooper</span>’s thread, the message loop is immediately
-stopped and any messages in the message queue are deleted (without being
-processed). Note that, in this case, <span class="hmethod">Quit()</span>
-doesn’t return since the calling thread is dead.</p>
-<p>When called from another thread, <span class="hmethod">Quit()</span> waits
-until all messages currently in the queue have been handled before it kills
-the message loop. It returns after the <span class="hclass">BLooper</span> has
-been deleted.</p>
-<p>If you’re quitting a <span class="hclass">BLooper</span> from some other thread,
-you should send the object a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">QUIT()</span></code>
-message rather than calling <span class="hmethod">Quit()</span> directly.</p>
+<p>When <span class="hmethod">Quit()</span> is called from the <span class="hclass">BLooper</span>’s thread, the
+message loop is immediately stopped and any messages in the message queue
+are deleted (without being processed). Note that, in this case,
+<span class="hmethod">Quit()</span> doesn’t return since the calling thread is dead.</p>
+<p>When called from another thread, <span class="hmethod">Quit()</span> waits until all
+messages currently in the queue have been handled before it kills the
+message loop. It returns after the <span class="hclass">BLooper</span> has been deleted.</p>
+<p>If you’re quitting a <span class="hclass">BLooper</span> from some other thread, you should
+send the object a <a class="reference internal" href="../../constants.html#_CPPv416B_QUIT_REQUESTED" title="B_QUIT_REQUESTED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_QUIT_REQUESTED</span></code></a> message rather than
+calling <span class="hmethod">Quit()</span> directly.</p>
 <section id="_CPPv4N7BLooper3RunEv">
 </section>
 <h3>
-Run()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">thread_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">Run</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Spawns the message loop thread and starts it running.
-<span class="hmethod">Run()</span> expects the <span class="hclass">BLooper</span>
-to be locked (once only!) when it’s called; it unlocks the object before it
-returns. Keep in mind that a <span class="hclass">BLooper</span> is locked when
-it’s constructed.</p>
+Run()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">thread_id</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">Run</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Spawns the message loop thread and starts it running. <span class="hmethod">Run()</span>
+expects the <span class="hclass">BLooper</span> to be locked (once only!) when it’s called;
+it unlocks the object before it returns. Keep in mind that a
+<span class="hclass">BLooper</span> is locked when it’s constructed.</p>
 <div class="caution admonition">
 <p class="admonition-title">Caution</p>
-<p>Calling <span class="hmethod">Run()</span> on a <span class="hclass">BLooper</span>
-that’s already running will dump you into the debugger.</p>
+<p>Calling <span class="hmethod">Run()</span> on a <span class="hclass">BLooper</span> that’s already running
+will dump you into the debugger.</p>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
@@ -521,13 +504,15 @@ that’s already running will dump you into the debugger.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Positive values.</p></td>
-<td><p>The thread was successfully spawned and started; this is the thread_id for the thread.</p></td>
+<td><p>The thread was successfully spawned and started; this is the
+<span class="htype">thread_id</span> for the thread.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Thread errors.</p></td>
-<td><p>See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code>.</p></td>
+<td><p>See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">spawn_thread()</span></code> and
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">resume_thread()</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>Port errors.</p></td>
-<td><p>See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">port()</span></code>.</p></td>
+<td><p>See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">create_port()</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -536,64 +521,60 @@ that’s already running will dump you into the debugger.</p>
 <section id="_CPPv4N7BLooper16PreferredHandlerEv">
 </section>
 <h3>
-SetPreferredHandler(), PreferredHandler()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">SetPreferredHandler</span><span class="sig-paren">(</span><span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">PreferredHandler</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions set and return the <span class="hclass">BLooper</span>’s
-preferred handler—the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code> object that
-should handle messages not specifically targetted to another <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code>.</p>
-<p>To designate the current preferred handler, whatever object that may be, as
-the target of a message, pass <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> for the target
-handler to <a class="reference internal" href="#_CPPv4N7BLooper11PostMessageEP8BMessage" title="BLooper::PostMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PostMessage()</span></code></a>
-or to the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>.</p>
+SetPreferredHandler(), PreferredHandler()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">SetPreferredHandler</span><span class="sig-paren">(</span><a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">handler</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">PreferredHandler</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions set and return the <span class="hclass">BLooper</span>’s preferred
+handler—the <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> object that should handle messages not
+specifically targetted to another <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>.</p>
+<p>To designate the current preferred handler, whatever object that may be,
+as the target of a message, pass <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> for the target handler to
+<a class="reference internal" href="#_CPPv4N7BLooper11PostMessageEP8BMessage" title="BLooper::PostMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PostMessage()</span></code></a> or to the
+<a class="reference internal" href="messenger.html#_CPPv4N10BMessenger10BMessengerEPK8BHandlerPK7BLooperP8status_t" title="BMessenger::BMessenger"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessenger</span> <span class="pre">constructor</span></code></a>.</p>
 <p>Posting or sending messages to the preferred handler can be useful. For
-example, in the <span class="xref std std-ref">Interface Kit</span>, <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code> objects name the
+example, in the <span class="xref std std-ref">Interface Kit</span>, <a class="reference internal" href="../interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> objects name the
 current focus view as the preferred handler. This makes it possible for
-other objects, such as <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code>s and <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BButtons</span></code>, to target
-messages to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-that’s currently in focus, without knowing what view that might be. For
-example, by posting its messages to the window’s preferred handler, a
-Cut menu item can make sure that it always acts
-on whatever view contains the current selection. See the chapter on the
-<span class="xref std std-ref">Interface Kit</span> for information on
-windows, views, and the role of the focus view.</p>
-<p>By default, <span class="hclass">BLooper</span>s don’t have a preferred handler;
-until one is set, <span class="hmethod">PreferredHandler()</span> returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. Note however, that messages targeted to the
-preferred handler are dispatched to the <span class="hclass">BLooper</span>
-whenever the preferred handler is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. In other
-words, the <span class="hclass">BLooper</span> acts as default preferred
-handler, even though the default is formally <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<p>See also: <a class="reference internal" href="invoker.html#_CPPv4N8BInvoker9SetTargetE10BMessenger" title="BInvoker::SetTarget"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BInvoker::SetTarget()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N7BLooper11PostMessageEP8BMessage" title="BLooper::PostMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PostMessage()</span></code></a></p>
+other objects, such as <a class="reference internal" href="../interface/menu-item.html#_CPPv49BMenuItem" title="BMenuItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code></a>s and <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BButtons</span></code>,
+to target messages to the <a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> that’s currently in focus,
+without knowing what view that might be. For example, by posting its
+messages to the window’s preferred handler, a Cut menu item can make sure
+that it always acts on whatever view contains the current selection. See
+the chapter on the <span class="xref std std-ref">Interface Kit</span> for information on windows, views,
+and the role of the focus view.</p>
+<p>By default, <span class="hclass">BLooper</span>s don’t have a preferred handler; until one
+is set, <span class="hmethod">PreferredHandler()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>. Note
+however, that messages targeted to the preferred handler are dispatched to
+the <span class="hclass">BLooper</span> whenever the preferred handler is <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.
+In other words, the <span class="hclass">BLooper</span> acts as default preferred handler,
+even though the default is formally <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<p>See also: <a class="reference internal" href="invoker.html#_CPPv4N8BInvoker9SetTargetE10BMessenger" title="BInvoker::SetTarget"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BInvoker::SetTarget()</span></code></a>, <a class="reference internal" href="#_CPPv4N7BLooper11PostMessageEP8BMessage" title="BLooper::PostMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PostMessage()</span></code></a></p>
 <section id="_CPPv4NK7BLooper6ThreadEv">
 </section>
 <section id="_CPPv4NK7BLooper4TeamEv">
 </section>
 <h3>
-Thread(), Team()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">thread_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">Thread</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">team_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">Team</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions identify the thread that runs the message loop and the team
-to which it belongs. <span class="hmethod">Thread()</span> returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code> if <a class="reference internal" href="#_CPPv4N7BLooper3RunEv" title="BLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a> hasn’t yet been
-called to spawn the thread and begin the loop.
-<span class="hmethod">Team()</span> always returns the application’s
-team_id.</p>
+Thread(), Team()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">thread_id</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">Thread</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">team_id</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">Team</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions identify the thread that runs the message loop and the
+team to which it belongs. <span class="hmethod">Thread()</span> returns
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code> if <a class="reference internal" href="#_CPPv4N7BLooper3RunEv" title="BLooper::Run"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Run()</span></code></a> hasn’t yet
+been called to spawn the thread and begin the loop. <span class="hmethod">Team()</span>
+always returns the application’s <span class="htype">team_id</span>.</p>
 </section>
 <section id="static-functions">
 <h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N7BLooper15LooperForThreadE9thread_id">
 </section>
 <h3>
-LooperForThread()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BLooper</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BLooper</span><span class="p">::</span></span><span class="n">LooperForThread</span><span class="sig-paren">(</span><span class="n">thread_id</span><span class="w"> </span><span class="n sig-param">thread</span><span class="sig-paren">)</span></pre><p>Returns the <span class="hclass">BLooper</span> object that spawned the
-specified thread, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the thread doesn’t belong
-to a <span class="hclass">BLooper</span>.</p>
+LooperForThread()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="p">::</span></span><span class="n">LooperForThread</span><span class="sig-paren">(</span><span class="n">thread_id</span><span class="w"> </span><span class="n sig-param">thread</span><span class="sig-paren">)</span></pre><p>Returns the <span class="hclass">BLooper</span> object that spawned the specified thread, or
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the thread doesn’t belong to a <span class="hclass">BLooper</span>.</p>
 </section>
 <section id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv430B_LOOPER_PORT_DEFAULT_CAPACITY">
+</section>
 <h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define B_LOOPER_PORT_DEFAULT_CAPACITY 100</span>
+B_LOOPER_PORT_DEFAULT_CAPACITY</h3></pre><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define B_LOOPER_PORT_DEFAULT_CAPACITY 100</span>
 </pre></div>
 </div>
 <p>The default capacity of the port that holds incoming messages before
-they’re placed in the <span class="hclass">BLooper</span>’s <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageQueue</span></code>. The
-capacity is set in the <span class="hclass">BLooper</span>
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>.</p>
+they’re placed in the <span class="hclass">BLooper</span>’s <a class="reference internal" href="message-queue.html#_CPPv413BMessageQueue" title="BMessageQueue"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageQueue</span></code></a>. The
+capacity is set in the <span class="hclass">BLooper</span> <a class="reference internal" href="#_CPPv4N7BLooper7BLooperEPKc5int325int32" title="BLooper::BLooper"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a>.</p>
 </section>
 </section>
 

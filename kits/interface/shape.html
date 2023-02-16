@@ -76,165 +76,143 @@
       <div class="content" role="main">
         
   <section id="bshape">
-<h1>BShape<a class="headerlink" href="#bshape" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv46BShape">BShape<a class="headerlink" href="#bshape" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N6BShape6BShapeEv">
 </section>
 <h3>
-BShape()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BShape6BShapeEv" title="BShape::BShape"><span class="n">BShape</span></a><span class="p">::</span></span><span class="n">BShape</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BShape6BShapeERK6BShape" title="BShape::BShape"><span class="n">BShape</span></a><span class="p">::</span></span><span class="n">BShape</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N6BShape6BShapeERK6BShape" title="BShape::BShape"><span class="n">BShape</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">copyFrom</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BShape6BShapeEP8BMessage" title="BShape::BShape"><span class="n">BShape</span></a><span class="p">::</span></span><span class="n">BShape</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BShape</span> object. The first form of the <span class="hclass">BShape</span> constructor
-creates an empty shape. The second form, which accepts another <span class="hclass">BShape</span> as
-an argument, copies that shape into the new one. The third form
-reconstructs a <span class="hclass">BShape</span> from an archive.</p>
+BShape()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BShape6BShapeEv" title="BShape::BShape"><span class="n">BShape</span></a><span class="p">::</span></span><span class="n">BShape</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BShape6BShapeERK6BShape" title="BShape::BShape"><span class="n">BShape</span></a><span class="p">::</span></span><span class="n">BShape</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N6BShape6BShapeERK6BShape" title="BShape::BShape"><span class="n">BShape</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">copyFrom</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BShape6BShapeEP8BMessage" title="BShape::BShape"><span class="n">BShape</span></a><span class="p">::</span></span><span class="n">BShape</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BShape</span> object. The first form of the
+<span class="hclass">BShape</span> constructor creates an empty shape. The second form, which
+accepts another <span class="hclass">BShape</span> as an argument, copies that shape into the
+new one. The third form reconstructs a <span class="hclass">BShape</span> from an archive.</p>
 <section id="_CPPv4N6BShapeD0Ev">
 </section>
 <h3>
-~BShape()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShape</span><span class="p">::</span></span><span class="n">~BShape</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Releases memory occupied by the <span class="hclass">BShape</span> object.</p>
+~BShape()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BShape" title="BShape"><span class="n">BShape</span></a><span class="p">::</span></span><span class="n">~BShape</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Releases memory occupied by the <span class="hclass">BShape</span> object.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N6BShape8AddShapeEPK6BShape">
 </section>
 <h3>
-AddShape()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShape</span><span class="p">::</span></span><span class="n">AddShape</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BShape</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">otherShape</span><span class="sig-paren">)</span></pre><p><span class="hmethod">AddShape()</span> adds the lines and curves that comprise the
+AddShape()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BShape" title="BShape"><span class="n">BShape</span></a><span class="p">::</span></span><span class="n">AddShape</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv46BShape" title="BShape"><span class="n">BShape</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">otherShape</span><span class="sig-paren">)</span></pre><p><span class="hmethod">AddShape()</span> adds the lines and curves that comprise the
 <span class="hparameter">otherShape</span> to the shape.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>No error.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Other errors.</p></td>
-<td><p>None are defined at this time, but you should always check for errors returned by this function.</p></td>
+<td><p>None are defined at this time, but you should always check for errors
+returned by this function.</p></td>
 </tr>
 </tbody>
 </table>
 <section id="_CPPv4NK6BShape7ArchiveEP8BMessageb">
 </section>
 <h3>
-Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShape</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Stores the <span class="hclass">BShape</span> in the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive.</p>
-<p>See also:
-<a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N6BShape11InstantiateEP8BMessage" title="BShape::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a>
-static function</p>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BShape" title="BShape"><span class="n">BShape</span></a><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Stores the <span class="hclass">BShape</span> in the <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> archive.</p>
+<p>See also: <a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>, <a class="reference internal" href="#_CPPv4N6BShape11InstantiateEP8BMessage" title="BShape::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
 <section id="_CPPv4N6BShape8BezierToEAL3E_6BPoint">
 </section>
 <h3>
-BezierTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShape</span><span class="p">::</span></span><span class="n">BezierTo</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">controlPoints</span><span class="p">[</span><span class="m">3</span><span class="p">]</span><span class="sig-paren">)</span></pre><p>Adds a command to the <span class="hclass">BShape</span> that represents a Beziér curve that begins
-at the current coordinates and is constructed using the specified control
-points.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+BezierTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BShape" title="BShape"><span class="n">BShape</span></a><span class="p">::</span></span><span class="n">BezierTo</span><span class="sig-paren">(</span><a class="reference internal" href="point.html#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="n sig-param">controlPoints</span><span class="p">[</span><span class="m">3</span><span class="p">]</span><span class="sig-paren">)</span></pre><p>Adds a command to the <span class="hclass">BShape</span> that represents a Beziér curve that
+begins at the current coordinates and is constructed using the specified
+control points.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>No error.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Other errors.</p></td>
-<td><p>None are defined at this time, but you should always check for errors returned by this function.</p></td>
+<td><p>None are defined at this time, but you should always check for errors
+returned by this function.</p></td>
 </tr>
 </tbody>
 </table>
 <section id="_CPPv4NK6BShape6BoundsEv">
 </section>
 <h3>
-Bounds()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShape</span><span class="p">::</span></span><span class="n">Bounds</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Bounds()</span> returns the bounds rectangle of the entire shape; this rectangle
-encloses all the lines and Beziér curves that comprise the shape.</p>
+Bounds()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BShape" title="BShape"><span class="n">BShape</span></a><span class="p">::</span></span><span class="n">Bounds</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Bounds()</span> returns the bounds rectangle of the entire shape; this
+rectangle encloses all the lines and Beziér curves that comprise the shape.</p>
 <section id="_CPPv4N6BShape5ClearEv">
 </section>
 <h3>
-Clear()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShape</span><span class="p">::</span></span><span class="n">Clear</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Clear()</span> deletes all the lines and Beziér curves that comprise the shape,
-leaving it empty.</p>
+Clear()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BShape" title="BShape"><span class="n">BShape</span></a><span class="p">::</span></span><span class="n">Clear</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Clear()</span> deletes all the lines and Beziér curves that comprise
+the shape, leaving it empty.</p>
 <section id="_CPPv4N6BShape5CloseEv">
 </section>
 <h3>
-Close()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShape</span><span class="p">::</span></span><span class="n">Close</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Close()</span> should be called when the shape has been fully-constructed by
-calls to the
-<a class="reference internal" href="#_CPPv4N6BShape8BezierToEAL3E_6BPoint" title="BShape::BezierTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BezierTo()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N6BShape6LineToE6BPoint" title="BShape::LineTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LineTo()</span></code></a>, and
+Close()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BShape" title="BShape"><span class="n">BShape</span></a><span class="p">::</span></span><span class="n">Close</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Close()</span> should be called when the shape has been
+fully-constructed by calls to the <a class="reference internal" href="#_CPPv4N6BShape8BezierToEAL3E_6BPoint" title="BShape::BezierTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BezierTo()</span></code></a>, <a class="reference internal" href="#_CPPv4N6BShape6LineToE6BPoint" title="BShape::LineTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LineTo()</span></code></a>, and
 <a class="reference internal" href="#_CPPv4N6BShape6MoveToE6BPoint" title="BShape::MoveTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MoveTo()</span></code></a> functions.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>No error.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Other errors.</p></td>
-<td><p>None are defined at this time, but you should always check for errors returned by this function.</p></td>
+<td><p>None are defined at this time, but you should always check for errors
+returned by this function.</p></td>
 </tr>
 </tbody>
 </table>
 <section id="_CPPv4N6BShape6LineToE6BPoint">
 </section>
 <h3>
-LineTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShape</span><span class="p">::</span></span><span class="n">LineTo</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><p>Adds a “draw line” command to the <span class="hclass">BShape</span>. A line will be drawn from the
-previous coordinates to the specified coordinates.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+LineTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BShape" title="BShape"><span class="n">BShape</span></a><span class="p">::</span></span><span class="n">LineTo</span><span class="sig-paren">(</span><a class="reference internal" href="point.html#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><p>Adds a “draw line” command to the <span class="hclass">BShape</span>. A line will be drawn
+from the previous coordinates to the specified coordinates.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>No error.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Other errors.</p></td>
-<td><p>None are defined at this time, but you should always check for errors returned by this function.</p></td>
+<td><p>None are defined at this time, but you should always check for errors
+returned by this function.</p></td>
 </tr>
 </tbody>
 </table>
 <section id="_CPPv4N6BShape6MoveToE6BPoint">
 </section>
 <h3>
-MoveTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShape</span><span class="p">::</span></span><span class="n">MoveTo</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><p>Adds a “move to” command to the <span class="hclass">BShape</span>. The next
-<a class="reference internal" href="#_CPPv4N6BShape6LineToE6BPoint" title="BShape::LineTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LineTo()</span></code></a> or
-<a class="reference internal" href="#_CPPv4N6BShape8BezierToEAL3E_6BPoint" title="BShape::BezierTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BezierTo()</span></code></a>
-will begin at this point. This lets you create noncontiguous shapes.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+MoveTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BShape" title="BShape"><span class="n">BShape</span></a><span class="p">::</span></span><span class="n">MoveTo</span><span class="sig-paren">(</span><a class="reference internal" href="point.html#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><p>Adds a “move to” command to the <span class="hclass">BShape</span>. The next
+<a class="reference internal" href="#_CPPv4N6BShape6LineToE6BPoint" title="BShape::LineTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LineTo()</span></code></a> or <a class="reference internal" href="#_CPPv4N6BShape8BezierToEAL3E_6BPoint" title="BShape::BezierTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BezierTo()</span></code></a> will begin at this point. This lets you create
+noncontiguous shapes.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>No error.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Other errors.</p></td>
-<td><p>None are defined at this time, but you should always check for errors returned by this function.</p></td>
+<td><p>None are defined at this time, but you should always check for errors
+returned by this function.</p></td>
 </tr>
 </tbody>
 </table>
@@ -244,16 +222,34 @@ will begin at this point. This lets you create noncontiguous shapes.</p>
 <section id="_CPPv4N6BShape11InstantiateEP8BMessage">
 </section>
 <h3>
-Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BShape</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BShape</span> object, allocated by new and created with the
-version of the constructor that takes a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive. However, if the
-archive message doesn’t contain data for a <span class="hclass">BShape</span> object, the return
-value will be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<p><a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">object()</span></code>,
-<a class="reference internal" href="#_CPPv4NK6BShape7ArchiveEP8BMessageb" title="BShape::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BShape" title="BShape"><span class="n">BShape</span></a><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BShape</span> object, allocated by new and created with
+the version of the constructor that takes a <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> archive.
+However, if the archive message doesn’t contain data for a <span class="hclass">BShape</span>
+object, the return value will be <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<p><a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">instantiate_object()</span></code>, <a class="reference internal" href="#_CPPv4NK6BShape7ArchiveEP8BMessageb" title="BShape::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
 </section>
 <section id="archived-fields">
 <h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="#_CPPv4NK6BShape7ArchiveEP8BMessageb" title="BShape::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a> function adds the following
+fields to its <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> argument:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">pts</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_POINT_TYPE</span></code></p></td>
+<td><p>The list of points used by the shape’s commands.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">ops</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The list of command opcodes indicating the shape’s commands.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 

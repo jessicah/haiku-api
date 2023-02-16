@@ -43,7 +43,12 @@
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">System Information</a><ul>
-<li><a class="reference internal" href="#system-info-functions-and-structures">System Info Functions and Structures</a></li>
+<li><a class="reference internal" href="#system-info-functions-and-structures">System Info Functions and Structures</a><ul>
+<li><a class="reference internal" href="#_CPPv415get_system_infoP11system_info">get_system_info</a></li>
+<li><a class="reference internal" href="#_CPPv414is_computer_onv">is_computer_on</a></li>
+<li><a class="reference internal" href="#_CPPv419is_computer_on_firev">is_computer_on_fire</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -56,55 +61,69 @@
       <div class="content" role="main">
         
   <section id="system-information">
-<h1>System Information<a class="headerlink" href="#system-information" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv418System Information">System Information<a class="headerlink" href="#system-information" title="Permalink to this heading">¶</a></h1>
+<table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Declared in:</p></td>
+<td><p>kernel/OS.h</p></td>
+</tr>
+<tr class="row-even"><td><p>Library:</p></td>
+<td><p>libroot.so</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following functions, types, and structures are used to convey basic
+information about the system, such as the number of CPUs, when the kernel
+was built, what time it is now and whether your computer is on fire.</p>
 <section id="system-info-functions-and-structures">
 <h2>System Info Functions and Structures<a class="headerlink" href="#system-info-functions-and-structures" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv415get_system_infoP11system_info">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">status_t System Information::get_system_info(system_info* info)</pre><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="p">{}</span> <span class="n">system_info</span>
-<span class="n">struct</span> <span class="p">{}</span> <span class="n">cpu_info</span>
-<span class="n">enum</span> <span class="n">cpu_type</span>
-<span class="n">enum</span> <span class="n">platform_type</span>
+get_system_info()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">get_system_info</span><span class="sig-paren">(</span><span class="n">system_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="n">system_info</span><span class="w"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="n">cpu_info</span><span class="w"></span>
+
+<span class="k">enum</span><span class="w"> </span><span class="n">cpu_type</span><span class="w"></span>
+
+<span class="k">enum</span><span class="w"> </span><span class="n">platform_type</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The get_system_info() function tells you more than you want to know about
-the physical capacities and other statistics of your operating system.
-The function takes a pointer to an allocated system_info structure and
+the physical capacities and other statistics of your operating system. The
+function takes a pointer to an allocated <span class="htype">system_info</span> structure and
 fills it in.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
-   <span class="n">machine_id</span>  <span class="nb">id</span><span class="p">;</span>
-   <span class="n">bigtime_t</span>  <span class="n">boot_time</span><span class="p">;</span>
-   <span class="n">int32</span>  <span class="n">cpu_count</span><span class="p">;</span>
-   <span class="n">cpu_type</span>  <span class="n">cpu_type</span><span class="p">;</span>
-   <span class="n">int32</span>  <span class="n">cpu_revision</span><span class="p">;</span>
-   <span class="n">cpu_info</span>  <span class="n">cpu_infos</span><span class="p">[</span><span class="n">B_MAX_CPU_NUM</span><span class="p">];</span>
-   <span class="n">int64</span>  <span class="n">cpu_clock_speed</span><span class="p">;</span>
-   <span class="n">int64</span>  <span class="n">bus_clock_speed</span><span class="p">;</span>
-   <span class="n">platform_type</span>  <span class="n">platform_type</span><span class="p">;</span>
-   <span class="n">int32</span>  <span class="n">max_pages</span><span class="p">;</span>
-   <span class="n">int32</span>  <span class="n">used_pages</span><span class="p">;</span>
-   <span class="n">int32</span>  <span class="n">page_faults</span><span class="p">;</span>
-   <span class="n">int32</span>  <span class="n">max_sems</span><span class="p">;</span>
-   <span class="n">int32</span>  <span class="n">used_sems</span><span class="p">;</span>
-   <span class="n">int32</span>  <span class="n">max_ports</span><span class="p">;</span>
-   <span class="n">int32</span>  <span class="n">used_ports</span><span class="p">;</span>
-   <span class="n">int32</span>  <span class="n">max_threads</span><span class="p">;</span>
-   <span class="n">int32</span>  <span class="n">used_threads</span><span class="p">;</span>
-   <span class="n">int32</span>  <span class="n">max_teams</span><span class="p">;</span>
-   <span class="n">int32</span>  <span class="n">used_teams</span><span class="p">;</span>
-   <span class="n">char</span>   <span class="n">kernel_name</span><span class="p">[</span><span class="n">B_FILE_NAME_LENGTH</span><span class="p">];</span>
-   <span class="n">char</span>   <span class="n">kernel_build_date</span><span class="p">[</span><span class="n">B_OS_NAME_LENGTH</span><span class="p">];</span>
-   <span class="n">char</span>   <span class="n">kernel_build_time</span><span class="p">[</span><span class="n">B_OS_NAME_LENGTH</span><span class="p">];</span>
-   <span class="n">int64</span>  <span class="n">kernel_version</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">system_info</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">machine_id</span><span class="w">  </span><span class="n">id</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">bigtime_t</span><span class="w">  </span><span class="n">boot_time</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">  </span><span class="n">cpu_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">cpu_type</span><span class="w">  </span><span class="n">cpu_type</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">  </span><span class="n">cpu_revision</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">cpu_info</span><span class="w">  </span><span class="n">cpu_infos</span><span class="p">[</span><span class="n">B_MAX_CPU_NUM</span><span class="p">];</span><span class="w"></span>
+<span class="w">   </span><span class="n">int64</span><span class="w">  </span><span class="n">cpu_clock_speed</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int64</span><span class="w">  </span><span class="n">bus_clock_speed</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">platform_type</span><span class="w">  </span><span class="n">platform_type</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">  </span><span class="n">max_pages</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">  </span><span class="n">used_pages</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">  </span><span class="n">page_faults</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">  </span><span class="n">max_sems</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">  </span><span class="n">used_sems</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">  </span><span class="n">max_ports</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">  </span><span class="n">used_ports</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">  </span><span class="n">max_threads</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">  </span><span class="n">used_threads</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">  </span><span class="n">max_teams</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w">  </span><span class="n">used_teams</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">char</span><span class="w">   </span><span class="n">kernel_name</span><span class="p">[</span><span class="n">B_FILE_NAME_LENGTH</span><span class="p">];</span><span class="w"></span>
+<span class="w">   </span><span class="kt">char</span><span class="w">   </span><span class="n">kernel_build_date</span><span class="p">[</span><span class="n">B_OS_NAME_LENGTH</span><span class="p">];</span><span class="w"></span>
+<span class="w">   </span><span class="kt">char</span><span class="w">   </span><span class="n">kernel_build_time</span><span class="p">[</span><span class="n">B_OS_NAME_LENGTH</span><span class="p">];</span><span class="w"></span>
+<span class="w">   </span><span class="n">int64</span><span class="w">  </span><span class="n">kernel_version</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">system_info</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The system_info structure holds information about the machine and the
-state of the kernel. The structure’s fields are:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<p>The <span class="htype">system_info</span> structure holds information about the machine and
+the state of the kernel. The structure’s fields are:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Description</p></th>
@@ -112,10 +131,12 @@ state of the kernel. The structure’s fields are:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>id.</p></td>
-<td><p>The 64-bit number (encoded as two int32s) that uniquely identifies this machine.</p></td>
+<td><p>The 64-bit number (encoded as two <span class="htype">int32</span>s) that uniquely
+identifies this machine.</p></td>
 </tr>
 <tr class="row-odd"><td><p>boot_time.</p></td>
-<td><p>The time at which the computer was last booted, measured in microseconds since January 1st, 1970.</p></td>
+<td><p>The time at which the computer was last booted, measured in microseconds
+since January 1st, 1970.</p></td>
 </tr>
 <tr class="row-even"><td><p>cpu_count.</p></td>
 <td><p>The number of CPUs.</p></td>
@@ -124,7 +145,7 @@ state of the kernel. The structure’s fields are:</p>
 <td><p>The type constant and revision number of the CPUs.</p></td>
 </tr>
 <tr class="row-even"><td><p>cpu_infos.</p></td>
-<td><p>An array of cpu_info structures, one for each CPU.</p></td>
+<td><p>An array of <span class="htype">cpu_info</span> structures, one for each CPU.</p></td>
 </tr>
 <tr class="row-odd"><td><p>cpu_clock_speed.</p></td>
 <td><p>The speed (in Hz) at which the CPUs operate.</p></td>
@@ -136,10 +157,13 @@ state of the kernel. The structure’s fields are:</p>
 <td><p>One of the platform type constants.</p></td>
 </tr>
 <tr class="row-even"><td><p>max_resourcesandused_resources.</p></td>
-<td><p>The five pairs of max/used fields give the total number of RAM pages, semaphores, and so on, that the system can create, and the number that are currently in use.</p></td>
+<td><p>The five pairs of max/used fields give the total number of RAM pages,
+semaphores, and so on, that the system can create, and the number that are
+currently in use.</p></td>
 </tr>
 <tr class="row-odd"><td><p>page_faults.</p></td>
-<td><p>The number of times the system a read a page of memory into RAM due to a page fault.</p></td>
+<td><p>The number of times the system a read a page of memory into RAM due to a
+page fault.</p></td>
 </tr>
 <tr class="row-even"><td><p>kernel_name.</p></td>
 <td><p>The (leaf) name of the kernel.</p></td>
@@ -152,17 +176,13 @@ state of the kernel. The structure’s fields are:</p>
 </tr>
 </tbody>
 </table>
-<p>The cpu_info structure is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
-      <span class="n">bigtime_t</span> <span class="n">active_time</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">cpu_info</span><span class="p">;</span>
+<p>The <span class="htype">cpu_info</span> structure is:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">bigtime_t</span><span class="w"> </span><span class="n">active_time</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">cpu_info</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Description</p></th>
@@ -170,65 +190,68 @@ state of the kernel. The structure’s fields are:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>active_time</p></td>
-<td><p>Is the number of microseconds spent doing useful work since the machine was booted.</p></td>
+<td><p>Is the number of microseconds spent doing useful work since the machine
+was booted.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Relatedly, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MAX_CPU_COUNT</span></code> is currently 8.
-The machine_id type is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">int32</span> <span class="n">machine_id</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<p>Relatedly, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MAX_CPU_COUNT</span></code> is currently 8.</p>
+<p>The <span class="htype">machine_id</span> type is:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">machine_id</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The cpu_type constants are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">enum</span> <span class="p">{</span>
-    <span class="n">B_CPU_PPC_601</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="n">B_CPU_PPC_603</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="n">B_CPU_PPC_603e</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="n">B_CPU_PPC_604</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
-    <span class="n">B_CPU_PPC_604e</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="n">B_CPU_PPC_686</span> <span class="o">=</span> <span class="mi">13</span><span class="p">,</span>
-    <span class="n">B_CPU_AMD_29K</span><span class="p">,</span>
-    <span class="n">B_CPU_X86</span><span class="p">,</span>
-    <span class="n">B_CPU_MC6502</span><span class="p">,</span>
-    <span class="n">B_CPU_Z80</span><span class="p">,</span>
-    <span class="n">B_CPU_ALPHA</span><span class="p">,</span>
-    <span class="n">B_CPU_MIPS</span><span class="p">,</span>
-    <span class="n">B_CPU_HPPA</span><span class="p">,</span>
-    <span class="n">B_CPU_M68K</span><span class="p">,</span>
-    <span class="n">B_CPU_ARM</span><span class="p">,</span>
-    <span class="n">B_CPU_SH</span><span class="p">,</span>
-    <span class="n">B_CPU_SPARC</span>
-<span class="p">}</span> <span class="n">cpu_type</span><span class="p">;</span>
+<p>The <span class="htype">cpu_type</span> constants are:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_PPC_601</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_PPC_603</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_PPC_603e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_PPC_604</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_PPC_604e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_PPC_686</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_AMD_29K</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_X86</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_MC6502</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_Z80</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_ALPHA</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_MIPS</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_HPPA</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_M68K</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_ARM</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_SH</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CPU_SPARC</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">cpu_type</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The platform_type constants are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">enum</span> <span class="p">{</span>
-    <span class="n">B_BEBOX_PLATFORM</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">B_MAC_PLATFORM</span><span class="p">,</span>
-    <span class="n">B_AT_CLONE_PLATFORM</span><span class="p">,</span>
-    <span class="n">B_ENIAC_PLATFORM</span><span class="p">,</span>
-    <span class="n">B_APPLE_II_PLATFORM</span><span class="p">,</span>
-    <span class="n">B_CRAY_PLATFORM</span><span class="p">,</span>
-    <span class="n">B_LISA_PLATFORM</span><span class="p">,</span>
-    <span class="n">B_TI_994A_PLATFORM</span><span class="p">,</span>
-    <span class="n">B_TIMEX_SINCLAIR_PLATFORM</span><span class="p">,</span>
-    <span class="n">B_ORAC_1_PLATFORM</span><span class="p">,</span>
-    <span class="n">B_HAL_PLATFORM</span>
-<span class="p">}</span> <span class="n">platform_type</span><span class="p">;</span>
+<p>The <span class="htype">platform_type</span> constants are:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_BEBOX_PLATFORM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_MAC_PLATFORM</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_AT_CLONE_PLATFORM</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_ENIAC_PLATFORM</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_APPLE_II_PLATFORM</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_CRAY_PLATFORM</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_LISA_PLATFORM</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_TI_994A_PLATFORM</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_TIMEX_SINCLAIR_PLATFORM</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_ORAC_1_PLATFORM</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_HAL_PLATFORM</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">platform_type</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>I haven’t tried it, but I really don’t think the BeOS would work at all
-well on a Timex Sinclair (see
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">computer()</span></code>).
-get_system_info() always returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+well on a Timex Sinclair (see <span class="xref std std-ref">is_computer_on_fire()</span>).</p>
+<p>get_system_info() always returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+<section id="_CPPv414is_computer_onv">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">int32 System Information::is_computer_on()</pre><p>Returns 1 if the computer is on. If the computer isn’t on, the value
+is_computer_on()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="n">is_computer_on</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns 1 if the computer is on. If the computer isn’t on, the value
 returned by this function is undefined.</p>
+<section id="_CPPv419is_computer_on_firev">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">double System Information::is_computer_on_fire()</pre><p>Returns the temperature of the motherboard if the computer is currently
-on fire. Smoldering doesn’t count. If the computer isn’t on fire, the
-function returns some other value.</p>
+is_computer_on_fire()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">double</span><span class="w"> </span><span class="n">is_computer_on_fire</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the temperature of the motherboard if the computer is currently on
+fire. Smoldering doesn’t count. If the computer isn’t on fire, the function
+returns some other value.</p>
 </section>
 </section>
 

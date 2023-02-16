@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BSymLink &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BVolume" href="volume.html" />
+    <link rel="prev" title="BStatable" href="statable.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BSymLink</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="statable.html">BStatable</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="volume.html">BVolume</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BSymLink</a><ul>
+<li><a class="reference internal" href="#initialization-and-file-descriptors">Initialization and File Descriptors</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bsymlink">
+<h1 id="CPPv48BSymLink">BSymLink<a class="headerlink" href="#bsymlink" title="Permalink to this heading">¶</a></h1>
+<p>A “symbolic link” or symlink is a file that “points to” some other entry.
+The pointed-to (or, better, “linked-to”) entry can be a plain file,
+directory, or another symlink (which links to yet another entry, and so
+on). Furthermore, the entry can be abstract—you can create a symlink to an
+entry that doesn’t exist.</p>
+<p>The data in a symlink is the pathname to the linked-to entry. The pathname
+can be absolute or relative. If it’s relative, the linked-to entry is found
+by reckoning the pathname of off the directory in which the symlink lives.
+Relative pathnames can contain “.” and “..” components.</p>
+<p>The thing to keep in mind, when dealing with symlinks, is that they link
+to entries, not nodes. If you link a symlink to an (existing) entry named
+/boot/home/fido and then the user moves fido to rover (or deletes fido),
+the symlink is not updated. It will still link to /boot/home/fido.</p>
+<p>Furthermore, symlinks that contain relative pathnames have a further
+“problem”: Let’s say you create a symlink in /boot/home that links to fido.
+If you move the symlink to some other directory, it will link to the entry
+named fido in the new directory.</p>
+<p>The <span class="hclass">BSymLink</span> class creates objects that know how to read a
+symlink’s data. The class does not create new symlinks; to create a
+symlink, you use <a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a>’s <a class="reference internal" href="../../kits/storage/directory.html#_CPPv4N10BDirectory13CreateSymLinkEPKcPKcP8BSymLink" title="BDirectory::CreateSymLink"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CreateSymLink()</span></code></a> function.</p>
+<div class="note admonition">
+<p class="admonition-title" id="CPPv44Note">Note</p>
+<p><span class="hclass">BSymLink</span> objects are no smarter than the symlinks files
+themselves. For example, <span class="hclass">BSymLinks</span> can’t resolve the fido/rover
+“problem”.</p>
+</div>
+<p>The only really useful <span class="hclass">BSymLink</span> function is
+<a class="reference internal" href="../../kits/storage/sym-link.html#_CPPv4N8BSymLink8ReadLinkEPc6size_t" title="BSymLink::ReadLink"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadLink()</span></code></a>. This function returns the data
+that the symlink contains. The other functions are convenient, but they’re
+not essential.</p>
+<section id="initialization-and-file-descriptors">
+<h2>Initialization and File Descriptors<a class="headerlink" href="#initialization-and-file-descriptors" title="Permalink to this heading">¶</a></h2>
+<p>When you initialize a <span class="hclass">BSymLink</span> object, you pass in a pathname or
+<span class="htype">entry_ref</span> (or whatever) that refers to an existing symlink. The
+<span class="hclass">BSymLink</span> object then represents that symlink—it doesn’t represent
+the (node of the) linked-to entry. Furthermore, you can’t ask a
+<span class="hclass">BSymLink</span> to “resolve itself”—it can’t pass you back a
+<a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> object that represents the linked-to entry.</p>
+<p>If you want the <a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> of the linked-to entry, simply
+initialize a <a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> object with the ref (or whatever) to the
+symlink and tell it to traverse (set the trailing argument to
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>).</p>
+<p>For example, in the following code, <span class="hparameter">link</span> is a <span class="hclass">BSymLink</span>
+to the symlink /boot/home/fidoLink and <span class="hparameter">entry</span> is a
+<a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> to the entry that the symlink links-to:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BSymLink</span><span class="w"> </span><span class="n">link</span><span class="p">(</span><span class="s">&quot;/boot/home/fidoLink&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">BEntry</span><span class="w"> </span><span class="n">entry</span><span class="p">(</span><span class="s">&quot;/boot/home/fidoLink&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Like all nodes, <span class="hclass">BSymLink</span> allocates a file descriptor. Remember,
+this is a file descriptor that’s open on the symlink node itself, not the
+(node of the) linked-to entry.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="statable.html">BStatable</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="volume.html">BVolume</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

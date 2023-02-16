@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="BVolumeRoster" href="volume-roster.html" />
-    <link rel="prev" title="BSymLink" href="sym-link.html" /> 
+    <link rel="prev" title="The Node Monitor" href="the-node-monitor.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
           <span>API Documentation</span></a></h1>
@@ -28,7 +28,7 @@
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="sym-link.html">BSymLink</a>
+        «&#160;&#160;<a href="the-node-monitor.html">The Node Monitor</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -80,7 +80,7 @@
       <div class="content" role="main">
         
   <section id="bvolume">
-<h1>BVolume<a class="headerlink" href="#bvolume" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv47BVolume">BVolume<a class="headerlink" href="#bvolume" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N7BVolume7BVolumeEv">
@@ -88,17 +88,19 @@
 <h3>
 BVolume()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BVolume7BVolumeEv" title="BVolume::BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">BVolume</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BVolume7BVolumeE5dev_t" title="BVolume::BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">BVolume</span><span class="sig-paren">(</span><span class="n">dev_t</span><span class="w"> </span><span class="n sig-param">device</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BVolume7BVolumeER7BVolume" title="BVolume::BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">BVolume</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N7BVolume7BVolumeER7BVolume" title="BVolume::BVolume"><span class="n">BVolume</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">volume</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BVolume</span> object and initializes it according to the
 argument. The status of the initialization is recorded by the
-<a class="reference internal" href="#_CPPv4NK7BVolume9InitCheckEv" title="BVolume::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>
-function.</p>
+<a class="reference internal" href="#_CPPv4NK7BVolume9InitCheckEv" title="BVolume::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> function.</p>
 <ul class="simple">
-<li><p>The default constructor does nothing and sets <a class="reference internal" href="#_CPPv4NK7BVolume9InitCheckEv" title="BVolume::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></li>
-<li><p>The device constructor sets the <span class="hclass">BVolume</span> to point to the volume represented by the argument. See the <a class="reference internal" href="#_CPPv4N7BVolume5SetToE5dev_t" title="BVolume::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> function for status codes.</p></li>
-<li><p>The copy constructor sets the object to point to the same device as does the argument.</p></li>
+<li><p>The default constructor does nothing and sets <a class="reference internal" href="#_CPPv4NK7BVolume9InitCheckEv" title="BVolume::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> to <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></li>
+<li><p>The device constructor sets the <span class="hclass">BVolume</span> to point to the volume
+represented by the argument. See the <a class="reference internal" href="#_CPPv4N7BVolume5SetToE5dev_t" title="BVolume::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>
+function for status codes.</p></li>
+<li><p>The copy constructor sets the object to point to the same device as does
+the argument.</p></li>
 </ul>
 <section id="_CPPv4N7BVolumeD0Ev">
 </section>
 <h3>
-~BVolume()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">~BVolume</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Destroys the <span class="hclass">BVolume</span> object.</p>
+~BVolume()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">~BVolume</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Destroys the <span class="hclass">BVolume</span> object.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
@@ -107,36 +109,35 @@ function.</p>
 <section id="_CPPv4NK7BVolume9FreeBytesEv">
 </section>
 <h3>
-Capacity(), FreeBytes()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">off_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">Capacity</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">off_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">FreeBytes</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the volume’s total storage capacity and the amount of storage
+Capacity(), FreeBytes()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">off_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">Capacity</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">off_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">FreeBytes</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the volume’s total storage capacity and the amount of storage
 that’s currently unused. Both measurements are in bytes.</p>
 <section id="_CPPv4NK7BVolume6DeviceEv">
 </section>
 <h3>
-Device()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">dev_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">Device</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the object’s dev_t number.</p>
+Device()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">dev_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">Device</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the object’s <span class="htype">dev_t</span> number.</p>
 <section id="_CPPv4NK7BVolume7GetIconEP7BBitmap9icon_size">
 </section>
 <h3>
-GetIcon()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">GetIcon</span><span class="sig-paren">(</span><span class="n">BBitmap</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">icon</span>, <span class="n">icon_size</span><span class="w"> </span><span class="n sig-param">which</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the volume’s icon in <span class="hparameter">icon</span>. which specifies the icon to retrieve,
-either <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MINI_ICON</span></code> (16x16) or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_LARGE_ICON</span></code> (32x32).</p>
-<p>See also:
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">device()</span></code></p>
+GetIcon()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">GetIcon</span><span class="sig-paren">(</span><a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">icon</span>, <span class="n">icon_size</span><span class="w"> </span><span class="n sig-param">which</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the volume’s icon in <span class="hparameter">icon</span>. which specifies the icon to
+retrieve, either <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MINI_ICON</span></code> (16x16) or
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LARGE_ICON</span></code> (32x32).</p>
+<p>See also: <span class="xref std std-ref">get_device_icon()</span></p>
 <section id="_CPPv4NK7BVolume7GetNameEPc">
 </section>
 <h3>
-GetName()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">GetName</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Copies the name of the volume into <span class="hparameter">buffer</span>.</p>
+GetName()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">GetName</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Copies the name of the volume into <span class="hparameter">buffer</span>.</p>
 <section id="_CPPv4NK7BVolume16GetRootDirectoryEP10BDirectory">
 </section>
 <h3>
-GetRootDirectory()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">GetRootDirectory</span><span class="sig-paren">(</span><span class="n">BDirectory</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">dir</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Initializes <span class="hparameter">dir</span> (which must be allocated) to refer to the volume’s “root
-directory.” The root directory stands at the “root” of the volume’s file
-hierarchy. Note that this isn’t necessarily the root of the entire file
-hierarchy.</p>
+GetRootDirectory()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">GetRootDirectory</span><span class="sig-paren">(</span><a class="reference internal" href="directory.html#_CPPv410BDirectory" title="BDirectory"><span class="n">BDirectory</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">dir</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Initializes <span class="hparameter">dir</span> (which must be allocated) to refer to the
+volume’s “root directory.” The root directory stands at the “root” of the
+volume’s file hierarchy. Note that this isn’t necessarily the root of the
+entire file hierarchy.</p>
 <section id="_CPPv4NK7BVolume9InitCheckEv">
 </section>
 <h3>
-InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the status of the last initialization (from either the
-constructor or
-<a class="reference internal" href="#_CPPv4N7BVolume5SetToE5dev_t" title="BVolume::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>).</p>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the status of the last initialization (from either the constructor
+or <a class="reference internal" href="#_CPPv4N7BVolume5SetToE5dev_t" title="BVolume::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>).</p>
 <section id="_CPPv4NK7BVolume12IsPersistentEv">
 </section>
 <section id="_CPPv4NK7BVolume11IsRemovableEv">
@@ -146,12 +147,14 @@ constructor or
 <section id="_CPPv4NK7BVolume8IsSharedEv">
 </section>
 <h3>
-IsPersistent(), IsRemovable(), IsReadOnly(), IsShared()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">IsPersistent</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">IsRemovable</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">IsReadOnly</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">IsShared</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions answer media-related questions about the volume:</p>
+IsPersistent(), IsRemovable(), IsReadOnly(), IsShared()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">IsPersistent</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">IsRemovable</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">IsReadOnly</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">IsShared</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions answer media-related questions about the volume:</p>
 <ul class="simple">
-<li><p><span class="hmethod">IsPersistent()</span>. Is the storage persistent (such as on a floppy or hard disk)?</p></li>
+<li><p><span class="hmethod">IsPersistent()</span>. Is the storage persistent (such as on a floppy
+or hard disk)?</p></li>
 <li><p><span class="hmethod">IsRemovable()</span>. Can the media be removed?</p></li>
 <li><p><span class="hmethod">IsReadOnly()</span>. Can it be read but not written to?</p></li>
-<li><p><span class="hmethod">IsShared()</span>. Is it accessed through the network (as opposed to being directly connected to this computer)?</p></li>
+<li><p><span class="hmethod">IsShared()</span>. Is it accessed through the network (as opposed to
+being directly connected to this computer)?</p></li>
 </ul>
 <section id="_CPPv4NK7BVolume9KnowsAttrEv">
 </section>
@@ -160,7 +163,7 @@ IsPersistent(), IsRemovable(), IsReadOnly(), IsShared()</h3><pre style="backgrou
 <section id="_CPPv4NK7BVolume10KnowsQueryEv">
 </section>
 <h3>
-KnowsAttr(), KnowsMime(), KnowsQuery()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">KnowsAttr</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">KnowsMime</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">KnowsQuery</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions answer questions about the file system on the volume:</p>
+KnowsAttr(), KnowsMime(), KnowsQuery()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">KnowsAttr</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">KnowsMime</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">KnowsQuery</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions answer questions about the file system on the volume:</p>
 <ul class="simple">
 <li><p><span class="hmethod">KnowsAttr()</span>. Do its files accept attributes?</p></li>
 <li><p><span class="hmethod">KnowsMime()</span>. Does it use MIME to type files?</p></li>
@@ -171,28 +174,27 @@ KnowsAttr(), KnowsMime(), KnowsQuery()</h3><pre style="background: #f3f3f3; line
 <section id="_CPPv4N7BVolume5UnsetEv">
 </section>
 <h3>
-SetTo(), Unset()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="n">dev_t</span><span class="w"> </span><span class="n sig-param">dev</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BVolume</span><span class="p">::</span></span><span class="n">Unset</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetTo()</span> initializes the <span class="hclass">BVolume</span>
-object to represent the volume (device)
-identified by the argument.</p>
+SetTo(), Unset()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="n">dev_t</span><span class="w"> </span><span class="n sig-param">dev</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="p">::</span></span><span class="n">Unset</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetTo()</span> initializes the <span class="hclass">BVolume</span> object to represent
+the volume (device) identified by the argument.</p>
 <p><span class="hmethod">Unset()</span> uninitializes the <span class="hclass">BVolume</span>.</p>
 </section>
 <section id="operators">
 <h2>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">¶</a></h2>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BVolume</span><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BEntry</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">volume</span><span class="sig-paren">)</span></pre><p>In the expression</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BVolume</span> <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="entry.html#_CPPv46BEntry" title="BEntry"><span class="n">BEntry</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">volume</span><span class="sig-paren">)</span></pre><p>In the expression</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BVolume</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p><span class="hclass">BVolume</span> a is initialized to
-refer to the same volume as b. To gauge the
-success of the assignment, you should call
-<a class="reference internal" href="#_CPPv4NK7BVolume9InitCheckEv" title="BVolume::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> immediately
-afterwards. Assigning a <span class="hclass">BVolume</span> to itself is safe.</p>
-<p>Assigning from an uninitialized <span class="hclass">BVolume</span> is “successful”: The assigned-to
-<span class="hclass">BVolume</span> will also be uninitialized (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>).</p>
+<p><span class="hclass">BVolume</span> <span class="hparameter">a</span> is initialized to refer to the same volume
+as <span class="hparameter">b</span>. To gauge the success of the assignment, you should call
+<a class="reference internal" href="#_CPPv4NK7BVolume9InitCheckEv" title="BVolume::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> immediately afterwards.
+Assigning a <span class="hclass">BVolume</span> to itself is safe.</p>
+<p>Assigning from an uninitialized <span class="hclass">BVolume</span> is “successful”: The
+assigned-to <span class="hclass">BVolume</span> will also be uninitialized
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>).</p>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BVolume</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">volume</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">!=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BVolume</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">volume</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Two <span class="hclass">BVolume</span> objects are said to be equal if they refer to the same
-volume, or if they’re both uninitialized.</p>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">volume</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">!=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv47BVolume" title="BVolume"><span class="n">BVolume</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">volume</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Two <span class="hclass">BVolume</span> objects are said to be equal if they refer to the
+same volume, or if they’re both uninitialized.</p>
 </section>
 </section>
 
@@ -203,7 +205,7 @@ volume, or if they’re both uninitialized.</p>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="sym-link.html">BSymLink</a>
+        «&#160;&#160;<a href="the-node-monitor.html">The Node Monitor</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;

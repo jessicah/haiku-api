@@ -73,97 +73,90 @@
       <div class="content" role="main">
         
   <section id="bparametergroup">
-<h1>BParameterGroup<a class="headerlink" href="#bparametergroup" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv415BParameterGroup">BParameterGroup<a class="headerlink" href="#bparametergroup" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N15BParameterGroup15BParameterGroupEv">
 </section>
 <h3>
-BParameterGroup()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N15BParameterGroup15BParameterGroupEv" title="BParameterGroup::BParameterGroup"><span class="n">BParameterGroup</span></a><span class="p">::</span></span><span class="n">BParameterGroup</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Rather than directly creating a <span class="hclass">BParameterGroup</span> object via the new
-operator, you should call
-<a class="reference internal" href="parameter-web.html#_CPPv4N13BParameterWeb9MakeGroupEPKc" title="BParameterWeb::MakeGroup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BParameterWeb::MakeGroup()</span></code></a>
-to create a top-level group, or
-<a class="reference internal" href="#_CPPv4N15BParameterGroup9MakeGroupEPKc" title="BParameterGroup::MakeGroup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BParameterGroup::MakeGroup()</span></code></a>
-if you want to create a subgroup.</p>
+BParameterGroup()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N15BParameterGroup15BParameterGroupEv" title="BParameterGroup::BParameterGroup"><span class="n">BParameterGroup</span></a><span class="p">::</span></span><span class="n">BParameterGroup</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Rather than directly creating a <span class="hclass">BParameterGroup</span> object via the
+new operator, you should call <a class="reference internal" href="parameter-web.html#_CPPv4N13BParameterWeb9MakeGroupEPKc" title="BParameterWeb::MakeGroup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BParameterWeb::MakeGroup()</span></code></a> to
+create a top-level group, or <a class="reference internal" href="#_CPPv4N15BParameterGroup9MakeGroupEPKc" title="BParameterGroup::MakeGroup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BParameterGroup::MakeGroup()</span></code></a> if you
+want to create a subgroup.</p>
 <section id="_CPPv4N15BParameterGroupD0Ev">
 </section>
 <h3>
-~BParameterGroup()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BParameterGroup</span><span class="p">::</span></span><span class="n">~BParameterGroup</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>You don’t need to delete a <span class="hclass">BParameterGroup</span> object; the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code>
-that owns it will do this for you when the web is deleted.</p>
+~BParameterGroup()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv415BParameterGroup" title="BParameterGroup"><span class="n">BParameterGroup</span></a><span class="p">::</span></span><span class="n">~BParameterGroup</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>You don’t need to delete a <span class="hclass">BParameterGroup</span> object; the
+<a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code></a> that owns it will do this for you when the web
+is deleted.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N15BParameterGroup11CountGroupsEv">
 </section>
 <h3>
-CountGroups()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameterGroup</span><span class="p">::</span></span><span class="n">CountGroups</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the number of subgroups in the group. This count doesn’t
-subgroups nested within subgroups.</p>
+CountGroups()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv415BParameterGroup" title="BParameterGroup"><span class="n">BParameterGroup</span></a><span class="p">::</span></span><span class="n">CountGroups</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the number of subgroups in the group. This count doesn’t subgroups
+nested within subgroups.</p>
 <section id="_CPPv4N15BParameterGroup15CountParametersEv">
 </section>
 <h3>
-CountParameters()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameterGroup</span><span class="p">::</span></span><span class="n">CountParameters</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the number of
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code>s
-in the group. This count doesn’t include
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code>s
-in subgroups.</p>
+CountParameters()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv415BParameterGroup" title="BParameterGroup"><span class="n">BParameterGroup</span></a><span class="p">::</span></span><span class="n">CountParameters</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the number of <a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code></a>s in the group. This count
+doesn’t include <a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code></a>s in subgroups.</p>
 <section id="_CPPv4N15BParameterGroup7GroupAtE5int32">
 </section>
 <h3>
-GroupAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BParameterGroup</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameterGroup</span><span class="p">::</span></span><span class="n">GroupAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Returns the subgroup at the specified index within the <span class="hclass">BParameterGroup</span>.
-If the <span class="hparameter">index</span> is negative, or is greater than
-<a class="reference internal" href="#_CPPv4N15BParameterGroup11CountGroupsEv" title="BParameterGroup::CountGroups"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountGroups()</span></code></a>-1,
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> is returned.</p>
+GroupAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv415BParameterGroup" title="BParameterGroup"><span class="n">BParameterGroup</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv415BParameterGroup" title="BParameterGroup"><span class="n">BParameterGroup</span></a><span class="p">::</span></span><span class="n">GroupAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Returns the subgroup at the specified index within the
+<span class="hclass">BParameterGroup</span>. If the <span class="hparameter">index</span> is negative, or is
+greater than <a class="reference internal" href="#_CPPv4N15BParameterGroup11CountGroupsEv" title="BParameterGroup::CountGroups"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountGroups()</span></code></a>-1,
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> is returned.</p>
 <section id="_CPPv4N15BParameterGroup17MakeNullParameterE5int3210media_typePKcPKc">
 </section>
 <h3>
-MakeNullParameter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BNullParameter</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameterGroup</span><span class="p">::</span></span><span class="n">MakeNullParameter</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="n">media_type</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">kind</span><span class="sig-paren">)</span></pre><p>Creates a new
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNullParameter</span></code>
-within the group, with the internal ID specified by <span class="hparameter">id</span>, which
-should be unique within the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code>
-that owns the group.
-The type of media data that travels through the null parameter is
-indicated by <span class="hparameter">type</span>, which could be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_UNKNOWN_TYPE</span></code> or
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_NO_TYPE</span></code>. The parameter’s <span class="hparameter">name</span> will be displayed by client
-applications that display information about the node, and the parameter
-has the specified <span class="hparameter">kind</span>.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+MakeNullParameter()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="null-parameter.html#_CPPv414BNullParameter" title="BNullParameter"><span class="n">BNullParameter</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv415BParameterGroup" title="BParameterGroup"><span class="n">BParameterGroup</span></a><span class="p">::</span></span><span class="n">MakeNullParameter</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="n">media_type</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">kind</span><span class="sig-paren">)</span></pre><p>Creates a new <a class="reference internal" href="null-parameter.html#_CPPv414BNullParameter" title="BNullParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNullParameter</span></code></a> within the group, with the
+internal ID specified by <span class="hparameter">id</span>, which should be unique within the
+<a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code></a> that owns the group.</p>
+<p>The type of media data that travels through the null parameter is
+indicated by <span class="hparameter">type</span>, which could be
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_UNKNOWN_TYPE</span></code> or
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_NO_TYPE</span></code>. The parameter’s <span class="hparameter">name</span> will be
+displayed by client applications that display information about the node,
+and the parameter has the specified <span class="hparameter">kind</span>.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WEB_PHYSICAL_INPUT</span></code></p></td>
-<td><p>The parameter represents a physical input (such as a microphone jack or line input jack).</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WEB_PHYSICAL_INPUT</span></code></p></td>
+<td><p>The parameter represents a physical input (such as a microphone jack or
+line input jack).</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WEB_PHYSICAL_OUTPUT</span></code></p></td>
-<td><p>The parameter represents a physical output (such as a line output jack or headphone jack).</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WEB_PHYSICAL_OUTPUT</span></code></p></td>
+<td><p>The parameter represents a physical output (such as a line output jack or
+headphone jack).</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WEB_LOGICAL_INPUT</span></code></p></td>
-<td><p>The parameter represents a point at which bits of data are transferred between the computer and the A/V input hardware.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WEB_LOGICAL_INPUT</span></code></p></td>
+<td><p>The parameter represents a point at which bits of data are transferred
+between the computer and the A/V input hardware.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WEB_LOGICAL_OUTPUT</span></code></p></td>
-<td><p>The parameter represents a point at which bits of data are transferred between the computer and the A/V output hardware.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WEB_LOGICAL_OUTPUT</span></code></p></td>
+<td><p>The parameter represents a point at which bits of data are transferred
+between the computer and the A/V output hardware.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WEB_ADC_CONVERTER</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WEB_ADC_CONVERTER</span></code></p></td>
 <td><p>The parameter represents an analog to digital converter.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WEB_DAC_CONVERTER</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WEB_DAC_CONVERTER</span></code></p></td>
 <td><p>The parameter represents a digital to analog converter.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WEB_BUFFER_INPUT</span></code></p></td>
-<td><p>The parameter represents a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">input()</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WEB_BUFFER_INPUT</span></code></p></td>
+<td><p>The parameter represents a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_input</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WEB_BUFFER_OUTPUT</span></code></p></td>
-<td><p>The parameter represents a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">output()</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WEB_BUFFER_OUTPUT</span></code></p></td>
+<td><p>The parameter represents a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_output</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_GENERIC</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GENERIC</span></code></p></td>
 <td><p>The parameter’s kind isn’t one of the above.</p></td>
 </tr>
 </tbody>
@@ -174,68 +167,65 @@ flow.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
 <p>If you create your own kind, you won’t break anything, but you should
-contact Be Developer Support for guidance, so we can standardize given
-your needs.</p>
+contact Be Developer Support for guidance, so we can standardize given your
+needs.</p>
 </div>
 <section id="_CPPv4N15BParameterGroup21MakeDiscreteParameterE5int3210media_typePKcPKc">
 </section>
 <h3>
-MakeDiscreteParameter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BDiscreteParameter</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameterGroup</span><span class="p">::</span></span><span class="n">MakeDiscreteParameter</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="n">media_type</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">kind</span><span class="sig-paren">)</span></pre><p>Creates a new
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDiscreteParameter</span></code>
-object and attaches it to the group. The
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDiscreteParameter</span></code>
-will have the specified internal <span class="hparameter">id</span>, which should be
-unique within the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code>
-that owns the group.
-The
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDiscreteParameter</span></code>
-will affect media data of the specified <span class="hparameter">type</span>, and
-will have the specified <span class="hparameter">name</span>.
-The kind of discrete parameter is specified by <span class="hparameter">kind</span>, and may be any of
-the following values:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+MakeDiscreteParameter()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="discrete-parameter.html#_CPPv418BDiscreteParameter" title="BDiscreteParameter"><span class="n">BDiscreteParameter</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv415BParameterGroup" title="BParameterGroup"><span class="n">BParameterGroup</span></a><span class="p">::</span></span><span class="n">MakeDiscreteParameter</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="n">media_type</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">kind</span><span class="sig-paren">)</span></pre><p>Creates a new <a class="reference internal" href="discrete-parameter.html#_CPPv418BDiscreteParameter" title="BDiscreteParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDiscreteParameter</span></code></a> object and attaches it to
+the group. The <a class="reference internal" href="discrete-parameter.html#_CPPv418BDiscreteParameter" title="BDiscreteParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDiscreteParameter</span></code></a> will have the specified
+internal <span class="hparameter">id</span>, which should be unique within the
+<a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code></a> that owns the group.</p>
+<p>The <a class="reference internal" href="discrete-parameter.html#_CPPv418BDiscreteParameter" title="BDiscreteParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDiscreteParameter</span></code></a> will affect media data of the
+specified <span class="hparameter">type</span>, and will have the specified <span class="hparameter">name</span>.</p>
+<p>The kind of discrete parameter is specified by <span class="hparameter">kind</span>, and may be
+any of the following values:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MUTE</span></code></p></td>
-<td><p>The parameter represents a mute control; a value of 0 passes data through unchanged, while a value of 1 mutes the data.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MUTE</span></code></p></td>
+<td><p>The parameter represents a mute control; a value of 0 passes data through
+unchanged, while a value of 1 mutes the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ENABLE</span></code></p></td>
-<td><p>The parameter represents an enable toggle; a value of 0 disables the function while a value of 1 enables it.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENABLE</span></code></p></td>
+<td><p>The parameter represents an enable toggle; a value of 0 disables the
+function while a value of 1 enables it.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_MUX</span></code></p></td>
-<td><p>The parameter represents an input MUX. The value specifies which input should pass through.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INPUT_MUX</span></code></p></td>
+<td><p>The parameter represents an input MUX. The value specifies which input
+should pass through.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OUTPUT_MUX</span></code></p></td>
-<td><p>The parameter represents an output MUX; the value specifies which output should receive the incoming data.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OUTPUT_MUX</span></code></p></td>
+<td><p>The parameter represents an output MUX; the value specifies which output
+should receive the incoming data.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TUNER_CHANNEL</span></code></p></td>
-<td><p>The parameter represents a channel tuner (like a TV channel); the value indicates the channel number.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TUNER_CHANNEL</span></code></p></td>
+<td><p>The parameter represents a channel tuner (like a TV channel); the value
+indicates the channel number.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TRACK</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TRACK</span></code></p></td>
 <td><p>The parameter’s value indicates a track number.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_RECSTATE</span></code></p></td>
-<td><p>The parameter indicates whether the node is silent (0), playing (1), or recording (2).</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RECSTATE</span></code></p></td>
+<td><p>The parameter indicates whether the node is silent (0), playing (1), or
+recording (2).</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SHUTTLE_MODE</span></code></p></td>
-<td><p>The parameter indicates performance mode: -1 for backwards, 0 for stop, 1 for playing, and 2 for paused.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SHUTTLE_MODE</span></code></p></td>
+<td><p>The parameter indicates performance mode: -1 for backwards, 0 for stop, 1
+for playing, and 2 for paused.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_RESOLUTION</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RESOLUTION</span></code></p></td>
 <td><p>The parameter indicates video or audio resolution.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_COLOR_SPACE</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_COLOR_SPACE</span></code></p></td>
 <td><p>The parameter indicates video color space.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FRAME_RATE</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FRAME_RATE</span></code></p></td>
 <td><p>The parameter represents a selector for picking frame rate.</p></td>
 </tr>
 </tbody>
@@ -243,97 +233,87 @@ the following values:</p>
 <section id="_CPPv4N15BParameterGroup23MakeContinuousParameterE5int3210media_typePKcPKcPKcfff">
 </section>
 <h3>
-MakeContinuousParameter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BContinuousParameter</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameterGroup</span><span class="p">::</span></span><span class="n">MakeContinuousParameter</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="n">media_type</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">kind</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">unit</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">minValue</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">maxValue</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">step</span><span class="sig-paren">)</span></pre><p>Creates a new
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BContinuousParameter</span></code>
-object and attaches it to the group. The
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BContinuousParameter</span></code>
-will have the specified internal <span class="hparameter">id</span>, which
-should be unique within the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code>
-that owns the group.
-The
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BContinuousParameter</span></code>
-will affect media data of the specified <span class="hparameter">type</span>,
-and will have the specified <span class="hparameter">name</span>.
-The kind of parameter the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BContinuousParameter</span></code>
-represents is specified by
-<span class="hparameter">kind</span>, and may be any of the following values:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+MakeContinuousParameter()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="continuous-parameter.html#_CPPv420BContinuousParameter" title="BContinuousParameter"><span class="n">BContinuousParameter</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv415BParameterGroup" title="BParameterGroup"><span class="n">BParameterGroup</span></a><span class="p">::</span></span><span class="n">MakeContinuousParameter</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="n">media_type</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">kind</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">unit</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">minValue</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">maxValue</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">step</span><span class="sig-paren">)</span></pre><p>Creates a new <a class="reference internal" href="continuous-parameter.html#_CPPv420BContinuousParameter" title="BContinuousParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BContinuousParameter</span></code></a> object and attaches it to
+the group. The <a class="reference internal" href="continuous-parameter.html#_CPPv420BContinuousParameter" title="BContinuousParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BContinuousParameter</span></code></a> will have the specified
+internal <span class="hparameter">id</span>, which should be unique within the
+<a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code></a> that owns the group.</p>
+<p>The <a class="reference internal" href="continuous-parameter.html#_CPPv420BContinuousParameter" title="BContinuousParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BContinuousParameter</span></code></a> will affect media data of the
+specified <span class="hparameter">type</span>, and will have the specified <span class="hparameter">name</span>.</p>
+<p>The kind of parameter the <a class="reference internal" href="continuous-parameter.html#_CPPv420BContinuousParameter" title="BContinuousParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BContinuousParameter</span></code></a> represents is
+specified by <span class="hparameter">kind</span>, and may be any of the following values:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MASTER_GAIN</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MASTER_GAIN</span></code></p></td>
 <td><p>The parameter represents the main volume control.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_GAIN</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GAIN</span></code></p></td>
 <td><p>The parameter represents a gain control.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BALANCE</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BALANCE</span></code></p></td>
 <td><p>The parameter represents a balance control.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FREQUENCY</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FREQUENCY</span></code></p></td>
 <td><p>The parameter represents a frequency, like a radio tuner.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_LEVEL</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LEVEL</span></code></p></td>
 <td><p>The parameter represents a level, as in EQ and effects.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SHUTTLE_SPEED</span></code></p></td>
-<td><p>The parameter represents playback speed. A value of 1.0 indicates normal speed; less than 1.0 is slower, greater than 1.0 is faster.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SHUTTLE_SPEED</span></code></p></td>
+<td><p>The parameter represents playback speed. A value of 1.0 indicates normal
+speed; less than 1.0 is slower, greater than 1.0 is faster.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CROSSFADE</span></code></p></td>
-<td><p>The parameter indicates a crossfade for mixing audio or video; 0 indicates that the the first of a pair of streams should be presented, 100 indicates that the other should be presented, and values in between indicate the degree of mixing that should occur.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CROSSFADE</span></code></p></td>
+<td><p>The parameter indicates a crossfade for mixing audio or video; 0 indicates
+that the the first of a pair of streams should be presented, 100 indicates
+that the other should be presented, and values in between indicate the
+degree of mixing that should occur.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_COMPRESSION</span></code></p></td>
-<td><p>The parameter indicates compression ratio; the value is 0 for no compression, 99 for 100:1 compression.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_COMPRESSION</span></code></p></td>
+<td><p>The parameter indicates compression ratio; the value is 0 for no
+compression, 99 for 100:1 compression.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_QUALITY</span></code></p></td>
-<td><p>The parameter indicates quality level; the value is 0 for maximum compression, 100 for no compression.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_QUALITY</span></code></p></td>
+<td><p>The parameter indicates quality level; the value is 0 for maximum
+compression, 100 for no compression.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_GOP_SIZE</span></code></p></td>
-<td><p>The parameter indicates a “group of pictures” such as how many frames apart a keyframe should be inserted into a video stream.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GOP_SIZE</span></code></p></td>
+<td><p>The parameter indicates a “group of pictures” such as how many frames
+apart a keyframe should be inserted into a video stream.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TUNER_CHANNEL</span></code></p></td>
-<td><p>The parameter represents a channel tuner (like a TV channel); the value indicates the channel number.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TUNER_CHANNEL</span></code></p></td>
+<td><p>The parameter represents a channel tuner (like a TV channel); the value
+indicates the channel number.</p></td>
 </tr>
 </tbody>
 </table>
-<p>The units of measurement are specified by
-<span class="hparameter">unit</span>, and the parameter’s value can range from
-<span class="hparameter">minValue</span> to <span class="hparameter">maxValue</span>,
+<p>The units of measurement are specified by <span class="hparameter">unit</span>, and the
+parameter’s value can range from <span class="hparameter">minValue</span> to <span class="hparameter">maxValue</span>,
 with a granularity of <span class="hparameter">step</span>.</p>
 <section id="_CPPv4N15BParameterGroup9MakeGroupEPKc">
 </section>
 <h3>
-MakeGroup()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BParameterGroup</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameterGroup</span><span class="p">::</span></span><span class="n">MakeGroup</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><p>Creates a sub-group with the specified <span class="hparameter">name</span></p>
+MakeGroup()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv415BParameterGroup" title="BParameterGroup"><span class="n">BParameterGroup</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv415BParameterGroup" title="BParameterGroup"><span class="n">BParameterGroup</span></a><span class="p">::</span></span><span class="n">MakeGroup</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><p>Creates a sub-group with the specified <span class="hparameter">name</span></p>
 <section id="_CPPv4N15BParameterGroup4NameEv">
 </section>
 <h3>
-Name()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameterGroup</span><span class="p">::</span></span><span class="n">Name</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the name of the <span class="hclass">BParameterGroup</span>. This name can be displayed to
-the user; for example, it could be used as the label of a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code>.</p>
+Name()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv415BParameterGroup" title="BParameterGroup"><span class="n">BParameterGroup</span></a><span class="p">::</span></span><span class="n">Name</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the name of the <span class="hclass">BParameterGroup</span>. This name can be
+displayed to the user; for example, it could be used as the label of a
+<a class="reference internal" href="../interface/tab.html#_CPPv44BTab" title="BTab"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code></a>.</p>
 <section id="_CPPv4N15BParameterGroup11ParameterAtE5int32">
 </section>
 <h3>
-ParameterAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BParameter</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameterGroup</span><span class="p">::</span></span><span class="n">ParameterAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Returns the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code>
-at the specified <span class="hparameter">index</span> within the <span class="hclass">BParameterGroup</span>.
-If the <span class="hparameter">index</span> is negative, or is greater than
-<a class="reference internal" href="#_CPPv4N15BParameterGroup15CountParametersEv" title="BParameterGroup::CountParameters"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountParameters()</span></code></a>-1,
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> is returned.</p>
+ParameterAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv415BParameterGroup" title="BParameterGroup"><span class="n">BParameterGroup</span></a><span class="p">::</span></span><span class="n">ParameterAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Returns the <a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code></a> at the specified <span class="hparameter">index</span>
+within the <span class="hclass">BParameterGroup</span>. If the <span class="hparameter">index</span> is negative,
+or is greater than <a class="reference internal" href="#_CPPv4N15BParameterGroup15CountParametersEv" title="BParameterGroup::CountParameters"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountParameters()</span></code></a>-1, <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> is returned.</p>
 <section id="_CPPv4N15BParameterGroup3WebEv">
 </section>
 <h3>
-Web()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BParameterWeb</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameterGroup</span><span class="p">::</span></span><span class="n">Web</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code>
-that owns the group.</p>
+Web()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><span class="n">BParameterWeb</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv415BParameterGroup" title="BParameterGroup"><span class="n">BParameterGroup</span></a><span class="p">::</span></span><span class="n">Web</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the <a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code></a> that owns the group.</p>
 </section>
 </section>
 

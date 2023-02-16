@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BSoundPlayer &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BTimeCode" href="time-code.html" />
+    <link rel="prev" title="BSmallBuffer" href="small-buffer.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BSoundPlayer</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="small-buffer.html">BSmallBuffer</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="time-code.html">BTimeCode</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BSoundPlayer</a><ul>
+<li><a class="reference internal" href="#using-bsoundplayer">Using BSoundPlayer</a><ul>
+<li><a class="reference internal" href="#playing-sound">Playing Sound</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bsoundplayer">
+<h1 id="CPPv412BSoundPlayer">BSoundPlayer<a class="headerlink" href="#bsoundplayer" title="Permalink to this heading">¶</a></h1>
+<p>The <a class="reference internal" href="../../kits/media/sound-player.html#_CPPv412BSoundPlayer" title="BSoundPlayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSoundPlayer</span></code></a> class plays sound by directly filling audio
+buffers with data provided by a hook function you specify. A single
+<a class="reference internal" href="../../kits/media/sound-player.html#_CPPv412BSoundPlayer" title="BSoundPlayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSoundPlayer</span></code></a> can play multiple sounds at a time.</p>
+<p><a class="reference internal" href="../../kits/media/sound-player.html#_CPPv412BSoundPlayer" title="BSoundPlayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSoundPlayer</span></code></a> takes care of all the nitty-gritty details of
+instantiating the necessary sound player node and managing the time source.
+All you have to do is start up a <a class="reference internal" href="../../kits/media/sound-player.html#_CPPv412BSoundPlayer" title="BSoundPlayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSoundPlayer</span></code></a> and feed it
+sounds to play.</p>
+<p>You need to implement a hook function that will be called for each audio
+buffer passed through the <a class="reference internal" href="../../kits/media/sound-player.html#_CPPv412BSoundPlayer" title="BSoundPlayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSoundPlayer</span></code></a>’s playback node.</p>
+<section id="using-bsoundplayer">
+<h2>Using BSoundPlayer<a class="headerlink" href="#using-bsoundplayer" title="Permalink to this heading">¶</a></h2>
+<p>Once you’ve instantiated a <a class="reference internal" href="../../kits/media/sound-player.html#_CPPv412BSoundPlayer" title="BSoundPlayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSoundPlayer</span></code></a> object, you need to
+start it up before you can actually play sounds with it. This instantiates
+the sound player node, attaches it to an appropriate time source, and makes
+sure the time source is running. This is done by calling the
+<a class="reference internal" href="../../kits/media/sound-player.html#_CPPv4N12BSoundPlayer5StartEv" title="BSoundPlayer::Start"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Start()</span></code></a> function.</p>
+<p>When you’re done using the <a class="reference internal" href="../../kits/media/sound-player.html#_CPPv412BSoundPlayer" title="BSoundPlayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSoundPlayer</span></code></a>, you can delete it if
+you don’t plan to use it again, or, if you want to keep it around for
+reuse, you can just <a class="reference internal" href="../../kits/media/sound-player.html#_CPPv4N12BSoundPlayer4StopEbb" title="BSoundPlayer::Stop"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Stop()</span></code></a> it. This
+deletes the sound node and cleans up the sounds.</p>
+<p>You can find out the current time of the time source to which sounds are
+being synchronized by calling the <a class="reference internal" href="../../kits/media/sound-player.html#_CPPv4N12BSoundPlayer11CurrentTimeEv" title="BSoundPlayer::CurrentTime"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CurrentTime()</span></code></a> function.</p>
+<p>By default, the audio format used by a <a class="reference internal" href="../../kits/media/sound-player.html#_CPPv412BSoundPlayer" title="BSoundPlayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSoundPlayer</span></code></a> is
+<span class="hclass">BSoundPlayer</span>::<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_AUDIO_FLOAT</span></code>, which is to say
+that the audio is in floating-point format, where each sample ranges from
+-1.0 to 1.0. The Media Kit uses floating-point audio internally, so using
+floating-point audio whenever you can will improve your application’s
+performance by cutting down on format conversions. However, if you want to
+use another format, you may do so by specifying a
+<span class="xref std std-ref">media_raw_audio_format</span> when you instantiate the
+<a class="reference internal" href="../../kits/media/sound-player.html#_CPPv412BSoundPlayer" title="BSoundPlayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSoundPlayer</span></code></a> object.</p>
+<p>Sound streams may only contain 1 or 2 channels (either mono or stereo, in
+other words). There’s no support yet for multichannel sound.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="../../kits/media/sound-player.html#_CPPv412BSoundPlayer" title="BSoundPlayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSoundPlayer</span></code></a> can only play sounds in the native byte order.</p>
+</div>
+<p>The audio mixer performs best if you don’t specify a particular buffer
+size.</p>
+<section id="playing-sound">
+<h3>Playing Sound<a class="headerlink" href="#playing-sound" title="Permalink to this heading">¶</a></h3>
+<p>When you specify a play buffer handler function, either when instantiating
+the <a class="reference internal" href="../../kits/media/sound-player.html#_CPPv412BSoundPlayer" title="BSoundPlayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSoundPlayer</span></code></a> object or by calling
+<a class="reference internal" href="../../kits/media/sound-player.html#_CPPv4N12BSoundPlayer12SetCallbacksEPFvPvPv6size_tRK22media_raw_audio_formatEPFvPv25sound_player_notificationEPv" title="BSoundPlayer::SetCallbacks"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetCallbacks()</span></code></a> or
+<a class="reference internal" href="../../kits/media/sound-player.html#_CPPv4N12BSoundPlayer15SetBufferPlayerEPFvPvPv6size_tRK22media_raw_audio_formatE" title="BSoundPlayer::SetBufferPlayer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetBufferPlayer()</span></code></a>, that
+function will be called once for each buffer that passes through the
+<a class="reference internal" href="../../kits/media/sound-player.html#_CPPv412BSoundPlayer" title="BSoundPlayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSoundPlayer</span></code></a>’s sound playing node. Your play buffer handler
+can then fill the buffer with whatever data you wish.</p>
+<p>The following code sets up a <a class="reference internal" href="../../kits/media/sound-player.html#_CPPv412BSoundPlayer" title="BSoundPlayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSoundPlayer</span></code></a> that will play a
+triangle wave.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="n">cookie_record</span> <span class="p">{</span>
+   <span class="nb">float</span> <span class="n">value</span><span class="p">;</span>
+   <span class="nb">float</span> <span class="n">direction</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">cookie_record</span><span class="p">;</span>
+
+<span class="o">...</span>
+<span class="n">cookie_record</span> <span class="n">cookie</span><span class="p">;</span>
+
+<span class="n">cookie</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+<span class="n">cookie</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+
+<span class="n">BSoundPlayer</span> <span class="n">player</span><span class="p">(</span><span class="s2">&quot;wave_player&quot;</span><span class="p">,</span> <span class="n">BufferProc</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cookie</span><span class="p">);</span>
+<span class="n">player</span><span class="o">.</span><span class="n">Start</span><span class="p">();</span>
+<span class="n">player</span><span class="o">.</span><span class="n">SetHasData</span><span class="p">(</span><span class="n">true</span><span class="p">);</span>
+<span class="o">...</span>
+<span class="n">player</span><span class="o">.</span><span class="n">Stop</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>This code establishes a record, cookie, that contains information the play
+buffer function will need to track, and creates a <a class="reference internal" href="../../kits/media/sound-player.html#_CPPv412BSoundPlayer" title="BSoundPlayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSoundPlayer</span></code></a>
+named “wave_player” that will use a function called BufferProc() to play
+sound, and uses the cookie we’ve created.</p>
+<p>Then the player is started, and <a class="reference internal" href="../../kits/media/sound-player.html#_CPPv4N12BSoundPlayer10SetHasDataEb" title="BSoundPlayer::SetHasData"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetHasData()</span></code></a> is called to let the sound player node know
+that there’s data to be played. This will cause the play buffer function to
+start being called.</p>
+<p>Once playback is over, the <a class="reference internal" href="../../kits/media/sound-player.html#_CPPv4N12BSoundPlayer4StopEbb" title="BSoundPlayer::Stop"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Stop()</span></code></a>
+function is called to stop playback.</p>
+<p>The BufferProc() function looks like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">BufferProc</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">theCookie</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">media_raw_audio_format</span><span class="w"> </span><span class="o">&amp;</span><span class="n">format</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">buffer</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">size_t</span><span class="w"> </span><span class="n">float_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">uint32</span><span class="w"> </span><span class="n">channel_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">format</span><span class="p">.</span><span class="n">channel_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">cookie_record</span><span class="w"> </span><span class="o">*</span><span class="n">cookie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">cookie_record</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">theCookie</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="c1">// We&#39;re going to be cheap and only work for floating-point audio</span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">format</span><span class="p">.</span><span class="n">format</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">media_raw_audio_format</span><span class="o">::</span><span class="n">B_AUDIO_FLOAT</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">   </span><span class="c1">// Now fill the buffer with sound!</span>
+
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">float_size</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">+=</span><span class="n">channel_count</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">&lt;</span><span class="n">channel_count</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="n">buf</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cookie</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">cookie</span><span class="o">-&gt;</span><span class="n">direction</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">cookie</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="n">cookie</span><span class="o">-&gt;</span><span class="n">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">-1.0</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">cookie</span><span class="o">-&gt;</span><span class="n">direction</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">-1.0</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">cookie</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">-1.0</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="n">cookie</span><span class="o">-&gt;</span><span class="n">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="n">cookie</span><span class="o">-&gt;</span><span class="n">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">cookie</span><span class="o">-&gt;</span><span class="n">direction</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">64.0</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This example play buffer function generates a triangle wave, ramping the
+wave up and down from 1.0 to -1.0 and back, over and over again, 1/64th at
+a time. The next value to store in the buffer and the direction in which
+the value is changing are kept in the cookie’s fields.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The buffers your play buffer function receives are empty. Do with them as
+you please (or do nothing at all).</p>
+</div>
+</section>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="small-buffer.html">BSmallBuffer</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="time-code.html">BTimeCode</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

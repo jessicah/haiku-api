@@ -75,61 +75,55 @@
       <div class="content" role="main">
         
   <section id="binputdevice">
-<h1>BInputDevice<a class="headerlink" href="#binputdevice" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv412BInputDevice">BInputDevice<a class="headerlink" href="#binputdevice" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N12BInputDevice12BInputDeviceEv">
 </section>
 <h3>
-BInputDevice()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BInputDevice12BInputDeviceEv" title="BInputDevice::BInputDevice"><span class="n">BInputDevice</span></a><span class="p">::</span></span><span class="n">BInputDevice</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The constructor is private. Use
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">input()</span></code> or
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">input()</span></code>
-to retrieve a <span class="hclass">BInputDevice</span> instance.</p>
+BInputDevice()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BInputDevice12BInputDeviceEv" title="BInputDevice::BInputDevice"><span class="n">BInputDevice</span></a><span class="p">::</span></span><span class="n">BInputDevice</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The constructor is private. Use <span class="xref std std-ref">find_input_device()</span> or
+<span class="xref std std-ref">get_input_devices()</span> to retrieve a <span class="hclass">BInputDevice</span> instance.</p>
 <section id="_CPPv4N12BInputDevice12BInputDeviceEv">
 </section>
 <h3>
-BInputDevice()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BInputDevice12BInputDeviceEv" title="BInputDevice::BInputDevice"><span class="n">BInputDevice</span></a><span class="p">::</span></span><span class="n">BInputDevice</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Deletes the <span class="hclass">BInputDevice</span> object. Deleting this object doesn’t affect the
-device that it represents.</p>
+BInputDevice()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BInputDevice12BInputDeviceEv" title="BInputDevice::BInputDevice"><span class="n">BInputDevice</span></a><span class="p">::</span></span><span class="n">BInputDevice</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Deletes the <span class="hclass">BInputDevice</span> object. Deleting this object doesn’t
+affect the device that it represents.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N12BInputDevice7ControlE6uint32P8BMessage">
 </section>
 <h3>
-Control()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputDevice</span><span class="p">::</span></span><span class="n">Control</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">code</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputDevice</span><span class="p">::</span></span><span class="n">Control</span><span class="sig-paren">(</span><span class="n">input_device_type</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">code</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Sends an input device control message to the object’s input device or, in
+Control()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BInputDevice" title="BInputDevice"><span class="n">BInputDevice</span></a><span class="p">::</span></span><span class="n">Control</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">code</span>, <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BInputDevice" title="BInputDevice"><span class="n">BInputDevice</span></a><span class="p">::</span></span><span class="n">Control</span><span class="sig-paren">(</span><span class="n">input_device_type</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">code</span>, <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><p>Sends an input device control message to the object’s input device or, in
 the static version, to all devices of the given type, where, type can be
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_POINTING_DEVICE</span></code>, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_KEYBOARD_DEVICE</span></code>,
-or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_UNDEFINED_DEVICE</span></code>. Input
-devices receive these messages in their
-<span class="hmethod">Control()</span> function.
-The control message is described by the <span class="hparameter">code</span> value; it can be
-supplemented or refined by <span class="hparameter">message</span>.
-For example, <span class="hparameter">code</span> can indicate that a
-certain parameter should be set, and message can supply the requested
-value.</p>
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_POINTING_DEVICE</span></code>, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEYBOARD_DEVICE</span></code>,
+or <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_UNDEFINED_DEVICE</span></code>. Input devices receive these
+messages in their <span class="hmethod">Control()</span> function.</p>
+<p>The control message is described by the <span class="hparameter">code</span> value; it can be
+supplemented or refined by <span class="hparameter">message</span>. For example, <span class="hparameter">code</span>
+can indicate that a certain parameter should be set, and message can supply
+the requested value.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
 <p>In general, you only use this function to send custom messages to a
 (custom) device. You never use it to send messages to a Be-defined input
 device since the messages that these devices respond to are covered by
-Be-defined functions. See
-“Input Device Control Messages”
-for a list of
-the messages that the Be-defined devices respond to, the functions that
-cover them, and the German women who love them.</p>
+Be-defined functions. See “Input Device Control Messages” for a list of the
+messages that the Be-defined devices respond to, the functions that cover
+them, and the German women who love them.</p>
 </div>
 <section id="_CPPv4NK12BInputDevice4NameEv">
 </section>
 <section id="_CPPv4NK12BInputDevice4TypeEv">
 </section>
 <h3>
-Name(), Type()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BInputDevice</span><span class="p">::</span></span><span class="n">Name</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">input_device_type</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputDevice</span><span class="p">::</span></span><span class="n">Type</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Name()</span> returns a pointer to the input device’s name. The name,
+Name(), Type()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BInputDevice" title="BInputDevice"><span class="n">BInputDevice</span></a><span class="p">::</span></span><span class="n">Name</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">input_device_type</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BInputDevice" title="BInputDevice"><span class="n">BInputDevice</span></a><span class="p">::</span></span><span class="n">Type</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Name()</span> returns a pointer to the input device’s name. The name,
 which is set when the device is registered, is meant to be human-readable
 and appropriate for use as the label of a UI element (such as a menu
-field). Device names are not unique.
-<span class="hmethod">Type()</span> returns the input device’s type, one of
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_POINTING_DEVICE</span></code>,
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_KEYBOARD_DEVICE</span></code>, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_UNDEFINED_DEVICE</span></code>.</p>
+field). Device names are not unique.</p>
+<p><span class="hmethod">Type()</span> returns the input device’s type, one of
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_POINTING_DEVICE</span></code>, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEYBOARD_DEVICE</span></code>,
+and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_UNDEFINED_DEVICE</span></code>.</p>
 <section id="_CPPv4N12BInputDevice5StartEv">
 </section>
 <section id="_CPPv4NK12BInputDevice9IsRunningEv">
@@ -137,39 +131,33 @@ field). Device names are not unique.
 <section id="_CPPv4N12BInputDevice4StopE17input_device_type">
 </section>
 <h3>
-Start(), IsRunning(), Stop()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputDevice</span><span class="p">::</span></span><span class="n">Start</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="k">static</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputDevice</span><span class="p">::</span></span><span class="n">Start</span><span class="sig-paren">(</span><span class="n">input_device_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputDevice</span><span class="p">::</span></span><span class="n">IsRunning</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputDevice</span><span class="p">::</span></span><span class="n">Stop</span><span class="sig-paren">(</span><span class="n">input_device_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Start()</span> tells the object’s input device to
-start generating events; <span class="hmethod">Stop()</span> tells it to stop
-generating events. <span class="hmethod">IsRunning()</span> returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the device is currently generating events
-(i.e. if it has been started and hasn’t been stopped).
-The static versions of <span class="hmethod">Start()</span> and
-<span class="hmethod">Stop()</span> start and stop all devices of the given
-type.</p>
+Start(), IsRunning(), Stop()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BInputDevice" title="BInputDevice"><span class="n">BInputDevice</span></a><span class="p">::</span></span><span class="n">Start</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="k">static</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BInputDevice" title="BInputDevice"><span class="n">BInputDevice</span></a><span class="p">::</span></span><span class="n">Start</span><span class="sig-paren">(</span><span class="n">input_device_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BInputDevice" title="BInputDevice"><span class="n">BInputDevice</span></a><span class="p">::</span></span><span class="n">IsRunning</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BInputDevice" title="BInputDevice"><span class="n">BInputDevice</span></a><span class="p">::</span></span><span class="n">Stop</span><span class="sig-paren">(</span><span class="n">input_device_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Start()</span> tells the object’s input device to start generating
+events; <span class="hmethod">Stop()</span> tells it to stop generating events.
+<span class="hmethod">IsRunning()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the device is currently
+generating events (i.e. if it has been started and hasn’t been stopped).</p>
+<p>The static versions of <span class="hmethod">Start()</span> and <span class="hmethod">Stop()</span> start and
+stop all devices of the given type.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
 <p>The Input Server tells a device to start and stop without asking the
 device if the operation was successful. This means, for example, that
-<span class="hmethod">Start()</span> can return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code> (and
-<span class="hmethod">IsRunning()</span> can return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>)
-even if the device isn’t really running. For the Be-provided devices this
-isn’t an issue—starting and stopping always succeeds (as long as the
-device exists).</p>
+<span class="hmethod">Start()</span> can return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> (and
+<span class="hmethod">IsRunning()</span> can return <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>) even if the device
+isn’t really running. For the Be-provided devices this isn’t an
+issue—starting and stopping always succeeds (as long as the device exists).</p>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
-<td><p>The device is now started (<span class="hmethod">Start()</span>) or stopped (<span class="hmethod">Stop()</span>)—even if the device was already started or stopped.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The device is now started (<span class="hmethod">Start()</span>) or stopped
+(<span class="hmethod">Stop()</span>)—even if the device was already started or stopped.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
 <td><p>The device couldn’t be found.</p></td>
 </tr>
 </tbody>
@@ -182,71 +170,75 @@ device exists).</p>
 <section id="_CPPv4N12BInputDevice17get_input_devicesEP5BList">
 </section>
 <h3>
-find_input_device(), get_input_devices()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BInputDevice</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BInputDevice</span><span class="p">::</span></span><span class="n">find_input_device</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputDevice</span><span class="p">::</span></span><span class="n">get_input_devices</span><span class="sig-paren">(</span><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">list</span><span class="sig-paren">)</span></pre><p>These functions get <span class="hclass">BInputDevice</span> objects for you.
-find_input_device() creates and hands
-you a <span class="hclass">BInputDevice</span> object that
-represents the Input Server device registered as name. If name is
-invalid, the function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. The caller is responsible for
-deleting the object. Note that find_input_device() returns a new
-<span class="hclass">BInputDevice</span> object for each (valid) call, even if you ask for the same
-device more than once.
-get_input_devices() creates a new BInputDevice object for each registered
+find_input_device(), get_input_devices()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv412BInputDevice" title="BInputDevice"><span class="n">BInputDevice</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BInputDevice" title="BInputDevice"><span class="n">BInputDevice</span></a><span class="p">::</span></span><span class="n">find_input_device</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BInputDevice" title="BInputDevice"><span class="n">BInputDevice</span></a><span class="p">::</span></span><span class="n">get_input_devices</span><span class="sig-paren">(</span><span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">list</span><span class="sig-paren">)</span></pre><p>These functions get <span class="hclass">BInputDevice</span> objects for you.</p>
+<p>find_input_device() creates and hands you a <span class="hclass">BInputDevice</span> object
+that represents the Input Server device registered as name. If name is
+invalid, the function returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>. The caller is responsible
+for deleting the object. Note that find_input_device() returns a new
+<span class="hclass">BInputDevice</span> object for each (valid) call, even if you ask for
+the same device more than once.</p>
+<p>get_input_devices() creates a new BInputDevice object for each registered
 device, and puts the objects in your list argument. list must already be
 allocated, and is automatically emptied by the function (even if the
 function fails). If the function succeeds, the caller owns the contents,
 and needs to delete the items in the list:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;interface/Input.h&gt;</span>
-<span class="c1">#include &lt;support/List.h&gt;</span>
-<span class="o">...</span>
-<span class="n">static</span> <span class="nb">bool</span> <span class="n">del_InputDevice</span><span class="p">(</span> <span class="n">void</span> <span class="o">*</span><span class="n">ptr</span> <span class="p">)</span>
-<span class="p">{</span>
-   <span class="k">if</span><span class="p">(</span> <span class="n">ptr</span> <span class="p">)</span> <span class="p">{</span>
-      <span class="n">BInputDevice</span> <span class="o">*</span><span class="n">dev</span> <span class="o">=</span> <span class="p">(</span><span class="n">BInputDevice</span> <span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">;</span>
-      <span class="n">delete</span> <span class="n">dev</span><span class="p">;</span>
-      <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
-   <span class="p">}</span>
-   <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="o">...</span>
-<span class="n">void</span> <span class="n">SomeFunc</span><span class="p">(</span> <span class="n">void</span> <span class="p">)</span>
-<span class="p">{</span>
-   <span class="o">//</span> <span class="n">Get</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="nb">all</span> <span class="nb">input</span> <span class="n">devices</span><span class="o">.</span>
-   <span class="n">BList</span> <span class="n">list_o_devices</span><span class="p">;</span>
-   <span class="n">status_t</span> <span class="n">retval</span> <span class="o">=</span> <span class="n">get_input_devices</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">list_o_devices</span> <span class="p">);</span>
-   <span class="k">if</span><span class="p">(</span> <span class="n">retval</span> <span class="o">!=</span> <span class="n">B_OK</span> <span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-   <span class="o">//</span> <span class="n">Do</span> <span class="n">something</span> <span class="k">with</span> <span class="n">the</span> <span class="nb">input</span> <span class="n">devices</span><span class="o">.</span>
-   <span class="o">...</span>
-   <span class="o">//</span> <span class="n">Dispose</span> <span class="n">of</span> <span class="n">the</span> <span class="n">device</span> <span class="nb">list</span><span class="o">.</span>
-   <span class="n">list_o_devices</span><span class="o">.</span><span class="n">DoForEach</span><span class="p">(</span> <span class="n">del_InputDevice</span> <span class="p">);</span>
-   <span class="n">list_o_devices</span><span class="o">.</span><span class="n">MakeEmpty</span><span class="p">();</span>
-<span class="p">}</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;interface/Input.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;support/List.h&gt;</span><span class="cp"></span>
+
+<span class="p">...</span><span class="w"></span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">del_InputDevice</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">BInputDevice</span><span class="w"> </span><span class="o">*</span><span class="n">dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BInputDevice</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">delete</span><span class="w"> </span><span class="n">dev</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="p">...</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">SomeFunc</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="c1">// Get a list of all input devices.</span>
+<span class="w">   </span><span class="n">BList</span><span class="w"> </span><span class="n">list_o_devices</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">status_t</span><span class="w"> </span><span class="n">retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_input_devices</span><span class="p">(</span><span class="w"> </span><span class="o">&amp;</span><span class="n">list_o_devices</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">retval</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">B_OK</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="c1">// Do something with the input devices.</span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
+
+<span class="w">   </span><span class="c1">// Dispose of the device list.</span>
+<span class="w">   </span><span class="n">list_o_devices</span><span class="p">.</span><span class="n">DoForEach</span><span class="p">(</span><span class="w"> </span><span class="n">del_InputDevice</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">list_o_devices</span><span class="p">.</span><span class="n">MakeEmpty</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>get_input_devices() returns:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>Success.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
 <td><p>General failure.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_PORT_ID</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_PORT_ID</span></code>.</p></td>
 <td><p>Couldn’t talk to the Input Server.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TIMED_OUT</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TIMED_OUT</span></code>.</p></td>
 <td><p>The Input Server is no longer on speaking terms with your application.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WOULD_BLOCK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WOULD_BLOCK</span></code>.</p></td>
 <td><p>More trouble communicating with the Input Server.</p></td>
 </tr>
 </tbody>
@@ -254,11 +246,10 @@ and needs to delete the items in the list:</p>
 <section id="_CPPv4N12BInputDevice19watch_input_devicesE10BMessengerb">
 </section>
 <h3>
-watch_input_devices()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputDevice</span><span class="p">::</span></span><span class="n">watch_input_devices</span><span class="sig-paren">(</span><span class="n">BMessenger</span><span class="w"> </span><span class="n sig-param">target</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">start</span><span class="sig-paren">)</span></pre><p>Tells the Input Server to start or stop watching (as
-<span class="hparameter">start</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> or
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>) for changes to the set of registered devices.
-Change notifications are sent to <span class="hparameter">target</span>. The set of messages that the
-Server may send are listed in Input Server Messages.</p>
+watch_input_devices()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BInputDevice" title="BInputDevice"><span class="n">BInputDevice</span></a><span class="p">::</span></span><span class="n">watch_input_devices</span><span class="sig-paren">(</span><a class="reference internal" href="../application/messenger.html#_CPPv410BMessenger" title="BMessenger"><span class="n">BMessenger</span></a><span class="w"> </span><span class="n sig-param">target</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">start</span><span class="sig-paren">)</span></pre><p>Tells the Input Server to start or stop watching (as <span class="hparameter">start</span> is
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> or <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>) for changes to the set of registered
+devices. Change notifications are sent to <span class="hparameter">target</span>. The set of
+messages that the Server may send are listed in Input Server Messages.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
 <p>watch_input_devices() is not currently implemented.</p>

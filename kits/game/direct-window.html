@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="BFileGameSound" href="file-game-sound.html" />
-    <link rel="prev" title="BSerialPort" href="../device/serial-port.html" /> 
+    <link rel="prev" title="Defined Types" href="defined-types.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
           <span>API Documentation</span></a></h1>
@@ -28,7 +28,7 @@
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="../device/serial-port.html">BSerialPort</a>
+        «&#160;&#160;<a href="defined-types.html">Defined Types</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -71,55 +71,48 @@
       <div class="content" role="main">
         
   <section id="bdirectwindow">
-<h1>BDirectWindow<a class="headerlink" href="#bdirectwindow" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv413BDirectWindow">BDirectWindow<a class="headerlink" href="#bdirectwindow" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N13BDirectWindow13BDirectWindowE5BRectPKc11window_type6uint326uint32">
 </section>
 <h3>
-BDirectWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BDirectWindow13BDirectWindowE5BRectPKc11window_type6uint326uint32" title="BDirectWindow::BDirectWindow"><span class="n">BDirectWindow</span></a><span class="p">::</span></span><span class="n">BDirectWindow</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">title</span>, <span class="n">window_type</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">workspace</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_CURRENT_WORKSPACE</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BDirectWindow13BDirectWindowE5BRectPKc11window_look11window_feel6uint326uint32" title="BDirectWindow::BDirectWindow"><span class="n">BDirectWindow</span></a><span class="p">::</span></span><span class="n">BDirectWindow</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">title</span>, <span class="n">window_look</span><span class="w"> </span><span class="n sig-param">look</span>, <span class="n">window_feel</span><span class="w"> </span><span class="n sig-param">feel</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">workspace</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_CURRENT_WORKSPACE</span><span class="sig-paren">)</span></pre><p>Creates and returns a new <span class="hclass">BDirectWindow</span> object. This is functionally
-equivalent to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>, except the resulting <span class="hclass">BDirectWindow</span>
-supports direct window operations.
-You will probably want to set up a flag to keep track of whether or not
-the direct window’s connection to the screen is viable. In the
-constructor, you should set this flag (let’s call it fConnectionDisabled
-) to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, which indicates to both
-<a class="reference internal" href="#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a>
-and your drawing
-thread that the window is not in the process of being deconstructed. The
-destructor would then set this flag to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> before terminating the
-connection to avoid the unlikely possibility of the connection trying to
-restart while the <span class="hclass">BDirectWindow</span> is being dismantled.
-You’ll also need other flags or semaphores (or benaphores) to manage the
-interaction between the <span class="hclass">BDirectWindow</span> and your drawing thread.
-See the sample code in
-“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>”
-for an example.</p>
+BDirectWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BDirectWindow13BDirectWindowE5BRectPKc11window_type6uint326uint32" title="BDirectWindow::BDirectWindow"><span class="n">BDirectWindow</span></a><span class="p">::</span></span><span class="n">BDirectWindow</span><span class="sig-paren">(</span><a class="reference internal" href="../interface/rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">title</span>, <span class="n">window_type</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">workspace</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_CURRENT_WORKSPACE</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N13BDirectWindow13BDirectWindowE5BRectPKc11window_look11window_feel6uint326uint32" title="BDirectWindow::BDirectWindow"><span class="n">BDirectWindow</span></a><span class="p">::</span></span><span class="n">BDirectWindow</span><span class="sig-paren">(</span><a class="reference internal" href="../interface/rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">title</span>, <span class="n">window_look</span><span class="w"> </span><span class="n sig-param">look</span>, <span class="n">window_feel</span><span class="w"> </span><span class="n sig-param">feel</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">workspace</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_CURRENT_WORKSPACE</span><span class="sig-paren">)</span></pre><p>Creates and returns a new <span class="hclass">BDirectWindow</span> object. This is
+functionally equivalent to the <a class="reference internal" href="../interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> <a class="reference internal" href="../interface/window.html#_CPPv4N7BWindow7BWindowE5BRectPKc11window_type6uint326uint32" title="BWindow::BWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a>, except the resulting <span class="hclass">BDirectWindow</span>
+supports direct window operations.</p>
+<p>You will probably want to set up a flag to keep track of whether or not
+the direct window’s connection to the screen is viable. In the constructor,
+you should set this flag (let’s call it <span class="hparameter">fConnectionDisabled</span> ) to
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>, which indicates to both <a class="reference internal" href="#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> and your drawing thread that the window
+is not in the process of being deconstructed. The destructor would then set
+this flag to <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> before terminating the connection to avoid
+the unlikely possibility of the connection trying to restart while the
+<span class="hclass">BDirectWindow</span> is being dismantled.</p>
+<p>You’ll also need other flags or semaphores (or benaphores) to manage the
+interaction between the <span class="hclass">BDirectWindow</span> and your drawing thread.</p>
+<p>See the sample code in “<span class="xref std std-ref">Using a Direct Window</span>” for an example.</p>
 <section id="_CPPv4N13BDirectWindowD0Ev">
 </section>
 <h3>
-~BDirectWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BDirectWindow</span><span class="p">::</span></span><span class="n">~BDirectWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees all memory the <span class="hclass">BDirectWindow</span> object allocated for itself. You
-should never delete a <span class="hclass">BDirectWindow</span> object; call its
-<a class="reference internal" href="../interface/window.html#_CPPv4N7BWindow4QuitEv" title="BWindow::Quit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Quit()</span></code></a>
-function instead (inherited from <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>).
-Your <span class="hclass">BDirectWindow</span> destructor should begin by setting the
-fConnectionDisabled flag to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, to prevent
+~BDirectWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BDirectWindow" title="BDirectWindow"><span class="n">BDirectWindow</span></a><span class="p">::</span></span><span class="n">~BDirectWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees all memory the <span class="hclass">BDirectWindow</span> object allocated for itself.
+You should never delete a <span class="hclass">BDirectWindow</span> object; call its
+<a class="reference internal" href="../interface/window.html#_CPPv4N7BWindow4QuitEv" title="BWindow::Quit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Quit()</span></code></a> function instead (inherited from
+<a class="reference internal" href="../interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>).</p>
+<p>Your <span class="hclass">BDirectWindow</span> destructor should begin by setting the
+<span class="hparameter">fConnectionDisabled</span> flag to <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, to prevent
 <a class="reference internal" href="#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> from
 attempting to reconnect to the direct window while it’s being
-deconstructed.
-Then you should call
-<a class="reference internal" href="../interface/window.html#_CPPv4N7BWindow4HideEv" title="BWindow::Hide"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Hide()</span></code></a> and
-<a class="reference internal" href="../interface/window.html#_CPPv4NK7BWindow4SyncEv" title="BWindow::Sync"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Sync()</span></code></a> to force the direct window to
-disconnect direct access (both inherited from
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MyDirectWindow</span><span class="p">::</span><span class="o">~</span><span class="n">BDirectWindow</span>
-<span class="p">{</span>
-   <span class="n">fConnectionDisabled</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
-   <span class="n">Hide</span><span class="p">();</span>
-   <span class="n">Sync</span><span class="p">();</span>
-   <span class="o">/*</span> <span class="n">complete</span> <span class="n">usual</span> <span class="n">destruction</span> <span class="n">here</span> <span class="o">*/</span>
-<span class="p">}</span>
+deconstructed.</p>
+<p>Then you should call <a class="reference internal" href="../interface/window.html#_CPPv4N7BWindow4HideEv" title="BWindow::Hide"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Hide()</span></code></a> and
+<a class="reference internal" href="../interface/window.html#_CPPv4NK7BWindow4SyncEv" title="BWindow::Sync"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Sync()</span></code></a> to force the direct window to disconnect
+direct access (both inherited from <a class="reference internal" href="../interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">MyDirectWindow</span><span class="o">::~</span><span class="n">BDirectWindow</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">fConnectionDisabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">Hide</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">Sync</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* complete usual destruction here */</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -128,17 +121,17 @@ disconnect direct access (both inherited from
 <section id="_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info">
 </section>
 <h3>
-DirectConnected()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDirectWindow</span><span class="p">::</span></span><span class="n">DirectConnected</span><span class="sig-paren">(</span><span class="n">direct_buffer_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><p>This hook function is the core of <span class="hclass">BDirectWindow</span>. Your application should
-override this function to learn about the state of the graphics display
-onto which you’re drawing, as well as to be informed of any changes that
-occur.</p>
+DirectConnected()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BDirectWindow" title="BDirectWindow"><span class="n">BDirectWindow</span></a><span class="p">::</span></span><span class="n">DirectConnected</span><span class="sig-paren">(</span><span class="n">direct_buffer_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><p>This hook function is the core of <span class="hclass">BDirectWindow</span>. Your
+application should override this function to learn about the state of the
+graphics display onto which you’re drawing, as well as to be informed of
+any changes that occur.</p>
 <p>This function is also called to suspend and resume your direct access
 privileges.</p>
 <p>Your code in this function should be as short as possible, because what
-your <span class="hmethod">DirectConnected()</span> function does can affect the performance of the
-entire system. <span class="hmethod">DirectConnected()</span> should only handle the immediate task of
-dealing with changes in the direct drawing context, and shouldn’t
-normally do any actual drawing—that’s what your drawing thread is
+your <span class="hmethod">DirectConnected()</span> function does can affect the performance
+of the entire system. <span class="hmethod">DirectConnected()</span> should only handle the
+immediate task of dealing with changes in the direct drawing context, and
+shouldn’t normally do any actual drawing—that’s what your drawing thread is
 for.</p>
 <p>If you have drawing that absolutely has to be done before you can safely
 return control to the application server (see the note below), you may do
@@ -146,75 +139,68 @@ so, but your code should do the absolute minimum drawing necessary and
 leave everything else to the drawing thread.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p><span class="hmethod">DirectConnected()</span> should only return when it can guarantee to the
-application server that the request specified by <span class="hparameter">info</span> will be strictly
-obeyed.</p>
+<p><span class="hmethod">DirectConnected()</span> should only return when it can guarantee to
+the application server that the request specified by <span class="hparameter">info</span> will be
+strictly obeyed.</p>
 </div>
-<p>The structure pointed to by <span class="hparameter">info</span> goes away after <span class="hmethod">DirectConnected()</span>
-returns, so you should cache the information that interests you.</p>
+<p>The structure pointed to by <span class="hparameter">info</span> goes away after
+<span class="hmethod">DirectConnected()</span> returns, so you should cache the information
+that interests you.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>If your <span class="hmethod">DirectConnected()</span> implementation doesn’t handle a request
-within three seconds, the Application Server will intentionally crash
-your application under the assumption that it’s deadlocked. Be sure to
-handle requests as quickly as possible.</p>
+<p>If your <span class="hmethod">DirectConnected()</span> implementation doesn’t handle a
+request within three seconds, the Application Server will intentionally
+crash your application under the assumption that it’s deadlocked. Be sure
+to handle requests as quickly as possible.</p>
 </div>
-<p>See  “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>” for more
-information about the direct_buffer_info structure.</p>
+<p>See  “<span class="xref std std-ref">Getting Connected (and Staying That Way)</span>” for more
+information about the <span class="htype">direct_buffer_info</span> structure.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4NK13BDirectWindow17GetClippingRegionEP7BRegionP6BPoint">
 </section>
 <h3>
-GetClippingRegion()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDirectWindow</span><span class="p">::</span></span><span class="n">GetClippingRegion</span><span class="sig-paren">(</span><a class="reference internal" href="../interface/region.html#_CPPv47BRegionRK7BRegion" title="BRegion"><span class="n">BRegion</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">region</span>, <span class="n">BPoint</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">origin</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Sets the specified <span class="hparameter">region</span> to match the current
-clipping region of the direct window. If <span class="hparameter">origin</span> is
-specified, each point in the region is offset by the
-<span class="hparameter">origin</span>, resulting in a <a class="reference internal" href="../interface/region.html#_CPPv47BRegionRK7BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a> that’s localized to
-your application’s vision of where in space the origin is (relative to the
-origin of the screen’s frame buffer).
-Although the direct_buffer_info structure contains the
-clipping region of a direct window, it’s not in standard <a class="reference internal" href="../interface/region.html#_CPPv47BRegionRK7BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a> form. This function
-is provided so you can obtain a standard <a class="reference internal" href="../interface/region.html#_CPPv47BRegionRK7BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a> if you need
-one.</p>
+GetClippingRegion()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BDirectWindow" title="BDirectWindow"><span class="n">BDirectWindow</span></a><span class="p">::</span></span><span class="n">GetClippingRegion</span><span class="sig-paren">(</span><a class="reference internal" href="../interface/region.html#_CPPv47BRegion" title="BRegion"><span class="n">BRegion</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">region</span>, <a class="reference internal" href="../interface/point.html#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">origin</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Sets the specified <span class="hparameter">region</span> to match the current clipping region
+of the direct window. If <span class="hparameter">origin</span> is specified, each point in the
+region is offset by the <span class="hparameter">origin</span>, resulting in a
+<a class="reference internal" href="../interface/region.html#_CPPv47BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a> that’s localized to your application’s vision of where
+in space the origin is (relative to the origin of the screen’s frame
+buffer).</p>
+<p>Although the <span class="htype">direct_buffer_info</span> structure contains the clipping
+region of a direct window, it’s not in standard <a class="reference internal" href="../interface/region.html#_CPPv47BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a> form.
+This function is provided so you can obtain a standard <a class="reference internal" href="../interface/region.html#_CPPv47BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a>
+if you need one.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
 <p>The <span class="hmethod">GetClippingRegion()</span> function can only be called from the
-<a class="reference internal" href="#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a>
-function; calling it from outside
-<a class="reference internal" href="#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a>
-will return invalid results.</p>
+<a class="reference internal" href="#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> function;
+calling it from outside <a class="reference internal" href="#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> will return invalid results.</p>
 </div>
 <p>If you need to cache the clipping region of your window and need a
-<a class="reference internal" href="../interface/region.html#_CPPv47BRegionRK7BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a> for clipping
-purposes, you could use the following code inside
-your <a class="reference internal" href="#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a>
-function:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BRegion</span> <span class="n">rgn</span><span class="p">;</span>
-<span class="n">GetClippingRegion</span><span class="p">(</span><span class="o">&amp;</span><span class="n">rgn</span><span class="p">);</span>
+<a class="reference internal" href="../interface/region.html#_CPPv47BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a> for clipping purposes, you could use the following
+code inside your <a class="reference internal" href="#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> function:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BRegion</span><span class="w"> </span><span class="n">rgn</span><span class="p">;</span><span class="w"></span>
+<span class="n">GetClippingRegion</span><span class="p">(</span><span class="o">&amp;</span><span class="n">rgn</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>This serves a double purpose: it obtains the clipping region in
-<a class="reference internal" href="../interface/region.html#_CPPv47BRegionRK7BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a>
-form, and it returns a copy of the region that you can maintain locally.
-However, it may be more efficient to copy the clipping region by hand,
-since the clipping rectangle list used by <span class="hclass">BDirectWindow</span> uses integer
-numbers, while <a class="reference internal" href="../interface/region.html#_CPPv47BRegionRK7BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a> uses floating-point.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<a class="reference internal" href="../interface/region.html#_CPPv47BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a> form, and it returns a copy of the region that you can
+maintain locally. However, it may be more efficient to copy the clipping
+region by hand, since the clipping rectangle list used by
+<span class="hclass">BDirectWindow</span> uses integer numbers, while <a class="reference internal" href="../interface/region.html#_CPPv47BRegion" title="BRegion"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRegion</span></code></a>
+uses floating-point.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The clipping region was successfully returned.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
 <td><p>An error occurred while trying to obtain the clipping region.</p></td>
 </tr>
 </tbody>
@@ -224,72 +210,65 @@ numbers, while <a class="reference internal" href="../interface/region.html#_CPP
 <section id="_CPPv4N13BDirectWindow13SetFullScreenEb">
 </section>
 <h3>
-IsFullScreen(), SetFullScreen()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDirectWindow</span><span class="p">::</span></span><span class="n">IsFullScreen</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDirectWindow</span><span class="p">::</span></span><span class="n">SetFullScreen</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">enable</span><span class="sig-paren">)</span></pre><p><span class="hmethod">IsFullScreen()</span> returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the direct window is in full-screen exclusive
-mode, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if it’s in window mode.
-The value returned by <span class="hmethod">IsFullScreen()</span> is
-indeterminate if a call to <span class="hmethod">SetFullScreen()</span> is in
-progress—if this is the case, you shouldn’t rely on the resulting
-value. Instead, it would be safer to maintain a state setting of your own
-and use that value.
-<span class="hmethod">SetFullScreen()</span> enables full-screen
-exclusive mode if the <span class="hparameter">enable</span> flag is
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>. To switch to window mode, pass
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>. The <a class="reference internal" href="#_CPPv4N13BDirectWindow18SupportsWindowModeE9screen_id" title="BDirectWindow::SupportsWindowMode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SupportsWindowMode()</span></code></a> function can be used to determine whether or not the
-video card is capable of supporting window mode. See
-“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>” for a detailed explanation of the differences
-between these modes.
-When your window is in full screen mode, it will always have the
-focus, and no other window can come in front of it.
-<span class="hmethod">SetFullScreen()</span> can return any of the
-following result codes.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+IsFullScreen(), SetFullScreen()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BDirectWindow" title="BDirectWindow"><span class="n">BDirectWindow</span></a><span class="p">::</span></span><span class="n">IsFullScreen</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BDirectWindow" title="BDirectWindow"><span class="n">BDirectWindow</span></a><span class="p">::</span></span><span class="n">SetFullScreen</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">enable</span><span class="sig-paren">)</span></pre><p><span class="hmethod">IsFullScreen()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the direct window is
+in full-screen exclusive mode, or <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if it’s in window mode.</p>
+<p>The value returned by <span class="hmethod">IsFullScreen()</span> is indeterminate if a call
+to <span class="hmethod">SetFullScreen()</span> is in progress—if this is the case, you
+shouldn’t rely on the resulting value. Instead, it would be safer to
+maintain a state setting of your own and use that value.</p>
+<p><span class="hmethod">SetFullScreen()</span> enables full-screen exclusive mode if the
+<span class="hparameter">enable</span> flag is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>. To switch to window mode, pass
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>. The <a class="reference internal" href="#_CPPv4N13BDirectWindow18SupportsWindowModeE9screen_id" title="BDirectWindow::SupportsWindowMode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SupportsWindowMode()</span></code></a> function can be used to determine
+whether or not the video card is capable of supporting window mode. See
+“<span class="xref std std-ref">Window Mode vs. Full Screen Mode</span>” for a detailed explanation of the
+differences between these modes.</p>
+<p>When your window is in full screen mode, it will always have the focus,
+and no other window can come in front of it.</p>
+<p><span class="hmethod">SetFullScreen()</span> can return any of the following result codes.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The mode was successfully changed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
-<td><p>An error occurred while trying to switch between full screen and window modes(for example, another window may already be in full-screen exclusive mode in the same workspace).</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<td><p>An error occurred while trying to switch between full screen and window
+modes  (for example, another window may already be in full-screen exclusive
+mode in the same workspace).</p></td>
 </tr>
 </tbody>
 </table>
 <section id="_CPPv4N13BDirectWindow18SupportsWindowModeE9screen_id">
 </section>
 <h3>
-SupportsWindowMode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDirectWindow</span><span class="p">::</span></span><span class="n">SupportsWindowMode</span><span class="sig-paren">(</span><span class="n">screen_id</span><span class="w"> </span><span class="n sig-param">id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_MAIN_SCREEN_ID</span><span class="sig-paren">)</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the specified screen supports window mode; if you require
-the ability to directly access the frame buffer of a window (rather than
-occupying the whole screen), you should call this function to be sure
-that the graphics hardware in the computer running your application
-supports it. Because this is a static function, you don’t have to
-construct a <span class="hclass">BDirectWindow</span> object to call it:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">BDirectWindow</span><span class="p">::</span><span class="n">SupportsWindowMode</span><span class="p">())</span> <span class="p">{</span>
-   <span class="o">/*</span> <span class="n">do</span> <span class="n">stuff</span> <span class="n">here</span> <span class="o">*/</span>
-<span class="p">}</span>
+SupportsWindowMode()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv413BDirectWindow" title="BDirectWindow"><span class="n">BDirectWindow</span></a><span class="p">::</span></span><span class="n">SupportsWindowMode</span><span class="sig-paren">(</span><span class="n">screen_id</span><span class="w"> </span><span class="n sig-param">id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_MAIN_SCREEN_ID</span><span class="sig-paren">)</span></pre><p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the specified screen supports window mode; if
+you require the ability to directly access the frame buffer of a window
+(rather than occupying the whole screen), you should call this function to
+be sure that the graphics hardware in the computer running your application
+supports it. Because this is a static function, you don’t have to construct
+a <span class="hclass">BDirectWindow</span> object to call it:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">BDirectWindow</span><span class="o">::</span><span class="n">SupportsWindowMode</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* do stuff here */</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>In particular, window mode requires a graphics card with DMA support and
-a hardware cursor; older video cards may not be capable of supporting
-window mode.
-If window mode isn’t supported, but you still select window mode,
-<a class="reference internal" href="#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a>
-will never be called (so you’ll never be authorized for
-direct frame buffer access).
-Even if window mode isn’t supported, you can still use <span class="hclass">BDirectWindow</span>
-objects for full-screen direct access to the frame buffer, but it’s
-recommended that you avoid direct video DMA or the use of parallel
-drawing threads that use both direct frame buffer access and
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> calls
-(because it’s likely that such a graphics card won’t handle the parallel
-access and freeze the PCI bus—and that would be bad).</p>
+<p>In particular, window mode requires a graphics card with DMA support and a
+hardware cursor; older video cards may not be capable of supporting window
+mode.</p>
+<p>If window mode isn’t supported, but you still select window mode,
+<a class="reference internal" href="#_CPPv4N13BDirectWindow15DirectConnectedEP18direct_buffer_info" title="BDirectWindow::DirectConnected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DirectConnected()</span></code></a> will never
+be called (so you’ll never be authorized for direct frame buffer access).</p>
+<p>Even if window mode isn’t supported, you can still use
+<span class="hclass">BDirectWindow</span> objects for full-screen direct access to the frame
+buffer, but it’s recommended that you avoid direct video DMA or the use of
+parallel drawing threads that use both direct frame buffer access and
+<a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> calls (because it’s likely that such a graphics card
+won’t handle the parallel access and freeze the PCI bus—and that would be
+bad).</p>
 </section>
 </section>
 
@@ -300,7 +279,7 @@ access and freeze the PCI bus—and that would be bad).</p>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="../device/serial-port.html">BSerialPort</a>
+        «&#160;&#160;<a href="defined-types.html">Defined Types</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;

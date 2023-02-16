@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BHandler &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="The Application Kit" href="index.html" />
+    <link rel="prev" title="BCursor" href="cursor.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BHandler</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="cursor.html">BCursor</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="index.html">The Application Kit</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BHandler</a><ul>
+<li><a class="reference internal" href="#the-handler-list">The Handler List</a></li>
+<li><a class="reference internal" href="#targets">Targets</a></li>
+<li><a class="reference internal" href="#filtering">Filtering</a></li>
+<li><a class="reference internal" href="#notifiers-and-observers">Notifiers and Observers</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bhandler">
+<h1 id="CPPv48BHandler">BHandler<a class="headerlink" href="#bhandler" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> object responds to messages that are handed to it
+by a <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>. The <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> tells the
+<a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> about a message by invoking the
+<a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>’s <a class="reference internal" href="../../kits/application/handler.html#_CPPv4N8BHandler15MessageReceivedEP8BMessage" title="BHandler::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MessageReceived()</span></code></a> function.</p>
+<section id="the-handler-list">
+<h2>The Handler List<a class="headerlink" href="#the-handler-list" title="Permalink to this heading">¶</a></h2>
+<p>To be eligible to get messages from a <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>, a
+<a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> must be in the <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>’s list of
+eligible handlers (as explained in the <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> class). The
+list of eligible handlers is ordered; if the “first” handler doesn’t want
+to respond to a message that it has received, it simply calls the inherited
+version of <a class="reference internal" href="../../kits/application/handler.html#_CPPv4N8BHandler15MessageReceivedEP8BMessage" title="BHandler::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MessageReceived()</span></code></a> and
+the message will automatically be handed to the object’s “next” handler.
+(System messages are not handed down the list.) The <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>
+that all these <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>s belong to is always the last the last
+handler in the list (<a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> inherits from
+<a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>).</p>
+<p>A <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>’s next handler assignment can be changed through
+<a class="reference internal" href="../../kits/application/handler.html#_CPPv4N8BHandler14SetNextHandlerEP8BHandler" title="BHandler::SetNextHandler"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetNextHandler()</span></code></a>.</p>
+</section>
+<section id="targets">
+<h2>Targets<a class="headerlink" href="#targets" title="Permalink to this heading">¶</a></h2>
+<p>You can designate a target <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> for most messages. The
+designation is made when calling <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>’s
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper11PostMessageEP8BMessage" title="BLooper::PostMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PostMessage()</span></code></a> function or when
+constructing the <a class="reference internal" href="../../kits/application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> object that will send the message.
+Messages that a user drags and drops are targeted to the object (a
+<a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>) that controls the part of the window where the message
+was dropped. The messaging mechanism eventually passes the target
+<a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> to <a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchMessage()</span></code></a> , so that the message can be delivered to its
+designated destination.</p>
+</section>
+<section id="filtering">
+<h2>Filtering<a class="headerlink" href="#filtering" title="Permalink to this heading">¶</a></h2>
+<p>Messages can be filtered before they’re dispatched; that is, you can
+define a function that will look at the message before the target
+<a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>’s hook function is called. The filter function is
+associated with a <a class="reference internal" href="../../kits/application/message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code></a> object, which records the
+criteria for calling the function.</p>
+<p>Filters that should apply only to messages targeted to a particular
+<a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> are assigned to the <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> by
+<a class="reference internal" href="../../kits/application/handler.html#_CPPv4N8BHandler13SetFilterListEP5BList" title="BHandler::SetFilterList"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFilterList()</span></code></a> or
+<a class="reference internal" href="../../kits/application/handler.html#_CPPv4N8BHandler9AddFilterEP14BMessageFilter" title="BHandler::AddFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddFilter()</span></code></a>. Filters that might apply to
+any message a <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> dispatches, regardless of its target,
+are assigned by the parallel <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> functions,
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper19SetCommonFilterListEP5BList" title="BLooper::SetCommonFilterList"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetCommonFilterList()</span></code></a> and
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv4N7BLooper15AddCommonFilterEP14BMessageFilter" title="BLooper::AddCommonFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddCommonFilter()</span></code></a>. See those
+functions and the <a class="reference internal" href="../../kits/application/message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code></a> class for details.</p>
+</section>
+<section id="notifiers-and-observers">
+<h2>Notifiers and Observers<a class="headerlink" href="#notifiers-and-observers" title="Permalink to this heading">¶</a></h2>
+<p>A <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> can be a notifier. A notifier is a handler that
+maintains one or more states and notifies interested parties when those
+states change. Each state is idenfified by a 32-bit <span class="hparameter">what</span> code.
+Interested parties, called observers, can register to monitor changes in
+one or more states by calling <a class="reference internal" href="../../kits/application/handler.html#_CPPv4N8BHandler13StartWatchingE10BMessenger6uint32" title="BHandler::StartWatching"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StartWatching()</span></code></a> and specifying the <span class="hparameter">what</span> code of the
+state they want to be notified of changes to.</p>
+<p>This notification occurs when the <a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> calls
+<a class="reference internal" href="../../kits/application/handler.html#_CPPv4N8BHandler11SendNoticesE6uint32PK8BMessage" title="BHandler::SendNotices"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SendNotices()</span></code></a>; it’s the handler’s job
+to call <a class="reference internal" href="../../kits/application/handler.html#_CPPv4N8BHandler11SendNoticesE6uint32PK8BMessage" title="BHandler::SendNotices"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SendNotices()</span></code></a> whenever a state
+changes, to ensure that observers are kept informed of the changes. The
+<a class="reference internal" href="../../kits/application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> passes to <a class="reference internal" href="../../kits/application/handler.html#_CPPv4N8BHandler11SendNoticesE6uint32PK8BMessage" title="BHandler::SendNotices"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SendNotices()</span></code></a> a message template to be sent to the observers.</p>
+<p>When a notification is sent, observers receive a
+<a class="reference internal" href="../../constants.html#_CPPv424B_OBSERVER_NOTICE_CHANGE" title="B_OBSERVER_NOTICE_CHANGE"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OBSERVER_NOTICE_CHANGE</span></code></a> message with an <span class="htype">int32</span>
+field <a class="reference internal" href="../../constants.html#_CPPv424B_OBSERVER_NOTICE_CHANGE" title="B_OBSERVER_NOTICE_CHANGE"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OBSERVER_NOTICE_CHANGE</span></code></a> that contains the
+<span class="hparameter">what</span> code of the state that changed, and a
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OBSERVE_ORIGINAL_WHAT</span></code> field that contains the
+<span class="hparameter">what</span> value that was in the template <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="cursor.html">BCursor</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="index.html">The Application Kit</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

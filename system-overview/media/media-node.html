@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMediaNode &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMediaRoster" href="media-roster.html" />
+    <link rel="prev" title="BMediaFormats" href="media-formats.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMediaNode</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-formats.html">BMediaFormats</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-roster.html">BMediaRoster</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BMediaNode</a><ul>
+<li><a class="reference internal" href="#creating-your-own-node">Creating Your Own Node</a><ul>
+<li><a class="reference internal" href="#realtime-allocators-and-thread-locking">Realtime Allocators and Thread Locking</a></li>
+<li><a class="reference internal" href="#negotiating-a-connection">Negotiating a Connection</a><ul>
+<li><a class="reference internal" href="#special-considerations">Special Considerations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmedianode">
+<h1 id="CPPv410BMediaNode">BMediaNode<a class="headerlink" href="#bmedianode" title="Permalink to this heading">¶</a></h1>
+<p>The <a class="reference internal" href="../../kits/media/media-node.html#_CPPv410BMediaNode" title="BMediaNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaNode</span></code></a> class is the superclass of all participant
+nodes in the Media Kit. However, you’ll never derive directly from
+<a class="reference internal" href="../../kits/media/media-node.html#_CPPv410BMediaNode" title="BMediaNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaNode</span></code></a>; instead, you’ll derive from one of the system
+interface classes which in turn are derived from <a class="reference internal" href="../../kits/media/media-node.html#_CPPv410BMediaNode" title="BMediaNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaNode</span></code></a>.
+Look at the documentation for those other classes (such as
+<a class="reference internal" href="../../kits/media/buffer-producer.html#_CPPv415BBufferProducer" title="BBufferProducer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferProducer</span></code></a> and <a class="reference internal" href="../../kits/media/buffer-consumer.html#_CPPv415BBufferConsumer" title="BBufferConsumer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferConsumer</span></code></a>) for details
+on how they’re used, or see “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Creating</span> <span class="pre">New</span> <span class="pre">Node</span> <span class="pre">Classes</span></code>” for discussion on how this is done.</p>
+<p>Because of the quirks of virtual inheritance (required by the use of
+multiple inheritance), your node’s constructor will have to call the
+<a class="reference internal" href="../../kits/media/media-node.html#_CPPv410BMediaNode" title="BMediaNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaNode</span></code></a> constructor. See “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">About</span> <span class="pre">Multiple</span> <span class="pre">Virtual</span> <span class="pre">Inheritance</span></code>”.</p>
+<div class="note admonition">
+<p class="admonition-title" id="CPPv44Note">Note</p>
+<p>Applications shouldn’t call a node’s member functions directly; instead,
+you call the <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv412BMediaRoster" title="BMediaRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaRoster</span></code></a> with a reference to the node and let
+the request come to the node through the control port. The only exception
+is if the node is subclassed directly within the application, in which case
+<a class="reference internal" href="../../kits/media/media-node.html#_CPPv4N10BMediaNode7AcquireEv" title="BMediaNode::Acquire"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Acquire()</span></code></a>, <a class="reference internal" href="../../kits/media/media-node.html#_CPPv4NK10BMediaNode2IDEv" title="BMediaNode::ID"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ID()</span></code></a>, <a class="reference internal" href="../../kits/media/media-node.html#_CPPv4NK10BMediaNode4NodeEv" title="BMediaNode::Node"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Node()</span></code></a>, and
+<a class="reference internal" href="../../kits/media/media-node.html#_CPPv4N10BMediaNode7ReleaseEv" title="BMediaNode::Release"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Release()</span></code></a> can be called directly once the
+node is registered—if you do this, be sure you don’t call them after the
+node is destroyed.</p>
+</div>
+<p>Calling a node’s member functions directly from outside the node itself
+can result in the chain of functions involved in coordinating nodes to be
+called out of order. Worse, deadlock can result. So just don’t do it, even
+if you think you’ve found a safe way to pull it off.</p>
+<section id="creating-your-own-node">
+<h2>Creating Your Own Node<a class="headerlink" href="#creating-your-own-node" title="Permalink to this heading">¶</a></h2>
+<section id="realtime-allocators-and-thread-locking">
+<h3>Realtime Allocators and Thread Locking<a class="headerlink" href="#realtime-allocators-and-thread-locking" title="Permalink to this heading">¶</a></h3>
+<p>Media nodes are highly timing-sensitive creatures. The slightest delay in
+performing their work can cause drastic problems in media playback or
+recording quality. Virtual memory, normally of great benefit to users, can
+work against them when doing media work. A poorly-timed virtual memory hit
+can cause breaks in media performances.</p>
+<p>The realtime memory allocation and locking functions provide a means for
+nodes to lock down their memory to prevent it from being cached to disk by
+the virtual memory system. This avoids situations in which the node has to
+pause while it or its memory is fetched back from the swap file.</p>
+<p>The user can use the Media preference application to configure what types
+of nodes should use locked memory. Nodes should typically use the realtime
+memory allocation functions instead of malloc() and free().
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">rtm_alloc()</span></code> will automatically handle locking the
+memory if the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_REALTIME_ALLOCATOR</span></code> flag is set, so
+your node doesn’t have to worry about it.</p>
+<p>In addition, if the realtime flag corresponding to the type of node you’re
+writing is set, your node should also call
+<span class="xref std std-ref">media_realtime_init_thread()</span> to lock down the stacks of its threads.
+Properly-written nodes can always call <span class="xref std std-ref">media_realtime_init_thread()</span>,
+without checking the realtime flags, because this function will return
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_REALTIME_DISABLED</span></code> if the corresponding flag isn’t
+set. You can simply ignore the error and move on.</p>
+<p>For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">int32</span><span class="w"> </span><span class="o">*</span><span class="n">myThreadData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rtm_alloc</span><span class="p">(</span><span class="mi">4096</span><span class="p">);</span><span class="w"></span>
+<span class="n">myThread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawn_thread</span><span class="p">(</span><span class="n">myThreadFunction</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Node Thread&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="n">B_NORMAL_PRIORITY</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">myThreadData</span><span class="p">);</span><span class="w"></span>
+<span class="n">status_t</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">media_realtime_init_thread</span><span class="p">(</span><span class="n">myThread</span><span class="p">,</span><span class="w"> </span><span class="mi">32768</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="n">B_MEDIA_REALTIME_VIDEO</span><span class="p">);</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">B_OK</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">B_MEDIA_REALTIME_DISABLED</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Can&#39;t lock down the thread.n&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If your node requires realtime performance from an add-on or shared
+library, you can use the <span class="xref std std-ref">media_realtime_init_image()</span> function to
+lock down that image in memory. Note, however, that any uses of malloc() by
+that image won’t allocate locked memory; you can’t control that. Still,
+locking down the image itself can help performance even further.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>Standard BeOS system libraries are Be’s responsibility. If it’s
+appropriate for them to be locked, they’re locked for you. Don’t lock them
+yourself. Both libmedia.so and libroot.so have
+<span class="xref std std-ref">media_realtime_init_image()</span> called on them.</p>
+</div>
+</section>
+<section id="negotiating-a-connection">
+<h3>Negotiating a Connection<a class="headerlink" href="#negotiating-a-connection" title="Permalink to this heading">¶</a></h3>
+<p>Establishing a connection between two nodes is a multi-step process. The
+nodes need to agree upon a data format they both support before the
+connection can even be established.</p>
+<section id="special-considerations">
+<h4>Special Considerations<a class="headerlink" href="#special-considerations" title="Permalink to this heading">¶</a></h4>
+<p>If the node you’re writing could be connected by the system mixer (using
+the Audio preference application, for example) as the default output, the
+node needs to be as flexible as possible in terms of the formats it accepts
+on its free inputs in the <a class="reference internal" href="../../kits/media/buffer-consumer.html#_CPPv4N15BBufferConsumer12GetNextInputEP5int32P11media_input" title="BBufferConsumer::GetNextInput"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextInput()</span></code></a> function. The format your node returns
+from <a class="reference internal" href="../../kits/media/buffer-consumer.html#_CPPv4N15BBufferConsumer12GetNextInputEP5int32P11media_input" title="BBufferConsumer::GetNextInput"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextInput()</span></code></a> will be
+used as the starting poing in the negotiation process; the more wildcards
+you support, the better.</p>
+<p>An application that wants to establish a connection between some other
+node and your node will determine the format from the inputs into your node
+and the outputs from the other node, then call
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster7ConnectERK12media_sourceRK17media_destinationP12media_formatP12media_outputP11media_input" title="BMediaRoster::Connect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaRoster::Connect()</span></code></a> with that format.</p>
+<p>If there are any wildcards in the format passed to
+<span class="hmethod">BMediaRoster::Format()</span>, the media roster will call
+<span class="hmethod">BBufferProducer::ProposeFormat()</span> in the node being connected to
+your output node; the producer will specialize the wildcards to construct
+the least-specific format that will guarantee that any remaining wildcards
+can be specialized by your node without becoming incompatible with the
+producer.</p>
+<p>The resulting format may have some wildcards left (or, if the producer is
+particularly picky, there may be none at all). The media roster will then
+pass this format to your consumer node’s
+<a class="reference internal" href="../../kits/media/buffer-consumer.html#_CPPv4N15BBufferConsumer12AcceptFormatERK17media_destinationP12media_format" title="BBufferConsumer::AcceptFormat"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BBufferConsumer::AcceptFormat()</span></code></a> function. This function should be
+implemented to specialize the remaining wildcards and return this format,
+which should describe a specific format. This format will be used to
+establish the connection.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-formats.html">BMediaFormats</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-roster.html">BMediaRoster</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

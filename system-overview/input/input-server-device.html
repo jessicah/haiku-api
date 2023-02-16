@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BInputServerDevice &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BInputServerFilter" href="input-server-filter.html" />
+    <link rel="prev" title="BInputDevice" href="input-device.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BInputServerDevice</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="input-device.html">BInputDevice</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="input-server-filter.html">BInputServerFilter</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BInputServerDevice</a><ul>
+<li><a class="reference internal" href="#starting-and-sending-messages">Starting and Sending Messages</a></li>
+<li><a class="reference internal" href="#device-types-and-control-messages">Device Types and Control Messages</a><ul>
+<li><a class="reference internal" href="#pointing-devices">Pointing Devices</a></li>
+<li><a class="reference internal" href="#relative-locations">Relative Locations</a></li>
+<li><a class="reference internal" href="#absolute-locations">Absolute Locations</a></li>
+<li><a class="reference internal" href="#now-where">Now where?</a></li>
+<li><a class="reference internal" href="#other-useful-information">Other Useful Information</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#device-state">Device State</a></li>
+<li><a class="reference internal" href="#dynamic-devices">Dynamic Devices</a></li>
+<li><a class="reference internal" href="#creating-and-registering">Creating and Registering</a></li>
+<li><a class="reference internal" href="#installing-an-input-device">Installing an Input Device</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="binputserverdevice">
+<h1 id="CPPv418BInputServerDevice">BInputServerDevice<a class="headerlink" href="#binputserverdevice" title="Permalink to this heading">¶</a></h1>
+<p><span class="hclass">BInputServerDevice</span> is a base class for input devices; these are
+instances of <span class="hclass">BInputServerDevice</span> subclasses that generate input
+events. In most cases, an input device corresponds to a device driver that
+handles a specific brand or model of hardware (mouse, keyboard, tablet,
+etc.), but it doesn’t have to: an input device can get events from the Net,
+or generate them algorithmically, for example. Also, a single
+<span class="hclass">BInputServerDevice</span> can handle more than one device driver.</p>
+<p><span class="hclass">BInputServerDevice</span> objects are created and deleted by the Input
+Server only—you never create or delete these objects themselves.</p>
+<section id="starting-and-sending-messages">
+<h2>Starting and Sending Messages<a class="headerlink" href="#starting-and-sending-messages" title="Permalink to this heading">¶</a></h2>
+<p>For each device that your object registers, it gets a <a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv4N18BInputServerDevice5StartEPKcPv" title="BInputServerDevice::Start"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Start()</span></code></a> function call. This is the Input Server’s way
+of telling your object that it can begin generating input events (for the
+designated device). So far, all of this—from the add-on load to the
+<a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv4N18BInputServerDevice5StartEPKcPv" title="BInputServerDevice::Start"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Start()</span></code></a> call—happens within a
+single Input Server thread (for all input devices). When your
+<a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv4N18BInputServerDevice5StartEPKcPv" title="BInputServerDevice::Start"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Start()</span></code></a> function is called, you
+should spawn a thread so your object can generate events without blocking
+the Server. Events are generated and sent through the
+<a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv4N18BInputServerDevice14EnqueueMessageEP8BMessage" title="BInputServerDevice::EnqueueMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">EnqueueMessage()</span></code></a> function.</p>
+</section>
+<section id="device-types-and-control-messages">
+<h2>Device Types and Control Messages<a class="headerlink" href="#device-types-and-control-messages" title="Permalink to this heading">¶</a></h2>
+<p>The Input Server knows about two types of devices: keyboards, and pointing
+devices (mice, tablets, etc). When you register your object’s devices
+(through <a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv4N18BInputServerDevice15RegisterDevicesEPP16input_device_ref" title="BInputServerDevice::RegisterDevices"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RegisterDevices()</span></code></a>) you have to indicate the device
+type. The Input Server uses the device type to predicate the input device
+control messages it sends to the devices. These messages, delivered in
+<a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv4N18BInputServerDevice7ControlEPKcP3voi6uint32P8BMessage" title="BInputServerDevice::Control"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Control()</span></code></a> calls, tell a device
+that there’s been a change downstream that applies specifically to that
+type of device. For example, when the user changes the mouse speed, each
+pointing device receives a <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MOUSE_SPEED_CHANGED</span></code>
+notification.</p>
+<p>The Be-defined control messages are predicated on device type only.</p>
+<p>If your <a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv418BInputServerDevice" title="BInputServerDevice"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerDevice</span></code></a> object manages a device other than
+a pointer or a keyboard, you tell the Input Server that the device is
+undefined. In this case, the Input Server won’t send your device any
+device-specific messages; to send your device a message you (or an
+application that knows about your device) have to use a
+<a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv418BInputServerDevice" title="BInputServerDevice"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerDevice</span></code></a> object.</p>
+<section id="pointing-devices">
+<h3>Pointing Devices<a class="headerlink" href="#pointing-devices" title="Permalink to this heading">¶</a></h3>
+<p>Pointing devices such as mice, trackballs, drawing tablets, etc. generate
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MOUSE_MOVED</span></code> messages (which trigger a BView’s
+MouseMoved() function) featuring a where field representing the cursor’s
+location in view co-ordinates. Unfortunately, your
+<a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv418BInputServerDevice" title="BInputServerDevice"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerDevice</span></code></a> doesn’t know anything about views; that’s
+the App Server’s job. You’ll still need to add this information to the
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MOUSE_MOVED</span></code> messages generated by your
+<a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv418BInputServerDevice" title="BInputServerDevice"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerDevice</span></code></a>, and the App Server will adjust it to view
+co-ordinates for you.</p>
+<p>When generating a <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MOUSE_MOVED</span></code> message, you add x and y
+fields in one of two ways:</p>
+<ul class="simple">
+<li><p>an offset relative to the cursor’s previous position
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code> values)</p></li>
+<li><p>an absolute position expressed in the range 0.0 to 1.0
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FLOAT_TYPE</span></code> values)</p></li>
+</ul>
+<p>Mice always use relative locations; tablets can use either (though they
+usually provide absolute values).</p>
+</section>
+<section id="relative-locations">
+<h3>Relative Locations<a class="headerlink" href="#relative-locations" title="Permalink to this heading">¶</a></h3>
+<p>All mice (and some drawing tablets) express the pointer location relative
+to its previous position. If your pointing device is operating in relative
+co-ordinate mode, you add x and y entries as <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code>
+values in device-defined units. The App Server interprets these units as
+pixels, so you may need to scale your output:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">int32</span><span class="w"> </span><span class="n">xVal</span><span class="p">,</span><span class="w"> </span><span class="n">yVal</span><span class="p">;</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">AddInt32</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xVal</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">AddInt32</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;y&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">yVal</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="absolute-locations">
+<h3>Absolute Locations<a class="headerlink" href="#absolute-locations" title="Permalink to this heading">¶</a></h3>
+<p>Drawing tablets or other pointing devices that provide absolute locations
+add the x and y entries as <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FLOAT_TYPEs</span></code>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="n">xVal</span><span class="p">,</span><span class="w"> </span><span class="n">yVal</span><span class="p">;</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">AddFloat</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xVal</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">AddFloat</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;y&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">yVal</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>These values must be in the range [0.0 to 1.0]. The app_server scales them
+to the screen’s co-ordinate system so (0.0, 0.0) is the left-top, and (1.0,
+1.0) is the right-bottom of the screen. This lets the pointing device work
+with any screen resolution, automatically.</p>
+</section>
+<section id="now-where">
+<h3>Now where?<a class="headerlink" href="#now-where" title="Permalink to this heading">¶</a></h3>
+<p>When the Application Server receives one of these
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MOUSE_MOVED</span></code> messages, it converts the x and y values
+into absolute values in the target view’s co-ordinate system, and then
+throws away the x and y entries in the message. Because of this, and the
+fact that some applications might want more accurate positional information
+from tablets, fill in the <span class="hparameter">be:tablet_x</span> and <span class="hparameter">be:tablet_y</span>
+fields as well:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="n">xVal</span><span class="p">,</span><span class="w"> </span><span class="n">yVal</span><span class="p">;</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">AddFloat</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xVal</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">AddFloat</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;y&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">yVal</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">AddFloat</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;be:tablet_x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xVal</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">AddFloat</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;be:tablet_y&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">yVal</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="other-useful-information">
+<h3>Other Useful Information<a class="headerlink" href="#other-useful-information" title="Permalink to this heading">¶</a></h3>
+<p>Pressure information is stored in the <span class="hparameter">be:tablet_pressure</span> field,
+as a float in the range [0.0 to 1.0] (minimum pressure to maximum
+pressure):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="n">pressure</span><span class="p">;</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">AddFloat</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;be:tablet_pressure&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pressure</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If the tablet supports tilt information, store it in
+<span class="hparameter">be:tablet_tilt_x</span> and <span class="hparameter">be:tablet_tilt_y</span>, scaling the
+information to the range [0.0 to 1.0]. A tilt of (-1.0, -1.0) tilts to the
+left-top, (1.0, 1.0) tilts to the right-bottom, and (0.0, 0.0) is no tilt.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="n">tilt_x</span><span class="p">,</span><span class="w"> </span><span class="n">tilt_y</span><span class="p">;</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">AddFloat</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;be:tablet_tilt_x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">tilt_x</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">AddFloat</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;be:tablet_tilt_y&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">tilt_y</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Tablets with pens that support an eraser store the eraser’s state in the
+<span class="hparameter">be:tablet_eraser</span> field. A value of 1 means the pen is reversed
+(i.e. the eraser is on), and 0 means it should behave normally.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">int32</span><span class="w"> </span><span class="n">erase_mode</span><span class="p">;</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+<span class="n">event</span><span class="o">-&gt;</span><span class="n">AddInt32</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;be:tablet_eraser&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">erase_mode</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="device-state">
+<h2>Device State<a class="headerlink" href="#device-state" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv4N18BInputServerDevice7ControlEPKcP3voi6uint32P8BMessage" title="BInputServerDevice::Control"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Control()</span></code></a> protocol is
+designed to accommodate queries (in addition to commands). Currently,
+however, the Input Server maintains the keyboard and pointing device state
+and answers these queries itself; it doesn’t forward any of the Be-defined
+query messages. For example, when an application asks for the current mouse
+speed setting (through <span class="xref std std-ref">get_mouse_speed()</span>), the query gets no further
+than the Input Server itself—it doesn’t get passed as a control message to
+a pointing device.</p>
+<p>If you’re designing a <a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv418BInputServerDevice" title="BInputServerDevice"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerDevice</span></code></a> that manages a
+keyboard or pointing device, you must keep in mind that your device is not
+responsible for its “Be-defined” state. The elements of the state—mouse
+speed, key map, etc.—correspond to the control messages listed in “Input
+Device Control Messages”.</p>
+</section>
+<section id="dynamic-devices">
+<h2>Dynamic Devices<a class="headerlink" href="#dynamic-devices" title="Permalink to this heading">¶</a></h2>
+<p>As hardware devices are attached and detached from the computer, you can
+add and remove items from your <a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv418BInputServerDevice" title="BInputServerDevice"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerDevice</span></code></a>’s list of
+registered devices (by calling <a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv4N18BInputServerDevice15RegisterDevicesEPP16input_device_ref" title="BInputServerDevice::RegisterDevices"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RegisterDevice()</span></code></a> / <a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv4N18BInputServerDevice17UnregisterDevicesEPP16input_device_ref" title="BInputServerDevice::UnregisterDevices"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">UnregisterDevice()</span></code></a>). But your object has to first
+notice that a physical device has been added or removed. It does this by
+placing a node monitor on the device directory (/dev). As a convenience—and
+to help conserve resources—the <a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv418BInputServerDevice" title="BInputServerDevice"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerDevice</span></code></a> class
+provides the <a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv4N18BInputServerDevice21StartMonitoringDeviceEPKc" title="BInputServerDevice::StartMonitoringDevice"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Start/StopMonitoringDevices()</span></code></a> functions which install and
+remove node monitors for you.</p>
+</section>
+<section id="creating-and-registering">
+<h2>Creating and Registering<a class="headerlink" href="#creating-and-registering" title="Permalink to this heading">¶</a></h2>
+<p>To create a new input device, you must:</p>
+<ul class="simple">
+<li><p>create a subclass of <a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv418BInputServerDevice" title="BInputServerDevice"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerDevice</span></code></a></p></li>
+<li><p>implement the <span class="xref std std-ref">instantiate_input_device()</span> C function to create an
+instance of your <a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv418BInputServerDevice" title="BInputServerDevice"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerDevice</span></code></a> subclass</p></li>
+<li><p>compile the class and the function as an add-on</p></li>
+<li><p>install the add-on in one of the input device directories</p></li>
+</ul>
+<p>At boot time, the Input Server loads the add-ons it finds in the input
+device directories. For each add-on it loads, the Server invokes
+<span class="xref std std-ref">instantiate_input_device()</span> to get a pointer to the add-on’s
+<a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv418BInputServerDevice" title="BInputServerDevice"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerDevice</span></code></a> object. After constructing the object, the
+Server calls <a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv4N18BInputServerDevice9InitCheckEv" title="BInputServerDevice::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> to
+give the add-on a chance to bail out if the constructor failed. If the
+add-on wants to continue, it calls <a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv4N18BInputServerDevice15RegisterDevicesEPP16input_device_ref" title="BInputServerDevice::RegisterDevices"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RegisterDevices()</span></code></a> (from within <a class="reference internal" href="../../kits/input/input-server-device.html#_CPPv4N18BInputServerDevice9InitCheckEv" title="BInputServerDevice::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>) to tell the Server which physical or
+virtual devices it handles.</p>
+</section>
+<section id="installing-an-input-device">
+<h2>Installing an Input Device<a class="headerlink" href="#installing-an-input-device" title="Permalink to this heading">¶</a></h2>
+<p>The input server looks for input devices in the input_server/devices
+subdirectories of <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BEOS_ADDONS_DIRECTORY</span></code>,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_COMMON_ADDONS_DIRECTORY</span></code>, and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_USER_ADDONS_DIRECTORY</span></code>.</p>
+<ul class="simple">
+<li><p>You can install your input devices in the latter two directories—i.e.
+those under <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_COMMON_ADDONS_DIRECTORY</span></code>, and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_USER_ADDONS_DIRECTORY</span></code>.</p></li>
+<li><p>The <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BEOS_ADDONS_DIRECTORY</span></code> is reserved for add-ons that
+are supplied by the BeOS.</p></li>
+</ul>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="input-device.html">BInputDevice</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="input-server-filter.html">BInputServerFilter</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

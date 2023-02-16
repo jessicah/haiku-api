@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BCursor &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BHandler" href="handler.html" />
+    <link rel="prev" title="BClipboard" href="clipboard.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BCursor</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="clipboard.html">BClipboard</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="handler.html">BHandler</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BCursor</a><ul>
+<li><a class="reference internal" href="#cursor-data-format">Cursor Data Format</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bcursor">
+<h1 id="CPPv47BCursor">BCursor<a class="headerlink" href="#bcursor" title="Permalink to this heading">¶</a></h1>
+<p>You can use a <a class="reference internal" href="../../kits/application/cursor.html#_CPPv47BCursor" title="BCursor"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCursor</span></code></a> to represent a mouse cursor as an
+object instead of as a block of pixel data; this can be more convenient in
+some situations. Also, if you want to call
+<a class="reference internal" href="../../kits/application/application.html#_CPPv4N12BApplication9SetCursorEPKv" title="BApplication::SetCursor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BApplication::SetCursor()</span></code></a> without forcing an immediate sync of
+the Application Server, you have to use a <a class="reference internal" href="../../kits/application/cursor.html#_CPPv47BCursor" title="BCursor"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCursor</span></code></a>.</p>
+<p>The default <a class="reference internal" href="../../kits/application/cursor.html#_CPPv47BCursor" title="BCursor"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCursor</span></code></a>s are
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CURSOR_SYSTEM_DEFAULT</span></code> for the hand cursor and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CURSOR_I_BEAM</span></code> for the I-beam text editing cursor.</p>
+<section id="cursor-data-format">
+<h2>Cursor Data Format<a class="headerlink" href="#cursor-data-format" title="Permalink to this heading">¶</a></h2>
+<p>The first four bytes of cursor data give information about the cursor:</p>
+<table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Byte 1</p></td>
+<td><p>Size in pixels-per-side. Cursors are always square; currently, only
+16-by-16 cursors are allowed.</p></td>
+</tr>
+<tr class="row-even"><td><p>Byte 2</p></td>
+<td><p>Color depth in bits-per-pixel. Currently, only one-bit monochrome is
+allowed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bytes 3 &amp; 4</p></td>
+<td><p>Hot spot coordinates. Given in “cursor coordinates” where (0,0) is the
+upper left corner of the cursor grid, byte 3 is the hot spot’s y
+coordinate, and byte 4 is its x coordinate. The hot spot is a single pixel
+that’s “activated” when the user clicks the mouse. To push a button, for
+example, the hot spot must be within the button’s bounds.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Next comes an array of pixel color data. Pixels are specified from left to
+right in rows starting at the top of the image and working downward. The
+size of an array element is the depth of the image. In one-bit depth…</p>
+<p>the 16x16 array fits in 32 bytes. 1 is black and 0 is white.</p>
+<p>Then comes the pixel transparency bitmask, given left-to-right and
+top-to-bottom. 1 is opaque, 0 is transparent. Transparency only applies to
+white pixels, black pixels are always opaque.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="clipboard.html">BClipboard</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="handler.html">BHandler</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

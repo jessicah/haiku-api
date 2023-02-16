@@ -73,55 +73,50 @@
       <div class="content" role="main">
         
   <section id="bstringitem">
-<h1>BStringItem<a class="headerlink" href="#bstringitem" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv411BStringItem">BStringItem<a class="headerlink" href="#bstringitem" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N11BStringItem11BStringItemEPKc6uint32b">
 </section>
 <h3>
-BStringItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BStringItem11BStringItemEPKc6uint32b" title="BStringItem::BStringItem"><span class="n">BStringItem</span></a><span class="p">::</span></span><span class="n">BStringItem</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">text</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">level</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">expanded</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BStringItem11BStringItemEP8BMessage" title="BStringItem::BStringItem"><span class="n">BStringItem</span></a><span class="p">::</span></span><span class="n">BStringItem</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BStringItem</span> by making a copy of the text string passed as
-an argument. This is the string the item will display. The level and
-expanded arguments are passed unchanged to the <span class="hclass">BListItem</span> constructor; see
-that function for an explanation.</p>
+BStringItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BStringItem11BStringItemEPKc6uint32b" title="BStringItem::BStringItem"><span class="n">BStringItem</span></a><span class="p">::</span></span><span class="n">BStringItem</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">text</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">level</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">expanded</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BStringItem11BStringItemEP8BMessage" title="BStringItem::BStringItem"><span class="n">BStringItem</span></a><span class="p">::</span></span><span class="n">BStringItem</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BStringItem</span> by making a copy of the text string
+passed as an argument. This is the string the item will display. The level
+and expanded arguments are passed unchanged to the <span class="hclass">BListItem</span>
+constructor; see that function for an explanation.</p>
 <section id="_CPPv4N11BStringItemD0Ev">
 </section>
 <h3>
-~BStringItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStringItem</span><span class="p">::</span></span><span class="n">~BStringItem</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the text the item displays.</p>
+~BStringItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BStringItem" title="BStringItem"><span class="n">BStringItem</span></a><span class="p">::</span></span><span class="n">~BStringItem</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the text the item displays.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4NK11BStringItem7ArchiveEP8BMessageb">
 </section>
 <h3>
-Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStringItem</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of <span class="hmethod">Archive()</span> and stores the
-<span class="hclass">BStringItem</span> in the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive.</p>
-<p>See also:
-<a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N11BStringItem11InstantiateEP8BMessage" title="BStringItem::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BStringItem" title="BStringItem"><span class="n">BStringItem</span></a><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of <span class="hmethod">Archive()</span> and stores the
+<span class="hclass">BStringItem</span> in the <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> archive.</p>
+<p>See also: <a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>, <a class="reference internal" href="#_CPPv4N11BStringItem11InstantiateEP8BMessage" title="BStringItem::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
 <section id="_CPPv4N11BStringItem8DrawItemEP5BView5BRectb">
 </section>
 <h3>
-DrawItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStringItem</span><span class="p">::</span></span><span class="n">DrawItem</span><span class="sig-paren">(</span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">owner</span>, <span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">complete</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>Draws the text string, dimming it if the item is disabled and
-highlighting it if the item is selected.</p>
-<p>See also:
-<a class="reference internal" href="list-item.html#_CPPv4N9BListItem8DrawItemEP5BView5BRectb" title="BListItem::DrawItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListItem::DrawItem()</span></code></a></p>
+DrawItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BStringItem" title="BStringItem"><span class="n">BStringItem</span></a><span class="p">::</span></span><span class="n">DrawItem</span><span class="sig-paren">(</span><a class="reference internal" href="view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">owner</span>, <a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">frame</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">complete</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><p>Draws the text string, dimming it if the item is disabled and highlighting
+it if the item is selected.</p>
+<p>See also: <a class="reference internal" href="list-item.html#_CPPv4N9BListItem8DrawItemEP5BView5BRectb" title="BListItem::DrawItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListItem::DrawItem()</span></code></a></p>
 <section id="_CPPv4N11BStringItem7SetTextEPKc">
 </section>
 <section id="_CPPv4NK11BStringItem4TextEv">
 </section>
 <h3>
-SetText(), Text()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStringItem</span><span class="p">::</span></span><span class="n">SetText</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">text</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BStringItem</span><span class="p">::</span></span><span class="n">Text</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the text that the <span class="hclass">BStringItem</span> draws.
-<span class="hmethod">SetText()</span> copies the string it’s passed. <span class="hmethod">Text()</span> returns a pointer to the
-string owned by the <span class="hclass">BStringItem</span>.</p>
+SetText(), Text()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BStringItem" title="BStringItem"><span class="n">BStringItem</span></a><span class="p">::</span></span><span class="n">SetText</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">text</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BStringItem" title="BStringItem"><span class="n">BStringItem</span></a><span class="p">::</span></span><span class="n">Text</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the text that the <span class="hclass">BStringItem</span>
+draws. <span class="hmethod">SetText()</span> copies the string it’s passed.
+<span class="hmethod">Text()</span> returns a pointer to the string owned by the
+<span class="hclass">BStringItem</span>.</p>
 <section id="_CPPv4N11BStringItem6UpdateEP5BViewPK5BFont">
 </section>
 <h3>
-Update()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BStringItem</span><span class="p">::</span></span><span class="n">Update</span><span class="sig-paren">(</span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">owner</span>, <span class="k">const</span><span class="w"> </span><span class="n">BFont</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">font</span><span class="sig-paren">)</span></pre><p>Overrides the <span class="hclass">BListItem</span> version of
-<a class="reference internal" href="list-item.html#_CPPv4N9BListItem6UpdateEP5BViewPK5BFont" title="BListItem::Update"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Update()</span></code></a> to recalculate the width and
-height of the <span class="hclass">BStringItem</span> and the placement of the text. The width of the
-item is based on the width of the owner
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>. The height and text
+Update()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BStringItem" title="BStringItem"><span class="n">BStringItem</span></a><span class="p">::</span></span><span class="n">Update</span><span class="sig-paren">(</span><a class="reference internal" href="view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">owner</span>, <span class="k">const</span><span class="w"> </span><a class="reference internal" href="font.html#_CPPv45BFont" title="BFont"><span class="n">BFont</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">font</span><span class="sig-paren">)</span></pre><p>Overrides the <span class="hclass">BListItem</span> version of <a class="reference internal" href="list-item.html#_CPPv4N9BListItem6UpdateEP5BViewPK5BFont" title="BListItem::Update"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Update()</span></code></a> to recalculate the width and height of the
+<span class="hclass">BStringItem</span> and the placement of the text. The width of the item
+is based on the width of the owner <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>. The height and text
 placement are based on the owner’s font. The item must be tall enough to
 display the string in the current font.</p>
 </section>
@@ -130,17 +125,32 @@ display the string in the current font.</p>
 <section id="_CPPv4N11BStringItem11InstantiateEP8BMessage">
 </section>
 <h3>
-Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BStringItem</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BStringItem</span> object, allocated by new and created with the
-version of the constructor that takes a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive. However, if the
-archive message doesn’t contain archived data for a BStringItem,
-Instantiate() returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<p>See also
-<a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">object()</span></code>,
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BStringItem" title="BStringItem"><span class="n">BStringItem</span></a><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BStringItem</span> object, allocated by new and created
+with the version of the constructor that takes a <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>
+archive. However, if the archive message doesn’t contain archived data for
+a BStringItem, Instantiate() returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<p>See also <a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">instantiate_object()</span></code>,
 <a class="reference internal" href="#_CPPv4NK11BStringItem7ArchiveEP8BMessageb" title="BStringItem::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
 </section>
 <section id="archived-fields">
 <h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="#_CPPv4NK11BStringItem7ArchiveEP8BMessageb" title="BStringItem::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a> function adds the
+following fields to its <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> argument:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">_label</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>String text (present only if it is not <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>).</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 

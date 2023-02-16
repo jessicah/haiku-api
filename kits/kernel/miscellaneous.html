@@ -18,7 +18,7 @@
     <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="The Application Kit" href="overview.html" />
+    <link rel="next" title="Ports" href="ports.html" />
     <link rel="prev" title="Images" href="images.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
@@ -32,7 +32,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="overview.html">The Application Kit</a>&#160;&#160;»
+        <a href="ports.html">Ports</a>&#160;&#160;»
         </p>
 
       </div>
@@ -43,8 +43,20 @@
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Miscellaneous Functions And Constants</a><ul>
-<li><a class="reference internal" href="#functions">Functions</a></li>
-<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#functions">Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv412clear_cachesPv6size_t6uint32">clear_caches</a></li>
+<li><a class="reference internal" href="#_CPPv48debuggerPKc">debugger</a></li>
+<li><a class="reference internal" href="#_CPPv416disable_debuggeri">disable_debugger</a></li>
+<li><a class="reference internal" href="#_CPPv49set_alarm9bigtime_t6uint32">set_alarm</a></li>
+<li><a class="reference internal" href="#_CPPv416set_signal_stackPv6size_t">set_signal_stack</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constants">Constants</a><ul>
+<li><a class="reference internal" href="#_CPPv418B_INFINITE_TIMEOUT">B_INFINITE_TIMEOUT</a></li>
+<li><a class="reference internal" href="#_CPPv416B_OS_NAME_LENGTH">B_OS_NAME_LENGTH</a></li>
+<li><a class="reference internal" href="#_CPPv411B_PAGE_SIZE">B_PAGE_SIZE</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -57,21 +69,29 @@
       <div class="content" role="main">
         
   <section id="miscellaneous-functions-and-constants">
-<h1>Miscellaneous Functions And Constants<a class="headerlink" href="#miscellaneous-functions-and-constants" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv437Miscellaneous Functions And Constants">Miscellaneous Functions And Constants<a class="headerlink" href="#miscellaneous-functions-and-constants" title="Permalink to this heading">¶</a></h1>
+<table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Declared in:</p></td>
+<td><p>kernel/OS.h</p></td>
+</tr>
+<tr class="row-even"><td><p>Library:</p></td>
+<td><p>libroot.so</p></td>
+</tr>
+</tbody>
+</table>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv412clear_cachesPv6size_t6uint32">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">void Miscellaneous Functions And Constants::clear_caches(void* addr, size_t len, uint32 flags)</pre><p>Declared in: kernel/image.h
-This function clears or invalidates the instruction and data caches. You
-should only need this function if you’re generating code on the fly, or
-if you’re performing a timing loop and you want to start with fresh
-caches (to get a “worst case” estimate).
-The parameters are:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+clear_caches()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="n">clear_caches</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">addr</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">len</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="sig-paren">)</span></pre><p>Declared in: kernel/image.h</p>
+<p>This function clears or invalidates the instruction and data caches. You
+should only need this function if you’re generating code on the fly, or if
+you’re performing a timing loop and you want to start with fresh caches (to
+get a “worst case” estimate).</p>
+<p>The parameters are:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Description</p></th>
@@ -79,92 +99,114 @@ The parameters are:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>addr</p></td>
-<td><p>Is the starting address of a section of memory that corresponds to a section of one of the caches.</p></td>
+<td><p>Is the starting address of a section of memory that corresponds to a
+section of one of the caches.</p></td>
 </tr>
 <tr class="row-odd"><td><p>len</p></td>
-<td><p>Is the length, in bytes, of the instruction or data segment that you want to clear or invalidate.</p></td>
+<td><p>Is the length, in bytes, of the instruction or data segment that you want
+to clear or invalidate.</p></td>
 </tr>
 <tr class="row-even"><td><p>flags</p></td>
-<td><p>Is one or both of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INVALIDATE_ICACHE</span></code> and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FLUSH_DCACHE</span></code>.</p></td>
+<td><p>Is one or both of <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INVALIDATE_ICACHE</span></code> and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FLUSH_DCACHE</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
 <p>By invalidating a section of the instruction cache, you cause the
 instructions in that section to be reloaded next time they’re needed.
-Flushing the data cache causes the in-memory copy of the data to be
-written out to the cache.</p>
+Flushing the data cache causes the in-memory copy of the data to be written
+out to the cache.</p>
+<section id="_CPPv48debuggerPKc">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">void Miscellaneous Functions And Constants::debugger(const char* string)</pre><p>Throws the calling thread into the debugger. The <span class="hparameter">string</span> argument becomes
-the debugger’s first utterance.</p>
+debugger()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="n">debugger</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span></pre><p>Throws the calling thread into the debugger. The <span class="hparameter">string</span> argument
+becomes the debugger’s first utterance.</p>
+<section id="_CPPv416disable_debuggeri">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">int Miscellaneous Functions And Constants::disable_debugger(int state)</pre><p>Instructs the kernel to send a signal for all exceptions, even those that
+disable_debugger()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">int</span><span class="w"> </span><span class="n">disable_debugger</span><span class="sig-paren">(</span><span class="kt">int</span><span class="w"> </span><span class="n sig-param">state</span><span class="sig-paren">)</span></pre><p>Instructs the kernel to send a signal for all exceptions, even those that
 don’t normally trigger the debugger. If the application doesn’t have a
 handler installed for the exception, the team dies without triggering the
-debugger. <span class="hparameter">state</span> should be nonzero to turn on this functionality or 0 to
-turn it off.</p>
+debugger. <span class="hparameter">state</span> should be nonzero to turn on this functionality
+or 0 to turn it off.</p>
+<section id="_CPPv49set_alarm9bigtime_t6uint32">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">bigtime_t Miscellaneous Functions And Constants::set_alarm(bigtime_t time, uint32 mode)</pre><p>Tells the kernel to send the SIGALRM
-signal at some point in the future,
+set_alarm()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="n">set_alarm</span><span class="sig-paren">(</span><span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">time</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">mode</span><span class="sig-paren">)</span></pre><p>Tells the kernel to send the SIGALRM signal at some point in the future,
 as defined by the arguments:</p>
 <ul class="simple">
-<li><p>If <span class="hparameter">mode</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PERIODIC_ALARM</span></code>, the signal is sent every <span class="hparameter">time</span> microseconds, starting as soon as set_alarm() function returns.</p></li>
-<li><p>If <span class="hparameter">mode</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ONE_SHOT_ABOLUTE_ALARM</span></code>, the signal is sent once (only) after <span class="hparameter">time</span> microseconds have elapsed measured from the time the system was booted. If that point has already passed, the signal is sent immediately.</p></li>
-<li><p>If <span class="hparameter">mode</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ONE_SHOT_RELATIVE_ALARM</span></code>, the signal is sent once (only) after <span class="hparameter">time</span> microseconds have elapsed from the time set_alarm() returns.</p></li>
+<li><p>If <span class="hparameter">mode</span> is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PERIODIC_ALARM</span></code>, the signal is
+sent every <span class="hparameter">time</span> microseconds, starting as soon as set_alarm()
+function returns.</p></li>
+<li><p>If <span class="hparameter">mode</span> is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ONE_SHOT_ABOLUTE_ALARM</span></code>, the
+signal is sent once (only) after <span class="hparameter">time</span> microseconds have elapsed
+measured from the time the system was booted. If that point has already
+passed, the signal is sent immediately.</p></li>
+<li><p>If <span class="hparameter">mode</span> is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ONE_SHOT_RELATIVE_ALARM</span></code>, the
+signal is sent once (only) after <span class="hparameter">time</span> microseconds have elapsed
+from the time set_alarm() returns.</p></li>
 </ul>
-<p>When the signal is sent, the SIGALRM
-handler is called (you set the
-handler through the normal means, by calling the Posix signal()
-function). The handler runs in the thread that set the alarm.</p>
+<p>When the signal is sent, the SIGALRM handler is called (you set the
+handler through the normal means, by calling the Posix signal() function).
+The handler runs in the thread that set the alarm.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
 <p>From within the SIGALRM handler, you mustn’t call anything that would
 cause the kernel scheduler to run. Just about the only safe call you can
-make from your signal handler is
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">sem()</span></code>.</p>
+make from your signal handler is <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">release_sem()</span></code>.</p>
 </div>
-<p>The most recent alarm requested cancels any previous request. For
-example, in this sequence…</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Ask</span> <span class="k">for</span> <span class="n">an</span> <span class="n">alarm</span> <span class="n">ten</span> <span class="n">seconds</span> <span class="kn">from</span> <span class="nn">now.</span> <span class="o">*/</span>
-<span class="n">set_alarm</span><span class="p">(</span><span class="mf">10e6</span><span class="p">,</span> <span class="n">B_ONE_SHOT_RELATIVE_ALARM</span><span class="p">);</span>
-<span class="o">/*</span> <span class="n">Ask</span> <span class="k">for</span> <span class="n">an</span> <span class="n">alarm</span> <span class="n">one</span> <span class="n">second</span> <span class="kn">from</span> <span class="nn">now.</span> <span class="o">*/</span>
-<span class="n">set_alarm</span><span class="p">(</span><span class="mf">10e5</span><span class="p">,</span> <span class="n">B_ONE_SHOT_RELATIVE_ALARM</span><span class="p">);</span>
+<p>The most recent alarm requested cancels any previous request. For example,
+in this sequence…</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Ask for an alarm ten seconds from now. */</span><span class="w"></span>
+<span class="n">set_alarm</span><span class="p">(</span><span class="mf">10e6</span><span class="p">,</span><span class="w"> </span><span class="n">B_ONE_SHOT_RELATIVE_ALARM</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/* Ask for an alarm one second from now. */</span><span class="w"></span>
+<span class="n">set_alarm</span><span class="p">(</span><span class="mf">10e5</span><span class="p">,</span><span class="w"> </span><span class="n">B_ONE_SHOT_RELATIVE_ALARM</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>…only the second alarm request will be fulfilled the first
-requested is cancelled when the second set_alarm() call is made. This
-applies to all alarm types; for example, a one-shot alarm request will
-cancel an active periodic alarm.
-To explicitly cancel the previous alarm request without installing a new
+<p>…only the second alarm request will be fulfilled the first requested is
+cancelled when the second set_alarm() call is made. This applies to all
+alarm types; for example, a one-shot alarm request will cancel an active
+periodic alarm.</p>
+<p>To explicitly cancel the previous alarm request without installing a new
 alarm, do this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">set_alarm</span><span class="p">(</span><span class="n">B_INFINITE_TIMEOUT</span><span class="p">,</span> <span class="n">B_PERIODIC_ALARM</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">set_alarm</span><span class="p">(</span><span class="n">B_INFINITE_TIMEOUT</span><span class="p">,</span><span class="w"> </span><span class="n">B_PERIODIC_ALARM</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>This cancels the previous alarm request regardless of the type of alarm.</p>
+<section id="_CPPv416set_signal_stackPv6size_t">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">void Miscellaneous Functions And Constants::set_signal_stack(void* ptr, size_t size)</pre><p>Declared in: posix/signal.be.h
-Sets the location and size of the stack that’s used by the thread’s
-signal handlers.</p>
+set_signal_stack()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="n">set_signal_stack</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ptr</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p>Declared in: posix/signal.be.h</p>
+<p>Sets the location and size of the stack that’s used by the thread’s signal
+handlers.</p>
 </section>
 <section id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv418B_INFINITE_TIMEOUT">
+</section>
 <h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">B_INFINITE_TIMEOUT</span>
+B_INFINITE_TIMEOUT</h3></pre><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">B_INFINITE_TIMEOUT</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The inifinite timeout value can be used to specify, to timeout-accepting
 functions, that you’re willing to wait forever.</p>
+<section id="_CPPv416B_OS_NAME_LENGTH">
+</section>
 <h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">B_OS_NAME_LENGTH</span>
+B_OS_NAME_LENGTH</h3></pre><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">B_OS_NAME_LENGTH</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This constant gives the maximum length of the name of a thread,
-semaphore, port, area, or other operating system bauble.</p>
+<p>This constant gives the maximum length of the name of a thread, semaphore,
+port, area, or other operating system bauble.</p>
+<section id="_CPPv411B_PAGE_SIZE">
+</section>
 <h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">B_PAGE_SIZE</span>
+B_PAGE_SIZE</h3></pre><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">B_PAGE_SIZE</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PAGE_SIZE</span></code> constant gives the size,
-in bytes, of a page of RAM.</p>
+<p>The <a class="reference internal" href="#_CPPv411B_PAGE_SIZE" title="B_PAGE_SIZE"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PAGE_SIZE</span></code></a> constant gives the size, in bytes, of a
+page of RAM.</p>
 </section>
 </section>
 
@@ -179,7 +221,7 @@ in bytes, of a page of RAM.</p>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="overview.html">The Application Kit</a>&#160;&#160;»
+        <a href="ports.html">Ports</a>&#160;&#160;»
         </p>
 
       </div>

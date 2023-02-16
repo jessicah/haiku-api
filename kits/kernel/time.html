@@ -18,7 +18,7 @@
     <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="The Application Kit" href="../locale/overview.html" />
+    <link rel="next" title="The Mail Daemon Functions" href="../mail/mail-daemon-functions.html" />
     <link rel="prev" title="Threads And Teams" href="threads-and-teams.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
@@ -32,7 +32,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../locale/overview.html">The Application Kit</a>&#160;&#160;»
+        <a href="../mail/mail-daemon-functions.html">The Mail Daemon Functions</a>&#160;&#160;»
         </p>
 
       </div>
@@ -43,7 +43,13 @@
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Time Information</a><ul>
-<li><a class="reference internal" href="#time-functions">Time Functions</a></li>
+<li><a class="reference internal" href="#time-functions">Time Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv415real_time_clockv">real_time_clock</a></li>
+<li><a class="reference internal" href="#_CPPv421real_time_clock_usecsv">real_time_clock_usecs</a></li>
+<li><a class="reference internal" href="#_CPPv419set_real_time_clock5int32">set_real_time_clock</a></li>
+<li><a class="reference internal" href="#_CPPv411system_timev">system_time</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -56,17 +62,35 @@
       <div class="content" role="main">
         
   <section id="time-information">
-<h1>Time Information<a class="headerlink" href="#time-information" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv416Time Information">Time Information<a class="headerlink" href="#time-information" title="Permalink to this heading">¶</a></h1>
+<table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Declared in:</p></td>
+<td><p>kernel/OS.h</p></td>
+</tr>
+<tr class="row-even"><td><p>Library:</p></td>
+<td><p>libroot.so</p></td>
+</tr>
+</tbody>
+</table>
 <section id="time-functions">
 <h2>Time Functions<a class="headerlink" href="#time-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv415real_time_clockv">
+</section>
+<section id="_CPPv421real_time_clock_usecsv">
+</section>
+<section id="_CPPv419set_real_time_clock5int32">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">uint32 Time Information::real_time_clock()</pre><pre style="background: #f3f3f3; line-height: 2em">bigtime_t Time Information::real_time_clock_usecs()</pre><pre style="background: #f3f3f3; line-height: 2em">void Time Information::set_real_time_clock(int32 secs_since_jan1_1970)</pre><p>real_time_clock() returns the number of seconds that have elapsed since
-January 1, 1970.
-real_time_clock_usecs() measures the same time span in microseconds.
-set_real_time_clock() sets the value that the other two functions refer
+real_time_clock(), real_time_clock_usecs(), set_real_time_clock()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">uint32</span><span class="w"> </span><span class="n">real_time_clock</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="n">real_time_clock_usecs</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="n">set_real_time_clock</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">secs_since_jan1_1970</span><span class="sig-paren">)</span></pre><p>real_time_clock() returns the number of seconds that have elapsed since
+January 1, 1970.</p>
+<p>real_time_clock_usecs() measures the same time span in microseconds.</p>
+<p>set_real_time_clock() sets the value that the other two functions refer
 to.</p>
+<section id="_CPPv411system_timev">
+</section>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">bigtime_t Time Information::system_time()</pre><p>Returns the number of microseconds that have elapsed since the computer
+system_time()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">bigtime_t</span><span class="w"> </span><span class="n">system_time</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the number of microseconds that have elapsed since the computer
 was booted.</p>
 </section>
 </section>
@@ -82,7 +106,7 @@ was booted.</p>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../locale/overview.html">The Application Kit</a>&#160;&#160;»
+        <a href="../mail/mail-daemon-functions.html">The Mail Daemon Functions</a>&#160;&#160;»
         </p>
 
       </div>

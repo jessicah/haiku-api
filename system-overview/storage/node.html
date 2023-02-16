@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BNode &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BNodeInfo" href="node-info.html" />
+    <link rel="prev" title="BMimeType" href="mime-type.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BNode</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="mime-type.html">BMimeType</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="node-info.html">BNodeInfo</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BNode</a><ul>
+<li><a class="reference internal" href="#nodes-are-dumb">Nodes are Dumb</a><ul>
+<li><a class="reference internal" href="#the-node-pool-is-limited-file-descriptors">The “Node Pool” is Limited (File Descriptors)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#derived-classes-and-their-uses">Derived Classes and their Uses</a></li>
+<li><a class="reference internal" href="#bnode-instances">BNode Instances</a></li>
+<li><a class="reference internal" href="#converting-a-bnode-to-an-instance-of-a-derived-class">Converting a BNode to an Instance of a Derived Class</a><ul>
+<li><a class="reference internal" href="#converting-to-bdirectory">Converting to BDirectory</a></li>
+<li><a class="reference internal" href="#converting-to-bfile-or-bsymlink">Converting to BFile or BSymLink</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#node-locking">Node Locking</a><ul>
+<li><a class="reference internal" href="#implications">Implications</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bnode">
+<h1 id="CPPv45BNode">BNode<a class="headerlink" href="#bnode" title="Permalink to this heading">¶</a></h1>
+<p>The <span class="hclass">BNode</span> class gives you access to the data that a file system
+entry (a file, directory, or symbolic link) contains. There are two parts
+to this data:</p>
+<ol class="arabic simple">
+<li><p>There’s the “data portion” itself…</p></li>
+<li><p>…and then there are the node’s attributes.</p></li>
+</ol>
+<p>The content of the data portion depends on the node’s flavor:</p>
+<ul class="simple">
+<li><p>If it’s a regular file, the data is whatever it is that the file is meant
+to contain: ASCII text, binary image or sound data, executable code, and so
+on. Note that resources (as created by the <a class="reference internal" href="../../kits/storage/resources.html#_CPPv410BResources" title="BResources"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BResources</span></code></a> class)
+are kept in the data portion.</p></li>
+<li><p>If it’s a directory, the data is the list of entries that the directory
+contains.</p></li>
+<li><p>If it’s a symbolic link, the data is the path of the “linked-to” file. The
+path can be absolute or relative.</p></li>
+</ul>
+<p>The content of the attributes, on the other hand, isn’t qualified by the
+node’s flavor: Any node can contain any set of attributes.</p>
+<section id="nodes-are-dumb">
+<h2>Nodes are Dumb<a class="headerlink" href="#nodes-are-dumb" title="Permalink to this heading">¶</a></h2>
+<p>Keep in mind that the concept of a “node” designates the data parts (data
+and attributes) of a file (a file, directory, or link). Contrast this with
+an “entry,” which designates the entity’s location within the file system:
+For example, you can write to a “node” (but not an entry), and you can
+rename an “entry” (but not a node).</p>
+<p>This isn’t just a conceptual crutch, it’s the law: Nodes really don’t know
+where they’re located. For example, you can’t ask a node for its name, or
+for the identity of its parent. This has some serious implications, the
+most important of which is…</p>
+<ul class="simple">
+<li><p>If you need to store a reference to a file (or directory, or symbolic
+link), don’t store the node—in other words, don’t cache the BNode object.
+Instead, store the information that you used to create the <span class="hclass">BNode</span>
+(typically, a pathname or <span class="htype">entry_ref</span> structure).</p></li>
+</ul>
+<p>Now that we’ve got that straight, we’ll relax the rules a bit:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a> objects are node/entry hybrids. A
+<a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a> does know its own name (and parent, and so on).</p></li>
+</ul>
+<p>This doesn’t really change the “store the info” rule. Even if you’re
+dealing exclusively with <a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a> objects, you should keep
+the generative information around. The primary reason for this is…</p>
+<section id="the-node-pool-is-limited-file-descriptors">
+<h3>The “Node Pool” is Limited (File Descriptors)<a class="headerlink" href="#the-node-pool-is-limited-file-descriptors" title="Permalink to this heading">¶</a></h3>
+<p>Every <span class="hclass">BNode</span> object consumes a “file descriptor.” Your
+application can only maintain 256 file descriptors at a time. Because of
+this limit, you shouldn’t keep <span class="hclass">BNode</span>s around that you don’t need.
+Keep in mind that <a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> objects also consumes file
+descriptors (one per object).</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The file descriptor limit will probably be lifted, or at least settable,
+in a subsequent release. But even then you should be frugal.</p>
+</div>
+</section>
+</section>
+<section id="derived-classes-and-their-uses">
+<h2>Derived Classes and their Uses<a class="headerlink" href="#derived-classes-and-their-uses" title="Permalink to this heading">¶</a></h2>
+<p><span class="hclass">BNode</span> has three derived classes: <a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a>,
+<a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a>, and <a class="reference internal" href="../../kits/storage/sym-link.html#_CPPv48BSymLink" title="BSymLink"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSymLink</span></code></a>. The derived classes
+define functions that let you access the node’s data portion in the
+appropriate style; for example…</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a> implements <a class="reference internal" href="../../kits/storage/file.html#_CPPv4N5BFile4ReadEPv6size_t" title="BFile::Read"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Read()</span></code></a> and
+<a class="reference internal" href="../../kits/storage/file.html#_CPPv4N5BFile5WriteEPKv6size_t" title="BFile::Write"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Write()</span></code></a> functions that let you retrieve
+arbitrary amounts of data from arbitrary positions in the file.</p></li>
+<li><p><a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a> implements functions, such as
+<a class="reference internal" href="../../kits/storage/directory.html#_CPPv4N10BDirectory12GetNextEntryEP6BEntryb" title="BDirectory::GetNextEntry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextEntry()</span></code></a> and
+<a class="reference internal" href="../../kits/storage/directory.html#_CPPv4NK10BDirectory9FindEntryEPKcP6BEntryb" title="BDirectory::FindEntry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindEntry()</span></code></a>, that read entries from the
+directory.</p></li>
+<li><p><a class="reference internal" href="../../kits/storage/sym-link.html#_CPPv48BSymLink" title="BSymLink"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSymLink</span></code></a>’s <a class="reference internal" href="../../kits/storage/sym-link.html#_CPPv4N8BSymLink8ReadLinkEPc6size_t" title="BSymLink::ReadLink"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadLink()</span></code></a>
+returns the pathname that it contains.</p></li>
+</ul>
+<p>If you want to (sensibly) look at a node’s data portion, you must create
+an instance of the appropriate derived class. In other words, if you want
+to browse a directory, you have to create a <a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a>
+instance; if you want to write to a file, you create a <a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a>.</p>
+<p>Be aware that it’s not (always) an error to create an instance of the
+“wrong” derived class; setting a <a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a> to a symbolic link, for
+example, will traverse the link such that the <a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a> opens the
+file that the symbolic link is linked to. See the individual derived class
+specifications for more information.</p>
+</section>
+<section id="bnode-instances">
+<h2>BNode Instances<a class="headerlink" href="#bnode-instances" title="Permalink to this heading">¶</a></h2>
+<p>In practice, you almost always want to create an instance of one of the
+<span class="hclass">BNode</span>-derived classes; but if, for whatever reason, you find
+yourself holding a <span class="hclass">BNode</span> instance, here’s what you’ll be able to
+do with it:</p>
+<ul class="simple">
+<li><p>Read and write attributes. The attribute-accessing functions
+(<a class="reference internal" href="../../kits/storage/node.html#_CPPv4N5BNode8ReadAttrEPKc9type_code5off_tPv6size_t" title="BNode::ReadAttr"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReadAttr()</span></code></a>, <a class="reference internal" href="../../kits/storage/node.html#_CPPv4N5BNode9WriteAttrEPKc9type_code5off_tPKv6size_t" title="BNode::WriteAttr"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">WriteAttr()</span></code></a>, and so on) are general—they work without regard for
+the node’s flavor. Thus, you don’t need an instance of a specific derived
+class to read and write attributes.</p></li>
+<li><p>Get stat information. The <a class="reference internal" href="../../kits/storage/statable.html#_CPPv49BStatable" title="BStatable"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStatable</span></code></a> functions can be invoked
+on any flavor of node.</p></li>
+<li><p>Lock the node. This prevents other “agents” (other objects, other apps,
+the user) from accessing reading or writing the node’s data and attributes.
+See “<span class="xref std std-ref">Node Locking</span>”.</p></li>
+</ul>
+</section>
+<section id="converting-a-bnode-to-an-instance-of-a-derived-class">
+<h2>Converting a BNode to an Instance of a Derived Class<a class="headerlink" href="#converting-a-bnode-to-an-instance-of-a-derived-class" title="Permalink to this heading">¶</a></h2>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>This section describes situations and presents solutions to problems that
+are a bit esoteric. If you never create direct instances of BNode (and you
+never have to), then you should skip this and go to “<span class="xref std std-ref">Node Locking</span>”.</p>
+</div>
+<p>There may be times when you find yourself holding on to a <span class="hclass">BNode</span>
+(instance) that you want to convert into a <a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a>,
+<a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a>, or <a class="reference internal" href="../../kits/storage/sym-link.html#_CPPv48BSymLink" title="BSymLink"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSymLink</span></code></a>. However, you can’t go
+directly from a <span class="hclass">BNode</span> instance to an instance of
+<a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a>, <a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a>, or <a class="reference internal" href="../../kits/storage/sym-link.html#_CPPv48BSymLink" title="BSymLink"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSymLink</span></code></a>—you
+can’t tell your <span class="hclass">BNode</span> to “cast itself” as one of its children.</p>
+<p>There are solutions, however…</p>
+<section id="converting-to-bdirectory">
+<h3>Converting to BDirectory<a class="headerlink" href="#converting-to-bdirectory" title="Permalink to this heading">¶</a></h3>
+<p>Converting from a <span class="hclass">BNode</span> to a <a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a>, while not
+transparent, is pretty simple: Grab the <span class="htype">node_ref</span> out of the
+<span class="hclass">BNode</span> and pass it to the <a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a> constructor or
+<a class="reference internal" href="../../kits/storage/directory.html#_CPPv4N10BDirectory5SetToEPK9entry_ref" title="BDirectory::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> function. Regard this example
+function:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">Node2Directory</span><span class="p">(</span><span class="n">BNode</span><span class="w"> </span><span class="o">*</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">BDirectory</span><span class="w"> </span><span class="o">*</span><span class="n">dir</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">node_ref</span><span class="w"> </span><span class="n">nref</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">dir</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">dir</span><span class="p">.</span><span class="n">Unset</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">node</span><span class="p">.</span><span class="n">GetNodeRef</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nref</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* Set the BDirectory. If nref isn&#39;t a directory node,</span>
+<span class="cm">   * the SetTo() will fail.</span>
+<span class="cm">   */</span><span class="w"></span>
+<span class="w">   </span><span class="n">dir</span><span class="p">.</span><span class="n">SetTo</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nref</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="converting-to-bfile-or-bsymlink">
+<h3>Converting to BFile or BSymLink<a class="headerlink" href="#converting-to-bfile-or-bsymlink" title="Permalink to this heading">¶</a></h3>
+<p>Converting a <span class="hclass">BNode</span> instance to a <a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a> or
+<a class="reference internal" href="../../kits/storage/sym-link.html#_CPPv48BSymLink" title="BSymLink"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSymLink</span></code></a> isn’t as neat as the foregoing. Instead, you have to
+cache the information that you used to initialize the <span class="hclass">BNode</span> in
+the first place, and then reuse it to create the <a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a> or
+<a class="reference internal" href="../../kits/storage/sym-link.html#_CPPv48BSymLink" title="BSymLink"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSymLink</span></code></a>.</p>
+<p>For example, let’s say you receive an <span class="htype">entry_ref</span>. You turn it into
+a <span class="hclass">BNode</span>, but then decide you need the data-writing power of a
+<a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a>. If, in the meantime, you lost the original
+<span class="htype">entry_ref</span>, you’re sunk—there’s nothing you can do.</p>
+</section>
+</section>
+<section id="node-locking">
+<h2>Node Locking<a class="headerlink" href="#node-locking" title="Permalink to this heading">¶</a></h2>
+<p>Another feature provided by the <span class="hclass">BNode</span> class is “node locking”:
+Through <span class="hclass">BNode</span>’s <a class="reference internal" href="../../kits/storage/node.html#_CPPv4N5BNode4LockEv" title="BNode::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a> function you can
+restrict access to the node. The lock is removed when <a class="reference internal" href="../../kits/storage/node.html#_CPPv4N5BNode6UnlockEv" title="BNode::Unlock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Unlock()</span></code></a> is called, or when the <span class="hclass">BNode</span> object is deleted.</p>
+<ul class="simple">
+<li><p>When you lock a node, you prevent other objects (or agents) from reading
+or writing the node’s data and attributes. No other agent can even open the
+node—other <span class="hclass">BNode</span> constructions and POSIX open() calls (on that
+node) will fail while you hold the lock.</p></li>
+<li><p>You can only acquire a node lock if there are no file descriptors open on
+the node (with one exception). This means that no other <span class="hclass">BNode</span> may
+be open on the node (locked or not), nor may the node be held open because
+of a POSIX open() (or opendir()) call.</p></li>
+</ul>
+<p>The one exception to the no-file descriptors rule has to do with
+<a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a>s: Let’s say you lock a directory, and then you
+initialize a <a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> to point to an entry within that
+directory. Even though the <a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> creates a file descriptor to
+the directory (as explained in the <a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> class), the
+initialization will succeed.</p>
+<section id="implications">
+<h3>Implications<a class="headerlink" href="#implications" title="Permalink to this heading">¶</a></h3>
+<p>For files (and, less importantly, symlinks), the implications of locking
+are pretty clear: No one else can read or write the file. For directories,
+it’s worth a closer look:</p>
+<ul class="simple">
+<li><p>Locking a directory means that the contents of the directory can’t change:
+You can’t create new nodes in the directory, or rename or remove existing
+ones. (You can, however, create abstract entries within the directory; see
+<a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> for more on abstract entries.)</p></li>
+</ul>
+<p>Locking a node does not lock the node’s entry: You can’t “lock out” entry
+operations, such as rename, move, and remove. Even if you have a node
+locked, the entry that acts as the “container” for that node could
+disappear. If you want to prevent such operations on a node’s entry, lock
+the entry’s parent directory.</p>
+<p>In general, you should try to avoid locking your nodes. If you must lock,
+try to make it brief. The primary reason (and, pretty much, the only
+reason) to lock is if separate elements in the data and/or attributes must
+be kept in a consistent state. In such a case, you should hold the lock
+just long enough to ensure consistency.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>You shouldn’t use locks to “privatize” data. Locking isn’t meant to be
+used as a heightened permissions bit.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="mime-type.html">BMimeType</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="node-info.html">BNodeInfo</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

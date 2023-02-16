@@ -43,7 +43,11 @@
     <h3><a href="../../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">BPoint</a><ul>
-<li><a class="reference internal" href="#data-members">Data Members</a></li>
+<li><a class="reference internal" href="#data-members">Data Members</a><ul>
+<li><a class="reference internal" href="#float-x">float x</a></li>
+<li><a class="reference internal" href="#float-y">float y</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
 <li><a class="reference internal" href="#_CPPv4N6BPoint6BPointEff">BPoint</a></li>
 </ul>
@@ -55,7 +59,10 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#operators">Operators</a></li>
-<li><a class="reference internal" href="#global-objects">Global Objects</a></li>
+<li><a class="reference internal" href="#global-objects">Global Objects</a><ul>
+<li><a class="reference internal" href="#b-origin">B_ORIGIN</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -68,76 +75,79 @@
       <div class="content" role="main">
         
   <section id="bpoint">
-<h1>BPoint<a class="headerlink" href="#bpoint" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv46BPoint">BPoint<a class="headerlink" href="#bpoint" title="Permalink to this heading">¶</a></h1>
 <section id="data-members">
 <h2>Data Members<a class="headerlink" href="#data-members" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>The coordinate value measured horizontally along the x-axis.</p>
-<h3>
-</h3><p>The coordinate value measured vertically along the y-axis.</p>
+<section id="float-x">
+<h3>float x<a class="headerlink" href="#float-x" title="Permalink to this heading">¶</a></h3>
+<p>The coordinate value measured horizontally along the x-axis.</p>
+</section>
+<section id="float-y">
+<h3>float y<a class="headerlink" href="#float-y" title="Permalink to this heading">¶</a></h3>
+<p>The coordinate value measured vertically along the y-axis.</p>
+</section>
 </section>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N6BPoint6BPointEff">
 </section>
 <h3>
-BPoint()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">inline</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BPoint6BPointEff" title="BPoint::BPoint"><span class="n">BPoint</span></a><span class="p">::</span></span><span class="n">BPoint</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">x</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">y</span><span class="sig-paren">)</span><br /><span class="k">inline</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BPoint6BPointERK6BPoint" title="BPoint::BPoint"><span class="n">BPoint</span></a><span class="p">::</span></span><span class="n">BPoint</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N6BPoint6BPointERK6BPoint" title="BPoint::BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">point</span><span class="sig-paren">)</span><br /><span class="k">inline</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BPoint6BPointEv" title="BPoint::BPoint"><span class="n">BPoint</span></a><span class="p">::</span></span><span class="n">BPoint</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BPoint</span> object that corresponds to the
-point (<span class="hparameter">x</span>, <span class="hparameter">y</span>), or
-<span class="hclass">BPoint</span>
-that’s copied from point. If no coordinate values are assigned, the
-<span class="hclass">BPoint</span>’s location is indeterminate.</p>
-<p>See also:
-<a class="reference internal" href="#_CPPv4N6BPoint3SetEff" title="BPoint::Set"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Set()</span></code></a>,
-the assignment operator</p>
+BPoint()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">inline</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BPoint6BPointEff" title="BPoint::BPoint"><span class="n">BPoint</span></a><span class="p">::</span></span><span class="n">BPoint</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">x</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">y</span><span class="sig-paren">)</span><br /><span class="k">inline</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BPoint6BPointERK6BPoint" title="BPoint::BPoint"><span class="n">BPoint</span></a><span class="p">::</span></span><span class="n">BPoint</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N6BPoint6BPointERK6BPoint" title="BPoint::BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">point</span><span class="sig-paren">)</span><br /><span class="k">inline</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BPoint6BPointEv" title="BPoint::BPoint"><span class="n">BPoint</span></a><span class="p">::</span></span><span class="n">BPoint</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BPoint</span> object that corresponds to the point
+(<span class="hparameter">x</span>, <span class="hparameter">y</span>), or <span class="hclass">BPoint</span> that’s copied from point.
+If no coordinate values are assigned, the <span class="hclass">BPoint</span>’s location is
+indeterminate.</p>
+<p>See also: <a class="reference internal" href="#_CPPv4N6BPoint3SetEff" title="BPoint::Set"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Set()</span></code></a>, the assignment operator</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N6BPoint11ConstrainToE5BRect">
 </section>
 <h3>
-ConstrainTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPoint</span><span class="p">::</span></span><span class="n">ConstrainTo</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">rect</span><span class="sig-paren">)</span></pre><p>Ensures that the <span class="hclass">BPoint</span> lies within <span class="hparameter">rect</span>.
-If it’s already contained in
-the rectangle, the <span class="hclass">BPoint</span> is unchanged; otherwise, it’s moved to the
-<span class="hparameter">rect</span>’s nearest edge.</p>
-<p>See also:
-<a class="reference internal" href="rect.html#_CPPv4NK5BRect8ContainsE6BPoint" title="BRect::Contains"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BRect::Contains()</span></code></a></p>
+ConstrainTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="p">::</span></span><span class="n">ConstrainTo</span><span class="sig-paren">(</span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">rect</span><span class="sig-paren">)</span></pre><p>Ensures that the <span class="hclass">BPoint</span> lies within <span class="hparameter">rect</span>. If it’s
+already contained in the rectangle, the <span class="hclass">BPoint</span> is unchanged;
+otherwise, it’s moved to the <span class="hparameter">rect</span>’s nearest edge.</p>
+<p>See also: <a class="reference internal" href="rect.html#_CPPv4NK5BRect8ContainsE6BPoint" title="BRect::Contains"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BRect::Contains()</span></code></a></p>
 <section id="_CPPv4NK6BPoint13PrintToStreamEv">
 </section>
 <h3>
-PrintToStream()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPoint</span><span class="p">::</span></span><span class="n">PrintToStream</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Prints the <span class="hclass">BPoint</span>’s coordinates to standard output in the form:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;BPoint(x, y)&quot;</span>
+PrintToStream()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="p">::</span></span><span class="n">PrintToStream</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Prints the <span class="hclass">BPoint</span>’s coordinates to standard output in the form:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;BPoint(x, y)&quot;</span>
 </pre></div>
 </div>
 <section id="_CPPv4N6BPoint3SetEff">
 </section>
 <h3>
-Set()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BPoint</span><span class="p">::</span></span><span class="n">Set</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">x</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">y</span><span class="sig-paren">)</span></pre><p>Sets the <span class="hclass">BPoint</span>’s x and y coordinates.</p>
+Set()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="p">::</span></span><span class="n">Set</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">x</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">y</span><span class="sig-paren">)</span></pre><p>Sets the <span class="hclass">BPoint</span>’s x and y coordinates.</p>
 </section>
 <section id="operators">
 <h2>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">¶</a></h2>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">inline</span><span class="w"> </span><span class="n">BPoint</span><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPoint</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">from</span><span class="sig-paren">)</span></pre><p>Copies from’s coordinate data into the left-side object.</p>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">inline</span><span class="w"> </span><a class="reference internal" href="#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="p">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">from</span><span class="sig-paren">)</span></pre><p>Copies from’s coordinate data into the left-side object.</p>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">!=</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">==</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if
-the two objects’ point exactly coincide.</p>
-<p><span class="hmethod">!=</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if
-the two objects’ points don’t coincide.</p>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">!=</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">==</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the two objects’ point exactly
+coincide.</p>
+<p><span class="hmethod">!=</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the two objects’ points don’t
+coincide.</p>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BPoint</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPoint</span><span class="p">&amp;</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BPoint</span><span class="w"> </span><span class="k">operator</span><span class="o">+=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPoint</span><span class="p">&amp;</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">+</span> creates and returns a new <span class="hclass">BPoint</span> that adds the two operands together.
-The new object’s x coordinate is the sum of the operands’ x values; its y
-value is the sum of the operands’ y values.</p>
-<p><span class="hmethod">+=</span> adds the operands together and stores the result in the left operand.</p>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="p">&amp;</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="k">operator</span><span class="o">+=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="p">&amp;</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">+</span> creates and returns a new <span class="hclass">BPoint</span> that adds the two
+operands together. The new object’s x coordinate is the sum of the
+operands’ x values; its y value is the sum of the operands’ y values.</p>
+<p><span class="hmethod">+=</span> adds the operands together and stores the result in the left
+operand.</p>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BPoint</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPoint</span><span class="p">&amp;</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BPoint</span><span class="w"> </span><span class="k">operator</span><span class="o">-=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPoint</span><span class="p">&amp;</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">-</span> creates and returns a new <span class="hclass">BPoint</span> that subtracts the right operand from
-the left. The new object’s x coordinate is the difference between the
-operands’ x values; its y value is the difference between the operands’ y
-values.</p>
-<p><span class="hmethod">-=</span> performs the subtraction and stores the result in the left operand.</p>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="p">&amp;</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="k">operator</span><span class="o">-=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="p">&amp;</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">-</span> creates and returns a new <span class="hclass">BPoint</span> that subtracts the
+right operand from the left. The new object’s x coordinate is the
+difference between the operands’ x values; its y value is the difference
+between the operands’ y values.</p>
+<p><span class="hmethod">-=</span> performs the subtraction and stores the result in the left
+operand.</p>
 </section>
 <section id="global-objects">
 <h2>Global Objects<a class="headerlink" href="#global-objects" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p><span class="hclass">BPoint</span> object that represents (0.0, 0.0).</p>
+<section id="b-origin">
+<h3>B_ORIGIN<a class="headerlink" href="#b-origin" title="Permalink to this heading">¶</a></h3>
+<p><span class="hclass">BPoint</span> object that represents (0.0, 0.0).</p>
+</section>
 </section>
 </section>
 

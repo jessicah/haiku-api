@@ -18,7 +18,7 @@
     <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="BOutlineListView" href="outline-list-view.html" />
+    <link rel="next" title="Message Constants" href="message-constants.html" />
     <link rel="prev" title="BMenuField" href="menu-field.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
@@ -32,7 +32,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="outline-list-view.html">BOutlineListView</a>&#160;&#160;»
+        <a href="message-constants.html">Message Constants</a>&#160;&#160;»
         </p>
 
       </div>
@@ -93,54 +93,51 @@
       <div class="content" role="main">
         
   <section id="bmenuitem">
-<h1>BMenuItem<a class="headerlink" href="#bmenuitem" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv49BMenuItem">BMenuItem<a class="headerlink" href="#bmenuitem" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N9BMenuItem9BMenuItemEPKcP8BMessagec6uint32">
 </section>
 <h3>
-BMenuItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BMenuItem9BMenuItemEPKcP8BMessagec6uint32" title="BMenuItem::BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">BMenuItem</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="kt">char</span><span class="w"> </span><span class="n sig-param">shortcut</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">modifiers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BMenuItem9BMenuItemEP5BMenuP8BMessage" title="BMenuItem::BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">BMenuItem</span><span class="sig-paren">(</span><span class="n">BMenu</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">submenu</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BMenuItem9BMenuItemEP8BMessage" title="BMenuItem::BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">BMenuItem</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BMenuItem</span> and sets its
-<span class="hparameter">label</span>, its invocation <span class="hparameter">message</span>, both
-of which can be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. When the user invokes the menu item,
-<span class="hparameter">message</span> is copied and the following fields</p>
+BMenuItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BMenuItem9BMenuItemEPKcP8BMessagec6uint32" title="BMenuItem::BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">BMenuItem</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span>, <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="kt">char</span><span class="w"> </span><span class="n sig-param">shortcut</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">modifiers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BMenuItem9BMenuItemEP5BMenuP8BMessage" title="BMenuItem::BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">BMenuItem</span><span class="sig-paren">(</span><a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><span class="n">BMenu</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">submenu</span>, <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N9BMenuItem9BMenuItemEP8BMessage" title="BMenuItem::BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">BMenuItem</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BMenuItem</span> and sets its <span class="hparameter">label</span>, its
+invocation <span class="hparameter">message</span>, both of which can be <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>. When
+the user invokes the menu item, <span class="hparameter">message</span> is copied and the
+following fields</p>
 <p>Whenever the user invokes the item, the model message is copied and the
-copy is posted and marked for delivery to the target handler. Three
-pieces of information are added to the copy before it’s posted:</p>
-<p>FieldType codeDescriptionwhenB_INT64_TYPEThe time the item was invoked, as measured by the number of microseconds since 12:00:00 AM January 1, 1970.sourceB_POINTER_TYPEA pointer to the BMenuItem object.indexB_INT32_TYPEThe index of the item, its ordinal position in the menu. Indices begin at 0.</p>
+copy is posted and marked for delivery to the target handler. Three pieces
+of information are added to the copy before it’s posted:</p>
 <p>By default, the target of the message is the window that the contains the
-menu that the item is part of. Use
-<a class="reference internal" href="../application/invoker.html#_CPPv4N8BInvoker9SetTargetE10BMessenger" title="BInvoker::SetTarget"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTarget()</span></code></a>
-to set a different target.</p>
-<p>The constructor can also set a keyboard <span class="hparameter">shortcut</span> for the item. The
-character that’s passed as the <span class="hparameter">shortcut</span> parameter will be displayed to
-the right of the item’s label. Upper case characters are mapped to lower
-case characters; if you want the user to have to type an upper case
-character, you must include <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SHIFT_KEY</span></code> in the modifers mask.</p>
-<p>The <span class="hparameter">modifiers</span> mask determines which modifier keys the user must hold down
-for the shortcut to work. The mask can be formed by combining any of the
-modifiers constants, especially these:</p>
+menu that the item is part of. Use <a class="reference internal" href="../application/invoker.html#_CPPv4N8BInvoker9SetTargetE10BMessenger" title="BInvoker::SetTarget"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTarget()</span></code></a> to set a different target.</p>
+<p>The constructor can also set a keyboard <span class="hparameter">shortcut</span> for the item.
+The character that’s passed as the <span class="hparameter">shortcut</span> parameter will be
+displayed to the right of the item’s label. Upper case characters are
+mapped to lower case characters; if you want the user to have to type an
+upper case character, you must include <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SHIFT_KEY</span></code> in the
+modifers mask.</p>
+<p>The <span class="hparameter">modifiers</span> mask determines which modifier keys the user must
+hold down for the shortcut to work. The mask can be formed by combining any
+of the modifiers constants, especially these:</p>
 <ul class="simple">
-<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SHIFT_KEY</span></code></p></li>
-<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CONTROL_KEY</span></code></p></li>
-<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OPTION_KEY</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SHIFT_KEY</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CONTROL_KEY</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OPTION_KEY</span></code></p></li>
 </ul>
-<p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_COMMAND_KEY</span></code> is required for all keyboard shortcuts; it doesn’t have to
-be explicitly included in the mask.</p>
-<p>If the <span class="hclass">BMenuItem</span> is constructed to control a
-<span class="hparameter">submenu</span>, it can’t take a
-shortcut and it typically doesn’t post messages—its role is to
-bring up the submenu. However, it can be assigned a model <span class="hparameter">message</span> if the
-application must take some collateral action when the submenu is opened.
-The item’s initial label will be taken from the name of the submenu. It
-can be changed after construction by calling
+<p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_COMMAND_KEY</span></code> is required for all keyboard shortcuts; it
+doesn’t have to be explicitly included in the mask.</p>
+<p>If the <span class="hclass">BMenuItem</span> is constructed to control a <span class="hparameter">submenu</span>,
+it can’t take a shortcut and it typically doesn’t post messages—its role is
+to bring up the submenu. However, it can be assigned a model
+<span class="hparameter">message</span> if the application must take some collateral action when
+the submenu is opened. The item’s initial label will be taken from the name
+of the submenu. It can be changed after construction by calling
 <a class="reference internal" href="#_CPPv4N9BMenuItem8SetLabelEPKc" title="BMenuItem::SetLabel"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetLabel()</span></code></a>.</p>
 <section id="_CPPv4N9BMenuItemD0Ev">
 </section>
 <h3>
-~BMenuItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">~BMenuItem</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the item’s label and its model
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> object. If the item
-controls a submenu, that menu and all its items are also freed. Deleting
-a <span class="hclass">BMenuItem</span> destroys the entire menu hierarchy under that item.</p>
+~BMenuItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">~BMenuItem</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the item’s label and its model <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> object. If the
+item controls a submenu, that menu and all its items are also freed.
+Deleting a <span class="hclass">BMenuItem</span> destroys the entire menu hierarchy under
+that item.</p>
 </section>
 <section id="hook-functions">
 <h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
@@ -149,55 +146,50 @@ a <span class="hclass">BMenuItem</span> destroys the entire menu hierarchy under
 <section id="_CPPv4N9BMenuItem11DrawContentEv">
 </section>
 <h3>
-Draw(), DrawContent()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">DrawContent</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions draw the menu item and highlight it if it’s currently
+Draw(), DrawContent()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">DrawContent</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions draw the menu item and highlight it if it’s currently
 selected. They’re called by the <span class="hmethod">Draw()</span> function of the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code> where the
-item is located whenever the menu is required to display itself; they
-don’t need to be called from within application code.</p>
+<a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code></a> where the item is located whenever the menu is required
+to display itself; they don’t need to be called from within application
+code.</p>
 <p>However, they can both be overridden by derived classes that display
-something other than a textual label. The <span class="hmethod">Draw()</span> function is called
-first. It draws the background for the entire item, then calls
-<span class="hmethod">DrawContent()</span> to draw the label within the item’s content area. After
-<span class="hmethod">DrawContent()</span> returns, it draws the check mark (if the item is currently
-marked) and the keyboard shortcut (if any). It finishes by calling
-<a class="reference internal" href="#_CPPv4N9BMenuItem9HighlightEb" title="BMenuItem::Highlight"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Highlight()</span></code></a>
-if the item is currently selected.</p>
-<p>Both functions draw by calling functions of the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code> in which the item
-is located. For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">MyItem</span><span class="p">::</span><span class="n">DrawContent</span><span class="p">()</span>
-<span class="p">{</span>
-   <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
-   <span class="n">Menu</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">DrawBitmap</span><span class="p">(</span><span class="n">image</span><span class="p">);</span>
-   <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
-<span class="p">}</span>
+something other than a textual label. The <span class="hmethod">Draw()</span> function is
+called first. It draws the background for the entire item, then calls
+<span class="hmethod">DrawContent()</span> to draw the label within the item’s content area.
+After <span class="hmethod">DrawContent()</span> returns, it draws the check mark (if the
+item is currently marked) and the keyboard shortcut (if any). It finishes
+by calling <a class="reference internal" href="#_CPPv4N9BMenuItem9HighlightEb" title="BMenuItem::Highlight"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Highlight()</span></code></a> if the item is
+currently selected.</p>
+<p>Both functions draw by calling functions of the <a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code></a> in
+which the item is located. For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">MyItem::DrawContent</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="w">   </span><span class="n">Menu</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">DrawBitmap</span><span class="p">(</span><span class="n">image</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>A derived class can override either <span class="hmethod">Draw()</span>, if it needs to draw the
-entire item, or <span class="hmethod">DrawContent()</span>, if it needs to draw only within the
-content area. A <span class="hmethod">Draw()</span> function can find the frame rectangle it should
-draw within by calling the <span class="hclass">BMenuItem</span>’s
-<a class="reference internal" href="#_CPPv4NK9BMenuItem5FrameEv" title="BMenuItem::Frame"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Frame()</span></code></a>
-function; a <span class="hmethod">DrawContent()</span>
+<p>A derived class can override either <span class="hmethod">Draw()</span>, if it needs to draw
+the entire item, or <span class="hmethod">DrawContent()</span>, if it needs to draw only
+within the content area. A <span class="hmethod">Draw()</span> function can find the frame
+rectangle it should draw within by calling the <span class="hclass">BMenuItem</span>’s
+<a class="reference internal" href="#_CPPv4NK9BMenuItem5FrameEv" title="BMenuItem::Frame"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Frame()</span></code></a> function; a <span class="hmethod">DrawContent()</span>
 function can calculate the content area from the point returned by
-<a class="reference internal" href="#_CPPv4NK9BMenuItem15ContentLocationEv" title="BMenuItem::ContentLocation"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ContentLocation()</span></code></a>
-and the dimensions provided by
-<a class="reference internal" href="#_CPPv4N9BMenuItem14GetContentSizeEPfPf" title="BMenuItem::GetContentSize"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetContentSize()</span></code></a>.</p>
-<p>When <span class="hmethod">DrawContent()</span> is called, the pen is positioned to draw the item’s
-label and the high color is appropriately set. The high color may be a
-shade of gray, if the item is disabled, or black if it’s enabled. If some
+<a class="reference internal" href="#_CPPv4NK9BMenuItem15ContentLocationEv" title="BMenuItem::ContentLocation"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ContentLocation()</span></code></a> and the
+dimensions provided by <a class="reference internal" href="#_CPPv4N9BMenuItem14GetContentSizeEPfPf" title="BMenuItem::GetContentSize"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetContentSize()</span></code></a>.</p>
+<p>When <span class="hmethod">DrawContent()</span> is called, the pen is positioned to draw the
+item’s label and the high color is appropriately set. The high color may be
+a shade of gray, if the item is disabled, or black if it’s enabled. If some
 other distinction is used to distinguish disabled from enabled items,
 <span class="hmethod">DrawContent()</span> should check the item’s current state by calling
 <a class="reference internal" href="#_CPPv4NK9BMenuItem9IsEnabledEv" title="BMenuItem::IsEnabled"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">IsEnabled()</span></code></a>.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>If a derived class implements its own
-<span class="hmethod">DrawContent()</span> function, but still wants to draw a
-textual string, it should do so by assigning the string as the
-<span class="hclass">BMenuItem</span>’s label and calling the inherited version
-of <span class="hmethod">DrawContent()</span>, not by calling
-<span class="hmethod">DrawString()</span>. This preserves the
-<span class="hclass">BMenuItem</span>’s ability to display a trigger character
+<p>If a derived class implements its own <span class="hmethod">DrawContent()</span> function,
+but still wants to draw a textual string, it should do so by assigning the
+string as the <span class="hclass">BMenuItem</span>’s label and calling the inherited version
+of <span class="hmethod">DrawContent()</span>, not by calling <span class="hmethod">DrawString()</span>. This
+preserves the <span class="hclass">BMenuItem</span>’s ability to display a trigger character
 in the string.</p>
 </div>
 </section>
@@ -206,256 +198,272 @@ in the string.</p>
 <section id="_CPPv4NK9BMenuItem7ArchiveEP8BMessageb">
 </section>
 <h3>
-Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Archives the <span class="hclass">BMenuItem</span> by
-recording its current settings in the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
-<span class="hparameter">archive</span>.</p>
-<p>See also:
-<a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N9BMenuItem11InstantiateEP8BMessage" title="BMenuItem::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Archives the <span class="hclass">BMenuItem</span> by recording its current settings in the
+<a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> <span class="hparameter">archive</span>.</p>
+<p>See also: <a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>, <a class="reference internal" href="#_CPPv4N9BMenuItem11InstantiateEP8BMessage" title="BMenuItem::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
 <section id="_CPPv4NK9BMenuItem15ContentLocationEv">
 </section>
 <h3>
-ContentLocation()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BPoint</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">ContentLocation</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the left top corner of the content area of the item, in the
-coordinate system of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code>
-to which it belongs. The content area of
-an item is the area where it displays its label (or whatever graphic
-substitutes for the label). It doesn’t include the part of the item where
-a check mark or a keyboard shortcut could be displayed, nor the border
-and background around the content area.</p>
+ContentLocation()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="point.html#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">ContentLocation</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the left top corner of the content area of the item, in the
+coordinate system of the <a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code></a> to which it belongs. The
+content area of an item is the area where it displays its label (or
+whatever graphic substitutes for the label). It doesn’t include the part of
+the item where a check mark or a keyboard shortcut could be displayed, nor
+the border and background around the content area.</p>
 <p>You would need to call this function only if you’re implementing a
-<a class="reference internal" href="#_CPPv4N9BMenuItem11DrawContentEv" title="BMenuItem::DrawContent"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawContent()</span></code></a>
-function to draw the contents of the menu item. The content
-rectangle can be calculated from the point returned by this function and
-the size specified by
+<a class="reference internal" href="#_CPPv4N9BMenuItem11DrawContentEv" title="BMenuItem::DrawContent"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawContent()</span></code></a> function to draw the
+contents of the menu item. The content rectangle can be calculated from the
+point returned by this function and the size specified by
 <a class="reference internal" href="#_CPPv4N9BMenuItem14GetContentSizeEPfPf" title="BMenuItem::GetContentSize"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetContentSize()</span></code></a>.</p>
 <p>If the item isn’t part of a menu, the return value is indeterminate.</p>
 <section id="_CPPv4NK9BMenuItem5FrameEv">
 </section>
 <h3>
-Frame()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">Frame</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the rectangle that frames the entire menu item, in the coordinate
-system of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code>
-to which the item belongs. If the item hasn’t been
-added to a menu, the return value is indeterminate.</p>
-<p>See also:
-<a class="reference internal" href="menu.html#_CPPv4N5BMenu7AddItemEP9BMenuItem" title="BMenu::AddItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::AddItem()</span></code></a></p>
+Frame()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">Frame</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the rectangle that frames the entire menu item, in the coordinate
+system of the <a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code></a> to which the item belongs. If the item
+hasn’t been added to a menu, the return value is indeterminate.</p>
+<p>See also: <a class="reference internal" href="menu.html#_CPPv4N5BMenu7AddItemEP9BMenuItem" title="BMenu::AddItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::AddItem()</span></code></a></p>
 <section id="_CPPv4N9BMenuItem14GetContentSizeEPfPf">
 </section>
 <h3>
-GetContentSize()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">GetContentSize</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">width</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><p>Writes the size of the item’s content area into the variables referred to
-by <span class="hparameter">width</span> and <span class="hparameter">height</span>. The
-content area of an item is the area where its
-label (or whatever substitutes for the label) is drawn.</p>
-<p>A <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code> calls
-<span class="hmethod">GetContentSize()</span> for each of its items as it arranges them
-in a column or a row; the function is not called for items in a matrix.
-The information it provides helps determine where each item is located
-and the overall size of the menu.</p>
-<p><span class="hmethod">GetContentSize()</span> must report a size that’s large enough to display the
-content of the item (and separate one item from another). By default, it
-reports an area just large enough to display the item’s label. This area
-is calculated from the label and the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code>’s current font.</p>
-<p>If you design a class derived from <span class="hclass">BMenuItem</span> and implement your own
-<a class="reference internal" href="#_CPPv4N9BMenuItem4DrawEv" title="BMenuItem::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a> or
-<a class="reference internal" href="#_CPPv4N9BMenuItem11DrawContentEv" title="BMenuItem::DrawContent"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawContent()</span></code></a>
-function, you should also implement a
-<span class="hmethod">GetContentSize()</span> function to report how much room will be needed to draw
-the item’s contents.</p>
-<p>See also:
-<a class="reference internal" href="#_CPPv4N9BMenuItem11DrawContentEv" title="BMenuItem::DrawContent"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawContent()</span></code></a>,
+GetContentSize()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">GetContentSize</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">width</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><p>Writes the size of the item’s content area into the variables referred to
+by <span class="hparameter">width</span> and <span class="hparameter">height</span>. The content area of an item is the
+area where its label (or whatever substitutes for the label) is drawn.</p>
+<p>A <a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code></a> calls <span class="hmethod">GetContentSize()</span> for each of its
+items as it arranges them in a column or a row; the function is not called
+for items in a matrix. The information it provides helps determine where
+each item is located and the overall size of the menu.</p>
+<p><span class="hmethod">GetContentSize()</span> must report a size that’s large enough to
+display the content of the item (and separate one item from another). By
+default, it reports an area just large enough to display the item’s label.
+This area is calculated from the label and the <a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code></a>’s current
+font.</p>
+<p>If you design a class derived from <span class="hclass">BMenuItem</span> and implement your
+own <a class="reference internal" href="#_CPPv4N9BMenuItem4DrawEv" title="BMenuItem::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a> or <a class="reference internal" href="#_CPPv4N9BMenuItem11DrawContentEv" title="BMenuItem::DrawContent"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawContent()</span></code></a> function, you should also implement a
+<span class="hmethod">GetContentSize()</span> function to report how much room will be needed
+to draw the item’s contents.</p>
+<p>See also: <a class="reference internal" href="#_CPPv4N9BMenuItem11DrawContentEv" title="BMenuItem::DrawContent"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawContent()</span></code></a>,
 <a class="reference internal" href="#_CPPv4NK9BMenuItem15ContentLocationEv" title="BMenuItem::ContentLocation"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ContentLocation()</span></code></a></p>
 <section id="_CPPv4N9BMenuItem9HighlightEb">
 </section>
 <h3>
-Highlight()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">Highlight</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">flag</span><span class="sig-paren">)</span></pre><p>Highlights the menu item when <span class="hparameter">flag</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>,
-and removes the highlighting
-when <span class="hparameter">flag</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>. Highlighting
-simply inverts all the colors in the
-item’s frame rectangle (except for the check mark).</p>
-<p>This function is called by the
-<a class="reference internal" href="#_CPPv4N9BMenuItem4DrawEv" title="BMenuItem::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a> function whenever the item is
-selected and needs to be drawn in its highlighted state. There’s no
-reason to call it yourself, unless you define your own version of
-<a class="reference internal" href="#_CPPv4N9BMenuItem4DrawEv" title="BMenuItem::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a>.
-However, it can be reimplemented in a derived class, if items belonging
-to that class need to be highlighted in some way other than simple
-inversion.</p>
+Highlight()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">Highlight</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">flag</span><span class="sig-paren">)</span></pre><p>Highlights the menu item when <span class="hparameter">flag</span> is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, and
+removes the highlighting when <span class="hparameter">flag</span> is <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>.
+Highlighting simply inverts all the colors in the item’s frame rectangle
+(except for the check mark).</p>
+<p>This function is called by the <a class="reference internal" href="#_CPPv4N9BMenuItem4DrawEv" title="BMenuItem::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a>
+function whenever the item is selected and needs to be drawn in its
+highlighted state. There’s no reason to call it yourself, unless you define
+your own version of <a class="reference internal" href="#_CPPv4N9BMenuItem4DrawEv" title="BMenuItem::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a>. However, it can
+be reimplemented in a derived class, if items belonging to that class need
+to be highlighted in some way other than simple inversion.</p>
 <section id="_CPPv4N9BMenuItem6InvokeEP8BMessage">
 </section>
 <h3>
-Invoke()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">Invoke</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Augments the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInvoker</span></code>
-version of <a class="reference internal" href="../application/invoker.html#_CPPv4N8BInvoker6InvokeEP8BMessage" title="BInvoker::Invoke"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Invoke()</span></code></a>
-to ensure that only enabled
-menu items that are attached to a menu hierarchy can be invoked. This
-function appropriately marks items when the user invokes them. Before
-sending a message, it adds when,
-source, and index
-field to it, as
-explained under the <span class="hclass">BMenuItem</span>
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>.</p>
+Invoke()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">Invoke</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Augments the <a class="reference internal" href="../application/invoker.html#_CPPv48BInvoker" title="BInvoker"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInvoker</span></code></a> version of <a class="reference internal" href="../application/invoker.html#_CPPv4N8BInvoker6InvokeEP8BMessage" title="BInvoker::Invoke"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Invoke()</span></code></a> to ensure that only enabled menu items that are
+attached to a menu hierarchy can be invoked. This function appropriately
+marks items when the user invokes them. Before sending a message, it adds
+<span class="hparameter">when</span>, <span class="hparameter">source</span>, and <span class="hparameter">index</span> field to it, as
+explained under the <span class="hclass">BMenuItem</span> <a class="reference internal" href="#_CPPv4N9BMenuItem9BMenuItemEPKcP8BMessagec6uint32" title="BMenuItem::BMenuItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a>.</p>
 <section id="_CPPv4NK9BMenuItem10IsSelectedEv">
 </section>
 <h3>
-IsSelected()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">IsSelected</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the menu item is currently selected,
-and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if not.
-Selected items are highlighted.</p>
+IsSelected()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">IsSelected</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the menu item is currently selected, and
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not. Selected items are highlighted.</p>
 <section id="_CPPv4NK9BMenuItem4MenuEv">
 </section>
 <h3>
-Menu()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMenu</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">Menu</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the menu where the item is located, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the item hasn’t
-yet been added to a menu.</p>
-<p>See also:
-<a class="reference internal" href="menu.html#_CPPv4N5BMenu7AddItemEP9BMenuItem" title="BMenu::AddItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::AddItem()</span></code></a></p>
+Menu()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><span class="n">BMenu</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">Menu</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the menu where the item is located, or <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the
+item hasn’t yet been added to a menu.</p>
+<p>See also: <a class="reference internal" href="menu.html#_CPPv4N5BMenu7AddItemEP9BMenuItem" title="BMenu::AddItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::AddItem()</span></code></a></p>
 <section id="_CPPv4N9BMenuItem10SetEnabledEb">
 </section>
 <section id="_CPPv4NK9BMenuItem9IsEnabledEv">
 </section>
 <h3>
-SetEnabled(), IsEnabled()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">SetEnabled</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">enabled</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">IsEnabled</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetEnabled()</span> enables the <span class="hclass">BMenuItem</span>
-if the <span class="hparameter">enabled</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, disables
-it if <span class="hparameter">enabled</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, and
-updates the item if it’s visible on-screen.
-If the item controls a submenu, this function calls the submenu’s
-<span class="hmethod">SetEnabled()</span> virtual function, passing it the same flag. This ensures
-that the submenu is enabled or disabled as well.</p>
-<p><span class="hmethod">IsEnabled()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the
-<span class="hclass">BMenuItem</span> is enabled, its menu is
-enabled, and all menus above it in the hierarchy are enabled. It returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if the item is disabled or any objects above it in the menu
-hierarchy are disabled.</p>
+SetEnabled(), IsEnabled()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">SetEnabled</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">enabled</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">IsEnabled</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetEnabled()</span> enables the <span class="hclass">BMenuItem</span> if the
+<span class="hparameter">enabled</span> flag is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, disables it if
+<span class="hparameter">enabled</span> is <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>, and updates the item if it’s
+visible on-screen. If the item controls a submenu, this function calls the
+submenu’s <span class="hmethod">SetEnabled()</span> virtual function, passing it the same
+flag. This ensures that the submenu is enabled or disabled as well.</p>
+<p><span class="hmethod">IsEnabled()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the <span class="hclass">BMenuItem</span>
+is enabled, its menu is enabled, and all menus above it in the hierarchy
+are enabled. It returns <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if the item is disabled or any
+objects above it in the menu hierarchy are disabled.</p>
 <p>Items and menus are enabled by default.</p>
 <p>When using these functions, keep in mind that:</p>
 <ul class="simple">
-<li><p>Disabling a <span class="hclass">BMenuItem</span> that controls a submenu serves to disable the entire menu hierarchy under the item.</p></li>
-<li><p>Passing an argument of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> to <span class="hmethod">SetEnabled()</span> is not sufficient to enable the item if it’s located in a disabled branch of the menu hierarchy. It can only undo a previous <span class="hmethod">SetEnabled()</span> call (with an argument of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>) on the same item.</p></li>
+<li><p>Disabling a <span class="hclass">BMenuItem</span> that controls a submenu serves to disable
+the entire menu hierarchy under the item.</p></li>
+<li><p>Passing an argument of <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> to <span class="hmethod">SetEnabled()</span> is not
+sufficient to enable the item if it’s located in a disabled branch of the
+menu hierarchy. It can only undo a previous <span class="hmethod">SetEnabled()</span> call
+(with an argument of <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>) on the same item.</p></li>
 </ul>
-<p>See also:
-<a class="reference internal" href="menu.html#_CPPv4N5BMenu10SetEnabledEb" title="BMenu::SetEnabled"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::SetEnabled()</span></code></a></p>
+<p>See also: <a class="reference internal" href="menu.html#_CPPv4N5BMenu10SetEnabledEb" title="BMenu::SetEnabled"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::SetEnabled()</span></code></a></p>
 <section id="_CPPv4N9BMenuItem8SetLabelEPKc">
 </section>
 <section id="_CPPv4NK9BMenuItem5LabelEv">
 </section>
 <h3>
-SetLabel(), Label()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">SetLabel</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">Label</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetLabel()</span> frees the item’s current label
-and copies <span class="hparameter">string</span> to replace
-it. If the menu is visible on-screen, it will be redisplayed with the
-item’s new label. If necessary, the menu will become wider (or narrower)
-so that it fits the new label.</p>
+SetLabel(), Label()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">SetLabel</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">Label</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetLabel()</span> frees the item’s current label and copies
+<span class="hparameter">string</span> to replace it. If the menu is visible on-screen, it will
+be redisplayed with the item’s new label. If necessary, the menu will
+become wider (or narrower) so that it fits the new label.</p>
 <p>The Interface Kit calls this virtual function to:</p>
 <ul class="simple">
-<li><p>Set the initial label of an item that controls a submenu to the name of the submenu, and</p></li>
-<li><p>Subsequently set the item’s label to match the marked item in the submenu, if the submenu was set up to have this feature.</p></li>
+<li><p>Set the initial label of an item that controls a submenu to the name of
+the submenu, and</p></li>
+<li><p>Subsequently set the item’s label to match the marked item in the submenu,
+if the submenu was set up to have this feature.</p></li>
 </ul>
 <p><span class="hmethod">Label()</span> returns a pointer to the current label.</p>
-<p>See also:
-<a class="reference internal" href="menu.html#_CPPv4N5BMenu18SetLabelFromMarkedEb" title="BMenu::SetLabelFromMarked"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::SetLabelFromMarked()</span></code></a>,
-the <span class="hclass">BMenuItem</span> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code></p>
+<p>See also: <a class="reference internal" href="menu.html#_CPPv4N5BMenu18SetLabelFromMarkedEb" title="BMenu::SetLabelFromMarked"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::SetLabelFromMarked()</span></code></a>, the <span class="hclass">BMenuItem</span>
+<a class="reference internal" href="#_CPPv4N9BMenuItem9BMenuItemEPKcP8BMessagec6uint32" title="BMenuItem::BMenuItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a></p>
 <section id="_CPPv4N9BMenuItem9SetMarkedEb">
 </section>
 <section id="_CPPv4NK9BMenuItem8IsMarkedEv">
 </section>
 <h3>
-SetMarked(), IsMarked()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">SetMarked</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">flag</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">IsMarked</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetMarked()</span> adds a check mark to the left of
-the item label if <span class="hparameter">flag</span> is
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, or removes an existing mark if
-<span class="hparameter">flag</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>. If the menu is
-visible on-screen. it’s redisplayed with or without the mark.</p>
+SetMarked(), IsMarked()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">SetMarked</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">flag</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">IsMarked</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetMarked()</span> adds a check mark to the left of the item label if
+<span class="hparameter">flag</span> is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, or removes an existing mark if
+<span class="hparameter">flag</span> is <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>. If the menu is visible on-screen. it’s
+redisplayed with or without the mark.</p>
 <p><span class="hmethod">IsMarked()</span> returns whether the item is currently marked.</p>
-<p>See also:
-<a class="reference internal" href="menu.html#_CPPv4N5BMenu18SetLabelFromMarkedEb" title="BMenu::SetLabelFromMarked"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::SetLabelFromMarked()</span></code></a>,
+<p>See also: <a class="reference internal" href="menu.html#_CPPv4N5BMenu18SetLabelFromMarkedEb" title="BMenu::SetLabelFromMarked"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::SetLabelFromMarked()</span></code></a>,
 <a class="reference internal" href="menu.html#_CPPv4N5BMenu10FindMarkedEv" title="BMenu::FindMarked"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::FindMarked()</span></code></a></p>
 <section id="_CPPv4N9BMenuItem11SetShortcutEc6uint32">
 </section>
 <section id="_CPPv4NK9BMenuItem8ShortcutEP6uint32">
 </section>
 <h3>
-SetShortcut(), Shortcut()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">SetShortcut</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="n sig-param">shortcut</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">modifiers</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">char</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">Shortcut</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">modifiers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetShortcut()</span> sets the <span class="hparameter">shortcut</span>
-character that’s displayed at the right
-edge of the menu item and the set of <span class="hparameter">modifiers</span> that are associated with
-the character. These two arguments work just like the arguments passed to
-the <span class="hclass">BMenuItem</span> constructor. See
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code> for a more complete
+SetShortcut(), Shortcut()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">SetShortcut</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="n sig-param">shortcut</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">modifiers</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">char</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">Shortcut</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">modifiers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetShortcut()</span> sets the <span class="hparameter">shortcut</span> character that’s
+displayed at the right edge of the menu item and the set of
+<span class="hparameter">modifiers</span> that are associated with the character. These two
+arguments work just like the arguments passed to the <span class="hclass">BMenuItem</span>
+constructor. See <span class="xref std std-ref">Shortcuts and Triggers</span> for a more complete
 description.</p>
-<p><span class="hmethod">Shortcut()</span> returns the character that’s used as the keyboard shortcut for
-invoking the item, and writes a mask of all the modifier keys the
-shortcut requires to the variable referred to by <span class="hparameter">modifiers</span>. Since the
-Command key is required to operate the keyboard shortcut for any menu
-item, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_COMMAND_KEY</span></code> will always be part of the <span class="hparameter">modifiers</span> mask. The mask
-can also be tested against the <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CONTROL_KEY</span></code>, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OPTION_KEY</span></code>, and
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SHIFT_KEY</span></code> constants.</p>
-<p>The shortcut is initially set by the
-<span class="hclass">BMenuItem</span> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>.</p>
+<p><span class="hmethod">Shortcut()</span> returns the character that’s used as the keyboard
+shortcut for invoking the item, and writes a mask of all the modifier keys
+the shortcut requires to the variable referred to by <span class="hparameter">modifiers</span>.
+Since the <span class="hkey">Command</span> key is required to operate the keyboard shortcut
+for any menu item, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_COMMAND_KEY</span></code> will always be part of
+the <span class="hparameter">modifiers</span> mask. The mask can also be tested against the
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CONTROL_KEY</span></code>, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OPTION_KEY</span></code>, and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SHIFT_KEY</span></code> constants.</p>
+<p>The shortcut is initially set by the <span class="hclass">BMenuItem</span>
+<a class="reference internal" href="#_CPPv4N9BMenuItem9BMenuItemEPKcP8BMessagec6uint32" title="BMenuItem::BMenuItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a>.</p>
 <section id="_CPPv4N9BMenuItem10SetTriggerEc">
 </section>
 <section id="_CPPv4NK9BMenuItem7TriggerEv">
 </section>
 <h3>
-SetTrigger(), Trigger()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">SetTrigger</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="n sig-param">trigger</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">char</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">Trigger</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetTrigger()</span> sets the <span class="hparameter">trigger</span>
-character that the user can type to invoke
-the item while the item’s menu is open on-screen. If a
-<span class="hparameter">trigger</span> is not
-set, the Interface Kit will select one for the item, so it’s not
-necessary to call <span class="hmethod">SetTrigger()</span>.</p>
+SetTrigger(), Trigger()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">SetTrigger</span><span class="sig-paren">(</span><span class="kt">char</span><span class="w"> </span><span class="n sig-param">trigger</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">char</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">Trigger</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetTrigger()</span> sets the <span class="hparameter">trigger</span> character that the user
+can type to invoke the item while the item’s menu is open on-screen. If a
+<span class="hparameter">trigger</span> is not set, the Interface Kit will select one for the
+item, so it’s not necessary to call <span class="hmethod">SetTrigger()</span>.</p>
 <p>The character passed to this function has to match a character displayed
-in the item—either the keyboard shortcut or a character in the
-label. The case of the character doesn’t matter; lowercase arguments will
-match uppercase characters in the item and uppercase arguments will match
+in the item—either the keyboard shortcut or a character in the label. The
+case of the character doesn’t matter; lowercase arguments will match
+uppercase characters in the item and uppercase arguments will match
 lowercase characters. When the item can be invoked by its trigger, the
 trigger character is underlined.</p>
 <p>If more than one character in the item matches the character passed,
-<span class="hmethod">SetTrigger()</span> tries first to mark the keyboard shortcut. Failing that, it
-tries to mark an uppercase letter at the beginning of a word. Failing
-that, it marks the first instance of the character in the label.</p>
-<p>If the <span class="hparameter">trigger</span> doesn’t match any characters in the item, the item won’t
-have a trigger, not even one selected by the system.</p>
-<p><span class="hmethod">Trigger()</span> returns the character set by
-<span class="hmethod">SetTrigger()</span>, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if
-<span class="hmethod">SetTrigger()</span> didn’t succeed or if
-<span class="hmethod">SetTrigger()</span> was never called and the
-trigger is selected automatically.</p>
-<p>See also:
-<a class="reference internal" href="menu.html#_CPPv4N5BMenu18SetTriggersEnabledEb" title="BMenu::SetTriggersEnabled"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::SetTriggersEnabled()</span></code></a></p>
+<span class="hmethod">SetTrigger()</span> tries first to mark the keyboard shortcut. Failing
+that, it tries to mark an uppercase letter at the beginning of a word.
+Failing that, it marks the first instance of the character in the label.</p>
+<p>If the <span class="hparameter">trigger</span> doesn’t match any characters in the item, the
+item won’t have a trigger, not even one selected by the system.</p>
+<p><span class="hmethod">Trigger()</span> returns the character set by <span class="hmethod">SetTrigger()</span>,
+or <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if <span class="hmethod">SetTrigger()</span> didn’t succeed or if
+<span class="hmethod">SetTrigger()</span> was never called and the trigger is selected
+automatically.</p>
+<p>See also: <a class="reference internal" href="menu.html#_CPPv4N5BMenu18SetTriggersEnabledEb" title="BMenu::SetTriggersEnabled"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMenu::SetTriggersEnabled()</span></code></a></p>
 <section id="_CPPv4NK9BMenuItem7SubmenuEv">
 </section>
 <h3>
-Submenu()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMenu</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">Submenu</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code>
-object that the item controls, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the item
-doesn’t control a submenu.</p>
-<p>See also:
-the <span class="hclass">BMenuItem</span> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code>,
-the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code> class</p>
+Submenu()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><span class="n">BMenu</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">Submenu</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code></a> object that the item controls, or
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the item doesn’t control a submenu.</p>
+<p>See also: the <span class="hclass">BMenuItem</span> <a class="reference internal" href="#_CPPv4N9BMenuItem9BMenuItemEPKcP8BMessagec6uint32" title="BMenuItem::BMenuItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a>, the <a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code></a> class</p>
 <section id="_CPPv4N9BMenuItem13TruncateLabelEfPc">
 </section>
 <h3>
-TruncateLabel()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">TruncateLabel</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">maxWidth</span>, <span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">newLabel</span><span class="sig-paren">)</span></pre><p>Removes characters from the middle of the item label and replaces them
-with an ellipsis. This is done so that the label will fit within <span class="hparameter">maxWidth</span>
-coordinate units. The shortened string is copied into the <span class="hparameter">newLabel</span> buffer.</p>
-<p>This function is called by the <span class="hclass">BMenuItem</span> when it draws the item’s label,
-but only if it’s necessary to fit a long item into a smaller space. It
-can be reimplemented by derived classes to do a better job of shortening
-the string based on the actual content of the label.</p>
-<p>Your version of <span class="hmethod">TruncateLabel()</span> should be careful to not cut the trigger
-character from the string.</p>
-<p>See also:
-<a class="reference internal" href="font.html#_CPPv4NK5BFont19GetTruncatedStringsEA_PKc5int326uint32fA_PKc" title="BFont::GetTruncatedStrings"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFont::GetTruncatedStrings()</span></code></a></p>
+TruncateLabel()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">TruncateLabel</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">maxWidth</span>, <span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">newLabel</span><span class="sig-paren">)</span></pre><p>Removes characters from the middle of the item label and replaces them
+with an ellipsis. This is done so that the label will fit within
+<span class="hparameter">maxWidth</span> coordinate units. The shortened string is copied into
+the <span class="hparameter">newLabel</span> buffer.</p>
+<p>This function is called by the <span class="hclass">BMenuItem</span> when it draws the
+item’s label, but only if it’s necessary to fit a long item into a smaller
+space. It can be reimplemented by derived classes to do a better job of
+shortening the string based on the actual content of the label.</p>
+<p>Your version of <span class="hmethod">TruncateLabel()</span> should be careful to not cut
+the trigger character from the string.</p>
+<p>See also: <a class="reference internal" href="font.html#_CPPv4NK5BFont19GetTruncatedStringsEA_PKc5int326uint32fA_PKc" title="BFont::GetTruncatedStrings"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFont::GetTruncatedStrings()</span></code></a></p>
 </section>
 <section id="static-functions">
 <h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N9BMenuItem11InstantiateEP8BMessage">
 </section>
 <h3>
-Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenuItem</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BMenuItem</span> object, allocated by new and created with the
-version of the constructor that takes a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
-archive. However, if the
-archive message doesn’t contain data for a <span class="hclass">BMenuItem</span> object, this
-function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<p>See also:
-<a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">object()</span></code>,
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BMenuItem</span> object, allocated by new and created
+with the version of the constructor that takes a <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>
+archive. However, if the archive message doesn’t contain data for a
+<span class="hclass">BMenuItem</span> object, this function returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<p>See also: <a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">instantiate_object()</span></code>,
 <a class="reference internal" href="#_CPPv4NK9BMenuItem7ArchiveEP8BMessageb" title="BMenuItem::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
 </section>
 <section id="archived-fields">
 <h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a> function adds the
+following fields to its <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> argument:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">_label</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>Text label of the menu item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_disable</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BOOL_TYPE</span></code></p></td>
+<td><p><span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if menu item is disabled.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_marked</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BOOL_TYPE</span></code></p></td>
+<td><p><span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if menu item is marked.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_user_trig</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>User-defined trigger character.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_shortcut</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>Shortcut character.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_mods</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>Shortcut modifiers.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_msg</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MESSAGE_TYPE</span></code></p></td>
+<td><p>Model message for the item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_submenu</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MESSAGE_TYPE</span></code></p></td>
+<td><p>Submenu (only in deep copy).</p></td>
+</tr>
+</tbody>
+</table>
+<p>Some of these fields may not be present if the setting they represent
+isn’t used, or is the default value. For example, if no shortcut key was
+defined, the <span class="hparameter">_shortcut</span> and <span class="hparameter">_mods</span> fields won’t be found
+in the archive.</p>
 </section>
 </section>
 
@@ -470,7 +478,7 @@ function returns <code class="xref cpp cpp-enum docutils literal notranslate"><s
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="outline-list-view.html">BOutlineListView</a>&#160;&#160;»
+        <a href="message-constants.html">Message Constants</a>&#160;&#160;»
         </p>
 
       </div>

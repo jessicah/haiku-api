@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BSlider &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BStatusBar" href="status-bar.html" />
+    <link rel="prev" title="BShelf" href="shelf.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BSlider</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="shelf.html">BShelf</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="status-bar.html">BStatusBar</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BSlider</a><ul>
+<li><a class="reference internal" href="#using-bsliders">Using BSliders</a></li>
+<li><a class="reference internal" href="#customizing-a-bslider">Customizing a BSlider</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bslider">
+<h1 id="CPPv47BSlider">BSlider<a class="headerlink" href="#bslider" title="Permalink to this heading">¶</a></h1>
+<p>A slider is a control that provide a standard way for the user to select a
+value from a predetermined range; for example, if your application needs to
+let the user pick a value between 1 and 100, it’s easy to create a
+<a class="reference internal" href="../../kits/interface/slider.html#_CPPv47BSlider" title="BSlider"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSlider</span></code></a> object that the user can use to do this. Sliders can
+be either horizontal or vertical.</p>
+<p><a class="reference internal" href="../../kits/interface/slider.html#_CPPv47BSlider" title="BSlider"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSlider</span></code></a> objects also provide a wide assortment of hooks that
+let you customize the appearance and behavior of your slider controls.</p>
+<section id="using-bsliders">
+<h2>Using BSliders<a class="headerlink" href="#using-bsliders" title="Permalink to this heading">¶</a></h2>
+<p>Creating a basic BSlider is very simple:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">55</span><span class="p">);</span><span class="w"></span>
+<span class="n">slider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BSlider</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;const:slider1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                     </span><span class="s">&quot;Construct Speed (%)&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="w">                     </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">140</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This creates a slider named “const:slider1” with the label “Construct
+Speed (%)” above it. The range of possible values for the slider is 0 to
+140.</p>
+<p>You can add a splash of color to the slider, too. For example, if you want
+the slider bar to be light blue, you might add:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">slider</span><span class="o">-&gt;</span><span class="n">SetBarColor</span><span class="p">(</span><span class="n">color</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>You can also add hash marks to the slider:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">slider</span><span class="o">-&gt;</span><span class="n">SetHashMarks</span><span class="p">(</span><span class="n">B_HASH_MARKS_BOTTOM</span><span class="p">);</span><span class="w"></span>
+<span class="n">slider</span><span class="o">-&gt;</span><span class="n">SetHashMarkCount</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In this example, <span class="hmethod">SetHashMarks()</span> is used to specify that the
+hash marks should be below the slider; you can also specify
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HASH_MARKS_TOP</span></code> to put them above the slider,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HASH_MARKS_BOTH</span></code> to put them both above and below the
+slider, and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HASH_MARKS_NONE</span></code> to omit them entirely
+(which is the default).</p>
+<p><span class="hmethod">SetHashMarkCount()</span> is called to indicate that you want 10 hash
+marks spaced evenly across the slider.</p>
+<p>Finally, if you want to add labels at the ends of the slider, to indicate
+the minimum and maximum values, you can use the <a class="reference internal" href="../../kits/interface/slider.html#_CPPv4N7BSlider14SetLimitLabelsEPKcPKc" title="BSlider::SetLimitLabels"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetLimitLabels()</span></code></a> function:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">slider</span><span class="o">-&gt;</span><span class="n">SetLimitLabels</span><span class="p">(</span><span class="s">&quot;Slow&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Fast&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This sets the label for the minimum value (the left end of the slider) to
+“Slow” and the label for the maximum to “Fast”.</p>
+<p>The result is the “Construct Speed (%)” slider in the window pictured
+below. An example of a slider with the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TRIANGLE_THUMB</span></code>
+thumbType and hash marks above and below the slider is also shown.</p>
+</section>
+<section id="customizing-a-bslider">
+<h2>Customizing a BSlider<a class="headerlink" href="#customizing-a-bslider" title="Permalink to this heading">¶</a></h2>
+<p>You can customize the appearance of your BSlider by overriding virtual
+functions in the <a class="reference internal" href="../../kits/interface/slider.html#_CPPv47BSlider" title="BSlider"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSlider</span></code></a> class that are responsible for
+drawing the slider bar, thumb, focus mark, and hash marks.</p>
+<p>For example, let’s say you want your slider’s thumb to be round. Just
+create a new class—let’s call it CustomSlider—derived from
+<a class="reference internal" href="../../kits/interface/slider.html#_CPPv47BSlider" title="BSlider"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSlider</span></code></a>, and override the <a class="reference internal" href="../../kits/interface/slider.html#_CPPv4N7BSlider9DrawThumbEv" title="BSlider::DrawThumb"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawThumb()</span></code></a> function with code that might look something like
+this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="n">rgb_color</span><span class="w"> </span><span class="n">kWhite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">};</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="n">rgb_color</span><span class="w"> </span><span class="n">kWhiteGray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">235</span><span class="p">,</span><span class="mi">235</span><span class="p">,</span><span class="mi">235</span><span class="p">,</span><span class="mi">255</span><span class="p">);</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="n">rgb_color</span><span class="w"> </span><span class="n">kDarkGray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">255</span><span class="p">};</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="n">rgb_color</span><span class="w"> </span><span class="n">kBlackColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">};</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">CustomSlider::DrawThumb</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">BRect</span><span class="w"> </span><span class="n">r</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">BView</span><span class="w"> </span><span class="o">*</span><span class="n">v</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="c1">// Get the frame rectangle of the thumb</span>
+<span class="w">   </span><span class="c1">// and the offscreen view.</span>
+
+<span class="w">   </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ThumbFrame</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OffscreenView</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">   </span><span class="c1">// Draw the black shadow</span>
+
+<span class="w">   </span><span class="n">v</span><span class="o">-&gt;</span><span class="n">SetHighColor</span><span class="p">(</span><span class="n">kBlackColor</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">r</span><span class="p">.</span><span class="n">top</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">r</span><span class="p">.</span><span class="n">left</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">v</span><span class="o">-&gt;</span><span class="n">StrokeEllipse</span><span class="p">(</span><span class="n">r</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="c1">// Draw the dark grey edge</span>
+
+<span class="w">   </span><span class="n">v</span><span class="o">-&gt;</span><span class="n">SetHighColor</span><span class="p">(</span><span class="n">kDarkGray</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">r</span><span class="p">.</span><span class="n">bottom</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">r</span><span class="p">.</span><span class="n">right</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">v</span><span class="o">-&gt;</span><span class="n">StrokeEllipse</span><span class="p">(</span><span class="n">r</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="c1">// Fill the inside of the thumb</span>
+
+<span class="w">   </span><span class="n">v</span><span class="o">-&gt;</span><span class="n">SetHighColor</span><span class="p">(</span><span class="n">kWhiteGrayColor</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">r</span><span class="p">.</span><span class="n">InsetBy</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">v</span><span class="o">-&gt;</span><span class="n">FillEllipse</span><span class="p">(</span><span class="n">r</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>All rendering of a <a class="reference internal" href="../../kits/interface/slider.html#_CPPv47BSlider" title="BSlider"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSlider</span></code></a> is done into an offscreen view,
+which you can get a pointer to by calling the <a class="reference internal" href="../../kits/interface/slider.html#_CPPv4N7BSlider13OffscreenViewEP5BView" title="BSlider::OffscreenView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OffscreenView()</span></code></a> function. This improves performance and makes
+drawing the slider—especially complicated ones—look much smoother to the
+user.</p>
+<p>This code gets a pointer to the offscreen view, then renders a round,
+beveled thumb into the offscreen view, filling the thumb’s frame rectangle
+as returned by the <a class="reference internal" href="../../kits/interface/slider.html#_CPPv4NK7BSlider10ThumbFrameEv" title="BSlider::ThumbFrame"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ThumbFrame()</span></code></a> function.</p>
+<p>The result is a round thumb that looks like the one in the “Totality of
+Damage” slider in the picture below:</p>
+<p><img alt="Slider With Rounded Thumb" src="system-overview/interface/images/TheInterfaceKit/slider_round.png" /></p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="shelf.html">BShelf</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="status-bar.html">BStatusBar</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

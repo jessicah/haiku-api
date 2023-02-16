@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BEntryList &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BFile" href="file.html" />
+    <link rel="prev" title="BEntry" href="entry.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BEntryList</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="entry.html">BEntry</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="file.html">BFile</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BEntryList</a><ul>
+<li><a class="reference internal" href="#the-entry-list-pointer">The Entry List Pointer</a></li>
+<li><a class="reference internal" href="#multiple-retrieval">Multiple Retrieval</a></li>
+<li><a class="reference internal" href="#choosing-an-iterator">Choosing an Iterator</a></li>
+<li><a class="reference internal" href="#the-dirent-structure-and-getnextdirents">The dirent Structure and GetNextDirents()</a><ul>
+<li><a class="reference internal" href="#_CPPv4N10BEntryList14GetNextDirentsEP6dirent6size_t5int32">GetNextDirents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bentrylist">
+<h1 id="CPPv410BEntryList">BEntryList<a class="headerlink" href="#bentrylist" title="Permalink to this heading">¶</a></h1>
+<p><span class="hclass">BEntryList</span> is a pure abstract class that defines the protocol
+for iterating over a set of file system entries. Each derived class must
+figure out how to create (or “discover”) the entry list in the first place:
+<span class="hclass">BEntryList</span> only supplies functions for getting entries out of the
+list, it doesn’t let you put them in. The <span class="hclass">BEntryList</span> class has
+two derived classes: <a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a> and <a class="reference internal" href="../../kits/storage/query.html#_CPPv46BQuery" title="BQuery"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BQuery</span></code></a>.</p>
+<p>At the heart of the <span class="hclass">BEntryList</span> class are the three
+<span class="hmethod">GetNext…()</span> functions, which let you retrieve the entries as…</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> objects (<a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList12GetNextEntryEP6BEntryb" title="BEntryList::GetNextEntry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextEntry()</span></code></a>),</p></li>
+<li><p><span class="htype">entry_ref</span> structures (<a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList10GetNextRefEP9entry_ref" title="BEntryList::GetNextRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextRef()</span></code></a>),</p></li>
+<li><p>or <span class="htype">dirent</span> (“directory entry”) structures
+(<a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList14GetNextDirentsEP6dirent6size_t5int32" title="BEntryList::GetNextDirents"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextDirents()</span></code></a>).</p></li>
+</ul>
+<p>You call these functions iteratively; each call gets the “next” entry (or
+set of entries in the case of <a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList14GetNextDirentsEP6dirent6size_t5int32" title="BEntryList::GetNextDirents"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextDirents()</span></code></a>). You check the <span class="hmethod">GetNext…()</span> return
+value to detect the end of the list:</p>
+<ul class="simple">
+<li><p>For <a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList12GetNextEntryEP6BEntryb" title="BEntryList::GetNextEntry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextEntry()</span></code></a> and
+<a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList10GetNextRefEP9entry_ref" title="BEntryList::GetNextRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextRef()</span></code></a>,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code> indicates that there are no more
+entries to get.</p></li>
+<li><p><a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList14GetNextDirentsEP6dirent6size_t5int32" title="BEntryList::GetNextDirents"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextDirents()</span></code></a> returns 0 when
+it’s at the end of the list.</p></li>
+</ul>
+<p>To get back to the top of an entry list, you call <a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList6RewindEv" title="BEntryList::Rewind"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Rewind()</span></code></a>, but note…</p>
+<div class="warning admonition">
+<p class="admonition-title" id="CPPv47Warning">Warning</p>
+<p><a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList6RewindEv" title="BEntryList::Rewind"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Rewind()</span></code></a> applies to
+<a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a>s only. You can’t rewind a <a class="reference internal" href="../../kits/storage/query.html#_CPPv46BQuery" title="BQuery"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BQuery</span></code></a>’s
+entry list.</p>
+</div>
+<p>Here’s an example of an iteration over all the entries in a
+<a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a>, retrieved as <a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> objects:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BDirectory</span><span class="w"> </span><span class="n">dir</span><span class="p">(</span><span class="s">&quot;/boot/home/fido&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">BEntry</span><span class="w"> </span><span class="n">entry</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">dir</span><span class="p">.</span><span class="n">Rewind</span><span class="p">();</span><span class="w"></span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">dir</span><span class="p">.</span><span class="n">GetNextEntry</span><span class="p">(</span><span class="o">&amp;</span><span class="n">entry</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* do something with entry here. */</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The final <span class="hclass">BEntryList</span> function, <a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList12CountEntriesEv" title="BEntryList::CountEntries"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountEntries()</span></code></a>, also only applies to <a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a>s;
+but even there you shouldn’t depend on it. The count is stale as soon as
+<a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList12CountEntriesEv" title="BEntryList::CountEntries"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountEntries()</span></code></a> returns. The user
+could create a new file or delete a file in the directory while you’re
+iterating over the entries. Also, <a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList12CountEntriesEv" title="BEntryList::CountEntries"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountEntries()</span></code></a> shares the entry list pointer with the
+<span class="hmethod">GetNext…()</span> functions. You mustn’t intermingle a
+<a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList12CountEntriesEv" title="BEntryList::CountEntries"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountEntries()</span></code></a> call within your
+<span class="hmethod">GetNext…()</span> loop.</p>
+<p>One more <a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a> wrinkle:</p>
+<ul class="simple">
+<li><p>Entries are retrieved in “directory order”. (This is a POSIX term that
+means, roughly, ASCII order.) If the user renames a file while you’re
+iterating over the directory, it’s possible that the file won’t be seen, or
+will show up under its old name and its new name.</p></li>
+</ul>
+<section id="the-entry-list-pointer">
+<h2>The Entry List Pointer<a class="headerlink" href="#the-entry-list-pointer" title="Permalink to this heading">¶</a></h2>
+<p>Each <span class="hclass">BEntryList</span> object has a single iterator pointer that’s
+shared by all three <span class="hmethod">GetNext…()</span> formats (and
+<a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList12CountEntriesEv" title="BEntryList::CountEntries"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountEntries()</span></code></a>). Thus, each
+successive call to a <span class="hmethod">GetNext…()</span> function gets the next entry,
+regardless of the format. For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BEntry</span><span class="w"> </span><span class="n">entry</span><span class="p">;</span><span class="w"></span>
+<span class="n">entry_ref</span><span class="w"> </span><span class="n">ref</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">dir</span><span class="p">.</span><span class="n">GetNextEntry</span><span class="p">(</span><span class="o">&amp;</span><span class="n">entry</span><span class="p">);</span><span class="w"></span>
+<span class="n">dir</span><span class="p">.</span><span class="n">GetNextRef</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ref</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Here, <span class="hparameter">entry</span> represents the first entry in the directory, and
+<span class="hparameter">ref</span> represents the second entry.</p>
+</section>
+<section id="multiple-retrieval">
+<h2>Multiple Retrieval<a class="headerlink" href="#multiple-retrieval" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList14GetNextDirentsEP6dirent6size_t5int32" title="BEntryList::GetNextDirents"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextDirents()</span></code></a> is different
+from the other two flavors in that it can retrieve more than one entry at a
+time. Or it will, someday; currently <a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList14GetNextDirentsEP6dirent6size_t5int32" title="BEntryList::GetNextDirents"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextDirents()</span></code></a> retrieves only one entry at a time, no matter
+how many you ask for.</p>
+</section>
+<section id="choosing-an-iterator">
+<h2>Choosing an Iterator<a class="headerlink" href="#choosing-an-iterator" title="Permalink to this heading">¶</a></h2>
+<p>So, which flavor of <span class="hmethod">GetNext…()</span> should you use? Here’s how they
+compare:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList14GetNextDirentsEP6dirent6size_t5int32" title="BEntryList::GetNextDirents"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextDirents()</span></code></a> is by far the
+fastest (even in the current one-struct-at-a-time version), but it’s also
+the least wieldy—the protocol isn’t nearly as nice as the other two
+functions. The <span class="htype">dirent</span> structure, while jam-packed with fun facts,
+usually has to be turned into other structures (<span class="htype">node_ref</span>s or
+<span class="htype">entry_ref</span>s) in order to be useful.</p></li>
+<li><p><a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList10GetNextRefEP9entry_ref" title="BEntryList::GetNextRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextRef()</span></code></a> is slower, but the
+<span class="htype">entry_ref</span> structure can be immediately usable (or, at least,
+cachable). Nonetheless, you’re still a step away from a “real” object.</p></li>
+<li><p><a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList12GetNextEntryEP6BEntryb" title="BEntryList::GetNextEntry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextEntry()</span></code></a> is the slowest, but
+at least it hands you an object that you can sink your teeth into.</p></li>
+</ul>
+<p>The actual timing numbers depend on your machine, the class that you’re
+invoking the functions through, and some other factors. But the difference
+is (ahem) significant: <a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList14GetNextDirentsEP6dirent6size_t5int32" title="BEntryList::GetNextDirents"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextDirents()</span></code></a> is about an order of magnitude faster than
+<a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList12GetNextEntryEP6BEntryb" title="BEntryList::GetNextEntry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextEntry()</span></code></a>, with
+<a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList10GetNextRefEP9entry_ref" title="BEntryList::GetNextRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextRef()</span></code></a> right about in the
+middle.</p>
+<p>If, for example, you’re simply compiling a list of leaf names, you should
+certainly use <a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList14GetNextDirentsEP6dirent6size_t5int32" title="BEntryList::GetNextDirents"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextDirents()</span></code></a>
+(painful though it may be). But if you plan on actually doing something
+with each and every entry that you retrieve, then bite the bullet: Use
+<a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList12GetNextEntryEP6BEntryb" title="BEntryList::GetNextEntry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextEntry()</span></code></a>.</p>
+</section>
+<section id="the-dirent-structure-and-getnextdirents">
+<h2>The dirent Structure and GetNextDirents()<a class="headerlink" href="#the-dirent-structure-and-getnextdirents" title="Permalink to this heading">¶</a></h2>
+<p>Of the three iterator functions, <a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList14GetNextDirentsEP6dirent6size_t5int32" title="BEntryList::GetNextDirents"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextDirents()</span></code></a> needs some explanation. The dirent structure,
+which is what the function returns, describes aspects of the retrieved
+entry:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">dirent</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kt">dev_t</span><span class="w"> </span><span class="n">d_dev</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">ino_t</span><span class="w"> </span><span class="n">d_ino</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">dev_t</span><span class="w"> </span><span class="n">d_pdev</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">ino_t</span><span class="w"> </span><span class="n">d_pino</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="n">d_reclen</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">char</span><span class="w"> </span><span class="n">d_name</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">dirent</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The fields are:</p>
+<ul class="simple">
+<li><p><span class="hparameter">d_dev</span> is a device id that identifies the device (file system) on
+which this entry lies.</p></li>
+<li><p><span class="hparameter">d_ino</span> is the node number for this entry’s node.</p></li>
+<li><p><span class="hparameter">d_pdev</span> and <span class="hparameter">d_pino</span> are the device and inode numbers for
+the parent directory.</p></li>
+<li><p><span class="hparameter">d_reclen</span> is the length of this <span class="htype">dirent</span> structure. The
+length is variable because…</p></li>
+<li><p><span class="hparameter">d_name</span> is a buffer that’s allocated to hold the
+(<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>-terminated) name of this entry.</p></li>
+</ul>
+<p>So—let’s pretend we’ve retrieved a <span class="htype">dirent</span> and we want to do
+something with it. In addition to looking at individual fields, we can
+combine some of them to make other structures:</p>
+<ul class="simple">
+<li><p><span class="hparameter">d_dev</span> + <span class="hparameter">d_ino</span> = <span class="htype">node_ref</span> of the entry’s node</p></li>
+<li><p><span class="hparameter">d_pdev</span> + <span class="hparameter">d_pino</span> = <span class="htype">node_ref</span> of the parent
+directory</p></li>
+<li><p><span class="hparameter">d_pdev</span> + <span class="hparameter">d_pino</span> + <span class="hparameter">d_name</span> =
+<span class="htype">entry_ref</span> for the entry</p></li>
+</ul>
+<p>In code:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">dirent</span><span class="o">*</span><span class="w"> </span><span class="n">dent</span><span class="p">;</span><span class="w"></span>
+<span class="n">entry_ref</span><span class="w"> </span><span class="n">ref</span><span class="p">;</span><span class="w"></span>
+<span class="n">node_ref</span><span class="w"> </span><span class="n">nref</span><span class="p">;</span><span class="w"></span>
+<span class="n">node_ref</span><span class="w"> </span><span class="n">pnref</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/* Allocate and fill the dirent here... */</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+
+<span class="cm">/* Make a node_ref to this entry&#39;s node. */</span><span class="w"></span>
+<span class="n">nref</span><span class="p">.</span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dirent</span><span class="o">-&gt;</span><span class="n">d_dev</span><span class="p">;</span><span class="w"></span>
+<span class="n">nref</span><span class="p">.</span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dirent</span><span class="o">-&gt;</span><span class="n">d_ino</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/* Make a node_ref to this entry&#39;s parent. */</span><span class="w"></span>
+<span class="n">pnref</span><span class="p">.</span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dirent</span><span class="o">-&gt;</span><span class="n">d_pdev</span><span class="p">;</span><span class="w"></span>
+<span class="n">pnref</span><span class="p">.</span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dirent</span><span class="o">-&gt;</span><span class="n">d_pino</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/* Make an entry_ref to this entry. */</span><span class="w"></span>
+<span class="n">ref</span><span class="p">.</span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dirent</span><span class="o">-&gt;</span><span class="n">d_pdev</span><span class="p">;</span><span class="w"></span>
+<span class="n">ref</span><span class="p">.</span><span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dirent</span><span class="o">-&gt;</span><span class="n">d_pino</span><span class="p">;</span><span class="w"></span>
+<span class="n">ref</span><span class="p">.</span><span class="n">set_name</span><span class="p">(</span><span class="n">dirent</span><span class="o">-&gt;</span><span class="n">d_name</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Where you go from here is a simple matter of programming. Me? I’m going to
+lunch.</p>
+<section id="_CPPv4N10BEntryList14GetNextDirentsEP6dirent6size_t5int32">
+</section>
+<h3>
+GetNextDirents()</h3><p>Now that we know what to do with a dirent, let’s see how to get one. The
+<a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList14GetNextDirentsEP6dirent6size_t5int32" title="BEntryList::GetNextDirents"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextDirents()</span></code></a> protocol looks
+like this:</p>
+<pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv410BEntryList" title="BEntryList"><span class="n">BEntryList</span></a><span class="p">::</span></span><span class="n">GetNextDirents</span><span class="sig-paren">(</span><span class="n">dirent</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buf</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">bufsize</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">count</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">INT_MAX</span><span class="sig-paren">)</span></pre><p>By default, the function stuffs as many <span class="htype">dirent</span> structs as it can
+into the first <span class="hparameter">bufsize</span> bytes of <span class="hparameter">buf</span>. These structures
+represent the next N entries in the entry list. The <span class="hparameter">count</span>
+argument lets you set a limit to the number of structures that you want to
+be retrieved at a time. The function returns the number of structures that
+it actually got.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>Keep in mind that currently <a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList14GetNextDirentsEP6dirent6size_t5int32" title="BEntryList::GetNextDirents"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextDirents()</span></code></a> can only read one dirent at a time,
+regardless of the size of <span class="hparameter">buf</span>, or the value of <span class="hparameter">count</span>.</p>
+</div>
+<p>Let’s try it. For the purposes of this example, we’ll convert each
+<span class="htype">dirent</span> into an <span class="htype">entry_ref</span>, as described in the previous
+section.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* This is the buffer that we&#39;ll stuff structures into. */</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">4096</span><span class="p">];</span><span class="w"></span>
+<span class="n">dirent</span><span class="o">*</span><span class="w"> </span><span class="n">dent</span><span class="p">;</span><span class="w"></span>
+<span class="n">entry_ref</span><span class="w"> </span><span class="n">ref</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/* We&#39;ll assume dir is a valid BDirectory object. */</span><span class="w"></span>
+<span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dir</span><span class="p">.</span><span class="n">GetNextDirents</span><span class="p">((</span><span class="n">dirent</span><span class="o">*</span><span class="p">)</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">dent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">dirent</span><span class="o">*</span><span class="p">)</span><span class="n">buf</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* Now we step through the dirents. */</span><span class="w"></span>
+<span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="o">--</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">ref</span><span class="p">.</span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dent</span><span class="o">-&gt;</span><span class="n">d_pdev</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">ref</span><span class="p">.</span><span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dent</span><span class="o">-&gt;</span><span class="n">d_pino</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">ref</span><span class="p">.</span><span class="n">set_name</span><span class="p">(</span><span class="n">dent</span><span class="o">-&gt;</span><span class="n">d_name</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="cm">/* Do something with the ref. */</span><span class="w"></span>
+<span class="w">      </span><span class="p">...</span><span class="w"></span>
+
+<span class="w">      </span><span class="cm">/* Bump the pointer. */</span><span class="w"></span>
+<span class="w">      </span><span class="n">dent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">dirent</span><span class="o">*</span><span class="p">)((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">dent</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dent</span><span class="o">-&gt;</span><span class="n">d_reclen</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Remember, the structure is variable length—you have to increment the
+pointer by hand, as shown here.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="entry.html">BEntry</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="file.html">BFile</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

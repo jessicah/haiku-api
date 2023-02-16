@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BEntry &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BEntryList" href="entry-list.html" />
+    <link rel="prev" title="BDirectory" href="directory.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BEntry</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="directory.html">BDirectory</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="entry-list.html">BEntryList</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BEntry</a><ul>
+<li><a class="reference internal" href="#talents-and-abilities">Talents and Abilities</a></li>
+<li><a class="reference internal" href="#initializing-and-traversing">Initializing and Traversing</a><ul>
+<li><a class="reference internal" href="#when-to-traverse">When to Traverse</a></li>
+<li><a class="reference internal" href="#traverso-post-facto">Traverso Post Facto</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#abstract-entries">Abstract Entries</a><ul>
+<li><a class="reference internal" href="#creating-a-file-from-an-abstract-entry">Creating a File From an Abstract Entry</a><ul>
+<li><a class="reference internal" href="#the-general-approach">The General Approach.</a></li>
+<li><a class="reference internal" href="#the-plain-file-only-approach">The Plain-File-Only Approach.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#subtleties-and-details">Subtleties and Details</a><ul>
+<li><a class="reference internal" href="#file-descriptors">File Descriptors</a></li>
+<li><a class="reference internal" href="#directories-are-persistent-names-are-not">Directories are Persistent, Names Are Not</a></li>
+<li><a class="reference internal" href="#bentries-and-locked-nodes">BEntries and Locked Nodes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bentry">
+<h1 id="CPPv46BEntry">BEntry<a class="headerlink" href="#bentry" title="Permalink to this heading">¶</a></h1>
+<p>The <span class="hclass">BEntry</span> class defines objects that represent “locations” in
+the file system hierarchy. Each location (or entry) is given as a name
+within a directory. For example, when you create a <span class="hclass">BEntry</span> thus…</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BEntry</span><span class="w"> </span><span class="n">entry</span><span class="p">(</span><span class="s">&quot;/boot/home/fido&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>…you’re telling the <span class="hclass">BEntry</span> object to represent the location of
+the file called fido within the directory /boot/home.</p>
+<p>A <span class="hclass">BEntry</span> doesn’t care whether the entry you tell it to represent
+is a plain file, a directory, or a symbolic link—it doesn’t even care if
+the entry even exists (but we’ll get to that later in “<span class="xref std std-ref">Abstract Entries</span>”):</p>
+<ul class="simple">
+<li><p>All the <span class="hclass">BEntry</span> cares about is a name in a directory.</p></li>
+</ul>
+<p>The most important implication of this is the object’s attitude towards
+data. <span class="hclass">BEntry</span>s don’t know how to operate on data. You can’t use a
+<span class="hclass">BEntry</span> to read or write a file’s data or attributes. For data
+operations, you have to turn your <span class="hclass">BEntry</span> into a
+<a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a>.</p>
+<p>Nonetheless, it’s often convenient to speak of a <span class="hclass">BEntry</span> as
+having data; for example, the phrase “the entry’s data” really means “the
+data that lies in the file that’s located by the entry.”</p>
+<section id="talents-and-abilities">
+<h2>Talents and Abilities<a class="headerlink" href="#talents-and-abilities" title="Permalink to this heading">¶</a></h2>
+<p>A properly initialized <span class="hclass">BEntry</span> object (we’ll get to the rules of
+initialization later) knows the following:</p>
+<ul class="simple">
+<li><p>Location info. A <span class="hclass">BEntry</span> knows its own (leaf) name
+(<a class="reference internal" href="../../kits/storage/entry.html#_CPPv4NK6BEntry7GetNameEPc" title="BEntry::GetName"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetName()</span></code></a>), its full pathname
+(<a class="reference internal" href="../../kits/storage/entry.html#_CPPv4NK6BEntry7GetPathEP5BPath" title="BEntry::GetPath"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetPath()</span></code></a>), and the identity of its parent
+directory (<a class="reference internal" href="../../kits/storage/entry.html#_CPPv4NK6BEntry9GetParentEP6BEntry" title="BEntry::GetParent"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetParent()</span></code></a>).</p></li>
+<li><p><a class="reference internal" href="../../kits/storage/statable.html#_CPPv49BStatable" title="BStatable"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStatable</span></code></a> info. As a descendant of <a class="reference internal" href="../../kits/storage/statable.html#_CPPv49BStatable" title="BStatable"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStatable</span></code></a>, a
+<span class="hclass">BEntry</span> can return statistical information about the entry’s
+data—its size, creation date, owner, and so on.</p></li>
+<li><p><span class="htype">entry_ref</span> identifier. A <span class="hclass">BEntry</span> can return the
+<span class="htype">entry_ref</span> that globally identifies the entry (<a class="reference internal" href="../../kits/storage/entry.html#_CPPv4NK6BEntry6GetRefEP9entry_ref" title="BEntry::GetRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetRef()</span></code></a>).</p></li>
+</ul>
+<p>A <span class="hclass">BEntry</span> can do these things:</p>
+<ul class="simple">
+<li><p>Perform hierarchical operations. A <span class="hclass">BEntry</span> can change the name of
+its entry (<a class="reference internal" href="../../kits/storage/entry.html#_CPPv4N6BEntry6RenameEPKcb" title="BEntry::Rename"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Rename()</span></code></a>), move it to another
+directory (<a class="reference internal" href="../../kits/storage/entry.html#_CPPv4N6BEntry6MoveToEP10BDirectoryPKcb" title="BEntry::MoveTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MoveTo()</span></code></a>), and remove it from the
+file hierarchy (<a class="reference internal" href="../../kits/storage/entry.html#_CPPv4N6BEntry6RemoveEv" title="BEntry::Remove"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Remove()</span></code></a>).</p></li>
+<li><p>Initialize <a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a> objects. The constructors and
+<a class="reference internal" href="../../kits/storage/entry.html#_CPPv4N6BEntry5SetToEPK9entry_refb" title="BEntry::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> initializers for <a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a> and
+its children (<a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a>, <a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a>, and
+<a class="reference internal" href="../../kits/storage/sym-link.html#_CPPv48BSymLink" title="BSymLink"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSymLink</span></code></a>) accept <span class="hclass">BEntry</span> arguments.</p></li>
+</ul>
+<p>As mentioned above, the most important thing that a <span class="hclass">BEntry</span> can’t
+do is access its own data: A <span class="hclass">BEntry</span> can’t read or write data or
+attributes. To do these things you need a <a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a> object.</p>
+<p>(Actually, this isn’t entirely true: A BEntry can set the size of its data
+through the BStatable::SetSize() function. The function only works on plain
+files.)</p>
+</section>
+<section id="initializing-and-traversing">
+<h2>Initializing and Traversing<a class="headerlink" href="#initializing-and-traversing" title="Permalink to this heading">¶</a></h2>
+<p>To initialize a <span class="hclass">BEntry</span>, you have to tell it which entry to
+represent; in other words, you have to identify a directory and a name. You
+can initialize a <span class="hclass">BEntry</span> object directly…</p>
+<ul class="simple">
+<li><p>during construction,</p></li>
+<li><p>through the <a class="reference internal" href="../../kits/storage/entry.html#_CPPv4N6BEntry5SetToEPK9entry_refb" title="BEntry::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> function,</p></li>
+<li><p>or through the assignment operator.</p></li>
+</ul>
+<p>Or you can have some other object initialize your <span class="hclass">BEntry</span> for
+you, by passing the <span class="hclass">BEntry</span> as an argument to…</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a>’s <a class="reference internal" href="../../kits/storage/directory.html#_CPPv4NK10BDirectory9FindEntryEPKcP6BEntryb" title="BDirectory::FindEntry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindEntry()</span></code></a>
+or <a class="reference internal" href="../../kits/storage/directory.html#_CPPv4NK10BDirectory8GetEntryEP6BEntry" title="BDirectory::GetEntry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetEntry()</span></code></a> function,</p></li>
+<li><p><a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv410BEntryList" title="BEntryList"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntryList</span></code></a>’s <a class="reference internal" href="../../kits/storage/entry-list.html#_CPPv4N10BEntryList12GetNextEntryEP6BEntryb" title="BEntryList::GetNextEntry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextEntry()</span></code></a> function (implemented by
+<a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a> and <a class="reference internal" href="../../kits/storage/query.html#_CPPv46BQuery" title="BQuery"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BQuery</span></code></a>).</p></li>
+<li><p><span class="hclass">BEntry</span>’s <a class="reference internal" href="../../kits/storage/entry.html#_CPPv4NK6BEntry9GetParentEP6BEntry" title="BEntry::GetParent"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetParent()</span></code></a> function.</p></li>
+</ul>
+<p>In all cases (except the assignment operator) you’re asked if you want to
+“traverse” the entry during initialization. Traversal is used to “resolve”
+symbolic links:</p>
+<ul class="simple">
+<li><p>If you traverse: The <span class="hclass">BEntry</span> will point to the entry that the
+symbolic link is linked to.</p></li>
+<li><p>If you don’t traverse: The <span class="hclass">BEntry</span> will point to the symbolic
+link itself.</p></li>
+</ul>
+<p>For example, let’s say /boot/home/fidoLink is linked to /fido, to wit:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /boot/home
+$ ln -s ./fido fidoLink
+</pre></div>
+</div>
+<p>Now let’s make a traversed <span class="hclass">BEntry</span> for fidoLink:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* The second argument is the traversal bool. */</span><span class="w"></span>
+<span class="n">BEntry</span><span class="w"> </span><span class="n">entry</span><span class="p">(</span><span class="s">&quot;/boot/home/fidoLink&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If we ask for the entry’s pathname…</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BPath</span><span class="w"> </span><span class="n">path</span><span class="p">;</span><span class="w"></span>
+<span class="n">entry</span><span class="p">.</span><span class="n">GetPath</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Pathname: %sn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">());</span><span class="w"></span>
+</pre></div>
+</div>
+<p>…we see</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>Pathname: /boot/home/fido
+</pre></div>
+</div>
+<p>In other words, the <span class="hclass">BEntry</span> refers to fido, not fidoLink.</p>
+<p>Traversal resolves nested links—it really wants to find a “real” file (or
+directory). If the entry that you’re initializing to isn’t a link, then the
+traversal flag is ignored.</p>
+<section id="when-to-traverse">
+<h3>When to Traverse<a class="headerlink" href="#when-to-traverse" title="Permalink to this heading">¶</a></h3>
+<p>When should you traverse, and when not? Here are a few rules of thumbs:</p>
+<ul class="simple">
+<li><p>If somebody hands you a file reference—if your app gets a
+<a class="reference internal" href="../../kits/application/application.html#_CPPv4N12BApplication12RefsReceivedEP8BMessage" title="BApplication::RefsReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RefsReceived()</span></code></a> message—then you
+probably want to traverse the entry.</p></li>
+<li><p>If you’re pawing over the contents of a directory (through
+<a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a>’s <a class="reference internal" href="../../kits/storage/directory.html#_CPPv4N10BDirectory12GetNextEntryEP6BEntryb" title="BDirectory::GetNextEntry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextEntry()</span></code></a>), then you probably don’t want to traverse.</p></li>
+<li><p>If you’re looking at the result of a query (through <a class="reference internal" href="../../kits/storage/query.html#_CPPv46BQuery" title="BQuery"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BQuery</span></code></a>’s
+<a class="reference internal" href="../../kits/storage/query.html#_CPPv4N6BQuery12GetNextEntryEP6BEntryb" title="BQuery::GetNextEntry"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetNextEntry()</span></code></a>), then you almost
+certainly don’t want to traverse. The query finds entries that satisfy
+certain criteria; if a symbolic link is in the list, it’s because the link
+itself was a winner. If the linked-to file is also a winner, it will show
+up on its own.</p></li>
+</ul>
+</section>
+<section id="traverso-post-facto">
+<h3>Traverso Post Facto<a class="headerlink" href="#traverso-post-facto" title="Permalink to this heading">¶</a></h3>
+<p>Let’s say you create a <span class="hclass">BEntry</span> (to a symlink) without traversing,
+but then you decide that you do want to resolve the link. Unfortunately,
+you can’t resolve in-place; instead, you have to initialize another
+<span class="hclass">BEntry</span> using info (<span class="htype">entry_ref</span> or pathname) that you get
+from the link entry:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BEntry</span><span class="w"> </span><span class="n">entry1</span><span class="p">(</span><span class="s">&quot;/boot/home/fidoLink&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="n">BEntry</span><span class="w"> </span><span class="n">entry2</span><span class="p">;</span><span class="w"></span>
+<span class="n">entry_ref</span><span class="w"> </span><span class="n">ref</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/* First we check to see if it&#39;s a link. */</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">entry1</span><span class="p">.</span><span class="n">IsSymLink</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* Get the link&#39;s entry_ref... */</span><span class="w"></span>
+<span class="w">   </span><span class="n">entry1</span><span class="p">.</span><span class="n">GetRef</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ref</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* ...and use it to initialize the other BEntry. */</span><span class="w"></span>
+<span class="w">   </span><span class="n">entry2</span><span class="p">.</span><span class="n">SetTo</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ref</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="abstract-entries">
+<h2>Abstract Entries<a class="headerlink" href="#abstract-entries" title="Permalink to this heading">¶</a></h2>
+<p>As we all should know by now, a <span class="hclass">BEntry</span> identifies a name within
+a specific directory. The directory that a <span class="hclass">BEntry</span> identifies must
+exist, but the entry that corresponds to the name doesn’t have to. In other
+words…</p>
+<ul class="simple">
+<li><p>A <span class="hclass">BEntry</span> can represent a file that doesn’t exist. The entry is
+said to be “abstract.”</p></li>
+</ul>
+<p>For example, the following construction creates a <span class="hclass">BEntry</span> object
+based on a <a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a> and a name:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BEntry</span><span class="w"> </span><span class="n">entry</span><span class="p">(</span><span class="n">someDir</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;myFile.h&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Let’s assume that myFile.h doesn’t exist. As long as the directory that’s
+referred to by someDir does exist, then the construction is legal. Some of
+the <span class="hclass">BEntry</span> functions (those inherited from
+<a class="reference internal" href="../../kits/storage/statable.html#_CPPv49BStatable" title="BStatable"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStatable</span></code></a>, for instance) won’t work, but the object itself is
+valid.</p>
+<p>But validity doesn’t equal existence:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../kits/storage/entry.html#_CPPv4N6BEntry5SetToEPK9entry_refb" title="BEntry::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> and <a class="reference internal" href="../../kits/storage/entry.html#_CPPv4NK6BEntry9InitCheckEv" title="BEntry::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> <strong>do not</strong> tell you if a <span class="hclass">BEntry</span>’s entry
+actually exists. Don’t be confused; a return value of
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> simply means the object is valid.</p></li>
+</ul>
+<p>If you want to know if a <span class="hclass">BEntry</span>’s entry actually exists, use the
+<a class="reference internal" href="../../kits/storage/entry.html#_CPPv4NK6BEntry6ExistsEv" title="BEntry::Exists"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Exists()</span></code></a> function.</p>
+<section id="creating-a-file-from-an-abstract-entry">
+<h3>Creating a File From an Abstract Entry<a class="headerlink" href="#creating-a-file-from-an-abstract-entry" title="Permalink to this heading">¶</a></h3>
+<p>To turn an abstract <span class="hclass">BEntry</span> into a real entry (or, more
+accurately, a real node), you have to specify the flavor of node that you
+want. There are two methods for creating a node; the first is general, the
+second applies to plain files only.</p>
+<section id="the-general-approach">
+<h4>The General Approach.<a class="headerlink" href="#the-general-approach" title="Permalink to this heading">¶</a></h4>
+<p><a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a>’s <a class="reference internal" href="../../kits/storage/directory.html#_CPPv4N10BDirectory10CreateFileEPKcP5BFileb" title="BDirectory::CreateFile"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CreateFile()</span></code></a>, <a class="reference internal" href="../../kits/storage/directory.html#_CPPv4N10BDirectory15CreateDirectoryEPKcP10BDirectory" title="BDirectory::CreateDirectory"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CreateDirectory()</span></code></a>, <a class="reference internal" href="../../kits/storage/directory.html#_CPPv4N10BDirectory13CreateSymLinkEPKcPKcP8BSymLink" title="BDirectory::CreateSymLink"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CreateSymLink()</span></code></a> functions create nodes of the designated
+flavor. The functions don’t take <span class="hclass">BEntry</span> arguments directly;
+instead, you invoke the functions on the <span class="hclass">BEntry</span>’s directory,
+passing the entry’s leaf name as an argument. Here we turn an abstract
+entry (<span class="hparameter">entry</span>) into a directory:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BPath</span><span class="w"> </span><span class="n">path</span><span class="p">;</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="n">B_FILE_NAME_LENGTH</span><span class="p">];</span><span class="w"> </span><span class="cm">/* A buffer for the name. */</span><span class="w"></span>
+<span class="n">BDirectory</span><span class="w"> </span><span class="n">parent</span><span class="p">;</span><span class="w"> </span><span class="cm">/* The parent of our entry. */</span><span class="w"></span>
+<span class="n">BDirectory</span><span class="w"> </span><span class="n">target_dir</span><span class="p">;</span><span class="w"> </span><span class="cm">/* The product of the transformation. */</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">entry</span><span class="p">.</span><span class="n">Exists</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">entry</span><span class="p">.</span><span class="n">GetParent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">entry</span><span class="p">.</span><span class="n">GetName</span><span class="p">(</span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">parent</span><span class="p">.</span><span class="n">SetTo</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">parent</span><span class="p">.</span><span class="n">CreateDirectory</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dir</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="the-plain-file-only-approach">
+<h4>The Plain-File-Only Approach.<a class="headerlink" href="#the-plain-file-only-approach" title="Permalink to this heading">¶</a></h4>
+<p>You can create a plain file by passing the <span class="hclass">BEntry</span> to the
+<a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a> constructor or <a class="reference internal" href="../../kits/storage/file.html#_CPPv4N5BFile5SetToEPK9entry_ref6uint32" title="BFile::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>
+function. To do this, you also have to add <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CREATE_FILE</span></code>
+to the “open mode” flags:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BFile</span><span class="w"> </span><span class="n">file</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">entry</span><span class="p">.</span><span class="n">Exists</span><span class="p">())</span><span class="w"></span>
+<span class="w">   </span><span class="n">file</span><span class="p">.</span><span class="n">SetTo</span><span class="p">(</span><span class="o">&amp;</span><span class="n">entry</span><span class="p">,</span><span class="w"> </span><span class="n">B_CREATE_FILE</span><span class="o">|</span><span class="n">B_READ_WRITE</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="subtleties-and-details">
+<h2>Subtleties and Details<a class="headerlink" href="#subtleties-and-details" title="Permalink to this heading">¶</a></h2>
+<p>The following details understand you should, particularly if you want to
+participate in bedevtalk.</p>
+<section id="file-descriptors">
+<h3>File Descriptors<a class="headerlink" href="#file-descriptors" title="Permalink to this heading">¶</a></h3>
+<p>Although it’s not intuitively obvious, a <span class="hclass">BEntry</span> object does
+consume a file descriptor. The file descriptor is opened on the entry’s
+directory.</p>
+<p>Your app has a limited number of file descriptors (currently 128, max), so
+you may not want to cache <span class="hclass">BEntry</span> objects as your primary means
+for identifying an entry. If you’re going to be dealing with a lot of
+entries and you want to keep track of them all, it’s better to cache
+<span class="htype">entry_ref</span> structures or <a class="reference internal" href="../../kits/storage/path.html#_CPPv45BPath" title="BPath"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPath</span></code></a> objects.</p>
+</section>
+<section id="directories-are-persistent-names-are-not">
+<h3>Directories are Persistent, Names Are Not<a class="headerlink" href="#directories-are-persistent-names-are-not" title="Permalink to this heading">¶</a></h3>
+<p>One more time: A <span class="hclass">BEntry</span> identifies an entry as a name in a
+directory. As described above, the directory is maintained internally as a
+file descriptor; the name is simply a string. This means that…</p>
+<ul class="simple">
+<li><p>The directory for a given BEntry is persistent. If you move the directory,
+the file descriptor, and so the BEntry, moves with it.</p></li>
+<li><p>The name isn’t persistent. If the user renames the leaf that a BEntry is
+pointing to, the BEntry will become abstract.</p></li>
+</ul>
+<p>For example, take the following <span class="hclass">BEntry</span>…</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BEntry</span><span class="w"> </span><span class="n">entry</span><span class="p">(</span><span class="s">&quot;/boot/home/lbj/footFetish.jpeg&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If the user moves the directory…</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /boot/home
+$ mv lbj jfk
+</pre></div>
+</div>
+<p>The <span class="hclass">BEntry</span> (<span class="hparameter">entry</span>) “moves” with the directory. If you
+print the pathname and ask if the <span class="hclass">BEntry</span>’s entry exists…</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BPath</span><span class="w"> </span><span class="n">path</span><span class="p">;</span><span class="w"></span>
+<span class="n">entry</span><span class="p">.</span><span class="n">GetPath</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;&gt; Foot movie: %sn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">());</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;&gt; Exists? %sn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">entry</span><span class="p">.</span><span class="n">Exists</span><span class="p">()</span><span class="o">?</span><span class="s">&quot;Oui&quot;</span><span class="o">:</span><span class="s">&quot;Non&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>…you’ll see this:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt; Foot movie: /boot/home/jfk/footFetish.jpeg
+&gt; Exists? Oui
+</pre></div>
+</div>
+<p>The same isn’t so for the name portion of a <span class="hclass">BEntry</span>. If the user
+now moves footFetish.jpeg…</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /boot/home/jfk
+$ mv footFetish.jpeg hammerToe.jpeg
+</pre></div>
+</div>
+<p>…your <span class="hclass">BEntry</span> will not follow the file (it doesn’t “follow the
+data”). The object will still represent the entry called footFetish.jpeg.
+The <span class="hclass">BEntry</span> will, in this case, become abstract.</p>
+<p>Don’t be confused: The <span class="hclass">BEntry</span> only “loses track” of a renamed
+entry if the name change is made behind the object’s back. Manipulating the
+entry name through the <span class="hclass">BEntry</span> object’s <a class="reference internal" href="../../kits/storage/entry.html#_CPPv4N6BEntry6RenameEPKcb" title="BEntry::Rename"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Rename()</span></code></a> function (for example), doesn’t baffle the object. For
+example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BPath</span><span class="w"> </span><span class="n">path</span><span class="p">;</span><span class="w"></span>
+<span class="n">BEntry</span><span class="w"> </span><span class="n">entry</span><span class="p">(</span><span class="s">&quot;/boot/home/lbj/footFetish.jpeg&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">entry</span><span class="p">.</span><span class="n">Rename</span><span class="p">(</span><span class="s">&quot;hammerToe.jpeg&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">entry</span><span class="p">.</span><span class="n">GetPath</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;&gt; Foot movie: %sn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">());</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;&gt; Exists? %sn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">entry</span><span class="p">.</span><span class="n">Exists</span><span class="p">()</span><span class="o">?</span><span class="s">&quot;Oui&quot;</span><span class="o">:</span><span class="s">&quot;Non&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>…and we see…</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt; Foot movie: /boot/home/lbj/hammerToe.jpeg
+&gt; Exists? Oui
+</pre></div>
+</div>
+</section>
+<section id="bentries-and-locked-nodes">
+<h3>BEntries and Locked Nodes<a class="headerlink" href="#bentries-and-locked-nodes" title="Permalink to this heading">¶</a></h3>
+<p>You can’t lock an entry, but you can lock the entry’s node (through
+<a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a>’s <a class="reference internal" href="../../kits/storage/node.html#_CPPv4N5BNode4LockEv" title="BNode::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a> function).
+Initializing a <span class="hclass">BEntry</span> to point to a locked node is permitted, but
+the entry’s directory must not be locked. If the directory is locked, the
+<span class="hclass">BEntry</span> constructor and <a class="reference internal" href="../../kits/storage/entry.html#_CPPv4N6BEntry5SetToEPK9entry_refb" title="BEntry::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>
+function fail and set <a class="reference internal" href="../../kits/storage/entry.html#_CPPv4NK6BEntry9InitCheckEv" title="BEntry::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> to
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BUSY</span></code>.</p>
+<p>Furthermore, the destination directories in <span class="hclass">BEntry</span>’s
+<a class="reference internal" href="../../kits/storage/entry.html#_CPPv4N6BEntry6RenameEPKcb" title="BEntry::Rename"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Rename()</span></code></a> and <a class="reference internal" href="../../kits/storage/entry.html#_CPPv4N6BEntry6MoveToEP10BDirectoryPKcb" title="BEntry::MoveTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MoveTo()</span></code></a> must be unlocked for the functions to succeed. And all
+directories in the path to the entry must be unlocked for
+<a class="reference internal" href="../../kits/storage/entry.html#_CPPv4NK6BEntry7GetPathEP5BPath" title="BEntry::GetPath"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetPath()</span></code></a> to succeed.</p>
+<p>If you get a <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BUSY</span></code> error, you may want to try
+again—it’s strongly advised that locks be held as briefly as possible.</p>
+</section>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="directory.html">BDirectory</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="entry-list.html">BEntryList</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

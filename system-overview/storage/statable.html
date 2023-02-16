@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BStatable &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BSymLink" href="sym-link.html" />
+    <link rel="prev" title="BResources" href="resources.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BStatable</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="resources.html">BResources</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="sym-link.html">BSymLink</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BStatable</a><ul>
+<li><a class="reference internal" href="#nodes-and-entries">Nodes and Entries</a></li>
+<li><a class="reference internal" href="#abstract-entries">Abstract Entries</a></li>
+<li><a class="reference internal" href="#relationship-to-stat">Relationship to stat()</a></li>
+<li><a class="reference internal" href="#accessing-unreadable-and-unwritable-entries">Accessing Unreadable and Unwritable Entries</a></li>
+<li><a class="reference internal" href="#other-details">Other Details</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bstatable">
+<h1 id="CPPv49BStatable">BStatable<a class="headerlink" href="#bstatable" title="Permalink to this heading">¶</a></h1>
+<p><span class="hclass">BStatable</span> is a pure abstract class that provides functionality
+for its two derived class, <a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> and <a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a>. The
+<span class="hclass">BStatable</span> functions let you get and set “statistical” information
+about a node in the file system. You can…</p>
+<ul class="simple">
+<li><p>Determine whether the node is a file, directory, or symbolic link.</p></li>
+<li><p>Get and set an node’s owner, group, and permissions.</p></li>
+<li><p>Get and set the node’s creation, modification, and access times.</p></li>
+<li><p>Get the size of the node’s data (not counting attributes).</p></li>
+<li><p>Get a <a class="reference internal" href="../../kits/storage/volume.html#_CPPv47BVolume" title="BVolume"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BVolume</span></code></a> object for the node’s volume.</p></li>
+<li><p>Get the <span class="htype">node_ref</span> of the node (and pass it to
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">watch_node()</span></code>, most likely).</p></li>
+</ul>
+<section id="nodes-and-entries">
+<h2>Nodes and Entries<a class="headerlink" href="#nodes-and-entries" title="Permalink to this heading">¶</a></h2>
+<p>Technically, <span class="hclass">BStatable</span> information pertains to nodes, not
+entries. The fact that <a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> implements the
+<span class="hclass">BStatable</span> functions is a (slightly confusing) convenience: When
+you invoke a <span class="hclass">BStatable</span> function on a <a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> object,
+what you’re really doing is asking for information about the node that
+corresponds to the object.</p>
+</section>
+<section id="abstract-entries">
+<h2>Abstract Entries<a class="headerlink" href="#abstract-entries" title="Permalink to this heading">¶</a></h2>
+<p>As explained in <a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a>, it’s possible to create “abstract”
+<a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> objects; in other words, objects that don’t correspond
+to actual files (nodes) on the disk. You can’t get (or set)
+<span class="hclass">BStatable</span> information for abstract entries. The
+<span class="hclass">BStatable</span> functions return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code> if the
+invoked-upon entry is abstract.</p>
+</section>
+<section id="relationship-to-stat">
+<h2>Relationship to stat()<a class="headerlink" href="#relationship-to-stat" title="Permalink to this heading">¶</a></h2>
+<p>The <span class="hclass">BStatable</span> functions are covers for the POSIX <span class="xref std std-ref">stat()</span>
+call. stat() retrieves a file-specific <span class="htype">stat</span> structure, which
+records the statistics listed above (and then some). Although
+<span class="hclass">BStatable</span> was designed to hide stat details, you can get the
+<span class="xref std std-ref">stat()</span> structure through the <a class="reference internal" href="../../kits/storage/statable.html#_CPPv4NK9BStatable7GetStatEP4stat" title="BStatable::GetStat"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetStat()</span></code></a> function.</p>
+<p>stat() is notorious for being expensive. Furthermore, the <span class="htype">stat</span>
+structure is stale as soon as it gets back from the stat() call. If you’re
+concerned with efficiency, be aware that every <span class="hclass">BStatable</span> function
+(the “setters” as well as the “getters”) performs a stat(). For example,
+calling <a class="reference internal" href="../../kits/storage/statable.html#_CPPv4NK9BStatable8GetOwnerEP5uid_t" title="BStatable::GetOwner"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetOwner()</span></code></a> and then
+<a class="reference internal" href="../../kits/storage/statable.html#_CPPv4NK9BStatable8GetGroupEP5gid_t" title="BStatable::GetGroup"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetGroup()</span></code></a> results in two stat() calls.
+If you want to look at lot of fields (within the same <span class="htype">stat</span>
+structure) all at once, you might consider using <span class="hclass">BStatable</span>’s
+<a class="reference internal" href="../../kits/storage/statable.html#_CPPv4NK9BStatable7GetStatEP4stat" title="BStatable::GetStat"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetStat()</span></code></a> function.</p>
+<p>As for integrity, <span class="hclass">BStatable</span> info-getting functions are obviously
+in the same boat as the stat() call itself: The retrieved data isn’t
+guaranteed to be in sync with the actual state of the stat()’d item.</p>
+<p>The <a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a> class also defines a stat-retrieving function
+that, in some cases, can be more efficient than the <a class="reference internal" href="../../kits/storage/statable.html#_CPPv4NK9BStatable7GetStatEP4stat" title="BStatable::GetStat"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetStat()</span></code></a> function defined here:</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="../../kits/storage/directory.html#_CPPv4NK10BDirectory10GetStatForEPKcP4stat" title="BDirectory::GetStatFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BDirectory::GetStatFor()</span></code></a> function retrieves the
+<span class="htype">stat</span> structure for the node of a named entry within a directory.
+If you’re interested in getting stat information for a series of nodes
+within the same directory, you should use this function. You have to call
+it iteratively (once for each named entry), but the accumulation of the
+iterated calls will be faster than the <a class="reference internal" href="../../kits/storage/statable.html#_CPPv4NK9BStatable7GetStatEP4stat" title="BStatable::GetStat"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetStat()</span></code></a> calls made on the analogous <a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a>
+objects.</p></li>
+</ul>
+</section>
+<section id="accessing-unreadable-and-unwritable-entries">
+<h2>Accessing Unreadable and Unwritable Entries<a class="headerlink" href="#accessing-unreadable-and-unwritable-entries" title="Permalink to this heading">¶</a></h2>
+<p><span class="hclass">BStatable</span> isn’t thwarted by file permissions: If you can
+construct a valid <a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> or <a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a> to an item,
+then you can invoke any of the info-getting <span class="hclass">BStatable</span> functions
+on that object:</p>
+<ul class="simple">
+<li><p>The <span class="hclass">BStatable</span> functions aren’t denied even if the node that
+you’re looking at is read-protected. However, you can only invoke the
+info-setting functions if the node allows writing.</p></li>
+<li><p>Similarly, you can get stat info for a locked node, but you won’t be able
+to write the info (through functions such as <a class="reference internal" href="../../kits/storage/statable.html#_CPPv4N9BStatable8SetOwnerE5uid_t" title="BStatable::SetOwner"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetOwner()</span></code></a>) unless your object holds the lock. See
+<a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a> for more on locking.</p></li>
+</ul>
+</section>
+<section id="other-details">
+<h2>Other Details<a class="headerlink" href="#other-details" title="Permalink to this heading">¶</a></h2>
+<p>You rarely set stat information. In practice, you rarely use
+<span class="hclass">BStatable</span>’s info-setting functions. Setting information such as
+when a file was created, who owns it, or how big it is, is the
+responsibility of the system and the privilege of the user. For example,
+when you <a class="reference internal" href="../../kits/storage/file.html#_CPPv4N5BFile5WriteEPKv6size_t" title="BFile::Write"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Write()</span></code></a> to a <a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a> object,
+the system automatically updates the size and modification date for the
+file.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="resources.html">BResources</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="sym-link.html">BSymLink</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

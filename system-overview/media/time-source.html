@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BTimeSource &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BTimedEventQueue" href="timed-event-queue.html" />
+    <link rel="prev" title="BTimeCode" href="time-code.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BTimeSource</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="time-code.html">BTimeCode</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="timed-event-queue.html">BTimedEventQueue</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BTimeSource</a><ul>
+<li><a class="reference internal" href="#keeping-time">Keeping Time</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="btimesource">
+<h1 id="CPPv411BTimeSource">BTimeSource<a class="headerlink" href="#btimesource" title="Permalink to this heading">¶</a></h1>
+<p>The <a class="reference internal" href="../../kits/media/time-source.html#_CPPv411BTimeSource" title="BTimeSource"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimeSource</span></code></a> class represents a clock to which nodes can
+be slaved. By slaving all your nodes to a single master time source, they
+can be kept in sync with each other.</p>
+<p>If a node can, either by design or as a side benefit of the underlying
+hardware, provide reliable timing services, it might make sense for it to
+be derived from <a class="reference internal" href="../../kits/media/time-source.html#_CPPv411BTimeSource" title="BTimeSource"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimeSource</span></code></a> as well as from whatever other
+classes it might be derived from, such as <a class="reference internal" href="../../kits/media/buffer-producer.html#_CPPv415BBufferProducer" title="BBufferProducer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferProducer</span></code></a> or
+<a class="reference internal" href="../../kits/media/buffer-consumer.html#_CPPv415BBufferConsumer" title="BBufferConsumer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferConsumer</span></code></a>. Doing so will allow other nodes to be slaved
+to your node’s conception of time.</p>
+<p>Note that although a <a class="reference internal" href="../../kits/media/time-source.html#_CPPv411BTimeSource" title="BTimeSource"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimeSource</span></code></a> is implemented as a real
+object (and is therefore not a purely abstract class), other nodes won’t
+call your <a class="reference internal" href="../../kits/media/time-source.html#_CPPv411BTimeSource" title="BTimeSource"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimeSource</span></code></a>’s member functions directly—instead,
+your <a class="reference internal" href="../../kits/media/time-source.html#_CPPv411BTimeSource" title="BTimeSource"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimeSource</span></code></a> will provide data that other nodes will then
+read.</p>
+<p>There are invisible system implementations of the <a class="reference internal" href="../../kits/media/time-source.html#_CPPv411BTimeSource" title="BTimeSource"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimeSource</span></code></a>
+protocol that serve as stand-ins for other nodes, so if you call
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster16SetTimeSourceForE13media_node_id13media_node_id" title="BMediaRoster::SetTimeSourceFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaRoster::SetTimeSourceFor()</span></code></a> to make one of your nodes (which
+is derived from <a class="reference internal" href="../../kits/media/time-source.html#_CPPv411BTimeSource" title="BTimeSource"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimeSource</span></code></a>) a time source for some other
+node, the other node might see a system stand-in object, not the actual
+<a class="reference internal" href="../../kits/media/time-source.html#_CPPv411BTimeSource" title="BTimeSource"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimeSource</span></code></a>-derived object.</p>
+<p>This abstraction layer serves a valuable purpose: it enforces the desire
+to prevent any two nodes from having to know anything about each other
+beyond the Media Kit protocols defined in this chapter; this sort of
+low-level interdependency is discouraged, because it decreases
+interoperability.</p>
+<section id="keeping-time">
+<h2>Keeping Time<a class="headerlink" href="#keeping-time" title="Permalink to this heading">¶</a></h2>
+<p>Although it can be confusing at first, keep in mind that a node derived
+from both <a class="reference internal" href="../../kits/media/time-source.html#_CPPv411BTimeSource" title="BTimeSource"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimeSource</span></code></a> and <a class="reference internal" href="../../kits/media/buffer-producer.html#_CPPv415BBufferProducer" title="BBufferProducer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferProducer</span></code></a> (or
+<a class="reference internal" href="../../kits/media/buffer-consumer.html#_CPPv415BBufferConsumer" title="BBufferConsumer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferConsumer</span></code></a>)—which is therefore a time source, as well as
+a producer or consumer of buffers—has to deal with two different time
+concepts. As a <a class="reference internal" href="../../kits/media/time-source.html#_CPPv411BTimeSource" title="BTimeSource"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimeSource</span></code></a>, it needs to understand requests in
+real time, while as a <a class="reference internal" href="../../kits/media/buffer-producer.html#_CPPv415BBufferProducer" title="BBufferProducer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferProducer</span></code></a> or
+<a class="reference internal" href="../../kits/media/buffer-consumer.html#_CPPv415BBufferConsumer" title="BBufferConsumer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBufferConsumer</span></code></a>, it needs to accept requests in performance
+time.</p>
+<p>Real time refers to the actual passage of time, as reported by
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">system_time()</span></code> or the
+<a class="reference internal" href="../../kits/media/time-source.html#_CPPv4N11BTimeSource8RealTimeEv" title="BTimeSource::RealTime"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BTimeSource::RealTime()</span></code></a> function. It’s measured in microseconds.</p>
+<p>Performance time runs in “time units” which aren’t necessarily directly
+related to real time. Since your code will have to deal with both kinds of
+time, you need to be sure to convert between the two time systems when it’s
+necessary to do so. Use the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BTimeSource::RealTimeFor()</span></code> function
+to do this.</p>
+<p>For example, to calculate a timeout value, given a desired performance
+time, and an estimated latency on the connection, you might use the
+following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bigtime_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="n">TimeSource</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">RealTimeFor</span><span class="p">(</span><span class="n">performance_time</span><span class="p">,</span>
+         <span class="n">estimated_latency</span><span class="p">)</span> <span class="o">-</span> <span class="n">TimeSource</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">RealTime</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>This code converts the <span class="hparameter">performance_time</span> into the driving time
+source’s units, then subtracts the current real time, which results in the
+desired timeout value.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="time-code.html">BTimeCode</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="timed-event-queue.html">BTimedEventQueue</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

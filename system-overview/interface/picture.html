@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BPicture &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BPictureButton" href="picture-button.html" />
+    <link rel="prev" title="BOutlineListView" href="outline-list-view.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BPicture</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="outline-list-view.html">BOutlineListView</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="picture-button.html">BPictureButton</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BPicture</a><ul>
+<li><a class="reference internal" href="#recording-a-picture">Recording a Picture</a></li>
+<li><a class="reference internal" href="#the-picture-definition">The Picture Definition</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bpicture">
+<h1 id="CPPv48BPicture">BPicture<a class="headerlink" href="#bpicture" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../kits/interface/picture.html#_CPPv48BPicture" title="BPicture"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPicture</span></code></a> object represents a set of drawing instructions
+that are executed when the object is passed to <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>’s
+<a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView11DrawPictureEPK8BPicture" title="BView::DrawPicture"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawPicture()</span></code></a> function. Because it
+contains drawing instructions rather than an actual image, a
+<a class="reference internal" href="../../kits/interface/picture.html#_CPPv48BPicture" title="BPicture"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPicture</span></code></a>BPicture (unlike a <a class="reference internal" href="../../kits/interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a>) is
+independent of the resolution of the display device.</p>
+<section id="recording-a-picture">
+<h2>Recording a Picture<a class="headerlink" href="#recording-a-picture" title="Permalink to this heading">¶</a></h2>
+<p>To start recording into a <a class="reference internal" href="../../kits/interface/picture.html#_CPPv48BPicture" title="BPicture"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPicture</span></code></a>, you pass a
+<a class="reference internal" href="../../kits/interface/picture.html#_CPPv48BPicture" title="BPicture"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPicture</span></code></a> object to <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView12BeginPictureEP8BPicture" title="BView::BeginPicture"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::BeginPicture()</span></code></a>. All
+drawing instructions that are executed by the <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> are
+recorded into the <a class="reference internal" href="../../kits/interface/picture.html#_CPPv48BPicture" title="BPicture"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPicture</span></code></a> object. When you’re done recording,
+you call <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView10EndPictureEv" title="BView::EndPicture"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::EndPicture()</span></code></a>, which passes back a pointer to the
+recorded object. For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BPicture</span><span class="w"> </span><span class="o">*</span><span class="n">myPict</span><span class="p">;</span><span class="w"></span>
+<span class="n">someView</span><span class="o">-&gt;</span><span class="n">BeginPicture</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">BPicture</span><span class="p">);</span><span class="w"></span>
+<span class="cm">/* drawing code goes here*/</span><span class="w"></span>
+<span class="n">myPict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">someView</span><span class="o">-&gt;</span><span class="n">EndPicture</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Only drawing that the <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> does is recorded; drawing done by
+children and other views attached to the window is ignored, as is
+everything except drawing code.</p>
+<p>Drawing instructions that are captured between <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView12BeginPictureEP8BPicture" title="BView::BeginPicture"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BeginPicture()</span></code></a> and <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView10EndPictureEv" title="BView::EndPicture"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">EndPicture()</span></code></a> are
+not renedered on-screen; ignored instructions may be rendered if they draw
+into the visible region of an on-screen window.</p>
+<p>Any picture data in the <a class="reference internal" href="../../kits/interface/picture.html#_CPPv48BPicture" title="BPicture"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPicture</span></code></a> passed to
+<a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView12BeginPictureEP8BPicture" title="BView::BeginPicture"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BeginPicture()</span></code></a> is cleared; if you’d
+instead like to append to the <a class="reference internal" href="../../kits/interface/picture.html#_CPPv48BPicture" title="BPicture"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPicture</span></code></a>, begin the picture
+recording with <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView15AppendToPictureEP8BPicture" title="BView::AppendToPicture"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AppendPicture()</span></code></a>
+instead. As with <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView12BeginPictureEP8BPicture" title="BView::BeginPicture"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BeginPicture()</span></code></a>, each
+<a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView15AppendToPictureEP8BPicture" title="BView::AppendToPicture"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AppendToPicture()</span></code></a> must have a
+corresponding EndPicture().</p>
+</section>
+<section id="the-picture-definition">
+<h2>The Picture Definition<a class="headerlink" href="#the-picture-definition" title="Permalink to this heading">¶</a></h2>
+<p>The picture captures everything that affects the image that’s drawn. It
+takes a snapshot of the <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>’s graphics state—the pen size,
+high and low colors, font size, and so on—when <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView12BeginPictureEP8BPicture" title="BView::BeginPicture"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BeginPicture()</span></code></a> is called. It then captures all subsequent
+modifications to those parameters, such as calls to <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView9MovePenToE6BPoint" title="BView::MovePenTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MovePenTo()</span></code></a>, <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView11SetLowColorE9rgb_color" title="BView::SetLowColor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetLowColor()</span></code></a>, an
+<a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView11SetFontSizeEf" title="BView::SetFontSize"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetFontSize()</span></code></a>. The recorded graphics state
+is used when the picture is drawn (through <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView11DrawPictureEPK8BPicture" title="BView::DrawPicture"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::DrawPicture()</span></code></a>).</p>
+<p>The picture records all primitive drawing instruction (
+<a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView10DrawBitmapEPK7BBitmap" title="BView::DrawBitmap"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawBitmap()</span></code></a>, <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView13StrokeEllipseE5BRect7pattern" title="BView::StrokeEllipse"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StrokeEllipse()</span></code></a>, <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView8FillRectE5BRect7pattern" title="BView::FillRect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FillRect()</span></code></a>, etc.)
+and will even record calls to <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView11DrawPictureEPK8BPicture" title="BView::DrawPicture"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawPicture()</span></code></a>.</p>
+<p>The picture makes its own copy of any data that’s passed during the
+recording session, including bitmaps passed to <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView10DrawBitmapEPK7BBitmap" title="BView::DrawBitmap"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawBitmap()</span></code></a> and picture data passed to <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView11DrawPictureEPK8BPicture" title="BView::DrawPicture"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawPicture()</span></code></a>.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="outline-list-view.html">BOutlineListView</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="picture-button.html">BPictureButton</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

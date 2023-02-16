@@ -90,37 +90,32 @@
       <div class="content" role="main">
         
   <section id="bmenufield">
-<h1>BMenuField<a class="headerlink" href="#bmenufield" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv410BMenuField">BMenuField<a class="headerlink" href="#bmenufield" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N10BMenuField10BMenuFieldE5BRectPKcPKcP5BMenu6uint326uint32">
 </section>
 <h3>
-BMenuField()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMenuField10BMenuFieldE5BRectPKcPKcP5BMenu6uint326uint32" title="BMenuField::BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">BMenuField</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span>, <span class="n">BMenu</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">menu</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_LEFT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FOLLOW_TOP</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_NAVIGABLE</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMenuField10BMenuFieldE5BRectPKcPKcP5BMenub6uint326uint32" title="BMenuField::BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">BMenuField</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span>, <span class="n">BMenu</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">menu</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">fixedSize</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_LEFT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FOLLOW_TOP</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_NAVIGABLE</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMenuField10BMenuFieldEP8BMessage" title="BMenuField::BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">BMenuField</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BMenuField</span> object with the specified
-<span class="hparameter">frame</span> rectangle, <span class="hparameter">name</span>,
-<span class="hparameter">resizingMode</span>, and <span class="hparameter">flags</span>. These
-arguments are the same as for any
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> object and are
-passed unchanged to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-constructor. When the object is attached to a window, the height of its frame
-rectangle will be adjusted to fit the height of the text it displays, which
-depends on the user’s preferred font for menus.</p>
-<p>By default, the <span class="hparameter">frame</span> rectangle is divided horizontally in half, with the
-label displayed on the left and the menu on the right. This division can
-be changed with the
-<a class="reference internal" href="#_CPPv4N10BMenuField10SetDividerEf" title="BMenuField::SetDivider"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetDivider()</span></code></a>
-function. The menu is assigned to a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code> object and
-will pop up under the user’s control. For most uses,
-the menu should be a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPopUpMenu</span></code> object.</p>
-<p>The second form of the constructor accepts an added argument, <span class="hparameter">fixedSize</span>.
-If this is true, the <span class="hclass">BMenuField</span> won’t adjust its size based on the width
-of the items in the menu.</p>
+BMenuField()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMenuField10BMenuFieldE5BRectPKcPKcP5BMenu6uint326uint32" title="BMenuField::BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">BMenuField</span><span class="sig-paren">(</span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span>, <a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><span class="n">BMenu</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">menu</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_LEFT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FOLLOW_TOP</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_NAVIGABLE</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMenuField10BMenuFieldE5BRectPKcPKcP5BMenub6uint326uint32" title="BMenuField::BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">BMenuField</span><span class="sig-paren">(</span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span>, <a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><span class="n">BMenu</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">menu</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">fixedSize</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_LEFT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FOLLOW_TOP</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_NAVIGABLE</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMenuField10BMenuFieldEP8BMessage" title="BMenuField::BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">BMenuField</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BMenuField</span> object with the specified
+<span class="hparameter">frame</span> rectangle, <span class="hparameter">name</span>, <span class="hparameter">resizingMode</span>, and
+<span class="hparameter">flags</span>. These arguments are the same as for any <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>
+object and are passed unchanged to the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> constructor. When
+the object is attached to a window, the height of its frame rectangle will
+be adjusted to fit the height of the text it displays, which depends on the
+user’s preferred font for menus.</p>
+<p>By default, the <span class="hparameter">frame</span> rectangle is divided horizontally in half,
+with the label displayed on the left and the menu on the right. This
+division can be changed with the <a class="reference internal" href="#_CPPv4N10BMenuField10SetDividerEf" title="BMenuField::SetDivider"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetDivider()</span></code></a> function. The menu is assigned to a
+<a class="reference internal" href="menu-bar.html#_CPPv48BMenuBar" title="BMenuBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code></a> object and will pop up under the user’s control. For
+most uses, the menu should be a <a class="reference internal" href="pop-up-menu.html#_CPPv410BPopUpMenu" title="BPopUpMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPopUpMenu</span></code></a> object.</p>
+<p>The second form of the constructor accepts an added argument,
+<span class="hparameter">fixedSize</span>. If this is true, the <span class="hclass">BMenuField</span> won’t adjust
+its size based on the width of the items in the menu.</p>
 <section id="_CPPv4N10BMenuFieldD0Ev">
 </section>
 <h3>
-~BMenuField()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">~BMenuField</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the label, the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code>
-object, and other memory allocated by the <span class="hclass">BMenuField</span>.</p>
+~BMenuField()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">~BMenuField</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees the label, the <a class="reference internal" href="menu-bar.html#_CPPv48BMenuBar" title="BMenuBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code></a> object, and other memory
+allocated by the <span class="hclass">BMenuField</span>.</p>
 </section>
 <section id="hook-functions">
 <h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
@@ -129,72 +124,55 @@ object, and other memory allocated by the <span class="hclass">BMenuField</span>
 <section id="_CPPv4N10BMenuField11AllAttachedEv">
 </section>
 <h3>
-AttachedToWindow(), AllAttached()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">AllAttached</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions override their <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-counterparts to make the
-<span class="hclass">BMenuField</span>’s background color match the color of its parent view and to
-adjust the height of the view to the height of the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code> child it
-contains. The height of the child depends on the size of the user’s
-preferred font for menus.</p>
-<p>See also:
-<a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::AttachedToWindow()</span></code></a></p>
+AttachedToWindow(), AllAttached()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">AllAttached</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions override their <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> counterparts to make the
+<span class="hclass">BMenuField</span>’s background color match the color of its parent view
+and to adjust the height of the view to the height of the
+<a class="reference internal" href="menu-bar.html#_CPPv48BMenuBar" title="BMenuBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code></a> child it contains. The height of the child depends on
+the size of the user’s preferred font for menus.</p>
+<p>See also: <a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::AttachedToWindow()</span></code></a></p>
 <section id="_CPPv4N10BMenuField4DrawE5BRect">
 </section>
 <h3>
-Draw()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">updateRect</span><span class="sig-paren">)</span></pre><p>Overrides the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-version of this function to draw the view’s border
-and label. The way the menu field is drawn depends on whether it’s
-enabled or disabled and whether or not it’s the current focus for
+Draw()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">updateRect</span><span class="sig-paren">)</span></pre><p>Overrides the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> version of this function to draw the
+view’s border and label. The way the menu field is drawn depends on whether
+it’s enabled or disabled and whether or not it’s the current focus for
 keyboard actions.</p>
-<p>See also:
-<a class="reference internal" href="view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Draw()</span></code></a></p>
+<p>See also: <a class="reference internal" href="view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Draw()</span></code></a></p>
 <section id="_CPPv4N10BMenuField7KeyDownEPKc5int32">
 </section>
 <h3>
-KeyDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">KeyDown</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bytes</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numBytes</span><span class="sig-paren">)</span></pre><p>Augments the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-version of <a class="reference internal" href="view.html#_CPPv4N5BView7KeyDownEPKc5int32" title="BView::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">KeyDown()</span></code></a>
-to permit keyboard navigation to
-and from the view and to allow users to open the menu by pressing the
-space bar.</p>
+KeyDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">KeyDown</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bytes</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numBytes</span><span class="sig-paren">)</span></pre><p>Augments the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> version of <a class="reference internal" href="view.html#_CPPv4N5BView7KeyDownEPKc5int32" title="BView::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">KeyDown()</span></code></a> to permit keyboard navigation to and from the view and to
+allow users to open the menu by pressing the space bar.</p>
 <section id="_CPPv4N10BMenuField9MouseDownE6BPoint">
 </section>
 <h3>
-MouseDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">MouseDown</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><p>Overrides the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-version of <a class="reference internal" href="view.html#_CPPv4N5BView9MouseDownE6BPoint" title="BView::MouseDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MouseDown()</span></code></a> to enable users to pop up the
-menu using the mouse, even if the cursor isn’t directly over the menu
-portion of the bounds rectangle.</p>
+MouseDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">MouseDown</span><span class="sig-paren">(</span><a class="reference internal" href="point.html#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><p>Overrides the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> version of <a class="reference internal" href="view.html#_CPPv4N5BView9MouseDownE6BPoint" title="BView::MouseDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MouseDown()</span></code></a> to enable users to pop up the menu using the mouse,
+even if the cursor isn’t directly over the menu portion of the bounds
+rectangle.</p>
 <section id="_CPPv4N10BMenuField15WindowActivatedEb">
 </section>
 <h3>
-WindowActivated()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">WindowActivated</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">active</span><span class="sig-paren">)</span></pre><p>Makes sure that the <span class="hclass">BMenuField</span> is redrawn when the window is activated
-and deactivated, provided that it’s the current focus view.</p>
-<p>See also:
-<a class="reference internal" href="view.html#_CPPv4N5BView15WindowActivatedEb" title="BView::WindowActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::WindowActivated()</span></code></a></p>
+WindowActivated()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">WindowActivated</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">active</span><span class="sig-paren">)</span></pre><p>Makes sure that the <span class="hclass">BMenuField</span> is redrawn when the window is
+activated and deactivated, provided that it’s the current focus view.</p>
+<p>See also: <a class="reference internal" href="view.html#_CPPv4N5BView15WindowActivatedEb" title="BView::WindowActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::WindowActivated()</span></code></a></p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4NK10BMenuField7ArchiveEP8BMessageb">
 </section>
 <h3>
-Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of <span class="hmethod">Archive()</span>, which will, in the normal
-course of things, archive the child
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code> and the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code> it displays,
-provided the <span class="hparameter">deep</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>. This function then adds the label,
-divider, and current state of the <span class="hclass">BMenuField</span> to the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive.</p>
-<p>See also:
-<a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N10BMenuField11InstantiateEP8BMessage" title="BMenuField::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of <span class="hmethod">Archive()</span>, which will, in the
+normal course of things, archive the child <a class="reference internal" href="menu-bar.html#_CPPv48BMenuBar" title="BMenuBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code></a> and the
+<a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code></a> it displays, provided the <span class="hparameter">deep</span> flag is
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>. This function then adds the label, divider, and current
+state of the <span class="hclass">BMenuField</span> to the <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> archive.</p>
+<p>See also: <a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>, <a class="reference internal" href="#_CPPv4N10BMenuField11InstantiateEP8BMessage" title="BMenuField::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
 <section id="_CPPv4N10BMenuField9MakeFocusEb">
 </section>
 <h3>
-MakeFocus()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">MakeFocus</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">focused</span><span class="sig-paren">)</span></pre><p>Augments the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-version of <a class="reference internal" href="view.html#_CPPv4N5BView9MakeFocusEb" title="BView::MakeFocus"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeFocus()</span></code></a>
-to enable keyboard navigation.
-This function calls <a class="reference internal" href="#_CPPv4N10BMenuField4DrawE5BRect" title="BMenuField::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a>
-when the <span class="hclass">BMenuField</span> becomes the focus view and
-when it loses that status.</p>
+MakeFocus()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">MakeFocus</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">focused</span><span class="sig-paren">)</span></pre><p>Augments the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> version of <a class="reference internal" href="view.html#_CPPv4N5BView9MakeFocusEb" title="BView::MakeFocus"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeFocus()</span></code></a> to enable keyboard navigation. This function calls
+<a class="reference internal" href="#_CPPv4N10BMenuField4DrawE5BRect" title="BMenuField::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a> when the <span class="hclass">BMenuField</span> becomes
+the focus view and when it loses that status.</p>
 <section id="_CPPv4NK10BMenuField4MenuEv">
 </section>
 <section id="_CPPv4NK10BMenuField7MenuBarEv">
@@ -202,55 +180,47 @@ when it loses that status.</p>
 <section id="_CPPv4NK10BMenuField8MenuItemEv">
 </section>
 <h3>
-Menu(), MenuBar(), MenuItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMenu</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">Menu</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMenuBar</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">MenuBar</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMenuItem</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">MenuItem</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Menu()</span> returns the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code>
-object that pops up when the user operates the
-<span class="hclass">BMenuField</span>;
-<span class="hmethod">MenuBar()</span> returns the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code> object that contains the menu.
-The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code>
-is created by the <span class="hclass">BMenuField</span>; the menu is assigned to it
-during construction. <span class="hmethod">MenuItem()</span> returns the first
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code> assigned to
-the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code> object containing the menu.</p>
-<p>See also:
-The <span class="hclass">BMenuField</span> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code></p>
+Menu(), MenuBar(), MenuItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><span class="n">BMenu</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">Menu</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="menu-bar.html#_CPPv48BMenuBar" title="BMenuBar"><span class="n">BMenuBar</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">MenuBar</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="menu-item.html#_CPPv49BMenuItem" title="BMenuItem"><span class="n">BMenuItem</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">MenuItem</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Menu()</span> returns the <a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code></a> object that pops up when
+the user operates the <span class="hclass">BMenuField</span>; <span class="hmethod">MenuBar()</span> returns
+the <a class="reference internal" href="menu-bar.html#_CPPv48BMenuBar" title="BMenuBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code></a> object that contains the menu. The
+<a class="reference internal" href="menu-bar.html#_CPPv48BMenuBar" title="BMenuBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code></a> is created by the <span class="hclass">BMenuField</span>; the menu is
+assigned to it during construction. <span class="hmethod">MenuItem()</span> returns the first
+<a class="reference internal" href="menu-item.html#_CPPv49BMenuItem" title="BMenuItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code></a> assigned to the <a class="reference internal" href="menu-bar.html#_CPPv48BMenuBar" title="BMenuBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code></a> object
+containing the menu.</p>
+<p>See also: The <span class="hclass">BMenuField</span> <a class="reference internal" href="#_CPPv4N10BMenuField10BMenuFieldE5BRectPKcPKcP5BMenu6uint326uint32" title="BMenuField::BMenuField"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a></p>
 <section id="_CPPv4N10BMenuField12SetAlignmentE9alignment">
 </section>
 <section id="_CPPv4NK10BMenuField9AlignmentEv">
 </section>
 <h3>
-SetAlignment(), Alignment()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">SetAlignment</span><span class="sig-paren">(</span><span class="n">alignment</span><span class="w"> </span><span class="n sig-param">label</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">alignment</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">Alignment</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the alignment of the label in its portion
+SetAlignment(), Alignment()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">SetAlignment</span><span class="sig-paren">(</span><span class="n">alignment</span><span class="w"> </span><span class="n sig-param">label</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">alignment</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">Alignment</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the alignment of the label in its portion
 of the frame rectangle.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ALIGN_LEFT</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ALIGN_LEFT</span></code></p></td>
 <td><p>The label is aligned at the left side of the bounds rectangle.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ALIGN_RIGHT</span></code></p></td>
-<td><p>The label is aligned at the right boundary of its portion of the bounds rectangle.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ALIGN_RIGHT</span></code></p></td>
+<td><p>The label is aligned at the right boundary of its portion of the bounds
+rectangle.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ALIGN_CENTER</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ALIGN_CENTER</span></code></p></td>
 <td><p>The label is centered in its portion of the bounds rectangle.</p></td>
 </tr>
 </tbody>
 </table>
-<p>The default is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ALIGN_LEFT</span></code>.</p>
+<p>The default is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ALIGN_LEFT</span></code>.</p>
 <section id="_CPPv4N10BMenuField10SetDividerEf">
 </section>
 <section id="_CPPv4NK10BMenuField7DividerEv">
 </section>
 <h3>
-SetDivider(), Divider()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">SetDivider</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">xCoordinate</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">Divider</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the x coordinate value that divides the
+SetDivider(), Divider()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">SetDivider</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">xCoordinate</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">Divider</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the x coordinate value that divides the
 bounds rectangle between the label’s portion on the left and the portion
 that holds the menu on the right. The coordinate is expressed in the
 <span class="hclass">BMenuField</span>’s coordinate system.</p>
@@ -261,43 +231,85 @@ resetting it, you can provide more or less room for the label or the menu.</p>
 <section id="_CPPv4NK10BMenuField9IsEnabledEv">
 </section>
 <h3>
-SetEnabled(), IsEnabled()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">SetEnabled</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">enabled</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">IsEnabled</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetEnabled()</span> enables the
-<span class="hclass">BMenuField</span> if the <span class="hparameter">enabled</span> flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, and
-disables it if the flag is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>. <span class="hmethod">IsEnabled()</span> returns whether or not the
-object is currently enabled. When disabled, the <span class="hclass">BMenuField</span> doesn’t
+SetEnabled(), IsEnabled()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">SetEnabled</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">enabled</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">IsEnabled</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetEnabled()</span> enables the <span class="hclass">BMenuField</span> if the
+<span class="hparameter">enabled</span> flag is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, and disables it if the flag is
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>. <span class="hmethod">IsEnabled()</span> returns whether or not the object
+is currently enabled. When disabled, the <span class="hclass">BMenuField</span> doesn’t
 respond to mouse and keyboard manipulations.</p>
 <p>If the <span class="hparameter">enabled</span> flag changes the current state of the object,
-<span class="hmethod">SetEnabled()</span>
-causes the view to be redrawn, so that its new state can be displayed to
-the user.</p>
+<span class="hmethod">SetEnabled()</span> causes the view to be redrawn, so that its new
+state can be displayed to the user.</p>
 <section id="_CPPv4N10BMenuField8SetLabelEPKc">
 </section>
 <section id="_CPPv4NK10BMenuField5LabelEv">
 </section>
 <h3>
-SetLabel(), Label()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">SetLabel</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">Label</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetLabel()</span> frees the current label and, if the argument it’s passed is
-not <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, replaces it with a copy of string. <span class="hmethod">Label()</span> returns the current
-label. The string it returns belongs to the <span class="hclass">BMenuField</span> object.</p>
-<p>See also:
-The <span class="hclass">BMenuField</span> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code></p>
+SetLabel(), Label()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">SetLabel</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">string</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">Label</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetLabel()</span> frees the current label and, if the argument it’s
+passed is not <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>, replaces it with a copy of string.
+<span class="hmethod">Label()</span> returns the current label. The string it returns belongs
+to the <span class="hclass">BMenuField</span> object.</p>
+<p>See also: The <span class="hclass">BMenuField</span> <a class="reference internal" href="#_CPPv4N10BMenuField10BMenuFieldE5BRectPKcPKcP5BMenu6uint326uint32" title="BMenuField::BMenuField"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a></p>
 </section>
 <section id="static-functions">
 <h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N10BMenuField11InstantiateEP8BMessage">
 </section>
 <h3>
-Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMenuField</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BMenuField</span> object, allocated by new and created with the
-version of the constructor that takes a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
-archive. However, if the
-archive message doesn’t contain data for a <span class="hclass">BMenuField</span> object, this
-function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<p>See also:
-<a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">object()</span></code>,
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMenuField" title="BMenuField"><span class="n">BMenuField</span></a><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BMenuField</span> object, allocated by new and created
+with the version of the constructor that takes a <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>
+archive. However, if the archive message doesn’t contain data for a
+<span class="hclass">BMenuField</span> object, this function returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<p>See also: <a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">instantiate_object()</span></code>,
 <a class="reference internal" href="#_CPPv4NK10BMenuField7ArchiveEP8BMessageb" title="BMenuField::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
 </section>
 <section id="archived-fields">
 <h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+<p>The <span class="hclass">BMenu</span> class implements the suite called “suite/vnd.Be-menu”
+consisting of the following messages:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">_label</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p><span class="hclass">BMenuField</span> label.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_disable</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BOOL_TYPE</span></code></p></td>
+<td><p>Exists and <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> only if menu is disabled.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_align</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>Alignment of label in the frame rectangle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_divide</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FLOAT_TYPE</span></code></p></td>
+<td><p>The x-coordinate dividing the bounds rectangle between the label and the
+menu.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following views are added to the <span class="hparameter">_views</span> field (deep copy
+only):</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Level</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">_mc_mb_</span></p></td>
+<td><p>0</p></td>
+<td><p>Private menu bar.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 

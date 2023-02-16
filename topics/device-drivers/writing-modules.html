@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Writing Modules &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Character Constants" href="../keyboard/character-constants.html" />
+    <link rel="prev" title="Writing Drivers" href="writing-drivers.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Writing Modules</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="writing-drivers.html">Writing Drivers</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../keyboard/character-constants.html">Character Constants</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Writing Modules</a><ul>
+<li><a class="reference internal" href="#module-functions">Module Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv410get_modulePKcPP11module_info">get_module</a></li>
+<li><a class="reference internal" href="#_CPPv410put_modulePKc">put_module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="writing-modules">
+<h1 id="CPPv415Writing Modules">Writing Modules<a class="headerlink" href="#writing-modules" title="Permalink to this heading">¶</a></h1>
+<p>Modules provide services that can be used by other modules, by device
+drivers, and by the kernel itself. They can be dynamically loaded and
+unloaded by the kernel, as needed. If a client can’t find a module it
+needs, it will still load, which gives it the opportunity to find another
+way to perform the desired tasks, or to disable those features of itself.</p>
+<p>Modules, like drivers, export an API through a structure that provides
+pointers to the functions provided by the module, along with other
+information about the module. You do this by expanding upon the basic
+module definition in drivers/module.h. For example, you might define your
+module information structure like this:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define MY_MODULE_NAME &quot;generic/mymodule/v1&quot;</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">my_module_info</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">module_info</span><span class="w"> </span><span class="n">module</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">function1</span><span class="p">)();</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">function2</span><span class="p">)();</span><span class="w"></span>
+<span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">configure</span><span class="p">)(</span><span class="n">int32</span><span class="w"> </span><span class="n">parameter</span><span class="p">,</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Note that the first field in your module information structure is a
+<span class="htype">module_info</span>, which looks like this:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">module_info</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">uint32</span><span class="w"> </span><span class="n">flags</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">status_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">std_ops</span><span class="p">);</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The <span class="hparameter">name</span> field should be a pointer to the driver’s name as
+indicated in your module’s header file (in this example,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">MY_MODULE_NAME</span></code>).</p>
+<p>The <span class="hparameter">flags</span> field specifies which flags should be in effect for
+your module. Currently, the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEEP_LOADED</span></code> flag is the
+only one available; as expected, it tells the kernel not to unload your
+module when nobody is using it; normally, the first time your module is
+requested by someone calling <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">get_module()</span></code>, the
+kernel loads it. With each subsequent call to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">get_module()</span></code>, a reference count is incremented. Every time
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">put_module()</span></code> is called to release the module, the
+reference count is decremented. When the counter reaches zero, the module
+is unloaded. <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEEP_LOADED</span></code> prevents unloading from taking
+place.</p>
+<p><span class="hparameter">std_ops</span> is a pointer to a function that your module must
+provide. This function is called to handle standard module operations.
+Currently, there are only two of these operations (initialization and
+uninitialization). Your module’s std_ops() function will probably look
+something like this:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="nf">std_ops</span><span class="p">(</span><span class="n">int32</span><span class="w"> </span><span class="n">op</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">switch</span><span class="p">(</span><span class="n">op</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">B_MODULE_INIT</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="cm">/* do whatever you need to do */</span><span class="w"></span>
+<span class="w">         </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">B_MODULE_UNINIT</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="cm">/* do whatever you need to do */</span><span class="w"></span>
+<span class="w">         </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="n">B_ERROR</span><span class="p">;</span><span class="w">   </span><span class="cm">/* necessary, for future expansion */</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">B_OK</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>It’s important to return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code> for any unknown
+operations, in case future versions of the kernel define additional
+operations.</p>
+<p>Exporting your module to the outside world is similar to publishing device
+driver hooks, but since you define the hooks yourself, it’s slightly more
+involved. Your module needs to have a filled-out version of your module’s
+information structure, like this:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">my_module_info</span><span class="w"> </span><span class="n">my_module</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">MY_MODULE_NAME</span><span class="p">,</span><span class="w">   </span><span class="cm">/* module name */</span><span class="w"></span>
+<span class="w">      </span><span class="mi">0</span><span class="p">,</span><span class="w">   </span><span class="cm">/* flags */</span><span class="w"></span>
+<span class="w">      </span><span class="n">std_ops</span><span class="w"></span>
+<span class="w">   </span><span class="p">},</span><span class="w"></span>
+<span class="w">   </span><span class="n">function1</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="n">function2</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="n">configure</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>When loading your module, the kernel looks for a symbol called “modules”
+that contains a list of pointers to the modules you export, terminated by a
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">_EXPORT</span><span class="w"> </span><span class="n">module_info</span><span class="o">*</span><span class="n">modules</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="p">(</span><span class="n">module_info</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="n">my_module</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nb">NULL</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This is how the kernel finds out what modules are available for use by
+drivers (or by other modules). See the “<span class="xref std std-ref">Using Modules</span>” section for
+details on how modules are accessed by other drivers or modules.</p>
+<section id="module-functions">
+<h2>Module Functions<a class="headerlink" href="#module-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv410get_modulePKcPP11module_info">
+</section>
+<h3>
+get_module()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">get_module</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span>, <span class="n">module_info</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><p>Declared in: drivers/module.h</p>
+<p>The get_module() function obtains infomation about the module at the
+<span class="hparameter">path</span> specified and increases the modules internal reference
+count.</p>
+<section id="_CPPv410put_modulePKc">
+</section>
+<h3>
+put_module()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">put_module</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span><span class="sig-paren">)</span></pre><p>Declared in: drivers/module.h</p>
+<p>This function decreases the modules internal reference count and if the
+count is zero the module is unloaded from memory</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="writing-drivers.html">Writing Drivers</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../keyboard/character-constants.html">Character Constants</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

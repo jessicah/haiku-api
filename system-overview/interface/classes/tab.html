@@ -17,53 +17,75 @@
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="BTabView" href="tab_view.html" />
+    <link rel="prev" title="BStringView" href="string_view.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../../index.html">
-          <span>The Haiku Book  documentation</span></a></h1>
+          <span>API Documentation</span></a></h1>
         <h2 class="heading"><span>BTab</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
+        «&#160;&#160;<a href="string_view.html">BStringView</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="tab_view.html">BTabView</a>&#160;&#160;»
         </p>
 
       </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BTab</a><ul>
+<li><a class="reference internal" href="#customizing-the-appearance-of-a-btab">Customizing the Appearance of a BTab</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
       <div class="content" role="main">
         
-        
   <section id="btab">
-<h1>BTab<a class="headerlink" href="#btab" title="Permalink to this heading">¶</a></h1>
-<p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code> class defines the tabs used by the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTabView</span></code> class. Each tab is
-represented by a single <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code> object, which is called to render and manage the tab.</p>
-<p>When a tab is created, a target view is specified as a parameter to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code>
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BTab()</span></code>, or by calling <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetView()</span></code>. The target view is the view
-that will be displayed in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTabView</span></code>’s container view when the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code> is
+<h1 id="CPPv44BTab">BTab<a class="headerlink" href="#btab" title="Permalink to this heading">¶</a></h1>
+<p>The <a class="reference internal" href="../../../kits/interface/tab.html#_CPPv44BTab" title="BTab"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code></a> class defines the tabs used by the <a class="reference internal" href="../../../kits/interface/tab-view.html#_CPPv48BTabView" title="BTabView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTabView</span></code></a> class. Each tab is
+represented by a single <a class="reference internal" href="../../../kits/interface/tab.html#_CPPv44BTab" title="BTab"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code></a> object, which is called to render and manage the tab.</p>
+<p>When a tab is created, a target view is specified as a parameter to the <a class="reference internal" href="../../../kits/interface/tab.html#_CPPv44BTab" title="BTab"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code></a>
+<a class="reference internal" href="../../../kits/interface/tab.html#_CPPv4N4BTab4BTabEP5BView" title="BTab::BTab"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BTab()</span></code></a>, or by calling <a class="reference internal" href="../../../kits/interface/tab.html#_CPPv4N4BTab7SetViewEP5BView" title="BTab::SetView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetView()</span></code></a>. The target view is the view
+that will be displayed in the <a class="reference internal" href="../../../kits/interface/tab-view.html#_CPPv48BTabView" title="BTabView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTabView</span></code></a>’s container view when the <a class="reference internal" href="../../../kits/interface/tab.html#_CPPv44BTab" title="BTab"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code></a> is
 selected.</p>
 <p>Users select tabs by clicking on them, or by using keyboard navigation to focus and select the tab.</p>
-<p>An example of how to create a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTabView</span></code> and attach <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code> objects to it is
-given in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTabView</span></code> section.</p>
+<p>An example of how to create a <a class="reference internal" href="../../../kits/interface/tab-view.html#_CPPv48BTabView" title="BTabView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTabView</span></code></a> and attach <a class="reference internal" href="../../../kits/interface/tab.html#_CPPv44BTab" title="BTab"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code></a> objects to it is
+given in the <a class="reference internal" href="../../../kits/interface/tab-view.html#_CPPv48BTabView" title="BTabView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTabView</span></code></a> section.</p>
 <section id="customizing-the-appearance-of-a-btab">
 <h2>Customizing the Appearance of a BTab<a class="headerlink" href="#customizing-the-appearance-of-a-btab" title="Permalink to this heading">¶</a></h2>
-<p>Customizing the appearance of your tabs is achieved by overriding the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawTab()</span></code>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawFocusMark()</span></code>, and/or <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawLabel()</span></code> functions.</p>
-<p>These functions are responsible for all drawing of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code>.
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawTab()</span></code> renders the entire tab, excluding the focus mark: it draws the borders
-and calls <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawLabel()</span></code> to render the text of the label.</p>
-<p><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawFocusMark()</span></code> draws the indicator that shows which tab is the current focus for
+<p>Customizing the appearance of your tabs is achieved by overriding the <a class="reference internal" href="../../../kits/interface/tab.html#_CPPv4N4BTab7DrawTabEP5BView5BRect12tab_positionb" title="BTab::DrawTab"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawTab()</span></code></a>,
+<a class="reference internal" href="../../../kits/interface/tab.html#_CPPv4N4BTab13DrawFocusMarkEP5BView5BRect" title="BTab::DrawFocusMark"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawFocusMark()</span></code></a>, and/or <a class="reference internal" href="../../../kits/interface/tab.html#_CPPv4N4BTab9DrawLabelEP5BView5BRect" title="BTab::DrawLabel"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawLabel()</span></code></a> functions.</p>
+<p>These functions are responsible for all drawing of the <a class="reference internal" href="../../../kits/interface/tab.html#_CPPv44BTab" title="BTab"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code></a>.
+<a class="reference internal" href="../../../kits/interface/tab.html#_CPPv4N4BTab7DrawTabEP5BView5BRect12tab_positionb" title="BTab::DrawTab"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawTab()</span></code></a> renders the entire tab, excluding the focus mark: it draws the borders
+and calls <a class="reference internal" href="../../../kits/interface/tab.html#_CPPv4N4BTab9DrawLabelEP5BView5BRect" title="BTab::DrawLabel"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawLabel()</span></code></a> to render the text of the label.</p>
+<p><a class="reference internal" href="../../../kits/interface/tab.html#_CPPv4N4BTab13DrawFocusMarkEP5BView5BRect" title="BTab::DrawFocusMark"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawFocusMark()</span></code></a> draws the indicator that shows which tab is the current focus for
 keyboard navigation.</p>
 <p>By default, tabs have a beveled, rounded look. Let’s look at an example in which we replace this
 appearance with a square shape:</p>
-<p>To do this, we create a new class, derived from <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code>, that overrides the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawTab()</span></code> function.</p>
+<p>To do this, we create a new class, derived from <a class="reference internal" href="../../../kits/interface/tab.html#_CPPv44BTab" title="BTab"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code></a>, that overrides the
+<a class="reference internal" href="../../../kits/interface/tab.html#_CPPv4N4BTab7DrawTabEP5BView5BRect12tab_positionb" title="BTab::DrawTab"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawTab()</span></code></a> function.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">CustomTab</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">BTab</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">	</span><span class="k">public</span><span class="o">:</span><span class="w"></span>
 <span class="w">		</span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">DrawTab</span><span class="p">(</span><span class="n">BView</span><span class="w"> </span><span class="o">*</span><span class="n">owner</span><span class="p">,</span><span class="w"> </span><span class="n">BRect</span><span class="w"> </span><span class="n">frame</span><span class="p">,</span><span class="w"> </span><span class="n">tab_position</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">full</span><span class="o">=</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawTab()</span></code> function is implemented as follows:</p>
+<p>The <a class="reference internal" href="../../../kits/interface/tab.html#_CPPv4N4BTab7DrawTabEP5BView5BRect12tab_positionb" title="BTab::DrawTab"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawTab()</span></code></a> function is implemented as follows:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="n">rgb_color</span><span class="w"> </span><span class="n">kWhite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 <span class="k">const</span><span class="w"> </span><span class="n">rgb_color</span><span class="w"> </span><span class="n">kGray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">219</span><span class="p">,</span><span class="w"> </span><span class="mi">219</span><span class="p">,</span><span class="w"> </span><span class="mi">219</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 <span class="k">const</span><span class="w"> </span><span class="n">rgb_color</span><span class="w"> </span><span class="n">kMedGray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
@@ -136,7 +158,7 @@ appearance with a square shape:</p>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">owner</span></code> parameter is a pointer to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> in which the tab is drawn. <code class="docutils literal notranslate"><span class="pre">frame</span></code> is
+<p>The <code class="docutils literal notranslate"><span class="pre">owner</span></code> parameter is a pointer to the <a class="reference internal" href="../../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> in which the tab is drawn. <code class="docutils literal notranslate"><span class="pre">frame</span></code> is
 the frame rectangle of the tab; the tab should be drawn to fill this rectangle. The <code class="docutils literal notranslate"><span class="pre">position</span></code>
 parameter, which can be one of the following values, specifies the placement of the tab, to assist
 in making intelligent decisions on which parts of the tab are visible and which are not:</p>
@@ -152,7 +174,7 @@ in making intelligent decisions on which parts of the tab are visible and which 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TAB_FIRST</span></code></p></td>
-<td><p>The tab is the leftmost tab (the one with index 0 in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTabView</span></code>).</p></td>
+<td><p>The tab is the leftmost tab (the one with index 0 in the <a class="reference internal" href="../../../kits/interface/tab-view.html#_CPPv48BTabView" title="BTabView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTabView</span></code></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TAB_FRONT</span></code></p></td>
 <td><p>The tab is the frontmost tab.</p></td>
@@ -174,7 +196,7 @@ in making intelligent decisions on which parts of the tab are visible and which 
 </pre></div>
 </div>
 <p>This code is responsible for drawing the portion of the tab that connects to the box surrounding the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTabView</span></code>’s container. In our custom <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code>, this is simply a diagonal line
+<a class="reference internal" href="../../../kits/interface/tab-view.html#_CPPv48BTabView" title="BTabView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTabView</span></code></a>’s container. In our custom <a class="reference internal" href="../../../kits/interface/tab.html#_CPPv44BTab" title="BTab"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTab</span></code></a>, this is simply a diagonal line
 that extends from the bottom left corner of the frame upward and inward slightly.</p>
 <p>However, this portion of the tab is only visible on the first or frontmost tab, so we only draw this
 segment if its position isn’t <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TAB_ANY</span></code> (in other words, if its position is either
@@ -198,17 +220,23 @@ right edge of a tab can be obscured by the tab to its left.</p>
 </section>
 
 
+        <div class="clearer"></div>
       </div>
+          </div>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
+        «&#160;&#160;<a href="string_view.html">BStringView</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="tab_view.html">BTabView</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Haiku.
+        &#169; Copyright 2023, Haiku, Inc..
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>

@@ -84,154 +84,128 @@
       <div class="content" role="main">
         
   <section id="bbitmap">
-<h1>BBitmap<a class="headerlink" href="#bbitmap" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv47BBitmap">BBitmap<a class="headerlink" href="#bbitmap" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N7BBitmap7BBitmapE5BRect11color_spacebb">
 </section>
 <h3>
-BBitmap()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BBitmap7BBitmapE5BRect11color_spacebb" title="BBitmap::BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">BBitmap</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">bounds</span>, <span class="n">color_space</span><span class="w"> </span><span class="n sig-param">space</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">acceptsViews</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">needsContiguousMemory</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BBitmap7BBitmapEP8BMessage" title="BBitmap::BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">BBitmap</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BBitmap</span> object that can hold a bitmap whose size and depth
-are described by <span class="hparameter">bounds</span> and <span class="hparameter">space</span>.
-The bitmap data is uninitialized; you set the data through
-<a class="reference internal" href="#_CPPv4NK7BBitmap4BitsEv" title="BBitmap::Bits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Bits()</span></code></a> /
-<a class="reference internal" href="#_CPPv4N7BBitmap7SetBitsEPKv5int325int3211color_space" title="BBitmap::SetBits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetBits()</span></code></a>,
-or by drawing into an attached
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-(see “<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Overview()</span></code>”).</p>
+BBitmap()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BBitmap7BBitmapE5BRect11color_spacebb" title="BBitmap::BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">BBitmap</span><span class="sig-paren">(</span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">bounds</span>, <span class="n">color_space</span><span class="w"> </span><span class="n sig-param">space</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">acceptsViews</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">needsContiguousMemory</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BBitmap7BBitmapEP8BMessage" title="BBitmap::BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">BBitmap</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BBitmap</span> object that can hold a bitmap whose size
+and depth are described by <span class="hparameter">bounds</span> and <span class="hparameter">space</span>. The bitmap
+data is uninitialized; you set the data through <a class="reference internal" href="#_CPPv4NK7BBitmap4BitsEv" title="BBitmap::Bits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Bits()</span></code></a> / <a class="reference internal" href="#_CPPv4N7BBitmap7SetBitsEPKv5int325int3211color_space" title="BBitmap::SetBits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetBits()</span></code></a>, or by drawing
+into an attached <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> (see “<span class="xref std std-ref">Using a View to Draw into a Bitmap</span>”).</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>The <span class="hclass">BBitmap</span> class insists that a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code>
+<p>The <span class="hclass">BBitmap</span> class insists that a <a class="reference internal" href="../application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a>
 object be present (but not necessarily running).</p>
 </div>
-<p>If <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s are to be used,
-the <span class="hparameter">acceptsViews</span> argument must be set to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>.
-Furthermore (in this case), the origin of the <span class="hparameter">bounds</span> rectangle must be
-0.0</p>
-<p>If the <span class="hparameter">needsContiguousMemory</span> flag is
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, the <span class="hclass">BBitmap</span> will make sure
-that the (physical) memory it allocates is one contiguous physical chunk.
-This should matter only to drivers doing direct DMA into physical memory.</p>
-<p>The possible color spaces are enumerated in the section
-“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Drawing()</span></code>”.</p>
+<p>If <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s are to be used, the <span class="hparameter">acceptsViews</span> argument
+must be set to <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>. Furthermore (in this case), the origin of
+the <span class="hparameter">bounds</span> rectangle must be 0.0</p>
+<p>If the <span class="hparameter">needsContiguousMemory</span> flag is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, the
+<span class="hclass">BBitmap</span> will make sure that the (physical) memory it allocates is
+one contiguous physical chunk. This should matter only to drivers doing
+direct DMA into physical memory.</p>
+<p>The possible color spaces are enumerated in the section “<span class="xref std std-ref">Color Spaces</span>”.</p>
 <section id="_CPPv4N7BBitmapD0Ev">
 </section>
 <h3>
-~BBitmap()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">~BBitmap</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees all memory allocated to hold image data, deletes any
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s used to
-create the image, gets rid of the off-screen window that held the views,
-and severs the <span class="hclass">BBitmap</span>’s connection to the
-Application Server.</p>
+~BBitmap()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">~BBitmap</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees all memory allocated to hold image data, deletes any
+<a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s used to create the image, gets rid of the off-screen
+window that held the views, and severs the <span class="hclass">BBitmap</span>’s connection
+to the Application Server.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N7BBitmap8AddChildEP5BView">
 </section>
 <h3>
-AddChild()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">AddChild</span><span class="sig-paren">(</span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">aView</span><span class="sig-paren">)</span></pre><p>Adds <span class="hparameter">aView</span> (and all its children) to this
-<span class="hclass">BBitmap</span>’s view hierarchy, and
-causes <a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AttachedToWindow()</span></code></a>
-to be sent to the newly add children.</p>
+AddChild()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">AddChild</span><span class="sig-paren">(</span><a class="reference internal" href="view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">aView</span><span class="sig-paren">)</span></pre><p>Adds <span class="hparameter">aView</span> (and all its children) to this <span class="hclass">BBitmap</span>’s
+view hierarchy, and causes <a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AttachedToWindow()</span></code></a> to be sent to the newly add children.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>If <span class="hparameter">aView</span> already has a parent, the application may crash. Be sure to
-remove the view from a previous parent before trying to add it to a
+<p>If <span class="hparameter">aView</span> already has a parent, the application may crash. Be
+sure to remove the view from a previous parent before trying to add it to a
 bitmap.</p>
 </div>
-<p><span class="hmethod">AddChild()</span> fails if the <span class="hclass">BBitmap</span>
-was not constructed to accept views.</p>
-<p>See also:
-<a class="reference internal" href="window.html#_CPPv4N7BWindow8AddChildEP5BViewP5BView" title="BWindow::AddChild"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::AddChild()</span></code></a>,
-<a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::AttachedToWindow()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N7BBitmap11RemoveChildEP5BView" title="BBitmap::RemoveChild"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RemoveChild()</span></code></a>,
-the <span class="hclass">BBitmap</span> <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code></p>
+<p><span class="hmethod">AddChild()</span> fails if the <span class="hclass">BBitmap</span> was not constructed
+to accept views.</p>
+<p>See also: <a class="reference internal" href="window.html#_CPPv4N7BWindow8AddChildEP5BViewP5BView" title="BWindow::AddChild"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::AddChild()</span></code></a>,
+<a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::AttachedToWindow()</span></code></a>, <a class="reference internal" href="#_CPPv4N7BBitmap11RemoveChildEP5BView" title="BBitmap::RemoveChild"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RemoveChild()</span></code></a>, the <span class="hclass">BBitmap</span> <a class="reference internal" href="#_CPPv4N7BBitmap7BBitmapE5BRect11color_spacebb" title="BBitmap::BBitmap"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a></p>
 <section id="_CPPv4NK7BBitmap7ArchiveEP8BMessageb">
 </section>
 <h3>
-Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of
-<a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a> and stores the
-<span class="hclass">BBitmap</span> in the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive.</p>
-<p>See also:
-<a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N7BBitmap11InstantiateEP8BMessage" title="BBitmap::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of <a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a> and stores the <span class="hclass">BBitmap</span> in the
+<a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> archive.</p>
+<p>See also: <a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>, <a class="reference internal" href="#_CPPv4N7BBitmap11InstantiateEP8BMessage" title="BBitmap::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
 <section id="_CPPv4NK7BBitmap4BitsEv">
 </section>
 <h3>
-Bits()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">Bits</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a pointer to the bitmap data. The length of the data can be
-obtained by calling <a class="reference internal" href="#_CPPv4NK7BBitmap10BitsLengthEv" title="BBitmap::BitsLength"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BitsLength()</span></code></a>—or it can be calculated from the
-height of the bitmap (the number of rows) and
+Bits()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">Bits</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a pointer to the bitmap data. The length of the data can be
+obtained by calling <a class="reference internal" href="#_CPPv4NK7BBitmap10BitsLengthEv" title="BBitmap::BitsLength"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BitsLength()</span></code></a>—or it
+can be calculated from the height of the bitmap (the number of rows) and
 <a class="reference internal" href="#_CPPv4NK7BBitmap11BytesPerRowEv" title="BBitmap::BytesPerRow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BytesPerRow()</span></code></a>.</p>
-<p>The data is in the format specified by
-<a class="reference internal" href="#_CPPv4NK7BBitmap10ColorSpaceEv" title="BBitmap::ColorSpace"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ColorSpace()</span></code></a>.</p>
+<p>The data is in the format specified by <a class="reference internal" href="#_CPPv4NK7BBitmap10ColorSpaceEv" title="BBitmap::ColorSpace"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ColorSpace()</span></code></a>.</p>
 <p>This pointer is valid throughout the entire lifespan of the object.</p>
-<p>See also:
-<a class="reference internal" href="#_CPPv4NK7BBitmap6BoundsEv" title="BBitmap::Bounds"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Bounds()</span></code></a>,
-<a class="reference internal" href="#_CPPv4NK7BBitmap11BytesPerRowEv" title="BBitmap::BytesPerRow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BytesPerRow()</span></code></a>,
-<a class="reference internal" href="#_CPPv4NK7BBitmap10BitsLengthEv" title="BBitmap::BitsLength"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BitsLength()</span></code></a></p>
+<p>See also: <a class="reference internal" href="#_CPPv4NK7BBitmap6BoundsEv" title="BBitmap::Bounds"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Bounds()</span></code></a>, <a class="reference internal" href="#_CPPv4NK7BBitmap11BytesPerRowEv" title="BBitmap::BytesPerRow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BytesPerRow()</span></code></a>, <a class="reference internal" href="#_CPPv4NK7BBitmap10BitsLengthEv" title="BBitmap::BitsLength"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BitsLength()</span></code></a></p>
 <section id="_CPPv4NK7BBitmap10BitsLengthEv">
 </section>
 <h3>
-BitsLength()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">BitsLength</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the number of bytes that were allocated to store the bitmap data.</p>
-<p>See also:
-<a class="reference internal" href="#_CPPv4NK7BBitmap4BitsEv" title="BBitmap::Bits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Bits()</span></code></a>,
-<a class="reference internal" href="#_CPPv4NK7BBitmap11BytesPerRowEv" title="BBitmap::BytesPerRow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BytesPerRow()</span></code></a></p>
+BitsLength()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">BitsLength</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the number of bytes that were allocated to store the bitmap data.</p>
+<p>See also: <a class="reference internal" href="#_CPPv4NK7BBitmap4BitsEv" title="BBitmap::Bits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Bits()</span></code></a>, <a class="reference internal" href="#_CPPv4NK7BBitmap11BytesPerRowEv" title="BBitmap::BytesPerRow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BytesPerRow()</span></code></a></p>
 <section id="_CPPv4NK7BBitmap6BoundsEv">
 </section>
 <h3>
-Bounds()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">Bounds</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the bounds rectangle that defines the size and coordinate system
+Bounds()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">Bounds</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the bounds rectangle that defines the size and coordinate system
 of the bitmap. This should be identical to the rectangle used in
 constructing the object.</p>
 <section id="_CPPv4NK7BBitmap11BytesPerRowEv">
 </section>
 <h3>
-BytesPerRow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">BytesPerRow</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns how many bytes of data are required to specify a row of pixels.
+BytesPerRow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">BytesPerRow</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns how many bytes of data are required to specify a row of pixels.
 This may include slop space required by the graphics hardware; you should
 always use this call to determine the width of a row of pixels in bytes
-instead of assuming that it will be the number of pixels multiplied by
-the size of a pixel in bytes.</p>
+instead of assuming that it will be the number of pixels multiplied by the
+size of a pixel in bytes.</p>
 <section id="_CPPv4NK7BBitmap7ChildAtE5int32">
 </section>
 <section id="_CPPv4NK7BBitmap13CountChildrenEv">
 </section>
 <h3>
-ChildAt(), CountChildren()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">ChildAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">CountChildren</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">ChildAt()</span> returns the child
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> at <span class="hparameter">index</span>,
-or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if there’s no child
-at <span class="hparameter">index</span>. Indices begin at 0 and count only
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s that were added to the
-<span class="hclass">BBitmap</span> (added as children of the top view of the <span class="hclass">BBitmap</span>’s off-screen
-window) and not subsequently removed.</p>
-<p><span class="hmethod">CountChildren()</span> returns the number of
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s
-the <span class="hclass">BBitmap</span> currently has.
-(It counts only <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s that were added directly to the <span class="hclass">BBitmap</span>, not
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s farther down the view hierarchy.)</p>
-<p>These functions fail if the <span class="hclass">BBitmap</span> wasn’t constructed to accept views.</p>
+ChildAt(), CountChildren()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">ChildAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">CountChildren</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">ChildAt()</span> returns the child <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> at
+<span class="hparameter">index</span>, or <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if there’s no child at
+<span class="hparameter">index</span>. Indices begin at 0 and count only <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s that
+were added to the <span class="hclass">BBitmap</span> (added as children of the top view of
+the <span class="hclass">BBitmap</span>’s off-screen window) and not subsequently removed.</p>
+<p><span class="hmethod">CountChildren()</span> returns the number of <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s the
+<span class="hclass">BBitmap</span> currently has. (It counts only <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s that
+were added directly to the <span class="hclass">BBitmap</span>, not <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s
+farther down the view hierarchy.)</p>
+<p>These functions fail if the <span class="hclass">BBitmap</span> wasn’t constructed to accept
+views.</p>
 <section id="_CPPv4NK7BBitmap10ColorSpaceEv">
 </section>
 <h3>
-ColorSpace()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">color_space</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">ColorSpace</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the color space of the data being stored (not necessarily the
-color space of the data passed to the
-<a class="reference internal" href="#_CPPv4N7BBitmap7SetBitsEPKv5int325int3211color_space" title="BBitmap::SetBits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetBits()</span></code></a> function). Once set by
-the <span class="hclass">BBitmap</span> constructor, the color space doesn’t change.</p>
+ColorSpace()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">color_space</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">ColorSpace</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the color space of the data being stored (not necessarily the
+color space of the data passed to the <a class="reference internal" href="#_CPPv4N7BBitmap7SetBitsEPKv5int325int3211color_space" title="BBitmap::SetBits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetBits()</span></code></a> function). Once set by the <span class="hclass">BBitmap</span>
+constructor, the color space doesn’t change.</p>
 <section id="_CPPv4NK7BBitmap8FindViewE6BPoint">
 </section>
 <h3>
-FindView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">FindView</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">FindView</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-at <span class="hparameter">point</span> within the bitmap or the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> tagged
-with <span class="hparameter">name</span>. The point must be somewhere within the
-<span class="hclass">BBitmap</span>’s bounds
-rectangle, which must have the coordinate origin, (0.0, 0.0), at its left
-top corner.</p>
-<p>If the <span class="hclass">BBitmap</span> doesn’t accept views, this function fails. If no view
-draws at the <span class="hparameter">point</span> given, or no view associated with the <span class="hclass">BBitmap</span> has the
-<span class="hparameter">name</span> given, it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+FindView()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">FindView</span><span class="sig-paren">(</span><a class="reference internal" href="point.html#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><a class="reference internal" href="view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">FindView</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>  at <span class="hparameter">point</span> within the bitmap or
+the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> tagged with <span class="hparameter">name</span>. The point must be
+somewhere within the <span class="hclass">BBitmap</span>’s bounds rectangle, which must have
+the coordinate origin, (0.0, 0.0), at its left top corner.</p>
+<p>If the <span class="hclass">BBitmap</span> doesn’t accept views, this function fails. If no
+view draws at the <span class="hparameter">point</span> given, or no view associated with the
+<span class="hclass">BBitmap</span> has the <span class="hparameter">name</span> given, it returns
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
 <section id="_CPPv4NK7BBitmap7IsValidEv">
 </section>
 <h3>
-IsValid()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">IsValid</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if there’s memory for the bitmap (if the address returned by
-<a class="reference internal" href="#_CPPv4NK7BBitmap4BitsEv" title="BBitmap::Bits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Bits()</span></code></a> is valid), and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if not.</p>
+IsValid()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">IsValid</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if there’s memory for the bitmap (if the address
+returned by <a class="reference internal" href="#_CPPv4NK7BBitmap4BitsEv" title="BBitmap::Bits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Bits()</span></code></a> is valid), and
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not.</p>
 <section id="_CPPv4N7BBitmap4LockEv">
 </section>
 <section id="_CPPv4N7BBitmap6UnlockEv">
@@ -239,87 +213,128 @@ IsValid()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt
 <section id="_CPPv4NK7BBitmap8IsLockedEv">
 </section>
 <h3>
-Lock(), Unlock(), IsLocked()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">Lock</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">Unlock</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">IsLocked</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions lock and unlock the off-screen window where
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s
-associated with the <span class="hclass">BBitmap</span> draw. Locking works for this window and its
-views just as it does for ordinary on-screen windows.</p>
-<p><span class="hmethod">Lock()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if the <span class="hclass">BBitmap</span> doesn’t accept views or if its
-off-screen window is unlockable (and therefore unusable) for some reason.
-Otherwise, it doesn’t return until it has the window locked and can
-return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>.</p>
-<p><span class="hmethod">IsLocked()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if the <span class="hclass">BBitmap</span> doesn’t accept views. Otherwise,
-it returns the lock status of its off-screen window.</p>
+Lock(), Unlock(), IsLocked()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">Lock</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">Unlock</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">IsLocked</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions lock and unlock the off-screen window where
+<a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s associated with the <span class="hclass">BBitmap</span> draw. Locking
+works for this window and its views just as it does for ordinary on-screen
+windows.</p>
+<p><span class="hmethod">Lock()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if the <span class="hclass">BBitmap</span>
+doesn’t accept views or if its off-screen window is unlockable (and
+therefore unusable) for some reason. Otherwise, it doesn’t return until it
+has the window locked and can return <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>.</p>
+<p><span class="hmethod">IsLocked()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if the <span class="hclass">BBitmap</span>
+doesn’t accept views. Otherwise, it returns the lock status of its
+off-screen window.</p>
 <section id="_CPPv4N7BBitmap11RemoveChildEP5BView">
 </section>
 <h3>
-RemoveChild()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">RemoveChild</span><span class="sig-paren">(</span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">aView</span><span class="sig-paren">)</span></pre><p>Removes <span class="hparameter">aView</span> from the hierarchy of views associated with the <span class="hclass">BBitmap</span>,
-but only if <span class="hparameter">aView</span> was added to the hierarchy by calling <span class="hclass">BBitmap</span>’s version
-of the <a class="reference internal" href="view.html#_CPPv4N5BView8AddChildEP5BViewP5BView" title="BView::AddChild"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddChild()</span></code></a> function.</p>
-<p>If <span class="hparameter">aView</span> is successfully removed, <span class="hmethod">RemoveChild()</span> returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>. If not, it
-returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.</p>
+RemoveChild()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">RemoveChild</span><span class="sig-paren">(</span><a class="reference internal" href="view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">aView</span><span class="sig-paren">)</span></pre><p>Removes <span class="hparameter">aView</span> from the hierarchy of views associated with the
+<span class="hclass">BBitmap</span>, but only if <span class="hparameter">aView</span> was added to the hierarchy
+by calling <span class="hclass">BBitmap</span>’s version of the <a class="reference internal" href="view.html#_CPPv4N5BView8AddChildEP5BViewP5BView" title="BView::AddChild"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddChild()</span></code></a> function.</p>
+<p>If <span class="hparameter">aView</span> is successfully removed, <span class="hmethod">RemoveChild()</span>
+returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>. If not, it returns <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>.</p>
 <section id="_CPPv4N7BBitmap7SetBitsEPKv5int325int3211color_space">
 </section>
 <h3>
-SetBits()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">SetBits</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">length</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">offset</span>, <span class="n">color_space</span><span class="w"> </span><span class="n sig-param">mode</span><span class="sig-paren">)</span></pre><p>Assigns <span class="hparameter">length</span> bytes of <span class="hparameter">data</span> to the <span class="hclass">BBitmap</span> object. The new data is
-copied into the bitmap beginning <span class="hparameter">offset</span> bytes (not pixels) from the start
-of allocated memory. To set data beginning with the first (left top)
-pixel in the image, the <span class="hparameter">offset</span> should be 0; to set data beginning with,
-for example, the sixth pixel in the first row of a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_RGB32</span></code> image, the
+SetBits()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">SetBits</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">length</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">offset</span>, <span class="n">color_space</span><span class="w"> </span><span class="n sig-param">mode</span><span class="sig-paren">)</span></pre><p>Assigns <span class="hparameter">length</span> bytes of <span class="hparameter">data</span> to the <span class="hclass">BBitmap</span>
+object. The new data is copied into the bitmap beginning <span class="hparameter">offset</span>
+bytes (not pixels) from the start of allocated memory. To set data
+beginning with the first (left top) pixel in the image, the
+<span class="hparameter">offset</span> should be 0; to set data beginning with, for example, the
+sixth pixel in the first row of a <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RGB32</span></code> image, the
 offset should be 20. The offset counts any padding required to align rows
 of data.</p>
 <p>This function is intended to be used for importing existing data from a
 different format rather than for setting individual pixels in the bitmap.
-If you’re interested in coloring individual pixels, use
-<a class="reference internal" href="#_CPPv4NK7BBitmap4BitsEv" title="BBitmap::Bits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Bits()</span></code></a> to obtain
-direct access to the bitmap data.</p>
-<p>The source data is specified in the <span class="hparameter">mode</span> color space, which may or may
-not be the same as the color space that the <span class="hclass">BBitmap</span> uses to store the
-data. If not, the following conversions are automatically made:</p>
+If you’re interested in coloring individual pixels, use <a class="reference internal" href="#_CPPv4NK7BBitmap4BitsEv" title="BBitmap::Bits"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Bits()</span></code></a> to obtain direct access to the bitmap data.</p>
+<p>The source data is specified in the <span class="hparameter">mode</span> color space, which may
+or may not be the same as the color space that the <span class="hclass">BBitmap</span> uses
+to store the data. If not, the following conversions are automatically
+made:</p>
 <ul class="simple">
-<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_GRAY1</span></code> and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_RGB32</span></code> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CMAP8</span></code>.</p></li>
-<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CMAP8</span></code> and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_GRAY1</span></code> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_RGB32</span></code>.</p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GRAY1</span></code> and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RGB32</span></code> to
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CMAP8</span></code>.</p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CMAP8</span></code> and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GRAY1</span></code> to
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RGB32</span></code>.</p></li>
 </ul>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>These are the only color conversions <span class="hmethod">SetBits()</span> understands; all other
-conversions must be performed manually.</p>
+<p>These are the only color conversions <span class="hmethod">SetBits()</span> understands; all
+other conversions must be performed manually.</p>
 </div>
-<p>Colors may be dithered in a conversion to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CMAP8</span></code> so that the resulting
-image will match the original as closely as possible, despite the lost
-information.</p>
-<p>If the color space <span class="hparameter">mode</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_RGB32</span></code>, the <span class="hparameter">data</span> should be triplets of three
-8-bit components—red, green, and blue, in that order—without
-an alpha component. Although stored as 32-bit quantities with the
-components in BGRA order, the input data is only 24 bits in RGB order.
-Rows of source data do not need to be aligned.</p>
-<p>However, if the source data is in any <span class="hparameter">mode</span> other than <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_RGB32</span></code>, padding
-must be added so that each row is aligned on a int32 word boundary.</p>
+<p>Colors may be dithered in a conversion to <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CMAP8</span></code> so
+that the resulting image will match the original as closely as possible,
+despite the lost information.</p>
+<p>If the color space <span class="hparameter">mode</span> is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RGB32</span></code>, the
+<span class="hparameter">data</span> should be triplets of three 8-bit components—red, green, and
+blue, in that order—without an alpha component. Although stored as 32-bit
+quantities with the components in BGRA order, the input data is only 24
+bits in RGB order. Rows of source data do not need to be aligned.</p>
+<p>However, if the source data is in any <span class="hparameter">mode</span> other than
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RGB32</span></code>, padding must be added so that each row is
+aligned on a <span class="htype">int32</span> word boundary.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p><span class="hmethod">SetBits()</span> works only on
-<span class="hclass">BBitmap</span>s in <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_GRAY1</span></code>,
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CMAP8</span></code>, and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_RGB32</span></code> color
-spaces; all other conversions must be carried out manually.</p>
+<p><span class="hmethod">SetBits()</span> works only on <span class="hclass">BBitmap</span>s in
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GRAY1</span></code>, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CMAP8</span></code>, and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RGB32</span></code> color spaces; all other conversions must be
+carried out manually.</p>
 </div>
-<p>This function works for all <span class="hclass">BBitmap</span>s, whether or not <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>s are also
-enlisted to produce the image.</p>
+<p>This function works for all <span class="hclass">BBitmap</span>s, whether or not
+<a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s are also enlisted to produce the image.</p>
 </section>
 <section id="static-functions">
 <h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N7BBitmap11InstantiateEP8BMessage">
 </section>
 <h3>
-Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BBitmap</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BBitmap</span> object—or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, if the <span class="hparameter">archive</span> message
-doesn’t contain data for a <span class="hclass">BBitmap</span> object. The new object is allocated by
-new and created with the version of the constructor that takes a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
-archive.</p>
-<p>See also:
-<a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">object()</span></code>,
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BBitmap</span> object—or <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>, if the
+<span class="hparameter">archive</span> message doesn’t contain data for a <span class="hclass">BBitmap</span>
+object. The new object is allocated by new and created with the version of
+the constructor that takes a <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> archive.</p>
+<p>See also: <a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">instantiate_object()</span></code>,
 <a class="reference internal" href="#_CPPv4NK7BBitmap7ArchiveEP8BMessageb" title="BBitmap::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
 </section>
 <section id="archived-fields">
 <h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="#_CPPv4NK7BBitmap7ArchiveEP8BMessageb" title="BBitmap::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a> function adds the following
+fields to its <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> argument:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">_frame</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RECT_TYPE</span></code></p></td>
+<td><p>The <span class="hclass">BBitmap</span>’s bounds rectangle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_cspace</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The color_space of the data.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_view_ok</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BOOL_TYPE</span></code></p></td>
+<td><p>Always <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, indicating the <span class="hclass">BBitmap</span> accepts views
+(only present in deep copy archives of <span class="hclass">BBitmap</span>s accepting views).</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_data</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RAW_TYPE</span></code></p></td>
+<td><p>The bitmap data (present only if <span class="hparameter">_view_ok</span> not present).</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_continguous</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BOOL_TYPE</span></code></p></td>
+<td><p>Whether the <span class="hclass">BBitmap</span> requires memory in one contiguous chunk.</p></td>
+</tr>
+</tbody>
+</table>
+<p>If the <span class="hparameter">_view_ok</span> field is present, the child views of the BBitmap
+are additionally archived in the <span class="hparameter">_views</span> array of
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessages</span></code>. See the description of the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archived</span> <span class="pre">Fields</span></code> for more information on
+those fields.</p>
 </section>
 </section>
 

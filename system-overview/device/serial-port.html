@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BSerialPort &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BDirectWindow" href="../game/direct-window.html" />
+    <link rel="prev" title="BJoystick" href="joystick.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BSerialPort</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="joystick.html">BJoystick</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../game/direct-window.html">BDirectWindow</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bserialport">
+<h1 id="CPPv411BSerialPort">BSerialPort<a class="headerlink" href="#bserialport" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../kits/device/serial-port.html#_CPPv411BSerialPort" title="BSerialPort"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSerialPort</span></code></a> object represents an RS-232 serial connection
+to the computer. Through <a class="reference internal" href="../../kits/device/serial-port.html#_CPPv411BSerialPort" title="BSerialPort"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSerialPort</span></code></a> functions, you can read
+data received at a serial ports and write data over the connection. You can
+also configure the connection—for example, set the number of data and stop
+bits, determine the rate at which data is sent and received, and select the
+type of flow control (hardware or software) that should be used.</p>
+<p>To read and write data, a <a class="reference internal" href="../../kits/device/serial-port.html#_CPPv411BSerialPort" title="BSerialPort"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSerialPort</span></code></a> object must first open
+one of the serial ports by name. To find the names of all the serial ports
+on the computer, use the <a class="reference internal" href="../../kits/device/serial-port.html#_CPPv4N11BSerialPort12CountDevicesEv" title="BSerialPort::CountDevices"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountDevices()</span></code></a> and <a class="reference internal" href="../../kits/device/serial-port.html#_CPPv4N11BSerialPort13GetDeviceNameE5int32Pc6size_t" title="BSerialPort::GetDeviceName"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetDeviceName()</span></code></a> functions:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BSerialPort</span><span class="w"> </span><span class="n">serial</span><span class="p">;</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="n">devName</span><span class="p">[</span><span class="n">B_OS_NAME_LENGTH</span><span class="p">];</span><span class="w"></span>
+<span class="n">int32</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">int32</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">serial</span><span class="p">.</span><span class="n">CountDevices</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">serial</span><span class="p">.</span><span class="n">GetDeviceName</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">devName</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">serial</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="n">devName</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="p">....</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../../kits/device/serial-port.html#_CPPv411BSerialPort" title="BSerialPort"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSerialPort</span></code></a> object communicates with the driver for the
+port it has open. The driver maintains an input buffer to collect incoming
+data and a smaller output buffer to hold outgoing data. When the object
+reads and writes data, it reads from and writes to these buffers.</p>
+<p>The serial port drivers, and therefore <a class="reference internal" href="../../kits/device/serial-port.html#_CPPv411BSerialPort" title="BSerialPort"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSerialPort</span></code></a> objects,
+send and receive data asynchronously only.</p>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="joystick.html">BJoystick</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../game/direct-window.html">BDirectWindow</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

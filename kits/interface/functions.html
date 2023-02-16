@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Functions &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="General Constants" href="general-constants.html" />
+    <link rel="prev" title="BFont" href="font.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Functions</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="font.html">BFont</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="general-constants.html">General Constants</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Functions</a><ul>
+<li><a class="reference internal" href="#activate-workspace-current-workspace">activate_workspace(), current_workspace()</a></li>
+<li><a class="reference internal" href="#bitmaps-support-space">bitmaps_support_space()</a></li>
+<li><a class="reference internal" href="#get-deskbar-frame">get_deskbar_frame()</a></li>
+<li><a class="reference internal" href="#get-font-family-count-font-families-get-font-style-count-font-styles">get_font_family(), count_font_families(), get_font_style(), count_font_styles()</a></li>
+<li><a class="reference internal" href="#get-pixel-size-for">get_pixel_size_for()</a></li>
+<li><a class="reference internal" href="#idle-time">idle_time()</a></li>
+<li><a class="reference internal" href="#keyboard-navigation-color">keyboard_navigation_color()</a></li>
+<li><a class="reference internal" href="#run-add-printer-panel-run-select-printer-panel">run_add_printer_panel(), run_select_printer_panel()</a></li>
+<li><a class="reference internal" href="#set-menu-info-get-menu-info">set_menu_info(), get_menu_info()</a></li>
+<li><a class="reference internal" href="#set-screen-space">set_screen_space()</a></li>
+<li><a class="reference internal" href="#set-scroll-bar-info-get-scroll-bar-info">set_scroll_bar_info(), get_scroll_bar_info()</a></li>
+<li><a class="reference internal" href="#set-workspace-count-count-workspaces">set_workspace_count(), count_workspaces()</a></li>
+<li><a class="reference internal" href="#system-colors">system_colors()</a></li>
+<li><a class="reference internal" href="#tint-color">tint_color()</a></li>
+<li><a class="reference internal" href="#ui-color">ui_color()</a></li>
+<li><a class="reference internal" href="#update-font-families">update_font_families()</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="functions">
+<h1 id="CPPv49Functions">Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h1>
+<p>This section describes the global C functions defined in the Interface
+Kit. All these functions deal with aspects of the system-wide environment
+for the user interface—the screen, workspaces, installed fonts, the list of
+possible colors, and various user preferences. For mouse and keyboard
+functions, see “<span class="xref std std-ref">Input Functions</span>” in <span class="xref std std-ref">The Input Server</span>.</p>
+<p>In almost all cases, you need a valid (but not necessarily running)
+<span class="hparameter">be_app</span> object in order to call these functions.</p>
+<section id="activate-workspace-current-workspace">
+<h2>activate_workspace(), current_workspace()<a class="headerlink" href="#activate-workspace-current-workspace" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: interface/InterfaceDefs.h</p>
+<p>These functions set and return the active workspace, the one that’s
+currently displayed on-screen. The workspace is identified by an index,
+0-based.</p>
+<p>See also: <a class="reference internal" href="window.html#_CPPv4N7BWindow18WorkspaceActivatedE5int32b" title="BWindow::WorkspaceActivated"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::WorkspaceActivated()</span></code></a></p>
+</section>
+<section id="bitmaps-support-space">
+<h2>bitmaps_support_space()<a class="headerlink" href="#bitmaps-support-space" title="Permalink to this heading">¶</a></h2>
+<p>Declared in:  interface/InterfaceDefs.h</p>
+<p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if <a class="reference internal" href="bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a>s can contain graphics in
+the specified color space, or <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not.</p>
+<p>The <span class="htype">uint32</span> pointed to by <span class="hparameter">supportFlags</span> will be set to a
+bit field of flags, further describing the support for the specified color
+space by the <a class="reference internal" href="bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a>s class. The flags are:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_VIEWS_SUPPORT_DRAW_BITMAP</span></code></p></td>
+<td><p><a class="reference internal" href="view.html#_CPPv4N5BView10DrawBitmapEPK7BBitmap" title="BView::DrawBitmap"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::DrawBitmap()</span></code></a> supports drawing <a class="reference internal" href="bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a>s of
+the specified color space.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BITMAPS_SUPPORT_ATTACHED_VIEWS</span></code></p></td>
+<td><p>Indicates that <a class="reference internal" href="bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a>s in the specified color space support
+attached <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="get-deskbar-frame">
+<h2>get_deskbar_frame()<a class="headerlink" href="#get-deskbar-frame" title="Permalink to this heading">¶</a></h2>
+<p>Declared in:  interface/InterfaceDefs.h</p>
+<p>Writes the screen coordinates of the current frame of the Deskbar window
+into <span class="hparameter">frame</span>. Returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> on success or an
+appropriate error code on failure.</p>
+</section>
+<section id="get-font-family-count-font-families-get-font-style-count-font-styles">
+<h2>get_font_family(), count_font_families(), get_font_style(), count_font_styles()<a class="headerlink" href="#get-font-family-count-font-families-get-font-style-count-font-styles" title="Permalink to this heading">¶</a></h2>
+<p>Declared in:  interface/Font.h</p>
+<p>These functions are used in combination to get the names of the families
+and styles of all installed fonts. For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">int32</span><span class="w"> </span><span class="n">numFamilies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">count_font_families</span><span class="p">();</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numFamilies</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">font_family</span><span class="w"> </span><span class="n">family</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">uint32</span><span class="w"> </span><span class="n">flags</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">get_font_family</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">family</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">flags</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="w">      </span><span class="n">int32</span><span class="w"> </span><span class="n">numStyles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">count_font_styles</span><span class="p">(</span><span class="n">family</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numStyles</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="n">font_style</span><span class="w"> </span><span class="n">style</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">get_font_style</span><span class="p">(</span><span class="n">family</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">style</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">flags</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>get_font_family() reads one family name from the list of installed fonts,
+the name at <span class="hparameter">index</span>, and copies it into the <span class="hparameter">family</span>
+buffer; count_font_families() returns the number of font families currently
+installed. Similarly, get_font_style() reads the name of the style at
+<span class="hparameter">index</span> and copies into the <span class="hparameter">style</span> buffer. Since each
+family can have a different set of styles, a family name must be passed to
+get_font_style(); count_font_styles() returns the number of styles for the
+particular <span class="hparameter">family</span>. Family and style names can be up to 64 bytes
+long including a null terminator. Indices begin at 0.</p>
+<p>The names of installed font families and styles are not indexed in any
+particular order. You might want to alphabetize them before displaying them
+to the user in a menu or list.</p>
+<p>If you pass a <span class="hparameter">flags</span> argument to get_font_family() and
+get_font_style(), they will place a mask with useful information about the
+particular family or style in the variable that the argument refers to.
+Currently there are just two flags:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_IS_FIXED</span></code></p></td>
+<td><p>Indicates that the font is a nonproportional, or fixed-width, font—one for
+which all characters have the same width.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HAS_TUNED_FONT</span></code></p></td>
+<td><p>Indicates that the family or style has versions of the font especially
+adapted or “tuned” for on-screen display.</p></td>
+</tr>
+</tbody>
+</table>
+<p>If neither flag applies, the variable that <span class="hparameter">flags</span> points to will
+be set to 0.</p>
+<p>If you find a family and style that has a tuned font, you can set a
+<a class="reference internal" href="font.html#_CPPv45BFont" title="BFont"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFont</span></code></a> object to that family and style, then call the object’s
+<a class="reference internal" href="font.html#_CPPv4NK5BFont12GetTunedInfoEP5int32P15tuned_font_info" title="BFont::GetTunedInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetTunedInfo()</span></code></a> function to get details
+about exactly which combination of font properties (for example, which font
+sizes) have tuned counterparts. If you set a <a class="reference internal" href="font.html#_CPPv45BFont" title="BFont"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFont</span></code></a> so that it
+has those properties and make it a <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>’s current font, the
+tuned version will be used when the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> draws to the screen.</p>
+<p>It’s possible for the user to install or remove fonts while the
+application is running. However, unless <span class="xref std std-ref">update_font_families()</span> has
+been called to get the updated list, <span class="hmethod">get_font_family()</span> will
+provide information on the same set of fonts each time it’s called. The
+list isn’t automatically updated.</p>
+<p>See also: <span class="xref std std-ref">update_font_families()</span>, <a class="reference internal" href="view.html#_CPPv4N5BView7SetFontEPK5BFont6uint32" title="BView::SetFont"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::SetFont()</span></code></a>,
+<a class="reference internal" href="font.html#_CPPv4N5BFont17SetFamilyAndStyleEK11font_familyK10font_style" title="BFont::SetFamilyAndStyle"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BFont::SetFamilyAndStyle()</span></code></a></p>
+</section>
+<section id="get-pixel-size-for">
+<h2>get_pixel_size_for()<a class="headerlink" href="#get-pixel-size-for" title="Permalink to this heading">¶</a></h2>
+<p>Declared in:  interface/GraphicsDefs.h</p>
+<p>Given the specified color space, returns information about pixel and row
+alignment for that color space.</p>
+</section>
+<section id="idle-time">
+<h2>idle_time()<a class="headerlink" href="#idle-time" title="Permalink to this heading">¶</a></h2>
+<p>Declared in:  interface/InterfaceDefs.h</p>
+<p>Returns the number of microseconds since the user last manipulated the
+mouse or keyboard. This information isn’t specific to a particular
+application; idle_time() tells you when the user last directed an action at
+any application, not just yours.</p>
+</section>
+<section id="keyboard-navigation-color">
+<h2>keyboard_navigation_color()<a class="headerlink" href="#keyboard-navigation-color" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: interface/InterfaceDefs.h</p>
+<p>Returns the color that should be used to mark the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>
+that’s currently in focus, when the user can change the focus from the
+keyboard. The keyboard navigation color is typically used to underline the
+labels of control devices and to outline text fields where the user can
+type.</p>
+</section>
+<section id="run-add-printer-panel-run-select-printer-panel">
+<h2>run_add_printer_panel(), run_select_printer_panel()<a class="headerlink" href="#run-add-printer-panel-run-select-printer-panel" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: interface/InterfaceDefs.h</p>
+<p>These two functions have the Print Server place panels on-screen where the
+user can set up a printer and choose which printer to use.
+run_add_printer_panel() displays a panel that informs the server about a
+new printer. run_select_printer_panel() displays a panel that lists all
+known printers and lets the user select one.</p>
+<p>See also: The <a class="reference internal" href="print-job.html#_CPPv49BPrintJob" title="BPrintJob"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPrintJob</span></code></a> class</p>
+</section>
+<section id="set-menu-info-get-menu-info">
+<h2>set_menu_info(), get_menu_info()<a class="headerlink" href="#set-menu-info-get-menu-info" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: interface/Menu.h</p>
+<p>These functions set and get the user’s preferences for how menus should
+look and work. User’s express their preferences with the Menu application,
+which calls set_menu_info(). get_menu_info() writes the current preferences
+into the <span class="htype">menu_info</span> structure that into refers to. This structure
+contains the following fields:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>floatfont_size</p></td>
+<td><p>The size of the font that will be used to display menu items.</p></td>
+</tr>
+<tr class="row-odd"><td><p>font_namefont</p></td>
+<td><p>The name of the font that’s used to display menu items.</p></td>
+</tr>
+<tr class="row-even"><td><p>rgb_colorbackground_color</p></td>
+<td><p>The background color of the menu.</p></td>
+</tr>
+<tr class="row-odd"><td><p>int32separator</p></td>
+<td><p>The style of horizontal line that separates groups of items in a menu. The
+value is an index ranging from 0 through 2; there are three possible
+separators.</p></td>
+</tr>
+<tr class="row-even"><td><p>boolclick_to_open</p></td>
+<td><p>Whether it’s possible to open a menu by clicking in the item that controls
+it. The default value is true.</p></td>
+</tr>
+<tr class="row-odd"><td><p>booltriggers_always_shown</p></td>
+<td><p>Whether trigger characters are always marked in menus and menu bars,
+regardless of whether the menu hierarchy is the target for keyboard
+actions. The default value is false.</p></td>
+</tr>
+</tbody>
+</table>
+<p>(At present, both functions always return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.)</p>
+<p>See also: The <a class="reference internal" href="menu.html#_CPPv45BMenu" title="BMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code></a> class</p>
+</section>
+<section id="set-screen-space">
+<h2>set_screen_space()<a class="headerlink" href="#set-screen-space" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: interface/InterfaceDefs.h</p>
+<p>Changes the configuration of the screen—its depth and dimensions—to match
+the values specified in the <span class="hparameter">space</span> constant, which can be any of
+the following:</p>
+<ul class="simple">
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_8_BIT_640x400</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_8_BIT_640x480</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_8_BIT_800x600</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_8_BIT_1024x768</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_8_BIT_1152x900</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_8_BIT_1280x1024</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_8_BIT_1600x1200</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_15_BIT_640x480</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_15_BIT_800x600</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_15_BIT_1024x768</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_15_BIT_1152x900</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_15_BIT_1280x1024</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_15_BIT_1600x1200</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_16_BIT_640x480</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_16_BIT_800x600</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_16_BIT_1024x768</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_16_BIT_1152x900</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_16_BIT_1280x1024</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_16_BIT_1600x1200</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_32_BIT_640x480</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_32_BIT_800x600</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_32_BIT_1024x768</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_32_BIT_1152x900</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_32_BIT_1280x1024</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_32_BIT_1600x1200</span></code></p></li>
+</ul>
+<p>The first part of the constant designates the screen depth and color
+space. <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_8_BIT…</span></code> refers to the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CMAP8</span></code>
+color space. The other values correspond to the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RGB15</span></code>,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RGB16</span></code>, and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RGB32</span></code> color spaces, as
+appropriate. Although constants are defined for 15-bit screen depths, the
+operating system currently doesn’t support them. The second part of the
+constant designates the pixel resolution of the screen. For example,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_32_BIT_1280x1024</span></code> means that the frame buffer is 32 bits
+deep (<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RGB32</span></code>) while the screen grid is 1,280 pixels wide
+and 1,024 pixels high.</p>
+<p>This function affects the screen at <span class="hparameter">index</span>. Since the BeOS
+currently doesn’t support more than one screen, the only index that makes
+sense is 0.</p>
+<p>The change to the screen takes effect immediately. If the
+<span class="hparameter">makeDefault</span> flag is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, the new configuration also
+becomes the default and will be used the next time the machine is turned
+on. If <span class="hparameter">makeDefault</span> is <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>, the configuration is in
+effect for the current session only.</p>
+<p>Since not all configurations are possible for all graphics cards,
+set_screen_space() can fail. It returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> if
+successful, and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code> if not.</p>
+<p>This function is designed for preferences applications—like the Screen
+application—that permit users to make system-wide choices about the screen.
+Other applications should respect those choices and refrain from modifying
+them.</p>
+<p>The current screen configuration can be obtained from the
+<a class="reference internal" href="screen.html#_CPPv47BScreen" title="BScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BScreen</span></code></a> object.</p>
+<p>See also: <a class="reference internal" href="window.html#_CPPv4N7BWindow13ScreenChangedE5BRect11color_space" title="BWindow::ScreenChanged"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::ScreenChanged()</span></code></a>, <span class="xref std std-ref">The Game Kit</span> chapter</p>
+</section>
+<section id="set-scroll-bar-info-get-scroll-bar-info">
+<h2>set_scroll_bar_info(), get_scroll_bar_info()<a class="headerlink" href="#set-scroll-bar-info-get-scroll-bar-info" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: interface/InterfaceDefs.h</p>
+<p>These functions set and report preferences that the
+<a class="reference internal" href="scroll-bar.html#_CPPv410BScrollBar" title="BScrollBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BScrollBar</span></code></a> class uses when it creates a new scroll bar.
+set_scroll_bar_info() reads the values contained in the
+<span class="htype">scroll_bar_info</span> structure that <span class="hparameter">info</span> refers to and sets
+the system-wide preferences accordingly; get_scroll_bar_info() writes the
+current preferences into the structure provided.</p>
+<p>The <span class="htype">scroll_bar_info</span> structure contains the following fields:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>boolproportional</p></td>
+<td><p><span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if scroll bars should have a knob that grows and shrinks
+to show what proportion of the document is currently visible on-screen, and
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not. Scroll knobs are proportional by default.</p></td>
+</tr>
+<tr class="row-odd"><td><p>booldouble_arrows</p></td>
+<td><p><span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if a set of double arrows (for scrolling in both
+directions) should appear at each end of the scroll bar, or
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if only single arrows (for scrolling in one direction
+only) should be used. Double arrows are the default.</p></td>
+</tr>
+<tr class="row-even"><td><p>int32knob</p></td>
+<td><p>An index that picks the pattern for the knob. Only values of 0, 1, and 2
+are currently valid. The patterns can be seen in the ScrollBar preferences
+application. The pattern at index 1 is the default.</p></td>
+</tr>
+<tr class="row-odd"><td><p>int32min_knob_size</p></td>
+<td><p>The length of the scroll knob, in pixels. This is the minimum size for a
+proportional knob and the fixed size for one that’s not proportional. The
+default is 15.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The user can set these preferences with the ScrollBar application.
+Applications can call get_scroll_bar_info() to find out what choices the
+user made, but should refrain from calling set_scroll_bar_info(). That
+function is desigined for utilities, like the ScrollBar application, that
+enable users to set preferences that are respected system-wide.</p>
+<p>If successful, these functions return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>; if not, they
+return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p>
+<p>See also: The <a class="reference internal" href="scroll-bar.html#_CPPv410BScrollBar" title="BScrollBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BScrollBar</span></code></a> class</p>
+</section>
+<section id="set-workspace-count-count-workspaces">
+<h2>set_workspace_count(), count_workspaces()<a class="headerlink" href="#set-workspace-count-count-workspaces" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: interface/InterfaceDefs.h</p>
+<p>These functions set and return the number of workspaces the user has
+available. There can be as many as 32 workspaces and as few as 1. The
+choice of how many there should be is usually left to the user and the
+Workspaces application.</p>
+<p>See also: <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">activate_workspace()</span></code></p>
+</section>
+<section id="system-colors">
+<h2>system_colors()<a class="headerlink" href="#system-colors" title="Permalink to this heading">¶</a></h2>
+<p>Declared in: interface/InterfaceDefs.h</p>
+<p>Returns a pointer to the system color map. This function duplicates the
+<a class="reference internal" href="screen.html#_CPPv47BScreen" title="BScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BScreen</span></code></a> <a class="reference internal" href="screen.html#_CPPv4N7BScreen8ColorMapEv" title="BScreen::ColorMap"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ColorMap()</span></code></a> function,
+but it permits software that isn’t concerned about the on-screen display to
+get the color map without referring to a particular screen. (Actually it
+returns the color map for the main screen.)</p>
+<p>The <span class="htype">color_map</span> structure returned by this function belongs to the
+operating system.</p>
+</section>
+<section id="tint-color">
+<h2>tint_color()<a class="headerlink" href="#tint-color" title="Permalink to this heading">¶</a></h2>
+<p>Declared in:  interface/InterfaceDefs.h</p>
+<p>tint_color() lightens or darkens the color <span class="hparameter">color</span> by the
+<span class="hparameter">tint</span> amount.</p>
+<p>Tints less than 1.0 lighten the color and tints greater than 1.0 darken
+it.</p>
+<p>Various <span class="hparameter">tint</span> constants are defined by the Interface Kit as seen
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">here</span></code>.</p>
+</section>
+<section id="ui-color">
+<h2>ui_color()<a class="headerlink" href="#ui-color" title="Permalink to this heading">¶</a></h2>
+<p>Declared in:  interface/InterfaceDefs.h</p>
+<p>Converts the supplied <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">color_which</span></code> constant
+<span class="hparameter">which</span> to the corresponding <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">rgb_color</span></code> for
+the specified user interface element.</p>
+</section>
+<section id="update-font-families">
+<h2>update_font_families()<a class="headerlink" href="#update-font-families" title="Permalink to this heading">¶</a></h2>
+<p>Declared in:  interface/Font.h</p>
+<p>Updates the list of installed fonts, so that it reflects any that have
+been added or removed since the last time the list was updated. Until the
+list is updated, <span class="xref std std-ref">get_font_family()</span> operates assuming the set of
+fonts that were installed when the application started up. If the list is
+unchanged since the last update (or since startup), this function returns
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>; if a font has been installed or an installed font has
+been removed, it returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>.</p>
+<p>If the <span class="hparameter">checkOnly</span> flag is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>,
+<span class="xref std std-ref">get_font_family()</span> only reports whether the list has changed; it
+doesn’t modify the current list. If the flag is <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>, it
+contacts the Application Server to get the updated list, a much more
+expensive operation.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="font.html">BFont</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="general-constants.html">General Constants</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

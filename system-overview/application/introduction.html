@@ -17,31 +17,43 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BInvoker" href="invoker.html" />
+    <link rel="prev" title="The Application Kit" href="index.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
-          <span>The Haiku Book  documentation</span></a></h1>
+          <span>API Documentation</span></a></h1>
         <h2 class="heading"><span>Introduction</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
+        «&#160;&#160;<a href="index.html">The Application Kit</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="invoker.html">BInvoker</a>&#160;&#160;»
         </p>
 
       </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+        </div>
+      </div>
+          <div class="bodywrapper">
       <div class="content" role="main">
         
-        
   <section id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv412Introduction">Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
 <p>The Application Kit is the starting point for all applications. Its classes establish an application
 as an identifiable entity, one that can cooperate and communicate with other applications.</p>
 <p>The Application Kit is divided into these topics:</p>
-<p><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code>.
-All but the simplest of applications must have one (and only one) <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code>
-object. This object is typically an instance of a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code> subclass that you
-create especially for your application. The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code> object makes a connection
+<p><a class="reference internal" href="../../kits/application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a>.
+All but the simplest of applications must have one (and only one) <a class="reference internal" href="../../kits/application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a>
+object. This object is typically an instance of a <a class="reference internal" href="../../kits/application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> subclass that you
+create especially for your application. The <a class="reference internal" href="../../kits/application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> object makes a connection
 to the App Server and runs the application’s main message loop.</p>
 <p><a class="reference internal" href="messaging.html"><span class="doc std std-doc">Messaging</span></a>.
 The kit provides a messaging service that lets threads talk to each other. This service can
@@ -50,31 +62,37 @@ by the system to deliver user event messages (key clicks, mouse moves) to your a
 of the Application Kit’s classes are involved in the messaging system.</p>
 <p><a class="reference internal" href="scripting.html"><span class="doc std std-doc">Scripting</span></a>.
 The objects that you create can be controlled by commands issued from other applications.</p>
-<p><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRoster</span></code>.
-The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRoster</span></code> object keeps track of all running applications. It can identify
+<p><a class="reference internal" href="../../kits/application/roster.html#_CPPv47BRoster" title="BRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRoster</span></code></a>.
+The <a class="reference internal" href="../../kits/application/roster.html#_CPPv47BRoster" title="BRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRoster</span></code></a> object keeps track of all running applications. It can identify
 applications, launch them, and provide the information needed to set up communications with
 them.</p>
-<p><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BClipboard</span></code>.
-The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BClipboard</span></code> object provides an interface to the clipboard where cut and copied
+<p><a class="reference internal" href="../../kits/application/clipboard.html#_CPPv410BClipboard" title="BClipboard"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BClipboard</span></code></a>.
+The <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv410BClipboard" title="BClipboard"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BClipboard</span></code></a> object provides an interface to the clipboard where cut and copied
 data can be stored, and from which it can be pasted.</p>
-<p><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCursor</span></code>.
-You use <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCursor</span></code> objects to represent distinct cursors. Functions defined by
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code> and <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> let you assign your cursors to your entire
+<p><a class="reference internal" href="../../kits/application/cursor.html#_CPPv47BCursor" title="BCursor"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCursor</span></code></a>.
+You use <a class="reference internal" href="../../kits/application/cursor.html#_CPPv47BCursor" title="BCursor"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCursor</span></code></a> objects to represent distinct cursors. Functions defined by
+<a class="reference internal" href="../../kits/application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> and <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> let you assign your cursors to your entire
 application, or to individual views.</p>
 </section>
 
 
+        <div class="clearer"></div>
       </div>
+          </div>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
+        «&#160;&#160;<a href="index.html">The Application Kit</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="invoker.html">BInvoker</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Haiku.
+        &#169; Copyright 2023, Haiku, Inc..
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>

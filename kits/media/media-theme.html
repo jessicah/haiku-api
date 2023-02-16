@@ -65,11 +65,15 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#global-c-functions">Global C Functions</a><ul>
-<li><a class="reference internal" href="#_CPPv4N11BMediaTheme12get_theme_atE5int32PPKcP5int32">get_theme_at</a></li>
-<li><a class="reference internal" href="#_CPPv4N11BMediaTheme10make_themeE5int328image_id">make_theme</a></li>
+<li><a class="reference internal" href="#_CPPv412get_theme_at5int32PPKcP5int32">get_theme_at</a></li>
+<li><a class="reference internal" href="#_CPPv410make_theme5int328image_id">make_theme</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#constants">Constants</a><ul>
+<li><a class="reference internal" href="#background-color-and-bitmap-kinds">Background Color and Bitmap Kinds</a></li>
+<li><a class="reference internal" href="#foreground-color-kinds">Foreground Color Kinds</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -82,25 +86,22 @@
       <div class="content" role="main">
         
   <section id="bmediatheme">
-<h1>BMediaTheme<a class="headerlink" href="#bmediatheme" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv411BMediaTheme">BMediaTheme<a class="headerlink" href="#bmediatheme" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N11BMediaTheme11BMediaThemeEPKcPKcPK9entry_ref5int32">
 </section>
 <h3>
-BMediaTheme()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BMediaTheme11BMediaThemeEPKcPKcPK9entry_ref5int32" title="BMediaTheme::BMediaTheme"><span class="n">BMediaTheme</span></a><span class="p">::</span></span><span class="n">BMediaTheme</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span>, <span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">addOn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">themeID</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>The <span class="hclass">BMediaTheme</span> constructor initializes
-the theme so it can be used by the system or by an application. The
-user-readable theme name is passed as the <span class="hparameter">name</span>
-argument, and some longer description of the theme in
-<span class="hparameter">info</span>.
-The <span class="hparameter">name</span> and
-<span class="hparameter">info</span> strings are copied; you can dispose of the
-original strings if you wish. Both strings should be human-readable, as
-they may be presented to the user in a user interface for selecting a theme
-to be used.
-If the theme lives in an add-on on disk, specify the
-entry_ref of the add-on file in
-<span class="hparameter">addOn</span> and the ID assigned to the theme by its
+BMediaTheme()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N11BMediaTheme11BMediaThemeEPKcPKcPK9entry_ref5int32" title="BMediaTheme::BMediaTheme"><span class="n">BMediaTheme</span></a><span class="p">::</span></span><span class="n">BMediaTheme</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span>, <span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">addOn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">themeID</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>The <span class="hclass">BMediaTheme</span> constructor initializes the theme so it can be
+used by the system or by an application. The user-readable theme name is
+passed as the <span class="hparameter">name</span> argument, and some longer description of the
+theme in <span class="hparameter">info</span>.</p>
+<p>The <span class="hparameter">name</span> and <span class="hparameter">info</span> strings are copied; you can dispose
+of the original strings if you wish. Both strings should be human-readable,
+as they may be presented to the user in a user interface for selecting a
+theme to be used.</p>
+<p>If the theme lives in an add-on on disk, specify the <span class="htype">entry_ref</span> of
+the add-on file in <span class="hparameter">addOn</span> and the ID assigned to the theme by its
 add-on in <span class="hparameter">themeID</span>.</p>
 <section id="_CPPv4N11BMediaTheme11BMediaThemeEv">
 </section>
@@ -113,143 +114,108 @@ destructor frees any memory allocated by the theme.</p>
 <section id="_CPPv4N11BMediaTheme19BackgroundBitmapForE7bg_kind">
 </section>
 <h3>
-BackgroundBitmapFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">BBitmap</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaTheme</span><span class="p">::</span></span><span class="n">BackgroundBitmapFor</span><span class="sig-paren">(</span><span class="n">bg_kind</span><span class="w"> </span><span class="n sig-param">backgroundKind</span><span class="sig-paren">)</span></pre><p>Returns the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code>
-that should be used as the background for the
-specified type of user interface object. Possible values for
-<span class="hparameter">backgroundKind</span> are detailed in
-bg_kind.</p>
+BackgroundBitmapFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="p">::</span></span><span class="n">BackgroundBitmapFor</span><span class="sig-paren">(</span><span class="n">bg_kind</span><span class="w"> </span><span class="n sig-param">backgroundKind</span><span class="sig-paren">)</span></pre><p>Returns the <a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a> that should be used as the background for
+the specified type of user interface object. Possible values for
+<span class="hparameter">backgroundKind</span> are detailed in <span class="htype">bg_kind</span>.</p>
 <section id="_CPPv4N11BMediaTheme19BackgroundBitmapForE7bg_kind">
 </section>
 <h3>
-BackgroundBitmapFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">rgb_color</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTheme</span><span class="p">::</span></span><span class="n">BackgroundBitmapFor</span><span class="sig-paren">(</span><span class="n">bg_kind</span><span class="w"> </span><span class="n sig-param">backgroundKind</span><span class="sig-paren">)</span></pre><p>Returns the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">color()</span></code>
-that should be used as the background for the
-specified type of user interface object. Possible values for
-<span class="hparameter">backgroundKind</span> are detailed in
-bg_kind.</p>
+BackgroundBitmapFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">rgb_color</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="p">::</span></span><span class="n">BackgroundBitmapFor</span><span class="sig-paren">(</span><span class="n">bg_kind</span><span class="w"> </span><span class="n sig-param">backgroundKind</span><span class="sig-paren">)</span></pre><p>Returns the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">rgb_color</span></code> that should be used as the
+background for the specified type of user interface object. Possible values
+for <span class="hparameter">backgroundKind</span> are detailed in <span class="htype">bg_kind</span>.</p>
 <section id="_CPPv4N11BMediaTheme19BackgroundBitmapForE7fg_kind">
 </section>
 <h3>
-BackgroundBitmapFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">rgb_color</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTheme</span><span class="p">::</span></span><span class="n">BackgroundBitmapFor</span><span class="sig-paren">(</span><span class="n">fg_kind</span><span class="w"> </span><span class="n sig-param">foregroundKind</span><span class="sig-paren">)</span></pre><p>Returns the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">color()</span></code>
-that should be used as the foreground for the
-specified type of user interface object. Possible values for
-foregroundKind are detailed in
-fg_kind.</p>
+BackgroundBitmapFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">rgb_color</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="p">::</span></span><span class="n">BackgroundBitmapFor</span><span class="sig-paren">(</span><span class="n">fg_kind</span><span class="w"> </span><span class="n sig-param">foregroundKind</span><span class="sig-paren">)</span></pre><p>Returns the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">rgb_color</span></code> that should be used as the
+foreground for the specified type of user interface object. Possible values
+for foregroundKind are detailed in <span class="htype">fg_kind</span>.</p>
 <section id="_CPPv4N11BMediaTheme6GetRefEP9entry_ref">
 </section>
 <h3>
-GetRef()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTheme</span><span class="p">::</span></span><span class="n">GetRef</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outRef</span><span class="sig-paren">)</span></pre><p>Sets <span class="hparameter">outRef</span> to be a reference to the add-on file from which the theme was
-loaded and returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>. If the theme wasn’t loaded from an add-on, this
-function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.</p>
+GetRef()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="p">::</span></span><span class="n">GetRef</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outRef</span><span class="sig-paren">)</span></pre><p>Sets <span class="hparameter">outRef</span> to be a reference to the add-on file from which the
+theme was loaded and returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>. If the theme wasn’t loaded
+from an add-on, this function returns <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>.</p>
 <section id="_CPPv4N11BMediaTheme2IDEv">
 </section>
 <h3>
-ID()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTheme</span><span class="p">::</span></span><span class="n">ID</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the theme’s ID, as assigned by the add-on in which the theme
-resides. The ID is unique only within that add-on.
-If the theme isn’t in an add-on, 0 is returned.</p>
+ID()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="p">::</span></span><span class="n">ID</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the theme’s ID, as assigned by the add-on in which the theme
+resides. The ID is unique only within that add-on.</p>
+<p>If the theme isn’t in an add-on, 0 is returned.</p>
 <section id="_CPPv4N11BMediaTheme4InfoEv">
 </section>
 <h3>
-Info()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaTheme</span><span class="p">::</span></span><span class="n">Info</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the user-readable long description of the theme, as specified
-when the theme was created.</p>
+Info()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="p">::</span></span><span class="n">Info</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the user-readable long description of the theme, as specified when
+the theme was created.</p>
 <section id="_CPPv4N11BMediaTheme14MakeControlForEP10BParameter">
 </section>
 <h3>
-MakeControlFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">BControl</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaTheme</span><span class="p">::</span></span><span class="n">MakeControlFor</span><span class="sig-paren">(</span><span class="n">BParameter</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">parameter</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>If you create your own theme, your implementation of this function should
-return an appropriate
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code>
-to operate on the specified
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code>.
-Applications that want to use the theme to create the controls, but
-handle their layout themselves, can call this function for each parameter
-in the web, rather than rely upon
-<a class="reference internal" href="#_CPPv4N11BMediaTheme7ViewForEP13BParameterWebPK5BRectP11BMediaTheme" title="BMediaTheme::ViewFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ViewFor()</span></code></a>.
-However, if an application uses <span class="hmethod">MakeControlFor()</span>
-to create individual controls rather than letting
-<a class="reference internal" href="#_CPPv4N11BMediaTheme7ViewForEP13BParameterWebPK5BRectP11BMediaTheme" title="BMediaTheme::ViewFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ViewFor()</span></code></a>
-set up the entire view, the application assumes responsibility
-for setting the control’s value in response to value change messages.
-If you want the control to send a specific message when invoked, you
-should call
-<a class="reference internal" href="../application/invoker.html#_CPPv4N8BInvoker10SetMessageEP8BMessage" title="BInvoker::SetMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BInvoker::SetMessage()</span></code></a>
-on it.</p>
+MakeControlFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../interface/control.html#_CPPv48BControl" title="BControl"><span class="n">BControl</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="p">::</span></span><span class="n">MakeControlFor</span><span class="sig-paren">(</span><a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">parameter</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>If you create your own theme, your implementation of this function should
+return an appropriate <a class="reference internal" href="../interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> to operate on the specified
+<a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code></a>.</p>
+<p>Applications that want to use the theme to create the controls, but handle
+their layout themselves, can call this function for each parameter in the
+web, rather than rely upon <a class="reference internal" href="#_CPPv4N11BMediaTheme7ViewForEP13BParameterWebPK5BRectP11BMediaTheme" title="BMediaTheme::ViewFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ViewFor()</span></code></a>.
+However, if an application uses <span class="hmethod">MakeControlFor()</span> to create
+individual controls rather than letting <a class="reference internal" href="#_CPPv4N11BMediaTheme7ViewForEP13BParameterWebPK5BRectP11BMediaTheme" title="BMediaTheme::ViewFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ViewFor()</span></code></a> set up the entire view, the application assumes
+responsibility for setting the control’s value in response to value change
+messages.</p>
+<p>If you want the control to send a specific message when invoked, you
+should call <a class="reference internal" href="../application/invoker.html#_CPPv4N8BInvoker10SetMessageEP8BMessage" title="BInvoker::SetMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BInvoker::SetMessage()</span></code></a> on it.</p>
 <section id="_CPPv4N11BMediaTheme19MakeFallbackViewForEP10BParameter">
 </section>
 <h3>
-MakeFallbackViewFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BControl</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaTheme</span><span class="p">::</span></span><span class="n">MakeFallbackViewFor</span><span class="sig-paren">(</span><span class="n">BParameter</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">control</span><span class="sig-paren">)</span></pre><p>If you’re implementing your own theme, and for whatever reason you want a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code>
-to use the standard system theme’s
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code>, call
-<span class="hmethod">MakeFallbackViewFor()</span> to obtain that
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code>.
-This can be used if your theme is only intended to augment certain
-controls, or if you receive a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code>
-you don’t know anything about.</p>
+MakeFallbackViewFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><a class="reference internal" href="../interface/control.html#_CPPv48BControl" title="BControl"><span class="n">BControl</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="p">::</span></span><span class="n">MakeFallbackViewFor</span><span class="sig-paren">(</span><a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">control</span><span class="sig-paren">)</span></pre><p>If you’re implementing your own theme, and for whatever reason you want a
+<a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code></a> to use the standard system theme’s
+<a class="reference internal" href="../interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a>, call <span class="hmethod">MakeFallbackViewFor()</span> to obtain that
+<a class="reference internal" href="../interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a>.</p>
+<p>This can be used if your theme is only intended to augment certain
+controls, or if you receive a <a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code></a> you don’t know
+anything about.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>Your
-<a class="reference internal" href="#_CPPv4N11BMediaTheme14MakeControlForEP10BParameter" title="BMediaTheme::MakeControlFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeControlFor()</span></code></a>
-implementation should always call
-<span class="hmethod">MakeFallbackViewFor()</span> if it’s asked to create a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code> for a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code>
-it doesn’t understand. This way, all
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code>s
-will get some form of user interface, even if your theme doesn’t specifically know how to
-handle some of them. This will let your theme remain compatible with
-future versions of the BeOS.</p>
+<p>Your <a class="reference internal" href="#_CPPv4N11BMediaTheme14MakeControlForEP10BParameter" title="BMediaTheme::MakeControlFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeControlFor()</span></code></a>
+implementation should always call <span class="hmethod">MakeFallbackViewFor()</span> if it’s
+asked to create a <a class="reference internal" href="../interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> for a <a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code></a> it
+doesn’t understand. This way, all <a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code></a>s will get some
+form of user interface, even if your theme doesn’t specifically know how to
+handle some of them. This will let your theme remain compatible with future
+versions of the BeOS.</p>
 </div>
 <section id="_CPPv4N11BMediaTheme11MakeViewForEP13BParameterWebPK5BRect">
 </section>
 <h3>
-MakeViewFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaTheme</span><span class="p">::</span></span><span class="n">MakeViewFor</span><span class="sig-paren">(</span><span class="n">BParameterWeb</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">web</span>, <span class="k">const</span><span class="w"> </span><span class="n">BRect</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">hintRect</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Given the specified
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code> and
-<span class="hparameter">hintRect</span>, your implementation of
-this function should construct a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-that contains the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code>s
-for manipulating the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code>s
-in the web. The <span class="hparameter">hintRect</span> is an area the
-caller thinks is appropriate for you to fill with your
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>;
-your theme should try to stay within that rectangle if possible.
-The web returned by this function belongs to the theme; applications
-shouldn’t delete it (a properly-written theme will automatically dispose
-of the web when the view is closed).
-This function is called by
-<a class="reference internal" href="#_CPPv4N11BMediaTheme7ViewForEP13BParameterWebPK5BRectP11BMediaTheme" title="BMediaTheme::ViewFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ViewFor()</span></code></a>.</p>
+MakeViewFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="p">::</span></span><span class="n">MakeViewFor</span><span class="sig-paren">(</span><a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><span class="n">BParameterWeb</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">web</span>, <span class="k">const</span><span class="w"> </span><a class="reference internal" href="../interface/rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">hintRect</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Given the specified <a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code></a> and <span class="hparameter">hintRect</span>,
+your implementation of this function should construct a <a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>
+that contains the <a class="reference internal" href="../interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a>s for manipulating the
+<a class="reference internal" href="parameter.html#_CPPv410BParameter" title="BParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameter</span></code></a>s in the web. The <span class="hparameter">hintRect</span> is an area the
+caller thinks is appropriate for you to fill with your <a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>;
+your theme should try to stay within that rectangle if possible.</p>
+<p>The web returned by this function belongs to the theme; applications
+shouldn’t delete it (a properly-written theme will automatically dispose of
+the web when the view is closed).</p>
+<p>This function is called by <a class="reference internal" href="#_CPPv4N11BMediaTheme7ViewForEP13BParameterWebPK5BRectP11BMediaTheme" title="BMediaTheme::ViewFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ViewFor()</span></code></a>.</p>
 <section id="_CPPv4N11BMediaTheme14PreferredThemeEv">
 </section>
 <section id="_CPPv4N11BMediaTheme17SetPreferredThemeEP11BMediaTheme">
 </section>
 <h3>
-PreferredTheme(), SetPreferredTheme()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BMediaTheme</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaTheme</span><span class="p">::</span></span><span class="n">PreferredTheme</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTheme</span><span class="p">::</span></span><span class="n">SetPreferredTheme</span><span class="sig-paren">(</span><span class="n">BMediaTheme</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">newPreferredTheme</span><span class="sig-paren">)</span></pre><p><span class="hmethod">PreferredTheme()</span> returns the current preferred theme;
-<span class="hmethod">SetPreferredTheme()</span>
-changes the preferred theme to the theme specified by
-<span class="hparameter">newPreferredTheme</span>.
-The preferred theme is the theme that will be used for creating node
+PreferredTheme(), SetPreferredTheme()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="p">::</span></span><span class="n">PreferredTheme</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="p">::</span></span><span class="n">SetPreferredTheme</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">newPreferredTheme</span><span class="sig-paren">)</span></pre><p><span class="hmethod">PreferredTheme()</span> returns the current preferred theme;
+<span class="hmethod">SetPreferredTheme()</span> changes the preferred theme to the theme
+specified by <span class="hparameter">newPreferredTheme</span>.</p>
+<p>The preferred theme is the theme that will be used for creating node
 controlling user interfaces if no specific theme is requested when the
 interface is created.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The preferred theme was changed without error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code></p></td>
 <td><p>Access to the settings file denied.</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors.</p></td>
@@ -257,153 +223,132 @@ interface is created.</p>
 </tr>
 </tbody>
 </table>
-<p>See also:
-<a class="reference internal" href="#_CPPv4N11BMediaTheme7ViewForEP13BParameterWebPK5BRectP11BMediaTheme" title="BMediaTheme::ViewFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ViewFor()</span></code></a>,
+<p>See also: <a class="reference internal" href="#_CPPv4N11BMediaTheme7ViewForEP13BParameterWebPK5BRectP11BMediaTheme" title="BMediaTheme::ViewFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ViewFor()</span></code></a>,
 <a class="reference internal" href="#_CPPv4N11BMediaTheme11MakeViewForEP13BParameterWebPK5BRect" title="BMediaTheme::MakeViewFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeViewFor()</span></code></a></p>
 <section id="_CPPv4N11BMediaTheme4NameEv">
 </section>
 <h3>
-Name()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaTheme</span><span class="p">::</span></span><span class="n">Name</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the user-readable name of the theme, as specified when the theme
+Name()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="p">::</span></span><span class="n">Name</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the user-readable name of the theme, as specified when the theme
 was created.</p>
 <section id="_CPPv4N11BMediaTheme7ViewForEP13BParameterWebPK5BRectP11BMediaTheme">
 </section>
 <h3>
-ViewFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaTheme</span><span class="p">::</span></span><span class="n">ViewFor</span><span class="sig-paren">(</span><span class="n">BParameterWeb</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">web</span>, <span class="k">const</span><span class="w"> </span><span class="n">BRect</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">hintRect</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">BMediaTheme</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">usingTheme</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Given a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code>
-web, typically returned by
-<a class="reference internal" href="media-roster.html#_CPPv4N12BMediaRoster18GetParameterWebForERK10media_nodePP13BParameterWeb" title="BMediaRoster::GetParameterWebFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaRoster::GetParameterWebFor()</span></code></a>,
-this function creates a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-suitable for adding to a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>
-to allow the user to configure the node the web
-describes, including a diagram indicating the data flow path through the
-node, and controls to let the user configure each control point.</p>
+ViewFor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="p">::</span></span><span class="n">ViewFor</span><span class="sig-paren">(</span><a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><span class="n">BParameterWeb</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">web</span>, <span class="k">const</span><span class="w"> </span><a class="reference internal" href="../interface/rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">hintRect</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">usingTheme</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Given a <a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code></a> web, typically returned by
+<a class="reference internal" href="media-roster.html#_CPPv4N12BMediaRoster18GetParameterWebForERK10media_nodePP13BParameterWeb" title="BMediaRoster::GetParameterWebFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaRoster::GetParameterWebFor()</span></code></a>, this function creates a
+<a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> suitable for adding to a <a class="reference internal" href="../interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a> to allow
+the user to configure the node the web describes, including a diagram
+indicating the data flow path through the node, and controls to let the
+user configure each control point.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>This function is the public interface for creating a view for
-configuring a node (the
-<a class="reference internal" href="#_CPPv4N11BMediaTheme11MakeViewForEP13BParameterWebPK5BRect" title="BMediaTheme::MakeViewFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeViewFor()</span></code></a>
-function is the hook you override
-if you’re implementing your own theme).</p>
+<p>This function is the public interface for creating a view for configuring
+a node (the <a class="reference internal" href="#_CPPv4N11BMediaTheme11MakeViewForEP13BParameterWebPK5BRect" title="BMediaTheme::MakeViewFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MakeViewFor()</span></code></a> function
+is the hook you override if you’re implementing your own theme).</p>
 </div>
-<p>The returned view is created using the theme specified by <span class="hparameter">usingTheme</span>; if
-this argument is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, the preferred theme is used. The <span class="hparameter">hintRect</span>
-parameter specifies the rectangle the view should try to occupy, and is
-passed to <span class="hmethod">MakeViewFor()</span>.</p>
+<p>The returned view is created using the theme specified by
+<span class="hparameter">usingTheme</span>; if this argument is <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>, the preferred
+theme is used. The <span class="hparameter">hintRect</span> parameter specifies the rectangle the
+view should try to occupy, and is passed to <span class="hmethod">MakeViewFor()</span>.</p>
 </section>
 <section id="global-c-functions">
 <h2>Global C Functions<a class="headerlink" href="#global-c-functions" title="Permalink to this heading">¶</a></h2>
-<section id="_CPPv4N11BMediaTheme12get_theme_atE5int32PPKcP5int32">
+<section id="_CPPv412get_theme_at5int32PPKcP5int32">
 </section>
 <h3>
-get_theme_at()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaTheme</span><span class="p">::</span></span><span class="n">get_theme_at</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">n</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">outName</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outID</span><span class="sig-paren">)</span></pre><p>This function is called after the theme add-on is loaded, to
-determine what themes are available in the add-on. It’s called repeatedly,
-with successively-higher values of <span class="hparameter">n</span>, until it
-returns an error.
-Your add-on’s implementation of this function should set
-<span class="hparameter">outName</span> to point to the
-<span class="hparameter">n</span>th theme’s name,
-<span class="hparameter">outInfo</span> to point to information describing the
-<span class="hparameter">n</span>th theme, and <span class="hparameter">outID</span>
-should be set to the <span class="hparameter">n</span>th theme’s ID number,
-which used internally by your add-on to distinguish among the themes it
-supports.</p>
-<section id="_CPPv4N11BMediaTheme10make_themeE5int328image_id">
+get_theme_at()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">get_theme_at</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">n</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">outName</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outID</span><span class="sig-paren">)</span></pre><p>This function is called after the theme add-on is loaded, to determine
+what themes are available in the add-on. It’s called repeatedly, with
+successively-higher values of <span class="hparameter">n</span>, until it returns an error.</p>
+<p>Your add-on’s implementation of this function should set <span class="hparameter">outName</span>
+to point to the <span class="hparameter">n</span>th theme’s name, <span class="hparameter">outInfo</span> to point to
+information describing the <span class="hparameter">n</span>th theme, and <span class="hparameter">outID</span> should
+be set to the <span class="hparameter">n</span>th theme’s ID number, which used internally by
+your add-on to distinguish among the themes it supports.</p>
+<section id="_CPPv410make_theme5int328image_id">
 </section>
 <h3>
-make_theme()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMediaTheme</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaTheme</span><span class="p">::</span></span><span class="n">make_theme</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">themeID</span>, <span class="n">image_id</span><span class="w"> </span><span class="n sig-param">imageID</span><span class="sig-paren">)</span></pre><p>If you’re writing a theme to be loaded from an add-on file, you
-must implement make_theme() to create a
-<span class="hclass">BMediaTheme</span> for the specified
-<span class="hparameter">themeID</span>. <span class="hparameter">imageID</span> is
-the image_id of the add-on in which the theme is
-located.</p>
+make_theme()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv411BMediaTheme" title="BMediaTheme"><span class="n">BMediaTheme</span></a><span class="w"> </span><span class="p">*</span><span class="n">make_theme</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">themeID</span>, <span class="n">image_id</span><span class="w"> </span><span class="n sig-param">imageID</span><span class="sig-paren">)</span></pre><p>If you’re writing a theme to be loaded from an add-on file, you must
+implement make_theme() to create a <span class="hclass">BMediaTheme</span> for the specified
+<span class="hparameter">themeID</span>. <span class="hparameter">imageID</span> is the <span class="htype">image_id</span> of the add-on
+in which the theme is located.</p>
 </section>
 <section id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<section id="background-color-and-bitmap-kinds">
+<h3>Background Color and Bitmap Kinds<a class="headerlink" href="#background-color-and-bitmap-kinds" title="Permalink to this heading">¶</a></h3>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_GENERAL_BG</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GENERAL_BG</span></code></p></td>
 <td><p>Used when nothing else is applicable.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SETTINGS_BG</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SETTINGS_BG</span></code></p></td>
 <td><p>Used for panels or windows full of controls.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PRESENTATION_BG</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PRESENTATION_BG</span></code></p></td>
 <td><p>Used for windows that present actual media content.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_EDIT_BG</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EDIT_BG</span></code></p></td>
 <td><p>Used for windows that edit media content.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CONTROL_BG</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CONTROL_BG</span></code></p></td>
 <td><p>Used for drawing controls.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HILITE_BG</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HILITE_BG</span></code></p></td>
 <td><p>Used when highlighting information, such as selected media data.</p></td>
 </tr>
 </tbody>
 </table>
 <p>These constants identify parts of the user interface that a theme can
-customize the appearance of by altering the color or bitmap that’s used
-in the background for various user interface elements. They’re used when
-calling
-<a class="reference internal" href="#_CPPv4N11BMediaTheme19BackgroundBitmapForE7bg_kind" title="BMediaTheme::BackgroundBitmapFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BackgroundBitmapFor()</span></code></a> and
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BackgroundColorFor()</span></code>.
-For example, the <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PRESENTATION_BG</span></code> color
-and/or bitmap would be used as the background of a window in which an
-oscilloscope display shows the waveform of a sound wave being played back,
-and a window used for editing the waveform would have its’ background in
-the color specified by <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_EDIT_BG</span></code> (or using the
-bitmap specified by <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_EDIT_BG</span></code>, if one exists),
-except for the part of the wave that’s selected by the user, which would
-have the background color or bitmap specified by
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HILITE_BG</span></code>.</p>
-<h3>
-</h3><table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+customize the appearance of by altering the color or bitmap that’s used in
+the background for various user interface elements. They’re used when
+calling <a class="reference internal" href="#_CPPv4N11BMediaTheme19BackgroundBitmapForE7bg_kind" title="BMediaTheme::BackgroundBitmapFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BackgroundBitmapFor()</span></code></a> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BackgroundColorFor()</span></code>.</p>
+<p>For example, the <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PRESENTATION_BG</span></code> color and/or bitmap
+would be used as the background of a window in which an oscilloscope
+display shows the waveform of a sound wave being played back, and a window
+used for editing the waveform would have its’ background in the color
+specified by <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EDIT_BG</span></code> (or using the bitmap specified by
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EDIT_BG</span></code>, if one exists), except for the part of the
+wave that’s selected by the user, which would have the background color or
+bitmap specified by <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HILITE_BG</span></code>.</p>
+</section>
+<section id="foreground-color-kinds">
+<h3>Foreground Color Kinds<a class="headerlink" href="#foreground-color-kinds" title="Permalink to this heading">¶</a></h3>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_GENERAL_FG</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GENERAL_FG</span></code></p></td>
 <td><p>Used when nothing else is applicable.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SETTINGS_FG</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SETTINGS_FG</span></code></p></td>
 <td><p>Used for panels or windows full of controls.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PRESENTATION_FG</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PRESENTATION_FG</span></code></p></td>
 <td><p>Used for windows that present actual media content.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_EDIT_FG</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EDIT_FG</span></code></p></td>
 <td><p>Used for windows that edit media content.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CONTROL_FG</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CONTROL_FG</span></code></p></td>
 <td><p>Used for drawing controls.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HILITE_FG</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HILITE_FG</span></code></p></td>
 <td><p>Used when highlighting information, such as selected media data.</p></td>
 </tr>
 </tbody>
 </table>
 <p>The foreground color kinds are used when calling
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ForegroundColorFor()</span></code>
-to obtain the color to use when drawing the foreground portions of various
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ForegroundColorFor()</span></code> to
+obtain the color to use when drawing the foreground portions of various
 interface elements.</p>
+</section>
 </section>
 </section>
 

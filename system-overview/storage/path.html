@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BPath &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BQuery" href="query.html" />
+    <link rel="prev" title="BNodeInfo" href="node-info.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BPath</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="node-info.html">BNodeInfo</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="query.html">BQuery</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BPath</a><ul>
+<li><a class="reference internal" href="#so-what-do-you-use-bpaths-for">So what do you use BPaths for?</a></li>
+<li><a class="reference internal" href="#initializing-and-normalizing">Initializing and Normalizing</a><ul>
+<li><a class="reference internal" href="#forcing-initialization">Forcing Initialization</a></li>
+<li><a class="reference internal" href="#normalization-by-default">Normalization by Default?</a></li>
+<li><a class="reference internal" href="#other-normalization-details">Other Normalization Details</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-bpath-calling-convention">The BPath Calling Convention</a></li>
+<li><a class="reference internal" href="#passing-a-bpath-in-a-bmessage">Passing a BPath in a BMessage</a><ul>
+<li><a class="reference internal" href="#what-s-really-going-on">What’s Really Going On</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#converting-a-bpath">Converting a BPath</a></li>
+<li><a class="reference internal" href="#immutability">Immutability</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bpath">
+<h1 id="CPPv45BPath">BPath<a class="headerlink" href="#bpath" title="Permalink to this heading">¶</a></h1>
+<p>A <span class="hclass">BPath</span> object represents an absolute pathname, and provides
+some simple path manipulation and querying functions. The primary features
+of the class are:</p>
+<ul class="simple">
+<li><p>It allocates storage for you. When you tell your <span class="hclass">BPath</span> object
+which pathname you want it to represent, the object allocates storage for
+the pathname automatically. When you delete the object, the storage is
+freed.</p></li>
+<li><p>It always represents an absolute path. The pathname strings that you use
+to initialize a <span class="hclass">BPath</span> can be relative, and they can include
+references to “.” and “..”. The <span class="hclass">BPath</span> “normalizes” the passed-in
+strings to create an absolute pathname, as described in “<span class="xref std std-ref">Initializing and Normalizing</span>”.</p></li>
+</ul>
+<p><span class="hclass">BPath</span>s are handy, but don’t expect them to actually do very
+much: A <span class="hclass">BPath</span> is just a pathname. It identifies the location of a
+file, but it can’t manipulate the file, nor can it change the structure of
+the file system.</p>
+<section id="so-what-do-you-use-bpaths-for">
+<h2>So what do you use BPaths for?<a class="headerlink" href="#so-what-do-you-use-bpaths-for" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>You can use your <span class="hclass">BPath</span> to initialize other, more powerful
+objects (<a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a>, <a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a> and its kids). See
+“<span class="xref std std-ref">Converting a BPath</span>”.</p></li>
+<li><p><span class="hclass">BPath</span>s can be passed through <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>s. To add a
+<span class="hclass">BPath</span> to a <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>, you have to flatten it first:
+<span class="hclass">BPath</span> implements <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFlattenable</span></code> for exactly this
+reason. The receiver of the <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> can resurrect the
+flattened object as a <span class="hclass">BPath</span> object or as an <span class="htype">entry_ref</span>
+structure. See “<span class="xref std std-ref">Passing a BPath in a BMessage</span>”.</p></li>
+<li><p><span class="hclass">BPath</span> objects are ideal for caching references to files.
+<span class="hclass">BPath</span>s don’t consume much in the way of system resources—they
+don’t contain file descriptors, for example. So they’re great for keeping
+track of the files that your application is interested in.</p></li>
+</ul>
+<p>In the way that they’re used, <span class="hclass">BPath</span>s and <span class="htype">entry_ref</span>s are
+nearly identical. In particular, <span class="htype">entry_ref</span>s can do all three of
+the things listed here. Whether you use <span class="hclass">BPath</span>s (pathnames in
+general) or <span class="htype">entry_ref</span>s is largely a matter of taste.</p>
+</section>
+<section id="initializing-and-normalizing">
+<h2>Initializing and Normalizing<a class="headerlink" href="#initializing-and-normalizing" title="Permalink to this heading">¶</a></h2>
+<p>You initialize a <span class="hclass">BPath</span>—in other words, you establish the path
+that the object represents—by passing a string (or two, or a
+<a class="reference internal" href="../../kits/storage/directory.html#_CPPv410BDirectory" title="BDirectory"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectory</span></code></a> and a string) to the constructor or to the
+<a class="reference internal" href="../../kits/storage/path.html#_CPPv4N5BPath5SetToEPK6BEntry" title="BPath::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> function. Upon initialization, the
+<span class="hclass">BPath</span> object concatenates the strings and then “normalizes” the
+passed-in strings if it has to (this emphasis is important, as we’ll see in
+a moment). The following elements trigger normalization:</p>
+<ul class="simple">
+<li><p>a relative pathname (after concatenation; e.g. boot/lbj)</p></li>
+<li><p>the presence of “.” or “..” (/boot/lbj/../lbj/./fido)</p></li>
+<li><p>redundant slashes (/boot//lbj)</p></li>
+<li><p>a trailing slash (/boot/lbj/)</p></li>
+</ul>
+<p>During normalization, <span class="hclass">BPath</span> conjures up an absolute pathname in
+the form</p>
+<ul class="simple">
+<li><p>/dir1/dir2/…/dirN/leaf</p></li>
+</ul>
+<p>It does this by applying the following rules:</p>
+<ul class="simple">
+<li><p>relative pathnames are reckoned off of the current working directory</p></li>
+<li><p>“.” is ignored (at the head of a path, it’s taken as the cwd).</p></li>
+<li><p>“..” bumps up one directory level</p></li>
+<li><p>redundant slashes are coalesced</p></li>
+<li><p>a trailing slash is removed.</p></li>
+</ul>
+<p>(The one exception to this final rule is / as a full pathname.)</p>
+<p>There’s a subtle side-effect that you get with normalization: When you
+normalize a pathname, all the elements in the path up to but not including
+the leaf must exist. In other words, a normalized <span class="hclass">BPath</span> object
+gives you the same guarantee of existence as does an <span class="htype">entry_ref</span>
+structure. The subtlety, here, is that an unnormalized <span class="hclass">BPath</span>
+needn’t exist at all.</p>
+<p>For example, here we create a <span class="hclass">BPath</span> for a pathname that contains
+a non-existent directory:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* We&#39;ll assume that &quot;/abc/def/&quot; doesn&#39;t exist. */</span><span class="w"></span>
+<span class="n">BPath</span><span class="w"> </span><span class="n">path</span><span class="p">(</span><span class="s">&quot;/abc/def/ghi.jkl&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/* Nonetheless, the BPath is successfully initialized.</span>
+<span class="cm">* The Path() function returns a pointer to the object&#39;s</span>
+<span class="cm">* pathname string.</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Path: %sn&quot;</span><span class="p">.</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">());</span><span class="w"></span>
+</pre></div>
+</div>
+<p>On the command line we see:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ Path: /abc/def/ghi.jkl
+</pre></div>
+</div>
+<p>But if we tickle the normalization machine…</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* The redundant slash causes a normalization. */</span><span class="w"></span>
+<span class="n">BPath</span><span class="w"> </span><span class="n">path</span><span class="p">(</span><span class="s">&quot;/abc/def//ghi.jkl&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>…the object is invalid:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ Path: <span class="o">(</span>null<span class="o">)</span>
+</pre></div>
+</div>
+<section id="forcing-initialization">
+<h3>Forcing Initialization<a class="headerlink" href="#forcing-initialization" title="Permalink to this heading">¶</a></h3>
+<p>Both the constructor and the <a class="reference internal" href="../../kits/storage/path.html#_CPPv4N5BPath5SetToEPK6BEntry" title="BPath::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> function
+carry an optional argument that lets you force the passed-in path to be
+normalized:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* The trailing bool forces normalization. */</span><span class="w"></span>
+<span class="n">BPath</span><span class="w"> </span><span class="n">path</span><span class="p">(</span><span class="s">&quot;/abc/def/ghi.jkl&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Path: %sn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">());</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In this case, the forced normalization nullifies the object:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">$Path</span>: <span class="o">(</span>null<span class="o">)</span>
+</pre></div>
+</div>
+</section>
+<section id="normalization-by-default">
+<h3>Normalization by Default?<a class="headerlink" href="#normalization-by-default" title="Permalink to this heading">¶</a></h3>
+<p>Since forcing normalization makes <span class="hclass">BPath</span>’s behaviour more
+consistent and reliable, why not always normalize? Because normalization
+can be expensive.</p>
+<p>During normalization, the pathname is stat’d and prodded rather heavily.
+If you’re planning on using your <span class="hclass">BPath</span>’s pathname to initialize a
+<a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a> or <a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a>, this prodding will happen again.
+Rather than incur the expense twice, you may want to live with unnormalized
+<span class="hclass">BPath</span> objects, and take the normalization hit during the
+subsequent initialization.</p>
+</section>
+<section id="other-normalization-details">
+<h3>Other Normalization Details<a class="headerlink" href="#other-normalization-details" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>You can’t force the <span class="hclass">BPath</span> constructor or <a class="reference internal" href="../../kits/storage/path.html#_CPPv4N5BPath5SetToEPK6BEntry" title="BPath::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> function to skip the normalization. If the path needs to be
+normalized, it will be normalized.</p></li>
+<li><p><span class="hclass">BPath</span> doesn’t let you ask if its pathname was normalized.</p></li>
+</ul>
+</section>
+</section>
+<section id="the-bpath-calling-convention">
+<h2>The BPath Calling Convention<a class="headerlink" href="#the-bpath-calling-convention" title="Permalink to this heading">¶</a></h2>
+<p><span class="hclass">BPath</span> objects are passed back to you (by reference) by a number
+of Storage Kit functions. However, you shouldn’t find any functions that
+ask for a <span class="hclass">BPath</span> object. This is a convention of usage:</p>
+<ul class="simple">
+<li><p>If an API element returns a pathname to you, it does so in the form of a
+<span class="hclass">BPath</span>. If it asks for a pathname from you (as an argument), it
+asks for a <span class="htype">const char*</span>.</p></li>
+</ul>
+<p>As an example of a function that returns a <span class="hclass">BPath</span> to you, recall
+<a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a>’s <a class="reference internal" href="../../kits/storage/entry.html#_CPPv4NK6BEntry7GetPathEP5BPath" title="BEntry::GetPath"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetPath()</span></code></a> function:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span><span class="w"> </span><span class="n">BEntry</span><span class="o">::</span><span class="n">GetPath</span><span class="p">(</span><span class="n">BPath</span><span class="w"> </span><span class="o">*</span><span class="n">path</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>(As an aside, this is where the auto-allocation comes in handy—because
+<span class="hclass">BPath</span> allocates the pathname storage for you, you don’t have to
+mess around with ugly buffer and length arguments.)</p>
+<p>On the other hand, <a class="reference internal" href="../../kits/storage/entry.html#_CPPv46BEntry" title="BEntry"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BEntry</span></code></a>’s <a class="reference internal" href="../../kits/storage/entry.html#_CPPv4N6BEntry5SetToEPK9entry_refb" title="BEntry::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> takes a pathname as a <span class="htype">const char*</span>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span><span class="w"> </span><span class="n">BEntry</span><span class="o">::</span><span class="n">SetTo</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">path</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If you’ve got a <span class="hclass">BPath</span> loaded up with a pathname, you would call
+this function thus:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">entry</span><span class="p">.</span><span class="n">SetTo</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">());</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The constructors and <a class="reference internal" href="../../kits/storage/path.html#_CPPv4N5BPath5SetToEPK6BEntry" title="BPath::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> functions in (most
+of) the Storage Kit classes have <span class="htype">const char*</span> versions that can be
+called as shown here.</p>
+</section>
+<section id="passing-a-bpath-in-a-bmessage">
+<h2>Passing a BPath in a BMessage<a class="headerlink" href="#passing-a-bpath-in-a-bmessage" title="Permalink to this heading">¶</a></h2>
+<p>Let’s say you’ve got a <span class="hclass">BPath</span> object that you want to send to
+some other application. To do this, you have to add it to a
+<a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> object through the latter’s <a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage7AddFlatEPKcP12BFlattenable5int32" title="BMessage::AddFlat"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddFlat()</span></code></a> function. As an inheritor from
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFlattenable</span></code> the <span class="hclass">BPath</span> knows how to flatten itself
+for just this purpose.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BMessage</span><span class="w"> </span><span class="n">msg</span><span class="p">;</span><span class="w"></span>
+<span class="n">BPath</span><span class="w"> </span><span class="n">path</span><span class="p">(</span><span class="s">&quot;/boot/lbj/fido&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/* The check here is important, as we&#39;ll describe</span>
+<span class="cm">* in a moment.</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">AddFlat</span><span class="p">(</span><span class="s">&quot;pathname&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">path</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* handle the error */</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The receiver of the message can retrieve the pathname as a <span class="hclass">BPath</span>
+object by calling <a class="reference internal" href="../../kits/application/message.html#_CPPv4NK8BMessage8FindFlatEPKc5int32P12BFlattenable" title="BMessage::FindFlat"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindFlat()</span></code></a>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">MyApp::MessageReceived</span><span class="p">(</span><span class="n">BMessage</span><span class="w"> </span><span class="o">*</span><span class="n">msg</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">BPath</span><span class="w"> </span><span class="n">path</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindFlat</span><span class="p">(</span><span class="s">&quot;pathname&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">path</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="cm">/* handle the error */</span><span class="w"></span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Alternatively, the pathname can be retrieved as an <span class="htype">entry_ref</span>
+through <a class="reference internal" href="../../kits/application/message.html#_CPPv4NK8BMessage7FindRefEPKc5int32P9entry_ref" title="BMessage::FindRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindRef()</span></code></a>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">MyApp::MessageReceived</span><span class="p">(</span><span class="n">BMessage</span><span class="w"> </span><span class="o">*</span><span class="n">msg</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">entry_ref</span><span class="w"> </span><span class="n">ref</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">FindRef</span><span class="p">(</span><span class="s">&quot;pathname&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ref</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="cm">/* handle the error */</span><span class="w"></span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If you want to skip all the conversion business and simply pass the
+pathname as a string, use <a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage9AddStringEPKcPKc" title="BMessage::AddString"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddString()</span></code></a>.
+The receiver, of course, would have to call <a class="reference internal" href="../../kits/application/message.html#_CPPv4NK8BMessage10FindStringEPKc5int32PPKc" title="BMessage::FindString"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindString()</span></code></a> to retrieve your pathname string.</p>
+<section id="what-s-really-going-on">
+<h3>What’s Really Going On<a class="headerlink" href="#what-s-really-going-on" title="Permalink to this heading">¶</a></h3>
+<p>When you add a flattened <span class="hclass">BPath</span> to a <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>, the
+object’s pathname is turned into an <span class="htype">entry_ref</span>. If the message
+receiver asks for a <span class="hclass">BPath</span> (through <a class="reference internal" href="../../kits/application/message.html#_CPPv4NK8BMessage8FindFlatEPKc5int32P12BFlattenable" title="BMessage::FindFlat"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindFlat()</span></code></a>), the <span class="htype">entry_ref</span> is turned back into a
+<span class="hclass">BPath</span> object. Therefore, it’s more efficient to retrieve a
+flattened <span class="hclass">BPath</span> as an <span class="htype">entry_ref</span> than it is to unflatten
+it as a <span class="hclass">BPath</span> object.</p>
+<p>The <span class="hclass">BPath</span> to <span class="htype">entry_ref</span> conversion has another, more
+subtle implication: Adding a <span class="hclass">BPath</span> through <a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage7AddFlatEPKcP12BFlattenable5int32" title="BMessage::AddFlat"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddFlat()</span></code></a> performs an implicit normalization on the data that’s
+added to the <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>.</p>
+<p>If the normalization fails, the <a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage7AddFlatEPKcP12BFlattenable5int32" title="BMessage::AddFlat"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddFlat()</span></code></a>
+function returns an error and the data isn’t added to the
+<a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. The original <span class="hclass">BPath</span> is untouched,
+regardless of the result of the normalization.</p>
+</section>
+</section>
+<section id="converting-a-bpath">
+<h2>Converting a BPath<a class="headerlink" href="#converting-a-bpath" title="Permalink to this heading">¶</a></h2>
+<p>As mentioned earlier, most of the Storage Kit classes have constructors
+and <a class="reference internal" href="../../kits/storage/path.html#_CPPv4N5BPath5SetToEPK6BEntry" title="BPath::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> functions that accept <span class="htype">const char*</span> arguments. If you want to turn your <span class="hclass">BPath</span> into a
+<a class="reference internal" href="../../kits/storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a> (for example), you would do this (including error
+checks):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">BFile</span><span class="w"> </span><span class="nf">file</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">());</span><span class="w"></span>
+<span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InitCheck</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="n">SetTo</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">());</span><span class="w"></span>
+</pre></div>
+</div>
+<p>To convert a <span class="hclass">BPath</span> to an <span class="htype">entry_ref</span>, pass the pathname
+to the <span class="xref std std-ref">get_ref_for_path()</span> function:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">entry_ref</span><span class="w"> </span><span class="n">ref</span><span class="p">;</span><span class="w"></span>
+<span class="n">status_t</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_ref_for_path</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ref</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>For you Node Monitor users: You can’t convert directly to a
+<span class="htype">node_ref</span> structure. The quickest way from here to there is:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">node_ref</span><span class="w"> </span><span class="n">nref</span><span class="p">;</span><span class="w"></span>
+<span class="n">status_t</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/* We&#39;ll skip InitCheck() and catch errors in GetNodeRef(). */</span><span class="w"></span>
+<span class="n">BEntry</span><span class="w"> </span><span class="nf">entry</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">());</span><span class="w"></span>
+<span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">entry</span><span class="p">.</span><span class="n">GetNodeRef</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nref</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="immutability">
+<h2>Immutability<a class="headerlink" href="#immutability" title="Permalink to this heading">¶</a></h2>
+<p>Remember, a <span class="hclass">BPath</span> represents a pathname, not a node. It isn’t
+“updated” when the file system changes:</p>
+<ul class="simple">
+<li><p>A <span class="hclass">BPath</span>’s pathname string never changes behind your back, even
+if the entry that it originally pointed to is renamed, moved, or deleted.</p></li>
+</ul>
+<p>For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BEntry</span><span class="w"> </span><span class="n">entry</span><span class="p">;</span><span class="w"></span>
+<span class="n">BPath</span><span class="w"> </span><span class="n">path</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/* Set a BPath, construct a BEntry from it, rename</span>
+<span class="cm">* the entry, and then print the BPath&#39;s pathname.</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">SetTo</span><span class="p">(</span><span class="s">&quot;/boot/lbj/fido&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">entry</span><span class="p">.</span><span class="n">SetTo</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">entry</span><span class="p">.</span><span class="n">Rename</span><span class="p">(</span><span class="s">&quot;rover&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Pathname: %sn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">Path</span><span class="p">());</span><span class="w"></span>
+</pre></div>
+</div>
+<p>We see…</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ Pathname: /boot/lbj/fido
+</pre></div>
+</div>
+<p>…even though the entry that the <span class="hclass">BPath</span> was constructed to
+represent has been renamed.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="node-info.html">BNodeInfo</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="query.html">BQuery</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

@@ -22,7 +22,7 @@
     <link rel="prev" title="BDeskbar" href="deskbar.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../index.html">
-          <span>The Haiku Book  documentation</span></a></h1>
+          <span>API Documentation</span></a></h1>
         <h2 class="heading"><span>JSON Handling</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
@@ -36,8 +36,30 @@
         </p>
 
       </div>
-      <div class="content" role="main">
         
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">JSON Handling</a><ul>
+<li><a class="reference internal" href="#potential-api-break">Potential API Break</a></li>
+<li><a class="reference internal" href="#resumption-of-play">Resumption of Play</a></li>
+<li><a class="reference internal" href="#parsing-with-generic-in-memory-model">Parsing with Generic In-Memory Model</a><ul>
+<li><a class="reference internal" href="#bmessage-structure">BMessage Structure</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stream-based-parsing">Stream-based Parsing</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
         
   <section id="json-handling">
 <h1>JSON Handling<a class="headerlink" href="#json-handling" title="Permalink to this heading">¶</a></h1>
@@ -68,11 +90,11 @@ data encoded as JSON.</p>
 <h2>Parsing with Generic In-Memory Model<a class="headerlink" href="#parsing-with-generic-in-memory-model" title="Permalink to this heading">¶</a></h2>
 <p>For some applications, parsing to an in-memory data structure is ideal. In such
 cases, the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BJson</span></code> class provides static methods for parsing a block
-on JSON data into a <a class="reference internal" href="../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> object. The application is then able
-to introspect the <a class="reference internal" href="../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> to obtain values.</p>
+on JSON data into a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> object. The application is then able
+to introspect the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> to obtain values.</p>
 <section id="bmessage-structure">
 <h3>BMessage Structure<a class="headerlink" href="#bmessage-structure" title="Permalink to this heading">¶</a></h3>
-<p>The <a class="reference internal" href="../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> class has the ability to carry a collection of
+<p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> class has the ability to carry a collection of
 key-value pairs. In the case of a JSON object type, the key-value pairs
 correlate to a JSON object or array. In the case of a JSON array type, the
 key-value pairs are the index of the elements in the JSON array, represented as
@@ -81,7 +103,7 @@ strings.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span> <span class="p">]</span>
 </pre></div>
 </div>
-<p>would be represented by the following <a class="reference internal" href="../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>:</p>
+<p>would be represented by the following <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 42%" />
@@ -106,7 +128,7 @@ strings.</p>
 </table>
 <p>A JSON object that, in its entirety, consists of a non-collection type such as a
 simple string or a boolean is not able to be represented by a
-<a class="reference internal" href="../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>; at the top level, there must be an array or an object for
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>; at the top level, there must be an array or an object for
 the parse to be successful.</p>
 </section>
 </section>
@@ -116,7 +138,9 @@ the parse to be successful.</p>
 </section>
 
 
+        <div class="clearer"></div>
       </div>
+          </div>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
@@ -130,7 +154,7 @@ the parse to be successful.</p>
       </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Haiku.
+        &#169; Copyright 2023, Haiku, Inc..
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>

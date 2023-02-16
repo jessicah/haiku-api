@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMailMessage &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BBuffer" href="../media/buffer.html" />
+    <link rel="prev" title="Threads and Teams" href="../kernel/threads_and_teams.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMailMessage</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../kernel/threads_and_teams.html">Threads and Teams</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../media/buffer.html">BBuffer</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BMailMessage</a><ul>
+<li><a class="reference internal" href="#constructing-a-mail-message">Constructing a Mail Message</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmailmessage">
+<h1 id="CPPv412BMailMessage">BMailMessage<a class="headerlink" href="#bmailmessage" title="Permalink to this heading">¶</a></h1>
+<p>The <a class="reference internal" href="../../kits/mail/mail-message.html#_CPPv412BMailMessage" title="BMailMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMailMessage</span></code></a> class provides an easy way to send e-mail
+messages. If you want to do it the hard way, look up the SMTP RFC and start
+plodding your way through the Network Kit documentation. You’ll get it
+working one of these days.</p>
+<p>Or you can sail right on through and be sending e-mail from your own
+applications in a matter of minutes using your friend, the
+<a class="reference internal" href="../../kits/mail/mail-message.html#_CPPv412BMailMessage" title="BMailMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMailMessage</span></code></a>.</p>
+<section id="constructing-a-mail-message">
+<h2>Constructing a Mail Message<a class="headerlink" href="#constructing-a-mail-message" title="Permalink to this heading">¶</a></h2>
+<p>To send an e-mail, you simply construct a new <a class="reference internal" href="../../kits/mail/mail-message.html#_CPPv412BMailMessage" title="BMailMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMailMessage</span></code></a>
+object, add a “To” header field, add the content, and send the message on
+its way. For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BMailMessage</span><span class="w"> </span><span class="o">*</span><span class="n">mail</span><span class="p">;</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">message</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">mail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BMailMessage</span><span class="p">();</span><span class="w"></span>
+<span class="n">mail</span><span class="o">-&gt;</span><span class="n">AddHeaderField</span><span class="p">(</span><span class="n">B_MAIL_TO</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bob@uncle.com&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">mail</span><span class="o">-&gt;</span><span class="n">AddHeaderField</span><span class="p">(</span><span class="n">B_MAIL_SUBJECT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hi&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hi, Uncle Bob!&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="n">mail</span><span class="o">-&gt;</span><span class="n">AddContent</span><span class="p">(</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">message</span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This is a pretty basic message. The subject is “Hi,” the message is sent
+to “bob&#64;uncle.com,” and the message body is “Hi, Uncle Bob!”</p>
+<p>You can add other fields, including carbon-copy (CC) and blind-carbon-copy
+(BCC) fields, and you can add attachments. For example, if you want to also
+attach a file called /boot/home/file.zip, you can do the following:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">mail</span><span class="o">-&gt;</span><span class="n">AddEnclosure</span><span class="p">(</span><span class="s">&quot;/boot/home/file.zip&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Once your message has been constructed, you can send it by calling
+<a class="reference internal" href="../../kits/mail/mail-message.html#_CPPv4N12BMailMessage4SendEbb" title="BMailMessage::Send"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Send()</span></code></a>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">mail</span><span class="o">-&gt;</span><span class="n">Send</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+<p>That’s the basic technique behind sending e-mail under the BeOS. The mail
+daemon also fetches incoming mail from a POP server, but you can’t use the
+<a class="reference internal" href="../../kits/mail/mail-message.html#_CPPv412BMailMessage" title="BMailMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMailMessage</span></code></a> class to read these messages; you use the BeOS
+<a class="reference internal" href="../../kits/storage/query.html#_CPPv46BQuery" title="BQuery"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BQuery</span></code></a> and <a class="reference internal" href="../../kits/storage/node.html#_CPPv45BNode" title="BNode"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNode</span></code></a> classes to locate messages of
+interest and obtain information about them. See “Querying Mail Messages”
+for more information.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../kernel/threads_and_teams.html">Threads and Teams</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../media/buffer.html">BBuffer</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

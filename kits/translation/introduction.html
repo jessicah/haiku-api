@@ -18,7 +18,7 @@
     <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="The Application Kit" href="overview.html" />
+    <link rel="next" title="BTranslationUtils" href="translation-utils.html" />
     <link rel="prev" title="BBitmapStream" href="bitmap-stream.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
@@ -32,7 +32,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="overview.html">The Application Kit</a>&#160;&#160;»
+        <a href="translation-utils.html">BTranslationUtils</a>&#160;&#160;»
         </p>
 
       </div>
@@ -54,17 +54,17 @@
       <div class="content" role="main">
         
   <section id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv412Introduction">Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
 <p>The Translation Kit provides a framework for converting data streams between different media
 formats. A word processor, for example, could use the Translation Kit to import and export documents
 in a variety of formats, including HTML, PostScript, and plain ASCII, while working in its own
 native format.</p>
 <p>The translation itself is performed by translator add-ons (or, less globally,
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTranslator</span></code> objects). You can create your own translator add-ons and
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTranslator</span></code> subclasses, or you can use the translators that are supplied by Haiku and
+<a class="reference internal" href="translator.html#_CPPv411BTranslator" title="BTranslator"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTranslator</span></code></a> objects). You can create your own translator add-ons and
+<a class="reference internal" href="translator.html#_CPPv411BTranslator" title="BTranslator"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTranslator</span></code></a> subclasses, or you can use the translators that are supplied by Haiku and
 third parties.</p>
 <p>The Translation Kit operates on <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPositionIO</span></code> objects and their descendants. Since
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code> derives from <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPositionIO</span></code>, the Translation Kit is naturally suited
+<a class="reference internal" href="../storage/file.html#_CPPv45BFile" title="BFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFile</span></code></a> derives from <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPositionIO</span></code>, the Translation Kit is naturally suited
 for importing and exporting files. However, it’s far more general; the Translation Kit could be
 used, for example, to translate input directly to or from a network connection, provided a suitable
 <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPositionIO</span></code> subclass was available. More importantly, <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMemoryIO</span></code> and
@@ -72,14 +72,14 @@ used, for example, to translate input directly to or from a network connection, 
 <p>Applications primarily interact with the Translation Kit through the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTranslatorRoster</span></code>
 class. This class encapsulates the functionality required to load and unload translators, discover
 their capabilities, configure the translators, and execute the translators.</p>
-<p>Applications may also use the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTranslationUtils</span></code> class, a collection of static utility
+<p>Applications may also use the <a class="reference internal" href="translation-utils.html#_CPPv417BTranslationUtils" title="BTranslationUtils"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTranslationUtils</span></code></a> class, a collection of static utility
 functions designed to simplify access to the Translation Kit. Currently the class only defines
 members for loading bitmap images from files, resources, and general <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPositionIO</span></code> data
 streams.</p>
 </section>
 <hr class="docutils" />
 <section id="media-formats">
-<h1>Media Formats<a class="headerlink" href="#media-formats" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv413Media Formats">Media Formats<a class="headerlink" href="#media-formats" title="Permalink to this heading">¶</a></h1>
 <p>The Translation Kit identifies a particular media format by a media group and format type. Media
 groups identify the class of media represented by a format. Defintions for the common media groups
 can be found i <code class="docutils literal notranslate"><span class="pre">translation/TranslatorFormats.h</span></code>.</p>
@@ -141,7 +141,7 @@ format is <code class="xref cpp cpp-enum docutils literal notranslate"><span cla
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="overview.html">The Application Kit</a>&#160;&#160;»
+        <a href="translation-utils.html">BTranslationUtils</a>&#160;&#160;»
         </p>
 
       </div>

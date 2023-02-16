@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BTranslator &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="LICENSE" href="../../LICENSE.html" />
+    <link rel="prev" title="BTranslationUtils" href="translation-utils.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BTranslator</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="translation-utils.html">BTranslationUtils</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../LICENSE.html">LICENSE</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="btranslator">
+<h1 id="CPPv411BTranslator">BTranslator<a class="headerlink" href="#btranslator" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference internal" href="../../kits/translation/translator.html#_CPPv411BTranslator" title="BTranslator"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTranslator</span></code></a> is an abstract superclass that you subclass to
+define your own proprietary translator objects, one translator per
+<a class="reference internal" href="../../kits/translation/translator.html#_CPPv411BTranslator" title="BTranslator"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTranslator</span></code></a> subclass. You add instances of your
+<a class="reference internal" href="../../kits/translation/translator.html#_CPPv411BTranslator" title="BTranslator"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTranslator</span></code></a> subclasses to a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTranslatorRoster</span></code>
+through <a class="reference internal" href="../../kits/translation/translator-roster.html#_CPPv4N17BTranslatorRoster14AddTranslatorsEPKc" title="BTranslatorRoster::AddTranslators"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BTranslatorRoster::AddTranslators()</span></code></a>.
+<a class="reference internal" href="../../kits/translation/translator.html#_CPPv411BTranslator" title="BTranslator"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTranslator</span></code></a> objects that your app creates and adds to the
+Roster are not visible to other applications.</p>
+<p>Note that the <a class="reference internal" href="../../kits/translation/translator.html#_CPPv411BTranslator" title="BTranslator"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTranslator</span></code></a> destructor is protected; you never
+delete a <a class="reference internal" href="../../kits/translation/translator.html#_CPPv411BTranslator" title="BTranslator"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTranslator</span></code></a> from outside the class. Insead, you
+<a class="reference internal" href="../../kits/translation/translator.html#_CPPv4N11BTranslator7ReleaseEv" title="BTranslator::Release"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Release()</span></code></a> it. See <a class="reference internal" href="../../kits/translation/translator.html#_CPPv4N11BTranslator7AcquireEv" title="BTranslator::Acquire"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Acquire()</span></code></a> for details.</p>
+<p>The primary <a class="reference internal" href="../../kits/translation/translator.html#_CPPv411BTranslator" title="BTranslator"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTranslator</span></code></a> functions are similar to the
+functions and data that a translator add-on supplies. Most of the
+<a class="reference internal" href="../../kits/translation/translator.html#_CPPv411BTranslator" title="BTranslator"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTranslator</span></code></a> functions take you to the Translator Add-ons
+descriptions.</p>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="translation-utils.html">BTranslationUtils</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../LICENSE.html">LICENSE</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

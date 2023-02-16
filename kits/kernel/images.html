@@ -44,13 +44,13 @@
     <ul>
 <li><a class="reference internal" href="#">Images</a><ul>
 <li><a class="reference internal" href="#image-functions">Image Functions</a><ul>
-<li><a class="reference internal" href="#_CPPv4N6Images14get_image_infoE8image_idP10image_info">get_image_info</a></li>
-<li><a class="reference internal" href="#_CPPv4N6Images19get_next_image_infoE7team_idP5int32P10image_info">get_next_image_info</a></li>
-<li><a class="reference internal" href="#_CPPv4N6Images16get_image_symbolE8image_idPc5int32PPv">get_image_symbol</a></li>
-<li><a class="reference internal" href="#_CPPv4N6Images20get_nth_image_symbolE8image_id5int32P5int32P5int32PPv">get_nth_image_symbol</a></li>
-<li><a class="reference internal" href="#_CPPv4N6Images11load_add_onEPKc">load_add_on</a></li>
-<li><a class="reference internal" href="#_CPPv4N6Images13unload_add_onE8image_id">unload_add_on</a></li>
-<li><a class="reference internal" href="#_CPPv4N6Images10load_imageEiPPKcPPKc">load_image</a></li>
+<li><a class="reference internal" href="#_CPPv414get_image_info8image_idP10image_info">get_image_info</a></li>
+<li><a class="reference internal" href="#_CPPv419get_next_image_info7team_idP5int32P10image_info">get_next_image_info</a></li>
+<li><a class="reference internal" href="#_CPPv416get_image_symbol8image_idPc5int32PPv">get_image_symbol</a></li>
+<li><a class="reference internal" href="#_CPPv420get_nth_image_symbol8image_id5int32P5int32P5int32PPv">get_nth_image_symbol</a></li>
+<li><a class="reference internal" href="#_CPPv411load_add_onPKc">load_add_on</a></li>
+<li><a class="reference internal" href="#_CPPv413unload_add_on8image_id">unload_add_on</a></li>
+<li><a class="reference internal" href="#_CPPv410load_imageiPPKcPPKc">load_image</a></li>
 </ul>
 </li>
 </ul>
@@ -65,57 +65,74 @@
       <div class="content" role="main">
         
   <section id="images">
-<h1>Images<a class="headerlink" href="#images" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv46Images">Images<a class="headerlink" href="#images" title="Permalink to this heading">¶</a></h1>
+<table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Declared in:</p></td>
+<td><p>kernel/image.h</p></td>
+</tr>
+<tr class="row-even"><td><p>Library:</p></td>
+<td><p>libroot.so</p></td>
+</tr>
+</tbody>
+</table>
+<p>This isn’t about graphics. An image is compiled code, of which there are
+three types: app images, library images, and add-on images. An app image is
+executable code that can be launched. A library image is a collection of
+shared code that you link against when you’re compiling your application.
+An add-on image is code that an app can load and run while the app itself
+is running. Note that an add-on can also be an app; in other words, you can
+create an image that can be launched by itself, or that can be loaded into
+another application.</p>
+<p>For more information on creating and using images, see “<span class="xref std std-ref">Image Overview</span>”.</p>
 <section id="image-functions">
 <h2>Image Functions<a class="headerlink" href="#image-functions" title="Permalink to this heading">¶</a></h2>
-<section id="_CPPv4N6Images14get_image_infoE8image_idP10image_info">
+<section id="_CPPv414get_image_info8image_idP10image_info">
 </section>
-<section id="_CPPv4N6Images19get_next_image_infoE7team_idP5int32P10image_info">
+<section id="_CPPv419get_next_image_info7team_idP5int32P10image_info">
 </section>
 <h3>
-get_image_info(), get_next_image_info()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">Images</span><span class="p">::</span></span><span class="n">get_image_info</span><span class="sig-paren">(</span><span class="n">image_id</span><span class="w"> </span><span class="n sig-param">image</span>, <span class="n">image_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">Images</span><span class="p">::</span></span><span class="n">get_next_image_info</span><span class="sig-paren">(</span><span class="n">team_id</span><span class="w"> </span><span class="n sig-param">team</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span>, <span class="n">image_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="p">{}</span> <span class="n">image_info</span>
+get_image_info(), get_next_image_info()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">get_image_info</span><span class="sig-paren">(</span><span class="n">image_id</span><span class="w"> </span><span class="n sig-param">image</span>, <span class="n">image_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">get_next_image_info</span><span class="sig-paren">(</span><span class="n">team_id</span><span class="w"> </span><span class="n sig-param">team</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">cookie</span>, <span class="n">image_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span></pre><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="n">image_info</span><span class="w"></span>
 </pre></div>
 </div>
-<p>These functions copy, into the <span class="hparameter">info</span> argument, the image_info structure
-for a particular image. The get_image_info() function gets the
-information for the image identified by <span class="hparameter">image</span>.
-The get_next_image_info() function lets you step through the list of a
-team’s images through iterated calls. The <span class="hparameter">team</span> argument identifies the
-team you want to look at; a <span class="hparameter">team</span> value of 0 means the team of the calling
-thread. The <span class="hparameter">cookie</span> argument is a placemark; you set it to 0 on your first
-call, and let the function do the rest. The function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>
-when there are no more images to visit:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Get</span> <span class="n">the</span> <span class="n">image_info</span> <span class="k">for</span> <span class="n">every</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">team</span><span class="o">.</span> <span class="o">*/</span>
-<span class="n">image_info</span> <span class="n">info</span><span class="p">;</span>
-<span class="n">int32</span> <span class="n">cookie</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="k">while</span> <span class="p">(</span><span class="n">get_next_image_info</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cookie</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">info</span><span class="p">)</span> <span class="o">==</span> <span class="n">B_OK</span><span class="p">)</span>
-   <span class="o">...</span>
+<p>These functions copy, into the <span class="hparameter">info</span> argument, the
+<span class="htype">image_info</span> structure for a particular image. The get_image_info()
+function gets the information for the image identified by <span class="hparameter">image</span>.</p>
+<p>The get_next_image_info() function lets you step through the list of a
+team’s images through iterated calls. The <span class="hparameter">team</span> argument
+identifies the team you want to look at; a <span class="hparameter">team</span> value of 0 means
+the team of the calling thread. The <span class="hparameter">cookie</span> argument is a
+placemark; you set it to 0 on your first call, and let the function do the
+rest. The function returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code> when there are no
+more images to visit:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Get the image_info for every image in this team. */</span><span class="w"></span>
+<span class="n">image_info</span><span class="w"> </span><span class="n">info</span><span class="p">;</span><span class="w"></span>
+<span class="n">int32</span><span class="w"> </span><span class="n">cookie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">get_next_image_info</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cookie</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">info</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The image_info structure is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
-    <span class="n">image_id</span>   <span class="nb">id</span><span class="p">;</span>
-    <span class="n">image_type</span> <span class="nb">type</span><span class="p">;</span>
-    <span class="n">int32</span>      <span class="n">sequence</span><span class="p">;</span>
-    <span class="n">int32</span>      <span class="n">init_order</span><span class="p">;</span>
-    <span class="n">B_PFV</span>      <span class="n">init_routine</span><span class="p">;</span>
-    <span class="n">B_PFV</span>      <span class="n">term_routine</span><span class="p">;</span>
-    <span class="n">dev_t</span>      <span class="n">device</span><span class="p">;</span>
-    <span class="n">ino_t</span>      <span class="n">node</span><span class="p">;</span>
-    <span class="n">char</span>       <span class="n">name</span><span class="p">[</span><span class="n">MAXPATHLEN</span><span class="p">];</span>
-    <span class="n">void</span><span class="o">*</span>      <span class="n">text</span><span class="p">;</span>
-    <span class="n">void</span><span class="o">*</span>      <span class="n">data</span><span class="p">;</span>
-    <span class="n">int32</span>      <span class="n">text_size</span><span class="p">;</span>
-    <span class="n">int32</span>      <span class="n">data_size</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">image_info</span><span class="p">;</span>
+<p>The <span class="htype">image_info</span> structure is:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">image_id</span><span class="w">   </span><span class="n">id</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">image_type</span><span class="w"> </span><span class="n">type</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">int32</span><span class="w">      </span><span class="n">sequence</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">int32</span><span class="w">      </span><span class="n">init_order</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_PFV</span><span class="w">      </span><span class="n">init_routine</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_PFV</span><span class="w">      </span><span class="n">term_routine</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">dev_t</span><span class="w">      </span><span class="n">device</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">ino_t</span><span class="w">      </span><span class="n">node</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w">       </span><span class="n">name</span><span class="p">[</span><span class="n">MAXPATHLEN</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w">      </span><span class="n">text</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w">      </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">int32</span><span class="w">      </span><span class="n">text_size</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">int32</span><span class="w">      </span><span class="n">data_size</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">image_info</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The fields are:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Description</p></th>
@@ -123,16 +140,22 @@ when there are no more images to visit:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>id.</p></td>
-<td><p>The image’s image_id number.</p></td>
+<td><p>The image’s <span class="htype">image_id</span> number.</p></td>
 </tr>
 <tr class="row-odd"><td><p>type.</p></td>
-<td><p>A constant (listed below) that tells whether this is an app, library, or add-on image.</p></td>
+<td><p>A constant (listed below) that tells whether this is an app, library, or
+add-on image.</p></td>
 </tr>
 <tr class="row-even"><td><p>sequenceandinit_order.</p></td>
-<td><p>These are zero-based ordinal numbers that give the order in which the image was loaded and initialized, compared to all the other images in this team.</p></td>
+<td><p>These are zero-based ordinal numbers that give the order in which the
+image was loaded and initialized, compared to all the other images in this
+team.</p></td>
 </tr>
 <tr class="row-odd"><td><p>init_routineandterm_routine.</p></td>
-<td><p>These are pointers to the functions that are used to intialize and terminate the image (more specifically, the image’s main thread). The B_PFV type is a cover for a pointer to a (void*) function.</p></td>
+<td><p>These are pointers to the functions that are used to intialize and
+terminate the image (more specifically, the image’s main thread). The
+<span class="htype">B_PFV</span> type is a cover for a pointer to a (<span class="htype">void*</span>)
+function.</p></td>
 </tr>
 <tr class="row-even"><td><p>device.</p></td>
 <td><p>The device that the image file lives on.</p></td>
@@ -151,139 +174,137 @@ when there are no more images to visit:</p>
 </tr>
 </tbody>
 </table>
-<p>The self-explanatory image_type constants are:</p>
+<p>The self-explanatory <span class="htype">image_type</span> constants are:</p>
 <ul class="simple">
-<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_APP_IMAGE</span></code></p></li>
-<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_LIBRARY_IMAGE</span></code></p></li>
-<li><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ADD_ON_IMAGE</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_APP_IMAGE</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LIBRARY_IMAGE</span></code></p></li>
+<li><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ADD_ON_IMAGE</span></code></p></li>
 </ul>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The image was found; <span class="hparameter">info</span> contains valid information.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
-<td><p><span class="hparameter">image</span> doesn’t identify an existing image, <span class="hparameter">team</span> doesn’t identify an existing team, or there are no more images to visit.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p><span class="hparameter">image</span> doesn’t identify an existing image, <span class="hparameter">team</span> doesn’t
+identify an existing team, or there are no more images to visit.</p></td>
 </tr>
 </tbody>
 </table>
-<section id="_CPPv4N6Images16get_image_symbolE8image_idPc5int32PPv">
+<section id="_CPPv416get_image_symbol8image_idPc5int32PPv">
 </section>
-<section id="_CPPv4N6Images20get_nth_image_symbolE8image_id5int32P5int32P5int32PPv">
+<section id="_CPPv420get_nth_image_symbol8image_id5int32P5int32P5int32PPv">
 </section>
 <h3>
-get_image_symbol(), get_nth_image_symbol()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">Images</span><span class="p">::</span></span><span class="n">get_image_symbol</span><span class="sig-paren">(</span><span class="n">image_id</span><span class="w"> </span><span class="n sig-param">image</span>, <span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">symbol_name</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">symbol_type</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">location</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">Images</span><span class="p">::</span></span><span class="n">get_nth_image_symbol</span><span class="sig-paren">(</span><span class="n">image_id</span><span class="w"> </span><span class="n sig-param">image</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">n</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name_length</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">symbol_type</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">location</span><span class="sig-paren">)</span></pre><p>get_image_symbol() returns, in
-<span class="hparameter">location</span>, a pointer to the address of the
-symbol that’s identified by the <span class="hparameter">image</span>,
-<span class="hparameter">symbol_name</span>, and <span class="hparameter">symbol_type</span>
-arguments. An example demonstrating the use of this function is given in
-“Symbols.”
-get_nth_image_symbol() returns information about
-the <span class="hparameter">n</span>’th symbol in the
-given <span class="hparameter">image</span>. The information is returned in the arguments:</p>
+get_image_symbol(), get_nth_image_symbol()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">get_image_symbol</span><span class="sig-paren">(</span><span class="n">image_id</span><span class="w"> </span><span class="n sig-param">image</span>, <span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">symbol_name</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">symbol_type</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">location</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">get_nth_image_symbol</span><span class="sig-paren">(</span><span class="n">image_id</span><span class="w"> </span><span class="n sig-param">image</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">n</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name_length</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">symbol_type</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">location</span><span class="sig-paren">)</span></pre><p>get_image_symbol() returns, in <span class="hparameter">location</span>, a pointer to the
+address of the symbol that’s identified by the <span class="hparameter">image</span>,
+<span class="hparameter">symbol_name</span>, and <span class="hparameter">symbol_type</span> arguments. An example
+demonstrating the use of this function is given in “Symbols.”</p>
+<p>get_nth_image_symbol() returns information about the <span class="hparameter">n</span>’th symbol
+in the given <span class="hparameter">image</span>. The information is returned in the arguments:</p>
 <ul class="simple">
-<li><p><span class="hparameter">name</span> is the name of the symbol. You have to allocate the <span class="hparameter">name</span> buffer before you pass it in—the function copies the name into the buffer.</p></li>
-<li><p>You point <span class="hparameter">name_length</span> to an integer that gives the length of the name buffer that you’re passing in. The function uses this value to truncate the string that it copies into name. The function then resets <span class="hparameter">name_length</span> to the full (untruncated) length of the symbol’s name (plus one byte to accommodate a terminating <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>). To ensure that you’ve gotten the symbol’s full name, you should compare the in-going value of <span class="hparameter">name_length</span> with the value that the function sets it to. If the in-going value is less than the full length, you can then re-invoke get_nth_image_symbol() with an adequately lengthened <span class="hparameter">name</span> buffer, and an increased <span class="hparameter">name_length</span> value.</p></li>
+<li><p><span class="hparameter">name</span> is the name of the symbol. You have to allocate the
+<span class="hparameter">name</span> buffer before you pass it in—the function copies the name
+into the buffer.</p></li>
+<li><p>You point <span class="hparameter">name_length</span> to an integer that gives the length of the
+name buffer that you’re passing in. The function uses this value to
+truncate the string that it copies into name. The function then resets
+<span class="hparameter">name_length</span> to the full (untruncated) length of the symbol’s name
+(plus one byte to accommodate a terminating <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>). To ensure
+that you’ve gotten the symbol’s full name, you should compare the in-going
+value of <span class="hparameter">name_length</span> with the value that the function sets it to.
+If the in-going value is less than the full length, you can then re-invoke
+get_nth_image_symbol() with an adequately lengthened <span class="hparameter">name</span> buffer,
+and an increased <span class="hparameter">name_length</span> value.</p></li>
 </ul>
 <p>Keep in mind that name_length is reset each time you call
 get_nth_image_symbol(). If you’re calling the function iteratively (to
-retrieve all the symbols in an image), you need to
-reset the <span class="hparameter">name_length</span>
-value between calls.</p>
+retrieve all the symbols in an image), you need to reset the
+<span class="hparameter">name_length</span> value between calls.</p>
 <ul class="simple">
-<li><p>The function sets <span class="hparameter">symbol_type</span> to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SYMBOL_TYPE_DATA</span></code> if the symbol is a variable, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SYMBOL_TYPE_TEXT</span></code> if the symbol is a function, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SYMBOL_TYPE_ANY</span></code> if the executable format doesn’t distinguish between the two. The argument’s value going into the function is of no consequence.</p></li>
+<li><p>The function sets <span class="hparameter">symbol_type</span> to
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SYMBOL_TYPE_DATA</span></code> if the symbol is a variable,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SYMBOL_TYPE_TEXT</span></code> if the symbol is a function, or
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SYMBOL_TYPE_ANY</span></code> if the executable format doesn’t
+distinguish between the two. The argument’s value going into the function
+is of no consequence.</p></li>
 <li><p>The function sets <span class="hparameter">location</span> to point to the symbol’s address.</p></li>
 </ul>
-<p>To retrieve image_id numbers on which these functions can act, use the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">next()</span></code>
-function. Such numbers are also returned directly
-when you load an add-on image through the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">add()</span></code>
-function.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<p>To retrieve <span class="htype">image_id</span> numbers on which these functions can act,
+use the <span class="xref std std-ref">get_next_image_info()</span> function. Such numbers are also
+returned directly when you load an add-on image through the
+<span class="xref std std-ref">load_add_on()</span> function.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The symbol was found.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_IMAGE_ID</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_IMAGE_ID</span></code>.</p></td>
 <td><p><span class="hparameter">image</span> doesn’t identify an existing image.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_INDEX</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_INDEX</span></code>.</p></td>
 <td><p><span class="hparameter">n</span> is out-of-bounds.</p></td>
 </tr>
 </tbody>
 </table>
-<section id="_CPPv4N6Images11load_add_onEPKc">
+<section id="_CPPv411load_add_onPKc">
 </section>
-<section id="_CPPv4N6Images13unload_add_onE8image_id">
+<section id="_CPPv413unload_add_on8image_id">
 </section>
 <h3>
-load_add_on(), unload_add_on()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">image_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">Images</span><span class="p">::</span></span><span class="n">load_add_on</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">pathname</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">Images</span><span class="p">::</span></span><span class="n">unload_add_on</span><span class="sig-paren">(</span><span class="n">image_id</span><span class="w"> </span><span class="n sig-param">image</span><span class="sig-paren">)</span></pre><p>load_add_on() loads an add-on image,
-identified by <span class="hparameter">pathname</span>, into your
-application’s address space.</p>
+load_add_on(), unload_add_on()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">image_id</span><span class="w"> </span><span class="n">load_add_on</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">pathname</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="n">unload_add_on</span><span class="sig-paren">(</span><span class="n">image_id</span><span class="w"> </span><span class="n sig-param">image</span><span class="sig-paren">)</span></pre><p>load_add_on() loads an add-on image, identified by <span class="hparameter">pathname</span>,
+into your application’s address space.</p>
 <ul class="simple">
-<li><p><span class="hparameter">pathname</span> can be absolute or relative; if it’s relative, it’s reckoned off the base path specified by the ADDON_PATH environment variable.</p></li>
-<li><p>The function returns an image_id (a positive integer) that represents the loaded image. Image ID numbers are unique across the system.</p></li>
+<li><p><span class="hparameter">pathname</span> can be absolute or relative; if it’s relative, it’s
+reckoned off the base path specified by the ADDON_PATH environment
+variable.</p></li>
+<li><p>The function returns an <span class="htype">image_id</span> (a positive integer) that
+represents the loaded image. Image ID numbers are unique across the system.</p></li>
 </ul>
 <p>An example that demonstrates the use of load_add_on() is given in
-“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">LoadingAnAddOnImage()</span></code>.”
-You can load the same add-on image twice; each time you load the add-on a
-new, unique image_id is created and returned.
-unload_add_on() removes the add-on image identified by the argument. The
+“<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Loading</span> <span class="pre">an</span> <span class="pre">Add-on</span> <span class="pre">Image</span></code>.”</p>
+<p>You can load the same add-on image twice; each time you load the add-on a
+new, unique <span class="htype">image_id</span> is created and returned.</p>
+<p>unload_add_on() removes the add-on image identified by the argument. The
 image’s symbols are removed, and the memory that they represent is freed.
 If the argument doesn’t identify a valid image, the function returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>. Otherwise, it returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>. Otherwise, it returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Positiveimage_idvalue (load) or<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>(unload).</p></td>
+<tr class="row-even"><td><p>Positiveimage_idvalue (load) or<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>(unload).</p></td>
 <td><p>Success.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
-<td><p>The image couldn’t be loaded (for whatever reason), or image isn’t a valid image ID.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<td><p>The image couldn’t be loaded (for whatever reason), or image isn’t a valid
+image ID.</p></td>
 </tr>
 </tbody>
 </table>
-<section id="_CPPv4N6Images10load_imageEiPPKcPPKc">
+<section id="_CPPv410load_imageiPPKcPPKc">
 </section>
 <h3>
-load_image()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">thread_id</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">Images</span><span class="p">::</span></span><span class="n">load_image</span><span class="sig-paren">(</span><span class="kt">int</span><span class="w"> </span><span class="n sig-param">argc</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">argv</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">env</span><span class="sig-paren">)</span></pre><p>Loads an app image into the system (it doesn’t load the image into the
+load_image()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">thread_id</span><span class="w"> </span><span class="n">load_image</span><span class="sig-paren">(</span><span class="kt">int</span><span class="w"> </span><span class="n sig-param">argc</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">argv</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">env</span><span class="sig-paren">)</span></pre><p>Loads an app image into the system (it doesn’t load the image into the
 caller’s address space), creates a separate team for the new application,
 and spawns and returns the ID of the team’s main thread. The image is
-identified by the pathname given in <span class="hparameter">argv</span>[0].
-The arguments are passed to the image’s main() function (they show up
+identified by the pathname given in <span class="hparameter">argv</span>[0].</p>
+<p>The arguments are passed to the image’s main() function (they show up
 there as the function’s similarly named arguments):</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Description</p></th>
@@ -294,29 +315,33 @@ there as the function’s similarly named arguments):</p>
 <td><p>Gives the number of entries that are in the <span class="hparameter">argv</span> array.</p></td>
 </tr>
 <tr class="row-odd"><td><p>argv</p></td>
-<td><p>Is a list of the parameters to be passed to the image. The first string in the <span class="hparameter">argv</span> array must be the name of the image file. You then install any other arguments you want in the array, and terminate the array with a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> entry. Note that the value of <span class="hparameter">argc</span> shouldn’t count <span class="hparameter">argv</span>’s terminating <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p></td>
+<td><p>Is a list of the parameters to be passed to the image. The first string in
+the <span class="hparameter">argv</span> array must be the name of the image file. You then
+install any other arguments you want in the array, and terminate the array
+with a <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> entry. Note that the value of <span class="hparameter">argc</span>
+shouldn’t count <span class="hparameter">argv</span>’s terminating <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p></td>
 </tr>
 <tr class="row-even"><td><p>envp</p></td>
-<td><p>Is an array of environment variables that are also passed to main(). Typically, you use the global environ pointer:extern char **environ; load_image(…, environ);</p></td>
+<td><p>Is an array of environment variables that are also passed to main().
+Typically, you use the global <span class="hparameter">environ</span> pointer:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">extern</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">environ</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">load_image</span><span class="p">(...,</span><span class="w"> </span><span class="n">environ</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</td>
 </tr>
 </tbody>
 </table>
-<p>The <span class="hparameter">argv</span> and <span class="hparameter">envp</span>
-arrays are copied into the new thread’s address space.
-If you allocated either of these arrays, it’s safe to free them
-immediately after load_image() returns.
-The thread that’s returned by load_image() is in a suspended state. To
-start the thread running, you pass the thread_id to
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">thread()</span></code> or
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">for()</span></code>.
-An example that demonstrates the use of load_image()
-is given in
-“Loading an App Image.”</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<p>The <span class="hparameter">argv</span> and <span class="hparameter">envp</span> arrays are copied into the new
+thread’s address space. If you allocated either of these arrays, it’s safe
+to free them immediately after load_image() returns.</p>
+<p>The thread that’s returned by load_image() is in a suspended state. To
+start the thread running, you pass the <span class="htype">thread_id</span> to
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">resume_thread()</span></code> or <span class="xref std std-ref">wait_for_thread()</span>.</p>
+<p>An example that demonstrates the use of load_image() is given in “Loading
+an App Image.”</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
@@ -326,7 +351,7 @@ is given in
 <tr class="row-even"><td><p>Positive integers.</p></td>
 <td><p>Success.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
 <td><p>Failure, for whatever reason.</p></td>
 </tr>
 </tbody>

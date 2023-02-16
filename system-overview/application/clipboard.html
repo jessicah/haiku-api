@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BClipboard &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BCursor" href="cursor.html" />
+    <link rel="prev" title="BRoster" href="classes/roster.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BClipboard</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="classes/roster.html">BRoster</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="cursor.html">BCursor</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BClipboard</a><ul>
+<li><a class="reference internal" href="#the-system-clipboard">The System Clipboard</a></li>
+<li><a class="reference internal" href="#the-clipboard-message">The Clipboard Message</a></li>
+<li><a class="reference internal" href="#writing-to-the-clipboard">Writing to the Clipboard</a></li>
+<li><a class="reference internal" href="#reading-from-the-clipboard">Reading from the Clipboard</a></li>
+<li><a class="reference internal" href="#persistence">Persistence</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bclipboard">
+<h1 id="CPPv410BClipboard">BClipboard<a class="headerlink" href="#bclipboard" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv410BClipboard" title="BClipboard"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BClipboard</span></code></a> object is an interface to a clipboard, a
+resource that provides system-wide, temporary data storage. Clipboards are
+identified by name; if two apps want to refer to the same clipboard, they
+simply create respective <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv410BClipboard" title="BClipboard"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BClipboard</span></code></a> objects with the same
+name:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* App A: This creates a clipboard named &quot;MyClipboard&quot;. */</span><span class="w"></span>
+<span class="n">BClipboard</span><span class="w"> </span><span class="o">*</span><span class="n">appAclipboard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BClipboard</span><span class="p">(</span><span class="s">&quot;MyClipboard&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/* App B: This object refers to the clipboard already created</span>
+<span class="cm">   by App A. */</span><span class="w"></span>
+<span class="n">BClipboard</span><span class="w"> </span><span class="o">*</span><span class="n">appBclipboard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BClipboard</span><span class="p">(</span><span class="s">&quot;MyClipboard&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="the-system-clipboard">
+<h2>The System Clipboard<a class="headerlink" href="#the-system-clipboard" title="Permalink to this heading">¶</a></h2>
+<p>In practice, you rarely need to construct your own <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv410BClipboard" title="BClipboard"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BClipboard</span></code></a>
+object; instead, you use the <span class="hclass">BClipboard</span> that’s created for you by
+your <a class="reference internal" href="../../kits/application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> object. This object, which you refer to
+through the global <code class="xref cpp cpp-var docutils literal notranslate"><span class="pre">be_clipboard</span></code> variable, accesses the default
+system clipboard. Data that you write to your <code class="xref cpp cpp-var docutils literal notranslate"><span class="pre">be_clipboard</span></code>
+object can be read from any other app’s <code class="xref cpp cpp-var docutils literal notranslate"><span class="pre">be_clipboard</span></code> For
+example, the cut/copy/paste operations defined by <a class="reference internal" href="../../kits/interface/text-view.html#_CPPv49BTextView" title="BTextView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTextView</span></code></a>
+transfer data through the system clipboard.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>To access the system clipboard without creating a
+<a class="reference internal" href="../../kits/application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> object, construct a <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv410BClipboard" title="BClipboard"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BClipboard</span></code></a>
+object with the name “system”. The system clipboard is under the control of
+the user; you should only read or write the system clipboard as a direct
+result of the user’s actions. If you create your own clipboards don’t name
+them “system”.</p>
+</div>
+</section>
+<section id="the-clipboard-message">
+<h2>The Clipboard Message<a class="headerlink" href="#the-clipboard-message" title="Permalink to this heading">¶</a></h2>
+<p>To access a clipboard’s data, you call functions on a
+<a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> that the <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv410BClipboard" title="BClipboard"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BClipboard</span></code></a> object hands you
+(through its <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv4NK10BClipboard4DataEv" title="BClipboard::Data"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Data()</span></code></a> function). The
+<a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> follows these conventions:</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="../../kits/application/message.html#_CPPv44what" title="what"><code class="xref cpp cpp-var docutils literal notranslate"><span class="pre">what</span></code></a> value is unused.</p></li>
+<li><p>The data is stored in a message field. The field should be typed as
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MIME_TYPE</span></code>; the MIME type that describes the data should
+be used as the name of the field that holds the data (see “<span class="xref std std-ref">Writing to the Clipboard</span>” for an example).</p></li>
+<li><p>If the <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> contains more than one field, each field
+should present the same data in a different format. For example, the
+StyledEdit app writes text data in its own format (in order to encode the
+fonts, colors, etc.) and also writes the data as plain ASCII text (MIME
+type “text/plain”).</p></li>
+</ul>
+</section>
+<section id="writing-to-the-clipboard">
+<h2>Writing to the Clipboard<a class="headerlink" href="#writing-to-the-clipboard" title="Permalink to this heading">¶</a></h2>
+<p>The following annotated example shows how to write to the clipboard.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BMessage</span><span class="o">*</span><span class="w"> </span><span class="n">clip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BMessage</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">be_clipboard</span><span class="o">-&gt;</span><span class="n">Lock</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">be_clipboard</span><span class="o">-&gt;</span><span class="n">Clear</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">clip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">be_clipboard</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="n">clip</span><span class="o">-&gt;</span><span class="n">AddData</span><span class="p">(</span><span class="s">&quot;text/MyFormat&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">B_MIME_TYPE</span><span class="p">,</span><span class="w"> </span><span class="n">myText</span><span class="p">,</span><span class="w"></span>
+<span class="w">                     </span><span class="n">myLength</span><span class="p">);</span><span class="w"></span>
+<span class="w">       </span><span class="n">clip</span><span class="o">-&gt;</span><span class="n">AddData</span><span class="p">(</span><span class="s">&quot;text/plain&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">B_MIME_TYPE</span><span class="p">,</span><span class="w"> </span><span class="n">asciiText</span><span class="p">,</span><span class="w"></span>
+<span class="w">                     </span><span class="n">asciiLength</span><span class="p">);</span><span class="w"></span>
+<span class="w">       </span><span class="n">be_clipboard</span><span class="o">-&gt;</span><span class="n">Commit</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">be_clipboard</span><span class="o">-&gt;</span><span class="n">Unlock</span><span class="p">();</span><span class="w"></span>
+<span class="w"> </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>{ref}``</p></td>
+<td><p><span class="hmethod">Lock()</span> your <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv410BClipboard" title="BClipboard"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BClipboard</span></code></a> object. This uploads data
+from the clipboard into your <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv410BClipboard" title="BClipboard"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BClipboard</span></code></a>’s local
+<a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> object, and prevents other threads in your
+application from accessing the <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv410BClipboard" title="BClipboard"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BClipboard</span></code></a>’s data. Note that
+locking does not lock the underlying clipboard data other applications can
+change the clipboard while you have your object locked.</p></td>
+</tr>
+<tr class="row-even"><td><p>{ref}``</p></td>
+<td><p>Prepare the <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv410BClipboard" title="BClipboard"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BClipboard</span></code></a> for writing by calling
+<span class="hmethod">Clear()</span>. This erases the data that was uploaded from the
+clipboard.</p></td>
+</tr>
+<tr class="row-odd"><td><p>{ref}``</p></td>
+<td><p>Call <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv4NK10BClipboard4DataEv" title="BClipboard::Data"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Data()</span></code></a> to get a pointer to the
+<a class="reference internal" href="../../kits/application/clipboard.html#_CPPv410BClipboard" title="BClipboard"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BClipboard</span></code></a>’s <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> object.</p></td>
+</tr>
+<tr class="row-even"><td><p>{ref}``</p></td>
+<td><p>Write the data by invoking <a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage7AddDataEPKc9type_codePKv7ssize_tb5int32" title="BMessage::AddData"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddData()</span></code></a>
+directly on the <a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. In the example, we write the data in
+two different formats.</p></td>
+</tr>
+<tr class="row-odd"><td><p>{ref}``</p></td>
+<td><p>Call <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv4N10BClipboard6CommitEv" title="BClipboard::Commit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Commit()</span></code></a> to copy your
+<a class="reference internal" href="../../kits/application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> back to the clipboard. As soon as you call
+<a class="reference internal" href="../../kits/application/clipboard.html#_CPPv4N10BClipboard6CommitEv" title="BClipboard::Commit"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Commit()</span></code></a>, the data that you added is
+visible to other clipboard clients.</p></td>
+</tr>
+<tr class="row-even"><td><p>{ref}``</p></td>
+<td><p><a class="reference internal" href="../../kits/application/clipboard.html#_CPPv4N10BClipboard6UnlockEv" title="BClipboard::Unlock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Unlock()</span></code></a> balances the <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv4N10BClipboard4LockEv" title="BClipboard::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a>. The <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv410BClipboard" title="BClipboard"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BClipboard</span></code></a> object can now be accessed
+by other threads in your application.</p></td>
+</tr>
+</tbody>
+</table>
+<p>If you decide that you don’t want to commit your changes, you should call
+<a class="reference internal" href="../../kits/application/clipboard.html#_CPPv4N10BClipboard6RevertEv" title="BClipboard::Revert"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Revert()</span></code></a> before you unlock.</p>
+</section>
+<section id="reading-from-the-clipboard">
+<h2>Reading from the Clipboard<a class="headerlink" href="#reading-from-the-clipboard" title="Permalink to this heading">¶</a></h2>
+<p>Here we show how to read a simple string from the clipboard.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">text</span><span class="p">;</span><span class="w"></span>
+<span class="n">int32</span><span class="w"> </span><span class="n">textLen</span><span class="p">;</span><span class="w"></span>
+<span class="n">BMessage</span><span class="w"> </span><span class="o">*</span><span class="n">clip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BMessage</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">be_clipboard</span><span class="o">-&gt;</span><span class="n">Lock</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">clip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">be_clipboard</span><span class="o">-&gt;</span><span class="n">Data</span><span class="p">())</span><span class="w"></span>
+<span class="w">      </span><span class="n">clip</span><span class="o">-&gt;</span><span class="n">FindData</span><span class="p">(</span><span class="s">&quot;text/plain&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">B_MIME_TYPE</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">**</span><span class="p">)</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">textlen</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">be_clipboard</span><span class="o">-</span><span class="n">Unlock</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>{ref}``</p></td>
+<td><p>As in writing, we bracket the operation with <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv4N10BClipboard4LockEv" title="BClipboard::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a> and <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv4N10BClipboard6UnlockEv" title="BClipboard::Unlock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Unlock()</span></code></a>. Keep in
+mind that <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv4N10BClipboard4LockEv" title="BClipboard::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a> uploads data from the
+clipboard into our object. Any changes that are made to the clipboard (by
+some other application) after <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv4N10BClipboard4LockEv" title="BClipboard::Lock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Lock()</span></code></a> is
+called won’t be seen here.</p></td>
+</tr>
+<tr class="row-even"><td><p>{ref}``</p></td>
+<td><p>In this example, we only look for one hard-coded format. In a real
+application, you may have a list of formats that you can look for.</p></td>
+</tr>
+<tr class="row-odd"><td><p>{ref}``</p></td>
+<td><p>It isn’t necessary to examine the clipboard data before you unlock it. The
+<a class="reference internal" href="../../kits/application/message.html#_CPPv4NK8BMessage8FindDataEPKc9type_code5int32PPKvP7ssize_t" title="BMessage::FindData"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindData()</span></code></a> call could just as well have
+been performed after the <a class="reference internal" href="../../kits/application/clipboard.html#_CPPv4N10BClipboard6UnlockEv" title="BClipboard::Unlock"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Unlock()</span></code></a> call.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="persistence">
+<h2>Persistence<a class="headerlink" href="#persistence" title="Permalink to this heading">¶</a></h2>
+<dl class="simple myst">
+<dt>Inter-boot persistence:</dt><dd><p>Clipboard data does not persist between boots, the constructor provides a
+persistence flag but it’s currently unused.</p>
+</dd>
+<dt>Intra-boot persistence:</dt><dd><p>Once you’ve created a clipboard, that clipboard will exist until you
+reboot your computer. For example, let’s say you design an app that creates
+a clipboard called “MyClip”: You launch the app, write something to
+“MyClip”, and then quit the app. The clipboard and the data that you wrote
+to it will still exist: If you relaunch your app (or any app that knows
+about “MyClip”), you can pick up the data by reading from the “MyClip”
+clipboard.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="classes/roster.html">BRoster</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="cursor.html">BCursor</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

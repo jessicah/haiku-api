@@ -67,35 +67,34 @@
       <div class="content" role="main">
         
   <section id="bdiscreteparameter">
-<h1>BDiscreteParameter<a class="headerlink" href="#bdiscreteparameter" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv418BDiscreteParameter">BDiscreteParameter<a class="headerlink" href="#bdiscreteparameter" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<p>You never create or delete a <span class="hclass">BDiscreteParameter</span> object yourself.
+Instead, call the <a class="reference internal" href="parameter-group.html#_CPPv4N15BParameterGroup21MakeDiscreteParameterE5int3210media_typePKcPKc" title="BParameterGroup::MakeDiscreteParameter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BParameterGroup::MakeDiscreteParameter()</span></code></a>
+function to create a <span class="hclass">BDiscreteParameter</span> within the desired
+<a class="reference internal" href="parameter-group.html#_CPPv415BParameterGroup" title="BParameterGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterGroup</span></code></a>.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N18BDiscreteParameter7AddItemE5int32PKc">
 </section>
 <h3>
-AddItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDiscreteParameter</span><span class="p">::</span></span><span class="n">AddItem</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">value</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><p>Adds a new <span class="hparameter">name</span>/<span class="hparameter">value</span>
-pair to the list of possible values the control can
-take. Whenever the selection named name is chosen, the user interface
-application will send a value change message to the control with the
-specified value.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+AddItem()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv418BDiscreteParameter" title="BDiscreteParameter"><span class="n">BDiscreteParameter</span></a><span class="p">::</span></span><span class="n">AddItem</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">value</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><p>Adds a new <span class="hparameter">name</span>/<span class="hparameter">value</span> pair to the list of possible
+values the control can take. Whenever the selection named name is chosen,
+the user interface application will send a value change message to the
+control with the specified value.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The item was added successfully.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code></p></td>
 <td><p>Not enough memory to add the item to the list.</p></td>
 </tr>
 </tbody>
@@ -103,15 +102,14 @@ specified value.</p>
 <section id="_CPPv4N18BDiscreteParameter10CountItemsEv">
 </section>
 <h3>
-CountItems()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDiscreteParameter</span><span class="p">::</span></span><span class="n">CountItems</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the number of discrete values the control can take.</p>
+CountItems()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv418BDiscreteParameter" title="BDiscreteParameter"><span class="n">BDiscreteParameter</span></a><span class="p">::</span></span><span class="n">CountItems</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns the number of discrete values the control can take.</p>
 <section id="_CPPv4N18BDiscreteParameter10CountItemsE5int32">
 </section>
 <section id="_CPPv4N18BDiscreteParameter11ItemValueAtE5int32">
 </section>
 <h3>
-CountItems(), ItemValueAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BDiscreteParameter</span><span class="p">::</span></span><span class="n">CountItems</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDiscreteParameter</span><span class="p">::</span></span><span class="n">ItemValueAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><p>These functions return the name and value of the item at the specified
-index, where index ranges from 0 to
-<a class="reference internal" href="#_CPPv4N18BDiscreteParameter10CountItemsEv" title="BDiscreteParameter::CountItems"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountItems()</span></code></a>-1.</p>
+CountItems(), ItemValueAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv418BDiscreteParameter" title="BDiscreteParameter"><span class="n">BDiscreteParameter</span></a><span class="p">::</span></span><span class="n">CountItems</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv418BDiscreteParameter" title="BDiscreteParameter"><span class="n">BDiscreteParameter</span></a><span class="p">::</span></span><span class="n">ItemValueAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><p>These functions return the name and value of the item at the specified
+index, where index ranges from 0 to <a class="reference internal" href="#_CPPv4N18BDiscreteParameter10CountItemsEv" title="BDiscreteParameter::CountItems"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountItems()</span></code></a>-1.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
 <p>Selection values aren’t necessarily in any sort of order, nor are they
@@ -120,30 +118,30 @@ necessarily unique.</p>
 <section id="_CPPv4N18BDiscreteParameter9MakeEmptyEv">
 </section>
 <h3>
-MakeEmpty()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDiscreteParameter</span><span class="p">::</span></span><span class="n">MakeEmpty</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Removes all items from the <span class="hclass">BDiscreteParameter</span>.</p>
+MakeEmpty()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv418BDiscreteParameter" title="BDiscreteParameter"><span class="n">BDiscreteParameter</span></a><span class="p">::</span></span><span class="n">MakeEmpty</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Removes all items from the <span class="hclass">BDiscreteParameter</span>.</p>
 <section id="_CPPv4N18BDiscreteParameter19MakeItemsFromInputsEv">
 </section>
 <section id="_CPPv4N18BDiscreteParameter20MakeItemsFromOutputsEv">
 </section>
 <h3>
-MakeItemsFromInputs(), MakeItemsFromOutputs()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDiscreteParameter</span><span class="p">::</span></span><span class="n">MakeItemsFromInputs</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDiscreteParameter</span><span class="p">::</span></span><span class="n">MakeItemsFromOutputs</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions add all inputs or outputs as selections, where the input
+MakeItemsFromInputs(), MakeItemsFromOutputs()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv418BDiscreteParameter" title="BDiscreteParameter"><span class="n">BDiscreteParameter</span></a><span class="p">::</span></span><span class="n">MakeItemsFromInputs</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv418BDiscreteParameter" title="BDiscreteParameter"><span class="n">BDiscreteParameter</span></a><span class="p">::</span></span><span class="n">MakeItemsFromOutputs</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These functions add all inputs or outputs as selections, where the input
 or output’s name is used as the item’s name, and the input or output’s
-index number is used as the value of the item.
-These shortcuts let you easily create the item lists for MUX-like
+index number is used as the value of the item.</p>
+<p>These shortcuts let you easily create the item lists for MUX-like
 controls, which allow the user to choose one of a number of inputs or
 outputs.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>It’s important to note that the correct inputs and outputs must already
-be connected to the parameter when you call either of these functions,
+<p>It’s important to note that the correct inputs and outputs must already be
+connected to the parameter when you call either of these functions,
 otherwise no items will be added, since the inputs and outputs aren’t
 there.</p>
 </div>
 <section id="_CPPv4N18BDiscreteParameter9ValueTypeEv">
 </section>
 <h3>
-ValueType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">type_code</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BDiscreteParameter</span><span class="p">::</span></span><span class="n">ValueType</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code>, which is the data
-type a <span class="hclass">BDiscreteParameter</span>’s value is maintained in.</p>
+ValueType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">type_code</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv418BDiscreteParameter" title="BDiscreteParameter"><span class="n">BDiscreteParameter</span></a><span class="p">::</span></span><span class="n">ValueType</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code>, which is the data type a
+<span class="hclass">BDiscreteParameter</span>’s value is maintained in.</p>
 </section>
 </section>
 

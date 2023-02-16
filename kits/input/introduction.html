@@ -72,7 +72,7 @@
       <div class="content" role="main">
         
   <section id="the-input-server">
-<h1>The Input Server<a class="headerlink" href="#the-input-server" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv416The Input Server">The Input Server<a class="headerlink" href="#the-input-server" title="Permalink to this heading">¶</a></h1>
 <p>The Input Server is a system service that accepts user events (on the mouse and
 keyboard, typically) at one end, and dispatches them to the App Server at the
 other. In between, the Input Server runs the events through a series of filters
@@ -86,16 +86,16 @@ Server add-on–an input method–is used to implement input method mechanisms,
 which convert keyboard events into character sets that can’t be easily
 represented on a standard keyboard, such as Kanji.</p>
 <p>Each of these add-on types (input devices, filters, and methods) is represented
-by a C++ class: <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerDevice</span></code>,
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerFilter</span></code>, and <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerMethod</span></code>. For each
+by a C++ class: <a class="reference internal" href="input-server-device.html#_CPPv418BInputServerDevice" title="BInputServerDevice"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerDevice</span></code></a>,
+<a class="reference internal" href="input-server-filter.html#_CPPv418BInputServerFilter" title="BInputServerFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerFilter</span></code></a>, and <a class="reference internal" href="input-server-method.html#_CPPv418BInputServerMethod" title="BInputServerMethod"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerMethod</span></code></a>. For each
 add-on you want to create, you subclass the appropriate class and override its
-hook functions. An additional class–<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputDevice</span></code>–lets a “normal”
+hook functions. An additional class–<a class="reference internal" href="input-device.html#_CPPv412BInputDevice" title="BInputDevice"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputDevice</span></code></a>–lets a “normal”
 application send messages back through the Input Server to the input devices; a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputDevice</span></code> object can be useful if you’re creating a preference
+<a class="reference internal" href="input-device.html#_CPPv412BInputDevice" title="BInputDevice"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputDevice</span></code></a> object can be useful if you’re creating a preference
 app for a custom Input Server add-on, for example.</p>
 <p>A map of the Input Server world looks like this:</p>
 <p>&lt;&lt;image&gt;&gt;</p>
-<p>Note that the Input Server and its add-ons (and <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputDevice</span></code>) all
+<p>Note that the Input Server and its add-ons (and <a class="reference internal" href="input-device.html#_CPPv412BInputDevice" title="BInputDevice"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputDevice</span></code></a>) all
 live in user space, so, in theory, there’s nothing that a “normal” application
 can do that an Input Server add-on can’t do. However, Input Server add-ons are
 loaded early in the boot process, before some system services (such as the Media
@@ -110,7 +110,7 @@ option during the installation process.</p>
 through the Input Server.</p>
 </section>
 <section id="drivers-and-input-devices">
-<h1>Drivers and Input Devices<a class="headerlink" href="#drivers-and-input-devices" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv425Drivers and Input Devices">Drivers and Input Devices<a class="headerlink" href="#drivers-and-input-devices" title="Permalink to this heading">¶</a></h1>
 <p>As mentioned above, most input devices (i.e. input generating add-ons)
 correspond to one or more device drivers. For example, the BeOS mouse input
 device manages all the mouse drivers that the OS provides.</p>
@@ -165,7 +165,7 @@ while this is happening. This is normal.</p>
 </section>
 </section>
 <section id="input-server-and-you">
-<h1>Input Server and You<a class="headerlink" href="#input-server-and-you" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv420Input Server and You">Input Server and You<a class="headerlink" href="#input-server-and-you" title="Permalink to this heading">¶</a></h1>
 <p>The Input Server gives applications a chance to take advantage of useful
 features present in input devices more interesting than your typical 101-key
 keyboard and 3-button mouse.</p>
@@ -242,7 +242,7 @@ pen is behaving normally. Other eraser modes may be defined in the future.</p>
 </section>
 </section>
 <section id="supporting-input-methods-in-views">
-<h1>Supporting Input Methods in Views<a class="headerlink" href="#supporting-input-methods-in-views" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv433Supporting Input Methods in Views">Supporting Input Methods in Views<a class="headerlink" href="#supporting-input-methods-in-views" title="Permalink to this heading">¶</a></h1>
 <p>When the user is entering text using an input method, such as the Japanese
 language input method that became an installation option in R4, there are two
 ways that applications can handle their input:</p>
@@ -277,7 +277,7 @@ int32 value) indicating the kind of event:</p>
 <tbody>
 <tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_METHOD_STARTED</span></code></p></td>
 <td><p>Tells your view that a new input transaction
-has begun. Inside the message is a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> named
+has begun. Inside the message is a <a class="reference internal" href="../application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> named
 be:reply_to; you should store this because it’s your only way of talking to
 the input method while the transaction is going on.</p></td>
 </tr>
@@ -299,13 +299,13 @@ the input method while the transaction is going on.</p></td>
 <tbody>
 <tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_METHOD_STARTED</span></code></p></td>
 <td><p>Tells your view that a new input transaction
-has begun. Inside the message is a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> named
+has begun. Inside the message is a <a class="reference internal" href="../application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> named
 be:reply_to; you should store this because it’s your only way of talking to
 the input method while the transaction is going on.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_METHOD_STOPPED</span></code></p></td>
 <td><p>Lets you know the transaction is over; you
-should discard the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code> at this point because it’s gone
+should discard the <a class="reference internal" href="../application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a> at this point because it’s gone
 stale.</p></td>
 </tr>
 </tbody>
@@ -333,14 +333,14 @@ transaction; its message contains the following important fields:</p>
 <tr class="row-even"><td><p>be:string</p></td>
 <td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
 <td><p>The text the user is currently entering;
-display it at the insertion point. <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTextView</span></code> also highlights
+display it at the insertion point. <a class="reference internal" href="../interface/text-view.html#_CPPv49BTextView" title="BTextView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTextView</span></code></a> also highlights
 the text blue to show that it’s part of a transitory transaction.</p></td>
 </tr>
 <tr class="row-odd"><td><p>be:selection</p></td>
 <td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
 <td><p>A pair of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code> offsets
 into the be:string if any of the text be:string is currently selected by the
-user. <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTextView</span></code> highlights this selection in red instead of
+user. <a class="reference internal" href="../interface/text-view.html#_CPPv49BTextView" title="BTextView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTextView</span></code></a> highlights this selection in red instead of
 drawing it in blue.</p></td>
 </tr>
 <tr class="row-even"><td><p>be:clause_start</p></td>
@@ -348,7 +348,7 @@ drawing it in blue.</p></td>
 <td><p>Zero or more offsets into the be:string for
 handling languages (such as Japanese) that separate a sentence or phrase
 into numerous clauses. An equal number of be:clause_start and be:clause_end
-pairs delimit these clauses; <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTextView</span></code> separates the blue/red
+pairs delimit these clauses; <a class="reference internal" href="../interface/text-view.html#_CPPv49BTextView" title="BTextView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTextView</span></code></a> separates the blue/red
 highlighting wherever there is a clause boundary.</p></td>
 </tr>
 <tr class="row-odd"><td><p>be:clause_end</p></td>
@@ -361,7 +361,7 @@ be:clause_start.</p></td>
 <td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BOOL_TYPE</span></code></p></td>
 <td><p>True when the user has entered
 and “confirmed” the current string and wishes to end the transaction.
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTextView</span></code> unhighlights the blue/red text and waits for a
+<a class="reference internal" href="../interface/text-view.html#_CPPv49BTextView" title="BTextView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTextView</span></code></a> unhighlights the blue/red text and waits for a
 <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_METHOD_STOPPED</span></code> (to close the transaction) or another
 <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INPUT_METHOD_CHANGED</span></code> (to start a new transaction immediately).</p></td>
 </tr>
@@ -409,7 +409,7 @@ be:string.</p></td>
 </section>
 </section>
 <section id="app-and-input-events">
-<h1>App and Input Events<a class="headerlink" href="#app-and-input-events" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv420App and Input Events">App and Input Events<a class="headerlink" href="#app-and-input-events" title="Permalink to this heading">¶</a></h1>
 <p>If you’re writing an application and want to record or react to input events
 without writing an Input Server add-on (which, of course, requires an Input
 Server restart), you can:</p>

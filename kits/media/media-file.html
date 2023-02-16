@@ -66,7 +66,10 @@
 <li><a class="reference internal" href="#_CPPv4N10BMediaFile3WebEv">Web</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#constants">Constants</a><ul>
+<li><a class="reference internal" href="#constructor-flags">Constructor Flags</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -79,49 +82,43 @@
       <div class="content" role="main">
         
   <section id="bmediafile">
-<h1>BMediaFile<a class="headerlink" href="#bmediafile" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv410BMediaFile">BMediaFile<a class="headerlink" href="#bmediafile" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N10BMediaFile10BMediaFileEPK9entry_ref">
 </section>
 <h3>
-BMediaFile()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMediaFile10BMediaFileEPK9entry_ref" title="BMediaFile::BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">BMediaFile</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMediaFile10BMediaFileEP7BDataIO" title="BMediaFile::BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">BMediaFile</span><span class="sig-paren">(</span><span class="n">BDataIO</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">source</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMediaFile10BMediaFileEPK9entry_ref5int32" title="BMediaFile::BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">BMediaFile</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMediaFile10BMediaFileEP7BDataIO5int32" title="BMediaFile::BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">BMediaFile</span><span class="sig-paren">(</span><span class="n">BDataIO</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">source</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMediaFile10BMediaFileEPK9entry_refPK17media_file_format5int32" title="BMediaFile::BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">BMediaFile</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_file_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">fileFormat</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMediaFile10BMediaFileEP7BDataIOPK17media_file_format5int32" title="BMediaFile::BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">BMediaFile</span><span class="sig-paren">(</span><span class="n">BDataIO</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">source</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_file_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">fileFormat</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>The first four forms of the constructor initializes
-the <span class="hclass">BMediaFile</span> to read the file specified
-by <span class="hparameter">ref</span> or by <span class="hparameter">source</span>. Once this has been done, be
-sure to call
-<a class="reference internal" href="#_CPPv4NK10BMediaFile9InitCheckEv" title="BMediaFile::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>
-to ensure that the file was successfully
-sniffed. If sniffing was successful, the <span class="hclass">BMediaFile</span> object can then be
-used to instantiate the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaTrack</span></code>
-objects necessary to read the file’s data.
-The second two forms prepare a
-<span class="hclass">BMediaFile</span> object for writing to a media file,
-which is specified by either <span class="hparameter">ref</span> or
-<span class="hparameter">destination</span>. The format of the file to be
-written is specified by <span class="hparameter">fileFormat</span>.
-The flags can be a combination of the following values:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+BMediaFile()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMediaFile10BMediaFileEPK9entry_ref" title="BMediaFile::BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">BMediaFile</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMediaFile10BMediaFileEP7BDataIO" title="BMediaFile::BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">BMediaFile</span><span class="sig-paren">(</span><span class="n">BDataIO</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">source</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMediaFile10BMediaFileEPK9entry_ref5int32" title="BMediaFile::BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">BMediaFile</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMediaFile10BMediaFileEP7BDataIO5int32" title="BMediaFile::BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">BMediaFile</span><span class="sig-paren">(</span><span class="n">BDataIO</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">source</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMediaFile10BMediaFileEPK9entry_refPK17media_file_format5int32" title="BMediaFile::BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">BMediaFile</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_file_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">fileFormat</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N10BMediaFile10BMediaFileEP7BDataIOPK17media_file_format5int32" title="BMediaFile::BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">BMediaFile</span><span class="sig-paren">(</span><span class="n">BDataIO</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">source</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_file_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">fileFormat</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span><span class="sig-paren">)</span></pre><p>The first four forms of the constructor initializes the
+<span class="hclass">BMediaFile</span> to read the file specified by <span class="hparameter">ref</span> or by
+<span class="hparameter">source</span>. Once this has been done, be sure to call
+<a class="reference internal" href="#_CPPv4NK10BMediaFile9InitCheckEv" title="BMediaFile::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> to ensure that the file was
+successfully sniffed. If sniffing was successful, the <span class="hclass">BMediaFile</span>
+object can then be used to instantiate the <a class="reference internal" href="media-track.html#_CPPv411BMediaTrack" title="BMediaTrack"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaTrack</span></code></a> objects
+necessary to read the file’s data.</p>
+<p>The second two forms prepare a <span class="hclass">BMediaFile</span> object for writing to
+a media file, which is specified by either <span class="hparameter">ref</span> or
+<span class="hparameter">destination</span>. The format of the file to be written is specified by
+<span class="hparameter">fileFormat</span>.</p>
+<p>The flags can be a combination of the following values:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_FILE_REPLACE_MODE</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_FILE_REPLACE_MODE</span></code></p></td>
 <td><p>Replace any existing media file, if writing.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_FILE_NO_READ_AHEAD</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_FILE_NO_READ_AHEAD</span></code></p></td>
 <td><p>Don’t read ahead in the file.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_FILE_UNBUFFERED</span></code></p></td>
-<td><p>Use smaller reads. This can be handy if you’re trying to stream low-bitrate files without waiting for the extractor to fill a large outgoing buffer.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_FILE_UNBUFFERED</span></code></p></td>
+<td><p>Use smaller reads. This can be handy if you’re trying to stream
+low-bitrate files without waiting for the extractor to fill a large
+outgoing buffer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_FILE_BIG_BUFFERS</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_FILE_BIG_BUFFERS</span></code></p></td>
 <td><p>Use large buffers.</p></td>
 </tr>
 </tbody>
@@ -134,36 +131,29 @@ The flags can be a combination of the following values:</p>
 <section id="_CPPv4N10BMediaFile8AddChunkE5int32PKv6size_t">
 </section>
 <h3>
-AddChunk()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">AddChunk</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p>Writes a user-defined chunk of data to the file (if doing so is
-supported by the encoder). The <span class="hparameter">type</span> argument
-indicates the chunk type, <span class="hparameter">data</span> points to the
-data to be written, and <span class="hparameter">size</span> indicates the size
-of the data to write to the file.</p>
+AddChunk()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">AddChunk</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p>Writes a user-defined chunk of data to the file (if doing so is supported
+by the encoder). The <span class="hparameter">type</span> argument indicates the chunk type,
+<span class="hparameter">data</span> points to the data to be written, and <span class="hparameter">size</span>
+indicates the size of the data to write to the file.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>The <span class="hclass">BMediaFile</span> class doesn’t
-automatically perform any locking to prevent multiple writes to the file
-from occurring at the same time. If you have multiple threads writing into
-the same <span class="hclass">BMediaFile</span>, you must use a locking
-mechanism (such as a
-<span class="xref std std-ref">semaphore</span>)
-to keep writes from overlapping.</p>
+<p>The <span class="hclass">BMediaFile</span> class doesn’t automatically perform any locking
+to prevent multiple writes to the file from occurring at the same time. If
+you have multiple threads writing into the same <span class="hclass">BMediaFile</span>, you
+must use a locking mechanism (such as a <span class="xref std std-ref">semaphore</span>) to keep writes
+from overlapping.</p>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>No error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_TYPE</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_TYPE</span></code></p></td>
 <td><p>The <span class="hclass">BMediaFile</span> doesn’t reference a valid file.</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors</p></td>
@@ -176,40 +166,33 @@ to keep writes from overlapping.</p>
 <section id="_CPPv4NK10BMediaFile9CopyrightEv">
 </section>
 <h3>
-AddCopyright(), Copyright()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">AddCopyright</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">Copyright</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">AddCopyright()</span> sets the file’s
-copyright notice to the string specified by
-<span class="hparameter">data</span>. Any existing notice is replaced. The
-string is copied, so the original belongs to you.
-<span class="hmethod">Copyright()</span> returns the media file’s
-copyright notice, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if there isn’t one. This
-string belongs to the <span class="hclass">BMediaFile</span>, so don’t
-delete or change it.</p>
+AddCopyright(), Copyright()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">AddCopyright</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">Copyright</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">AddCopyright()</span> sets the file’s copyright notice to the string
+specified by <span class="hparameter">data</span>. Any existing notice is replaced. The string is
+copied, so the original belongs to you.</p>
+<p><span class="hmethod">Copyright()</span> returns the media file’s copyright notice, or
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if there isn’t one. This string belongs to the
+<span class="hclass">BMediaFile</span>, so don’t delete or change it.</p>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>The <span class="hclass">BMediaFile</span> class doesn’t
-automatically perform any locking to prevent multiple writes to the file
-from occurring at the same time. If you have multiple threads writing into
-the same <span class="hclass">BMediaFile</span>, you must use a locking
-mechanism (such as a
-<span class="xref std std-ref">semaphore</span>)
-to keep writes from overlapping.</p>
+<p>The <span class="hclass">BMediaFile</span> class doesn’t automatically perform any locking
+to prevent multiple writes to the file from occurring at the same time. If
+you have multiple threads writing into the same <span class="hclass">BMediaFile</span>, you
+must use a locking mechanism (such as a <span class="xref std std-ref">semaphore</span>) to keep writes
+from overlapping.</p>
 </div>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>No error. (<span class="hmethod">AddCopyright()</span> only)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_TYPE</span></code></p></td>
-<td><p>The <span class="hclass">BMediaFile</span> doesn’t reference a valid file. (<span class="hmethod">AddCopyright()</span> only)</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_TYPE</span></code></p></td>
+<td><p>The <span class="hclass">BMediaFile</span> doesn’t reference a valid file.
+(<span class="hmethod">AddCopyright()</span> only)</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors</p></td>
 <td><p>Are codec specific. (<span class="hmethod">AddCopyright()</span> only)</p></td>
@@ -219,26 +202,21 @@ to keep writes from overlapping.</p>
 <section id="_CPPv4N10BMediaFile9CloseFileEv">
 </section>
 <h3>
-CloseFile()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">CloseFile</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Once all media data has been written to all tracks, you need to call
-<span class="hmethod">CloseFile()</span> so the <span class="hclass">BMediaFile</span>
-object can tidy up the file and finish the writing tasks. If you forget
-to call <span class="hmethod">CloseFile()</span>, the resulting file may
-not be complete.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+CloseFile()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">CloseFile</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Once all media data has been written to all tracks, you need to call
+<span class="hmethod">CloseFile()</span> so the <span class="hclass">BMediaFile</span> object can tidy up the
+file and finish the writing tasks. If you forget to call
+<span class="hmethod">CloseFile()</span>, the resulting file may not be complete.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>No error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_TYPE</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_TYPE</span></code></p></td>
 <td><p>The <span class="hclass">BMediaFile</span> doesn’t reference a valid file.</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors</p></td>
@@ -249,25 +227,20 @@ not be complete.</p>
 <section id="_CPPv4N10BMediaFile12CommitHeaderEv">
 </section>
 <h3>
-CommitHeader()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">CommitHeader</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>After you’ve finished adding new tracks to a file, you need to call
-<span class="hmethod">CommitHeader()</span> to let the
-<span class="hclass">BMediaFile</span> set up the file’s header. This helps
-optimize the file writing process.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+CommitHeader()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">CommitHeader</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>After you’ve finished adding new tracks to a file, you need to call
+<span class="hmethod">CommitHeader()</span> to let the <span class="hclass">BMediaFile</span> set up the file’s
+header. This helps optimize the file writing process.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>No error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_TYPE</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_TYPE</span></code></p></td>
 <td><p>The <span class="hclass">BMediaFile</span> doesn’t reference a valid file.</p></td>
 </tr>
 <tr class="row-even"><td><p>Other errors</p></td>
@@ -278,66 +251,55 @@ optimize the file writing process.</p>
 <section id="_CPPv4NK10BMediaFile11CountTracksEv">
 </section>
 <h3>
-CountTracks()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">CountTracks</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the number of tracks in the media file. The return value is
+CountTracks()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">CountTracks</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the number of tracks in the media file. The return value is
 undefined if the initialization failed.</p>
 <section id="_CPPv4N10BMediaFile11CreateTrackEP12media_formatPK16media_codec_info">
 </section>
 <h3>
-CreateTrack()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMediaTrack</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">CreateTrack</span><span class="sig-paren">(</span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mediaFormat</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_codec_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">codecInfo</span><span class="sig-paren">)</span><br /><span class="n">BMediaTrack</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">CreateTrack</span><span class="sig-paren">(</span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mediaFormat</span><span class="sig-paren">)</span></pre><p>Creates a new track in the file and returns a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaTrack</span></code> object
-referencing it. The track is configured to use the media format specified
-by <span class="hparameter">mediaFormat</span>, and will be written using the
-codec described by <span class="hparameter">codecInfo</span>. You can only use
-<a class="reference internal" href="media-track.html#_CPPv4N11BMediaTrack11WriteFramesEPv5int325int32" title="BMediaTrack::WriteFrames"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaTrack::WriteFrames()</span></code></a>
-to write into the track.
-If you use the second form of the constructor, without a
-<span class="hparameter">codecInfo</span> argument, the track will be written
-containing raw media data. You can only use
-<a class="reference internal" href="media-track.html#_CPPv4N11BMediaTrack10WriteChunkEPv6size_t5int32" title="BMediaTrack::WriteChunk"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaTrack::WriteChunk()</span></code></a>
-to write into the track.
-The <span class="hparameter">mediaFormat</span> indicates the format of
-the buffers you’ll be passing along to the write function, and
-<span class="hparameter">codecInfo</span> specifies the codec you want to use to
-encode the data into the track.</p>
+CreateTrack()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="media-track.html#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">CreateTrack</span><span class="sig-paren">(</span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mediaFormat</span>, <span class="k">const</span><span class="w"> </span><span class="n">media_codec_info</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">codecInfo</span><span class="sig-paren">)</span><br /><a class="reference internal" href="media-track.html#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">CreateTrack</span><span class="sig-paren">(</span><span class="n">media_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">mediaFormat</span><span class="sig-paren">)</span></pre><p>Creates a new track in the file and returns a <a class="reference internal" href="media-track.html#_CPPv411BMediaTrack" title="BMediaTrack"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaTrack</span></code></a>
+object referencing it. The track is configured to use the media format
+specified by <span class="hparameter">mediaFormat</span>, and will be written using the codec
+described by <span class="hparameter">codecInfo</span>. You can only use
+<a class="reference internal" href="media-track.html#_CPPv4N11BMediaTrack11WriteFramesEPv5int325int32" title="BMediaTrack::WriteFrames"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaTrack::WriteFrames()</span></code></a> to write into the track.</p>
+<p>If you use the second form of the constructor, without a
+<span class="hparameter">codecInfo</span> argument, the track will be written containing raw
+media data. You can only use <a class="reference internal" href="media-track.html#_CPPv4N11BMediaTrack10WriteChunkEPv6size_t5int32" title="BMediaTrack::WriteChunk"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaTrack::WriteChunk()</span></code></a> to write
+into the track.</p>
+<p>The <span class="hparameter">mediaFormat</span> indicates the format of the buffers you’ll be
+passing along to the write function, and <span class="hparameter">codecInfo</span> specifies the
+codec you want to use to encode the data into the track.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>The <span class="hparameter">mediaFormat</span> can’t contain any
-wildcards; you have to specify the exact format that you’re going to be
-providing. <span class="hparameter">mediaFormat</span> must also be the same
-structure you passed to
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">next()</span></code>.</p>
+<p>The <span class="hparameter">mediaFormat</span> can’t contain any wildcards; you have to specify
+the exact format that you’re going to be providing. <span class="hparameter">mediaFormat</span>
+must also be the same structure you passed to <span class="xref std std-ref">get_next_encoder()</span>.</p>
 </div>
-<p>When writing new media files, you should create all your tracks at
-once before writing any media data. Once all the tracks have been created,
-be sure to call
-<a class="reference internal" href="#_CPPv4N10BMediaFile12CommitHeaderEv" title="BMediaFile::CommitHeader"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CommitHeader()</span></code></a>
-to write the header to disk. This is
-necessary since the header size may vary depending on the number of
-tracks you put in the file, and once you start writing media data into
-the tracks, it would be difficult (and inefficient) to resize the header.
-If an error occurs while creating the new track,
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> is returned.</p>
+<p>When writing new media files, you should create all your tracks at once
+before writing any media data. Once all the tracks have been created, be
+sure to call <a class="reference internal" href="#_CPPv4N10BMediaFile12CommitHeaderEv" title="BMediaFile::CommitHeader"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CommitHeader()</span></code></a> to write
+the header to disk. This is necessary since the header size may vary
+depending on the number of tracks you put in the file, and once you start
+writing media data into the tracks, it would be difficult (and inefficient)
+to resize the header.</p>
+<p>If an error occurs while creating the new track, <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> is
+returned.</p>
 <section id="_CPPv4NK10BMediaFile17GetFileFormatInfoEP17media_file_format">
 </section>
 <h3>
-GetFileFormatInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">GetFileFormatInfo</span><span class="sig-paren">(</span><span class="n">media_file_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Fills the specified media_file_format structure with information
-describing the file format of the file referenced by the <span class="hclass">BMediaFile</span>
-object.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+GetFileFormatInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">GetFileFormatInfo</span><span class="sig-paren">(</span><span class="n">media_file_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">info</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Fills the specified <span class="htype">media_file_format</span> structure with information
+describing the file format of the file referenced by the
+<span class="hclass">BMediaFile</span> object.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>No error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code></p></td>
 <td><p>The <span class="hclass">BMediaFile</span> doesn’t reference a valid file.</p></td>
 </tr>
 </tbody>
@@ -345,40 +307,34 @@ object.</p>
 <section id="_CPPv4NK10BMediaFile16GetParameterViewEv">
 </section>
 <h3>
-GetParameterView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">GetParameterView</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-containing controls for adjusting the file format’s
-parameters. Returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if there isn’t a view available.</p>
+GetParameterView()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">GetParameterView</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a <a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> containing controls for adjusting the file
+format’s parameters. Returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if there isn’t a view
+available.</p>
 <section id="_CPPv4NK10BMediaFile9InitCheckEv">
 </section>
 <h3>
-InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the result code from the constructor. You should always call this
-after instantiating a <span class="hclass">BMediaFile</span> object, but before
-using it.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the result code from the constructor. You should always call this
+after instantiating a <span class="hclass">BMediaFile</span> object, but before using it.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>No error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_NO_HANDLER</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_NO_HANDLER</span></code></p></td>
 <td><p>No codec available for the required or requested format.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code></p></td>
 <td><p>Not enough memory to set up the codec (writing).</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_INDEX</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_INDEX</span></code></p></td>
 <td><p>The required add-on wasn’t found (writing).</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MISSING_SYMBOL</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MISSING_SYMBOL</span></code></p></td>
 <td><p>The add-on doesn’t support writing.</p></td>
 </tr>
 </tbody>
@@ -388,32 +344,25 @@ using it.</p>
 <section id="_CPPv4N10BMediaFile16ReleaseAllTracksEv">
 </section>
 <h3>
-ReleaseTrack(), ReleaseAllTracks()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">ReleaseTrack</span><span class="sig-paren">(</span><span class="n">BMediaTrack</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">track</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">ReleaseAllTracks</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">ReleaseTrack()</span> releases the
-resources used by the specified <span class="hparameter">track</span>. Doing
-so reduces your application’s memory usage. If you want to release every
-track you’re using, you can call
-<span class="hmethod">ReleaseAllTracks()</span>.
-Once released, a track can’t be used any longer until you use
-<a class="reference internal" href="#_CPPv4N10BMediaFile7TrackAtE5int32" title="BMediaFile::TrackAt"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">TrackAt()</span></code></a>
-again.
-If the <span class="hclass">BMediaFile</span> wasn’t properly
-initialized, or the index is invalid, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> is
-returned.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+ReleaseTrack(), ReleaseAllTracks()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">ReleaseTrack</span><span class="sig-paren">(</span><a class="reference internal" href="media-track.html#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">track</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">ReleaseAllTracks</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">ReleaseTrack()</span> releases the resources used by the specified
+<span class="hparameter">track</span>. Doing so reduces your application’s memory usage. If you
+want to release every track you’re using, you can call
+<span class="hmethod">ReleaseAllTracks()</span>.</p>
+<p>Once released, a track can’t be used any longer until you use
+<a class="reference internal" href="#_CPPv4N10BMediaFile7TrackAtE5int32" title="BMediaFile::TrackAt"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">TrackAt()</span></code></a> again.</p>
+<p>If the <span class="hclass">BMediaFile</span> wasn’t properly initialized, or the index is
+invalid, <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> is returned.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>No error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
 <td><p>Couldn’t release the track (it may be invalid, or not actually in use).</p></td>
 </tr>
 </tbody>
@@ -423,29 +372,23 @@ returned.</p>
 <section id="_CPPv4N10BMediaFile17GetParameterValueE5int32PKv6size_t">
 </section>
 <h3>
-SetParameterValue(), GetParameterValue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">SetParameterValue</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">value</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">GetParameterValue</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">value</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetParameterValue()</span> sets the value of
-the parameter specified by <span class="hparameter">id</span> to
-the data pointed to by <span class="hparameter">value</span>; this data is
-<span class="hparameter">size</span> bytes long.
-<span class="hmethod">GetParameterValue()</span> returns in
-<span class="hparameter">value</span> the value of the specified
-parameter, and the size of the value in bytes in the
+SetParameterValue(), GetParameterValue()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">SetParameterValue</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">value</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">GetParameterValue</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">value</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p><span class="hmethod">SetParameterValue()</span> sets the value of the parameter specified
+by <span class="hparameter">id</span> to the data pointed to by <span class="hparameter">value</span>; this data is
+<span class="hparameter">size</span> bytes long.</p>
+<p><span class="hmethod">GetParameterValue()</span> returns in <span class="hparameter">value</span> the value of the
+specified parameter, and the size of the value in bytes in the
 <span class="hparameter">size</span> argument.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>No error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code></p></td>
 <td><p>The <span class="hclass">BMediaFile</span> doesn’t reference a valid file.</p></td>
 </tr>
 </tbody>
@@ -453,65 +396,53 @@ parameter, and the size of the value in bytes in the
 <section id="_CPPv4N10BMediaFile7TrackAtE5int32">
 </section>
 <h3>
-TrackAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMediaTrack</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">TrackAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Returns a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaTrack</span></code>
-object referencing the track at the specified <span class="hparameter">index</span>
-into the file. The index must be a value between 0 and
-<a class="reference internal" href="#_CPPv4NK10BMediaFile11CountTracksEv" title="BMediaFile::CountTracks"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountTracks()</span></code></a></p>
-<ul class="simple">
-<li><ol class="arabic simple">
-<li></li>
-</ol>
-</li>
-</ul>
-<p>If the <span class="hclass">BMediaFile</span> wasn’t properly initialized,
-or the <span class="hparameter">index</span> is invalid,
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> is returned.</p>
+TrackAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="media-track.html#_CPPv411BMediaTrack" title="BMediaTrack"><span class="n">BMediaTrack</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">TrackAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p>Returns a <a class="reference internal" href="media-track.html#_CPPv411BMediaTrack" title="BMediaTrack"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaTrack</span></code></a> object referencing the track at the
+specified <span class="hparameter">index</span> into the file. The index must be a value between
+0 and <a class="reference internal" href="#_CPPv4NK10BMediaFile11CountTracksEv" title="BMediaFile::CountTracks"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountTracks()</span></code></a> - 1.</p>
+<p>If the <span class="hclass">BMediaFile</span> wasn’t properly initialized, or the
+<span class="hparameter">index</span> is invalid, <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> is returned.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>You must call
-<a class="reference internal" href="#_CPPv4N10BMediaFile12ReleaseTrackEP11BMediaTrack" title="BMediaFile::ReleaseTrack"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReleaseTrack()</span></code></a>
-when you’re finished with the track.</p>
+<p>You must call <a class="reference internal" href="#_CPPv4N10BMediaFile12ReleaseTrackEP11BMediaTrack" title="BMediaFile::ReleaseTrack"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReleaseTrack()</span></code></a> when
+you’re finished with the track.</p>
 </div>
 <section id="_CPPv4N10BMediaFile3WebEv">
 </section>
 <h3>
-Web()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BParameterWeb</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMediaFile</span><span class="p">::</span></span><span class="n">Web</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code>
-that can be used for configuring the file format’s parameters. Returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the codec doesn’t support user
-configuration.</p>
+Web()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><span class="n">BParameterWeb</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BMediaFile" title="BMediaFile"><span class="n">BMediaFile</span></a><span class="p">::</span></span><span class="n">Web</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Returns a <a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code></a> that can be used for configuring the
+file format’s parameters. Returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the codec doesn’t
+support user configuration.</p>
 </section>
 <section id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>Declared in: media/MediaFile.h</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<section id="constructor-flags">
+<h3>Constructor Flags<a class="headerlink" href="#constructor-flags" title="Permalink to this heading">¶</a></h3>
+<p>Declared in: media/MediaFile.h</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_FILE_REPLACE_MODE</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_FILE_REPLACE_MODE</span></code></p></td>
 <td><p>Replace any existing media file, if writing.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_FILE_NO_READ_AHEAD</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_FILE_NO_READ_AHEAD</span></code></p></td>
 <td><p>Don’t read ahead in the file.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_FILE_UNBUFFERED</span></code></p></td>
-<td><p>Use smaller reads. This can be handy if you’re trying to stream low-bitrate files without waiting for the extractor to fill a large outgoing buffer.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_FILE_UNBUFFERED</span></code></p></td>
+<td><p>Use smaller reads. This can be handy if you’re trying to stream
+low-bitrate files without waiting for the extractor to fill a large
+outgoing buffer.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_FILE_BIG_BUFFERS</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_FILE_BIG_BUFFERS</span></code></p></td>
 <td><p>Use large buffers.</p></td>
 </tr>
 </tbody>
 </table>
 <p>These flags control the behavior of the constructor.</p>
+</section>
 </section>
 </section>
 

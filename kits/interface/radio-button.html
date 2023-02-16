@@ -77,146 +77,118 @@
       <div class="content" role="main">
         
   <section id="bradiobutton">
-<h1>BRadioButton<a class="headerlink" href="#bradiobutton" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv412BRadioButton">BRadioButton<a class="headerlink" href="#bradiobutton" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N12BRadioButton12BRadioButtonE5BRectPKcPKcP8BMessage6uint326uint32">
 </section>
 <h3>
-BRadioButton()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BRadioButton12BRadioButtonE5BRectPKcPKcP8BMessage6uint326uint32" title="BRadioButton::BRadioButton"><span class="n">BRadioButton</span></a><span class="p">::</span></span><span class="n">BRadioButton</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_LEFT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FOLLOW_TOP</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_NAVIGABLE</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BRadioButton12BRadioButtonEP8BMessage" title="BRadioButton::BRadioButton"><span class="n">BRadioButton</span></a><span class="p">::</span></span><span class="n">BRadioButton</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BRadioButton</span> by passing all arguments
-to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code>
-constructor without change.
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code>
-initializes the radio button’s <span class="hparameter">label</span>
-and assigns it a model <span class="hparameter">message</span> that identifies the action that should be
-taken when the radio button is turned on. When the user turns the button
-on, the <span class="hclass">BRadioButton</span> posts a copy of the <span class="hparameter">message</span> so that it can be
-delivered to the target handler.</p>
-<p>The <span class="hparameter">frame</span>, <span class="hparameter">name</span>,
-<span class="hparameter">resizingMode</span>, and <span class="hparameter">flags</span> arguments are the same as those
-declared for the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-class and are passed without change from <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code>
-to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> constructor.</p>
-<p>The <span class="hclass">BRadioButton</span> draws at the bottom of its frame rectangle beginning at
-the left side. It ignores any extra space at the top or on the right.
-(However, the user can click anywhere within the <span class="hparameter">frame</span> rectangle to turn
-on the radio button). When the object is attached to a window, the height
-of the rectangle will be adjusted so that there is exactly the right
-amount of room to accommodate the label.</p>
-<p>See also:
-The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code> and
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> constructors,
+BRadioButton()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BRadioButton12BRadioButtonE5BRectPKcPKcP8BMessage6uint326uint32" title="BRadioButton::BRadioButton"><span class="n">BRadioButton</span></a><span class="p">::</span></span><span class="n">BRadioButton</span><span class="sig-paren">(</span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span>, <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_LEFT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FOLLOW_TOP</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_NAVIGABLE</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N12BRadioButton12BRadioButtonEP8BMessage" title="BRadioButton::BRadioButton"><span class="n">BRadioButton</span></a><span class="p">::</span></span><span class="n">BRadioButton</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BRadioButton</span> by passing all arguments to the
+<a class="reference internal" href="control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> constructor without change. <a class="reference internal" href="control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a>
+initializes the radio button’s <span class="hparameter">label</span> and assigns it a model
+<span class="hparameter">message</span> that identifies the action that should be taken when the
+radio button is turned on. When the user turns the button on, the
+<span class="hclass">BRadioButton</span> posts a copy of the <span class="hparameter">message</span> so that it can
+be delivered to the target handler.</p>
+<p>The <span class="hparameter">frame</span>, <span class="hparameter">name</span>, <span class="hparameter">resizingMode</span>, and
+<span class="hparameter">flags</span> arguments are the same as those declared for the
+<a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> class and are passed without change from
+<a class="reference internal" href="control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> to the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> constructor.</p>
+<p>The <span class="hclass">BRadioButton</span> draws at the bottom of its frame rectangle
+beginning at the left side. It ignores any extra space at the top or on the
+right. (However, the user can click anywhere within the <span class="hparameter">frame</span>
+rectangle to turn on the radio button). When the object is attached to a
+window, the height of the rectangle will be adjusted so that there is
+exactly the right amount of room to accommodate the label.</p>
+<p>See also: The <a class="reference internal" href="control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> and <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> constructors,
 <a class="reference internal" href="#_CPPv4N12BRadioButton16AttachedToWindowEv" title="BRadioButton::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AttachedToWindow()</span></code></a></p>
 <section id="_CPPv4N12BRadioButtonD0Ev">
 </section>
 <h3>
-~BRadioButton()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRadioButton</span><span class="p">::</span></span><span class="n">~BRadioButton</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Does nothing; a <span class="hclass">BRadioButton</span> doesn’t need to clean up after itself when
-it’s deleted.</p>
+~BRadioButton()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BRadioButton" title="BRadioButton"><span class="n">BRadioButton</span></a><span class="p">::</span></span><span class="n">~BRadioButton</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Does nothing; a <span class="hclass">BRadioButton</span> doesn’t need to clean up after
+itself when it’s deleted.</p>
 </section>
 <section id="hook-functions">
 <h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N12BRadioButton16AttachedToWindowEv">
 </section>
 <h3>
-AttachedToWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRadioButton</span><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Augments the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code> version of
-<a class="reference internal" href="control.html#_CPPv4N8BControl16AttachedToWindowEv" title="BControl::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AttachedToWindow()</span></code></a> to set the view and
-low colors of the <span class="hclass">BRadioButton</span> to the match its parent’s view color, and
-to resize the radio button vertically to fit the height of the label it
-displays. The height of the label depends on the <span class="hclass">BRadioButton</span>’s font.</p>
+AttachedToWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BRadioButton" title="BRadioButton"><span class="n">BRadioButton</span></a><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Augments the <a class="reference internal" href="control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> version of
+<a class="reference internal" href="control.html#_CPPv4N8BControl16AttachedToWindowEv" title="BControl::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AttachedToWindow()</span></code></a> to set the view
+and low colors of the <span class="hclass">BRadioButton</span> to the match its parent’s view
+color, and to resize the radio button vertically to fit the height of the
+label it displays. The height of the label depends on the
+<span class="hclass">BRadioButton</span>’s font.</p>
 <section id="_CPPv4N12BRadioButton4DrawE5BRect">
 </section>
 <h3>
-Draw()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRadioButton</span><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">updateRect</span><span class="sig-paren">)</span></pre><p>Draws the radio button—the circular icon—and its label. The
-center of the icon is filled when the <span class="hclass">BRadioButton</span>’s value is 1
-(<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CONTROL_ON</span></code>); it’s left empty when the value is 0
-(<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CONTROL_OFF</span></code>).</p>
-<p>See also:
-<a class="reference internal" href="view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Draw()</span></code></a></p>
+Draw()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BRadioButton" title="BRadioButton"><span class="n">BRadioButton</span></a><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">updateRect</span><span class="sig-paren">)</span></pre><p>Draws the radio button—the circular icon—and its label. The center of the
+icon is filled when the <span class="hclass">BRadioButton</span>’s value is 1
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CONTROL_ON</span></code>); it’s left empty when the value is 0
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CONTROL_OFF</span></code>).</p>
+<p>See also: <a class="reference internal" href="view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Draw()</span></code></a></p>
 <section id="_CPPv4N12BRadioButton16GetPreferredSizeEPfPf">
 </section>
 <h3>
-GetPreferredSize()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRadioButton</span><span class="p">::</span></span><span class="n">GetPreferredSize</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">width</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><p>Calculates the optimal size for the radio button to display the icon and
-the label in the current font, and places the result in the variables
-that the <span class="hparameter">width</span> and <span class="hparameter">height</span>
-arguments refer to.
-<a class="reference internal" href="view.html#_CPPv4N5BView17ResizeToPreferredEv" title="BView::ResizeToPreferred"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ResizeToPreferred()</span></code></a>,
-defined in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> class,
-resizes a view’s frame rectangle to the
-preferred size, keeping its left and top sides constant.
+GetPreferredSize()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BRadioButton" title="BRadioButton"><span class="n">BRadioButton</span></a><span class="p">::</span></span><span class="n">GetPreferredSize</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">width</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><p>Calculates the optimal size for the radio button to display the icon and
+the label in the current font, and places the result in the variables that
+the <span class="hparameter">width</span> and <span class="hparameter">height</span> arguments refer to.
+<a class="reference internal" href="view.html#_CPPv4N5BView17ResizeToPreferredEv" title="BView::ResizeToPreferred"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ResizeToPreferred()</span></code></a>, defined in the
+<a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> class, resizes a view’s frame rectangle to the preferred
+size, keeping its left and top sides constant.
 <a class="reference internal" href="#_CPPv4N12BRadioButton16AttachedToWindowEv" title="BRadioButton::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AttachedToWindow()</span></code></a>
-automatically resizes a radio button to its preferred
-height, but doesn’t modify its width.</p>
-<p>See also:
-<a class="reference internal" href="view.html#_CPPv4N5BView16GetPreferredSizeEPfPf" title="BView::GetPreferredSize"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::GetPreferredSize()</span></code></a>,
+automatically resizes a radio button to its preferred height, but doesn’t
+modify its width.</p>
+<p>See also: <a class="reference internal" href="view.html#_CPPv4N5BView16GetPreferredSizeEPfPf" title="BView::GetPreferredSize"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::GetPreferredSize()</span></code></a>,
 <a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::AttachedToWindow()</span></code></a></p>
 <section id="_CPPv4N12BRadioButton7KeyDownEPKc5int32">
 </section>
 <h3>
-KeyDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRadioButton</span><span class="p">::</span></span><span class="n">KeyDown</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bytes</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numBytes</span><span class="sig-paren">)</span></pre><p>Augments the inherited versions of
-<a class="reference internal" href="control.html#_CPPv4N8BControl7KeyDownEPKc5int32" title="BControl::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">KeyDown()</span></code></a>
-to turn the radio button on
-and deliver a message to the target
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code>
-when the character passed in
-<span class="hparameter">bytes</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SPACE</span> <span class="pre">or</span> <span class="pre">B_ENTER</span></code>.</p>
-<p>See also:
-<a class="reference internal" href="view.html#_CPPv4N5BView7KeyDownEPKc5int32" title="BView::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::KeyDown()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N12BRadioButton8SetValueE5int32" title="BRadioButton::SetValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetValue()</span></code></a></p>
+KeyDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BRadioButton" title="BRadioButton"><span class="n">BRadioButton</span></a><span class="p">::</span></span><span class="n">KeyDown</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bytes</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numBytes</span><span class="sig-paren">)</span></pre><p>Augments the inherited versions of <a class="reference internal" href="control.html#_CPPv4N8BControl7KeyDownEPKc5int32" title="BControl::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">KeyDown()</span></code></a> to turn the radio button on and deliver a message to
+the target <a class="reference internal" href="../application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> when the character passed in
+<span class="hparameter">bytes</span> is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SPACE</span> <span class="pre">or</span> <span class="pre">B_ENTER</span></code>.</p>
+<p>See also: <a class="reference internal" href="view.html#_CPPv4N5BView7KeyDownEPKc5int32" title="BView::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::KeyDown()</span></code></a>, <a class="reference internal" href="#_CPPv4N12BRadioButton8SetValueE5int32" title="BRadioButton::SetValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetValue()</span></code></a></p>
 <section id="_CPPv4N12BRadioButton9MouseDownE6BPoint">
 </section>
 <h3>
-MouseDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRadioButton</span><span class="p">::</span></span><span class="n">MouseDown</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><p>Responds to a mouse-down event in the radio button by tracking the cursor
+MouseDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BRadioButton" title="BRadioButton"><span class="n">BRadioButton</span></a><span class="p">::</span></span><span class="n">MouseDown</span><span class="sig-paren">(</span><a class="reference internal" href="point.html#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><p>Responds to a mouse-down event in the radio button by tracking the cursor
 while the user holds the mouse button down. If the cursor is pointing to
 the radio button when the user releases the mouse button, this function
-turns the button on (and consequently turns all sibling <span class="hclass">BRadioButton</span>s
-off), calls the <span class="hclass">BRadioButton</span>’s
+turns the button on (and consequently turns all sibling
+<span class="hclass">BRadioButton</span>s off), calls the <span class="hclass">BRadioButton</span>’s
 <a class="reference internal" href="#_CPPv4N12BRadioButton4DrawE5BRect" title="BRadioButton::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Draw()</span></code></a> function, and posts a message that
-will be delivered to the target
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code>. Unlike a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCheckBox</span></code>, a
-<span class="hclass">BRadioButton</span> posts the message—it’s
-“invoked”—only when it’s
-turned on, not when it’s turned off.</p>
-<p>See also:
-<a class="reference internal" href="control.html#_CPPv4N8BControl6InvokeEP8BMessage" title="BControl::Invoke"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControl::Invoke()</span></code></a>,
-<a class="reference internal" href="../application/invoker.html#_CPPv4N8BInvoker9SetTargetE10BMessenger" title="BInvoker::SetTarget"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BInvoker::SetTarget()</span></code></a>,
+will be delivered to the target <a class="reference internal" href="../application/handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a>. Unlike a
+<a class="reference internal" href="check-box.html#_CPPv49BCheckBox" title="BCheckBox"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCheckBox</span></code></a>, a <span class="hclass">BRadioButton</span> posts the message—it’s
+“invoked”—only when it’s turned on, not when it’s turned off.</p>
+<p>See also: <a class="reference internal" href="control.html#_CPPv4N8BControl6InvokeEP8BMessage" title="BControl::Invoke"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControl::Invoke()</span></code></a>, <a class="reference internal" href="../application/invoker.html#_CPPv4N8BInvoker9SetTargetE10BMessenger" title="BInvoker::SetTarget"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BInvoker::SetTarget()</span></code></a>,
 <a class="reference internal" href="#_CPPv4N12BRadioButton8SetValueE5int32" title="BRadioButton::SetValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetValue()</span></code></a></p>
 <section id="_CPPv4N12BRadioButton8SetValueE5int32">
 </section>
 <h3>
-SetValue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRadioButton</span><span class="p">::</span></span><span class="n">SetValue</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><p>Augments the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code>
-version of <a class="reference internal" href="control.html#_CPPv4N8BControl8SetValueE5int32" title="BControl::SetValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetValue()</span></code></a> to turn all sibling
-<span class="hclass">BRadioButton</span>s off (set their values to 0) when this
-<span class="hclass">BRadioButton</span> is
-turned on (when the value passed is anything but 0).</p>
+SetValue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BRadioButton" title="BRadioButton"><span class="n">BRadioButton</span></a><span class="p">::</span></span><span class="n">SetValue</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><p>Augments the <a class="reference internal" href="control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> version of <a class="reference internal" href="control.html#_CPPv4N8BControl8SetValueE5int32" title="BControl::SetValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetValue()</span></code></a> to turn all sibling <span class="hclass">BRadioButton</span>s off (set
+their values to 0) when this <span class="hclass">BRadioButton</span> is turned on (when the
+value passed is anything but 0).</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4NK12BRadioButton7ArchiveEP8BMessageb">
 </section>
 <h3>
-Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BRadioButton</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of
-<a class="reference internal" href="control.html#_CPPv4NK8BControl7ArchiveEP8BMessageb" title="BControl::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a>
-and doesn’t add anything
-specific to the <span class="hclass">BRadioButton</span> class to the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive.</p>
-<p><a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N12BRadioButton11InstantiateEP8BMessage" title="BRadioButton::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a>
-static function</p>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BRadioButton" title="BRadioButton"><span class="n">BRadioButton</span></a><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Calls the inherited version of <a class="reference internal" href="control.html#_CPPv4NK8BControl7ArchiveEP8BMessageb" title="BControl::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a>
+and doesn’t add anything specific to the <span class="hclass">BRadioButton</span> class to
+the <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> archive.</p>
+<p><a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>, <a class="reference internal" href="#_CPPv4N12BRadioButton11InstantiateEP8BMessage" title="BRadioButton::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
 </section>
 <section id="static-functions">
 <h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N12BRadioButton11InstantiateEP8BMessage">
 </section>
 <h3>
-Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BRadioButton</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BRadioButton</span> object, allocated by new and created with the
-version of the constructor that takes a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive. However, if the
-message doesn’t contain data for an archived <span class="hclass">BRadioButton</span> object, this
-function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<p><a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">object()</span></code>,
-<a class="reference internal" href="#_CPPv4NK12BRadioButton7ArchiveEP8BMessageb" title="BRadioButton::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv412BRadioButton" title="BRadioButton"><span class="n">BRadioButton</span></a><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BRadioButton</span> object, allocated by new and created
+with the version of the constructor that takes a <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>
+archive. However, if the message doesn’t contain data for an archived
+<span class="hclass">BRadioButton</span> object, this function returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<p><a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">instantiate_object()</span></code>, <a class="reference internal" href="#_CPPv4NK12BRadioButton7ArchiveEP8BMessageb" title="BRadioButton::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
 </section>
 </section>
 

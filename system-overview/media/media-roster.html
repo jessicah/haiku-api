@@ -1,0 +1,561 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMediaRoster &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMediaTheme" href="media-theme.html" />
+    <link rel="prev" title="BMediaNode" href="media-node.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMediaRoster</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-node.html">BMediaNode</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-theme.html">BMediaTheme</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BMediaRoster</a><ul>
+<li><a class="reference internal" href="#playing-media-from-disk">Playing Media from Disk</a><ul>
+<li><a class="reference internal" href="#detecting-when-playback-is-complete">Detecting When Playback Is Complete</a></li>
+<li><a class="reference internal" href="#using-bmediaroster-functions-from-nodes">Using BMediaRoster Functions from Nodes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmediaroster">
+<h1 id="CPPv412BMediaRoster">BMediaRoster<a class="headerlink" href="#bmediaroster" title="Permalink to this heading">¶</a></h1>
+<p>The <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv412BMediaRoster" title="BMediaRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaRoster</span></code></a> class comprises the functionality that
+applications that use the Media Kit can access.</p>
+<p>An application can only have a single instance of the
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv412BMediaRoster" title="BMediaRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaRoster</span></code></a> class, which is accessed by calling the static
+member function <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster6RosterEP8status_t" title="BMediaRoster::Roster"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaRoster::Roster()</span></code></a>, which creates the media
+roster, establishes the connection to the Media Server, then returns a
+pointer to the roster.</p>
+<p>The creation of the roster object is thread protected, so you can safely
+call <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster6RosterEP8status_t" title="BMediaRoster::Roster"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaRoster::Roster()</span></code></a> from multiple threads without
+synchronization, and both threads will safely get the same instance. The
+cost of this synchronization is low enough that there’s no need to cache
+the returned pointer, but it’s perfectly safe to do so if you wish:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BMediaRoster</span><span class="w"> </span><span class="o">*</span><span class="n">gMediaRoster</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">status_t</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">BApplication</span><span class="w"> </span><span class="n">app</span><span class="p">(</span><span class="s">&quot;application/x-vnd.me-myself&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">gMediaRoster</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BMediaRoster</span><span class="o">::</span><span class="n">Roster</span><span class="p">(</span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">gMediaRoster</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">B_OK</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="cm">/* the Media Server appears to be dead -- handle that here */</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* The Media Server connection is in place -- enjoy! */</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Because <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv412BMediaRoster" title="BMediaRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaRoster</span></code></a> is derived from <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>,
+you should create your <a class="reference internal" href="../../kits/application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a> before calling
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster6RosterEP8status_t" title="BMediaRoster::Roster"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaRoster::Roster()</span></code></a>, although the <a class="reference internal" href="../../kits/application/application.html#_CPPv412BApplication" title="BApplication"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BApplication</span></code></a>
+doesn’t have to be running yet.</p>
+<p>You should never delete the <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv412BMediaRoster" title="BMediaRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaRoster</span></code></a> returned to you by
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv412BMediaRoster" title="BMediaRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaRoster</span></code></a>. Also, you can’t derive a class from
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv412BMediaRoster" title="BMediaRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaRoster</span></code></a>.</p>
+<p>If you want to receive notifications from the Media Server when specific
+changes occur, such as nodes coming online or going offline, for example,
+you can register to receive such notifications by calling
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster13StartWatchingERK10BMessenger" title="BMediaRoster::StartWatching"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StartWatching()</span></code></a>.</p>
+<section id="playing-media-from-disk">
+<h2>Playing Media from Disk<a class="headerlink" href="#playing-media-from-disk" title="Permalink to this heading">¶</a></h2>
+<p>To play a media file from disk, you would follow the following steps:</p>
+<ul class="simple">
+<li><p>Create an <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">entry_ref</span></code> that refers to the file to be
+played.</p></li>
+<li><p>Call <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster8SniffRefERK9entry_ref6uint64P17dormant_node_infoP9BMimeType" title="BMediaRoster::SniffRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SniffRef()</span></code></a> to obtain a
+<span class="xref std std-ref">dormant_node_info</span> reference to the node that is best capable of
+playing back the media file.</p></li>
+<li><p>Call <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster22InstantiateDormantNodeERK17dormant_node_infoP10media_node" title="BMediaRoster::InstantiateDormantNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InstantiateDormantNode()</span></code></a> to instantiate the node; this
+returns a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_node</span></code> that you can use for other
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv412BMediaRoster" title="BMediaRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaRoster</span></code></a> calls.</p></li>
+<li><p>Use <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster9SetRefForERK10media_nodeR9entry_refbP9bigtime_t" title="BMediaRoster::SetRefFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetRefFor()</span></code></a> to pass the
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">entry_ref</span></code> of the file to be played to the node.</p></li>
+<li><p>Call <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster17GetFreeOutputsForERK10media_nodeP12media_output5int32P5int3210media_type" title="BMediaRoster::GetFreeOutputsFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetFreeOutputsFor()</span></code></a> to
+obtain a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_output</span></code> structure describing an
+available output on the producer node. This structure contains a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_source</span></code> you can pass to
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster7ConnectERK12media_sourceRK17media_destinationP12media_formatP12media_outputP11media_input" title="BMediaRoster::Connect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Connect()</span></code></a> as the source of the media
+data.</p></li>
+<li><p>The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_output</span></code> structure returned by
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster17GetFreeOutputsForERK10media_nodeP12media_output5int32P5int3210media_type" title="BMediaRoster::GetFreeOutputsFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetFreeOutputsFor()</span></code></a> contains
+a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_format</span></code> field that indicates the general
+type of media data contained by the media file; if you don’t already know
+what type of data you’re playing back (audio or video or whatever), this
+will let you determine what you’ll be playing.</p></li>
+<li><p>You can use this value to determine what type of destination is needed to
+output the data (for example, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_RAW_AUDIO</span></code> would go
+to an audio output, and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_RAW_VIDEO</span></code> would go to a
+video output).</p></li>
+<li><p>Call <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster13StartWatchingERK10BMessenger" title="BMediaRoster::StartWatching"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetAudioMixer()</span></code></a> to get a
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_node</span></code> for the default audio mixer (if the
+media data is audio), or <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster14GetVideoOutputEP10media_node" title="BMediaRoster::GetVideoOutput"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetVideoOutput()</span></code></a> to get a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_node</span></code> for the default video output (if the media data is video).</p></li>
+<li><p>Use <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster16GetFreeInputsForERK10media_nodeP11media_input5int32P5int3210media_type" title="BMediaRoster::GetFreeInputsFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetFreeInputsFor()</span></code></a> to
+obtain a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_input</span></code> structure describing an
+available input on the consumer node (the audio mixer or video output);
+this structure contains a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_destination</span></code> you can pass to <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster7ConnectERK12media_sourceRK17media_destinationP12media_formatP12media_outputP11media_input" title="BMediaRoster::Connect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Connect()</span></code></a>.</p></li>
+<li><p>Call <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster7ConnectERK12media_sourceRK17media_destinationP12media_formatP12media_outputP11media_input" title="BMediaRoster::Connect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Connect()</span></code></a> to connect the source
+to the destination.</p></li>
+<li><p>Next, you need to set the time source for the media file’s node. Normally
+you’ll set this to the preferred time source. The audio mixer or video
+output is already slaved to an appropriate time source.</p></li>
+<li><p>Finally, you can use <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster9StartNodeEK10media_node9bigtime_t" title="BMediaRoster::StartNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StartNode()</span></code></a> to
+start the producer, consumer, and time source. The media file should begin
+playing back.</p></li>
+</ul>
+<p>Let’s look at actual sample code that does this. This example is
+particular to playing movie files; in particular, it assumes that the video
+is encoded (<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_ENCODED_VIDEO</span></code>) and that the audio is
+in a raw audio format (<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_RAW_AUDIO</span></code>). However, it
+demonstrates the principles of playing both encoded and raw media formats,
+and you can easily extrapolate from it any type of playback you need. First
+it’s necessary to identify an appropriate node to handle the file, and to
+instantiate the node and configure it for the file we want to play:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">bigtime_t</span><span class="w">     </span><span class="n">duration</span><span class="p">;</span><span class="w"></span>
+<span class="n">media_node</span><span class="w">      </span><span class="n">timeSourceNode</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">media_node</span><span class="w">      </span><span class="n">mediaFileNode</span><span class="p">;</span><span class="w"></span>
+<span class="n">media_output</span><span class="w">    </span><span class="n">fileNodeOutput</span><span class="p">;</span><span class="w"></span>
+<span class="n">int32</span><span class="w">           </span><span class="n">fileOutputCount</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">media_output</span><span class="w">    </span><span class="n">fileAudioOutput</span><span class="p">;</span><span class="w"></span>
+<span class="n">int32</span><span class="w">           </span><span class="n">fileAudioCount</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">media_node</span><span class="w">      </span><span class="n">codecNode</span><span class="p">;</span><span class="w"></span>
+<span class="n">media_output</span><span class="w">    </span><span class="n">codecOutput</span><span class="p">;</span><span class="w"></span>
+<span class="n">media_input</span><span class="w">     </span><span class="n">codecInput</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">media_node</span><span class="w">      </span><span class="n">videoNode</span><span class="p">;</span><span class="w"></span>
+<span class="n">media_input</span><span class="w">     </span><span class="n">videoInput</span><span class="p">;</span><span class="w"></span>
+<span class="n">int32</span><span class="w">           </span><span class="n">videoInputCount</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">media_node</span><span class="w">      </span><span class="n">audioNode</span><span class="p">;</span><span class="w"></span>
+<span class="n">media_input</span><span class="w">     </span><span class="n">audioInput</span><span class="p">;</span><span class="w"></span>
+<span class="n">int32</span><span class="w">           </span><span class="n">audioInputCount</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">dormant_node_info</span><span class="w"> </span><span class="n">nodeInfo</span><span class="p">;</span><span class="w"></span>
+<span class="n">status_t</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">playingFlag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="n">roster</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BMediaRoster</span><span class="o">::</span><span class="n">Roster</span><span class="p">();</span><span class="w"></span>
+
+<span class="n">initStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">SniffRef</span><span class="p">(</span><span class="o">*</span><span class="n">ref</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nodeInfo</span><span class="p">);</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">initStatus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">initStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">InstantiateDormantNode</span><span class="p">(</span><span class="n">nodeInfo</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mediaFileNode</span><span class="p">);</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">initStatus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">roster</span><span class="o">-&gt;</span><span class="n">SetRefFor</span><span class="p">(</span><span class="n">mediaFileNode</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">ref</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">duration</span><span class="p">);</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Setup</span><span class="p">())</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Error %08lX in Setup()</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">Start</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This code begins by obtaining a pointer to the media roster. It then calls
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster8SniffRefERK9entry_ref6uint64P17dormant_node_infoP9BMimeType" title="BMediaRoster::SniffRef"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SniffRef()</span></code></a> to get a
+<span class="xref std std-ref">dormant_node_info</span> structure describing the best-suited node for
+reading the media data from the file specified by <span class="hparameter">ref</span>.</p>
+<p>Once a dormant_node_info structure has been filled out, the
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster22InstantiateDormantNodeERK17dormant_node_infoP10media_node" title="BMediaRoster::InstantiateDormantNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InstantiateDormantNode()</span></code></a>
+function is called to instantiate a node to handle the file. A dormant node
+is a node whose code resides in an add-on, instead of within the
+application itself. The <span class="hparameter">nodeInfo</span> structure is passed into the
+function, and on return, the <span class="hparameter">mediaFileNode</span> has been set up for
+the appropriate node.</p>
+<p>Since the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_node</span></code> <span class="hparameter">mediaFileNode</span> is
+a file handling node, the <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster9SetRefForERK10media_nodeR9entry_refbP9bigtime_t" title="BMediaRoster::SetRefFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetRefFor()</span></code></a>
+function is then called to tell the newly-instantiated file handler node
+what file it should handle. The inputs here are:</p>
+<ul class="simple">
+<li><p><span class="hparameter">mediaFileNode</span> is the node whose file reference is to be set.</p></li>
+<li><p><span class="hparameter">ref</span> is the file that the node should reference.</p></li>
+<li><p><span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> indicates that the file must already exist. If this flag
+were <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, and the file indicated by <span class="hparameter">ref</span> were
+nonexistent, the node would create a new file. Since we’re playing a file,
+we don’t want to do that.</p></li>
+<li><p><span class="hparameter">duration</span> is a <span class="htype">bigtime_t</span> variable that will receive the
+duration of the media file, in microseconds.</p></li>
+</ul>
+<p>Once this has been accomplished, it’s time to instantiate the other nodes
+needed to perform the media playback. Note that your code should check the
+error results from each of these calls and only proceed if
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> is returned.</p>
+<p>The <span class="hmethod">Setup()</span> and <span class="hmethod">Start()</span> functions used in the
+example above are given below. <span class="hmethod">Setup()</span> actually sets up the
+connections and instantiates the various other nodes (such as codecs and
+output nodes) required to play back the media data. Let’s take a look at
+<span class="hmethod">Setup()</span> next:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span><span class="w"> </span><span class="nf">MediaPlayer::Setup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">status_t</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">media_format</span><span class="w"> </span><span class="n">tryFormat</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">dormant_node_info</span><span class="w"> </span><span class="n">nodeInfo</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w"> </span><span class="n">nodeCount</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">GetAudioMixer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">audioNode</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">GetVideoOutput</span><span class="p">(</span><span class="o">&amp;</span><span class="n">videoNode</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>First, <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster13GetAudioMixerEP10media_node" title="BMediaRoster::GetAudioMixer"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetAudioMixer()</span></code></a> and
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster14GetVideoOutputEP10media_node" title="BMediaRoster::GetVideoOutput"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetVideoOutput()</span></code></a> are called to
+obtain an audio mixer node and a video output node. The nodes returned by
+this function are based on the user’s preferences in the Audio and Video
+preference applications. By default, video is output to a simple video
+output consumer that creates a window to contain the video display.</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>The VideoConsumer node will be available with R4.5; it’s not provided in
+R4. In addition, there are no video producer nodes in R4; media add-ons for
+a variety of movie file formats will also be available beginning with R4.5.</p>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">GetTimeSource</span><span class="p">(</span><span class="o">&amp;</span><span class="n">timeSourceNode</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">b_timesource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">MakeTimeSourceFor</span><span class="p">(</span><span class="n">timeSourceNode</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This code obtains a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_node</span></code> for the preferred
+time source, and then creates a <a class="reference internal" href="../../kits/media/time-source.html#_CPPv411BTimeSource" title="BTimeSource"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimeSource</span></code></a> object that refers
+to the same node; we’ll need to be able to make some
+<a class="reference internal" href="../../kits/media/time-source.html#_CPPv411BTimeSource" title="BTimeSource"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimeSource</span></code></a> calls to obtain some specific timing information
+later.</p>
+<p>A time source is a node that can be used to synchronize other nodes. By
+default, nodes are slaved to the system time source, which is the
+computer’s internal clock. However, this time source, while very precise,
+isn’t good for synchronizing media data, since its concept of time has
+nothing to do with actual media being performed. For this reason, you
+typically will want to change nodes’ time sources to the preferred time
+source.</p>
+<p>You can think of a media node (represented by the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_node</span></code> structure) as a component in a home theater system you might
+have at home. It has inputs for audio and video (possibly multiple inputs
+for each), and outputs to pass that audio and video along to other
+components in the system. To use the component, you have to connect wires
+from the outputs of some other components into the component’s inputs, and
+the outputs into the inputs of other components.</p>
+<p>The Media Kit works the same way. We need to locate audio outputs from the
+<span class="hparameter">mediaFileNode</span> and find corresponding audio inputs on the
+<span class="hparameter">audioNode</span>. This is analogous to choosing an audio output from
+your new DVD player and matching it to an audio input jack on your stereo
+receiver. Since you can’t use ports that are already in use, we call
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster17GetFreeOutputsForERK10media_nodeP12media_output5int32P5int3210media_type" title="BMediaRoster::GetFreeOutputsFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetFreeOutputsFor()</span></code></a> to find
+free output ports on the <span class="hparameter">mediaFileNode</span>, and
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster16GetFreeInputsForERK10media_nodeP11media_input5int32P5int3210media_type" title="BMediaRoster::GetFreeInputsFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetFreeInputsFor()</span></code></a> to locate
+free input ports on the <span class="hparameter">audioNode</span>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">GetFreeOutputsFor</span><span class="p">(</span><span class="n">mediaFileNode</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">fileAudioOutput</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="o">&amp;</span><span class="n">fileAudioCount</span><span class="p">,</span><span class="w"> </span><span class="n">B_MEDIA_RAW_AUDIO</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">GetFreeInputsFor</span><span class="p">(</span><span class="n">audioNode</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">audioInput</span><span class="p">,</span><span class="w"> </span><span class="n">fileAudioCount</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="o">&amp;</span><span class="n">audioInputCount</span><span class="p">,</span><span class="w"> </span><span class="n">B_MEDIA_RAW_AUDIO</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>We only want a single audio connection between the two nodes (a single
+connection can carry stereo sound), and the connection is of type
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_RAW_AUDIO</span></code>. On return, <span class="hparameter">fileAudioOutput</span>
+and <span class="hparameter">audioInput</span> describe the output from the
+<span class="hparameter">mediaFlieNode</span> and the input into the <span class="hparameter">audioNode</span> that
+will eventually be connected to play the movie’s sound.</p>
+<p>We likewise have to find a video output from the <span class="hparameter">mediaFileNode</span>
+and an input into the <span class="hparameter">videoNode</span>. In this case, though, we expect
+the video output from the <span class="hparameter">mediaFileNode</span> to be encoded, and the
+<span class="hparameter">videoNode</span> will want to receive raw, uncompressed video. We’ll
+work that out in a minute; for now, let’s just find the two ports:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">GetFreeOutputsFor</span><span class="p">(</span><span class="n">mediaFileNode</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">fileNodeOutput</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="o">&amp;</span><span class="n">fileOutputCount</span><span class="p">,</span><span class="w"> </span><span class="n">B_MEDIA_ENCODED_VIDEO</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">GetFreeInputsFor</span><span class="p">(</span><span class="n">videoNode</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">videoInput</span><span class="p">,</span><span class="w"> </span><span class="n">fileOutputCount</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="o">&amp;</span><span class="n">videoInputCount</span><span class="p">,</span><span class="w"> </span><span class="n">B_MEDIA_RAW_VIDEO</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The problem we have now is that the <span class="hparameter">mediaFileNode</span> is outputting
+video that’s encoded somehow (like in Cinepak format, for instance). The
+<span class="hparameter">videoNode</span>, on the other hand, wants to display raw video. Another
+node must be placed between these to decode the video (much like having an
+adapter to convert PAL video into NTSC, for example). This node will be the
+codec that handles decompressing the video into raw form.</p>
+<p>We need to locate a codec node that can handle the video format being
+output by the <span class="hparameter">mediaFileNode</span>. This is accomplished like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">nodeCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">GetDormantNodes</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nodeInfo</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nodeCount</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="o">&amp;</span><span class="n">fileNodeOutput</span><span class="p">.</span><span class="n">format</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">nodeCount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This call to <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster15GetDormantNodesEP17dormant_node_infoP5int32PK12media_formatPK12media_formatPc6uint646uint64" title="BMediaRoster::GetDormantNodes"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetDormantNodes()</span></code></a>
+looks for a dormant node that can handle the media format specified by the
+<span class="hparameter">mediaFileNode</span>’s output <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_format</span></code>
+structure. Information about the node is returned in <span class="hparameter">nodeInfo</span>.
+<span class="hparameter">nodeCount</span> indicates the number of matching nodes that were found.
+If it’s zero, an error is returned.</p>
+<p>Note that in real life you should ask for several nodes, and search
+through them, looking at the formats until you find one that best meets
+your needs.</p>
+<p>Then we use <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster22InstantiateDormantNodeERK17dormant_node_infoP10media_node" title="BMediaRoster::InstantiateDormantNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InstantiateDormantNode()</span></code></a> to instantiate the codec node, and
+locate inputs into the node (that accept encoded video) and outputs from
+the node (that output raw video):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">InstantiateDormantNode</span><span class="p">(</span><span class="n">nodeInfo</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">codecNode</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">GetFreeInputsFor</span><span class="p">(</span><span class="n">codecNode</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">codecInput</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nodeCount</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="n">B_MEDIA_ENCODED_VIDEO</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">GetFreeOutputsFor</span><span class="p">(</span><span class="n">codecNode</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">codecOutput</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="o">&amp;</span><span class="n">nodeCount</span><span class="p">,</span><span class="w"> </span><span class="n">B_MEDIA_RAW_VIDEO</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Now we’re ready to start connecting these nodes together. If we were
+setting up a home theater system, right about now we’d be getting rug burns
+on our knees and skinned knuckles on our hands, trying to reach behind the
+entertainment center to run wires. The Media Kit is way easier than that,
+and doesn’t involve salespeople telling you to get expensive gold-plated
+cables.</p>
+<p>We begin by connecting the file node’s video output to the codec’s input:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">tryFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fileNodeOutput</span><span class="p">.</span><span class="n">format</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">Connect</span><span class="p">(</span><span class="n">fileNodeOutput</span><span class="p">.</span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">codecInput</span><span class="p">.</span><span class="n">destination</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="o">&amp;</span><span class="n">tryFormat</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">fileNodeOutput</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">codecInput</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><span class="hparameter">tryFormat</span> indicates the format of the encoded video that will be
+output by the <span class="hparameter">mediaFileNode</span>. <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster7ConnectERK12media_sourceRK17media_destinationP12media_formatP12media_outputP11media_input" title="BMediaRoster::Connect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Connect()</span></code></a>, in essense, runs a wire between the output from
+the media node’s video output (<span class="hparameter">fileNodeOutput</span>) to the codec
+node’s input.</p>
+<p>You may wonder what’s up with the
+<span class="hparameter">fileNodeOutput</span>.<span class="hparameter">source</span> and
+<span class="hparameter">codecInput</span>.<span class="hparameter">destination</span> structures. These
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_source</span></code> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_destination</span></code> structures are simplified descriptors of the two ends
+of the connection. They contain only the data absolutely needed for the
+Media Kit to establish the connection. This saves some time when issuing
+the <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster7ConnectERK12media_sourceRK17media_destinationP12media_formatP12media_outputP11media_input" title="BMediaRoster::Connect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Connect()</span></code></a> call (and time is money,
+especially in the media business).</p>
+<p>Next it’s necessary to connect the codec to the video output node. This
+begins by setting up <span class="hparameter">tryFormat</span> to describe raw video of the same
+width and height as the encoded video being fed into the codec, then
+calling <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster7ConnectERK12media_sourceRK17media_destinationP12media_formatP12media_outputP11media_input" title="BMediaRoster::Connect"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Connect()</span></code></a> to establish the
+connection:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">tryFormat</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B_MEDIA_RAW_VIDEO</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">tryFormat</span><span class="p">.</span><span class="n">u</span><span class="p">.</span><span class="n">raw_video</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">media_raw_video_format</span><span class="o">::</span><span class="n">wildcard</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">tryFormat</span><span class="p">.</span><span class="n">u</span><span class="p">.</span><span class="n">raw_video</span><span class="p">.</span><span class="n">display</span><span class="p">.</span><span class="n">line_width</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">            </span><span class="n">codecInput</span><span class="p">.</span><span class="n">format</span><span class="p">.</span><span class="n">u</span><span class="p">.</span><span class="n">encoded_video</span><span class="p">.</span><span class="n">output</span><span class="p">.</span><span class="n">display</span><span class="p">.</span><span class="n">line_width</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">tryFormat</span><span class="p">.</span><span class="n">u</span><span class="p">.</span><span class="n">raw_video</span><span class="p">.</span><span class="n">display</span><span class="p">.</span><span class="n">line_count</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">            </span><span class="n">codecInput</span><span class="p">.</span><span class="n">format</span><span class="p">.</span><span class="n">u</span><span class="p">.</span><span class="n">encoded_video</span><span class="p">.</span><span class="n">output</span><span class="p">.</span><span class="n">display</span><span class="p">.</span><span class="n">line_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">Connect</span><span class="p">(</span><span class="n">codecOutput</span><span class="p">.</span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">videoInput</span><span class="p">.</span><span class="n">destination</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="o">&amp;</span><span class="n">tryFormat</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">codecOutput</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">videoInput</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Now we connect the audio from the media file to the audio mixer node. We
+just copy the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_format</span></code> from the file’s
+audio output, since both ends of the connection should exactly match.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">tryFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fileAudioOutput</span><span class="p">.</span><span class="n">format</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">Connect</span><span class="p">(</span><span class="n">fileAudioOutput</span><span class="p">.</span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">audioInput</span><span class="p">.</span><span class="n">destination</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="o">&amp;</span><span class="n">tryFormat</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">fileAudioOutput</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">audioInput</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The last step of configuring the connections is to ensure that all the
+nodes are slaved to the preferred time source. This will keep them
+synchronized with the preferred time source (and by association, with each
+other):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">SetTimeSourceFor</span><span class="p">(</span><span class="n">mediaFileNode</span><span class="p">.</span><span class="n">node</span><span class="p">,</span><span class="w"></span>
+<span class="n">timeSourceNode</span><span class="p">.</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">SetTimeSourceFor</span><span class="p">(</span><span class="n">videoNode</span><span class="p">.</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">timeSourceNode</span><span class="p">.</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">SetTimeSourceFor</span><span class="p">(</span><span class="n">codecOutput</span><span class="p">.</span><span class="n">node</span><span class="p">.</span><span class="n">node</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">timeSourceNode</span><span class="p">.</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">SetTimeSourceFor</span><span class="p">(</span><span class="n">audioNode</span><span class="p">.</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">timeSourceNode</span><span class="p">.</span><span class="n">node</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">B_OK</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Finally, we return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code> to the caller. Note that this
+code should be enhanced to check the results of each
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv412BMediaRoster" title="BMediaRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaRoster</span></code></a> call, and to return the result code if it’s not
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>. This has been left out of this example for brevity.</p>
+<p>The <span class="hmethod">Start()</span> function actually starts the movie playback.
+Starting playback involves starting, one at a time, all the nodes involved
+in playing back the audio. This includes the audio mixer
+(<span class="hparameter">audioNode</span>), the media file’s node (<span class="hparameter">mediaFileNode</span>), the
+codec, and the video node.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span><span class="w"> </span><span class="nf">MediaPlayer::Start</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">status_t</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">GetStartLatencyFor</span><span class="p">(</span><span class="n">timeSourceNode</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">startTime</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">startTime</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">b_timesource</span><span class="o">-&gt;</span><span class="n">PerformanceTimeFor</span><span class="p">(</span><span class="n">BTimeSource</span><span class="o">::</span><span class="n">RealTime</span><span class="p">()</span><span class="w"></span>
+<span class="w">               </span><span class="o">+</span><span class="w"> </span><span class="mi">1000000</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">50</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">StartNode</span><span class="p">(</span><span class="n">mediaFileNode</span><span class="p">,</span><span class="w"> </span><span class="n">startTime</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">StartNode</span><span class="p">(</span><span class="n">codecNode</span><span class="p">,</span><span class="w"> </span><span class="n">startTime</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">StartNode</span><span class="p">(</span><span class="n">videoNode</span><span class="p">,</span><span class="w"> </span><span class="n">startTime</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">B_OK</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Because there’s lag time between starting each of these nodes, we pick a
+time a few moments in the future for playback to begin, and schedule each
+node to start playing at that time. So we begin by computing that time in
+the future.</p>
+<p>The <a class="reference internal" href="../../kits/media/time-source.html#_CPPv4N11BTimeSource8RealTimeEv" title="BTimeSource::RealTime"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BTimeSource::RealTime()</span></code></a> static member function is called to
+obtain the current real system time. We add a fiftieth of a second to that
+time, and convert it into performance time units. This is the time at which
+the performance of the movie will begin (basically a fiftieth of a second
+from “now”). This value is saved in <span class="hparameter">startTime</span>. These are added to
+the value returned by <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster18GetStartLatencyForERK10media_nodeP9bigtime_t" title="BMediaRoster::GetStartLatencyFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetStartLatencyFor()</span></code></a>, which returns the time required to
+actually start the time source and all the nodes slaved to it.</p>
+<p>Then we simply call <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster9StartNodeEK10media_node9bigtime_t" title="BMediaRoster::StartNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMediaRoster::StartNode()</span></code></a> for each node,
+specifying <span class="hparameter">startTime</span> as the performance time at which playback
+should begin.</p>
+<p>Again, error handling should be added to actually return the error code
+from these functions.</p>
+<p>Stopping playback of the movie is even simpler:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">StopNode</span><span class="p">(</span><span class="n">mediaFileNode</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">StopNode</span><span class="p">(</span><span class="n">codecNode</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">StopNode</span><span class="p">(</span><span class="n">videoNode</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This tells the media file, video codec, and video output nodes to stop
+immediately. If we wanted them to stop together at some time in the future,
+we could compute an appropriate performance time and pass that instead of
+0. In this case, we would need to specify <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> for the last
+argument; when this value is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StopNode()</span></code> stops the node immediately. We could use this
+ability to schedule all three nodes to stop at the same time, so that video
+and audio playback would halt simultaneously.</p>
+<p>Note that we don’t stop the audio mixer node. You should never stop the
+mixer node, because other applications are probably using it.</p>
+<p>Once you’re done playing the movie, and have stopped playback, you should
+disconnect the nodes from each other:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">Disconnect</span><span class="p">(</span><span class="n">mediaFileNode</span><span class="p">.</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">fileNodeOutput</span><span class="p">.</span><span class="n">source</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="n">codecNode</span><span class="p">.</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">codecInput</span><span class="p">.</span><span class="n">destination</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">Disconnect</span><span class="p">(</span><span class="n">codecNode</span><span class="p">.</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">codecOutput</span><span class="p">.</span><span class="n">source</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="n">videoNode</span><span class="p">.</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">videoInput</span><span class="p">.</span><span class="n">destination</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">Disconnect</span><span class="p">(</span><span class="n">mediaFileNode</span><span class="p">.</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">fileAudioOutput</span><span class="p">.</span><span class="n">source</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="n">audioNode</span><span class="p">.</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">audioInput</span><span class="p">.</span><span class="n">destination</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This will close out the connections between the media file node and the
+video codec, the codec and the video output, and between the file node and
+the audio mixer. You should always stop playback before disconnecting;
+although nodes aren’t allowed to crash if you disconnect them while
+running, their behavior isn’t specified, and may not be what you expect.</p>
+<p>Once the connections are severed, you should release any dormant nodes you
+instantiated. This includes not only nodes instantiated using
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster22InstantiateDormantNodeERK17dormant_node_infoP10media_node" title="BMediaRoster::InstantiateDormantNode"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InstantiateDormantNode()</span></code></a>, but also default nodes (those
+obtained using functions like <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster13GetAudioInputEP10media_node" title="BMediaRoster::GetAudioInput"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetAudioInput()</span></code></a> and <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv4N12BMediaRoster14GetVideoOutputEP10media_node" title="BMediaRoster::GetVideoOutput"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetVideoOutput)</span></code></a>, for example):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">ReleaseNode</span><span class="p">(</span><span class="n">codecNode</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">ReleaseNode</span><span class="p">(</span><span class="n">mediaFileNode</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">ReleaseNode</span><span class="p">(</span><span class="n">videoNode</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">roster</span><span class="o">-&gt;</span><span class="n">ReleaseNode</span><span class="p">(</span><span class="n">audioNode</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If you want to play audio, you may find it much easier to use the BSound
+and <a class="reference internal" href="../../kits/media/sound-player.html#_CPPv412BSoundPlayer" title="BSoundPlayer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BSoundPlayer</span></code></a> classes to do so. As of R4.5, there are no
+Be-provided nodes for producing audio from a disk file.</p>
+<section id="detecting-when-playback-is-complete">
+<h3>Detecting When Playback Is Complete<a class="headerlink" href="#detecting-when-playback-is-complete" title="Permalink to this heading">¶</a></h3>
+<p>There isn’t a Media Kit function that can directly tell you whether or not
+the media has reached the end of the data during playback. However, the
+following easy-to-implement code can do the job for you:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">bigtime_t</span><span class="w"> </span><span class="n">currentTime</span><span class="p">;</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">isPlaying</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">currentTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b_timesource</span><span class="o">-&gt;</span><span class="n">PerformanceTimeFor</span><span class="p">(</span><span class="n">BTimeSource</span><span class="o">::</span><span class="n">RealTime</span><span class="p">());</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">currentTime</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">startTime</span><span class="o">+</span><span class="n">duration</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">isPlaying</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This works by obtaining the time source’s performance time and comparing
+it to the time at which playback of the movie was begun plus the movie’s
+duration (both of which were saved when we initially set up and began
+playback of the movie, as seen in the code in the previous section above).</p>
+<p>If the current performance time is equal to or greater than the sum of the
+starting time and the movie’s duration, then playback is finished, and we
+set <span class="hparameter">isPlaying</span> to <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>; otherwise, this value remains
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>.</p>
+</section>
+<section id="using-bmediaroster-functions-from-nodes">
+<h3>Using BMediaRoster Functions from Nodes<a class="headerlink" href="#using-bmediaroster-functions-from-nodes" title="Permalink to this heading">¶</a></h3>
+<p>You can issue <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv412BMediaRoster" title="BMediaRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaRoster</span></code></a> function calls from within your
+own node, however, as a general rule, you shouldn’t call
+<a class="reference internal" href="../../kits/media/media-roster.html#_CPPv412BMediaRoster" title="BMediaRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaRoster</span></code></a> functions from within your control thread, or
+while the control thread is blocked. Many <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv412BMediaRoster" title="BMediaRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaRoster</span></code></a>
+functions use synchronous turnarounds, and will deadlock in this situation.
+You should assume, for safety’s sake, that all <a class="reference internal" href="../../kits/media/media-roster.html#_CPPv412BMediaRoster" title="BMediaRoster"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaRoster</span></code></a>
+functions will deadlock if used in these cases.</p>
+<p>For example, if you have an application that’s playing video into a
+window, and you call <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StopNode()</span></code> from
+the window’s <a class="reference internal" href="../../kits/interface/window.html#_CPPv4N7BWindow15MessageReceivedEP8BMessage" title="BWindow::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MessageReceived()</span></code></a>
+function, a deadlock would occur if the video player node blocks waiting on
+the window to be unlocked, and the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">StopNode()</span></code> function is keeping the window locked while it
+waits for the video producer node, which is blocked waiting on the consumer
+node, and so forth. Deadlock results, and that’s a bad thing.</p>
+<p>Instead, you should consider creating a seperate <a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> that
+manages your nodes. Future versions of the Media Kit will provide
+convenience classes to do some of this for you.</p>
+</section>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-node.html">BMediaNode</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-theme.html">BMediaTheme</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

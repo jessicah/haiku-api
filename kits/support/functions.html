@@ -74,7 +74,7 @@
       <div class="content" role="main">
         
   <section id="functions-and-macros">
-<h1>Functions and Macros<a class="headerlink" href="#functions-and-macros" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv420Functions and Macros">Functions and Macros<a class="headerlink" href="#functions-and-macros" title="Permalink to this heading">¶</a></h1>
 <p>This section lists the Support Kit’s general-purpose functions and macros.</p>
 <section id="_CPPv410atomic_addP6vint325int32">
 </section>
@@ -152,19 +152,19 @@ this that creates an instance of the <span class="hclass">BPictureButton</span> 
 </div>
 </li>
 <li><p>The <span class="hmethod">is_instance_of()</span> macro would return <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> only if the <span class="hparameter">class</span>
-passed to it is <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code>. In the following example, it would return
-<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>, and the message would not be printed. Even though <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code>
-inherits from <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>, the object is an instance of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code>
-class, not <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>:</p>
+passed to it is <a class="reference internal" href="../interface/picture-button.html#_CPPv414BPictureButton" title="BPictureButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code></a>. In the following example, it would return
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>, and the message would not be printed. Even though <a class="reference internal" href="../interface/picture-button.html#_CPPv414BPictureButton" title="BPictureButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code></a>
+inherits from <a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>, the object is an instance of the <a class="reference internal" href="../interface/picture-button.html#_CPPv414BPictureButton" title="BPictureButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code></a>
+class, not <a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_instance_of</span><span class="p">(</span><span class="n">button</span><span class="p">,</span><span class="w"> </span><span class="n">BView</span><span class="p">))</span><span class="w"></span>
 <span class="w">	</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The button is an instance of BView.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
 <li><p>The <span class="hmethod">is_kind_of()</span> macro would return <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if <span class="hparameter">class</span> is
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code> or any class that <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code> inherits from. In the
+<a class="reference internal" href="../interface/picture-button.html#_CPPv414BPictureButton" title="BPictureButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code></a> or any class that <a class="reference internal" href="../interface/picture-button.html#_CPPv414BPictureButton" title="BPictureButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code></a> inherits from. In the
 following example, it would return <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> and the message would be printed. A
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code> is a kind of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>:</p>
+<a class="reference internal" href="../interface/picture-button.html#_CPPv414BPictureButton" title="BPictureButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code></a> is a kind of <a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_kind_of</span><span class="p">(</span><span class="n">button</span><span class="p">,</span><span class="w"> </span><span class="n">BView</span><span class="p">))</span><span class="w"></span>
 <span class="w">	</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The button is a kind of BView.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
@@ -174,17 +174,17 @@ following example, it would return <span class="cpp-expr sig sig-inline cpp"><sp
 <p>Note that class names are not passed as strings, but <span class="hmethod">class_name()</span> returns the name as a
 string.</p>
 <p>The <span class="hmethod">cast_as()</span> macro is most useful when you want to treat a generic object as an instance
-of a more specific class. Support, for example, that the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code> mentioned above
-becomes the focus view for a window and you retrieve it by calling the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code>s
+of a more specific class. Support, for example, that the <a class="reference internal" href="../interface/picture-button.html#_CPPv414BPictureButton" title="BPictureButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code></a> mentioned above
+becomes the focus view for a window and you retrieve it by calling the <a class="reference internal" href="../interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>s
 <a class="reference internal" href="../interface/window.html#_CPPv4NK7BWindow12CurrentFocusEv" title="BWindow::CurrentFocus"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CurrentFocus()</span></code></a> function:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BView</span><span class="o">*</span><span class="w"> </span><span class="n">focus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">window</span><span class="o">-&gt;</span><span class="n">CurrentFocus</span><span class="p">();</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Since the focus view might be any type of view, <a class="reference internal" href="../interface/window.html#_CPPv4NK7BWindow12CurrentFocusEv" title="BWindow::CurrentFocus"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CurrentFocus()</span></code></a> returns a
-pointer to an object of the base <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> class. Unless you know otherwise, you cannot
-treat the object as anything more specific than a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> instance. However, you can ask
-the object if it’s a kind of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code> and, if it is, cast it to the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code> type:</p>
+pointer to an object of the base <a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> class. Unless you know otherwise, you cannot
+treat the object as anything more specific than a <a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> instance. However, you can ask
+the object if it’s a kind of <a class="reference internal" href="../interface/picture-button.html#_CPPv414BPictureButton" title="BPictureButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code></a> and, if it is, cast it to the
+<a class="reference internal" href="../interface/picture-button.html#_CPPv414BPictureButton" title="BPictureButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code></a> type:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_kind_of</span><span class="p">(</span><span class="n">focus</span><span class="p">,</span><span class="w"> </span><span class="n">BPictureButton</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">	</span><span class="n">BPictureButton</span><span class="o">*</span><span class="w"> </span><span class="n">pictureButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BPictureButton</span><span class="o">*</span><span class="p">)</span><span class="n">focus</span><span class="p">);</span><span class="w"></span>
 <span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pictureButton</span><span class="o">-&gt;</span><span class="n">Behavior</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_TWO_STATE_BUTTON</span><span class="p">)</span><span class="w"></span>
@@ -215,9 +215,9 @@ C++ <span class="cpp-expr sig sig-inline cpp">dynamic_cast</span> operator and t
 precisely, let’s adopt the following shorthand terms for an object’s type:</p>
 <ul class="simple">
 <li><p>The real type of an object is its type on construction. For example, if you construct an instance
-of the <span class="hclass">BButton</span> class, as shown above, <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BButton</span></code> is its real type.</p></li>
+of the <span class="hclass">BButton</span> class, as shown above, <a class="reference internal" href="../interface/button.html#_CPPv47BButton" title="BButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BButton</span></code></a> is its real type.</p></li>
 <li><p>The declared type of an object is the class label it currently bears. For example,
-<span class="hmethod">CurrentFocus()</span> returns an object whose declared class is <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>.</p></li>
+<span class="hmethod">CurrentFocus()</span> returns an object whose declared class is <a class="reference internal" href="../interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>.</p></li>
 </ul>
 <p>Either of these types can be compared to a target type, the type you want to cast the object to or
 test it against. The target type is the class argument passed to the macros.</p>
@@ -302,7 +302,7 @@ be any of the following constants:</p>
 </tr>
 </tbody>
 </table>
-<p>Most of these constants designate encoding schemes that are supported by the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFont</span></code>
+<p>Most of these constants designate encoding schemes that are supported by the <a class="reference internal" href="../interface/font.html#_CPPv45BFont" title="BFont"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFont</span></code></a>
 class in the Interface Kit and its <a class="reference internal" href="../interface/font.html#_CPPv4N5BFont11SetEncodingE5uint8" title="BFont::SetEncoding"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetEncoding()</span></code></a> function. They parallel the
 constants that are passed to that function. For example, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_IOS1_CONVERSION</span></code> (for these
 functions) and <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ISO_8859_1</span></code> (for <a class="reference internal" href="../interface/font.html#_CPPv4N5BFont11SetEncodingE5uint8" title="BFont::SetEncoding"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetEncoding()</span></code></a>) both designate the
@@ -352,7 +352,7 @@ from UTF-8 than when converting to it, since Unicode represents a very large num
 If unsuccessful, for example, if they don’t recognize the source or destination encoding, they
 return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>. If there’s an error, you should not trust any of the output arguments.</p>
 <div class="note admonition">
-<p class="admonition-title">Note</p>
+<p class="admonition-title" id="CPPv44Note">Note</p>
 <p>These functions are found in the <code class="docutils literal notranslate"><span class="pre">libtextencoding.so</span></code> library. If you use them, be sure to include
 this library file.</p>
 </div>
@@ -362,10 +362,10 @@ chapter.</p>
 </section>
 <h2>
 find_instantiation_func()</h2><p>Declared in: <code class="docutils literal notranslate"><span class="pre">support/Archivable.h</span></code></p>
-<pre style="background: #f3f3f3; line-height: 2em"><span class="n">instantiation_func</span><span class="w"> </span><span class="n">find_instantiation_func</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">className</span><span class="sig-paren">)</span><br /><span class="n">instantiation_func</span><span class="w"> </span><span class="n">find_instantiation_func</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a pointer to the <a class="reference internal" href="archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> function that can create instances
+<pre style="background: #f3f3f3; line-height: 2em"><span class="n">instantiation_func</span><span class="w"> </span><span class="n">find_instantiation_func</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">className</span><span class="sig-paren">)</span><br /><span class="n">instantiation_func</span><span class="w"> </span><span class="n">find_instantiation_func</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message-new.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a pointer to the <a class="reference internal" href="archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> function that can create instances
 of the <span class="hparameter">className</span> class, or <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the function can’t be found. If passed a
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive, <span class="hmethod">find_instantiation_func()</span> gets the name of the class from
-a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code> field called “class” in the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>.</p>
+<a class="reference internal" href="../application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> archive, <span class="hmethod">find_instantiation_func()</span> gets the name of the class from
+a <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code> field called “class” in the <a class="reference internal" href="../application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>.</p>
 <p>The instantiation_func type is defined as follows:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BArchivable</span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">instantiation_func</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">BMessage</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"></span>
 </pre></div>
@@ -387,12 +387,12 @@ another object of the class. For example:</p>
 </section>
 <h2>
 instantiate_object()</h2><p>Declared in: <code class="docutils literal notranslate"><span class="pre">support/Archivable.h</span></code></p>
-<pre style="background: #f3f3f3; line-height: 2em"><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="n">instantiate_object</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Creates and returns a new instance of an archived object, or returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the object
+<pre style="background: #f3f3f3; line-height: 2em"><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="n">instantiate_object</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message-new.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Creates and returns a new instance of an archived object, or returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the object
 can’t be constructed. The object is created by calling the <a class="reference internal" href="archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>
 function of…</p>
 <ol class="arabic simple">
 <li><p>…the class that was last added to the “class” field (an array of class names) of the archive
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>. This will be the “most derived” class in the array.</p></li>
+<a class="reference internal" href="../application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. This will be the “most derived” class in the array.</p></li>
 <li><p>If the named class isn’t recognized by the app (or doesn’t define
 <a class="reference internal" href="archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>), the function tries to load the add-on that’s identified
 (by signature) in archive’s <span class="hparameter">add_on</span> field. This add-on should contain the code for the
@@ -421,7 +421,7 @@ swap_data(), is_type_swapped()</h2><p>Declared in: <code class="docutils literal
 <pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="n">swap_data</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">data</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">length</span>, <span class="n">swap_action</span><span class="w"> </span><span class="n sig-param">action</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="n">is_type_swapped</span><span class="sig-paren">(</span><span class="n">type_code</span><span class="w"> </span><span class="n sig-param">type</span><span class="sig-paren">)</span></pre><p><span class="hmethod">swap_data</span> is a general byte swapping function, converting data of type <span class="hparameter">type</span> and
 converting its endianness according to action (defined in “Byte Swapping Constants”). The
 <span class="hparameter">length</span> field can be used to specify an array of items to be converted. For example, you
-can convert an array of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code>s from little endian to the host endianness:</p>
+can convert an array of <a class="reference internal" href="../application/messenger.html#_CPPv410BMessenger" title="BMessenger"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessenger</span></code></a>s from little endian to the host endianness:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BMessenger</span><span class="w"> </span><span class="n">messengers</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"></span>
 <span class="c1">// . . .</span>
 <span class="n">swap_data</span><span class="p">(</span><span class="n">B_MESSENGER_TYPE</span><span class="p">,</span><span class="w"> </span><span class="n">messengers</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">BMessenger</span><span class="p">),</span><span class="w"> </span><span class="n">B_SWAP_LENDIAN_TO_HOST</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
@@ -452,7 +452,7 @@ in straight C programs. <span class="c-expr sig sig-inline c"><a class="referenc
 </section>
 <h2>
 validate_instantiation()</h2><p>Declared in: <code class="docutils literal notranslate"><span class="pre">support/Archivable.h</span></code></p>
-<pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="n">validate_instantiation</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">className</span><span class="sig-paren">)</span></pre><p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the <span class="hparameter">archive</span> <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> contains data for an object
+<pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="n">validate_instantiation</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message-new.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">className</span><span class="sig-paren">)</span></pre><p>Returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the <span class="hparameter">archive</span> <a class="reference internal" href="../application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> contains data for an object
 belonging to the <span class="hparameter">className</span> class, and <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not. The determination is made
 by looking for the class name in a “class” array in the archive. If the class name appears anywhere
 in the array, this function returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>. If not, it returns <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>.</p>

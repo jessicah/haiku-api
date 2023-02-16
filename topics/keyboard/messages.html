@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Keyboard Messages &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Modifier Keys" href="modifier-keys.html" />
+    <link rel="prev" title="More On Keyboard Mapping" href="mapping.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>Keyboard Messages</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="mapping.html">More On Keyboard Mapping</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="modifier-keys.html">Modifier Keys</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Keyboard Messages</a><ul>
+<li><a class="reference internal" href="#b-key-down-b-key-up-b-unmapped-key-down-b-unmapped-key-up">B_KEY_DOWN, B_KEY_UP, B_UNMAPPED_KEY_DOWN, B_UNMAPPED_KEY_UP</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="keyboard-messages">
+<h1 id="CPPv417Keyboard Messages">Keyboard Messages<a class="headerlink" href="#keyboard-messages" title="Permalink to this heading">¶</a></h1>
+<section id="b-key-down-b-key-up-b-unmapped-key-down-b-unmapped-key-up">
+<h2>B_KEY_DOWN, B_KEY_UP, B_UNMAPPED_KEY_DOWN, B_UNMAPPED_KEY_UP<a class="headerlink" href="#b-key-down-b-key-up-b-unmapped-key-down-b-unmapped-key-up" title="Permalink to this heading">¶</a></h2>
+<table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>Source:</p></td>
+<td><p>The system.</p></td>
+</tr>
+<tr class="row-even"><td><p>Target:</p></td>
+<td><p>The focus view’s <a class="reference internal" href="../../kits/interface/window.html#_CPPv47BWindow" title="BWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindow</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hook:</p></td>
+<td><p><a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView7KeyDownEPKc5int32" title="BView::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::KeyDown()</span></code></a> (<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_DOWN</span></code>)
+<a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView5KeyUpEPKc5int32" title="BView::KeyUp"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::KeyUp()</span></code></a> (<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_UP</span></code>)   (The
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">…UNMAPPED…</span></code> messages don’t map to hook functions.)</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_DOWN</span></code> is sent when the user presses (or holds down)
+a key that’s mapped to a character; <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_UP</span></code> is sent when
+the user releases the key. <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_UNMAPPED_KEY_DOWN</span></code> and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_UNMAPPED_KEY_UP</span></code> are sent if the key isn’t mapped to a
+character. This doesn’t include modifier keys, which are reported in the
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MODIFIERS_CHANGED</span></code> message.</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">when</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT64_TYPE</span></code></p></td>
+<td><p>Event time, in microseconds since 01/01/70</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">key</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The code for the physical key that was pressed. See “<span class="xref std std-ref">More On Keyboard Mapping</span>” for a discussion of the keymap.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">be:key_repeat</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The “iteration number” of this key down. When the user holds the key down,
+successive messages are sent with increasing key repeat values. This field
+isn’t present in the initial event; the first repeat message (i.e., the
+second key down message) has a key repeat value of 1.
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_DOWN</span></code> only)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">modifiers</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The modifier keys that were in effect at the time of the event. See
+“<span class="xref std std-ref">Modifier Keys</span>” for a list of values.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">states</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_UINT8_TYPE</span></code></p></td>
+<td><p>The state of all keys at the time of the event. See “<span class="xref std std-ref">Key States</span>.”</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">byte</span>[3]</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT8_TYPE</span></code></p></td>
+<td><p>The UTF-8 data that’s generated.  (<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_DOWN</span></code> and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_UP</span></code> only)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">bytes</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>The string that’s generated. (The string usually contains a single
+character.) (<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_DOWN</span></code> and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_UP</span></code>
+only)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">raw_char</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>Modifier-independent ASCII code for the character.
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_DOWN</span></code> and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_KEY_UP</span></code> only)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="mapping.html">More On Keyboard Mapping</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="modifier-keys.html">Modifier Keys</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

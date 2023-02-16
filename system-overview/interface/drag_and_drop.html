@@ -17,25 +17,88 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BDragger" href="dragger.html" />
+    <link rel="prev" title="BControl" href="control.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
-          <span>The Haiku Book  documentation</span></a></h1>
+          <span>API Documentation</span></a></h1>
         <h2 class="heading"><span>Drag And Drop</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
+        «&#160;&#160;<a href="control.html">BControl</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="dragger.html">BDragger</a>&#160;&#160;»
         </p>
 
       </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Drag And Drop</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#simple-vs-negotiated-drag-n-drop">Simple vs. Negotiated Drag’n’Drop</a><ul>
+<li><a class="reference internal" href="#simple-drag-n-drop">Simple Drag’n’Drop</a></li>
+<li><a class="reference internal" href="#negotiated-drag-n-drop">Negotiated Drag’n’Drop</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#basics-of-drag-and-drop">Basics of Drag and Drop</a></li>
+<li><a class="reference internal" href="#example-simple-drag-n-drop">Example: Simple Drag’n’Drop</a></li>
+<li><a class="reference internal" href="#bmessage-formats-in-negotiated-drag-n-drop">BMessage Formats in Negotiated Drag’n’Drop</a><ul>
+<li><a class="reference internal" href="#protocol-for-the-drag-message">Protocol for the Drag Message</a><ul>
+<li><a class="reference internal" href="#drag-message-fields-filled-in-by-your-code">Drag Message Fields Filled In by Your Code</a></li>
+<li><a class="reference internal" href="#drag-message-fields-filled-in-by-the-system">Drag Message Fields Filled In by the System</a></li>
+<li><a class="reference internal" href="#detailed-description-of-the-drag-message-fields">Detailed Description of the Drag Message Fields</a><ul>
+<li><a class="reference internal" href="#be-types-be-filetypes-and-be-type-descriptions-fields">be:types, be:filetypes, and be:type_descriptions Fields</a></li>
+<li><a class="reference internal" href="#the-be-actions-field">The be:actions Field</a></li>
+<li><a class="reference internal" href="#the-be-clip-name-field">The be:clip_name Field</a></li>
+<li><a class="reference internal" href="#be-originator-and-be-originator-data-fields">be:originator and be:originator_data Fields</a></li>
+<li><a class="reference internal" href="#the-be-data-field">The be:data Field</a></li>
+<li><a class="reference internal" href="#the-drop-point-field">The <em>drop_point</em> Field</a></li>
+<li><a class="reference internal" href="#the-drop-offset-field">The <em>drop_offset</em> Field</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#passing-data-in-a-file">Passing Data in a File</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#protocol-for-the-negotiation-message">Protocol for the Negotiation Message</a><ul>
+<li><a class="reference internal" href="#message-fields-in-the-negotiation-message">Message Fields in the Negotiation Message</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#protocol-for-the-data-message">Protocol for the Data Message</a><ul>
+<li><a class="reference internal" href="#when-data-is-sent-in-the-data-message">When Data Is Sent in the Data Message</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#handling-drops-from-old-applications">Handling Drops from ‘Old’ Applications</a></li>
+<li><a class="reference internal" href="#summary-of-the-negotiated-drag-n-drop-protocol">Summary of the Negotiated Drag’n’Drop Protocol</a><ul>
+<li><a class="reference internal" href="#drag-message">Drag Message</a></li>
+<li><a class="reference internal" href="#negotiation-message">Negotiation Message</a></li>
+<li><a class="reference internal" href="#data-message">Data Message</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
       <div class="content" role="main">
         
-        
   <section id="drag-and-drop">
-<h1>Drag And Drop<a class="headerlink" href="#drag-and-drop" title="Permalink to this heading">¶</a></h1>
-<p>This is the reference document for constructing <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> objects as used in Haiku’s
+<h1 id="CPPv413Drag And Drop">Drag And Drop<a class="headerlink" href="#drag-and-drop" title="Permalink to this heading">¶</a></h1>
+<p>This is the reference document for constructing <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> objects as used in Haiku’s
 standard negotiated drag’n’drop actions. If you’re reading it for the first time, you should
 probably read the entire thing. If you want to look up something, you can jump to any of the following:</p>
 <ol class="arabic simple">
@@ -56,13 +119,13 @@ probably read the entire thing. If you want to look up something, you can jump t
 you’ll need to be at least reasonably familiar with the following topics, in order to be comfortable
 reading this document:</p>
 <ul class="simple">
-<li><p>The <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> class, since dragged objects are sent to their targets as
-<a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> objects. You should understand what a <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> is, how to add
-data to a <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> or extract data from it, how to send a <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>, and
-where to put code to handle incoming <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>s.</p></li>
-<li><p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> class. The drag and drop action is fundamentally a GUI operation, and
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> objects are the most important objects in handling GUI events; subclasses of
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> are where you will most often define code to both initiate a drag, and handle a
+<li><p>The <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> class, since dragged objects are sent to their targets as
+<a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> objects. You should understand what a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> is, how to add
+data to a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> or extract data from it, how to send a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>, and
+where to put code to handle incoming <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>s.</p></li>
+<li><p>The <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> class. The drag and drop action is fundamentally a GUI operation, and
+<a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> objects are the most important objects in handling GUI events; subclasses of
+<a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> are where you will most often define code to both initiate a drag, and handle a
 drop.</p></li>
 <li><p>The Translation Kit, if you wish to make use of Haiku’s built-in translation abilities to (for
 example) drag a JPEG image from an application, to another application that only understands raw
@@ -77,12 +140,12 @@ the drag, and the drop target.</p>
 <section id="simple-drag-n-drop">
 <h3>Simple Drag’n’Drop<a class="headerlink" href="#simple-drag-n-drop" title="Permalink to this heading">¶</a></h3>
 <p>A simple drag’n’drop is one where the action of dragging and dropping corresponds internally to a
-single <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> being sent, from the origin of the drag to the drop target. This was
+single <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> being sent, from the origin of the drag to the drop target. This was
 the original drag’n’drop protocol for Haiku, and is still highly useful in dragging and dropping
 which takes place within a single application, or within a tightly coupled set of applications which
 “know about” one another. For example, you could drag around drawing elements of a drawing program
 using this protocol; each drag operation would result in the drawing application sending a
-<a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> within itself, and that <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> would contain the data necessary
+<a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> within itself, and that <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> would contain the data necessary
 to indicate which drawing element had been moved, and to where. Using the built in drag’n’drop
 abilities of Haiku in this manner will lessen your own workload, since many of the most basic
 aspects, such as visually dragging a bitmap around on the screen, are handled automatically.</p>
@@ -113,31 +176,31 @@ Protocol”.</p>
 first application (which we’ll call the sender application) to the second application (which we’ll
 call the receiver application.) In a nutshell, here are the steps that make up this entire process:</p>
 <ol class="arabic simple">
-<li><p>Detection: Code in a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> object of the sender application notices that the user has clicked on
+<li><p>Detection: Code in a <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> object of the sender application notices that the user has clicked on
 something of interest, and started dragging it. The monitoring code that notices this is usually
-spread out between the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::MouseDown()</span></code> and <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::MouseMoved()</span></code> functions, and typically has to
+spread out between the <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView9MouseDownE6BPoint" title="BView::MouseDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::MouseDown()</span></code></a> and <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView10MouseMovedE6BPoint6uint32PK8BMessage" title="BView::MouseMoved"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::MouseMoved()</span></code></a> functions, and typically has to
 differentiate between the start of a real drag and drop, or a click that might (for example) select
 an object without dragging it, but that moves just one or two pixels because the user has a slightly
-jittery hand. The drag detection code will typically have to use <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::SetMouseEventMask()</span></code> to
+jittery hand. The drag detection code will typically have to use <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView17SetMouseEventMaskE6uint326uint32" title="BView::SetMouseEventMask"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::SetMouseEventMask()</span></code></a> to
 temporarily enable full reporting of mouse movement (which is not normally reported to the
 application, for efficiency reasons).</p></li>
 <li><p>Initiation: Once the sender application’s detection code has decided a drag and drop action has
-been started, it initiates the drag and drop internally, by creating a <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> object
+been started, it initiates the drag and drop internally, by creating a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> object
 containing information about the nature of the object being dragged, and then passing that
-<a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> to the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::DragMessage()</span></code> function.
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::DragMessage()</span></code> also determines how the object being dragged appears visually to
-the user; you can pass it a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code>, in which case it will drag a cool picture around
-the screen, or you can pass it a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code>, in which case it will drag a boring old
+<a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> to the <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView11DragMessageEP8BMessage5BRectP8BHandler" title="BView::DragMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::DragMessage()</span></code></a> function.
+<a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView11DragMessageEP8BMessage5BRectP8BHandler" title="BView::DragMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::DragMessage()</span></code></a> also determines how the object being dragged appears visually to
+the user; you can pass it a <a class="reference internal" href="../../kits/interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a>, in which case it will drag a cool picture around
+the screen, or you can pass it a <a class="reference internal" href="../../kits/interface/rect.html#_CPPv45BRect" title="BRect"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code></a>, in which case it will drag a boring old
 rectangular outline. After calling <code class="docutils literal notranslate"><span class="pre">DragMessage()</span></code>, the sender’s code should remember to delete its
-own copy of the <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. Note: The sender should not delete the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code>
+own copy of the <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. Note: The sender should not delete the <a class="reference internal" href="../../kits/interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BBitmap</span></code></a>
 it passes to <code class="docutils literal notranslate"><span class="pre">DragMessage()</span></code>; this will be done by the system</p></li>
 <li><p>Drag: This is the easy part; once the sender application has initiated the drag, as described in the
 previous step, dragging a visual representation around the screen is handled by the system. The next
 time application code is invoked is on the …</p></li>
-<li><p>Drop: The user releases the mouse button while the mouse is in a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> of the
-receiver application. This causes the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MessageReceived()</span></code> function of the
-recipient <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> to be invoked, with the dragged <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> as its received
-message. This is the first of three <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> objects that can be sent as part of a
+<li><p>Drop: The user releases the mouse button while the mouse is in a <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> of the
+receiver application. This causes the <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView15MessageReceivedEP8BMessage" title="BView::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MessageReceived()</span></code></a> function of the
+recipient <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> to be invoked, with the dragged <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> as its received
+message. This is the first of three <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> objects that can be sent as part of a
 single drag and drop action. We’ll call this first message the drag message. In a simple
 drag’n’drop, the drag message can contain just about anything you want it to; since both the sender
 and the receiver “know about” one another, they presumably have a common private protocol, and the
@@ -149,7 +212,7 @@ which the sender application may supply the data to the receiver application, an
 actions the receiver application can request of the sender application.</p></li>
 <li><p>Negotiation [optional, used in negotiated drag’n’drop]: The receiver application replies to the
 drag message with a second message, which is dispatched back to the sender application using the
-<a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage9SendReplyEv" title="BMessage::SendReply"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessage::SendReply()</span></code></a> function. We’ll call this second message the negotiation message.
+<a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage9SendReplyEP8BMessageP8BMessage9bigtime_t9bigtime_t" title="BMessage::SendReply"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessage::SendReply()</span></code></a> function. We’ll call this second message the negotiation message.
 The receiver creates the negotiation message by looking through the options supplied by the sender
 in the drag message, choosing one or more, and including those option in the message so that the
 sender will know which of its possible replies is actually desired. The negotiation message also
@@ -160,7 +223,7 @@ include a request that the sender delete the dragged data.</p></li>
 message sent back to it by the receiver, to find out which available data format the receiver wants
 the data in. The sender then packages up the data, and dispatches it off to the receiver in the data
 message. (Optionally, the sender can, at the request of the receiver, create a file through which it
-passes the data to the receiver, rather than passing the data directly in the <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>.
+passes the data to the receiver, rather than passing the data directly in the <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>.
 We’ll talk about this when we discuss the details of the drop, negotiation, and data messages.)</p></li>
 <li><p>Completion [optional, used in negotiated drag’n’drop]: The receiver gets the data message from
 the sender, extracts the desired data, and uses it in whatever way it wants.</p></li>
@@ -176,7 +239,7 @@ code below defines a very simple application, which lets one drag around a black
 The application is both the sender (i.e., you click on the square in the application window to start
 the drag), and the receiver (you release the mouse button within the application window, to
 reposition the square). Most of the program code is “boilerplate”, similar to what would be found in
-any application involving a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>. Those parts of the code pertaining specifically to
+any application involving a <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>. Those parts of the code pertaining specifically to
 the drag and drop are given in bold.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Drag the black square around using drag&#39;n&#39;drop--a very</span>
 <span class="cm">   simple-minded program. The DETECTION, INITIATIOIN, DRAG,</span>
@@ -307,7 +370,7 @@ the drag and drop are given in bold.</p>
 </section>
 <section id="bmessage-formats-in-negotiated-drag-n-drop">
 <h2>BMessage Formats in Negotiated Drag’n’Drop<a class="headerlink" href="#bmessage-formats-in-negotiated-drag-n-drop" title="Permalink to this heading">¶</a></h2>
-<p>With simple drag and drop, you are free to use <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> more or less as you wish; you
+<p>With simple drag and drop, you are free to use <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> more or less as you wish; you
 simply define a what member constant which will uniquely identify your dropped message to the
 target, and put whatever data you wish into the body of the message. The receiver will examine the
 what member of the message and, assuming it understands it at all, should then know how to extract
@@ -417,17 +480,17 @@ data in. This is a string value (a MIME string, actually), but you won’t norma
 the string actually is, since you’ll obtain it from the Translation Kit, or from a predefined
 constant. If <code class="docutils literal notranslate"><span class="pre">be:types</span></code> consists of a single element whose value is equal to that in the global
 variable <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FILE_MIME_TYPE</span></code>, then the sender application is not willing to provide its
-data in a <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>; the receiver must accept the data through a file, in one of the
+data in a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>; the receiver must accept the data through a file, in one of the
 formats specified in the <code class="docutils literal notranslate"><span class="pre">be:filetypes</span></code> field of this message. If you want to indicate that your
-application is willing to send its data via either of a <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> or a file, then add
+application is willing to send its data via either of a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> or a file, then add
 <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FILE_MIME_TYPE</span></code> as the last element of <code class="docutils literal notranslate"><span class="pre">be:types</span></code>, after all of the types which can be
-sent in a <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>.</p></td>
+sent in a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">be:filetypes</span></code></p></td>
 <td><p>Similar <code class="docutils literal notranslate"><span class="pre">be:types</span></code>, but a values in this field indicate formats in which the sender is willing
 to provide its data via a file. This can make a lot of sense; for example, if what the user is
 dragging around is a 30 megabyte video clip, you probably don’t want to pass this in a
-<a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. In most cases, <code class="docutils literal notranslate"><span class="pre">be:filetypes</span></code> will be identical to <code class="docutils literal notranslate"><span class="pre">be:types</span></code>. If your
+<a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. In most cases, <code class="docutils literal notranslate"><span class="pre">be:filetypes</span></code> will be identical to <code class="docutils literal notranslate"><span class="pre">be:types</span></code>. If your
 application isn’t willing to pass data via a file, then it doesn’t matter what (if anything) you put
 into <code class="docutils literal notranslate"><span class="pre">be:filetypes</span></code>.</p>
 <div class="warning admonition">
@@ -524,7 +587,7 @@ attention to <code class="docutils literal notranslate"><span class="pre">be:cli
 <section id="be-originator-and-be-originator-data-fields">
 <h5>be:originator and be:originator_data Fields<a class="headerlink" href="#be-originator-and-be-originator-data-fields" title="Permalink to this heading">¶</a></h5>
 <p>Let’s say you’re a sender application, and you’ve asynchronously sent off a drag message. Then you
-receive a <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. Is it the reply to your original message? And if so, how do you
+receive a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. Is it the reply to your original message? And if so, how do you
 access data about the original drag (such as where the mouse was clicked) you might need in order to
 complete the data message? Since the original drag message was sent asynchronously, your application
 went merrily on its way immediately after sending, and no longer remembers what the heck it dragged
@@ -538,18 +601,18 @@ a much more complex piece of information about the context of the application at
 was started. It’s up to you, and of course, you don’t have to use <code class="docutils literal notranslate"><span class="pre">be:orginator_data</span></code> at all.</p></li>
 </ul>
 <p>If you fill in <code class="docutils literal notranslate"><span class="pre">be:originator</span></code> and <code class="docutils literal notranslate"><span class="pre">be:originator_data</span></code> properly on all of your outgoing drag
-messages, then here is what your app can do when it receives a <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> that may be a
+messages, then here is what your app can do when it receives a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> that may be a
 negotiation message responding to a previously sent (asynchronous) drag message:</p>
 <ol class="arabic simple">
 <li><p>Your app checks to ensure that the incoming message has the correct format for a negotiation
 message (we’ll describe the format of negotiation messages in a bit). If it does, then go on…</p></li>
-<li><p>Your app uses <a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage7IsReplyEv" title="BMessage::IsReply"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessage::IsReply()</span></code></a> to check if the incoming message is a reply to a
+<li><p>Your app uses <a class="reference internal" href="../../kits/application/message.html#_CPPv4NK8BMessage7IsReplyEv" title="BMessage::IsReply"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessage::IsReply()</span></code></a> to check if the incoming message is a reply to a
 previous message.</p></li>
-<li><p>If the incoming message is in fact a reply, your app uses <a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage8PreviousEv" title="BMessage::Previous"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessage::Previous()</span></code></a> to
+<li><p>If the incoming message is in fact a reply, your app uses <a class="reference internal" href="../../kits/application/message.html#_CPPv4NK8BMessage8PreviousEv" title="BMessage::Previous"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessage::Previous()</span></code></a> to
 obtain the original message; the message the incoming message was sent in reply to.</p></li>
 <li><p>Now, your app can examine be:originator in the original message, to see if it recognizes that
 value as indicating a drag message sent out by itself. If it does, then the incoming
-<a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> is in fact a negotiation message in response to your original drag message;
+<a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> is in fact a negotiation message in response to your original drag message;
 your app can extract necessary context data from be:originator_data, and go on to construct and send
 the data message.</p></li>
 </ol>
@@ -561,7 +624,7 @@ in the negotiated drag’n’drop protocol.</p>
 </section>
 <section id="the-drop-point-field">
 <h5>The <em>drop_point</em> Field<a class="headerlink" href="#the-drop-point-field" title="Permalink to this heading">¶</a></h5>
-<p>This field contains a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPoint</span></code> giving the screen coordinate of the mouse cursor, when the
+<p>This field contains a <a class="reference internal" href="../../kits/interface/point.html#_CPPv46BPoint" title="BPoint"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPoint</span></code></a> giving the screen coordinate of the mouse cursor, when the
 drag was ended (i.e. when the mouse button was released and the data dropped.) It’s added
 automatically by the system—you don’t create or add to it yourself.</p>
 </section>
@@ -569,7 +632,7 @@ automatically by the system—you don’t create or add to it yourself.</p>
 <h5>The <em>drop_offset</em> Field<a class="headerlink" href="#the-drop-offset-field" title="Permalink to this heading">¶</a></h5>
 <p>Whether you have your application display a bitmap or a rectangular outline during a drag, the
 dragged area occupies a rectangle. (Though it may not appear so to the user, since with a bitmap,
-sections of the bitmap can be transparent). <code class="docutils literal notranslate"><span class="pre">_drop_offset_</span></code> gives as a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPoint</span></code> the
+sections of the bitmap can be transparent). <code class="docutils literal notranslate"><span class="pre">_drop_offset_</span></code> gives as a <a class="reference internal" href="../../kits/interface/point.html#_CPPv46BPoint" title="BPoint"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPoint</span></code></a> the
 distance from the top left point of the dragged area to the position of the mouse cursor within that
 dragged area. [xxx I think this is correct but just want to be sure.]It’s added automatically by the
 system—you don’t create or add to it yourself.</p>
@@ -577,15 +640,15 @@ system—you don’t create or add to it yourself.</p>
 </section>
 <section id="passing-data-in-a-file">
 <h4>Passing Data in a File<a class="headerlink" href="#passing-data-in-a-file" title="Permalink to this heading">¶</a></h4>
-<p>Using a <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> to pass a large amount of data from one application to another may not
+<p>Using a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> to pass a large amount of data from one application to another may not
 be desirable; at the extreme, you may not have enough memory to accommodate the entire
-<a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. If you need to pass large amounts of data in a drag’n’drop operation, you may
+<a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. If you need to pass large amounts of data in a drag’n’drop operation, you may
 prefer to do so via a file.</p>
 <p>As far as passing data by a file goes, the sender application can indicate one of two things when
 sending the drag message to the receiver:</p>
 <ul class="simple">
-<li><p>The sender can offer to pass the data in a file, as well as via a <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. The
-receiver then has the option of accepting the data either through a <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>, or
+<li><p>The sender can offer to pass the data in a file, as well as via a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. The
+receiver then has the option of accepting the data either through a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>, or
 through a file.</p></li>
 <li><p>The sender can state that it will only pass the data via a file. The receiver app, if it wants the
 data, had better agree.</p></li>
@@ -609,7 +672,7 @@ values in the <code class="docutils literal notranslate"><span class="pre">be:fi
 examines the data message in that message, to ascertain what actions the sender application can
 carry out, and how it can provide the desired data in the final drag message. Using this
 information, the receiver application formulates the negotiation message, which it sends back as a
-reply to the original drag message using the <a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage9SendReplyEv" title="BMessage::SendReply"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessage::SendReply()</span></code></a> function.</p>
+reply to the original drag message using the <a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage9SendReplyEP8BMessageP8BMessage9bigtime_t9bigtime_t" title="BMessage::SendReply"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessage::SendReply()</span></code></a> function.</p>
 <p>A Negotiation Message is Characterized by its <code class="docutils literal notranslate"><span class="pre">what</span></code> Member</p>
 <p>Recall that the drag message constructed by the sender application contained (among other things) a
 <code class="docutils literal notranslate"><span class="pre">be:actions</span></code> message field, which indicated the actions the sender was willing to perform upon the
@@ -683,7 +746,7 @@ required; in fact, the sender doesn’t even need to respond to a request of
 <section id="protocol-for-the-data-message">
 <h3>Protocol for the Data Message<a class="headerlink" href="#protocol-for-the-data-message" title="Permalink to this heading">¶</a></h3>
 <p>The data message is the third and final message sent as part of a negotiated drag’n’drop. It is sent
-in response to a negotiation message, using the <a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage9SendReplyEv" title="BMessage::SendReply"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessage::SendReply()</span></code></a> function, and is
+in response to a negotiation message, using the <a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage9SendReplyEP8BMessageP8BMessage9bigtime_t9bigtime_t" title="BMessage::SendReply"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BMessage::SendReply()</span></code></a> function, and is
 sent only if the sender application has elected to pass the dragged data directly in a message. If
 the sender application passes data to the receiver via a file, no data message is sent. [xxx just
 want to check, is this correct? It would seem you’d want to at least send confirmation that the
@@ -716,7 +779,7 @@ a receiver for such a drop.</p>
 <p>Under the old style drag’n’drop, a single message was sent from the sender to the receiver, with a
 <code class="docutils literal notranslate"><span class="pre">what</span></code> member of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MIME_DATA</span></code>, and the value of the dragged data in the <code class="docutils literal notranslate"><span class="pre">be:data</span></code> message
 field. [xxx how is the type of the enclosed data determined?] Since your receiver application will
-need to monitor for <a class="reference internal" href="../../kits/application/BMessage.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>s with a <code class="docutils literal notranslate"><span class="pre">what</span></code> field of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MIME_DATA</span></code> (i.e. your
+need to monitor for <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>s with a <code class="docutils literal notranslate"><span class="pre">what</span></code> field of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MIME_DATA</span></code> (i.e. your
 application will need to look for the data messages that might occur as part of a negotiated
 drag’n’drop), it’s simple to add in a bit more code that handles the fact that such a message may
 occur without being part of a negotiation, and may contain a <code class="docutils literal notranslate"><span class="pre">be:data</span></code> field.</p>
@@ -778,17 +841,23 @@ message is a reply.</p></li>
 </section>
 
 
+        <div class="clearer"></div>
       </div>
+          </div>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
+        «&#160;&#160;<a href="control.html">BControl</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="dragger.html">BDragger</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Haiku.
+        &#169; Copyright 2023, Haiku, Inc..
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>

@@ -77,34 +77,33 @@
       <div class="content" role="main">
         
   <section id="bfile">
-<h1>BFile<a class="headerlink" href="#bfile" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv45BFile">BFile<a class="headerlink" href="#bfile" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N5BFile5BFileEv">
 </section>
 <h3>
-BFile()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BFile5BFileEv" title="BFile::BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">BFile</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BFile5BFileEPK9entry_ref6uint32" title="BFile::BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">BFile</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">openMode</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BFile5BFileEPK6BEntry6uint32" title="BFile::BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">BFile</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BEntry</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">entry</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">openMode</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BFile5BFileEPKc6uint32" title="BFile::BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">BFile</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">openMode</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BFile5BFileEP10BDirectoryPKc6uint32" title="BFile::BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">BFile</span><span class="sig-paren">(</span><span class="n">BDirectory</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">dir</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">openMode</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BFile</span> object, initializes it according to the arguments,
-and sets <a class="reference internal" href="#_CPPv4NK5BFile9InitCheckEv" title="BFile::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>
-to return the status of the initialization.
-The default constructor does nothing and sets
-and sets <a class="reference internal" href="#_CPPv4NK5BFile9InitCheckEv" title="BFile::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>
-to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.
-To initialize the object, call
-<a class="reference internal" href="#_CPPv4N5BFile5SetToEPK9entry_ref6uint32" title="BFile::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>.
-The copy constructor creates a new <span class="hclass">BFile</span> that’s open on the same file as
-that of the argument. Note that the two objects maintain separate data
-pointers into the same file:</p>
+BFile()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BFile5BFileEv" title="BFile::BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">BFile</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BFile5BFileEPK9entry_ref6uint32" title="BFile::BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">BFile</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">openMode</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BFile5BFileEPK6BEntry6uint32" title="BFile::BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">BFile</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="entry.html#_CPPv46BEntry" title="BEntry"><span class="n">BEntry</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">entry</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">openMode</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BFile5BFileEPKc6uint32" title="BFile::BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">BFile</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">openMode</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N5BFile5BFileEP10BDirectoryPKc6uint32" title="BFile::BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">BFile</span><span class="sig-paren">(</span><a class="reference internal" href="directory.html#_CPPv410BDirectory" title="BDirectory"><span class="n">BDirectory</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">dir</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">openMode</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BFile</span> object, initializes it according to the
+arguments, and sets <a class="reference internal" href="#_CPPv4NK5BFile9InitCheckEv" title="BFile::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> to return
+the status of the initialization.</p>
+<p>The default constructor does nothing and sets and sets
+<a class="reference internal" href="#_CPPv4NK5BFile9InitCheckEv" title="BFile::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> to <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.
+To initialize the object, call <a class="reference internal" href="#_CPPv4N5BFile5SetToEPK9entry_ref6uint32" title="BFile::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>.</p>
+<p>The copy constructor creates a new <span class="hclass">BFile</span> that’s open on the same
+file as that of the argument. Note that the two objects maintain
+<strong>separate</strong> data pointers into the <strong>same</strong> file:</p>
 <ul class="simple">
-<li><p>Separate pointers: Reading and writing through one object does not affect the position of the data pointer in the other object.</p></li>
-<li><p>Same file: If one object writes to the file, the other object will see the written data.</p></li>
+<li><p>Separate pointers: Reading and writing through one object <strong>does not</strong>
+affect the position of the data pointer in the other object.</p></li>
+<li><p>Same file: If one object writes to the file, the other object will see the
+written data.</p></li>
 </ul>
 <p>For information on the other constructors, see the analogous
-<a class="reference internal" href="#_CPPv4N5BFile5SetToEPK9entry_ref6uint32" title="BFile::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a>
-functions.</p>
+<a class="reference internal" href="#_CPPv4N5BFile5SetToEPK9entry_ref6uint32" title="BFile::SetTo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetTo()</span></code></a> functions.</p>
 <section id="_CPPv4N5BFileD0Ev">
 </section>
 <h3>
-~BFile()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">~BFile</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Closes the object’s file, frees its file descriptor, and destroys the
+~BFile()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">~BFile</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Closes the object’s file, frees its file descriptor, and destroys the
 object.</p>
 </section>
 <section id="member-functions">
@@ -114,34 +113,29 @@ object.</p>
 <section id="_CPPv4N5BFile7SetSizeE5off_t">
 </section>
 <h3>
-GetSize(), SetSize()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">GetSize</span><span class="sig-paren">(</span><span class="n">off_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">size</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">SetSize</span><span class="sig-paren">(</span><span class="n">off_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p>These functions get and set the size, in bytes, of the object’s file.
-<span class="hmethod">GetSize()</span> returns the size of the file’s data
-portion in the <span class="hparameter">size</span>
-argument; the measurement doesn’t include attributes.
-<span class="hmethod">SetSize()</span> sets the size of the data portion to the size given by the
-argument:</p>
+GetSize(), SetSize()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">GetSize</span><span class="sig-paren">(</span><span class="n">off_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">size</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">SetSize</span><span class="sig-paren">(</span><span class="n">off_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p>These functions get and set the size, in bytes, of the object’s file.</p>
+<p><span class="hmethod">GetSize()</span> returns the size of the file’s data portion in the
+<span class="hparameter">size</span> argument; the measurement doesn’t include attributes.</p>
+<p><span class="hmethod">SetSize()</span> sets the size of the data portion to the size given
+by the argument:</p>
 <ul class="simple">
 <li><p>Enlarging a file adds (uninitialized) bytes to its end.</p></li>
 <li><p>Shrinking a file removes bytes from the end.</p></li>
 </ul>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The file’s size was successfully gotten or set.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NOT_ALLOWED</span></code>.</p></td>
 <td><p>(<span class="hmethod">SetSize()</span>) The file lives on a read-only volume.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DEVICE_FULL</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DEVICE_FULL</span></code>.</p></td>
 <td><p>(<span class="hmethod">SetSize()</span>) No more room on the file’s device.</p></td>
 </tr>
 </tbody>
@@ -149,22 +143,18 @@ argument:</p>
 <section id="_CPPv4NK5BFile9InitCheckEv">
 </section>
 <h3>
-InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the status of the most recent initialization.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the status of the most recent initialization.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The object is initialized.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p></td>
 <td><p>The object is uninitialized.</p></td>
 </tr>
 <tr class="row-even"><td><p>For other errors.</p></td>
@@ -177,10 +167,10 @@ InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="
 <section id="_CPPv4NK5BFile10IsWritableEv">
 </section>
 <h3>
-IsReadable(), IsWritable()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">IsReadable</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">IsWritable</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions tell you whether the <span class="hclass">BFile</span> was initialized to read or
-write its file. If the object isn’t (properly) initialized, they both
-return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.
-Note that these functions don’t query the actual file to check
+IsReadable(), IsWritable()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">IsReadable</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">IsWritable</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions tell you whether the <span class="hclass">BFile</span> was initialized to
+read or write its file. If the object isn’t (properly) initialized, they
+both return <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>.</p>
+<p>Note that these functions don’t query the actual file to check
 permissions, they only tell you what the access request was when the
 <span class="hclass">BFile</span> object was initialized.</p>
 <section id="_CPPv4N5BFile4ReadEPv6size_t">
@@ -192,227 +182,215 @@ permissions, they only tell you what the access request was when the
 <section id="_CPPv4N5BFile7WriteAtE5off_tPKv6size_t">
 </section>
 <h3>
-Read(), ReadAt(), Write(), WriteAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">Read</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">ReadAt</span><span class="sig-paren">(</span><span class="n">off_t</span><span class="w"> </span><span class="n sig-param">location</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">Write</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">WriteAt</span><span class="sig-paren">(</span><span class="n">off_t</span><span class="w"> </span><span class="n sig-param">location</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p>These functions, which are inherited from
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPositionIO</span></code>, read and write the
-file’s data; note that they don’t touch the file’s attributes.
-The <span class="hmethod">Read()</span> and <span class="hmethod">ReadAt()</span>
-functions read <span class="hparameter">size</span> bytes of data from the file
-and place this data in <span class="hparameter">buffer</span>. The buffer that <span class="hparameter">buffer</span> points to must
-already be allocated, and must be large enough to accommodate the read
-data. Note that the read-into buffer is not null-terminated by the
-reading functions.
-The two functions differ in that…</p>
+Read(), ReadAt(), Write(), WriteAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">Read</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">ReadAt</span><span class="sig-paren">(</span><span class="n">off_t</span><span class="w"> </span><span class="n sig-param">location</span>, <span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">Write</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">ssize_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">WriteAt</span><span class="sig-paren">(</span><span class="n">off_t</span><span class="w"> </span><span class="n sig-param">location</span>, <span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span><span class="sig-paren">)</span></pre><p>These functions, which are inherited from <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPositionIO</span></code>, read
+and write the file’s data; note that they don’t touch the file’s
+attributes.</p>
+<p>The <span class="hmethod">Read()</span> and <span class="hmethod">ReadAt()</span> functions read
+<span class="hparameter">size</span> bytes of data from the file and place this data in
+<span class="hparameter">buffer</span>. The buffer that <span class="hparameter">buffer</span> points to must already
+be allocated, and must be large enough to accommodate the read data. Note
+that the read-into buffer is <strong>not</strong> null-terminated by the reading
+functions.</p>
+<p>The two functions differ in that…</p>
 <ul class="simple">
-<li><p><span class="hmethod">Read()</span> reads the data starting at the current location of the file’s data pointer, and increments the file pointer as it reads.</p></li>
-<li><p><span class="hmethod">ReadAt()</span> reads the data from the location specified by the <span class="hparameter">location</span> argument, which is taken as a measure in bytes from the beginning of the file. <span class="hmethod">ReadAt()</span> does not bump the file’s data pointer.</p></li>
+<li><p><span class="hmethod">Read()</span> reads the data starting at the current location of the
+file’s data pointer, and increments the file pointer as it reads.</p></li>
+<li><p><span class="hmethod">ReadAt()</span> reads the data from the location specified by the
+<span class="hparameter">location</span> argument, which is taken as a measure in bytes from the
+beginning of the file. <span class="hmethod">ReadAt()</span> does not bump the file’s data
+pointer.</p></li>
 </ul>
-<p><span class="hmethod">Write()</span> and <span class="hmethod">WriteAt()</span> write
-<span class="hparameter">size</span> bytes of data into the file; the data is
-taken from the <span class="hparameter">buffer</span> argument. The two functions differ in their use (or
-non-use) of the file’s data pointer in the same manner as <span class="hmethod">Read()</span> and
-<span class="hmethod">ReadAt()</span>.
-All four functions return the number of bytes that were actually read or
-written; negative return values indicate an error.
-Reading fewer-than-<span class="hparameter">size</span> bytes isn’t uncommon—consider the case
+<p><span class="hmethod">Write()</span> and <span class="hmethod">WriteAt()</span> write <span class="hparameter">size</span> bytes of
+data into the file; the data is taken from the <span class="hparameter">buffer</span> argument.
+The two functions differ in their use (or non-use) of the file’s data
+pointer in the same manner as <span class="hmethod">Read()</span> and <span class="hmethod">ReadAt()</span>.</p>
+<p>All four functions return the number of bytes that were actually read or
+written; negative return values indicate an error.</p>
+<p>Reading fewer-than-<span class="hparameter">size</span> bytes isn’t uncommon—consider the case
 where the file is smaller than the size of your buffer. If you want your
-buffer to be <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>-terminated, you can use the return value to set the
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
-<span class="n">ssize_t</span> <span class="n">amt_read</span><span class="p">;</span>
-<span class="k">if</span> <span class="p">((</span><span class="n">amt_read</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">Read</span><span class="p">((</span><span class="n">void</span> <span class="o">*</span><span class="p">)</span><span class="n">buf</span><span class="p">,</span> <span class="mi">1024</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
-   <span class="o">/*</span> <span class="n">handle</span> <span class="n">errors</span> <span class="n">first</span> <span class="o">*/</span>
-<span class="k">else</span>
-   <span class="o">/*</span> <span class="n">otherwise</span> <span class="nb">set</span> <span class="n">null</span> <span class="o">*/</span>
-   <span class="n">buf</span><span class="p">[</span><span class="n">amt_read</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span><span class="p">;</span>
+buffer to be <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>-terminated, you can use the return value to
+set the <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span><span class="w"></span>
+<span class="kt">ssize_t</span><span class="w"> </span><span class="n">amt_read</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">amt_read</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="n">Read</span><span class="p">((</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* handle errors first */</span><span class="w"></span>
+<span class="k">else</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* otherwise set null */</span><span class="w"></span>
+<span class="w">   </span><span class="n">buf</span><span class="p">[</span><span class="n">amt_read</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>A successful <span class="hmethod">Write()</span> or <span class="hmethod">WriteAt()</span>,
-on the other hand, will always write
-exactly the number of bytes you requested. In other words, <span class="hmethod">Write()</span>
-returns either the <span class="hparameter">size</span> value that you passed to it, or else it returns a
-negative (error) value.</p>
+<p>A successful <span class="hmethod">Write()</span> or <span class="hmethod">WriteAt()</span>, on the other
+hand, will always write exactly the number of bytes you requested. In other
+words, <span class="hmethod">Write()</span> returns either the <span class="hparameter">size</span> value that you
+passed to it, or else it returns a negative (error) value.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
 <p>Error codes returned by these functions can vary depending on the file
-system handling the operation. For this reason, specific error codes
-aren’t listed here.</p>
+system handling the operation. For this reason, specific error codes aren’t
+listed here.</p>
 </div>
 <section id="_CPPv4N5BFile4SeekE5off_t5int32">
 </section>
 <section id="_CPPv4NK5BFile8PositionEv">
 </section>
 <h3>
-Seek(), Position()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">off_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">Seek</span><span class="sig-paren">(</span><span class="n">off_t</span><span class="w"> </span><span class="n sig-param">offset</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">seekMode</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">off_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">Position</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Seek()</span> sets the location of the file’s data pointer. The new location is
-reckoned as <span class="hparameter">offset</span> bytes from the position given by the
-<span class="hparameter">seekMode</span> constant:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+Seek(), Position()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">off_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">Seek</span><span class="sig-paren">(</span><span class="n">off_t</span><span class="w"> </span><span class="n sig-param">offset</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">seekMode</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">off_t</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">Position</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Seek()</span> sets the location of the file’s data pointer. The new
+location is reckoned as <span class="hparameter">offset</span> bytes from the position given by
+the <span class="hparameter">seekMode</span> constant:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">SEEK_SET</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">SEEK_SET</span></code></p></td>
 <td><p>Seek from the beginning of the file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">SEEK_CUR</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">SEEK_CUR</span></code></p></td>
 <td><p>Seek from the pointer’s current position.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">SEEK_END</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">SEEK_END</span></code></p></td>
 <td><p>Seek from the end of the file.</p></td>
 </tr>
 </tbody>
 </table>
-<p>If you <span class="hmethod">Seek()</span> to a position that’s past the end of the file and then do a
-<a class="reference internal" href="#_CPPv4N5BFile5WriteEPKv6size_t" title="BFile::Write"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Write()</span></code></a>, the file
-will be extended (padded with garbage) from the old end
-of file to the <span class="hmethod">Seek()</span>’d position. If you don’t
-follow the <span class="hmethod">Seek()</span> with a
-<span class="hmethod">Write()</span>, the file isn’t extended.
-<span class="hmethod">Seek()</span> returns the new position as measured (in bytes) from the beginning
-of the file.
-<span class="hmethod">Position()</span> returns the current position as measured (in bytes) from the
-beginning of the file. It doesn’t move the pointer.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<p>If you <span class="hmethod">Seek()</span> to a position that’s past the end of the file and
+then do a <a class="reference internal" href="#_CPPv4N5BFile5WriteEPKv6size_t" title="BFile::Write"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Write()</span></code></a>, the file will be extended
+(padded with garbage) from the old end of file to the <span class="hmethod">Seek()</span>’d
+position. If you don’t follow the <span class="hmethod">Seek()</span> with a
+<span class="hmethod">Write()</span>, the file isn’t extended.</p>
+<p><span class="hmethod">Seek()</span> returns the new position as measured (in bytes) from the
+beginning of the file.</p>
+<p><span class="hmethod">Position()</span> returns the current position as measured (in bytes)
+from the beginning of the file. It doesn’t move the pointer.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
-<td><p>Attempted to <span class="hmethod">Seek()</span> “before” the beginning of the file, or you called <span class="hmethod">Position()</span> after such a <span class="hmethod">Seek()</span>. You also get <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code> if you call <span class="hmethod">Seek()</span> on an uninitialized file.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<td><p>Attempted to <span class="hmethod">Seek()</span> “before” the beginning of the file, or you
+called <span class="hmethod">Position()</span> after such a <span class="hmethod">Seek()</span>. You also get
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code> if you call <span class="hmethod">Seek()</span> on an uninitialized
+file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_FILE</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_FILE</span></code>.</p></td>
 <td><p><span class="hmethod">Position()</span> called on an uninitialized file.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="warning admonition">
 <p class="admonition-title">Warning</p>
-<p>If you do a “before the beginning” seek, subsequent
-<a class="reference internal" href="#_CPPv4N5BFile4ReadEPv6size_t" title="BFile::Read"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Read()</span></code></a> and
-<a class="reference internal" href="#_CPPv4N5BFile5WriteEPKv6size_t" title="BFile::Write"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Write()</span></code></a>
-calls do not fail. But they almost certainly aren’t doing what you want
-(you shouldn’t be “before the file,” anyway). The moral: Always check
-your <span class="hmethod">Seek()</span> return.</p>
+<p>If you do a “before the beginning” seek, subsequent <a class="reference internal" href="#_CPPv4N5BFile4ReadEPv6size_t" title="BFile::Read"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Read()</span></code></a> and <a class="reference internal" href="#_CPPv4N5BFile5WriteEPKv6size_t" title="BFile::Write"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Write()</span></code></a> calls do not fail.
+But they almost certainly aren’t doing what you want (you shouldn’t be
+“before the file,” anyway). The moral: Always check your <span class="hmethod">Seek()</span>
+return.</p>
 </div>
 <section id="_CPPv4N5BFile5SetToEPK9entry_ref6uint32">
 </section>
 <section id="_CPPv4N5BFile5UnsetEv">
 </section>
 <h3>
-SetTo(), Unset()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">openMode</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BEntry</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">entry</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">openMode</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">openMode</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BDirectory</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">dir</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">openMode</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="n">Unset</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Closes the <span class="hclass">BFile</span>’s current file (if any), and opens the file specified by
-the arguments. If the specified file is a symbolic link, the link is
-automatically traversed (recursively, if necessary). Note that you’re not
-prevented from opening a directory as a <span class="hclass">BFile</span>, but you are prevented from
-writing to it.</p>
+SetTo(), Unset()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ref</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">openMode</span><span class="sig-paren">)</span><br /><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="entry.html#_CPPv46BEntry" title="BEntry"><span class="n">BEntry</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">entry</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">openMode</span><span class="sig-paren">)</span><br /><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">openMode</span><span class="sig-paren">)</span><br /><a class="reference internal" href="the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">SetTo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="directory.html#_CPPv410BDirectory" title="BDirectory"><span class="n">BDirectory</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">dir</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">path</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">openMode</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="n">Unset</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Closes the <span class="hclass">BFile</span>’s current file (if any), and opens the file
+specified by the arguments. If the specified file is a symbolic link, the
+link is automatically traversed (recursively, if necessary). Note that
+you’re not prevented from opening a directory as a <span class="hclass">BFile</span>, but you
+are prevented from writing to it.</p>
 <ul class="simple">
-<li><p>In the <span class="hparameter">path</span> function, <span class="hparameter">path</span> can be absolute or relative, and can contain “.” and “..” elements. If <span class="hparameter">path</span> is relative, it’s reckoned off of the current working directory.</p></li>
-<li><p>In the <span class="hparameter">dir</span>/<span class="hparameter">path</span> function, <span class="hparameter">path</span> must be relative and is reckoned off of <span class="hparameter">dir</span>.</p></li>
+<li><p>In the <span class="hparameter">path</span> function, <span class="hparameter">path</span> can be absolute or
+relative, and can contain “.” and “..” elements. If <span class="hparameter">path</span> is
+relative, it’s reckoned off of the current working directory.</p></li>
+<li><p>In the <span class="hparameter">dir</span>/<span class="hparameter">path</span> function, <span class="hparameter">path</span> must be
+relative and is reckoned off of <span class="hparameter">dir</span>.</p></li>
 </ul>
-<p><span class="hparameter">openMode</span> is a combination of flags that determines how the file is opened
-and what this object can do with it once it is open. There are two sets
-of flags; you must pass one (and only one) of the following “read/write”
-constants:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<p><span class="hparameter">openMode</span> is a combination of flags that determines how the file
+is opened and what this object can do with it once it is open. There are
+two sets of flags; you must pass one (and only one) of the following
+“read/write” constants:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_READ_ONLY</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_READ_ONLY</span></code></p></td>
 <td><p>This object can read, but not write, the file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WRITE_ONLY</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WRITE_ONLY</span></code></p></td>
 <td><p>This object can write, but not read, the file.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_READ_WRITE</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_READ_WRITE</span></code></p></td>
 <td><p>This object can read and write the file.</p></td>
 </tr>
 </tbody>
 </table>
 <p>You can also pass any number of the following (these are optional):</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CREATE_FILE</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CREATE_FILE</span></code></p></td>
 <td><p>Create the file if it doesn’t already exist.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FAIL_IF_EXISTS</span></code></p></td>
-<td><p>If the file already exists, the initialization (of the <span class="hclass">BFile</span> object) fails.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FAIL_IF_EXISTS</span></code></p></td>
+<td><p>If the file already exists, the initialization (of the <span class="hclass">BFile</span>
+object) fails.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERASE_FILE</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERASE_FILE</span></code></p></td>
 <td><p>If the file already exists, erase all its data and attributes.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OPEN_AT_END</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OPEN_AT_END</span></code></p></td>
 <td><p>Sets the data pointer to point to the end of the file.</p></td>
 </tr>
 </tbody>
 </table>
 <p>To open a file for reading and writing, for example, you simply pass:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">file</span><span class="o">.</span><span class="n">SetTo</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">B_READ_WRITE</span><span class="p">);</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">file</span><span class="p">.</span><span class="n">SetTo</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span><span class="w"> </span><span class="n">B_READ_WRITE</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Here we create a new file or erase its data if it already exists:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">file</span><span class="o">.</span><span class="n">SetTo</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">B_READ_WRITE</span> <span class="o">|</span> <span class="n">B_CREATE_FILE</span> <span class="o">|</span> <span class="n">B_ERASE_FILE</span><span class="p">);</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">file</span><span class="p">.</span><span class="n">SetTo</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span><span class="w"> </span><span class="n">B_READ_WRITE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_CREATE_FILE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_ERASE_FILE</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>And here we create a new file, but only if it doesn’t already exist:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">file</span><span class="o">.</span><span class="n">SetTo</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">B_READ_WRITE</span> <span class="o">|</span> <span class="n">B_CREATE_FILE</span> <span class="o">|</span> <span class="n">B_FAIL_IF_EXISTS</span><span class="p">);</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">file</span><span class="p">.</span><span class="n">SetTo</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span><span class="w"> </span><span class="n">B_READ_WRITE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_CREATE_FILE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FAIL_IF_EXISTS</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p><span class="hmethod">Unset()</span> closes the object’s file and sets its
 <a class="reference internal" href="#_CPPv4NK5BFile9InitCheckEv" title="BFile::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> value to
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The file was successfully opened.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
-<td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> <span class="hparameter">path</span> in <span class="hparameter">dir</span>/<span class="hparameter">path</span>, or some other argument is uninitialized.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p><span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> <span class="hparameter">path</span> in <span class="hparameter">dir</span>/<span class="hparameter">path</span>, or some
+other argument is uninitialized.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTRY_NOT_FOUND</span></code>.</p></td>
 <td><p>File not found, or couldn’t create the file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FILE_EXISTS</span></code>.</p></td>
-<td><p>File exists (and you set <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FAIL_IF_EXISTS</span></code>).</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FILE_EXISTS</span></code>.</p></td>
+<td><p>File exists (and you set <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FAIL_IF_EXISTS</span></code>).</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PERMISSION_DENIED</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PERMISSION_DENIED</span></code>.</p></td>
 <td><p>Read or write permission request denied.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
 <td><p>Couldn’t allocate necessary memory to complete the operation.</p></td>
 </tr>
 </tbody>
@@ -421,18 +399,17 @@ constants:</p>
 <section id="operators">
 <h2>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">¶</a></h2>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BFile</span><span class="w"> </span><span class="p">&amp;</span><span class="sig-prename descclassname"><span class="n">BFile</span><span class="p">::</span></span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BFile</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">file</span><span class="sig-paren">)</span></pre><p>In the expression</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BFile</span> <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="w"> </span><span class="p">&amp;</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="p">::</span></span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv45BFile" title="BFile"><span class="n">BFile</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">file</span><span class="sig-paren">)</span></pre><p>In the expression</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BFile</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p><span class="hclass">BFile</span> a is initialized to refer
-to the same file as b. To gauge the
-success of the assignment, you should call
-<a class="reference internal" href="#_CPPv4NK5BFile9InitCheckEv" title="BFile::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> immediately
-afterwards. You can’t assign a <span class="hclass">BFile</span> to itself
-(<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>).
-Assigning to an uninitialized <span class="hclass">BFile</span> is “successful”: The assigned-to
-<span class="hclass">BFile</span> will also be uninitialized (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>).</p>
+<p><span class="hclass">BFile</span> <span class="hparameter">a</span> is initialized to refer to the same file as
+<span class="hparameter">b</span>. To gauge the success of the assignment, you should call
+<a class="reference internal" href="#_CPPv4NK5BFile9InitCheckEv" title="BFile::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> immediately afterwards. You
+can’t assign a <span class="hclass">BFile</span> to itself (<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>).</p>
+<p>Assigning to an uninitialized <span class="hclass">BFile</span> is “successful”: The
+assigned-to <span class="hclass">BFile</span> will also be uninitialized
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_INIT</span></code>).</p>
 </section>
 </section>
 

@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMessage &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMessageQueue" href="message-queue.html" />
+    <link rel="prev" title="BMessageFilter" href="message-filter.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMessage</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="message-filter.html">BMessageFilter</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="message-queue.html">BMessageQueue</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BMessage</a><ul>
+<li><a class="reference internal" href="#preparatory-reading">Preparatory Reading</a></li>
+<li><a class="reference internal" href="#types-of-functions">Types of Functions</a></li>
+<li><a class="reference internal" href="#bmessage-ownership">BMessage Ownership</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmessage">
+<h1 id="CPPv48BMessage">BMessage<a class="headerlink" href="#bmessage" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> is a bundle of structured information. Every
+<a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> contains a command constant and some number of data
+fields.</p>
+<ul class="simple">
+<li><p>The command constant is an <span class="htype">int32</span> value that describes, roughly,
+the purpose of the <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. It’s stored as the public
+<span class="hparameter">what</span> data member. You always set and examine the <span class="hparameter">what</span>
+value directly, you don’t need to call a function. (As a convenience, you
+can set the command constant when you create your <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>
+object.)</p></li>
+<li><p>The data fields are name-type-value triplets. A field is be primarily
+identified by name, but you can look for fields by name, type, or a
+combination of the two. The type is encoded as a constant
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code>, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code> etc), and
+is meant to describe the type of value that the field holds. A single field
+can have only one name and one type, but can contain an array of values.
+Individual values in a field are accessible by index.</p></li>
+</ul>
+<p>Neither the command constant nor the data fields are mandatory. You can
+create a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> that has data but no command, or that <em>only</em>
+has a command. However, creating a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> that has neither
+is pointless.</p>
+<section id="preparatory-reading">
+<h2>Preparatory Reading<a class="headerlink" href="#preparatory-reading" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>s are used throughout the kits to send data (or
+notifications) to another threadpossibly in another application. To
+understand how <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>s fit into the messaging system, see
+“<span class="xref std std-ref">Messaging</span>”.</p>
+<p>The <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> class also contributes a number of functions
+that help define the scripting system. See “<span class="xref std std-ref">Scripting</span>” for an
+introduction to this system.</p>
+<p><a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>s are also used by a number of classes
+(<a class="reference internal" href="../../kits/application/clipboard.html#_CPPv410BClipboard" title="BClipboard"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BClipboard</span></code></a>, <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BArchivable</span></code>, and others) for their
+ability to store data.</p>
+</section>
+<section id="types-of-functions">
+<h2>Types of Functions<a class="headerlink" href="#types-of-functions" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> class defines five types of functions:</p>
+<dl class="simple myst">
+<dt>Data field functions.</dt><dd><p>These functions either set or retrieve the value of a data field. See
+<a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage7AddDataEPKc9type_codePKv7ssize_tb5int32" title="BMessage::AddData"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddData()</span></code></a>, <a class="reference internal" href="../../kits/application/message.html#_CPPv4NK8BMessage8FindDataEPKc9type_code5int32PPKvP7ssize_t" title="BMessage::FindData"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FindData()</span></code></a>, <a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage11ReplaceDataEPKc9type_codePKv7ssize_t" title="BMessage::ReplaceData"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ReplaceData()</span></code></a>,
+and <a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage10RemoveNameEPKc" title="BMessage::RemoveName"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RemoveName()</span></code></a>.</p>
+</dd>
+<dt>Info functions.</dt><dd><p>These functions retrieve information about the state and contents of the
+<a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>. See <a class="reference internal" href="../../kits/application/message.html#_CPPv4NK8BMessage8IsSystemEv" title="BMessage::IsSystem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">IsSystem()</span></code></a> and
+<a class="reference internal" href="../../kits/application/message.html#_CPPv4NK8BMessage7GetInfoEPKcP9type_codeP5int32" title="BMessage::GetInfo"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetInfo()</span></code></a>.</p>
+</dd>
+<dt>Messaging functions.</dt><dd><p>These functions are part of the messaging system. A smaller set of
+functions reports on the status of a received message. For example,
+<a class="reference internal" href="../../kits/application/message.html#_CPPv4NK8BMessage15IsSourceWaitingEv" title="BMessage::IsSourceWaiting"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">IsSourceWaiting()</span></code></a> tells whether the
+message sender is waiting for a reply, <a class="reference internal" href="../../kits/application/message.html#_CPPv4NK8BMessage10WasDroppedEv" title="BMessage::WasDropped"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">WasDropped()</span></code></a> says whether it was dragged and dropped, and
+<a class="reference internal" href="../../kits/application/message.html#_CPPv4NK8BMessage9DropPointEP6BPoint" title="BMessage::DropPoint"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DropPoint()</span></code></a> says where it was dropped.</p>
+</dd>
+<dt>Scripting functions.</dt><dd><p>Functions such as <a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage12AddSpecifierEPK8BMessage" title="BMessage::AddSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddSpecifier()</span></code></a> and
+<a class="reference internal" href="../../kits/application/message.html#_CPPv4N8BMessage12PopSpecifierEv" title="BMessage::PopSpecifier"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">PopSpecifier()</span></code></a>.</p>
+</dd>
+<dt>Flattening functions.</dt><dd><p>The data in a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> can be flattened into an untyped
+stream of bytes. See <a class="reference internal" href="../../kits/application/message.html#_CPPv4NK8BMessage7FlattenEP7BDataIOP7ssize_t" title="BMessage::Flatten"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Flatten()</span></code></a>.</p>
+</dd>
+</dl>
+</section>
+<section id="bmessage-ownership">
+<h2>BMessage Ownership<a class="headerlink" href="#bmessage-ownership" title="Permalink to this heading">¶</a></h2>
+<p>The documentation for the functions that accept or pass back a
+<a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> object should tell you who’s responsible for deleting
+the object. Most functions that accept a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> argument
+copy the object, leaving the caller with the responsibility for deleting
+the argument. The exceptions i.e. <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>-accepting functions
+that take over ownership of the object are listed below:</p>
+<p>Functions that return a <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> to you usually don’t give up
+ownership; in general, you don’t delete the <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>s that are
+passed to you. The exceptions, functions that expect the caller to take
+over ownership of a passed-back <a class="reference internal" href="../../kits/application/message-new.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>,are listed below:</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="message-filter.html">BMessageFilter</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="message-queue.html">BMessageQueue</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

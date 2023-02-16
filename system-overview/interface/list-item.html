@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BListItem &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMenu" href="menu.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BListItem</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="introduction.html">Introduction</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="menu.html">BMenu</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BListItem</a><ul>
+<li><a class="reference internal" href="#synchronizing-a-list-item-with-its-list-view">Synchronizing a List Item with its List View</a></li>
+<li><a class="reference internal" href="#creating-a-custom-list-item">Creating a Custom List Item</a><ul>
+<li><a class="reference internal" href="#the-cityitem-declaration">The CityItem Declaration</a></li>
+<li><a class="reference internal" href="#the-cityitem-definition">The CityItem Definition</a></li>
+<li><a class="reference internal" href="#using-a-cityitem-object">Using a CityItem Object</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="blistitem">
+<h1 id="CPPv49BListItem">BListItem<a class="headerlink" href="#blistitem" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../kits/interface/list-item.html#_CPPv49BListItem" title="BListItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListItem</span></code></a> represents a single item in a
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code> (or <a class="reference internal" href="../../kits/interface/outline-list-view.html#_CPPv416BOutlineListView" title="BOutlineListView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BOutlineListView</span></code></a>). The
+<a class="reference internal" href="../../kits/interface/list-item.html#_CPPv49BListItem" title="BListItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListItem</span></code></a> object provides drawing instructions that can draw
+the item (through <a class="reference internal" href="../../kits/interface/list-item.html#_CPPv4N9BListItem8DrawItemEP5BView5BRectb" title="BListItem::DrawItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawItem()</span></code></a>), and keeps
+track of the item’s state. To use a <a class="reference internal" href="../../kits/interface/list-item.html#_CPPv49BListItem" title="BListItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListItem</span></code></a>, you must add it
+to a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code> through <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListView::AddItem()</span></code>
+(<a class="reference internal" href="../../kits/interface/outline-list-view.html#_CPPv416BOutlineListView" title="BOutlineListView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BOutlineListView</span></code></a> provides additional item-adding functions).
+The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code> object provides the drawing context for the
+<a class="reference internal" href="../../kits/interface/list-item.html#_CPPv49BListItem" title="BListItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListItem</span></code></a>’s <a class="reference internal" href="../../kits/interface/list-item.html#_CPPv4N9BListItem8DrawItemEP5BView5BRectb" title="BListItem::DrawItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawItem()</span></code></a>
+function.</p>
+<p><a class="reference internal" href="../../kits/interface/list-item.html#_CPPv49BListItem" title="BListItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListItem</span></code></a> is abstract; each subclass must implement
+<a class="reference internal" href="../../kits/interface/list-item.html#_CPPv4N9BListItem8DrawItemEP5BView5BRectb" title="BListItem::DrawItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawItem()</span></code></a>. <a class="reference internal" href="../../kits/interface/string-item.html#_CPPv411BStringItem" title="BStringItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStringItem</span></code></a>—the
+only <a class="reference internal" href="../../kits/interface/list-item.html#_CPPv49BListItem" title="BListItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListItem</span></code></a> subclass provided by Be—implements the function
+to draw the item as a line of text. For an example of a custom
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code> subclass, see “<span class="xref std std-ref">Creating a Custom List Item</span>”.</p>
+<section id="synchronizing-a-list-item-with-its-list-view">
+<h2>Synchronizing a List Item with its List View<a class="headerlink" href="#synchronizing-a-list-item-with-its-list-view" title="Permalink to this heading">¶</a></h2>
+<p>A <a class="reference internal" href="../../kits/interface/list-item.html#_CPPv49BListItem" title="BListItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListItem</span></code></a> object doesn’t automatically get redrawn when the
+item changes. If you change a list item’s content or state, you must tell
+the item’s owner (the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code> object) to redraw the item by
+calling <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListView::InvalidateItem()</span></code>. For example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* listItem belongs to listView.</span>
+<span class="cm">   We change the state of the item... */</span><span class="w"></span>
+<span class="n">listItem</span><span class="o">-&gt;</span><span class="n">SetEnabled</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/* ...so we have to tell the list view to redraw it. */</span><span class="w"></span>
+<span class="n">listView</span><span class="o">-&gt;</span><span class="n">LockLooper</span><span class="p">();</span><span class="w"></span>
+<span class="n">listView</span><span class="o">-&gt;</span><span class="n">InvalidateItem</span><span class="p">(</span><span class="n">listView</span><span class="o">-&gt;</span><span class="n">IndexOf</span><span class="p">(</span><span class="n">listItem</span><span class="p">));</span><span class="w"></span>
+<span class="n">listView</span><span class="o">-&gt;</span><span class="n">UnlockLooper</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If you’re making a lot of changes, you can flush them all at the same time
+through a single <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView10InvalidateE5BRect" title="BView::Invalidate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Invalidate()</span></code></a> call:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">listItemA</span><span class="o">-&gt;</span><span class="n">SetEnabled</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="n">listItemB</span><span class="o">-&gt;</span><span class="n">SetEnabled</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="n">listItemC</span><span class="o">-&gt;</span><span class="n">SetEnabled</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="n">listView</span><span class="o">-&gt;</span><span class="n">LockLooper</span><span class="p">();</span><span class="w"></span>
+<span class="n">listView</span><span class="o">-&gt;</span><span class="n">Invalidate</span><span class="p">();</span><span class="w"></span>
+<span class="n">listView</span><span class="o">-&gt;</span><span class="n">UnlockLooper</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Note that you don’t have to lock the list view’s window to change one of
+its items—you only have to lock the window when you talk to the list view
+itself.</p>
+<p><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code> provides its own smart version</p>
+</section>
+<section id="creating-a-custom-list-item">
+<h2>Creating a Custom List Item<a class="headerlink" href="#creating-a-custom-list-item" title="Permalink to this heading">¶</a></h2>
+<p>Although much of the time all you need to draw in a list are strings (in
+which case you can use the <a class="reference internal" href="../../kits/interface/string-item.html#_CPPv411BStringItem" title="BStringItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStringItem</span></code></a> class), from
+time-to-time you may need to display more than a simple text string—maybe
+you need to display multiple pieces of information per item, or maybe you
+just want to jazz up the display with some icons.</p>
+<p>For example, let’s say you need to let the user select a city from a list,
+but also need to display the part of the world that each city is in. You
+could just use <a class="reference internal" href="../../kits/interface/string-item.html#_CPPv411BStringItem" title="BStringItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStringItem</span></code></a> objects with strings like “Chicago
+(USA)”, but it might look nicer if you could lay out your list items in two
+colums, maybe with a splash of color:</p>
+<p><img alt="Custom ListItem" src="system-overview/interface/images/TheInterfaceKit/custlistitem.png" /></p>
+<p>To change the appearance of a list item, you override the
+<a class="reference internal" href="../../kits/interface/list-item.html#_CPPv4N9BListItem8DrawItemEP5BView5BRectb" title="BListItem::DrawItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawItem()</span></code></a> function to draw the item’s
+contents however you want it to look.</p>
+<p>The following sections define the class that creates these list items.</p>
+<section id="the-cityitem-declaration">
+<h3>The CityItem Declaration<a class="headerlink" href="#the-cityitem-declaration" title="Permalink to this heading">¶</a></h3>
+<p>The declaration for our <span class="hclass">CityItem</span> class looks like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;String.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ListItem.h&gt;</span><span class="cp"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CityItem</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">BListItem</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">CityItem</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">city</span><span class="p">,</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">DrawItem</span><span class="p">(</span><span class="n">BView</span><span class="w"> </span><span class="o">*</span><span class="n">owner</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">BRect</span><span class="w"> </span><span class="n">frame</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="kt">bool</span><span class="w"> </span><span class="n">complete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">USA</span><span class="p">,</span><span class="w"> </span><span class="n">ASIA</span><span class="p">,</span><span class="w"> </span><span class="n">EUROPE</span><span class="p">,</span><span class="w"> </span><span class="n">AUSTRALIA</span><span class="p">,</span><span class="w"> </span><span class="n">OTHER</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">BString</span><span class="w"> </span><span class="n">kCity</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">int32</span><span class="w"> </span><span class="n">kRegion</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">region_names</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;USA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Asia&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Eur.&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Aust.&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Other&quot;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A <span class="hclass">CityItem</span> object contains two pieces of data: a city name, and
+a region code. The region code is used as an index into the array of region
+names.</p>
+</section>
+<section id="the-cityitem-definition">
+<h3>The CityItem Definition<a class="headerlink" href="#the-cityitem-definition" title="Permalink to this heading">¶</a></h3>
+<p>The constructor looks like this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">CityItem</span><span class="o">::</span><span class="n">CityItem</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">city</span><span class="p">,</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">region</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="o">:</span><span class="w"> </span><span class="n">BListItem</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">kCity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">city</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">kRegion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">region</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../../kits/interface/list-item.html#_CPPv4N9BListItem8DrawItemEP5BView5BRectb" title="BListItem::DrawItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawItem()</span></code></a> function does the actual
+work of drawing the item. <a class="reference internal" href="../../kits/interface/list-item.html#_CPPv4N9BListItem8DrawItemEP5BView5BRectb" title="BListItem::DrawItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawItem()</span></code></a>
+receives three parameters:</p>
+<ul class="simple">
+<li><p>A <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> “owner”; this is the view that contains the
+<a class="reference internal" href="../../kits/interface/list-item.html#_CPPv49BListItem" title="BListItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListItem</span></code></a>. All drawing calls you issue should be made through
+this BView. For example:</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">owner</span><span class="o">-&gt;</span><span class="n">DrawString</span><span class="p">(</span><span class="n">item_text</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>A <a class="reference internal" href="../../kits/interface/rect.html#_CPPv45BRect" title="BRect"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRect</span></code></a>, which is the rectangle in which the item should be
+drawn.</p></li>
+<li><p>A <span class="htype">bool</span>, which is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the item needs to be erased
+and redrawn, or <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if the item’s contents can be safely
+redrawn without erasing the current contents.</p></li>
+</ul>
+<p><a class="reference internal" href="../../kits/interface/list-item.html#_CPPv4N9BListItem8DrawItemEP5BView5BRectb" title="BListItem::DrawItem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawItem()</span></code></a> begins by checking to see if
+the item is selected (by calling <a class="reference internal" href="../../kits/interface/list-item.html#_CPPv4NK9BListItem10IsSelectedEv" title="BListItem::IsSelected"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">IsSelected()</span></code></a>) or if a complete redraw is required. In either of
+these cases, we want to redraw the background, to either the highlight
+color, or the owner’s view color:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">CityItem::DrawItem</span><span class="p">(</span><span class="n">BView</span><span class="w"> </span><span class="o">*</span><span class="n">owner</span><span class="p">,</span><span class="w"> </span><span class="n">BRect</span><span class="w"> </span><span class="n">frame</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="kt">bool</span><span class="w"> </span><span class="n">complete</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsSelected</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">complete</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">rgb_color</span><span class="w"> </span><span class="n">color</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsSelected</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kHighlight</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">owner</span><span class="o">-&gt;</span><span class="n">ViewColor</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="n">owner</span><span class="o">-&gt;</span><span class="n">SetHighColor</span><span class="p">(</span><span class="n">color</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">owner</span><span class="o">-&gt;</span><span class="n">FillRect</span><span class="p">(</span><span class="n">frame</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Now we draw the text. First, we move the owner view’s pen so it’s inset
+from the bottom left corner of the item’s frame. (In a real application,
+you would want to make the inset adjustments based on the font that’s being
+used; see the <a class="reference internal" href="../../kits/interface/font.html#_CPPv45BFont" title="BFont"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFont</span></code></a> class for more information.):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">owner</span><span class="o">-&gt;</span><span class="n">MovePenTo</span><span class="p">(</span><span class="n">frame</span><span class="p">.</span><span class="n">left</span><span class="o">+</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">frame</span><span class="p">.</span><span class="n">bottom</span><span class="mi">-2</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If the item is enabled (selectable), we set the owner view’s high color to
+a shade of medium red; if it’s disabled, we use a lighter red color (the
+color definitions aren’t shown). Then we use <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView10DrawStringEPKcP16escapement_delta" title="BView::DrawString"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawString()</span></code></a> to draw the region name:.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">owner</span><span class="o">-&gt;</span><span class="n">SetHighColor</span><span class="p">(</span><span class="n">kRedColor</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">owner</span><span class="o">-&gt;</span><span class="n">SetHighColor</span><span class="p">(</span><span class="n">kDimRedColor</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="n">owner</span><span class="o">-&gt;</span><span class="n">DrawString</span><span class="p">(</span><span class="n">region_names</span><span class="p">[</span><span class="n">kRegion</span><span class="p">]);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Move the pen to the right column and draw the city name:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">owner</span><span class="o">-&gt;</span><span class="n">MovePenTo</span><span class="p">(</span><span class="n">frame</span><span class="p">.</span><span class="n">left</span><span class="o">+</span><span class="mi">38</span><span class="p">,</span><span class="w"> </span><span class="n">frame</span><span class="p">.</span><span class="n">bottom</span><span class="mi">-2</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">owner</span><span class="o">-&gt;</span><span class="n">SetHighColor</span><span class="p">(</span><span class="n">kBlackColor</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">owner</span><span class="o">-&gt;</span><span class="n">SetHighColor</span><span class="p">(</span><span class="n">kMedGray</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="n">owner</span><span class="o">-&gt;</span><span class="n">DrawString</span><span class="p">(</span><span class="n">kCity</span><span class="p">.</span><span class="n">String</span><span class="p">());</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="using-a-cityitem-object">
+<h3>Using a CityItem Object<a class="headerlink" href="#using-a-cityitem-object" title="Permalink to this heading">¶</a></h3>
+<p>To use a <span class="hclass">CityItem</span> object, simply construct a new object and pass
+it to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BListView::AddItem()</span></code>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">listView</span><span class="o">-&gt;</span><span class="n">AddItem</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">CityItem</span><span class="p">(</span><span class="s">&quot;Chicago&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">CityItem</span><span class="o">::</span><span class="n">USA</span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="introduction.html">Introduction</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="menu.html">BMenu</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

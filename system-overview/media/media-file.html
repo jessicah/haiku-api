@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMediaFile &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMediaFiles" href="media-files.html" />
+    <link rel="prev" title="BMediaEventLooper" href="media-event-looper.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMediaFile</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-event-looper.html">BMediaEventLooper</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-files.html">BMediaFiles</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmediafile">
+<h1 id="CPPv410BMediaFile">BMediaFile<a class="headerlink" href="#bmediafile" title="Permalink to this heading">¶</a></h1>
+<p>The <a class="reference internal" href="../../kits/media/media-file.html#_CPPv410BMediaFile" title="BMediaFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaFile</span></code></a> class represents a file containing media data.
+When instantiated a <a class="reference internal" href="../../kits/media/media-file.html#_CPPv410BMediaFile" title="BMediaFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaFile</span></code></a> with an <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">entry_ref</span></code> to an existing media file, it sniffs the file and figures out
+the right codecs to use when accessing that file.</p>
+<p>To read an existing media file, you can then call <a class="reference internal" href="../../kits/media/media-file.html#_CPPv4N10BMediaFile7TrackAtE5int32" title="BMediaFile::TrackAt"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">TrackAt()</span></code></a> to instantiate <a class="reference internal" href="../../kits/media/media-track.html#_CPPv411BMediaTrack" title="BMediaTrack"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaTrack</span></code></a> objects fot
+the file’s tracks; these can in turn be used to decode media data from the
+file.</p>
+<p>You can also write data to the file. In this case, you construct the
+object by specifying an <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">entry_ref</span></code> and a
+<span class="xref std std-ref">media_file_format</span> specification describing the format of the media
+data you plan to write into the file. You then call
+<a class="reference internal" href="../../kits/media/media-file.html#_CPPv4N10BMediaFile11CreateTrackEP12media_formatPK16media_codec_info" title="BMediaFile::CreateTrack"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CreateTrack()</span></code></a> to create each track
+you want to write into the file. Once each track has been created (but is
+still empty), you call <a class="reference internal" href="../../kits/media/media-file.html#_CPPv4N10BMediaFile12CommitHeaderEv" title="BMediaFile::CommitHeader"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CommitHeader()</span></code></a> to write the file’s header to disk, and you can
+use <a class="reference internal" href="../../kits/media/media-track.html#_CPPv411BMediaTrack" title="BMediaTrack"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaTrack</span></code></a> functions to write the actual media data into
+the tracks.</p>
+<p>Call <a class="reference internal" href="../../kits/media/media-file.html#_CPPv4N10BMediaFile9CloseFileEv" title="BMediaFile::CloseFile"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CloseFile()</span></code></a> when you’re finished
+writing to it (you don’t need to call this if you’re reading the file).</p>
+<p>For an example of how to use <a class="reference internal" href="../../kits/media/media-file.html#_CPPv410BMediaFile" title="BMediaFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaFile</span></code></a> to read and write
+media files, see “<span class="xref std std-ref">Reading and Writing Media Files</span>”</p>
+<div class="note admonition">
+<p class="admonition-title" id="CPPv44Note">Note</p>
+<p>As a general rule, you can’t use wildcards in any structures used by
+<a class="reference internal" href="../../kits/media/media-file.html#_CPPv410BMediaFile" title="BMediaFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaFile</span></code></a> functions. You tell <a class="reference internal" href="../../kits/media/media-file.html#_CPPv410BMediaFile" title="BMediaFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaFile</span></code></a> what
+format you have, and <a class="reference internal" href="../../kits/media/media-file.html#_CPPv410BMediaFile" title="BMediaFile"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaFile</span></code></a> will simply tell you whether
+or not that format is supported.</p>
+</div>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-event-looper.html">BMediaEventLooper</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-files.html">BMediaFiles</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

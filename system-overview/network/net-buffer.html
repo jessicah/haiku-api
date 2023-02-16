@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BNetBuffer &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BNetDebug" href="net-debug.html" />
+    <link rel="prev" title="BNetAddress" href="net-address.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BNetBuffer</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="net-address.html">BNetAddress</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="net-debug.html">BNetDebug</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bnetbuffer">
+<h1 id="CPPv410BNetBuffer">BNetBuffer<a class="headerlink" href="#bnetbuffer" title="Permalink to this heading">¶</a></h1>
+<p>The <a class="reference internal" href="../../kits/network/net-buffer.html#_CPPv410BNetBuffer" title="BNetBuffer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNetBuffer</span></code></a> class provides an easy way to construct
+network buffers consisting of any sort of data, for use by the
+<a class="reference internal" href="../../kits/network/net-endpoint.html#_CPPv412BNetEndpoint" title="BNetEndpoint"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNetEndpoint</span></code></a> class.</p>
+<p>Once you’ve created a <a class="reference internal" href="../../kits/network/net-buffer.html#_CPPv410BNetBuffer" title="BNetBuffer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNetBuffer</span></code></a>, you can append data to it
+by using a series of functions designed to add various types of data. For
+example, to create a buffer and place the long integer 2 followed by the
+string “This is a test.” in it, you could do this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">BNetBuffer</span><span class="w"> </span><span class="nf">buffer</span><span class="p">(</span><span class="mi">512</span><span class="p">);</span><span class="w"></span>
+<span class="n">buffer</span><span class="p">.</span><span class="n">AppendInt32</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="n">buffer</span><span class="p">.</span><span class="n">AppendString</span><span class="p">(</span><span class="s">&quot;This is a test.&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../../kits/network/net-buffer.html#_CPPv4N10BNetBuffer11AppendInt32E5int32" title="BNetBuffer::AppendInt32"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AppendInt32()</span></code></a> function
+automatically handles conversion of the value into network byte order, as
+do all of the <span class="hmethod">AppendXXX()</span> functions for integer values (16-bit,
+32-bit, and 64-bit, signed or unsigned). Likewise, the
+<span class="hmethod">RemoveXXX()</span> functions peel data out of a buffer, and they too
+are endian-aware.</p>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="net-address.html">BNetAddress</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="net-debug.html">BNetDebug</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

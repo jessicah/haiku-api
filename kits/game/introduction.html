@@ -18,8 +18,8 @@
     <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="The Game Kit" href="overview.html" />
-    <link rel="prev" title="BFileGameSound" href="file-game-sound.html" /> 
+    <link rel="next" title="BPushGameSound" href="push-game-sound.html" />
+    <link rel="prev" title="Graphics Card Hook Functions" href="graphics-card-hook-functions.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
           <span>API Documentation</span></a></h1>
@@ -28,11 +28,11 @@
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="file-game-sound.html">BFileGameSound</a>
+        «&#160;&#160;<a href="graphics-card-hook-functions.html">Graphics Card Hook Functions</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="overview.html">The Game Kit</a>&#160;&#160;»
+        <a href="push-game-sound.html">BPushGameSound</a>&#160;&#160;»
         </p>
 
       </div>
@@ -55,7 +55,7 @@
       <div class="content" role="main">
         
   <section id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv412Introduction">Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
 <p>The Game Kit provides features that game developers will find particularly
 useful.</p>
 <p>There are two types of functionality provided by the Game Kit:</p>
@@ -70,25 +70,25 @@ game applications, except that the user will have to deposit another 50 cents
 every three minutes.</p>
 </section>
 <section id="low-level-graphics-access">
-<h1>Low-Level Graphics Access<a class="headerlink" href="#low-level-graphics-access" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv425Low-Level Graphics Access">Low-Level Graphics Access<a class="headerlink" href="#low-level-graphics-access" title="Permalink to this heading">¶</a></h1>
 <p>There are two classes provided for direct access to the underlying graphics
-hardware: <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code> and <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code>. These two
+hardware: <a class="reference internal" href="window-screen.html#_CPPv413BWindowScreen" title="BWindowScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code></a> and <a class="reference internal" href="direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a>. These two
 classes both give you direct access to the graphics card’s frame buffer; the
-difference between them is that <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code> always takes over the
+difference between them is that <a class="reference internal" href="window-screen.html#_CPPv413BWindowScreen" title="BWindowScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code></a> always takes over the
 entire screen, bypassing the Application Server, while
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code> can draw directly into a window on most graphics
+<a class="reference internal" href="direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a> can draw directly into a window on most graphics
 hardware.</p>
-<p>Although <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code> can do everything <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code>
-can do, <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code> can be a little easier to use.</p>
+<p>Although <a class="reference internal" href="direct-window.html#_CPPv413BDirectWindow" title="BDirectWindow"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDirectWindow</span></code></a> can do everything <a class="reference internal" href="window-screen.html#_CPPv413BWindowScreen" title="BWindowScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code></a>
+can do, <a class="reference internal" href="window-screen.html#_CPPv413BWindowScreen" title="BWindowScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code></a> can be a little easier to use.</p>
 </section>
 <section id="high-performance-audio">
-<h1>High-Performance Audio<a class="headerlink" href="#high-performance-audio" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv422High-Performance Audio">High-Performance Audio<a class="headerlink" href="#high-performance-audio" title="Permalink to this heading">¶</a></h1>
 <p>Several classes are provided for high-performance audio playback:</p>
 <dl class="simple">
 <dt><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BGameSound</span></code></dt><dd><p>Is a base class and isn’t used directly; it’s the foundation for all the
 other audio classes in the Game Kit</p>
 </dd>
-<dt><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFileGameSound</span></code></dt><dd><p>Is used to represent a sound effect stored in a disk file, and provides
+<dt><a class="reference internal" href="file-game-sound.html#_CPPv414BFileGameSound" title="BFileGameSound"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BFileGameSound</span></code></a></dt><dd><p>Is used to represent a sound effect stored in a disk file, and provides
 functions for playing the sound. It can be used for playing music loops from
 audio files, or for playing the occasional large sound effect.</p>
 </dd>
@@ -96,14 +96,14 @@ audio files, or for playing the occasional large sound effect.</p>
 back with extremely low latency and low overhead (at the expensive of memory
 space).</p>
 </dd>
-<dt><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPushGameSound</span></code></dt><dd><p>These are used to let you fill buffers flowing to the speakers (or
+<dt><a class="reference internal" href="push-game-sound.html#_CPPv414BPushGameSound" title="BPushGameSound"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPushGameSound</span></code></a></dt><dd><p>These are used to let you fill buffers flowing to the speakers (or
 headphones, or whatever audio output device is being used). Their mission is
-the same, but their methods are different; <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPushGameSound</span></code> also
+the same, but their methods are different; <a class="reference internal" href="push-game-sound.html#_CPPv414BPushGameSound" title="BPushGameSound"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPushGameSound</span></code></a> also
 provides a way to play sound in a cyclic loop, keeping ahead of the playback
 point in the buffer. This is the extreme in high-performance, low-latency
 audio, but does require some extra work on the programmer’s part.</p>
 </dd>
-<dt><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStreamingGameSound</span></code></dt><dd><p>Requires magic powers to use; it’s functionality is closely tied to the
+<dt><a class="reference internal" href="streaming-game-sound.html#_CPPv419BStreamingGameSound" title="BStreamingGameSound"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BStreamingGameSound</span></code></a></dt><dd><p>Requires magic powers to use; it’s functionality is closely tied to the
 implementation of the Kit, especially when hardware sound acceleration is
 involved. So don’t touch it, we beg you.</p>
 </dd>
@@ -117,11 +117,11 @@ involved. So don’t touch it, we beg you.</p>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="file-game-sound.html">BFileGameSound</a>
+        «&#160;&#160;<a href="graphics-card-hook-functions.html">Graphics Card Hook Functions</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="overview.html">The Game Kit</a>&#160;&#160;»
+        <a href="push-game-sound.html">BPushGameSound</a>&#160;&#160;»
         </p>
 
       </div>

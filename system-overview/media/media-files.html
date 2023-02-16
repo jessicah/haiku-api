@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMediaFiles &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMediaFormats" href="media-formats.html" />
+    <link rel="prev" title="BMediaFile" href="media-file.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMediaFiles</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-file.html">BMediaFile</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-formats.html">BMediaFormats</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BMediaFiles</a><ul>
+<li><a class="reference internal" href="#identifying-an-entry">Identifying an Entry</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmediafiles">
+<h1 id="CPPv411BMediaFiles">BMediaFiles<a class="headerlink" href="#bmediafiles" title="Permalink to this heading">¶</a></h1>
+<p>One feature provided by the Media Kit is the ability to assign media files
+(sounds and graphics files, for example) to named elements, which can then
+be used to locate user-configured sound and graphics options.</p>
+<p>That’s the technical way of saying that the Media Kit provides the ability
+to assign sounds and bitmap graphics to events and system attributes, so
+you can configure the appearance and behavior of your BeOS computer’s user
+interface.</p>
+<section id="identifying-an-entry">
+<h2>Identifying an Entry<a class="headerlink" href="#identifying-an-entry" title="Permalink to this heading">¶</a></h2>
+<p>Each entry in the media files registry consists of three elements: a type,
+an item name, and an <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">entry_ref</span></code>. The type is the
+type of media data the entry represents. For example, this could be “sound”
+or “bitmap.” The item name is the actual name of the entry in the registry,
+such as “Startup” or “desktop image.” The <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">entry_ref</span></code> identifies the file that’s been assigned to that particular
+entry.</p>
+<p>An application can instantiate a <a class="reference internal" href="../../kits/media/media-files.html#_CPPv411BMediaFiles" title="BMediaFiles"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaFiles</span></code></a> object and then
+use the <a class="reference internal" href="../../kits/media/media-files.html#_CPPv4N11BMediaFiles9GetRefForEPKcPKcP9entry_ref" title="BMediaFiles::GetRefFor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetRefFor()</span></code></a> function to find
+out what file is assigned to a particular registry entry. For instance, if
+your application needs to access the desktop image file, you can get this
+information as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">entry_ref</span><span class="w"> </span><span class="n">ref</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">GetRefFor</span><span class="p">(</span><span class="s">&quot;bitmap&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;desktop image&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ref</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">B_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="cm">/* have your way with the desktop image file */</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The user uses the Sounds preference application to assign sound files to
+events, such as the system beep and the startup sound. These are named
+“Beep” and “Startup” respectively. The <span class="xref std std-ref">beep()</span> function will always
+play whatever sound is assigned to the Beep event.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-file.html">BMediaFile</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-formats.html">BMediaFormats</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

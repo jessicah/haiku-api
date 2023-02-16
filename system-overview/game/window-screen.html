@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BWindowScreen &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BInputDevice" href="../input/input-device.html" />
+    <link rel="prev" title="BStreamingGameSound" href="streaming-game-sound.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BWindowScreen</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="streaming-game-sound.html">BStreamingGameSound</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../input/input-device.html">BInputDevice</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BWindowScreen</a><ul>
+<li><a class="reference internal" href="#screen-access">Screen Access</a></li>
+<li><a class="reference internal" href="#keyboard-and-mouse">Keyboard and Mouse</a></li>
+<li><a class="reference internal" href="#workspaces">Workspaces</a></li>
+<li><a class="reference internal" href="#debugging">Debugging</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bwindowscreen">
+<h1 id="CPPv413BWindowScreen">BWindowScreen<a class="headerlink" href="#bwindowscreen" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../kits/game/window-screen.html#_CPPv413BWindowScreen" title="BWindowScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code></a> object provides exclusive access to the
+entire screen, bypassing the Application Server’s window system. The object
+has direct access to the graphics card driver: It can set up the graphics
+environment on the graphics card, call driver-implemented drawing
+functions, and directly manipulate the frame buffer.</p>
+<section id="screen-access">
+<h2>Screen Access<a class="headerlink" href="#screen-access" title="Permalink to this heading">¶</a></h2>
+<p>Like all windows, a <a class="reference internal" href="../../kits/game/window-screen.html#_CPPv413BWindowScreen" title="BWindowScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code></a> is hidden (off-screen) when
+it’s constructed. By calling <a class="reference internal" href="../../kits/game/window-screen.html#_CPPv4N13BWindowScreen4ShowEv" title="BWindowScreen::Show"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Show()</span></code></a> to
+put it on-screen and make it the active window, an application takes over
+the whole screen. While the <a class="reference internal" href="../../kits/game/window-screen.html#_CPPv413BWindowScreen" title="BWindowScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code></a> is active, the
+Application Server’s graphics operations are suspended—this means that you
+can’t use any <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> functions, nor any functions in classes
+derived from <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>; you have to draw directly into the
+screen’s frame buffer, and nothing except what the application draws will
+be visible to the user—no other windows and no desktop. When the
+<a class="reference internal" href="../../kits/game/window-screen.html#_CPPv413BWindowScreen" title="BWindowScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code></a> gives up active status, the Application Server
+automatically refreshes the screen with its old contents.</p>
+<p>Although the <a class="reference internal" href="../../kits/game/window-screen.html#_CPPv413BWindowScreen" title="BWindowScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code></a> object provides a connection to
+the screen, you shouldn’t draw from the <a class="reference internal" href="../../kits/game/window-screen.html#_CPPv413BWindowScreen" title="BWindowScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code></a>’s
+thread. Use the thread only to regulate the access of other threads to the
+frame buffer.</p>
+</section>
+<section id="keyboard-and-mouse">
+<h2>Keyboard and Mouse<a class="headerlink" href="#keyboard-and-mouse" title="Permalink to this heading">¶</a></h2>
+<p>A <a class="reference internal" href="../../kits/game/window-screen.html#_CPPv413BWindowScreen" title="BWindowScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code></a> object remains a window while it has control
+of the screen; it stays attached to the Application Server and its message
+loop continues to function. It gets messages reporting the user’s actions
+on the keyboard and mouse, just like any other active window. Because it
+covers the whole screen, it’s notified of all mouse and keyboard events.
+You can attach filters to the window to get the messages as they arrive. Or
+you can call the Interface Kit’s <span class="xref std std-ref">get_key_info()</span> function to poll the
+state of the keyboard and construct a nominal <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> so that
+you can call <a class="reference internal" href="../../kits/interface/view.html#_CPPv4N5BView8GetMouseEP6BPointP6uint32b" title="BView::GetMouse"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GetMouse()</span></code></a> to poll the mouse.</p>
+</section>
+<section id="workspaces">
+<h2>Workspaces<a class="headerlink" href="#workspaces" title="Permalink to this heading">¶</a></h2>
+<p>This class respects workspaces. A <a class="reference internal" href="../../kits/game/window-screen.html#_CPPv413BWindowScreen" title="BWindowScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code></a> object
+releases its grip on the screen when the user turns to another workspace
+and reestablishes its control when the user returns to the workspace in
+which it’s the active window.</p>
+</section>
+<section id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this heading">¶</a></h2>
+<p>A <a class="reference internal" href="../../kits/game/window-screen.html#_CPPv413BWindowScreen" title="BWindowScreen"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BWindowScreen</span></code></a> object can be constructed in a debugging mode
+that lets you switch back and forth between the workspace in which the game
+is running and a workspace where error messages are printed. See the
+<a class="reference internal" href="../../kits/game/window-screen.html#_CPPv4N13BWindowScreen13BWindowScreenEPKc6uint32P8status_tb" title="BWindowScreen::BWindowScreen"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a> and the
+<a class="reference internal" href="../../kits/game/window-screen.html#_CPPv4N13BWindowScreen14RegisterThreadE9thread_id" title="BWindowScreen::RegisterThread"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">RegisterThread()</span></code></a> function for
+details.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="streaming-game-sound.html">BStreamingGameSound</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../input/input-device.html">BInputDevice</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

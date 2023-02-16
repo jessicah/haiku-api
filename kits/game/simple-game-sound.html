@@ -66,72 +66,64 @@
       <div class="content" role="main">
         
   <section id="bsimplegamesound">
-<h1>BSimpleGameSound<a class="headerlink" href="#bsimplegamesound" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv416BSimpleGameSound">BSimpleGameSound<a class="headerlink" href="#bsimplegamesound" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N16BSimpleGameSound16BSimpleGameSoundEPK9entry_refP16BGameSoundDevice">
 </section>
 <h3>
-BSimpleGameSound()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N16BSimpleGameSound16BSimpleGameSoundEPK9entry_refP16BGameSoundDevice" title="BSimpleGameSound::BSimpleGameSound"><span class="n">BSimpleGameSound</span></a><span class="p">::</span></span><span class="n">BSimpleGameSound</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inFile</span>, <span class="n">BGameSoundDevice</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">device</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N16BSimpleGameSound16BSimpleGameSoundEPKcP16BGameSoundDevice" title="BSimpleGameSound::BSimpleGameSound"><span class="n">BSimpleGameSound</span></a><span class="p">::</span></span><span class="n">BSimpleGameSound</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inFile</span>, <span class="n">BGameSoundDevice</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">device</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N16BSimpleGameSound16BSimpleGameSoundEPKv6size_tPK15gs_audio_formatP16BGameSoundDevice" title="BSimpleGameSound::BSimpleGameSound"><span class="n">BSimpleGameSound</span></a><span class="p">::</span></span><span class="n">BSimpleGameSound</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inData</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">inFrameCount</span>, <span class="k">const</span><span class="w"> </span><span class="n">gs_audio_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">format</span>, <span class="n">BGameSoundDevice</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">device</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N16BSimpleGameSound16BSimpleGameSoundERK16BSimpleGameSound" title="BSimpleGameSound::BSimpleGameSound"><span class="n">BSimpleGameSound</span></a><span class="p">::</span></span><span class="n">BSimpleGameSound</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N16BSimpleGameSound16BSimpleGameSoundERK16BSimpleGameSound" title="BSimpleGameSound::BSimpleGameSound"><span class="n">BSimpleGameSound</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">other</span><span class="sig-paren">)</span></pre><p>Prepares the object to play the specified sound. The first form of
-the constructor preloads the entire sound specified by
-<span class="hparameter">inFile</span> into memory, while the second accepts a
-<span class="hparameter">inFile</span> as a pathname string.
-The third form takes <span class="hparameter">inData</span> as a pointer to
-sound data already in memory; this sound data is copied into a buffer owned
-by the <span class="hclass">BSimpleGameSound</span> object; once the constructor
-returns, you can delete the original data if you wish. The data is copied
-since some sound cards have an onboard sound buffer, and the API allows
-support for these devices (whether or not drivers exist that do this is
-another story).
-<span class="hparameter">inFrameCount</span> indicates how many frames of
-audio are in that buffer, and <span class="hparameter">format</span> indicates the
-format of the audio data. The size of the <span class="xref std std-ref">Media Kit</span> buffers used by the object is determined by the
-gs_audio_format
-structure’s buffer_size
-field. If the value this field is zero, the <span class="xref std std-ref">Game Kit</span> determines an appropriate buffer size for you.
-In both cases, <span class="hparameter">device</span> specifies the sound
-device that should be used for playing the sound; <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>
-uses the default sound player.</p>
+BSimpleGameSound()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N16BSimpleGameSound16BSimpleGameSoundEPK9entry_refP16BGameSoundDevice" title="BSimpleGameSound::BSimpleGameSound"><span class="n">BSimpleGameSound</span></a><span class="p">::</span></span><span class="n">BSimpleGameSound</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inFile</span>, <span class="n">BGameSoundDevice</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">device</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N16BSimpleGameSound16BSimpleGameSoundEPKcP16BGameSoundDevice" title="BSimpleGameSound::BSimpleGameSound"><span class="n">BSimpleGameSound</span></a><span class="p">::</span></span><span class="n">BSimpleGameSound</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inFile</span>, <span class="n">BGameSoundDevice</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">device</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N16BSimpleGameSound16BSimpleGameSoundEPKv6size_tPK15gs_audio_formatP16BGameSoundDevice" title="BSimpleGameSound::BSimpleGameSound"><span class="n">BSimpleGameSound</span></a><span class="p">::</span></span><span class="n">BSimpleGameSound</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">inData</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">inFrameCount</span>, <span class="k">const</span><span class="w"> </span><span class="n">gs_audio_format</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">format</span>, <span class="n">BGameSoundDevice</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">device</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N16BSimpleGameSound16BSimpleGameSoundERK16BSimpleGameSound" title="BSimpleGameSound::BSimpleGameSound"><span class="n">BSimpleGameSound</span></a><span class="p">::</span></span><span class="n">BSimpleGameSound</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N16BSimpleGameSound16BSimpleGameSoundERK16BSimpleGameSound" title="BSimpleGameSound::BSimpleGameSound"><span class="n">BSimpleGameSound</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">other</span><span class="sig-paren">)</span></pre><p>Prepares the object to play the specified sound. The first form of the
+constructor preloads the entire sound specified by <span class="hparameter">inFile</span> into
+memory, while the second accepts a <span class="hparameter">inFile</span> as a pathname string.</p>
+<p>The third form takes <span class="hparameter">inData</span> as a pointer to sound data already
+in memory; this sound data is copied into a buffer owned by the
+<span class="hclass">BSimpleGameSound</span> object; once the constructor returns, you can
+delete the original data if you wish. The data is copied since some sound
+cards have an onboard sound buffer, and the API allows support for these
+devices (whether or not drivers exist that do this is another story).</p>
+<p><span class="hparameter">inFrameCount</span> indicates how many frames of audio are in that
+buffer, and <span class="hparameter">format</span> indicates the format of the audio data. The
+size of the <span class="xref std std-ref">Media Kit</span> buffers used by the object is determined by
+the <span class="htype">gs_audio_format</span> structure’s <span class="hparameter">buffer_size</span> field. If
+the value this field is zero, the <span class="xref std std-ref">Game Kit</span> determines an appropriate
+buffer size for you.</p>
+<p>In both cases, <span class="hparameter">device</span> specifies the sound device that should be
+used for playing the sound; <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> uses the default sound player.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>Currently, <span class="hparameter">device</span> must always be
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p>Currently, <span class="hparameter">device</span> must always be <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
 </div>
 <p>The final form of the constructor duplicates another
-<span class="hclass">BSimpleGameSound</span> object.
-After instantiating the <span class="hclass">BSimpleGameSound</span>
-object, you should call <a class="reference internal" href="#_CPPv4NK16BSimpleGameSound9InitCheckEv" title="BSimpleGameSound::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> to determine
-whether or not the sound was successfully created.</p>
+<span class="hclass">BSimpleGameSound</span> object.</p>
+<p>After instantiating the <span class="hclass">BSimpleGameSound</span> object, you should call
+<a class="reference internal" href="#_CPPv4NK16BSimpleGameSound9InitCheckEv" title="BSimpleGameSound::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> to determine whether
+or not the sound was successfully created.</p>
 <section id="_CPPv4N16BSimpleGameSoundD0Ev">
 </section>
 <h3>
-~BSimpleGameSound()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSimpleGameSound</span><span class="p">::</span></span><span class="n">~BSimpleGameSound</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>A typical destructor.</p>
+~BSimpleGameSound()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv416BSimpleGameSound" title="BSimpleGameSound"><span class="n">BSimpleGameSound</span></a><span class="p">::</span></span><span class="n">~BSimpleGameSound</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>A typical destructor.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4NK16BSimpleGameSound9InitCheckEv">
 </section>
 <h3>
-InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSimpleGameSound</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a status_t indicating whether or not the object
-was successfully instantiated.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv416BSimpleGameSound" title="BSimpleGameSound"><span class="n">BSimpleGameSound</span></a><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a <span class="htype">status_t</span> indicating whether or not the object was
+successfully instantiated.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>The sound was successfully initialized.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
 <td><p>Unable to create a sound player.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code>.</p></td>
 <td><p>Can’t get enough memory to preload the sound.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Other errors.</p></td>
@@ -144,26 +136,22 @@ was successfully instantiated.</p>
 <section id="_CPPv4NK16BSimpleGameSound9IsLoopingEv">
 </section>
 <h3>
-SetIsLooping(), IsLooping()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSimpleGameSound</span><span class="p">::</span></span><span class="n">SetIsLooping</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">looping</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSimpleGameSound</span><span class="p">::</span></span><span class="n">IsLooping</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetIsLooping()</span> turns looping of the sound on
-if <span class="hparameter">looping</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, or off if
-<span class="hparameter">looping</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.
-<span class="hmethod">IsLooping()</span> returns a flag indicating
-whether or not looping is currently enabled.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+SetIsLooping(), IsLooping()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv416BSimpleGameSound" title="BSimpleGameSound"><span class="n">BSimpleGameSound</span></a><span class="p">::</span></span><span class="n">SetIsLooping</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">looping</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv416BSimpleGameSound" title="BSimpleGameSound"><span class="n">BSimpleGameSound</span></a><span class="p">::</span></span><span class="n">IsLooping</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetIsLooping()</span> turns looping of the sound on if
+<span class="hparameter">looping</span> is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, or off if <span class="hparameter">looping</span> is
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>.</p>
+<p><span class="hmethod">IsLooping()</span> returns a flag indicating whether or not looping is
+currently enabled.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>Looping was turned on or off without error.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code>.</p></td>
 <td><p>The player wasn’t initialized properly.</p></td>
 </tr>
 </tbody>

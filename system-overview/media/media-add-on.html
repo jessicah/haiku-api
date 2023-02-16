@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMediaAddOn &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMediaEventLooper" href="media-event-looper.html" />
+    <link rel="prev" title="BFileInterface" href="file-interface.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMediaAddOn</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="file-interface.html">BFileInterface</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-event-looper.html">BMediaEventLooper</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BMediaAddOn</a><ul>
+<li><a class="reference internal" href="#getting-to-node-you">Getting to Node You…</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmediaaddon">
+<h1 id="CPPv411BMediaAddOn">BMediaAddOn<a class="headerlink" href="#bmediaaddon" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../kits/media/media-add-on.html#_CPPv411BMediaAddOn" title="BMediaAddOn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaAddOn</span></code></a>-derived object describes an executable program
+that lives in a disk file and is loaded by the Media Server when it’s
+needed. A <a class="reference internal" href="../../kits/media/media-add-on.html#_CPPv411BMediaAddOn" title="BMediaAddOn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaAddOn</span></code></a> tells the Media Server what kinds of
+nodes it can create and handles the actual creation of those nodes when
+called upon by the Media Server to do so.</p>
+<div class="note admonition">
+<p class="admonition-title" id="CPPv44Note">Note</p>
+<p>It’s important to note that the functions in the <a class="reference internal" href="../../kits/media/media-add-on.html#_CPPv411BMediaAddOn" title="BMediaAddOn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaAddOn</span></code></a>
+class will typically only be called by the Media Kit (and from within the
+add-on itself). These functions aren’t called by client applications.</p>
+</div>
+<section id="getting-to-node-you">
+<h2>Getting to Node You…<a class="headerlink" href="#getting-to-node-you" title="Permalink to this heading">¶</a></h2>
+<p>A given node can support as many media kinds and formats as it wants
+(although if you support too many widely disparate media types, your add-on
+may get difficult to maintain, but that’s another issue entirely). For
+example, a node that supports video might support inputting AVI, QuickTime,
+and MPEG-2, but might only be able to output AVI. This is information that
+the Media Kit needs to know. For this reason, the <a class="reference internal" href="../../kits/media/media-add-on.html#_CPPv411BMediaAddOn" title="BMediaAddOn"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaAddOn</span></code></a>
+needs to provide information about the media flavors it supports.</p>
+<p>This is done using the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">flavor_info</span></code> structure:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">flavor_info</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">info</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">uint64</span><span class="w"> </span><span class="n">kinds</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">uint32</span><span class="w"> </span><span class="n">flavor_flags</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w"> </span><span class="n">internal_id</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">int32</span><span class="w"> </span><span class="n">possible_count</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">int32</span><span class="w"> </span><span class="n">in_format_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">uint32</span><span class="w"> </span><span class="n">in_format_flags</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="o">*</span><span class="n">in_formats</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">int32</span><span class="w"> </span><span class="n">out_format_count</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">uint32</span><span class="w"> </span><span class="n">out_format_flags</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="k">const</span><span class="w"> </span><span class="n">media_format</span><span class="w"> </span><span class="o">*</span><span class="n">out_formats</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">uint32</span><span class="w"> </span><span class="n">_reserved_</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span><span class="w"></span>
+
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">   </span><span class="n">flavor_info</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">flavor_info</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">);</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nameandinfo</p></td>
+<td><p>These fields provide a human-readable name, and information about the
+flavor.</p></td>
+</tr>
+<tr class="row-odd"><td><p>kinds</p></td>
+<td><p>Should indicate all the relevant kinds that the node matches; this is a
+bit field, and it’s possible that more than one flag may be relevant. See
+<span class="xref std std-ref">node_kind</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p>flavor_flags</p></td>
+<td><p>Contains flags providing additional information about the flavor.</p>
+<dl class="simple myst">
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FLAVOR_IS_GLOBAL</span></code></dt><dd><p>The flavor will be forced into the Media Add-on Server, and only one
+instance of it will exist.</p>
+</dd>
+<dt><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FLAVOR_IS_LOCAL</span></code></dt><dd><p>The flavor will be forced into the loading application, and many instances
+of it may exist.</p>
+</dd>
+</dl>
+<p>If neither flag is specified, the Media Kit will decide what to do with
+the flavor.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>internal_id</p></td>
+<td><p>Is an internal ID number that your add-on can use to identify the flavor;
+the flavor will be requested by the Media Kit using this ID number.</p></td>
+</tr>
+<tr class="row-even"><td><p>possible_count</p></td>
+<td><p>Specifies to the Media Kit the maximum number of instances of your node
+can be in existence at the same time. For example, if your node provides
+support for a particular sound card, this value should be equal to the
+number of cards you support that are currently installed in the computer.</p></td>
+</tr>
+<tr class="row-odd"><td><p>in_format_count</p></td>
+<td><p>Specifies how many input formats the flavor supports</p></td>
+</tr>
+<tr class="row-even"><td><p>in_formats</p></td>
+<td><p>Is a list of all the input formats supported by the flavor.</p></td>
+</tr>
+<tr class="row-odd"><td><p>in_format_flags</p></td>
+<td><p>Provides informational flags about the flavor’s inputs. There aren’t any
+defined values for this field yet; be sure to set it to 0.</p></td>
+</tr>
+<tr class="row-even"><td><p>out_format_count</p></td>
+<td><p>Specifies how many output formats the flavor supports.</p></td>
+</tr>
+<tr class="row-odd"><td><p>out_formats</p></td>
+<td><p>Is a list of all the output formats supported by the flavor.</p></td>
+</tr>
+<tr class="row-even"><td><p>out_format_flags</p></td>
+<td><p>Provides informational flags about the flavor’s outputs. There aren’t any
+defined values for this field yet; be sure to set it to 0.</p></td>
+</tr>
+</tbody>
+</table>
+<p>If your node is a physical input, such as a sound card, your node’s kinds
+field should include <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PHYSICAL_INPUT</span></code> among the flags set
+therein. Likewise, if your node is a physical output, or a system mixer,
+you should include <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PHYSICAL_OUTPUT</span></code> or
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SYSTEM_MIXER</span></code>.</p>
+<p>Your node’s constructor should also call <a class="reference internal" href="../../kits/media/media-node.html#_CPPv4N10BMediaNode11AddNodeKindE6uint64" title="BMediaNode::AddNodeKind"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">AddNodeKind()</span></code></a> to add these kind flags; the base classes only
+add <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BUFFER_CONSUMER</span></code>,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BUFFER_PRODUCER</span></code>, and so forth; the flags indicating
+that the node represents a physical input, physical output, or system mixer
+aren’t added automatically. For example, a sound digitizer node’s
+constructor might have the following form:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">MyBufferProducer</span><span class="o">::</span><span class="n">MyBufferProducer</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"></span>
+<span class="w">         </span><span class="n">BMediaNode</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w"></span>
+<span class="w">         </span><span class="n">BBufferProducer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">AddNodeKind</span><span class="p">(</span><span class="n">B_PHYSICAL_INPUT</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="cm">/* constructor stuff goes here */</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="file-interface.html">BFileInterface</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-event-looper.html">BMediaEventLooper</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

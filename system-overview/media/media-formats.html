@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMediaFormats &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMediaNode" href="media-node.html" />
+    <link rel="prev" title="BMediaFiles" href="media-files.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMediaFormats</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-files.html">BMediaFiles</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-node.html">BMediaNode</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BMediaFormats</a><ul>
+<li><a class="reference internal" href="#supported-families">Supported Families</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmediaformats">
+<h1 id="CPPv413BMediaFormats">BMediaFormats<a class="headerlink" href="#bmediaformats" title="Permalink to this heading">¶</a></h1>
+<p>The <a class="reference internal" href="../../kits/media/media-formats.html#_CPPv413BMediaFormats" title="BMediaFormats"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaFormats</span></code></a> class provides a means for translating
+between BeOS media format identifiers and those used by the codecs
+themselves. This is primarily useful if you’re writing a codec add-on or a
+file format parser.</p>
+<section id="supported-families">
+<h2>Supported Families<a class="headerlink" href="#supported-families" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="../../kits/media/media-formats.html#_CPPv413BMediaFormats" title="BMediaFormats"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMediaFormats</span></code></a> class currently knows how to translate
+among the following formats’ codec identification methods:</p>
+<table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>BeOS</p></td>
+<td><p>BeOS uses a constant within the <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_format</span></code>
+structure to indicate the kind of media being handled.</p></td>
+</tr>
+<tr class="row-even"><td><p>QuickTime</p></td>
+<td><p>QuickTime uses a two-word vendor/codec pair to indicate the type of media.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AVI</p></td>
+<td><p>The media format is indicated by a one-word constant.</p></td>
+</tr>
+<tr class="row-even"><td><p>AVR</p></td>
+<td><p>The media format is indicated by a one-word constant.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ASF</p></td>
+<td><p>The media format is indicated by a 128-bit UUID value.</p></td>
+</tr>
+<tr class="row-even"><td><p>MPEG</p></td>
+<td><p>The media format is specified by a word that indicates the MPEG version
+and layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AIFF</p></td>
+<td><p>The media format is specified by a codec ID word.</p></td>
+</tr>
+<tr class="row-even"><td><p>WAV</p></td>
+<td><p>The media format is specified by a codec ID word.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Miscellaneous</p></td>
+<td><p>The media format is indicated by a one-word file format value and a
+one-word codec ID.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="media-files.html">BMediaFiles</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="media-node.html">BMediaNode</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

@@ -119,45 +119,41 @@
       <div class="content" role="main">
         
   <section id="bslider">
-<h1>BSlider<a class="headerlink" href="#bslider" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv47BSlider">BSlider<a class="headerlink" href="#bslider" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N7BSlider7BSliderE5BRectPKcPKcP8BMessage5int325int3211thumb_style5int325int32">
 </section>
 <h3>
-BSlider()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BSlider7BSliderE5BRectPKcPKcP8BMessage5int325int3211thumb_style5int325int32" title="BSlider::BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">BSlider</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">minValue</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">maxValue</span>, <span class="n">thumb_style</span><span class="w"> </span><span class="n sig-param">thumbType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_BLOCK_THUMB</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_LEFT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FOLLOW_TOP</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FRAME_EVENTS</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_NAVIGABLE</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BSlider7BSliderE5BRectPKcPKcP8BMessage5int325int3211orientation11thumb_style5int325int32" title="BSlider::BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">BSlider</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span>, <span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">minValue</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">maxValue</span>, <span class="n">orientation</span><span class="w"> </span><span class="n sig-param">posture</span>, <span class="n">thumb_style</span><span class="w"> </span><span class="n sig-param">thumbType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_BLOCK_THUMB</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_LEFT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FOLLOW_TOP</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FRAME_EVENTS</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_NAVIGABLE</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BSlider7BSliderEP8BMessage" title="BSlider::BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">BSlider</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BSlider</span> by passing the appropriate arguments to the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code> constructor.
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code> initializes the slider’s <span class="hparameter">label</span> and assigns
-it a model <span class="hparameter">message</span> that identifies the action that should be carried out
-when the slider is invoked.</p>
-<p>The <span class="hparameter">frame</span>, <span class="hparameter">name</span>,
-<span class="hparameter">resizingMode</span>, and <span class="hparameter">flags</span> arguments are the same as those
-declared for the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-class and are passed up the inheritance hierarchy
-to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> constructor without change.</p>
-<p>The <span class="hparameter">minValue</span> and <span class="hparameter">maxValue</span> parameters define the minimum and maximum
-values to which the slider can be set.</p>
+BSlider()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BSlider7BSliderE5BRectPKcPKcP8BMessage5int325int3211thumb_style5int325int32" title="BSlider::BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">BSlider</span><span class="sig-paren">(</span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span>, <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">minValue</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">maxValue</span>, <span class="n">thumb_style</span><span class="w"> </span><span class="n sig-param">thumbType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_BLOCK_THUMB</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_LEFT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FOLLOW_TOP</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FRAME_EVENTS</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_NAVIGABLE</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BSlider7BSliderE5BRectPKcPKcP8BMessage5int325int3211orientation11thumb_style5int325int32" title="BSlider::BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">BSlider</span><span class="sig-paren">(</span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">frame</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">label</span>, <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">minValue</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">maxValue</span>, <span class="n">orientation</span><span class="w"> </span><span class="n sig-param">posture</span>, <span class="n">thumb_style</span><span class="w"> </span><span class="n sig-param">thumbType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_BLOCK_THUMB</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">resizingMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FOLLOW_LEFT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_FOLLOW_TOP</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">flags</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FRAME_EVENTS</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_WILL_DRAW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">B_NAVIGABLE</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N7BSlider7BSliderEP8BMessage" title="BSlider::BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">BSlider</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Initializes the <span class="hclass">BSlider</span> by passing the appropriate arguments to
+the <a class="reference internal" href="control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> constructor. <a class="reference internal" href="control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> initializes
+the slider’s <span class="hparameter">label</span> and assigns it a model <span class="hparameter">message</span> that
+identifies the action that should be carried out when the slider is
+invoked.</p>
+<p>The <span class="hparameter">frame</span>, <span class="hparameter">name</span>, <span class="hparameter">resizingMode</span>, and
+<span class="hparameter">flags</span> arguments are the same as those declared for the
+<a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> class and are passed up the inheritance hierarchy to the
+<a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> constructor without change.</p>
+<p>The <span class="hparameter">minValue</span> and <span class="hparameter">maxValue</span> parameters define the
+minimum and maximum values to which the slider can be set.</p>
 <p>If you want to control whether the slider is horizontal or vertical, use
-the second form of the constructor, and set the <span class="hparameter">posture</span> argument to
-either <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HORIZONTAL</span></code> or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_VERTICAL</span></code>. If you don’t specify this argument,
-the slider will be horizontal by default.</p>
-<p>The <span class="hparameter">thumbType</span> argument defines the look of the slider’s thumb, and can be
-either of the following values:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+the second form of the constructor, and set the <span class="hparameter">posture</span> argument
+to either <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HORIZONTAL</span></code> or <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_VERTICAL</span></code>.
+If you don’t specify this argument, the slider will be horizontal by
+default.</p>
+<p>The <span class="hparameter">thumbType</span> argument defines the look of the slider’s thumb,
+and can be either of the following values:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BLOCK_THUMB</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BLOCK_THUMB</span></code></p></td>
 <td><p>The thumb is a rectangular block.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TRIANGLE_THUMB</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TRIANGLE_THUMB</span></code></p></td>
 <td><p>The thumb is a triangular pointer.</p></td>
 </tr>
 </tbody>
@@ -165,44 +161,40 @@ either of the following values:</p>
 <section id="_CPPv4N7BSliderD0Ev">
 </section>
 <h3>
-~BSlider()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">~BSlider</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees memory allocated by the <span class="hclass">BSlider</span> object.</p>
+~BSlider()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">~BSlider</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Frees memory allocated by the <span class="hclass">BSlider</span> object.</p>
 </section>
 <section id="hook-functions">
 <h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N7BSlider16AttachedToWindowEv">
 </section>
 <h3>
-AttachedToWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Augments the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code>
-version of this function to set the background
-color of the button so that it matches the background color of its
-parent. This function also sets the start position of the slider and
+AttachedToWindow()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">AttachedToWindow</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Augments the <a class="reference internal" href="control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> version of this function to set the
+background color of the button so that it matches the background color of
+its parent. This function also sets the start position of the slider and
 allocates other memory needed for the slider to function.</p>
-<p>See also:
-<a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::AttachedToWindow()</span></code></a>,
+<p>See also: <a class="reference internal" href="view.html#_CPPv4N5BView16AttachedToWindowEv" title="BView::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::AttachedToWindow()</span></code></a>,
 <a class="reference internal" href="control.html#_CPPv4N8BControl16AttachedToWindowEv" title="BControl::AttachedToWindow"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControl::AttachedToWindow()</span></code></a></p>
 <section id="_CPPv4N7BSlider4DrawE5BRect">
 </section>
 <h3>
-Draw()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><span class="n">BRect</span><span class="w"> </span><span class="n sig-param">updateRect</span><span class="sig-paren">)</span></pre><p>Draws the slider by calling
-<a class="reference internal" href="#_CPPv4N7BSlider10DrawSliderEv" title="BSlider::DrawSlider"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawSlider()</span></code></a>.</p>
-<p>See also:
-<a class="reference internal" href="view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Draw()</span></code></a></p>
+Draw()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">Draw</span><span class="sig-paren">(</span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="n sig-param">updateRect</span><span class="sig-paren">)</span></pre><p>Draws the slider by calling <a class="reference internal" href="#_CPPv4N7BSlider10DrawSliderEv" title="BSlider::DrawSlider"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawSlider()</span></code></a>.</p>
+<p>See also: <a class="reference internal" href="view.html#_CPPv4N5BView4DrawE5BRect" title="BView::Draw"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::Draw()</span></code></a></p>
 <section id="_CPPv4N7BSlider7DrawBarEv">
 </section>
 <section id="_CPPv4NK7BSlider8BarFrameEv">
 </section>
 <h3>
-DrawBar(), BarFrame()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">DrawBar</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">BarFrame</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">DrawBar()</span> draws the slider bar. The bar is the narrow region the thumb
-slides through. The bar should be drawn into the offscreen view.</p>
-<p><span class="hmethod">BarFrame()</span> returns the frame rectangle that encloses the slider bar.</p>
-<p>These functions can be augmented or replaced by your own versions to
-alter the appearance of the slider bar.</p>
-<p>See also:
-<a class="reference internal" href="#_CPPv4N7BSlider13OffscreenViewEP5BView" title="BSlider::OffscreenView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OffscreenView()</span></code></a></p>
+DrawBar(), BarFrame()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">DrawBar</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">BarFrame</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">DrawBar()</span> draws the slider bar. The bar is the narrow region
+the thumb slides through. The bar should be drawn into the offscreen view.</p>
+<p><span class="hmethod">BarFrame()</span> returns the frame rectangle that encloses the slider
+bar.</p>
+<p>These functions can be augmented or replaced by your own versions to alter
+the appearance of the slider bar.</p>
+<p>See also: <a class="reference internal" href="#_CPPv4N7BSlider13OffscreenViewEP5BView" title="BSlider::OffscreenView"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">OffscreenView()</span></code></a></p>
 <section id="_CPPv4N7BSlider13DrawFocusMarkEv">
 </section>
 <h3>
-DrawFocusMark()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">DrawFocusMark</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>If the slider is in focus, draws a mark indicating that this is the case.</p>
+DrawFocusMark()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">DrawFocusMark</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>If the slider is in focus, draws a mark indicating that this is the case.</p>
 <p>You can override this function to alter the appearance of the slider
 control.</p>
 <section id="_CPPv4N7BSlider13DrawHashMarksEv">
@@ -210,18 +202,19 @@ control.</p>
 <section id="_CPPv4NK7BSlider14HashMarksFrameEv">
 </section>
 <h3>
-DrawHashMarks(), HashMarksFrame()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">DrawHashMarks</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">HashMarksFrame</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">DrawHashMarks()</span> draws the hash marks.</p>
-<p><span class="hmethod">HashMarksFrame()</span> returns the frame rectangle that encloses the hash
-marks. If the hash marks are set to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HASH_MARKS_TOP</span></code> or
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HASH_MARKS_BOTTOM</span></code>, the rectangle encloses only the area needed to draw
-the marks. If the setting is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HASH_MARKS_BOTH</span></code>, the hash marks frame
-rectangle is the bounds rectangle of the entire slider control.</p>
-<p>These functions can be augmented or replaced by your own versions to
-alter the appearance of the hash marks.</p>
+DrawHashMarks(), HashMarksFrame()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">DrawHashMarks</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">HashMarksFrame</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">DrawHashMarks()</span> draws the hash marks.</p>
+<p><span class="hmethod">HashMarksFrame()</span> returns the frame rectangle that encloses the
+hash marks. If the hash marks are set to <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HASH_MARKS_TOP</span></code>
+or <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HASH_MARKS_BOTTOM</span></code>, the rectangle encloses only the
+area needed to draw the marks. If the setting is
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HASH_MARKS_BOTH</span></code>, the hash marks frame rectangle is the
+bounds rectangle of the entire slider control.</p>
+<p>These functions can be augmented or replaced by your own versions to alter
+the appearance of the hash marks.</p>
 <section id="_CPPv4N7BSlider10DrawSliderEv">
 </section>
 <h3>
-DrawSlider()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">DrawSlider</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Draws the entire slider control by calling the functions responsible for
+DrawSlider()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">DrawSlider</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Draws the entire slider control by calling the functions responsible for
 drawing the various parts of the control:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#_CPPv4N7BSlider7DrawBarEv" title="BSlider::DrawBar"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawBar()</span></code></a></p></li>
@@ -230,26 +223,24 @@ drawing the various parts of the control:</p>
 <li><p><a class="reference internal" href="#_CPPv4N7BSlider13DrawFocusMarkEv" title="BSlider::DrawFocusMark"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawFocusMark()</span></code></a></p></li>
 <li><p><a class="reference internal" href="#_CPPv4N7BSlider8DrawTextEv" title="BSlider::DrawText"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawText()</span></code></a></p></li>
 </ul>
-<p>Once the slider has been drawn into the offscreen view, it’s copied to
-its parent window.</p>
+<p>Once the slider has been drawn into the offscreen view, it’s copied to its
+parent window.</p>
 <section id="_CPPv4N7BSlider8DrawTextEv">
 </section>
 <h3>
-DrawText()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">DrawText</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Draws the slider’s text areas. These are the minimum label, maximum
-label, and status message.</p>
+DrawText()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">DrawText</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Draws the slider’s text areas. These are the minimum label, maximum label,
+and status message.</p>
 <p>The minimum and maximum labels can be set using the
-<a class="reference internal" href="#_CPPv4N7BSlider14SetLimitLabelsEPKcPKc" title="BSlider::SetLimitLabels"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetLimitLabels()</span></code></a>
-function. The status message is obtained by calling the
-<a class="reference internal" href="#_CPPv4NK7BSlider10UpdateTextEv" title="BSlider::UpdateText"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">UpdateText()</span></code></a>
-function. If you want there to be a status message, simply override
-<a class="reference internal" href="#_CPPv4NK7BSlider10UpdateTextEv" title="BSlider::UpdateText"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">UpdateText()</span></code></a>
-to return the string you want drawn as the status message.</p>
+<a class="reference internal" href="#_CPPv4N7BSlider14SetLimitLabelsEPKcPKc" title="BSlider::SetLimitLabels"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetLimitLabels()</span></code></a> function. The status
+message is obtained by calling the <a class="reference internal" href="#_CPPv4NK7BSlider10UpdateTextEv" title="BSlider::UpdateText"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">UpdateText()</span></code></a> function. If you want there to be a status message,
+simply override <a class="reference internal" href="#_CPPv4NK7BSlider10UpdateTextEv" title="BSlider::UpdateText"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">UpdateText()</span></code></a> to return
+the string you want drawn as the status message.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>In the default implementation of this function, the limit labels are
-only drawn if both of them have been configured to a value other than
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. If either of them is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>,
-neither will be drawn.</p>
+<p>In the default implementation of this function, the limit labels are only
+drawn if both of them have been configured to a value other than
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>. If either of them is <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>, neither will be
+drawn.</p>
 </div>
 <p>This function can be augmented or replaced by your own version to alter
 the appearance or placement of the text.</p>
@@ -258,68 +249,59 @@ the appearance or placement of the text.</p>
 <section id="_CPPv4NK7BSlider10ThumbFrameEv">
 </section>
 <h3>
-DrawThumb(), ThumbFrame()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">DrawThumb</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">BRect</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">ThumbFrame</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">DrawThumb()</span> draws the slider’s thumb. If you choose to reimplement this
-function, you should call
-<a class="reference internal" href="#_CPPv4NK7BSlider5StyleEv" title="BSlider::Style"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Style()</span></code></a>
-to determine whether to draw a block thumb or a triangle thumb.</p>
-<p><span class="hmethod">ThumbFrame()</span> returns the frame rectangle that encloses the thumb.</p>
-<p>These functions can be augmented or replaced by your own versions to
-alter the appearance of the thumb.</p>
+DrawThumb(), ThumbFrame()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">DrawThumb</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">ThumbFrame</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">DrawThumb()</span> draws the slider’s thumb. If you choose to
+reimplement this function, you should call <a class="reference internal" href="#_CPPv4NK7BSlider5StyleEv" title="BSlider::Style"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Style()</span></code></a> to determine whether to draw a block thumb or a triangle
+thumb.</p>
+<p><span class="hmethod">ThumbFrame()</span> returns the frame rectangle that encloses the
+thumb.</p>
+<p>These functions can be augmented or replaced by your own versions to alter
+the appearance of the thumb.</p>
 <section id="_CPPv4N7BSlider12FrameResizedEPfPf">
 </section>
 <h3>
-FrameResized()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">FrameResized</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">width</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><p>Augments the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code>
-version of
-<a class="reference internal" href="view.html#_CPPv4N5BView12FrameResizedEff" title="BView::FrameResized"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FrameResized()</span></code></a>
-to adjust the offscreen view and bitmap used for rendering the slider.</p>
+FrameResized()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">FrameResized</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">width</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><p>Augments the <a class="reference internal" href="control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> version of <a class="reference internal" href="view.html#_CPPv4N5BView12FrameResizedEff" title="BView::FrameResized"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">FrameResized()</span></code></a> to adjust the offscreen view and bitmap used for
+rendering the slider.</p>
 <section id="_CPPv4N7BSlider16GetPreferredSizeEPfPf">
 </section>
 <section id="_CPPv4N7BSlider17ResizeToPreferredEv">
 </section>
 <h3>
-GetPreferredSize(), ResizeToPreferred()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">GetPreferredSize</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">width</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">ResizeToPreferred</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetPreferredSize()</span> calculates the width and height of the area needed to
-render the complete slider control, given the current configuration of
-the control’s various settings.</p>
-<p>The <span class="hparameter">width</span> returned by this function is the width of the slider control.
-The <span class="hparameter">height</span> is calculated by taking the height of the slider bar itself,
-adding two times the height of the hash marks, then adding room for the
-status text (if there is any) and limit strings (if there are any).</p>
+GetPreferredSize(), ResizeToPreferred()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">GetPreferredSize</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">width</span>, <span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">height</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">ResizeToPreferred</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetPreferredSize()</span> calculates the width and height of the area
+needed to render the complete slider control, given the current
+configuration of the control’s various settings.</p>
+<p>The <span class="hparameter">width</span> returned by this function is the width of the slider
+control. The <span class="hparameter">height</span> is calculated by taking the height of the
+slider bar itself, adding two times the height of the hash marks, then
+adding room for the status text (if there is any) and limit strings (if
+there are any).</p>
 <p>Note that the height always includes room for hash marks both above and
 below the slider, even if the slider has no hash marks or only one of the
 two sets of marks.</p>
-<p><span class="hmethod">ResizeToPreferred()</span> resizes the slider control to be the preferred size.</p>
+<p><span class="hmethod">ResizeToPreferred()</span> resizes the slider control to be the
+preferred size.</p>
 <p>You can override these functions to alter the preferred size of the
 slider; this is particularly important if you override other functions to
 change the appearance of the slider.</p>
 <section id="_CPPv4N7BSlider7KeyDownEPKc5int32">
 </section>
 <h3>
-KeyDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">KeyDown</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bytes</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numBytes</span><span class="sig-paren">)</span></pre><p>Augments the inherited version of
-<a class="reference internal" href="control.html#_CPPv4N8BControl7KeyDownEPKc5int32" title="BControl::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">KeyDown()</span></code></a> to let the up and right arrow
-keys increment the value of the slider, and the down and left arrow keys
-to decrement the value of the slider.</p>
-<p>See also:
-<a class="reference internal" href="control.html#_CPPv4N8BControl6InvokeEP8BMessage" title="BControl::Invoke"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControl::Invoke()</span></code></a>,
-<a class="reference internal" href="view.html#_CPPv4N5BView7KeyDownEPKc5int32" title="BView::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::KeyDown()</span></code></a></p>
+KeyDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">KeyDown</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bytes</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">numBytes</span><span class="sig-paren">)</span></pre><p>Augments the inherited version of <a class="reference internal" href="control.html#_CPPv4N8BControl7KeyDownEPKc5int32" title="BControl::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">KeyDown()</span></code></a> to let the up and right arrow keys increment the value
+of the slider, and the down and left arrow keys to decrement the value of
+the slider.</p>
+<p>See also: <a class="reference internal" href="control.html#_CPPv4N8BControl6InvokeEP8BMessage" title="BControl::Invoke"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControl::Invoke()</span></code></a>, <a class="reference internal" href="view.html#_CPPv4N5BView7KeyDownEPKc5int32" title="BView::KeyDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BView::KeyDown()</span></code></a></p>
 <section id="_CPPv4N7BSlider9MouseDownE6BPoint">
 </section>
 <h3>
-MouseDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">MouseDown</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><p>Overrides the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code> version of
-<a class="reference internal" href="view.html#_CPPv4N5BView9MouseDownE6BPoint" title="BView::MouseDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MouseDown()</span></code></a>
-to track mouse the mouse when
-the button is pressed. A single click causes the thumb to immediately
-reposition itself to the clicked location, and a click and drag motion
-causes the slider to follow the mouse cursor until the button is released.</p>
+MouseDown()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">MouseDown</span><span class="sig-paren">(</span><a class="reference internal" href="point.html#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="n sig-param">point</span><span class="sig-paren">)</span></pre><p>Overrides the <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> version of <a class="reference internal" href="view.html#_CPPv4N5BView9MouseDownE6BPoint" title="BView::MouseDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MouseDown()</span></code></a> to track mouse the mouse when the button is pressed. A
+single click causes the thumb to immediately reposition itself to the
+clicked location, and a click and drag motion causes the slider to follow
+the mouse cursor until the button is released.</p>
 <p>If a modification message has been established, it is sent repeatedly
 while the mouse button is down. This can be used, for example, to let the
 changes to the value of the slider be instantly reflected in an onscreen
 display. When the mouse button is released and the slider has been set to
 its resting position, the slider’s model message is sent.</p>
-<p>See also:
-<a class="reference internal" href="control.html#_CPPv4N8BControl6InvokeEP8BMessage" title="BControl::Invoke"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControl::Invoke()</span></code></a>,
-<a class="reference internal" href="../application/invoker.html#_CPPv4N8BInvoker9SetTargetE10BMessenger" title="BInvoker::SetTarget"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BInvoker::SetTarget()</span></code></a>,
+<p>See also: <a class="reference internal" href="control.html#_CPPv4N8BControl6InvokeEP8BMessage" title="BControl::Invoke"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControl::Invoke()</span></code></a>, <a class="reference internal" href="../application/invoker.html#_CPPv4N8BInvoker9SetTargetE10BMessenger" title="BInvoker::SetTarget"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BInvoker::SetTarget()</span></code></a>,
 <a class="reference internal" href="#_CPPv4NK7BSlider19ModificationMessageEv" title="BSlider::ModificationMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ModificationMessage()</span></code></a>,
 <a class="reference internal" href="#_CPPv4N7BSlider22SetModificationMessageEP8BMessage" title="BSlider::SetModificationMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetModificationMessage()</span></code></a></p>
 </section>
@@ -328,80 +310,76 @@ its resting position, the slider’s model message is sent.</p>
 <section id="_CPPv4NK7BSlider7ArchiveEP8BMessageb">
 </section>
 <h3>
-Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Archives the <span class="hclass">BSlider</span> by recording its the fields shown
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">ArchivedFields()</span></code> in the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> <span class="hparameter">archive</span>.</p>
-<p>See also:
-<a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>,
-<a class="reference internal" href="#_CPPv4N7BSlider11InstantiateEP8BMessage" title="BSlider::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
+Archive()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">Archive</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">deep</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Archives the <span class="hclass">BSlider</span> by recording its the fields shown
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">here</span></code> in the <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>
+<span class="hparameter">archive</span>.</p>
+<p>See also: <a class="reference internal" href="../support/archivable.html#_CPPv4NK11BArchivable7ArchiveEP8BMessageb" title="BArchivable::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Archive()</span></code></a>, <a class="reference internal" href="#_CPPv4N7BSlider11InstantiateEP8BMessage" title="BSlider::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Instantiate()</span></code></a> static function</p>
 <section id="_CPPv4N7BSlider13OffscreenViewEP5BView">
 </section>
 <h3>
-OffscreenView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">OffscreenView</span><span class="sig-paren">(</span><span class="n">BView</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">view</span><span class="sig-paren">)</span></pre><p>Returns a pointer to the offscreen <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code>
-in which the slider is rendered
-prior to being copied to the screen. Because the slider is a complex
-graphical construct, it’s rendered offscreen, then copied onto the
-screen. This function is provided to make it possible to further
-customize the appearance of a custom slider control.</p>
+OffscreenView()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">OffscreenView</span><span class="sig-paren">(</span><a class="reference internal" href="view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">view</span><span class="sig-paren">)</span></pre><p>Returns a pointer to the offscreen <a class="reference internal" href="view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> in which the slider
+is rendered prior to being copied to the screen. Because the slider is a
+complex graphical construct, it’s rendered offscreen, then copied onto the
+screen. This function is provided to make it possible to further customize
+the appearance of a custom slider control.</p>
 <section id="_CPPv4N7BSlider11SetBarColorE9rgb_color">
 </section>
 <section id="_CPPv4NK7BSlider8BarColorEv">
 </section>
 <h3>
-SetBarColor(), BarColor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">SetBarColor</span><span class="sig-paren">(</span><span class="n">rgb_color</span><span class="w"> </span><span class="n sig-param">bar_color</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">rgb_color</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">BarColor</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetBarColor()</span> sets the color of the slider bar.</p>
+SetBarColor(), BarColor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">SetBarColor</span><span class="sig-paren">(</span><span class="n">rgb_color</span><span class="w"> </span><span class="n sig-param">bar_color</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">rgb_color</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">BarColor</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetBarColor()</span> sets the color of the slider bar.</p>
 <p><span class="hmethod">BarColor()</span> returns the slider bar’s color.</p>
 <section id="_CPPv4N7BSlider15SetBarThicknessEf">
 </section>
 <section id="_CPPv4NK7BSlider12BarThicknessEv">
 </section>
 <h3>
-SetBarThickness(), BarThickness()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">SetBarThickness</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">thickness</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">BarThickness</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetBarThickness()</span> sets the slider bar’s thickness and
-<span class="hmethod">BarThickness()</span>
-returns the current thickness.</p>
+SetBarThickness(), BarThickness()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">SetBarThickness</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">thickness</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">BarThickness</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetBarThickness()</span> sets the slider bar’s thickness and
+<span class="hmethod">BarThickness()</span> returns the current thickness.</p>
 <p>The slider bar’s thickness determines how many pixels across the slider
 bar is. If no thickness is defined, the bar occupies the entire unused
 width or height of the slider’s bounding rectangle.</p>
 <section id="_CPPv4N7BSlider7SetFontEPK5BFont6uint32">
 </section>
 <h3>
-SetFont()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">SetFont</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BFont</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">font</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">properties</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FONT_ALL</span><span class="sig-paren">)</span></pre><p>Sets the <span class="hparameter">font</span> used for the slider’s labels to font. The <span class="hparameter">properties</span> flags
-indicate which properties of the font should be used, and which should
-remain unchanged.</p>
+SetFont()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">SetFont</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="font.html#_CPPv45BFont" title="BFont"><span class="n">BFont</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">font</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">properties</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_FONT_ALL</span><span class="sig-paren">)</span></pre><p>Sets the <span class="hparameter">font</span> used for the slider’s labels to font. The
+<span class="hparameter">properties</span> flags indicate which properties of the font should be
+used, and which should remain unchanged.</p>
 <section id="_CPPv4N7BSlider12SetHashMarksE18hash_mark_location">
 </section>
 <section id="_CPPv4NK7BSlider9HashMarksEv">
 </section>
 <h3>
-SetHashMarks(), HashMarks()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">SetHashMarks</span><span class="sig-paren">(</span><span class="n">hash_mark_location</span><span class="w"> </span><span class="n sig-param">where</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">hash_mark_location</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">HashMarks</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetHashMarks()</span> sets the placement of the hash marks. This value can be
-one of the following:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+SetHashMarks(), HashMarks()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">SetHashMarks</span><span class="sig-paren">(</span><span class="n">hash_mark_location</span><span class="w"> </span><span class="n sig-param">where</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">hash_mark_location</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">HashMarks</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetHashMarks()</span> sets the placement of the hash marks. This value
+can be one of the following:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HASH_MARKS_NONE</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HASH_MARKS_NONE</span></code></p></td>
 <td><p>The slider should have no hash marks.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HASH_MARKS_TOP</span></code></p></td>
-<td><p>The slider should have hash marks above the slider bar. For horizontal sliders only.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HASH_MARKS_TOP</span></code></p></td>
+<td><p>The slider should have hash marks above the slider bar. For horizontal
+sliders only.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HASH_MARKS_BOTTOM</span></code></p></td>
-<td><p>The slider should have hash marks below the slider bar. For horizontal sliders only.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HASH_MARKS_BOTTOM</span></code></p></td>
+<td><p>The slider should have hash marks below the slider bar. For horizontal
+sliders only.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HASH_MARKS_BOTH</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HASH_MARKS_BOTH</span></code></p></td>
 <td><p>The slider should have hash marks above and below the slider bar.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HASH_MARKS_LEFT</span></code></p></td>
-<td><p>The slider should have has marks to the left of the slider bar. For vertical sliders only.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HASH_MARKS_LEFT</span></code></p></td>
+<td><p>The slider should have has marks to the left of the slider bar. For
+vertical sliders only.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HASH_MARKS_RIGHT</span></code></p></td>
-<td><p>The slider should have has marks to the right of the slider bar. For vertical sliders only.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HASH_MARKS_RIGHT</span></code></p></td>
+<td><p>The slider should have has marks to the right of the slider bar. For
+vertical sliders only.</p></td>
 </tr>
 </tbody>
 </table>
@@ -411,18 +389,19 @@ one of the following:</p>
 <section id="_CPPv4NK7BSlider13HashMarkCountEv">
 </section>
 <h3>
-SetHashMarkCount(), HashMarkCount()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">SetHashMarkCount</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">hash_mark_count</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">HashMarkCount</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetHashMarkCount()</span> sets the number of hash marks that will be displayed
-above and/or below the slider.</p>
-<p><span class="hmethod">HashMarkCount()</span> returns the number of hash marks currently set up.</p>
+SetHashMarkCount(), HashMarkCount()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">SetHashMarkCount</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">hash_mark_count</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">HashMarkCount</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetHashMarkCount()</span> sets the number of hash marks that will be
+displayed above and/or below the slider.</p>
+<p><span class="hmethod">HashMarkCount()</span> returns the number of hash marks currently set
+up.</p>
 <section id="_CPPv4N7BSlider20SetKeyIncrementValueE5int32">
 </section>
 <section id="_CPPv4NK7BSlider17KeyIncrementValueEv">
 </section>
 <h3>
-SetKeyIncrementValue(), KeyIncrementValue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">SetKeyIncrementValue</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">increment_value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">KeyIncrementValue</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetKeyIncrementValue()</span> sets the amount by which the slider’s value
-changes when the keyboard is used to move the thumb.</p>
-<p><span class="hmethod">KeyIncrementValue()</span> returns the amount by which the slider’s value
-changes when the keyboard is used to move the thumb.</p>
+SetKeyIncrementValue(), KeyIncrementValue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">SetKeyIncrementValue</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">increment_value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">KeyIncrementValue</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetKeyIncrementValue()</span> sets the amount by which the slider’s
+value changes when the keyboard is used to move the thumb.</p>
+<p><span class="hmethod">KeyIncrementValue()</span> returns the amount by which the slider’s
+value changes when the keyboard is used to move the thumb.</p>
 <section id="_CPPv4N7BSlider14SetLimitLabelsEPKcPKc">
 </section>
 <section id="_CPPv4NK7BSlider13MinLimitLabelEv">
@@ -430,72 +409,68 @@ changes when the keyboard is used to move the thumb.</p>
 <section id="_CPPv4NK7BSlider13MaxLimitLabelEv">
 </section>
 <h3>
-SetLimitLabels(), MinLimitLabel(), MaxLimitLabel()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">SetLimitLabels</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">minLabel</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">maxLabel</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">MinLimitLabel</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">MaxLimitLabel</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetLimitLabels()</span> sets the labels used to mark the minimum and maximum
-values on the slider.</p>
-<p><span class="hmethod">MinLimitLabel()</span> and
-<span class="hmethod">MaxLimitLabel()</span> return the current strings used to
-mark the minimum and maximum values on the slider.</p>
+SetLimitLabels(), MinLimitLabel(), MaxLimitLabel()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">SetLimitLabels</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">minLabel</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">maxLabel</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">MinLimitLabel</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">MaxLimitLabel</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetLimitLabels()</span> sets the labels used to mark the minimum and
+maximum values on the slider.</p>
+<p><span class="hmethod">MinLimitLabel()</span> and <span class="hmethod">MaxLimitLabel()</span> return the
+current strings used to mark the minimum and maximum values on the slider.</p>
 <section id="_CPPv4N7BSlider22SetModificationMessageEP8BMessage">
 </section>
 <section id="_CPPv4NK7BSlider19ModificationMessageEv">
 </section>
 <h3>
-SetModificationMessage(), ModificationMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">SetModificationMessage</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">ModificationMessage</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetModificationMessage()</span> sets the model message that’s sent while the
-mouse is being tracked. The modification message is sent repeatedly as
-long as the mouse button is held down after being initially clicked
-inside the slider.</p>
-<p><span class="hmethod">ModificationMessage()</span> returns the modification message currently set up.</p>
-<p>See also:
-<a class="reference internal" href="#_CPPv4N7BSlider9MouseDownE6BPoint" title="BSlider::MouseDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MouseDown()</span></code></a></p>
+SetModificationMessage(), ModificationMessage()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">SetModificationMessage</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">ModificationMessage</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetModificationMessage()</span> sets the model message that’s sent
+while the mouse is being tracked. The modification message is sent
+repeatedly as long as the mouse button is held down after being initially
+clicked inside the slider.</p>
+<p><span class="hmethod">ModificationMessage()</span> returns the modification message
+currently set up.</p>
+<p>See also: <a class="reference internal" href="#_CPPv4N7BSlider9MouseDownE6BPoint" title="BSlider::MouseDown"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">MouseDown()</span></code></a></p>
 <section id="_CPPv4N7BSlider14SetOrientationE11orientation">
 </section>
 <section id="_CPPv4NK7BSlider11OrientationEv">
 </section>
 <h3>
-SetOrientation(), Orientation()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">SetOrientation</span><span class="sig-paren">(</span><span class="n">orientation</span><span class="w"> </span><span class="n sig-param">posture</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">orientation</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">Orientation</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetOrientation()</span> sets the slider’s orientation and <span class="hmethod">Orientation()</span> returns
-its current orientation. The possible values are <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_HORIZONTAL</span></code> and
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_VERTICAL</span></code>.</p>
+SetOrientation(), Orientation()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">SetOrientation</span><span class="sig-paren">(</span><span class="n">orientation</span><span class="w"> </span><span class="n sig-param">posture</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">orientation</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">Orientation</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetOrientation()</span> sets the slider’s orientation and
+<span class="hmethod">Orientation()</span> returns its current orientation. The possible
+values are <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HORIZONTAL</span></code> and <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_VERTICAL</span></code>.</p>
 <section id="_CPPv4N7BSlider11SetPositionEPf">
 </section>
 <section id="_CPPv4NK7BSlider8PositionEv">
 </section>
 <h3>
-SetPosition(), Position()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">SetPosition</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">position</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">Position</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetPosition()</span> sets the value of the slider given a value between 0.0 and
-1.0, where 0.0 is the minimum value of the slider, and 1.0 is the maximum
-value. This lets you set the slider to a relative position without having
-to look up the maximum and minimum values of the slider.</p>
-<p><span class="hmethod">Position()</span> returns the slider value scaled to the range 0.0 to 1.0.</p>
+SetPosition(), Position()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">SetPosition</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">position</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">Position</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetPosition()</span> sets the value of the slider given a value
+between 0.0 and 1.0, where 0.0 is the minimum value of the slider, and 1.0
+is the maximum value. This lets you set the slider to a relative position
+without having to look up the maximum and minimum values of the slider.</p>
+<p><span class="hmethod">Position()</span> returns the slider value scaled to the range 0.0 to
+1.0.</p>
 <section id="_CPPv4N7BSlider15SetSnoozeAmountE5int32">
 </section>
 <section id="_CPPv4NK7BSlider12SnoozeAmountEv">
 </section>
 <h3>
-SetSnoozeAmount(), SnoozeAmount()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">SetSnoozeAmount</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">snooze_time</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">SnoozeAmount</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetSnoozeAmount()</span> sets the time (in microseconds) that the slider snoozes
-for between updates while the mouse is being tracked.</p>
-<p><span class="hmethod">SnoozeAmount()</span> returns the time that the slider snoozes while the mouse
-is being tracked.</p>
+SetSnoozeAmount(), SnoozeAmount()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">SetSnoozeAmount</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">snooze_time</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">SnoozeAmount</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetSnoozeAmount()</span> sets the time (in microseconds) that the
+slider snoozes for between updates while the mouse is being tracked.</p>
+<p><span class="hmethod">SnoozeAmount()</span> returns the time that the slider snoozes while
+the mouse is being tracked.</p>
 <section id="_CPPv4N7BSlider8SetStyleE11thumb_style">
 </section>
 <section id="_CPPv4NK7BSlider5StyleEv">
 </section>
 <h3>
-SetStyle(), Style()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">SetStyle</span><span class="sig-paren">(</span><span class="n">thumb_style</span><span class="w"> </span><span class="n sig-param">style</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">thumb_style</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">Style</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetStyle()</span> sets the thumb style for the slider. The style can be either
-of the following two values:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+SetStyle(), Style()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">SetStyle</span><span class="sig-paren">(</span><span class="n">thumb_style</span><span class="w"> </span><span class="n sig-param">style</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">thumb_style</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">Style</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetStyle()</span> sets the thumb style for the slider. The style can
+be either of the following two values:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BLOCK_THUMB</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BLOCK_THUMB</span></code></p></td>
 <td><p>The thumb is a rectangular block.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TRIANGLE_THUMB</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TRIANGLE_THUMB</span></code></p></td>
 <td><p>The thumb is a triangular pointer.</p></td>
 </tr>
 </tbody>
@@ -508,54 +483,114 @@ of the following two values:</p>
 <section id="_CPPv4NK7BSlider13ValueForPointE6BPoint">
 </section>
 <h3>
-SetValue(), Value(), ValueForPoint()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">SetValue</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">Value</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">ValueForPoint</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="n sig-param">location</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetValue()</span> augments the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code>
-<a class="reference internal" href="control.html#_CPPv4N8BControl8SetValueE5int32" title="BControl::SetValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetValue()</span></code></a>
-to pin the value to the maximum
+SetValue(), Value(), ValueForPoint()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">SetValue</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">value</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">Value</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">ValueForPoint</span><span class="sig-paren">(</span><a class="reference internal" href="point.html#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="n sig-param">location</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">SetValue()</span> augments the <a class="reference internal" href="control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a>
+<a class="reference internal" href="control.html#_CPPv4N8BControl8SetValueE5int32" title="BControl::SetValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">function</span></code></a> to pin the value to the maximum
 and minimum values for the slider and the position of the thumb before
 calling the inherited function.</p>
-<p><span class="hmethod">ValueForPoint()</span> returns the slider value represented by the given screen
-coordinates.</p>
+<p><span class="hmethod">ValueForPoint()</span> returns the slider value represented by the
+given screen coordinates.</p>
 <section id="_CPPv4NK7BSlider10UpdateTextEv">
 </section>
 <h3>
-UpdateText()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">UpdateText</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the status message that should be displayed with the slider. By
-default, this function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>; if you want a status message to be
-displayed, simply override this function to return the appropriate string.</p>
-<p>The pointer you return is yours; the
-<a class="reference internal" href="#_CPPv4N7BSlider8DrawTextEv" title="BSlider::DrawText"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawText()</span></code></a> routine won’t dispose of
-it unless you augment it to do so.</p>
+UpdateText()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">UpdateText</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the status message that should be displayed with the slider. By
+default, this function returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>; if you want a status
+message to be displayed, simply override this function to return the
+appropriate string.</p>
+<p>The pointer you return is yours; the <a class="reference internal" href="#_CPPv4N7BSlider8DrawTextEv" title="BSlider::DrawText"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DrawText()</span></code></a> routine won’t dispose of it unless you augment it to
+do so.</p>
 <section id="_CPPv4N7BSlider12UseFillColorEbPK9rgb_color">
 </section>
 <section id="_CPPv4NK7BSlider9FillColorEP9rgb_color">
 </section>
 <h3>
-UseFillColor(), FillColor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">UseFillColor</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">use_fill</span>, <span class="k">const</span><span class="w"> </span><span class="n">rgb_color</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bar_color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">FillColor</span><span class="sig-paren">(</span><span class="n">rgb_color</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bar_color</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">UseFillColor()</span> sets the color used to fill the area of the slider bar
-that’s “filled.” That is, the part of the bar between the minimum value
-of the slider and the current thumb position. If the <span class="hparameter">use_fill</span> parameter
-is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code>, filling this area of the slider with the fill color is turned
-on. If <span class="hparameter">use_fill</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>, the entire slider bar is always drawn in the
-bar color.</p>
-<p><span class="hmethod">FillColor()</span> stores the current fill color in <span class="hparameter">bar_color</span>. The boolean value
-returned by the function is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the fill color is being used, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>
-if not.</p>
+UseFillColor(), FillColor()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">UseFillColor</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">use_fill</span>, <span class="k">const</span><span class="w"> </span><span class="n">rgb_color</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bar_color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">FillColor</span><span class="sig-paren">(</span><span class="n">rgb_color</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bar_color</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">UseFillColor()</span> sets the color used to fill the area of the
+slider bar that’s “filled.” That is, the part of the bar between the
+minimum value of the slider and the current thumb position. If the
+<span class="hparameter">use_fill</span> parameter is <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span>, filling this area of the
+slider with the fill color is turned on. If <span class="hparameter">use_fill</span> is
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>, the entire slider bar is always drawn in the bar color.</p>
+<p><span class="hmethod">FillColor()</span> stores the current fill color in
+<span class="hparameter">bar_color</span>. The boolean value returned by the function is
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the fill color is being used, <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if not.</p>
 </section>
 <section id="static-functions">
 <h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N7BSlider11InstantiateEP8BMessage">
 </section>
 <h3>
-Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BSlider</span><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BSlider</span> object, allocated by new and created with the
-version of the constructor that takes a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> archive. However, if the
-archive doesn’t contain data for a <span class="hclass">BSlider</span> object, <span class="hmethod">Instantiate()</span> returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
-<p>See also:
-<a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">object()</span></code>,
+Instantiate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BArchivable</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv47BSlider" title="BSlider"><span class="n">BSlider</span></a><span class="p">::</span></span><span class="n">Instantiate</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Returns a new <span class="hclass">BSlider</span> object, allocated by new and created with
+the version of the constructor that takes a <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> archive.
+However, if the archive doesn’t contain data for a <span class="hclass">BSlider</span>
+object, <span class="hmethod">Instantiate()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
+<p>See also: <a class="reference internal" href="../support/archivable.html#_CPPv4N11BArchivable11InstantiateEP8BMessage" title="BArchivable::Instantiate"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BArchivable::Instantiate()</span></code></a>,
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">instantiate_object()</span></code>,
 <a class="reference internal" href="control.html#_CPPv4NK8BControl7ArchiveEP8BMessageb" title="BControl::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a></p>
 </section>
 <section id="archived-fields">
 <h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="#_CPPv4NK7BSlider7ArchiveEP8BMessageb" title="BSlider::Archive"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Archive()</span></code></a> function adds the following
+fields to its <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> argument:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">_mod_msg</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RAW_TYPE</span></code></p></td>
+<td><p>The flattened modification message.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_sdelay</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The snooze amount.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_bcolor</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The bar color.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_fcolor</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The fill color.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_minlbl</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>The minimum limit label.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_maxlbl</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>The maximum limit label.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_min</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The minimum possible value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_max</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The maximum possible value.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_incrementvalue</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The keyboard navigation increment value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_hashcount</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The number of hash marks to draw.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_hashloc</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT16_TYPE</span></code></p></td>
+<td><p>Where to draw the hash marks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_sstyle</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The thumb style.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Some of these fields may not be present if the setting they represent
+isn’t used, or is the default value. For example, if there is no minimum
+limit label set, the <span class="hparameter">_min_lbl</span> field doesn’t exist.</p>
 </section>
 </section>
 

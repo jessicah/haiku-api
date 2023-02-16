@@ -17,24 +17,59 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMailMessage" href="../mail/mail-message.html" />
+    <link rel="prev" title="Semaphores" href="semaphores.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
-          <span>The Haiku Book  documentation</span></a></h1>
+          <span>API Documentation</span></a></h1>
         <h2 class="heading"><span>Threads and Teams</span></h2>
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
+        «&#160;&#160;<a href="semaphores.html">Semaphores</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../mail/mail-message.html">BMailMessage</a>&#160;&#160;»
         </p>
 
       </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Threads and Teams</a><ul>
+<li><a class="reference internal" href="#spawning-a-thread">Spawning a Thread</a><ul>
+<li><a class="reference internal" href="#threads-and-app-images">Threads and App Images</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#telling-a-thread-to-run">Telling a Thread to Run</a></li>
+<li><a class="reference internal" href="#the-thread-function">The Thread Function</a></li>
+<li><a class="reference internal" href="#thread-names">Thread Names</a></li>
+<li><a class="reference internal" href="#thread-priorities">Thread Priorities</a></li>
+<li><a class="reference internal" href="#synchronizing-threads">Synchronizing Threads</a></li>
+<li><a class="reference internal" href="#controlling-a-thread">Controlling a Thread</a><ul>
+<li><a class="reference internal" href="#death-and-the-main-thread">Death and the Main Thread</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#passing-data-to-a-thread">Passing Data to a Thread</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
       <div class="content" role="main">
         
-        
   <section id="threads-and-teams">
-<h1>Threads and Teams<a class="headerlink" href="#threads-and-teams" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv417Threads and Teams">Threads and Teams<a class="headerlink" href="#threads-and-teams" title="Permalink to this heading">¶</a></h1>
 <p>A thread is a synchronous process that executes a series of program instructions. A team is a group
 of threads that make up a single program or application.</p>
 <p>Every application has at least one thread: When you launch an application, an initial thread—the
@@ -49,7 +84,7 @@ has spawned. For example, if thread A spawns thread B, and thread A dies (for wh
 thread B will continue to run. (But before you get carried away with the idea of leap-frogging
 threads, you should take note of the caveat in “Death and the Main Thread”.)</p>
 <div class="warning admonition">
-<p class="admonition-title">Warning</p>
+<p class="admonition-title" id="CPPv47Warning">Warning</p>
 <p>Threads and the POSIX <code class="docutils literal notranslate"><span class="pre">fork()</span></code> function are not compatible.
 You can’t mix calls to <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">spawn_thread()</span></code> (the function that creates a new thread) and
 <code class="docutils literal notranslate"><span class="pre">fork()</span></code> in the same application: If you call <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">spawn_thread()</span></code> and then try to call
@@ -250,17 +285,23 @@ message cache. See “Ports” for details.</p>
 </section>
 
 
+        <div class="clearer"></div>
       </div>
+          </div>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
+        «&#160;&#160;<a href="semaphores.html">Semaphores</a>
+        &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../mail/mail-message.html">BMailMessage</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Haiku.
+        &#169; Copyright 2023, Haiku, Inc..
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>

@@ -68,7 +68,7 @@
       <div class="content" role="main">
         
   <section id="bshapeiterator">
-<h1>BShapeIterator<a class="headerlink" href="#bshapeiterator" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv414BShapeIterator">BShapeIterator<a class="headerlink" href="#bshapeiterator" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N14BShapeIterator14BShapeIteratorEv">
@@ -78,31 +78,29 @@ BShapeIterator()</h3><pre style="background: #f3f3f3; line-height: 2em"><span cl
 <section id="_CPPv4N14BShapeIteratorD0Ev">
 </section>
 <h3>
-~BShapeIterator()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BShapeIterator</span><span class="p">::</span></span><span class="n">~BShapeIterator</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Destructor</p>
+~BShapeIterator()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BShapeIterator" title="BShapeIterator"><span class="n">BShapeIterator</span></a><span class="p">::</span></span><span class="n">~BShapeIterator</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Destructor</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N14BShapeIterator7IterateEP6BShape">
 </section>
 <h3>
-Iterate()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShapeIterator</span><span class="p">::</span></span><span class="n">Iterate</span><span class="sig-paren">(</span><span class="n">BShape</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">shape</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Iterate()</span> iterates over each command that comprises the shape, in order,
-calling the <span class="hmethod">Iterate…()</span> function that corresponds to each command.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+Iterate()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BShapeIterator" title="BShapeIterator"><span class="n">BShapeIterator</span></a><span class="p">::</span></span><span class="n">Iterate</span><span class="sig-paren">(</span><a class="reference internal" href="shape.html#_CPPv46BShape" title="BShape"><span class="n">BShape</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">shape</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Iterate()</span> iterates over each command that comprises the shape,
+in order, calling the <span class="hmethod">Iterate…()</span> function that corresponds to
+each command.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
 <td><p>No error.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Other errors.</p></td>
-<td><p>None are defined at this time, but you should always check for errors returned by this function.</p></td>
+<td><p>None are defined at this time, but you should always check for errors
+returned by this function.</p></td>
 </tr>
 </tbody>
 </table>
@@ -115,10 +113,9 @@ calling the <span class="hmethod">Iterate…()</span> function that corresponds 
 <section id="_CPPv4N14BShapeIterator13IterateMoveToEP6BPoint">
 </section>
 <h3>
-IterateBezierTo(), IterateClose(), IterateLineTo(), IterateMoveTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShapeIterator</span><span class="p">::</span></span><span class="n">IterateBezierTo</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">bezierCount</span>, <span class="n">BPoint</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">bezierPoints</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShapeIterator</span><span class="p">::</span></span><span class="n">IterateClose</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShapeIterator</span><span class="p">::</span></span><span class="n">IterateLineTo</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">lineCount</span>, <span class="n">BPoint</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">linePoints</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BShapeIterator</span><span class="p">::</span></span><span class="n">IterateMoveTo</span><span class="sig-paren">(</span><span class="n">BPoint</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">linePoints</span><span class="sig-paren">)</span></pre><p>These functions are called by
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Iterator()</span></code>
-to process the shape commands.
-Your <span class="hclass">BShapeIterator</span>-derived class must implement these four functions.</p>
+IterateBezierTo(), IterateClose(), IterateLineTo(), IterateMoveTo()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BShapeIterator" title="BShapeIterator"><span class="n">BShapeIterator</span></a><span class="p">::</span></span><span class="n">IterateBezierTo</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">bezierCount</span>, <a class="reference internal" href="point.html#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">bezierPoints</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BShapeIterator" title="BShapeIterator"><span class="n">BShapeIterator</span></a><span class="p">::</span></span><span class="n">IterateClose</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BShapeIterator" title="BShapeIterator"><span class="n">BShapeIterator</span></a><span class="p">::</span></span><span class="n">IterateLineTo</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">lineCount</span>, <a class="reference internal" href="point.html#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">linePoints</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BShapeIterator" title="BShapeIterator"><span class="n">BShapeIterator</span></a><span class="p">::</span></span><span class="n">IterateMoveTo</span><span class="sig-paren">(</span><a class="reference internal" href="point.html#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">linePoints</span><span class="sig-paren">)</span></pre><p>These functions are called by <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Iterate()</span></code> to process the shape
+commands. Your <span class="hclass">BShapeIterator</span>-derived class must implement these
+four functions.</p>
 </section>
 </section>
 

@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="BBitmap" href="bitmap.html" />
-    <link rel="prev" title="The Application Kit" href="../input/overview.html" /> 
+    <link rel="prev" title="Message Constants" href="../input/message-constants.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
           <span>API Documentation</span></a></h1>
@@ -28,7 +28,7 @@
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="../input/overview.html">The Application Kit</a>
+        «&#160;&#160;<a href="../input/message-constants.html">Message Constants</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -48,7 +48,11 @@
 <li><a class="reference internal" href="#_CPPv4N6BAlertD0Ev">~BAlert</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#hook-functions">Hook Functions</a></li>
+<li><a class="reference internal" href="#hook-functions">Hook Functions</a><ul>
+<li><a class="reference internal" href="#frameresized">FrameResized()</a></li>
+<li><a class="reference internal" href="#messagereceived">MessageReceived()</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
 <li><a class="reference internal" href="#_CPPv4NK6BAlert13AlertPositionEff">AlertPosition</a></li>
 <li><a class="reference internal" href="#_CPPv4NK6BAlert8ButtonAtE5int32">ButtonAt</a></li>
@@ -58,7 +62,11 @@
 <li><a class="reference internal" href="#_CPPv4NK6BAlert8TextViewEv">TextView</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#constants-and-defined-types">Constants and Defined Types</a></li>
+<li><a class="reference internal" href="#constants-and-defined-types">Constants and Defined Types</a><ul>
+<li><a class="reference internal" href="#alert-type">alert_type</a></li>
+<li><a class="reference internal" href="#button-spacing">button_spacing</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#archived-fields">Archived Fields</a></li>
 </ul>
 </li>
@@ -72,162 +80,255 @@
       <div class="content" role="main">
         
   <section id="balert">
-<h1>BAlert<a class="headerlink" href="#balert" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv46BAlert">BAlert<a class="headerlink" href="#balert" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N6BAlert6BAlertEPKcPKcPKcPKcPKc12button_width10alert_type">
 </section>
 <h3>
-BAlert()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BAlert6BAlertEPKcPKcPKcPKcPKc12button_width10alert_type" title="BAlert::BAlert"><span class="n">BAlert</span></a><span class="p">::</span></span><span class="n">BAlert</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">title</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">text</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">button0Label</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">button1Label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">button2Label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">button_width</span><span class="w"> </span><span class="n sig-param">widthStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_WIDTH_AS_USUAL</span>, <span class="n">alert_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_INFO_ALERT</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BAlert6BAlertEPKcPKcPKcPKcPKc12button_width14button_spacing10alert_type" title="BAlert::BAlert"><span class="n">BAlert</span></a><span class="p">::</span></span><span class="n">BAlert</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">title</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">text</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">button0Label</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">button1Label</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">button2Label</span>, <span class="n">button_width</span><span class="w"> </span><span class="n sig-param">widthStyle</span>, <span class="n">button_spacing</span><span class="w"> </span><span class="n sig-param">spacing</span>, <span class="n">alert_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_INFO_ALERT</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BAlert6BAlertEP8BMessage" title="BAlert::BAlert"><span class="n">BAlert</span></a><span class="p">::</span></span><span class="n">BAlert</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Creates an alert panel that’s ready to be displayed. The arguments are:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>title</p></th>
-<th class="head"><p>Is the name of the panel. Since an alert panel doesn’t have a title tab, the title isn’t actually displayed in the panel. Nonetheless, it can be useful in debugging: The <span class="hparameter">title</span> is used to name the window thread (“w&gt;<span class="hparameter">title</span>”).</p></th>
-</tr>
-</thead>
+BAlert()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BAlert6BAlertEPKcPKcPKcPKcPKc12button_width10alert_type" title="BAlert::BAlert"><span class="n">BAlert</span></a><span class="p">::</span></span><span class="n">BAlert</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">title</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">text</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">button0Label</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">button1Label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">button2Label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">button_width</span><span class="w"> </span><span class="n sig-param">widthStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_WIDTH_AS_USUAL</span>, <span class="n">alert_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_INFO_ALERT</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BAlert6BAlertEPKcPKcPKcPKcPKc12button_width14button_spacing10alert_type" title="BAlert::BAlert"><span class="n">BAlert</span></a><span class="p">::</span></span><span class="n">BAlert</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">title</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">text</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">button0Label</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">button1Label</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">button2Label</span>, <span class="n">button_width</span><span class="w"> </span><span class="n sig-param">widthStyle</span>, <span class="n">button_spacing</span><span class="w"> </span><span class="n sig-param">spacing</span>, <span class="n">alert_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B_INFO_ALERT</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N6BAlert6BAlertEP8BMessage" title="BAlert::BAlert"><span class="n">BAlert</span></a><span class="p">::</span></span><span class="n">BAlert</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">archive</span><span class="sig-paren">)</span></pre><p>Creates an alert panel that’s ready to be displayed. The arguments are:</p>
+<table class="colwidths-auto docutils align-left">
 <tbody>
+<tr class="row-odd"><td><p>title</p></td>
+<td><p>Is the name of the panel. Since an alert panel doesn’t have a title tab,
+the title isn’t actually displayed in the panel. Nonetheless, it can be
+useful in debugging: The <span class="hparameter">title</span> is used to name the window thread
+(“w&gt;<span class="hparameter">title</span>”).</p></td>
+</tr>
 <tr class="row-even"><td><p>text</p></td>
-<td><p>Is displayed in the body of the panel; it should describe the reason the panel is being shown (“Are you sure you want to quit?”, “Invalid name.”, etc.).</p></td>
+<td><p>Is displayed in the body of the panel; it should describe the reason the
+panel is being shown (“Are you sure you want to quit?”, “Invalid name.”,
+etc.).</p></td>
 </tr>
 <tr class="row-odd"><td><p>button0Label,button1Label,button2Label</p></td>
-<td><p>Label the panel’s buttons. An alert panel can have one, two, or three buttons—however many labels you supply is the number of buttons that are displayed. The buttons are arranged at the bottom of the panel as shown in the illustration above, and each is assigned an index (0, 1, or 2, left to right) that’s used to identify the button that the user clicked.</p></td>
+<td><p>Label the panel’s buttons. An alert panel can have one, two, or three
+buttons—however many labels you supply is the number of buttons that are
+displayed. The buttons are arranged at the bottom of the panel as shown in
+the illustration above, and each is assigned an index (0, 1, or 2, left to
+right) that’s used to identify the button that the user clicked.</p></td>
 </tr>
 <tr class="row-even"><td><p>widthStyle</p></td>
-<td><p>Is a constant that describes how the buttons should be sized, one of <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WIDTH_AS_USUAL</span></code>, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WIDTH_FROM_WIDEST</span></code>, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WIDTH_FROM_LABEL</span></code>. See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">width()</span></code> for details.</p></td>
+<td><p>Is a constant that describes how the buttons should be sized, one of
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WIDTH_AS_USUAL</span></code>, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WIDTH_FROM_WIDEST</span></code>,
+or <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WIDTH_FROM_LABEL</span></code>. See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">button_width</span></code> for details.</p></td>
 </tr>
 <tr class="row-odd"><td><p>spacing</p></td>
-<td><p>Is a constant that describes how the buttons are spaced, either <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_EVEN_SPACING</span></code>, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OFFSET_SPACING</span></code>. The constructor that lacks the spacing argument uses <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_EVEN_SPACING</span></code>. See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">spacing()</span></code> for details.</p></td>
+<td><p>Is a constant that describes how the buttons are spaced, either
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EVEN_SPACING</span></code>, or <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OFFSET_SPACING</span></code>.
+The constructor that lacks the spacing argument uses
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EVEN_SPACING</span></code>. See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">button_spacing</span></code> for details.</p></td>
 </tr>
 <tr class="row-even"><td><p>type</p></td>
-<td><p>Is a constant that determines which of the five alert icons is displayed in the panel: <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_EMPTY_ALERT</span></code>, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INFO_ALERT</span></code>, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_IDEA_ALERT</span></code>, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_WARNING_ALERT</span></code>, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_STOP_ALERT</span></code>. See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">type()</span></code> for pictures.</p></td>
+<td><p>Is a constant that determines which of the five alert icons is displayed
+in the panel: <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EMPTY_ALERT</span></code>,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INFO_ALERT</span></code>, <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_IDEA_ALERT</span></code>,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WARNING_ALERT</span></code>, or <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STOP_ALERT</span></code>. See
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">alert_type</span></code> for pictures.</p></td>
 </tr>
 </tbody>
 </table>
-<p>After the <span class="hclass">BAlert</span> is constructed,
-<a class="reference internal" href="#_CPPv4N6BAlert2GoEv" title="BAlert::Go"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Go()</span></code></a> must be called to display it. The
-panel is removed and the object is deleted after the user clicks a button.</p>
+<p>After the <span class="hclass">BAlert</span> is constructed, <a class="reference internal" href="#_CPPv4N6BAlert2GoEv" title="BAlert::Go"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Go()</span></code></a>
+must be called to display it. The panel is removed and the object is
+deleted after the user clicks a button.</p>
 <section id="_CPPv4N6BAlertD0Ev">
 </section>
 <h3>
-~BAlert()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><span class="n">BAlert</span><span class="p">::</span></span><span class="n">~BAlert</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>A standard destructor</p>
+~BAlert()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BAlert" title="BAlert"><span class="n">BAlert</span></a><span class="p">::</span></span><span class="n">~BAlert</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>A standard destructor</p>
 </section>
 <section id="hook-functions">
 <h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>See <a class="reference internal" href="window.html#_CPPv4N7BWindow12FrameResizedEff" title="BWindow::FrameResized"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::FrameResized()</span></code></a></p>
-<h3>
-</h3><p>See <a class="reference internal" href="window.html#_CPPv4N7BWindow15MessageReceivedEP8BMessage" title="BWindow::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::MessageReceived()</span></code></a></p>
+<section id="frameresized">
+<h3>FrameResized()<a class="headerlink" href="#frameresized" title="Permalink to this heading">¶</a></h3>
+<p>See <a class="reference internal" href="window.html#_CPPv4N7BWindow12FrameResizedEff" title="BWindow::FrameResized"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::FrameResized()</span></code></a></p>
+</section>
+<section id="messagereceived">
+<h3>MessageReceived()<a class="headerlink" href="#messagereceived" title="Permalink to this heading">¶</a></h3>
+<p>See <a class="reference internal" href="window.html#_CPPv4N7BWindow15MessageReceivedEP8BMessage" title="BWindow::MessageReceived"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BWindow::MessageReceived()</span></code></a></p>
+</section>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4NK6BAlert13AlertPositionEff">
 </section>
 <h3>
-AlertPosition()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BPoint</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAlert</span><span class="p">::</span></span><span class="n">AlertPosition</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">width</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">height</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Computes the “best” frame for an alert of the given
-<span class="hparameter">width</span> and <span class="hparameter">height</span>, and
-returns the top left corner of the computed frame in screen coordinates.
-This function is called automatically when you construct your
-<span class="hclass">BAlert</span>; you never have to invoke it
-yourself.</p>
+AlertPosition()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="point.html#_CPPv46BPoint" title="BPoint"><span class="n">BPoint</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BAlert" title="BAlert"><span class="n">BAlert</span></a><span class="p">::</span></span><span class="n">AlertPosition</span><span class="sig-paren">(</span><span class="kt">float</span><span class="w"> </span><span class="n sig-param">width</span>, <span class="kt">float</span><span class="w"> </span><span class="n sig-param">height</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Computes the “best” frame for an alert of the given <span class="hparameter">width</span> and
+<span class="hparameter">height</span>, and returns the top left corner of the computed frame in
+screen coordinates. This function is called automatically when you
+construct your <span class="hclass">BAlert</span>; you never have to invoke it yourself.</p>
 <section id="_CPPv4NK6BAlert8ButtonAtE5int32">
 </section>
 <h3>
-ButtonAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BButton</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BAlert</span><span class="p">::</span></span><span class="n">ButtonAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a pointer to the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BButton</span></code> object identified by
-<span class="hparameter">index</span>. Indices
-begin at 0 and count buttons from left to right. The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BButton</span></code> belongs to
-the <span class="hclass">BAlert</span> object and should not be freed.</p>
+ButtonAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="button.html#_CPPv47BButton" title="BButton"><span class="n">BButton</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BAlert" title="BAlert"><span class="n">BAlert</span></a><span class="p">::</span></span><span class="n">ButtonAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a pointer to the <a class="reference internal" href="button.html#_CPPv47BButton" title="BButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BButton</span></code></a> object identified by
+<span class="hparameter">index</span>. Indices begin at 0 and count buttons from left to right.
+The <a class="reference internal" href="button.html#_CPPv47BButton" title="BButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BButton</span></code></a> belongs to the <span class="hclass">BAlert</span> object and should
+not be freed.</p>
 <section id="_CPPv4N6BAlert2GoEv">
 </section>
 <h3>
-Go()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAlert</span><span class="p">::</span></span><span class="n">Go</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAlert</span><span class="p">::</span></span><span class="n">Go</span><span class="sig-paren">(</span><span class="n">BInvoker</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">invoker</span><span class="sig-paren">)</span></pre><p>Displays the alert panel. <span class="hmethod">Go()</span> can operate synchronously or
+Go()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BAlert" title="BAlert"><span class="n">BAlert</span></a><span class="p">::</span></span><span class="n">Go</span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BAlert" title="BAlert"><span class="n">BAlert</span></a><span class="p">::</span></span><span class="n">Go</span><span class="sig-paren">(</span><a class="reference internal" href="../application/invoker.html#_CPPv48BInvoker" title="BInvoker"><span class="n">BInvoker</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">invoker</span><span class="sig-paren">)</span></pre><p>Displays the alert panel. <span class="hmethod">Go()</span> can operate synchronously or
 asynchronously:</p>
 <ul class="simple">
-<li><p>The no-argument version is synchronous: The function doesn’t return until the user has clicked a button and the panel has been removed from the screen.. The value it returns is the index of the clicked button (0,1, or 2, left-to-right)..</p></li>
-<li><p>The <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInvoker</span></code> argument version is asynchronous: The function returns immediately (with <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>) and the button index is delivered as the int32 “which” field of the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> that’s sent to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInvoker</span></code>’s target.</p></li>
+<li><p>The no-argument version is synchronous: The function doesn’t return until
+the user has clicked a button and the panel has been removed from the
+screen.. The value it returns is the index of the clicked button (0,1, or
+2, left-to-right)..</p></li>
+<li><p>The <a class="reference internal" href="../application/invoker.html#_CPPv48BInvoker" title="BInvoker"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInvoker</span></code></a> argument version is asynchronous: The function
+returns immediately (with <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>) and the button index is
+delivered as the <span class="htype">int32</span> “which” field of the <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>
+that’s sent to the <a class="reference internal" href="../application/invoker.html#_CPPv48BInvoker" title="BInvoker"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInvoker</span></code></a>’s target.</p></li>
 </ul>
-<p>If you call <span class="hmethod">Go()</span> with a (literal) <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> argument…</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alert</span><span class="o">-&gt;</span><span class="n">Go</span><span class="p">(</span><span class="n">NULL</span><span class="p">);</span>
+<p>If you call <span class="hmethod">Go()</span> with a (literal) <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> argument…</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">alert</span><span class="o">-&gt;</span><span class="n">Go</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>…the asynchronous version is used, but the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> isn’t sent.</p>
+<p>…the asynchronous version is used, but the <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> isn’t
+sent.</p>
 <p>The synchronous version deletes the object before it returns; the
-asynchronous version deletes it after the message is sent. In either
-case, you should consider the <span class="hclass">BAlert</span> object to be invalid after you call
-<span class="hmethod">Go()</span>.</p>
-<p>If the <span class="hclass">BAlert</span> is sent a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">QUIT()</span></code>
-message while the panel is still
-on-screen, the synchronous version of <span class="hmethod">Go()</span> returns -1; the asynchronous
-version suppresses the index-reporting message.</p>
+asynchronous version deletes it after the message is sent. In either case,
+you should consider the <span class="hclass">BAlert</span> object to be invalid after you
+call <span class="hmethod">Go()</span>.</p>
+<p>If the <span class="hclass">BAlert</span> is sent a <a class="reference internal" href="../../constants.html#_CPPv416B_QUIT_REQUESTED" title="B_QUIT_REQUESTED"><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_QUIT_REQUESTED</span></code></a>
+message while the panel is still on-screen, the synchronous version of
+<span class="hmethod">Go()</span> returns -1; the asynchronous version suppresses the
+index-reporting message.</p>
 <section id="_CPPv4N6BAlert11SetShortcutE5int32c">
 </section>
 <section id="_CPPv4NK6BAlert8ShortcutE5int32">
 </section>
 <h3>
-SetShortcut(), Shortcut()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAlert</span><span class="p">::</span></span><span class="n">SetShortcut</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span>, <span class="kt">char</span><span class="w"> </span><span class="n sig-param">shortcut</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">char</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BAlert</span><span class="p">::</span></span><span class="n">Shortcut</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the shortcut character that’s mapped to
-the button at <span class="hparameter">index</span>. A given button can have only one shortcut except for
-the rightmost button, which, in addition to the shortcut that you give it
-here, is always mapped to <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ENTER.</span></code></p>
+SetShortcut(), Shortcut()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BAlert" title="BAlert"><span class="n">BAlert</span></a><span class="p">::</span></span><span class="n">SetShortcut</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span>, <span class="kt">char</span><span class="w"> </span><span class="n sig-param">shortcut</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">char</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BAlert" title="BAlert"><span class="n">BAlert</span></a><span class="p">::</span></span><span class="n">Shortcut</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions set and return the shortcut character that’s mapped to the
+button at <span class="hparameter">index</span>. A given button can have only one shortcut except
+for the rightmost button, which, in addition to the shortcut that you give
+it here, is always mapped to <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENTER.</span></code></p>
 <p>If you create a “Cancel” button, you should give it a shortcut of
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ESCAPE</span></code>.</p>
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ESCAPE</span></code>.</p>
 <section id="_CPPv4NK6BAlert8TextViewEv">
 </section>
 <h3>
-TextView()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BTextView</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BAlert</span><span class="p">::</span></span><span class="n">TextView</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a pointer to the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTextView</span></code>
-object that contains the textual
-information that’s displayed in the panel. You can fiddle with this
+TextView()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="text-view.html#_CPPv49BTextView" title="BTextView"><span class="n">BTextView</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv46BAlert" title="BAlert"><span class="n">BAlert</span></a><span class="p">::</span></span><span class="n">TextView</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns a pointer to the <a class="reference internal" href="text-view.html#_CPPv49BTextView" title="BTextView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTextView</span></code></a> object that contains the
+textual information that’s displayed in the panel. You can fiddle with this
 object but you mustn’t delete it.</p>
 </section>
 <section id="constants-and-defined-types">
 <h2>Constants and Defined Types<a class="headerlink" href="#constants-and-defined-types" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>Declared in: interface/Alert.h</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="n">alert_type</span>
-<span class="p">{</span>
-    <span class="n">B_EMPTY_ALERT</span><span class="p">,</span>
-    <span class="n">B_INFO_ALERT</span><span class="p">,</span>
-    <span class="n">B_IDEA_ALERT</span><span class="p">,</span>
-    <span class="n">B_WARNING_ALERT</span><span class="p">,</span>
-    <span class="n">B_STOP_ALERT</span>
-<span class="p">};</span>
+<section id="alert-type">
+<h3>alert_type<a class="headerlink" href="#alert-type" title="Permalink to this heading">¶</a></h3>
+<p>Declared in: interface/Alert.h</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span><span class="w"> </span><span class="nc">alert_type</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_EMPTY_ALERT</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_INFO_ALERT</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_IDEA_ALERT</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_WARNING_ALERT</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_STOP_ALERT</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The alert_type constants represent the five alert icons:</p>
-<p>B_EMPTY_ALERTB_INFO_ALERTB_IDEA_ALERTB_WARNING_ALERTB_STOP_ALERT (none)</p>
-<h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="n">button_spacing</span>
-<span class="p">{</span>
-    <span class="n">B_EVEN_SPACING</span><span class="p">,</span>
-    <span class="n">B_OFFSET_SPACING</span>
-<span class="p">};</span>
-</pre></div>
-</div>
-<p>Used to set the spacing of the alert’s buttons:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<p>The <span class="htype">alert_type</span> constants represent the five alert icons:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
-<tr class="row-odd"><th class="head"><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_EVEN_SPACING</span></code></p></th>
-<th class="head"><p>The buttons are evenly spaced. (This is used by the constructor without the spacing argument.)</p></th>
+<tr class="row-odd"><th class="head"><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EMPTY_ALERT</span></code></p></th>
+<th class="head"><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INFO_ALERT</span></code></p></th>
+<th class="head"><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_IDEA_ALERT</span></code></p></th>
+<th class="head"><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WARNING_ALERT</span></code></p></th>
+<th class="head"><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STOP_ALERT</span></code></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OFFSET_SPACING</span></code></p></td>
-<td><p>If the alert has more than one button, the leftmost button is shifted left to separate it from its neighbor(s). You should use this configuration for an alert that has a (leftmost) “Cancel” button, as shown in the illustration at the beginning of this document.</p></td>
+<tr class="row-even"><td><p>(none)</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="button-spacing">
+<h3>button_spacing<a class="headerlink" href="#button-spacing" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span><span class="w"> </span><span class="nc">button_spacing</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_EVEN_SPACING</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_OFFSET_SPACING</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Used to set the spacing of the alert’s buttons:</p>
+<table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_EVEN_SPACING</span></code></p></td>
+<td><p>The buttons are evenly spaced. (This is used by the constructor without
+the spacing argument.)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OFFSET_SPACING</span></code></p></td>
+<td><p>If the alert has more than one button, the leftmost button is shifted left
+to separate it from its neighbor(s). You should use this configuration for
+an alert that has a (leftmost) “Cancel” button, as shown in the
+illustration at the beginning of this document.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 <section id="archived-fields">
 <h2>Archived Fields<a class="headerlink" href="#archived-fields" title="Permalink to this heading">¶</a></h2>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">_text</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_STRING_TYPE</span></code></p></td>
+<td><p>The alert’s descriptive text.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_atype</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The <span class="htype">alert_type</span> value.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_but_width</span></p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>The button_width value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_but_key</span> (array)</p></td>
+<td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code></p></td>
+<td><p>Keyboard shortcut values (one field per button).</p></td>
+</tr>
+</tbody>
+</table>
+<p>In a deep copy, the following views appear in the “_views” field:</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>View name</p></th>
+<th class="head"><p>Level</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="hparameter">_master_</span></p></td>
+<td><p>0</p></td>
+<td><p>Background view.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_tv_</span></p></td>
+<td><p>1</p></td>
+<td><p><a class="reference internal" href="text-view.html#_CPPv49BTextView" title="BTextView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTextView</span></code></a> for the alert panel’s text.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_b0_</span></p></td>
+<td><p>1</p></td>
+<td><p><a class="reference internal" href="button.html#_CPPv47BButton" title="BButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BButton</span></code></a> with index 0.</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="hparameter">_b1_</span></p></td>
+<td><p>1</p></td>
+<td><p><a class="reference internal" href="button.html#_CPPv47BButton" title="BButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BButton</span></code></a> with index 1.</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="hparameter">_b2_</span></p></td>
+<td><p>1</p></td>
+<td><p><a class="reference internal" href="button.html#_CPPv47BButton" title="BButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BButton</span></code></a> with index 2.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 
@@ -238,7 +339,7 @@ object but you mustn’t delete it.</p>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="../input/overview.html">The Application Kit</a>
+        «&#160;&#160;<a href="../input/message-constants.html">Message Constants</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;

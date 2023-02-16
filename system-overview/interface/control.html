@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BControl &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Drag And Drop" href="drag_and_drop.html" />
+    <link rel="prev" title="BColorControl" href="color-control.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BControl</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="color-control.html">BColorControl</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="drag_and_drop.html">Drag And Drop</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BControl</a><ul>
+<li><a class="reference internal" href="#derived-classes">Derived Classes</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bcontrol">
+<h1 id="CPPv48BControl">BControl<a class="headerlink" href="#bcontrol" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference internal" href="../../kits/interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> is an abstract class for views that draw control
+devices on the screen. Objects that inherit from <a class="reference internal" href="../../kits/interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a>
+emulate, in software, real-world control devices—like the switches and
+levers on a machine, the check lists and blank lines on a form to fill out,
+or the dials and knobs on a home appliance.</p>
+<p>Controls translate the messages that report generic mouse and keyboard
+events into other messages with more specific instructions for the
+application. A <a class="reference internal" href="../../kits/interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> object can be customized by setting
+the message it posts when invoked and the target object that should handle
+the message.</p>
+<p>Controls also register a current value, stored as an <span class="htype">int32</span>
+integer that’s typically set to <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CONTROL_ON</span></code> or
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CONTROL_OFF</span></code>. The value is changed only by calling
+<a class="reference internal" href="../../kits/interface/control.html#_CPPv4N8BControl8SetValueE5int32" title="BControl::SetValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetValue()</span></code></a>, a virtual function that
+derived classes can implement to be notified of the change.</p>
+<section id="derived-classes">
+<h2>Derived Classes<a class="headerlink" href="#derived-classes" title="Permalink to this heading">¶</a></h2>
+<p>The Interface Kit currently includes six classes derived from
+<a class="reference internal" href="../../kits/interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> — <a class="reference internal" href="../../kits/interface/button.html#_CPPv47BButton" title="BButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BButton</span></code></a>, <a class="reference internal" href="../../kits/interface/picture-button.html#_CPPv414BPictureButton" title="BPictureButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BPictureButton</span></code></a>,
+<a class="reference internal" href="../../kits/interface/radio-button.html#_CPPv412BRadioButton" title="BRadioButton"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BRadioButton</span></code></a>, <a class="reference internal" href="../../kits/interface/check-box.html#_CPPv49BCheckBox" title="BCheckBox"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BCheckBox</span></code></a>,
+<a class="reference internal" href="../../kits/interface/color-control.html#_CPPv413BColorControl" title="BColorControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BColorControl</span></code></a>, and <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTextControl</span></code>. In addition, it
+has two classes— <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code> and <a class="reference internal" href="../../kits/interface/menu-item.html#_CPPv49BMenuItem" title="BMenuItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code></a> —that
+implement control devices but are not derived from this class.
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code> and its subclass, <a class="reference internal" href="../../kits/interface/outline-list-view.html#_CPPv416BOutlineListView" title="BOutlineListView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BOutlineListView</span></code></a>,
+share an interface with the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BList</span></code> class (of the Support Kit)
+and <a class="reference internal" href="../../kits/interface/menu-item.html#_CPPv49BMenuItem" title="BMenuItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code></a> is designed to work with the other classes in
+the menu system. Like <a class="reference internal" href="../../kits/interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a>, <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code> and
+<a class="reference internal" href="../../kits/interface/menu-item.html#_CPPv49BMenuItem" title="BMenuItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code></a> inherit from the Application Kit’s
+<a class="reference internal" href="../../kits/application/invoker.html#_CPPv48BInvoker" title="BInvoker"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInvoker</span></code></a> class.</p>
+<p>As <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BListView</span></code> and <a class="reference internal" href="../../kits/interface/menu-item.html#_CPPv49BMenuItem" title="BMenuItem"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuItem</span></code></a> demonstrate, it’s
+possible to implement a control device that’s not a <a class="reference internal" href="../../kits/interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a>.
+However, it’s simpler to take advantage of the code that’s already provided
+by the <a class="reference internal" href="../../kits/interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> class. That way you can keep a simple
+programming interface and avoid reimplementing functions that
+<a class="reference internal" href="../../kits/interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> has defined for you. If your application defines its
+own control devices—dials, sliders, selection lists, and the like—they
+should be derived from <a class="reference internal" href="../../kits/interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a>.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="color-control.html">BColorControl</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="drag_and_drop.html">Drag And Drop</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

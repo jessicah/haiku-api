@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BTimedEventQueue &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BNetAddress" href="../network/net-address.html" />
+    <link rel="prev" title="BTimeSource" href="time-source.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BTimedEventQueue</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="time-source.html">BTimeSource</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../network/net-address.html">BNetAddress</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BTimedEventQueue</a><ul>
+<li><a class="reference internal" href="#cleaning-up-after-nodes">Cleaning Up After Nodes</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="btimedeventqueue">
+<h1 id="CPPv416BTimedEventQueue">BTimedEventQueue<a class="headerlink" href="#btimedeventqueue" title="Permalink to this heading">¶</a></h1>
+<p>The <a class="reference internal" href="../../kits/media/timed-event-queue.html#_CPPv416BTimedEventQueue" title="BTimedEventQueue"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimedEventQueue</span></code></a> class provides an easy way to queue a
+sequence of events within your node. You can use it to queue up start,
+stop, and seek requests, and to queue up incoming data buffers in
+preparation for handling them. Each queue element is tagged with the time
+at which the event should be processed, and functions are provided for
+locating the next event that should be handled.</p>
+<div class="note admonition">
+<p class="admonition-title" id="CPPv44Note">Note</p>
+<p>Although you shouldn’t need to subclass <a class="reference internal" href="../../kits/media/timed-event-queue.html#_CPPv416BTimedEventQueue" title="BTimedEventQueue"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimedEventQueue</span></code></a>,
+there’s no reason you can’t do it.</p>
+</div>
+<section id="cleaning-up-after-nodes">
+<h2>Cleaning Up After Nodes<a class="headerlink" href="#cleaning-up-after-nodes" title="Permalink to this heading">¶</a></h2>
+<p>Each event has a cleanup flag associated with it that indicates what sort
+of special action needs to be performed when the event is removed from the
+queue. If this value is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_CLEANUP</span></code>, nothing is done. If
+it’s <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RECYCLE</span></code>, and the event is a
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_HANDLE_BUFFER</span></code> event, <a class="reference internal" href="../../kits/media/timed-event-queue.html#_CPPv416BTimedEventQueue" title="BTimedEventQueue"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BTimedEventQueue</span></code></a> will
+automatically recycle the buffer associated with the event.</p>
+<p>If the cleanup flag is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DELETE</span></code> or is
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_USER_CLEANUP</span></code> or greater, the cleanup hook function will
+be called. You can implement and establish a cleanup hook function to
+handle deleting event data yourself. The hook function is of type
+<span class="htype">cleanup_hook</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">void</span> <span class="p">(</span><span class="o">*</span><span class="n">cleanup_hook</span><span class="p">)(</span><span class="n">void</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="n">bigtime_t</span> <span class="n">time</span><span class="p">,</span> <span class="n">int32</span> <span class="n">what</span><span class="p">,</span>
+         <span class="n">void</span> <span class="o">*</span><span class="n">pointer</span><span class="p">,</span> <span class="n">uint32</span> <span class="n">pointerCleanup</span><span class="p">,</span> <span class="n">int64</span> <span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You specify the cleanup hook function by calling
+<a class="reference internal" href="../../kits/media/timed-event-queue.html#_CPPv4N16BTimedEventQueue14SetCleanupHookE12cleanup_hookPv" title="BTimedEventQueue::SetCleanupHook"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetCleanupHook()</span></code></a>, like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SetCleanupHook</span><span class="p">(</span><span class="n">MyCleanupFunction</span><span class="p">,</span> <span class="n">contextPtr</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <span class="hparameter">contextPtr</span> is a pointer that your cleanup hook function
+uses, and can contain whatever data you require.</p>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="time-source.html">BTimeSource</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../network/net-address.html">BNetAddress</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

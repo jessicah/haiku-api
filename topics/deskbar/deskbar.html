@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BDeskbar &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="The area_malloc Module" href="../device-drivers/area-malloc.html" />
+    <link rel="prev" title="BTranslatorRoster" href="../../kits/translation/translator-roster.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BDeskbar</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../../kits/translation/translator-roster.html">BTranslatorRoster</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../device-drivers/area-malloc.html">The area_malloc Module</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BDeskbar</a><ul>
+<li><a class="reference internal" href="#constructor-and-destructor">Constructor and Destructor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N8BDeskbar8BDeskbarEv">BDeskbar</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BDeskbar8BDeskbarEv">BDeskbar</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#member-functions">Member Functions</a><ul>
+<li><a class="reference internal" href="#_CPPv4N8BDeskbar7AddItemEP5BViewP5int32">AddItem</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BDeskbar10RemoveItemE5int32">RemoveItem</a></li>
+<li><a class="reference internal" href="#_CPPv4NK8BDeskbar10CountItemsEv">CountItems</a></li>
+<li><a class="reference internal" href="#_CPPv4NK8BDeskbar7HasItemE5int32">HasItem</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BDeskbar11GetItemInfoE5int32PPKc">GetItemInfo</a></li>
+<li><a class="reference internal" href="#_CPPv4NK8BDeskbar5FrameEv">Frame</a></li>
+<li><a class="reference internal" href="#_CPPv4NK8BDeskbar8LocationEPb">Location</a></li>
+<li><a class="reference internal" href="#_CPPv4NK8BDeskbar10IsExpandedEv">IsExpanded</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BDeskbar11SetLocationE16deskbar_locationb">SetLocation</a></li>
+<li><a class="reference internal" href="#_CPPv4N8BDeskbar6ExpandEb">Expand</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#deskbar-types">Deskbar Types</a><ul>
+<li><a class="reference internal" href="#deskbar-location">Deskbar Location</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bdeskbar">
+<h1 id="CPPv48BDeskbar">BDeskbar<a class="headerlink" href="#bdeskbar" title="Permalink to this heading">¶</a></h1>
+<section id="constructor-and-destructor">
+<h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N8BDeskbar8BDeskbarEv">
+</section>
+<h3>
+BDeskbar()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BDeskbar8BDeskbarEv" title="BDeskbar::BDeskbar"><span class="n">BDeskbar</span></a><span class="p">::</span></span><span class="n">BDeskbar</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>The constructor creates and returns a new <span class="hclass">BDeskbar</span> object.</p>
+<section id="_CPPv4N8BDeskbar8BDeskbarEv">
+</section>
+<h3>
+BDeskbar()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N8BDeskbar8BDeskbarEv" title="BDeskbar::BDeskbar"><span class="n">BDeskbar</span></a><span class="p">::</span></span><span class="n">BDeskbar</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Deletes the <span class="hclass">BDeskbar</span> object.</p>
+</section>
+<section id="member-functions">
+<h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
+<section id="_CPPv4N8BDeskbar7AddItemEP5BViewP5int32">
+</section>
+<section id="_CPPv4N8BDeskbar10RemoveItemE5int32">
+</section>
+<section id="_CPPv4NK8BDeskbar10CountItemsEv">
+</section>
+<section id="_CPPv4NK8BDeskbar7HasItemE5int32">
+</section>
+<section id="_CPPv4N8BDeskbar11GetItemInfoE5int32PPKc">
+</section>
+<h3>
+AddItem(), RemoveItem(), CountItems(), HasItem(), GetItemInfo()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDeskbar" title="BDeskbar"><span class="n">BDeskbar</span></a><span class="p">::</span></span><span class="n">AddItem</span><span class="sig-paren">(</span><a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><span class="n">BView</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">view</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDeskbar" title="BDeskbar"><span class="n">BDeskbar</span></a><span class="p">::</span></span><span class="n">AddItem</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">addon</span>, <span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDeskbar" title="BDeskbar"><span class="n">BDeskbar</span></a><span class="p">::</span></span><span class="n">RemoveItem</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span><span class="sig-paren">)</span><br /><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDeskbar" title="BDeskbar"><span class="n">BDeskbar</span></a><span class="p">::</span></span><span class="n">RemoveItem</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDeskbar" title="BDeskbar"><span class="n">BDeskbar</span></a><span class="p">::</span></span><span class="n">CountItems</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDeskbar" title="BDeskbar"><span class="n">BDeskbar</span></a><span class="p">::</span></span><span class="n">HasItem</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span><br /><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDeskbar" title="BDeskbar"><span class="n">BDeskbar</span></a><span class="p">::</span></span><span class="n">HasItem</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDeskbar" title="BDeskbar"><span class="n">BDeskbar</span></a><span class="p">::</span></span><span class="n">GetItemInfo</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">for_id</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">found_name</span><span class="sig-paren">)</span><br /><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDeskbar" title="BDeskbar"><span class="n">BDeskbar</span></a><span class="p">::</span></span><span class="n">GetItemInfo</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">for_name</span>, <span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">found_id</span><span class="sig-paren">)</span></pre><div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>A view that’s sitting on the Deskbar’s shelf may not call any of these
+functions.</p>
+</div>
+<p>The Deskbar contains a shelf that contains replicants (archivable
+<a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a>s). Typically, these replicants monitor or control some
+service. For example, the BeOS provides shelf items that monitor and
+control the input method mechanism, PPP, and the mail daemon (the date/time
+view is not a shelf replicant):</p>
+<p><img alt="The BDeskbar Shelf" src="topics/deskbar/images/TheDeskbar/Shelf.png" /></p>
+<p><span class="hmethod">AddItem()</span> puts a new item on the Deskbar’s shelf.
+<span class="hparameter">view</span>, the <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> that will be displayed on the shelf,
+must be archivable (see <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BArchivable</span></code>). An item on the shelf is
+identified by name and an integer id. The name is that of the view itself
+(i.e., as assigned in the <a class="reference internal" href="../../kits/interface/view.html#_CPPv45BView" title="BView"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BView</span></code></a> constructor); the id is
+generated by the Deskbar and is guaranteed to be unique. <span class="hparameter">id</span>, if
+supplied, is set to the added item’s unique id number.</p>
+<p>You can also add an item to the Deskbar by passing an <span class="htype">entry_ref</span>,
+<span class="hparameter">addon</span>, to the Deskbar add-on to place there.</p>
+<p><span class="hmethod">RemoveItem()</span> removes the shelf item identified by
+<span class="hparameter">name</span> or <span class="hparameter">id</span>.</p>
+<p><span class="hmethod">CountItems()</span> returns the number of items currently on the shelf
+(keep in mind that it doesn’t count the date/time view).</p>
+<p><span class="hmethod">HasItem()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the Deskbar shelf
+contains the item identified by <span class="hparameter">name</span> or <span class="hparameter">id</span>.</p>
+<p><span class="hmethod">GetItemInfo()</span> points *<span class="hparameter">found_name</span> to the name of the
+item identified by <span class="hparameter">for_id</span>, or sets <span class="hparameter">found_id</span> of the item
+identified by <span class="hparameter">for_nam</span>e.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>The caller is responsible for freeing found_name.</p>
+</div>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The request to add, remove, or get info on the item was successfully
+communicated to the Deskbar. Note that this doesn’t mean that the function
+actually did what it was supposed to do.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code>.</p></td>
+<td><p>(<span class="hmethod">GetItemInfo()</span>) *<span class="hparameter">found_name</span> is <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Negative values.</p></td>
+<td><p>A message-sending error occurred.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="_CPPv4NK8BDeskbar5FrameEv">
+</section>
+<h3>
+Frame()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/interface/rect.html#_CPPv45BRect" title="BRect"><span class="n">BRect</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDeskbar" title="BDeskbar"><span class="n">BDeskbar</span></a><span class="p">::</span></span><span class="n">Frame</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the Deskbar’s frame in screen coordinates.</p>
+<section id="_CPPv4NK8BDeskbar8LocationEPb">
+</section>
+<section id="_CPPv4NK8BDeskbar10IsExpandedEv">
+</section>
+<section id="_CPPv4N8BDeskbar11SetLocationE16deskbar_locationb">
+</section>
+<section id="_CPPv4N8BDeskbar6ExpandEb">
+</section>
+<h3>
+Location(), IsExpanded(), SetLocation(), Expand()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">deskbar_location</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDeskbar" title="BDeskbar"><span class="n">BDeskbar</span></a><span class="p">::</span></span><span class="n">Location</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">isExpanded</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDeskbar" title="BDeskbar"><span class="n">BDeskbar</span></a><span class="p">::</span></span><span class="n">IsExpanded</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDeskbar" title="BDeskbar"><span class="n">BDeskbar</span></a><span class="p">::</span></span><span class="n">SetLocation</span><span class="sig-paren">(</span><span class="n">deskbar_location</span><span class="w"> </span><span class="n sig-param">location</span>, <span class="kt">bool</span><span class="w"> </span><span class="n sig-param">isExpanded</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../../kits/storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv48BDeskbar" title="BDeskbar"><span class="n">BDeskbar</span></a><span class="p">::</span></span><span class="n">Expand</span><span class="sig-paren">(</span><span class="kt">bool</span><span class="w"> </span><span class="n sig-param">expand</span><span class="sig-paren">)</span></pre><p><span class="hmethod">Location()</span> returns a symbolic description of the Deskbar’s
+current location; see <span class="xref std std-ref">deskbar_location</span> for the list of pre-defined
+locations. <span class="hparameter">isExpanded</span> (if supplied) is set to <span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if
+the Deskbar is expanded, and <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if it’s contracted;
+<span class="hmethod">IsExpanded()</span> returns the expansion value directly. Expansion and
+contraction is variable only if the Deskbar’s location is left-top or
+right-top; for all other locations, the expansion state is hard-wired. See
+<span class="xref std std-ref">deskbar_location</span> for illustrations.</p>
+<p><span class="hmethod">SetLocation()</span> sets the Deskbar’s location and expands/contracts
+the Deskbar; for some locations, the expansion/contraction is hard-wired.
+<span class="hmethod">Expand()</span> expands/contracts the Deskbar (if the setting isn’t
+hard-wired) without setting its location. You should very rarely need to
+call these functions. Moving and expanding the Deskbar is in the user’s
+domain.</p>
+<p><span class="hmethod">SetLocation()</span> and <span class="hmethod">Expand()</span> return…</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Return Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p></td>
+<td><p>The new location or expansion request was successfully communicated to the
+Deskbar. Whether the parameters were actually enforced isn’t indicated.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Negative values.</p></td>
+<td><p>The Deskbar isn’t running, or some other message-sending error occurred.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="deskbar-types">
+<h2>Deskbar Types<a class="headerlink" href="#deskbar-types" title="Permalink to this heading">¶</a></h2>
+<section id="deskbar-location">
+<h3>Deskbar Location<a class="headerlink" href="#deskbar-location" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span><span class="w"> </span><span class="nc">deskbar_location</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DESKBAR_TOP</span></code></p></td>
+<td><p>Expanded (only) along the top.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DESKBAR_BOTTOM</span></code></p></td>
+<td><p>Expanded (only) along the bottom.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DESKBAR_LEFT_BOTTOM</span></code></p></td>
+<td><p>Contracted (only) in bottom left corner.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DESKBAR_RIGHT_BOTTOM</span></code></p></td>
+<td><p>Contracted (only) in bottom right corner.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DESKBAR_LEFT_TOP</span></code></p></td>
+<td><p>In the top left corner (expanded or contracted).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DESKBAR_RIGHT_TOP</span></code></p></td>
+<td><p>In the top right corner (expanded or contracted).</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <span class="htype">deskbar_location</span> constants are used to set and return the
+Deskbar’s location (see <a class="reference internal" href="#_CPPv4NK8BDeskbar8LocationEPb" title="BDeskbar::Location"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Location()</span></code></a>). The
+six locations are shown in the two illustrations below:</p>
+<p><img alt="BDeskbar At Top And Bottom" src="topics/deskbar/images/TheDeskbar/TopBottom.png" /></p>
+<p><img alt="BDeskbar At Left And Right" src="topics/deskbar/images/TheDeskbar/Corners.png" /></p>
+<p>The <span class="htype">deskbar_location</span> value affects the Deskbar’s expanded state:
+The Deskbar can be expanded or contracted in
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DESKBAR_LEFT_TOP</span></code> and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DESKBAR_RIGHT_TOP</span></code> locations only. In the other
+locations, the expansion/contraction is hard-wired. The illustration below
+shows a left-top Deskbar in its expanded and contracted states:</p>
+</section>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../../kits/translation/translator-roster.html">BTranslatorRoster</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../device-drivers/area-malloc.html">The area_malloc Module</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

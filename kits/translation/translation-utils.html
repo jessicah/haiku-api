@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="BTranslator" href="translator.html" />
-    <link rel="prev" title="The Application Kit" href="overview.html" /> 
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
           <span>API Documentation</span></a></h1>
@@ -28,7 +28,7 @@
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="overview.html">The Application Kit</a>
+        «&#160;&#160;<a href="introduction.html">Introduction</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -61,42 +61,41 @@
       <div class="content" role="main">
         
   <section id="btranslationutils">
-<h1>BTranslationUtils<a class="headerlink" href="#btranslationutils" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv417BTranslationUtils">BTranslationUtils<a class="headerlink" href="#btranslationutils" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<p>The <span class="hclass">BTranslationUtils</span> class only contains static functions and
+so there is no constructor or destructor.</p>
 </section>
 <section id="static-functions">
 <h2>Static Functions<a class="headerlink" href="#static-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N17BTranslationUtils9GetBitmapEPKc17BTranslatorRoster">
 </section>
 <h3>
-GetBitmap()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BBitmap</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTranslationUtils</span><span class="p">::</span></span><span class="n">GetBitmap</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="n">BTranslatorRoster</span><span class="w"> </span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="k">static</span><span class="w"> </span><span class="n">BBitmap</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTranslationUtils</span><span class="p">::</span></span><span class="n">GetBitmap</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="n sig-param">ref</span>, <span class="n">BTranslatorRoster</span><span class="w"> </span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="k">static</span><span class="w"> </span><span class="n">BBitmap</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTranslationUtils</span><span class="p">::</span></span><span class="n">GetBitmap</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="n">BTranslatorRoster</span><span class="w"> </span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="k">static</span><span class="w"> </span><span class="n">BBitmap</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTranslationUtils</span><span class="p">::</span></span><span class="n">GetBitmap</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="n">BTranslatorRoster</span><span class="w"> </span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="k">static</span><span class="w"> </span><span class="n">BBitmap</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTranslationUtils</span><span class="p">::</span></span><span class="n">GetBitmap</span><span class="sig-paren">(</span><span class="n">BPositionIO</span><span class="w"> </span><span class="n sig-param">stream</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">BTranslatorRoster</span><span class="w"> </span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>The first version of the function returns the image held in the file <span class="hparameter">name</span>
-if it exists. Otherwise, it returns the application resource of type
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_TRANSLATOR_BITMAP</span></code> named <span class="hparameter">name</span>.
-The second version does the same thing,
-but uses an entry_ref, <span class="hparameter">ref</span>, to locate the file.
-The third and fourth versions of the function search for the specified
-resource and return the bitmap contained therein.
-The final version returns the bitmap found in <span class="hparameter">stream</span>. This form of the
-function is particularly useful when used with
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMemoryIO</span></code>.
-In all cases, <span class="hparameter">use</span> specifies the <span class="hclass">BTranslatorRoster</span> to use in translating
-the image. If <span class="hparameter">use</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, the default translator (as returned by
-<a class="reference internal" href="translator-roster.html#_CPPv4N17BTranslatorRoster7DefaultEv" title="BTranslatorRoster::Default"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BTranslatorRoster::Default()</span></code></a>)
-is used.
-If the file or stream doesn’t contain a suitable bitmap, the functions
-return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+GetBitmap()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BTranslationUtils" title="BTranslationUtils"><span class="n">BTranslationUtils</span></a><span class="p">::</span></span><span class="n">GetBitmap</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="n">BTranslatorRoster</span><span class="w"> </span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="k">static</span><span class="w"> </span><a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BTranslationUtils" title="BTranslationUtils"><span class="n">BTranslationUtils</span></a><span class="p">::</span></span><span class="n">GetBitmap</span><span class="sig-paren">(</span><span class="n">entry_ref</span><span class="w"> </span><span class="n sig-param">ref</span>, <span class="n">BTranslatorRoster</span><span class="w"> </span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="k">static</span><span class="w"> </span><a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BTranslationUtils" title="BTranslationUtils"><span class="n">BTranslationUtils</span></a><span class="p">::</span></span><span class="n">GetBitmap</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="n">int32</span><span class="w"> </span><span class="n sig-param">id</span>, <span class="n">BTranslatorRoster</span><span class="w"> </span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="k">static</span><span class="w"> </span><a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BTranslationUtils" title="BTranslationUtils"><span class="n">BTranslationUtils</span></a><span class="p">::</span></span><span class="n">GetBitmap</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">type</span>, <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="n">BTranslatorRoster</span><span class="w"> </span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="k">static</span><span class="w"> </span><a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BTranslationUtils" title="BTranslationUtils"><span class="n">BTranslationUtils</span></a><span class="p">::</span></span><span class="n">GetBitmap</span><span class="sig-paren">(</span><span class="n">BPositionIO</span><span class="w"> </span><span class="n sig-param">stream</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span>, <span class="n">BTranslatorRoster</span><span class="w"> </span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>The first version of the function returns the image held in the file
+<span class="hparameter">name</span> if it exists. Otherwise, it returns the application resource
+of type <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TRANSLATOR_BITMAP</span></code> named <span class="hparameter">name</span>. The
+second version does the same thing, but uses an <span class="htype">entry_ref</span>,
+<span class="hparameter">ref</span>, to locate the file.</p>
+<p>The third and fourth versions of the function search for the specified
+resource and return the bitmap contained therein.</p>
+<p>The final version returns the bitmap found in <span class="hparameter">stream</span>. This form
+of the function is particularly useful when used with
+<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMemoryIO</span></code>.</p>
+<p>In all cases, <span class="hparameter">use</span> specifies the <span class="hclass">BTranslatorRoster</span> to
+use in translating the image. If <span class="hparameter">use</span> is <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>, the
+default translator (as returned by <a class="reference internal" href="translator-roster.html#_CPPv4N17BTranslatorRoster7DefaultEv" title="BTranslatorRoster::Default"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BTranslatorRoster::Default()</span></code></a>)
+is used.</p>
+<p>If the file or stream doesn’t contain a suitable bitmap, the functions
+return <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.</p>
 <section id="_CPPv4N17BTranslationUtils13GetBitmapFileEPKc17BTranslatorRoster">
 </section>
 <h3>
-GetBitmapFile()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><span class="n">BBitmap</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BTranslationUtils</span><span class="p">::</span></span><span class="n">GetBitmapFile</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="n">BTranslatorRoster</span><span class="w"> </span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Returns the image held in the file <span class="hparameter">name</span>. If
-the file doesn’t contain a suitable image, the function returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>. <span class="hparameter">use</span> specifies the
-<span class="hclass">BTranslatorRoster</span> used to translate the image. If
-<span class="hparameter">use</span> is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code>, the default
-translator (as returned by
-<a class="reference internal" href="translator-roster.html#_CPPv4N17BTranslatorRoster7DefaultEv" title="BTranslatorRoster::Default"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BTranslatorRoster::Default()</span></code></a>)
-is used.</p>
+GetBitmapFile()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">static</span><span class="w"> </span><a class="reference internal" href="../interface/bitmap.html#_CPPv47BBitmap" title="BBitmap"><span class="n">BBitmap</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417BTranslationUtils" title="BTranslationUtils"><span class="n">BTranslationUtils</span></a><span class="p">::</span></span><span class="n">GetBitmapFile</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">name</span>, <span class="n">BTranslatorRoster</span><span class="w"> </span><span class="n sig-param">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span></pre><p>Returns the image held in the file <span class="hparameter">name</span>. If the file doesn’t
+contain a suitable image, the function returns <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>.
+<span class="hparameter">use</span> specifies the <span class="hclass">BTranslatorRoster</span> used to translate
+the image. If <span class="hparameter">use</span> is <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span>, the default translator (as
+returned by <a class="reference internal" href="translator-roster.html#_CPPv4N17BTranslatorRoster7DefaultEv" title="BTranslatorRoster::Default"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BTranslatorRoster::Default()</span></code></a>) is used.</p>
 </section>
 </section>
 
@@ -107,7 +106,7 @@ is used.</p>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="overview.html">The Application Kit</a>
+        «&#160;&#160;<a href="introduction.html">Introduction</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;

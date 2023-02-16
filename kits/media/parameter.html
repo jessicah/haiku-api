@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="BParameterGroup" href="parameter-group.html" />
-    <link rel="prev" title="The Application Kit" href="overview.html" /> 
+    <link rel="prev" title="BNullParameter" href="null-parameter.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
           <span>API Documentation</span></a></h1>
@@ -28,7 +28,7 @@
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="overview.html">The Application Kit</a>
+        «&#160;&#160;<a href="null-parameter.html">BNullParameter</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -67,7 +67,11 @@
 <li><a class="reference internal" href="#_CPPv4NK10BParameter3WebEv">Web</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#constants">Constants</a><ul>
+<li><a class="reference internal" href="#parameter-kinds">Parameter Kinds</a></li>
+<li><a class="reference internal" href="#media-parameter-type">media_parameter_type</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -80,9 +84,11 @@
       <div class="content" role="main">
         
   <section id="bparameter">
-<h1>BParameter<a class="headerlink" href="#bparameter" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv410BParameter">BParameter<a class="headerlink" href="#bparameter" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
+<p><span class="hclass">BParameter</span> objects may only be created by using the appropriate
+functions in the <a class="reference internal" href="parameter-group.html#_CPPv415BParameterGroup" title="BParameterGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterGroup</span></code></a> class.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
@@ -91,36 +97,27 @@
 <section id="_CPPv4N10BParameter9AddOutputEP10BParameter">
 </section>
 <h3>
-AddInput(), AddOutput()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">AddInput</span><span class="sig-paren">(</span><span class="n">BParameter</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">input</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">AddOutput</span><span class="sig-paren">(</span><span class="n">BParameter</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">output</span><span class="sig-paren">)</span></pre><p><span class="hmethod">AddInput()</span> adds the
-<span class="hclass">BParameter</span> specified by
-<span class="hparameter">input</span> to the set of
-<span class="hclass">BParameter</span>s that transmit data into the
-<span class="hclass">BParameter</span>. The specified input parameter’s
-<span class="hmethod">AddOutput()</span> function is called to let it know
-that it’s sending data to this parameter.
-<span class="hmethod">AddOutput()</span> adds the
-<span class="hclass">BParameter</span> specified by
-<span class="hparameter">output</span> to the set of
-<span class="hclass">BParameter</span>s to which the
-<span class="hclass">BParameter</span> outputs data. The specified
-<span class="hparameter">output</span> parameter’s
-<span class="hmethod">AddInput()</span> function is called to let it know
-that it’s receiving data from this parameter.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+AddInput(), AddOutput()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">AddInput</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">input</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">AddOutput</span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">output</span><span class="sig-paren">)</span></pre><p><span class="hmethod">AddInput()</span> adds the <span class="hclass">BParameter</span> specified by
+<span class="hparameter">input</span> to the set of <span class="hclass">BParameter</span>s that transmit data into
+the <span class="hclass">BParameter</span>. The specified input parameter’s
+<span class="hmethod">AddOutput()</span> function is called to let it know that it’s sending
+data to this parameter.</p>
+<p><span class="hmethod">AddOutput()</span> adds the <span class="hclass">BParameter</span> specified by
+<span class="hparameter">output</span> to the set of <span class="hclass">BParameter</span>s to which the
+<span class="hclass">BParameter</span> outputs data. The specified <span class="hparameter">output</span>
+parameter’s <span class="hmethod">AddInput()</span> function is called to let it know that
+it’s receiving data from this parameter.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>The item was successfully added to the list.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ERROR</span></code></p></td>
 <td><p>The item couldn’t be added to the list.</p></td>
 </tr>
 </tbody>
@@ -130,68 +127,63 @@ that it’s receiving data from this parameter.</p>
 <section id="_CPPv4N10BParameter15SetChannelCountE5int32">
 </section>
 <h3>
-CountChannels(), SetChannelCount()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">CountChannels</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">SetChannelCount</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">numChannels</span><span class="sig-paren">)</span></pre><p>Some <span class="hclass">BParameter</span>s have more than one channel of the same type. For
-example, a stereo volume parameter with independent left and right gain
+CountChannels(), SetChannelCount()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">CountChannels</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">SetChannelCount</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">numChannels</span><span class="sig-paren">)</span></pre><p>Some <span class="hclass">BParameter</span>s have more than one channel of the same type.
+For example, a stereo volume parameter with independent left and right gain
 would have two channels, while a single parameter value that affects both
 the left and right by the same amount would have only one channel.
-<span class="hmethod">CountChannels()</span> returns the number of channels manipulated by the
-<span class="hclass">BParameter</span>.
-The default is one channel; if your node provides more channels, call
-<span class="hmethod">SetChannelCount()</span> after creating the
-<span class="hclass">BParameter</span>. <span class="hmethod">SetChannelCount()</span>
-specifies the number of channels the parameter manipulates.</p>
+<span class="hmethod">CountChannels()</span> returns the number of channels manipulated by
+the <span class="hclass">BParameter</span>.</p>
+<p>The default is one channel; if your node provides more channels, call
+<span class="hmethod">SetChannelCount()</span> after creating the <span class="hclass">BParameter</span>.
+<span class="hmethod">SetChannelCount()</span> specifies the number of channels the parameter
+manipulates.</p>
 <section id="_CPPv4N10BParameter11CountInputsEv">
 </section>
 <section id="_CPPv4N10BParameter12CountOutputsEv">
 </section>
 <h3>
-CountInputs(), CountOutputs()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">CountInputs</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">CountOutputs</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These two functions return the number of inputs or outputs currently
-connected to the <span class="hclass">BParameter</span>. The number of inputs or outputs may be
-different from the number of channels, since an input or output might be
-comprised of multiple channels (a single stereo sound input or output
-might consist of a left channel and a right channel, for example).</p>
+CountInputs(), CountOutputs()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">CountInputs</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">CountOutputs</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>These two functions return the number of inputs or outputs currently
+connected to the <span class="hclass">BParameter</span>. The number of inputs or outputs may
+be different from the number of channels, since an input or output might be
+comprised of multiple channels (a single stereo sound input or output might
+consist of a left channel and a right channel, for example).</p>
 <section id="_CPPv4N10BParameter8GetValueEPvP6size_tP9bigtime_t">
 </section>
 <section id="_CPPv4N10BParameter8SetValueEPKv6size_t9bigtime_t">
 </section>
 <h3>
-GetValue(), SetValue()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">GetValue</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioSize</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">lastChange</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">SetValue</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">changeWhen</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetValue()</span> returns the current
-value of the <span class="hclass">BParameter</span>. On entry, <span class="hparameter">buffer</span>
-points to <span class="hparameter">ioSize</span> bytes of memory, indicating where the current value of
-the <span class="hclass">BParameter</span> should be stored. On return, <span class="hparameter">ioSize</span> indicates the actual
-number of bytes returned in the buffer, and <span class="hparameter">lastChange</span> indicates the time
-at which the <span class="hclass">BParameter</span>’s value last changed.
-<span class="hmethod">SetValue()</span> changes the value
-of the <span class="hclass">BParameter</span>. The new value, which is
-<span class="hparameter">size</span> bytes long, is obtained from the
-specified <span class="hparameter">buffer</span>. The change occurs
-at the performance time specified by <span class="hparameter">changeWhen</span>.
-In either case, if the parameter is a multichannel parameter, the buffer
+GetValue(), SetValue()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">GetValue</span><span class="sig-paren">(</span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">ioSize</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">lastChange</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">SetValue</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">buffer</span>, <span class="n">size_t</span><span class="w"> </span><span class="n sig-param">size</span>, <span class="n">bigtime_t</span><span class="w"> </span><span class="n sig-param">changeWhen</span><span class="sig-paren">)</span></pre><p><span class="hmethod">GetValue()</span> returns the current value of the
+<span class="hclass">BParameter</span>. On entry, <span class="hparameter">buffer</span> points to <span class="hparameter">ioSize</span>
+bytes of memory, indicating where the current value of the
+<span class="hclass">BParameter</span> should be stored. On return, <span class="hparameter">ioSize</span>
+indicates the actual number of bytes returned in the buffer, and
+<span class="hparameter">lastChange</span> indicates the time at which the <span class="hclass">BParameter</span>’s
+value last changed.</p>
+<p><span class="hmethod">SetValue()</span> changes the value of the <span class="hclass">BParameter</span>. The
+new value, which is <span class="hparameter">size</span> bytes long, is obtained from the
+specified <span class="hparameter">buffer</span>. The change occurs at the performance time
+specified by <span class="hparameter">changeWhen</span>.</p>
+<p>In either case, if the parameter is a multichannel parameter, the buffer
 should be large enough to contain the values for all the channels, and
-<span class="hparameter">ioSize</span> or <span class="hparameter">size</span>
-should indicate the total size of the buffer.
-These calls simply dispatch to the
+<span class="hparameter">ioSize</span> or <span class="hparameter">size</span> should indicate the total size of the
+buffer.</p>
+<p>These calls simply dispatch to the
 <a class="reference internal" href="controllable.html#_CPPv4N13BControllable17GetParameterValueE5int32P9bigtime_tPvP6size_t" title="BControllable::GetParameterValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControllable::GetParameterValue()</span></code></a> and
-<a class="reference internal" href="controllable.html#_CPPv4N13BControllable17SetParameterValueE5int329bigtime_tPKv6size_t" title="BControllable::SetParameterValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControllable::SetParameterValue()</span></code></a>
-functions.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<a class="reference internal" href="controllable.html#_CPPv4N13BControllable17SetParameterValueE5int329bigtime_tPKv6size_t" title="BControllable::SetParameterValue"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BControllable::SetParameterValue()</span></code></a> functions.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Return Code</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code></p></td>
 <td><p>No errors.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NO_MEMORY</span></code></p></td>
 <td><p>The buffer is too small (<span class="hmethod">GetValue()</span>).</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BAD_VALUE</span></code></p></td>
 <td><p>The parameter doesn’t have a value (<span class="hmethod">GetValue()</span>).</p></td>
 </tr>
 <tr class="row-odd"><td><p>Port errors.</p></td>
@@ -202,150 +194,321 @@ functions.</p>
 <section id="_CPPv4NK10BParameter5GroupEv">
 </section>
 <h3>
-Group()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BParameterGroup</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">Group</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterGroup</span></code>
-that most directly contains the <span class="hclass">BParameter</span>.</p>
+Group()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="parameter-group.html#_CPPv415BParameterGroup" title="BParameterGroup"><span class="n">BParameterGroup</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">Group</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <a class="reference internal" href="parameter-group.html#_CPPv415BParameterGroup" title="BParameterGroup"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterGroup</span></code></a> that most directly contains the
+<span class="hclass">BParameter</span>.</p>
 <section id="_CPPv4NK10BParameter2IDEv">
 </section>
 <h3>
-ID()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">ID</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <span class="hclass">BParameter</span>’s ID number. This ID is used by the node to route
-value change requests to the right place. This value should be unique
-within the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code>
-containing the <span class="hclass">BParameter</span>.</p>
+ID()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">int32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">ID</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <span class="hclass">BParameter</span>’s ID number. This ID is used by the node
+to route value change requests to the right place. This value should be
+unique within the <a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code></a> containing the
+<span class="hclass">BParameter</span>.</p>
 <section id="_CPPv4N10BParameter7InputAtE5int32">
 </section>
 <section id="_CPPv4N10BParameter8OutputAtE5int32">
 </section>
 <h3>
-InputAt(), OutputAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BParameter</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">InputAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BParameter</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">OutputAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p><span class="hmethod">InputAt()</span> returns the <span class="hclass">BParameter</span>
-that feeds data into the input number
-specified by <span class="hparameter">index</span>, which can range from zero to
-<a class="reference internal" href="#_CPPv4N10BParameter11CountInputsEv" title="BParameter::CountInputs"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountInputs()</span></code></a>-1.
-<span class="hmethod">OutputAt()</span> returns the <span class="hclass">BParameter</span>
-that receives data from the output
-number specified by <span class="hparameter">index</span>, which can range from zero to
-<a class="reference internal" href="#_CPPv4N10BParameter11CountInputsEv" title="BParameter::CountInputs"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountInputs()</span></code></a>-1.
-Both functions return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if an invalid
-<span class="hparameter">index</span> is specified.</p>
+InputAt(), OutputAt()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">InputAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">OutputAt</span><span class="sig-paren">(</span><span class="n">int32</span><span class="w"> </span><span class="n sig-param">index</span><span class="sig-paren">)</span></pre><p><span class="hmethod">InputAt()</span> returns the <span class="hclass">BParameter</span> that feeds data into
+the input number specified by <span class="hparameter">index</span>, which can range from zero to
+<a class="reference internal" href="#_CPPv4N10BParameter11CountInputsEv" title="BParameter::CountInputs"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountInputs()</span></code></a>-1.</p>
+<p><span class="hmethod">OutputAt()</span> returns the <span class="hclass">BParameter</span> that receives data
+from the output number specified by <span class="hparameter">index</span>, which can range from
+zero to <a class="reference internal" href="#_CPPv4N10BParameter11CountInputsEv" title="BParameter::CountInputs"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">CountOutputs()</span></code></a>-1.</p>
+<p>Both functions return <span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if an invalid <span class="hparameter">index</span> is
+specified.</p>
 <section id="_CPPv4NK10BParameter4KindEv">
 </section>
 <h3>
-Kind()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">Kind</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <span class="hclass">BParameter</span>’s kind. The kind isn’t necessarily user-readable,
-but it can be used to figure out what kind of
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code>
-to create to visually represent the configuration option provided by the
-<span class="hclass">BParameter</span>.
-See the
-<a class="reference internal" href="parameter-group.html#_CPPv4N15BParameterGroup17MakeNullParameterE5int3210media_typePKcPKc" title="BParameterGroup::MakeNullParameter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BParameterGroup::MakeNullParameter()</span></code></a>,
+Kind()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">Kind</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <span class="hclass">BParameter</span>’s kind. The kind isn’t necessarily
+user-readable, but it can be used to figure out what kind of
+<a class="reference internal" href="../interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> to create to visually represent the configuration
+option provided by the <span class="hclass">BParameter</span>.</p>
+<p>See the <a class="reference internal" href="parameter-group.html#_CPPv4N15BParameterGroup17MakeNullParameterE5int3210media_typePKcPKc" title="BParameterGroup::MakeNullParameter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BParameterGroup::MakeNullParameter()</span></code></a>,
 <a class="reference internal" href="parameter-group.html#_CPPv4N15BParameterGroup21MakeDiscreteParameterE5int3210media_typePKcPKc" title="BParameterGroup::MakeDiscreteParameter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BParameterGroup::MakeDiscreteParameter()</span></code></a>, and
-<a class="reference internal" href="parameter-group.html#_CPPv4N15BParameterGroup23MakeContinuousParameterE5int3210media_typePKcPKcPKcfff" title="BParameterGroup::MakeContinuousParameter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BParameterGroup::MakeContinuousParameter()</span></code></a>
-functions for more detailed information about the available kinds.</p>
+<a class="reference internal" href="parameter-group.html#_CPPv4N15BParameterGroup23MakeContinuousParameterE5int3210media_typePKcPKcPKcfff" title="BParameterGroup::MakeContinuousParameter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BParameterGroup::MakeContinuousParameter()</span></code></a> functions for more
+detailed information about the available kinds.</p>
 <section id="_CPPv4N10BParameter9MediaTypeEv">
 </section>
 <section id="_CPPv4N10BParameter12SetMediaTypeE10media_type">
 </section>
 <h3>
-MediaType(), SetMediaType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">media_type</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">MediaType</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">SetMediaType</span><span class="sig-paren">(</span><span class="n">media_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="sig-paren">)</span></pre><p><span class="hmethod">MediaType()</span> returns the type of media data that flows through the
-<span class="hclass">BParameter</span>.
-<span class="hmethod">SetMediaType()</span> changes the recorded type of media data. The default, if
-it hasn’t been changed, is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_MEDIA_NO_TYPE</span></code>.
-The
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media()</span></code>
-of a <span class="hclass">BParameter</span> is used to inform interested parties as to
-the format of the data; it’s an informational setting, and doesn’t alter
-the data flowing through the <span class="hclass">BParameter</span> in any way.</p>
+MediaType(), SetMediaType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">media_type</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">MediaType</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">void</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">SetMediaType</span><span class="sig-paren">(</span><span class="n">media_type</span><span class="w"> </span><span class="n sig-param">type</span><span class="sig-paren">)</span></pre><p><span class="hmethod">MediaType()</span> returns the type of media data that flows through
+the <span class="hclass">BParameter</span>.</p>
+<p><span class="hmethod">SetMediaType()</span> changes the recorded type of media data. The
+default, if it hasn’t been changed, is <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MEDIA_NO_TYPE</span></code>.</p>
+<p>The <span class="xref std std-ref">media_type</span> of a <span class="hclass">BParameter</span> is used to inform
+interested parties as to the format of the data; it’s an informational
+setting, and doesn’t alter the data flowing through the
+<span class="hclass">BParameter</span> in any way.</p>
 <section id="_CPPv4NK10BParameter4NameEv">
 </section>
 <h3>
-Name()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">Name</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <span class="hclass">BParameter</span>’s name, which is suitable for display to the user
-(for example, it can be used as the label in a user interface object).</p>
+Name()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">Name</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <span class="hclass">BParameter</span>’s name, which is suitable for display to
+the user (for example, it can be used as the label in a user interface
+object).</p>
 <section id="_CPPv4NK10BParameter4TypeEv">
 </section>
 <h3>
-Type()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">media_parameter_type</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">Type</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the kind of parameter the object represents.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+Type()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">media_parameter_type</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">Type</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the kind of parameter the object represents.</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NULL_PARAMETER</span></code></p></td>
-<td><p>The <span class="hclass">BParameter</span> is a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNullParameter</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NULL_PARAMETER</span></code></p></td>
+<td><p>The <span class="hclass">BParameter</span> is a <a class="reference internal" href="null-parameter.html#_CPPv414BNullParameter" title="BNullParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNullParameter</span></code></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DISCRETE_PARAMETER</span></code></p></td>
-<td><p>The <span class="hclass">BParameter</span> is a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDiscreteParameter</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DISCRETE_PARAMETER</span></code></p></td>
+<td><p>The <span class="hclass">BParameter</span> is a <a class="reference internal" href="discrete-parameter.html#_CPPv418BDiscreteParameter" title="BDiscreteParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDiscreteParameter</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CONTINUOUS_PARAMETER</span></code></p></td>
-<td><p>The <span class="hclass">BParameter</span> is a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BContinuousParameter</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CONTINUOUS_PARAMETER</span></code></p></td>
+<td><p>The <span class="hclass">BParameter</span> is a <a class="reference internal" href="continuous-parameter.html#_CPPv420BContinuousParameter" title="BContinuousParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BContinuousParameter</span></code></a>.</p></td>
 </tr>
 </tbody>
 </table>
 <section id="_CPPv4NK10BParameter4UnitEv">
 </section>
 <h3>
-Unit()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">Unit</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the unit of measurement used by the <span class="hclass">BParameter</span>. This might be,
-for example, “dB,” “kHz,” or “fps.” It should be human-readable, as it
-may be displayed in a user interface.</p>
+Unit()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">Unit</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the unit of measurement used by the <span class="hclass">BParameter</span>. This
+might be, for example, “dB,” “kHz,” or “fps.” It should be human-readable,
+as it may be displayed in a user interface.</p>
 <section id="_CPPv4N10BParameter9ValueTypeEv">
 </section>
 <h3>
-ValueType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">type_code</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">ValueType</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Returns a type code indicating the type of data type of the <span class="hclass">BParameter</span>’s
-value. This is usually <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code> for selectors or
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_FLOAT_TYPE</span></code> for sliders.</p>
+ValueType()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">type_code</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">ValueType</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">0</span></pre><p>Returns a type code indicating the type of data type of the
+<span class="hclass">BParameter</span>’s value. This is usually
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INT32_TYPE</span></code> for selectors or
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FLOAT_TYPE</span></code> for sliders.</p>
 <section id="_CPPv4NK10BParameter3WebEv">
 </section>
 <h3>
-Web()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BParameterWeb</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BParameter</span><span class="p">::</span></span><span class="n">Web</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code>
-that contains the <span class="hclass">BParameter</span>.</p>
+Web()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><span class="n">BParameterWeb</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410BParameter" title="BParameter"><span class="n">BParameter</span></a><span class="p">::</span></span><span class="n">Web</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <a class="reference internal" href="parameter-web.html#_CPPv413BParameterWeb" title="BParameterWeb"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BParameterWeb</span></code></a> that contains the
+<span class="hclass">BParameter</span>.</p>
 </section>
 <section id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
-<h3>
-</h3><p>Declared in: media/ParameterWeb.h</p>
-<p>Indicates the kind of parameter represented by a
-<span class="hclass">BParameter</span> object.</p>
-<h3>
-</h3><p>Declared in: media/ParameterWeb.h</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<section id="parameter-kinds">
+<h3>Parameter Kinds<a class="headerlink" href="#parameter-kinds" title="Permalink to this heading">¶</a></h3>
+<p>Declared in: media/ParameterWeb.h</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_NULL_PARAMETER</span></code></p></td>
-<td><p>The <span class="hclass">BParameter</span> is a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNullParameter</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MASTER_GAIN</span></code></p></td>
+<td><p>The parameter represents the main volume control.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DISCRETE_PARAMETER</span></code></p></td>
-<td><p>The <span class="hclass">BParameter</span> is a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDiscreteParameter</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GAIN</span></code></p></td>
+<td><p>The parameter represents a gain control.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_CONTINUOUS_PARAMETER</span></code></p></td>
-<td><p>The <span class="hclass">BParameter</span> is a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BContinuousParameter</span></code>.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BALANCE</span></code></p></td>
+<td><p>The parameter represents a balance control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FREQUENCY</span></code></p></td>
+<td><p>The parameter represents a frequency, like a radio tuner.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LEVEL</span></code></p></td>
+<td><p>The parameter represents a level, as in EQ and effects.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SHUTTLE_SPEED</span></code></p></td>
+<td><p>The parameter represents playback speed. A value of 1.0 indicates normal
+speed; less than 1.0 is slower, greater than 1.0 is faster.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CROSSFADE</span></code></p></td>
+<td><p>The parameter indicates a crossfade for mixing audio or video; 0 indicates
+that the the first of a pair of streams should be presented, 100 indicates
+that the other should be presented, and values in between indicate the
+degree of mixing that should occur.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_COMPRESSION</span></code></p></td>
+<td><p>The parameter indicates compression ratio; the value is 0 for no
+compression, 99 for 100:1 compression.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_QUALITY</span></code></p></td>
+<td><p>The parameter indicates quality level; the value is 0 for maximum
+compression, 100 for no compression.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BITRATE</span></code></p></td>
+<td><p>The parameter indicates bit rate in bits per second.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GOP_SIZE</span></code></p></td>
+<td><p>The parameter indicates a “group of pictures” such as how many frames
+apart a keyframe should be inserted into a video stream.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_MUTE</span></code></p></td>
+<td><p>The parameter represents a mute control; a value of 0 passes data through
+unchanged, while a value of 1 mutes the data.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ENABLE</span></code></p></td>
+<td><p>The parameter represents an enable toggle; a value of 0 disables the
+function while a value of 1 enables it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_INPUT_MUX</span></code></p></td>
+<td><p>The parameter represents an input MUX. The value specifies which input
+should pass through.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OUTPUT_MUX</span></code></p></td>
+<td><p>The parameter represents an output MUX; the value specifies which output
+should receive the incoming data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TUNER_CHANNEL</span></code></p></td>
+<td><p>The parameter represents a channel tuner (like a TV channel); the value
+indicates the channel number.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_TRACK</span></code></p></td>
+<td><p>The parameter’s value indicates a track number.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RECSTATE</span></code></p></td>
+<td><p>The parameter indicates whether the node is silent (0), playing (1), or
+recording (2).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SHUTTLE_MODE</span></code></p></td>
+<td><p>The parameter indicates performance mode: -1 for backwards, 0 for stop, 1
+for playing, and 2 for paused.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_RESOLUTION</span></code></p></td>
+<td><p>The parameter indicates video or audio resolution.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_COLOR_SPACE</span></code></p></td>
+<td><p>The parameter indicates video color space.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_FRAME_RATE</span></code></p></td>
+<td><p>The parameter represents a selector for picking frame rate.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_VIDEO_FORMAT</span></code></p></td>
+<td><p>The parameter represents a selector for choosing a video format.</p>
+<p>The <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_VIDEO_FORMAT</span></code> kind has specific video format values
+associated with it:</p>
+<table class="colwidths-auto docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>NTSC-M</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>NTSC-J</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>PAL-BDGHI</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>PAL-M</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>PAL-N</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>SECAM</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>MPEG-1</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>MPEG-2</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>NTSC-M</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>NTSC-J</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>PAL-BDGHI</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>PAL-M</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>PAL-N</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>SECAM</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>MPEG-1</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>MPEG-2</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WEB_PHYSICAL_INPUT</span></code></p></td>
+<td><p>The parameter represents a physical input (such as a microphone jack or
+line input jack).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WEB_PHYSICAL_OUTPUT</span></code></p></td>
+<td><p>The parameter represents a physical output (such as a line output jack or
+headphone jack).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WEB_LOGICAL_INPUT</span></code></p></td>
+<td><p>The parameter represents a point at which bits of data are transferred
+between the computer and the A/V input hardware.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WEB_LOGICAL_OUTPUT</span></code></p></td>
+<td><p>The parameter represents a point at which bits of data are transferred
+between the computer and the A/V output hardware.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WEB_ADC_CONVERTER</span></code></p></td>
+<td><p>The parameter represents an analog to digital converter.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WEB_DAC_CONVERTER</span></code></p></td>
+<td><p>The parameter represents a digital to analog converter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WEB_BUFFER_INPUT</span></code></p></td>
+<td><p>The parameter represents a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_input</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_WEB_BUFFER_OUTPUT</span></code></p></td>
+<td><p>The parameter represents a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">media_output</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SIMPLE_TRANSPORT</span></code></p></td>
+<td><p>A discrete parameter indicating one of five states: rewinding, stopped,
+playing, paused, and fast-forwarding.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_GENERIC</span></code></p></td>
+<td><p>The parameter’s kind isn’t one of the above.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Indicates the kind of parameter represented by a <span class="hclass">BParameter</span>
+object.</p>
+</section>
+<section id="media-parameter-type">
+<h3>media_parameter_type<a class="headerlink" href="#media-parameter-type" title="Permalink to this heading">¶</a></h3>
+<p>Declared in: media/ParameterWeb.h</p>
+<table class="colwidths-auto docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head"><p>Constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_NULL_PARAMETER</span></code></p></td>
+<td><p>The <span class="hclass">BParameter</span> is a <a class="reference internal" href="null-parameter.html#_CPPv414BNullParameter" title="BNullParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BNullParameter</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DISCRETE_PARAMETER</span></code></p></td>
+<td><p>The <span class="hclass">BParameter</span> is a <a class="reference internal" href="discrete-parameter.html#_CPPv418BDiscreteParameter" title="BDiscreteParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BDiscreteParameter</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_CONTINUOUS_PARAMETER</span></code></p></td>
+<td><p>The <span class="hclass">BParameter</span> is a <a class="reference internal" href="continuous-parameter.html#_CPPv420BContinuousParameter" title="BContinuousParameter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BContinuousParameter</span></code></a>.</p></td>
 </tr>
 </tbody>
 </table>
 <p>These are the possible parameter types, which are returned by the
-<a class="reference internal" href="#_CPPv4NK10BParameter4TypeEv" title="BParameter::Type"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Type()</span></code></a>
-function. They indicate what subclass of <span class="hclass">BParameter</span>
-the object is.</p>
+<a class="reference internal" href="#_CPPv4NK10BParameter4TypeEv" title="BParameter::Type"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Type()</span></code></a> function. They indicate what subclass
+of <span class="hclass">BParameter</span> the object is.</p>
 <div class="note admonition">
 <p class="admonition-title">Note</p>
-<p>Keep in mind that because these constants are members of the <span class="hclass">BParameter</span>
-class, if you need to reference them from outside a BParameter, you need
-to preface the reference with “BParameter::”, such as
+<p>Keep in mind that because these constants are members of the
+<span class="hclass">BParameter</span> class, if you need to reference them from outside a
+BParameter, you need to preface the reference with “BParameter::”, such as
 <code class="docutils literal notranslate"><span class="pre">BParameter::B_NULL_PARAMETER</span></code>.</p>
 </div>
+</section>
 </section>
 </section>
 
@@ -356,7 +519,7 @@ to preface the reference with “BParameter::”, such as
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="overview.html">The Application Kit</a>
+        «&#160;&#160;<a href="null-parameter.html">BNullParameter</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;

@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BMenuField &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BMenuItem" href="menu-item.html" />
+    <link rel="prev" title="BMenuBar" href="menu-bar.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BMenuField</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="menu-bar.html">BMenuBar</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="menu-item.html">BMenuItem</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="bmenufield">
+<h1 id="CPPv410BMenuField">BMenuField<a class="headerlink" href="#bmenufield" title="Permalink to this heading">¶</a></h1>
+<p>A <a class="reference internal" href="../../kits/interface/menu-field.html#_CPPv410BMenuField" title="BMenuField"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuField</span></code></a> object displays a labeled pop-up menu. It’s a
+simple object that employs a <a class="reference internal" href="../../kits/interface/menu-bar.html#_CPPv48BMenuBar" title="BMenuBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code></a> object to control a
+<a class="reference internal" href="../../kits/interface/menu.html#_CPPv45BMenu" title="BMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code></a>. All it adds to what a <a class="reference internal" href="../../kits/interface/menu-bar.html#_CPPv48BMenuBar" title="BMenuBar"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuBar</span></code></a> can do on
+its own is a label and a more control-like user interface that includes
+keyboard navigation.</p>
+<p>The functions defined in this class resemble those of a
+<a class="reference internal" href="../../kits/interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a> (<a class="reference internal" href="../../kits/interface/menu-field.html#_CPPv4N10BMenuField8SetLabelEPKc" title="BMenuField::SetLabel"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetLabel()</span></code></a>,
+<a class="reference internal" href="../../kits/interface/menu-field.html#_CPPv4NK10BMenuField9IsEnabledEv" title="BMenuField::IsEnabled"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">IsEnabled()</span></code></a>), especially a BTextControl
+(<a class="reference internal" href="../../kits/interface/menu-field.html#_CPPv4N10BMenuField10SetDividerEf" title="BMenuField::SetDivider"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SetDivider()</span></code></a>, <a class="reference internal" href="../../kits/interface/menu-field.html#_CPPv4NK10BMenuField9AlignmentEv" title="BMenuField::Alignment"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Alignment()</span></code></a>). However, unlike a real <a class="reference internal" href="../../kits/interface/control.html#_CPPv48BControl" title="BControl"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BControl</span></code></a>
+object, a <a class="reference internal" href="../../kits/interface/menu-field.html#_CPPv410BMenuField" title="BMenuField"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenuField</span></code></a> doesn’t maintain a current value and it
+can’t be invoked to send a message. All the control work is done by items
+in the <a class="reference internal" href="../../kits/interface/menu.html#_CPPv45BMenu" title="BMenu"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMenu</span></code></a>.</p>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="menu-bar.html">BMenuBar</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="menu-item.html">BMenuItem</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

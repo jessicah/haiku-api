@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BInputServerFilter &#8212; The Haiku Book  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BInputServerMethod" href="input-server-method.html" />
+    <link rel="prev" title="BInputServerDevice" href="input-server-device.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
+          <span>API Documentation</span></a></h1>
+        <h2 class="heading"><span>BInputServerFilter</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="input-server-device.html">BInputServerDevice</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="input-server-method.html">BInputServerMethod</a>&#160;&#160;»
+        </p>
+
+      </div>
+        
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">BInputServerFilter</a><ul>
+<li><a class="reference internal" href="#creating">Creating</a></li>
+<li><a class="reference internal" href="#installing-an-input-filter">Installing an Input Filter</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+
+        </div>
+      </div>
+          <div class="bodywrapper">
+      <div class="content" role="main">
+        
+  <section id="binputserverfilter">
+<h1 id="CPPv418BInputServerFilter">BInputServerFilter<a class="headerlink" href="#binputserverfilter" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference internal" href="../../kits/input/input-server-filter.html#_CPPv418BInputServerFilter" title="BInputServerFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerFilter</span></code></a> is a base class for input filters; these
+are instances of <a class="reference internal" href="../../kits/input/input-server-filter.html#_CPPv418BInputServerFilter" title="BInputServerFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerFilter</span></code></a> that modify, generate, or
+eat input events. An input filter add-on is privy to all the events that
+pass through the Input Server’s event stream. A filter is similar to the
+Interface Kit’s <a class="reference internal" href="../../kits/application/message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code></a>, but at a much lower level. The
+<a class="reference internal" href="../../kits/input/input-server-filter.html#_CPPv418BInputServerFilter" title="BInputServerFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerFilter</span></code></a> also sees all events, while a
+<a class="reference internal" href="../../kits/application/message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code></a> only sees the events targeted at its
+<a class="reference internal" href="../../kits/application/looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>. <a class="reference internal" href="../../kits/application/message-filter.html#_CPPv414BMessageFilter" title="BMessageFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessageFilter</span></code></a>s can also generate
+additional events in place of, or in addition to, the original input event.</p>
+<p><a class="reference internal" href="../../kits/input/input-server-filter.html#_CPPv418BInputServerFilter" title="BInputServerFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerFilter</span></code></a> objects are created and deleted by the
+Input Server only—you never create or delete these objects in your code.</p>
+<section id="creating">
+<h2>Creating<a class="headerlink" href="#creating" title="Permalink to this heading">¶</a></h2>
+<p>To create a new input filter, you must:</p>
+<ul class="simple">
+<li><p>create a subclass of <a class="reference internal" href="../../kits/input/input-server-filter.html#_CPPv418BInputServerFilter" title="BInputServerFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerFilter</span></code></a></p></li>
+<li><p>implement the <span class="xref std std-ref">instantiate_input_filter()</span> C function to create an
+instance of your <a class="reference internal" href="../../kits/input/input-server-filter.html#_CPPv418BInputServerFilter" title="BInputServerFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerFilter</span></code></a> subclass</p></li>
+<li><p>compile the class and function as an add-on</p></li>
+<li><p>install the add-on in one of the input filter directories</p></li>
+</ul>
+<p>At boot time (or whenever the Input Server is restarted; see
+“<span class="xref std std-ref">Loading</span>” in The Input Server), the Input Server loads the add-ons
+it finds in the input filter directories. For each add-on it finds, the
+Server invokes <span class="xref std std-ref">instantiate_input_filter()</span> to get a pointer to the
+add-ons’s <a class="reference internal" href="../../kits/input/input-server-filter.html#_CPPv418BInputServerFilter" title="BInputServerFilter"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BInputServerFilter</span></code></a> object. After constructing the
+object, the Server calls <a class="reference internal" href="../../kits/input/input-server-filter.html#_CPPv4N18BInputServerFilter9InitCheckEv" title="BInputServerFilter::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> to give the add-on a chance to bail out if
+the constructor failed.</p>
+</section>
+<section id="installing-an-input-filter">
+<h2>Installing an Input Filter<a class="headerlink" href="#installing-an-input-filter" title="Permalink to this heading">¶</a></h2>
+<p>The input server looks for input filters in the input_server/filters
+subdirectories of <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BEOS_ADDONS_DIRECTORY</span></code>,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_COMMON_ADDONS_DIRECTORY</span></code>, and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_USER_ADDONS_DIRECTORY</span></code>.</p>
+<ul class="simple">
+<li><p>You can install your input devices in the latter two directories—i.e.
+those under <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_COMMON_ADDONS_DIRECTORY</span></code>, and
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_USER_ADDONS_DIRECTORY</span></code>.</p></li>
+<li><p>The <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_BEOS_ADDONS_DIRECTORY</span></code> is reserved for add-ons that
+are supplied with BeOS.</p></li>
+</ul>
+</section>
+</section>
+
+
+        <div class="clearer"></div>
+      </div>
+          </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="input-server-device.html">BInputServerDevice</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="input-server-method.html">BInputServerMethod</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Haiku, Inc..
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    </div>
+  </body>
+</html>

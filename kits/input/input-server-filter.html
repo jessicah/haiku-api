@@ -69,66 +69,73 @@
       <div class="content" role="main">
         
   <section id="binputserverfilter">
-<h1>BInputServerFilter<a class="headerlink" href="#binputserverfilter" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv418BInputServerFilter">BInputServerFilter<a class="headerlink" href="#binputserverfilter" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N18BInputServerFilter18BInputServerFilterEv">
 </section>
 <h3>
 BInputServerFilter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N18BInputServerFilter18BInputServerFilterEv" title="BInputServerFilter::BInputServerFilter"><span class="n">BInputServerFilter</span></a><span class="p">::</span></span><span class="n">BInputServerFilter</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Creates a new <span class="hclass">BInputServerFilter</span> object. You can initialize the
-object—set initial values, spawn threads, etc.—either here or
-in the
-<a class="reference internal" href="#_CPPv4N18BInputServerFilter9InitCheckEv" title="BInputServerFilter::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a>
-function, which is called immediately after the constructor.</p>
+object—set initial values, spawn threads, etc.—either here or in the
+<a class="reference internal" href="#_CPPv4N18BInputServerFilter9InitCheckEv" title="BInputServerFilter::InitCheck"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">InitCheck()</span></code></a> function, which is
+called immediately after the constructor.</p>
 <section id="_CPPv4N18BInputServerFilter18BInputServerFilterEv">
 </section>
 <h3>
-BInputServerFilter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N18BInputServerFilter18BInputServerFilterEv" title="BInputServerFilter::BInputServerFilter"><span class="n">BInputServerFilter</span></a><span class="p">::</span></span><span class="n">BInputServerFilter</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Deletes the <span class="hclass">BInputServerFilter</span> object. The
-destructor is invoked by the Input Server only—you never delete a
-<span class="hclass">BInputServerFilter</span> object from your own code. If
-this object has spawned its own threads or allocated memory on the heap, it
-must clean up after itself here.</p>
+BInputServerFilter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N18BInputServerFilter18BInputServerFilterEv" title="BInputServerFilter::BInputServerFilter"><span class="n">BInputServerFilter</span></a><span class="p">::</span></span><span class="n">BInputServerFilter</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Deletes the <span class="hclass">BInputServerFilter</span> object. The destructor is invoked
+by the Input Server only—you never delete a <span class="hclass">BInputServerFilter</span>
+object from your own code. If this object has spawned its own threads or
+allocated memory on the heap, it must clean up after itself here.</p>
 </section>
 <section id="hook-functions">
 <h2>Hook Functions<a class="headerlink" href="#hook-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N18BInputServerFilter6FilterEP8BMessageP5BList">
 </section>
 <h3>
-Filter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">filter_result</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputServerFilter</span><span class="p">::</span></span><span class="n">Filter</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outList</span><span class="sig-paren">)</span></pre><p>The <span class="hmethod">Filter()</span> hook function is invoked by the Input Server to filter the
-in-coming message. You can discard the message, allow it to pass
+Filter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">filter_result</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv418BInputServerFilter" title="BInputServerFilter"><span class="n">BInputServerFilter</span></a><span class="p">::</span></span><span class="n">Filter</span><span class="sig-paren">(</span><a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="n">BList</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">outList</span><span class="sig-paren">)</span></pre><p>The <span class="hmethod">Filter()</span> hook function is invoked by the Input Server to
+filter the in-coming message. You can discard the message, allow it to pass
 downstream (as is or modified), or replace it with one or more other
 messages:</p>
 <ul class="simple">
-<li><p>To discard message, implement <span class="hmethod">Filter()</span> to return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SKIP_MESSAGE</span></code> (don’t delete the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> yourself—it’s owned by the Input Server).</p></li>
-<li><p>If you implement <span class="hmethod">Filter()</span> to return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DISPATCH_MESSAGE</span></code> (and if you leave <span class="hparameter">outList</span> unchanged), <span class="hparameter">message</span> is allowed to continue downstream. You’re allowed to modify (but not destroy or replace) <span class="hparameter">message</span>.</p></li>
-<li><p>To replace <span class="hparameter">message</span>, place one or more <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code> in <span class="hparameter">outList</span> and return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DISPATCH_MESSAGE</span></code>. <span class="hparameter">message</span> is discarded; the messages in <span class="hparameter">outList</span> are passed downstream in the order that they appear in the list. The Input Server owns all of the messages you pass back in <span class="hparameter">outList</span>, so don’t delete them yourself. Note that if you want to include <span class="hparameter">message</span> in <span class="hparameter">outList</span>, you must copy the object before adding it to the list.</p></li>
+<li><p>To discard message, implement <span class="hmethod">Filter()</span> to return
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SKIP_MESSAGE</span></code> (don’t delete the <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a>
+yourself—it’s owned by the Input Server).</p></li>
+<li><p>If you implement <span class="hmethod">Filter()</span> to return
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DISPATCH_MESSAGE</span></code> (and if you leave <span class="hparameter">outList</span>
+unchanged), <span class="hparameter">message</span> is allowed to continue downstream. You’re
+allowed to modify (but not destroy or replace) <span class="hparameter">message</span>.</p></li>
+<li><p>To replace <span class="hparameter">message</span>, place one or more <a class="reference internal" href="../application/message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> in
+<span class="hparameter">outList</span> and return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DISPATCH_MESSAGE</span></code>.
+<span class="hparameter">message</span> is discarded; the messages in <span class="hparameter">outList</span> are
+passed downstream in the order that they appear in the list. The Input
+Server owns all of the messages you pass back in <span class="hparameter">outList</span>, so
+don’t delete them yourself. Note that if you want to include
+<span class="hparameter">message</span> in <span class="hparameter">outList</span>, you must copy the object before
+adding it to the list.</p></li>
 </ul>
-<p>The default implementation returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DISPATCH_MESSAGE</span></code> without modifying the
-message.</p>
+<p>The default implementation returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DISPATCH_MESSAGE</span></code>
+without modifying the message.</p>
 <section id="_CPPv4N18BInputServerFilter9InitCheckEv">
 </section>
 <h3>
-InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputServerFilter</span><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Invoked by the Input Server immediately after the object is constructed
-to test the validity of the initialization. If the object is properly
+InitCheck()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv418BInputServerFilter" title="BInputServerFilter"><span class="n">BInputServerFilter</span></a><span class="p">::</span></span><span class="n">InitCheck</span><span class="sig-paren">(</span><span class="sig-paren">)</span></pre><p>Invoked by the Input Server immediately after the object is constructed to
+test the validity of the initialization. If the object is properly
 initialized (i.e. all required resources are located or allocated), this
-function should return <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>. If the object returns
-non-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>, the object
-is deleted and the add-on is unloaded.
-The default implementation returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+function should return <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>. If the object returns
+non-<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>, the object is deleted and the add-on is
+unloaded.</p>
+<p>The default implementation returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4NK18BInputServerFilter15GetScreenRegionEP7BRegion">
 </section>
 <h3>
-GetScreenRegion()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">status_t</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BInputServerFilter</span><span class="p">::</span></span><span class="n">GetScreenRegion</span><span class="sig-paren">(</span><a class="reference internal" href="../interface/region.html#_CPPv47BRegionRK7BRegion" title="BRegion"><span class="n">BRegion</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">region</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>The <span class="hmethod">GetScreenRegion()</span> function returns the
-screen’s region in <span class="hparameter">region</span>. This is the most
-efficient way for an input filter to get the screen’s region. The system
-screen saver’s input filter uses this for its
-“sleep now”/”sleep never” corners.
-<span class="hmethod">GetScreenRegion()</span> returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
+GetScreenRegion()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="../storage/the-node-monitor.html#_CPPv48status_t10BMessenger" title="status_t"><span class="n">status_t</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv418BInputServerFilter" title="BInputServerFilter"><span class="n">BInputServerFilter</span></a><span class="p">::</span></span><span class="n">GetScreenRegion</span><span class="sig-paren">(</span><a class="reference internal" href="../interface/region.html#_CPPv47BRegion" title="BRegion"><span class="n">BRegion</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">region</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>The <span class="hmethod">GetScreenRegion()</span> function returns the screen’s region in
+<span class="hparameter">region</span>. This is the most efficient way for an input filter to get
+the screen’s region. The system screen saver’s input filter uses this for
+its “sleep now”/”sleep never” corners.</p>
+<p><span class="hmethod">GetScreenRegion()</span> returns <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_OK</span></code>.</p>
 </section>
 </section>
 

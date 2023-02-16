@@ -18,8 +18,8 @@
     <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="BMessage" href="message-new.html" />
-    <link rel="prev" title="BMessage" href="message.html" /> 
+    <link rel="next" title="BMessageQueue" href="message-queue.html" />
+    <link rel="prev" title="Message Constants" href="message-constants.html" /> 
   </head><body>
       <div class="header" role="banner"><h1 class="heading"><a href="../../index.html">
           <span>API Documentation</span></a></h1>
@@ -28,11 +28,11 @@
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="message.html">BMessage</a>
+        «&#160;&#160;<a href="message-constants.html">Message Constants</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="message-new.html">BMessage</a>&#160;&#160;»
+        <a href="message-queue.html">BMessageQueue</a>&#160;&#160;»
         </p>
 
       </div>
@@ -60,7 +60,11 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#operators">Operators</a></li>
-<li><a class="reference internal" href="#defined-types">Defined Types</a></li>
+<li><a class="reference internal" href="#defined-types">Defined Types</a><ul>
+<li><a class="reference internal" href="#message-delivery">message_delivery</a></li>
+<li><a class="reference internal" href="#message-source">message_source</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -73,19 +77,15 @@
       <div class="content" role="main">
         
   <section id="bmessagefilter">
-<h1>BMessageFilter<a class="headerlink" href="#bmessagefilter" title="Permalink to this heading">¶</a></h1>
+<h1 id="CPPv414BMessageFilter">BMessageFilter<a class="headerlink" href="#bmessagefilter" title="Permalink to this heading">¶</a></h1>
 <section id="constructor-and-destructor">
 <h2>Constructor and Destructor<a class="headerlink" href="#constructor-and-destructor" title="Permalink to this heading">¶</a></h2>
 <section id="_CPPv4N14BMessageFilter14BMessageFilterE16message_delivery14message_source6uint3211filter_hook">
 </section>
 <h3>
-BMessageFilter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N14BMessageFilter14BMessageFilterE16message_delivery14message_source6uint3211filter_hook" title="BMessageFilter::BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="n">BMessageFilter</span><span class="sig-paren">(</span><span class="n">message_delivery</span><span class="w"> </span><span class="n sig-param">delivery</span>, <span class="n">message_source</span><span class="w"> </span><span class="n sig-param">source</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">command</span>, <span class="n">filter_hook</span><span class="w"> </span><span class="n sig-param">filter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N14BMessageFilter14BMessageFilterE16message_delivery14message_source11filter_hook" title="BMessageFilter::BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="n">BMessageFilter</span><span class="sig-paren">(</span><span class="n">message_delivery</span><span class="w"> </span><span class="n sig-param">delivery</span>, <span class="n">message_source</span><span class="w"> </span><span class="n sig-param">source</span>, <span class="n">filter_hook</span><span class="w"> </span><span class="n sig-param">filter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N14BMessageFilter14BMessageFilterE6uint3211filter_hook" title="BMessageFilter::BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="n">BMessageFilter</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">command</span>, <span class="n">filter_hook</span><span class="w"> </span><span class="n sig-param">filter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N14BMessageFilter14BMessageFilterERK14BMessageFilter" title="BMessageFilter::BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="n">BMessageFilter</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N14BMessageFilter14BMessageFilterERK14BMessageFilter" title="BMessageFilter::BMessageFilter"><span class="n">BMessageFilter</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">object</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N14BMessageFilter14BMessageFilterEPK14BMessageFilter" title="BMessageFilter::BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="n">BMessageFilter</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N14BMessageFilter14BMessageFilterEPK14BMessageFilter" title="BMessageFilter::BMessageFilter"><span class="n">BMessageFilter</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">object</span><span class="sig-paren">)</span></pre><p>Creates and returns a new <span class="hclass">BMessageFilter</span>. The first
-three arguments define the types of messages that the object wants to see:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+BMessageFilter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N14BMessageFilter14BMessageFilterE16message_delivery14message_source6uint3211filter_hook" title="BMessageFilter::BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="n">BMessageFilter</span><span class="sig-paren">(</span><span class="n">message_delivery</span><span class="w"> </span><span class="n sig-param">delivery</span>, <span class="n">message_source</span><span class="w"> </span><span class="n sig-param">source</span>, <span class="n">uint32</span><span class="w"> </span><span class="n sig-param">command</span>, <span class="n">filter_hook</span><span class="w"> </span><span class="n sig-param">filter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N14BMessageFilter14BMessageFilterE16message_delivery14message_source11filter_hook" title="BMessageFilter::BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="n">BMessageFilter</span><span class="sig-paren">(</span><span class="n">message_delivery</span><span class="w"> </span><span class="n sig-param">delivery</span>, <span class="n">message_source</span><span class="w"> </span><span class="n sig-param">source</span>, <span class="n">filter_hook</span><span class="w"> </span><span class="n sig-param">filter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N14BMessageFilter14BMessageFilterE6uint3211filter_hook" title="BMessageFilter::BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="n">BMessageFilter</span><span class="sig-paren">(</span><span class="n">uint32</span><span class="w"> </span><span class="n sig-param">command</span>, <span class="n">filter_hook</span><span class="w"> </span><span class="n sig-param">filter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">NULL</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N14BMessageFilter14BMessageFilterERK14BMessageFilter" title="BMessageFilter::BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="n">BMessageFilter</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N14BMessageFilter14BMessageFilterERK14BMessageFilter" title="BMessageFilter::BMessageFilter"><span class="n">BMessageFilter</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">object</span><span class="sig-paren">)</span><br /><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv4N14BMessageFilter14BMessageFilterEPK14BMessageFilter" title="BMessageFilter::BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="n">BMessageFilter</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv4N14BMessageFilter14BMessageFilterEPK14BMessageFilter" title="BMessageFilter::BMessageFilter"><span class="n">BMessageFilter</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">object</span><span class="sig-paren">)</span></pre><p>Creates and returns a new <span class="hclass">BMessageFilter</span>. The first three
+arguments define the types of messages that the object wants to see:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Description</p></th>
@@ -93,29 +93,34 @@ three arguments define the types of messages that the object wants to see:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>delivery</p></td>
-<td><p>Specifies how the message must arrive: drag-and-drop (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DROPPED_DELIVERY</span></code>), programmatically (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PROGRAMMED_DELIVERY</span></code>), or either (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ANY_DELIVERY</span></code>). The default is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ANY_DELIVERY</span></code>.</p></td>
+<td><p>Specifies how the message must arrive: drag-and-drop
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DROPPED_DELIVERY</span></code>), programmatically
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PROGRAMMED_DELIVERY</span></code>), or either
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ANY_DELIVERY</span></code>). The default is
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ANY_DELIVERY</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>source</p></td>
-<td><p>Specifes whether the sender of the message must be local vis-a-vis this app (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_LOCAL_SOURCE</span></code>), remote (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_REMOTE_SOURCE</span></code>), or either (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ANY_SOURCE</span></code>). The default is <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ANY_SOURCE</span></code>.</p></td>
+<td><p>Specifes whether the sender of the message must be local vis-a-vis this
+app (<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LOCAL_SOURCE</span></code>), remote
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REMOTE_SOURCE</span></code>), or either
+(<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ANY_SOURCE</span></code>). The default is
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ANY_SOURCE</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>command</p></td>
-<td><p>Is a command constant. If supplied, the what value of the incoming message must match this value.</p></td>
+<td><p>Is a command constant. If supplied, the <span class="hparameter">what</span> value of the
+incoming message must match this value.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Messages that don’t fit the definition won’t be sent to the object’s filter function.</p>
-<p>The <span class="hparameter">filter</span> argument is a pointer to a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">hook()</span></code>
-function. This is the function that’s invoked when a message needs to be
-examined (see
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">hook()</span></code>
-for the protocol). You don’t have to supply a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">hook()</span></code>
-function; instead, you can implement
-<span class="hclass">BMessageFilter</span>’s
-<a class="reference internal" href="#_CPPv4N14BMessageFilter6FilterEP8BMessagePP8BHandler" title="BMessageFilter::Filter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Filter()</span></code></a>
+<p>Messages that don’t fit the definition won’t be sent to the object’s
+filter function.</p>
+<p>The <span class="hparameter">filter</span> argument is a pointer to a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">filter_hook</span></code> function. This is the function that’s invoked when a
+message needs to be examined (see <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">filter_hook</span></code>
+for the protocol). You don’t have to supply a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">filter_hook</span></code> function; instead, you can implement
+<span class="hclass">BMessageFilter</span>’s <a class="reference internal" href="#_CPPv4N14BMessageFilter6FilterEP8BMessagePP8BHandler" title="BMessageFilter::Filter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Filter()</span></code></a>
 function in a subclass.</p>
-<p>For more information, refer to the description of the member <a class="reference internal" href="#_CPPv4N14BMessageFilter6FilterEP8BMessagePP8BHandler" title="BMessageFilter::Filter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Filter()</span></code></a>
-function.</p>
+<p>For more information, refer to the description of the member
+<a class="reference internal" href="#_CPPv4N14BMessageFilter6FilterEP8BMessagePP8BHandler" title="BMessageFilter::Filter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Filter()</span></code></a> function.</p>
 <h3>
 </h3><pre style="background: #f3f3f3; line-height: 2em">virtual BMessageFilter::~BMessageFilter()()</pre><p>Does nothing.</p>
 </section>
@@ -124,45 +129,41 @@ function.</p>
 <section id="_CPPv4N14BMessageFilter6FilterEP8BMessagePP8BHandler">
 </section>
 <h3>
-Filter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">filter_result</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMessageFilter</span><span class="p">::</span></span><span class="n">Filter</span><span class="sig-paren">(</span><span class="n">BMessage</span><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <span class="n">BHandler</span><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">target</span><span class="sig-paren">)</span></pre><p>Implemented by derived classes to examine an arriving message just before
-it’s dispatched. The first two arguments are the
-<span class="hparameter">message</span> that’s being considered, and the proposed
-<code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code>
-<span class="hparameter">target</span>. You can alter the contents of the message,
-and alter or even replace the handler. If you replace the handler, the new
-handler must belong to the same looper as the original. The new handler is
-given an opportunity to filter the message before it’s dispatched.</p>
+Filter()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="k">virtual</span><span class="w"> </span><span class="n">filter_result</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BMessageFilter" title="BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="n">Filter</span><span class="sig-paren">(</span><a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><span class="n">BMessage</span></a><span class="w"> </span><span class="p">*</span><span class="n sig-param">message</span>, <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><span class="n">BHandler</span></a><span class="w"> </span><span class="p">*</span><span class="p">*</span><span class="n sig-param">target</span><span class="sig-paren">)</span></pre><p>Implemented by derived classes to examine an arriving message just before
+it’s dispatched. The first two arguments are the <span class="hparameter">message</span> that’s
+being considered, and the proposed <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> <span class="hparameter">target</span>.
+You can alter the contents of the message, and alter or even replace the
+handler. If you replace the handler, the new handler must belong to the
+same looper as the original. The new handler is given an opportunity to
+filter the message before it’s dispatched.</p>
 <p>The return value must be one of these two values:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DISPATCH_MESSAGE</span></code>.</p></td>
-<td><p>The <span class="hparameter">message</span> and <span class="hparameter">handler</span> are passed (by the caller) to the looper’s <a class="reference internal" href="looper.html#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchMessage()</span></code></a> function.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DISPATCH_MESSAGE</span></code>.</p></td>
+<td><p>The <span class="hparameter">message</span> and <span class="hparameter">handler</span> are passed (by the caller) to
+the looper’s <a class="reference internal" href="looper.html#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchMessage()</span></code></a>
+function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SKIP_MESSAGE</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SKIP_MESSAGE</span></code>.</p></td>
 <td><p>The message goes no further—it’s immediately thrown away by the caller.</p></td>
 </tr>
 </tbody>
 </table>
-<p>The default version of this function returns <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DISPATCH_MESSAGE</span></code>.</p>
-<p>It’s possible to call your <span class="hmethod">Filter()</span> function
-yourself (i.e. outside the message-passing mechanism), but keep in mind
-that it’s the caller’s responsibility to interpret the return value.</p>
+<p>The default version of this function returns
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DISPATCH_MESSAGE</span></code>.</p>
+<p>It’s possible to call your <span class="hmethod">Filter()</span> function yourself (i.e.
+outside the message-passing mechanism), but keep in mind that it’s the
+caller’s responsibility to interpret the return value.</p>
 <p>Rather than implement the  function, you can supply the
-<span class="hclass">BMessageFilter</span> with a
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">hook()</span></code>
+<span class="hclass">BMessageFilter</span> with a <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">filter_hook</span></code>
 callback when you construct the object. If you do both, the
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">hook()</span></code>
-(and not <span class="hmethod">Filter()</span>) will be invoked when the object
-is asked to examine a message.</p>
+<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">filter_hook</span></code> (and not <span class="hmethod">Filter()</span>) will
+be invoked when the object is asked to examine a message.</p>
 </section>
 <section id="member-functions">
 <h2>Member Functions<a class="headerlink" href="#member-functions" title="Permalink to this heading">¶</a></h2>
@@ -171,82 +172,76 @@ is asked to examine a message.</p>
 <section id="_CPPv4NK14BMessageFilter17FiltersAnyCommandEv">
 </section>
 <h3>
-Command(), FiltersAnyCommand()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">uint32</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMessageFilter</span><span class="p">::</span></span><span class="n">Command</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMessageFilter</span><span class="p">::</span></span><span class="n">FiltersAnyCommand</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Command()</span> returns the command constant (the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code>
-what value) that an arriving message must match for the
-filter to apply. <span class="hmethod">FiltersAnyCommand()</span> returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">true</span></code> if the filter applies to all messages, and
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code> if it’s limited to a specific command.</p>
+Command(), FiltersAnyCommand()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">uint32</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BMessageFilter" title="BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="n">Command</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="kt">bool</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BMessageFilter" title="BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="n">FiltersAnyCommand</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p><span class="hmethod">Command()</span> returns the command constant (the
+<a class="reference internal" href="message.html#_CPPv48BMessage" title="BMessage"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BMessage</span></code></a> <span class="hparameter">what</span> value) that an arriving message must
+match for the filter to apply. <span class="hmethod">FiltersAnyCommand()</span> returns
+<span class="cpp-expr sig sig-inline cpp"><span class="k">true</span></span> if the filter applies to all messages, and
+<span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span> if it’s limited to a specific command.</p>
 <p>Because all command constants are valid, including negative numbers and 0,
 <span class="hmethod">Command()</span> returns a reliable result only if
-<span class="hmethod">FiltersAnyCommand()</span> returns
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<span class="hmethod">FiltersAnyCommand()</span> returns <span class="cpp-expr sig sig-inline cpp"><span class="k">false</span></span>.</p>
 <section id="_CPPv4NK14BMessageFilter6LooperEv">
 </section>
 <h3>
-Looper()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BLooper</span><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><span class="n">BMessageFilter</span><span class="p">::</span></span><span class="n">Looper</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>
-whose messages this object filters, or <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">NULL</span></code> if the
-<span class="hclass">BMessageFilter</span> hasn’t yet been assigned to a <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code> or <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code>. To attach a
-<span class="hclass">BMessageFilter</span> to a looper or handler, use <a class="reference internal" href="looper.html#_CPPv4N7BLooper15AddCommonFilterEP14BMessageFilter" title="BLooper::AddCommonFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::AddCommonFilter()</span></code></a>
-or <a class="reference internal" href="handler.html#_CPPv4N8BHandler9AddFilterEP14BMessageFilter" title="BHandler::AddFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::AddFilter()</span></code></a>.</p>
+Looper()</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><span class="n">BLooper</span></a><span class="w"> </span><span class="p">*</span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BMessageFilter" title="BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="n">Looper</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>Returns the <a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a> whose messages this object filters, or
+<span class="cpp-expr sig sig-inline cpp"><span class="n">NULL</span></span> if the <span class="hclass">BMessageFilter</span> hasn’t yet been assigned
+to a <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> or <a class="reference internal" href="looper.html#_CPPv47BLooper" title="BLooper"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BLooper</span></code></a>. To attach a
+<span class="hclass">BMessageFilter</span> to a looper or handler, use
+<a class="reference internal" href="looper.html#_CPPv4N7BLooper15AddCommonFilterEP14BMessageFilter" title="BLooper::AddCommonFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BLooper::AddCommonFilter()</span></code></a> or <a class="reference internal" href="handler.html#_CPPv4N8BHandler9AddFilterEP14BMessageFilter" title="BHandler::AddFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BHandler::AddFilter()</span></code></a>.</p>
 <section id="_CPPv4NK14BMessageFilter15MessageDeliveryEv">
 </section>
 <section id="_CPPv4NK14BMessageFilter13MessageSourceEv">
 </section>
 <h3>
-MessageDelivery(), MessageSource()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">message_delivery</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMessageFilter</span><span class="p">::</span></span><span class="n">MessageDelivery</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">message_source</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMessageFilter</span><span class="p">::</span></span><span class="n">MessageSource</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions return constants, set when the
-<span class="hclass">BMessageFilter</span> object was constructed, that describe
-the categories of messages that can be filtered.
-<span class="hmethod">MessageDelivery()</span> returns a constant that
-specifies how the message must be delivered
-(<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DROPPED_DELIVERY</span></code>,
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_PROGRAMMED_DELIVERY</span></code>, or
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ANY_DELIVERY</span></code>).
-<span class="hmethod">MessageSource()</span> returns how the source of the
-message is constrained (<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_LOCAL_SOURCE</span></code>,
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_REMOTE_SOURCE</span></code>, or
-<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_ANY_SOURCE</span></code>).</p>
+MessageDelivery(), MessageSource()</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">message_delivery</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BMessageFilter" title="BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="n">MessageDelivery</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><pre style="background: #f3f3f3; line-height: 2em"><span class="n">message_source</span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BMessageFilter" title="BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="n">MessageSource</span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k">const</span></pre><p>These functions return constants, set when the <span class="hclass">BMessageFilter</span>
+object was constructed, that describe the categories of messages that can
+be filtered. <span class="hmethod">MessageDelivery()</span> returns a constant that specifies
+how the message must be delivered (<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DROPPED_DELIVERY</span></code>,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_PROGRAMMED_DELIVERY</span></code>, or
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ANY_DELIVERY</span></code>). <span class="hmethod">MessageSource()</span> returns how
+the source of the message is constrained (<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_LOCAL_SOURCE</span></code>,
+<code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_REMOTE_SOURCE</span></code>, or <code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_ANY_SOURCE</span></code>).</p>
 </section>
 <section id="operators">
 <h2>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">¶</a></h2>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em"><span class="n">BMessageFilter</span><span class="w"> </span><span class="sig-prename descclassname"><span class="n">BMessageFilter</span><span class="p">::</span></span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><span class="n">BMessageFilter</span><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">from</span><span class="sig-paren">)</span></pre><p>Copies the filtering criteria and filter_hook pointer (if any) from the right-side object into the left-side object.</p>
+</h3><pre style="background: #f3f3f3; line-height: 2em"><a class="reference internal" href="#_CPPv414BMessageFilter" title="BMessageFilter"><span class="n">BMessageFilter</span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv414BMessageFilter" title="BMessageFilter"><span class="n">BMessageFilter</span></a><span class="p">::</span></span><span class="k">operator</span><span class="o">=</span><span class="sig-paren">(</span><span class="k">const</span><span class="w"> </span><a class="reference internal" href="#_CPPv414BMessageFilter" title="BMessageFilter"><span class="n">BMessageFilter</span></a><span class="w"> </span><span class="p">&amp;</span><span class="n sig-param">from</span><span class="sig-paren">)</span></pre><p>Copies the filtering criteria and filter_hook pointer (if any) from the
+right-side object into the left-side object.</p>
 </section>
 <section id="defined-types">
 <h2>Defined Types<a class="headerlink" href="#defined-types" title="Permalink to this heading">¶</a></h2>
 <h3>
-</h3><pre style="background: #f3f3f3; line-height: 2em">filter_result (*filter_hook)(BMessage* message, BHandler** target, BMessageFilter* messageFilter)</pre><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">enum</span> <span class="n">filter_result</span> <span class="p">{</span>
-    <span class="n">B_SKIP_MESSAGE</span><span class="p">,</span>
-    <span class="n">B_DISPATCH_MESSAGE</span>
-<span class="p">}</span>
+</h3><pre style="background: #f3f3f3; line-height: 2em">filter_result (*filter_hook)(BMessage* message, BHandler** target, BMessageFilter* messageFilter)</pre><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">filter_result</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_SKIP_MESSAGE</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_DISPATCH_MESSAGE</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>filter_hook defines the protocol for message-filtering
-functions. The first two arguments are the <span class="hparameter">message</span>
-that’s being considered, and the proposed <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code> target. You can
-alter the contents of the message, and alter or even replace the handler.
-If you replace the handler, the new handler must belong to the same looper
-as the original. The new handler is given an opportunity to filter the
-message before it’s dispatched.</p>
-<p><span class="hparameter">messageFilter</span> is a pointer to the object on whose
-behalf this function is being called; you mustn’t delete this object. More
-than one <span class="hclass">BMessageFilter</span> can use the same
-filter_hook function.</p>
-<p>The return value of type filter_result must be one of these two values:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<p>filter_hook defines the protocol for message-filtering functions. The
+first two arguments are the <span class="hparameter">message</span> that’s being considered, and
+the proposed <a class="reference internal" href="handler.html#_CPPv48BHandler" title="BHandler"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BHandler</span></code></a> target. You can alter the contents of
+the message, and alter or even replace the handler. If you replace the
+handler, the new handler must belong to the same looper as the original.
+The new handler is given an opportunity to filter the message before it’s
+dispatched.</p>
+<p><span class="hparameter">messageFilter</span> is a pointer to the object on whose behalf this
+function is being called; you mustn’t delete this object. More than one
+<span class="hclass">BMessageFilter</span> can use the same filter_hook function.</p>
+<p>The return value of type <span class="htype">filter_result</span> must be one of these two
+values:</p>
+<table class="colwidths-auto docutils align-left">
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_DISPATCH_MESSAGE</span></code>.</p></td>
-<td><p>The <span class="hparameter">message</span> and <span class="hparameter">handler</span> are passed (by the caller) to the looper’s <a class="reference internal" href="looper.html#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchMessage()</span></code></a> function.</p></td>
+<tr class="row-even"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_DISPATCH_MESSAGE</span></code>.</p></td>
+<td><p>The <span class="hparameter">message</span> and <span class="hparameter">handler</span> are passed (by the caller) to
+the looper’s <a class="reference internal" href="looper.html#_CPPv4N7BLooper15DispatchMessageEP8BMessageP8BHandler" title="BLooper::DispatchMessage"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">DispatchMessage()</span></code></a>
+function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">B_SKIP_MESSAGE</span></code>.</p></td>
+<tr class="row-odd"><td><p><code class="xref cpp cpp-enumerator docutils literal notranslate"><span class="pre">B_SKIP_MESSAGE</span></code>.</p></td>
 <td><p>The message goes no further–it’s immediately thrown away by the caller.</p></td>
 </tr>
 </tbody>
@@ -254,36 +249,36 @@ filter_hook function.</p>
 <p>It’s possible to call your filter function yourself (i.e. outside the
 message-passing mechanism), but keep in mind that it’s the caller’s
 responsibility to interpret the return value.</p>
-<p>You supply a <span class="hclass">BMessageFilter</span> with a
-filter_hook function when you constuct the object.
-Alternatively, you can subclass <span class="hclass">BMessageFilter</span> and
-provide an implementation of <a class="reference internal" href="#_CPPv4N14BMessageFilter6FilterEP8BMessagePP8BHandler" title="BMessageFilter::Filter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Filter()</span></code></a>.
-If you do both, the filter_hook (and not <a class="reference internal" href="#_CPPv4N14BMessageFilter6FilterEP8BMessagePP8BHandler" title="BMessageFilter::Filter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Filter()</span></code></a>)
-will be invoked when the object is asked to examine a message.</p>
-<h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">enum</span> <span class="n">message_delivery</span> <span class="p">{</span>
-    <span class="n">B_ANY_DELIVERY</span><span class="p">,</span>
-    <span class="n">B_DROPPED_DELIVERY</span><span class="p">,</span>
-    <span class="n">B_PROGRAMMED_DELIVERY</span>
-<span class="p">}</span>
+<p>You supply a <span class="hclass">BMessageFilter</span> with a filter_hook function when you
+constuct the object. Alternatively, you can subclass
+<span class="hclass">BMessageFilter</span> and provide an implementation of
+<a class="reference internal" href="#_CPPv4N14BMessageFilter6FilterEP8BMessagePP8BHandler" title="BMessageFilter::Filter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Filter()</span></code></a>. If you do both, the
+filter_hook (and not <a class="reference internal" href="#_CPPv4N14BMessageFilter6FilterEP8BMessagePP8BHandler" title="BMessageFilter::Filter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Filter()</span></code></a>) will be
+invoked when the object is asked to examine a message.</p>
+<section id="message-delivery">
+<h3>message_delivery<a class="headerlink" href="#message-delivery" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">message_delivery</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_ANY_DELIVERY</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_DROPPED_DELIVERY</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_PROGRAMMED_DELIVERY</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This type enumerates the delivery criteria for filtering a message.
-See also:
-The <span class="hclass">BMessageFilter</span>
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code></p>
-<h3>
-</h3><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">enum</span> <span class="n">message_source</span> <span class="p">{</span>
-    <span class="n">B_ANY_SOURCE</span><span class="p">,</span>
-    <span class="n">B_REMOTE_SOURCE</span><span class="p">,</span>
-    <span class="n">B_LOCAL_SOURCE</span>
-<span class="p">}</span>
+<p>This type enumerates the delivery criteria for filtering a message.</p>
+<p>See also: The <span class="hclass">BMessageFilter</span> <a class="reference internal" href="#_CPPv4N14BMessageFilter14BMessageFilterE16message_delivery14message_source6uint3211filter_hook" title="BMessageFilter::BMessageFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a></p>
+</section>
+<section id="message-source">
+<h3>message_source<a class="headerlink" href="#message-source" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">message_source</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_ANY_SOURCE</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_REMOTE_SOURCE</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">B_LOCAL_SOURCE</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>This type enumerates the source criteria for filtering a message.
-See also:
-The <span class="hclass">BMessageFilter</span>
-<code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Constructor()</span></code></p>
+<p>This type enumerates the source criteria for filtering a message.</p>
+<p>See also: The <span class="hclass">BMessageFilter</span> <a class="reference internal" href="#_CPPv4N14BMessageFilter14BMessageFilterE16message_delivery14message_source6uint3211filter_hook" title="BMessageFilter::BMessageFilter"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">constructor</span></code></a></p>
+</section>
 </section>
 </section>
 
@@ -294,11 +289,11 @@ The <span class="hclass">BMessageFilter</span>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="message.html">BMessage</a>
+        «&#160;&#160;<a href="message-constants.html">Message Constants</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="message-new.html">BMessage</a>&#160;&#160;»
+        <a href="message-queue.html">BMessageQueue</a>&#160;&#160;»
         </p>
 
       </div>
